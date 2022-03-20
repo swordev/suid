@@ -1,11 +1,11 @@
 // @refresh
-import { Router } from "solid-app-router";
+import { hashIntegration, Router } from "solid-app-router";
 import { render } from "solid-js/web";
 import MainLayout from "./layouts/MainLayout";
 
 render(
   () => (
-    <Router>
+    <Router source={hashIntegration()}>
       <MainLayout />
     </Router>
   ),
