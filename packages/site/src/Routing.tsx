@@ -10,7 +10,7 @@ export const Pages = Object.assign(
 
 export const PageComponents = Object.keys(Pages).reduce((result, localPath) => {
   const path = toPath(localPath);
-  const Component = lazy(() => import(/* @vite-ignore */ localPath));
+  const Component = lazy(Pages[localPath] as any);
   result[path] = Component;
   return result;
 }, {} as Record<string, ReturnType<typeof lazy>>);
