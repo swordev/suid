@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "outDir": "lib",
+    "rootDir": "src",
+    "paths": {
+      "@suid/css": ["./../css/src"],
+      "@suid/css/*": ["./../css/src/*"],
+      "@suid/types": ["./../types/src"],
+      "@suid/types/*": ["./../types/src/*"],
+      "@suid/utils": ["./../utils/src"],
+      "@suid/utils/*": ["./../utils/src/*"]
+    }
+  },
+  "exclude": ["src/**/*.test.*"],
+  "extends": "./../../tsconfig.json",
+  "include": ["src/**/*"],
+  "references": [
+    {
+      "path": "./../css"
+    },
+    {
+      "path": "./../types"
+    },
+    {
+      "path": "./../utils"
+    }
+  ]
+}
