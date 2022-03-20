@@ -1,0 +1,14 @@
+{
+  "name": "@suid/css",
+  "version": "0.0.0",
+  "scripts": {
+    "build": "tsc --build",
+    "clean": "tsc --build --clean",
+    "test": "jest",
+    "watch": "tsc --build -w"
+  },
+  "dependencies": {
+    "@suid/utils": "0.0.0",
+    "csstype": "^3.0.11"
+  }
+}
