@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js",
+    "composite": true,
+    "isolatedModules": false,
+    "declaration": true,
+    "declarationMap": true,
+    "types": ["ts-jest"]
+  },
+  "exclude": ["**/temp/", "**/.*/", "**/lib", "**/node_modules"]
+}

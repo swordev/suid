@@ -1,0 +1,7 @@
+.history
+dist
+lib
+bk
+node_modules
+tsconfig.tsbuildinfo
+temp

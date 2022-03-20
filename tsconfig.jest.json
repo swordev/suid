@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "@suid/base": ["./packages/base/src"],
+      "@suid/base/*": ["./packages/base/src/*"],
+      "@suid/css": ["./packages/css/src"],
+      "@suid/css/*": ["./packages/css/src/*"],
+      "@suid/icons-material": ["./packages/icons-material/lib"],
+      "@suid/icons-material/*": ["./packages/icons-material/lib/*"],
+      "@suid/material": ["./packages/material/src"],
+      "@suid/material/*": ["./packages/material/src/*"],
+      "@suid/system": ["./packages/system/src"],
+      "@suid/system/*": ["./packages/system/src/*"],
+      "@suid/types": ["./packages/types/src"],
+      "@suid/types/*": ["./packages/types/src/*"],
+      "@suid/utils": ["./packages/utils/src"],
+      "@suid/utils/*": ["./packages/utils/src/*"]
+    }
+  },
+  "extends": "./tsconfig.json"
+}

@@ -1,0 +1,25 @@
+{
+  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
+  "overrides": [
+    {
+      "files": [
+        "./**/vite.config.{js,ts}",
+        "./**/scripts/**/*.js",
+        "jest.config.js"
+      ],
+      "rules": {
+        "@typescript-eslint/no-var-requires": 0
+      },
+      "env": {
+        "node": true
+      }
+    }
+  ],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["solid"],
+  "rules": {
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-empty-interface": "off",
+    "@typescript-eslint/ban-types": "off"
+  }
+}

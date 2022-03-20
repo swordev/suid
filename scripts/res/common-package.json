@@ -1,0 +1,34 @@
+{
+  "author": {
+    "name": "Juanra GM",
+    "email": "juanrgm724@gmail.com",
+    "url": "https://github.com/juanrgm"
+  },
+  "bugs": {
+    "url": "https://github.com/swordev/suid.git/issues"
+  },
+  "files": ["**/*.js", "**/*.jsx", "**/*.d.ts"],
+  "homepage": "https://suid.io",
+  "keywords": [
+    "best_ecosystem",
+    "components",
+    "material-design",
+    "material-ui",
+    "material",
+    "mui",
+    "solid-component",
+    "solid-js",
+    "solid.js",
+    "solid",
+    "solidhack",
+    "solidjs",
+    "styled-component",
+    "ui",
+    "ux"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/swordev/suid.git"
+  }
+}
