@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "outDir": "lib",
+    "rootDir": "src",
+    "paths": {
+      "@suid/types": ["./../types/src"],
+      "@suid/types/*": ["./../types/src/*"]
+    }
+  },
+  "exclude": ["src/**/*.test.*"],
+  "extends": "./../../tsconfig.json",
+  "include": ["src/**/*"],
+  "references": [
+    {
+      "path": "./../types"
+    }
+  ]
+}
