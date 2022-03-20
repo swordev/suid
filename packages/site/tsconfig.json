@@ -1,0 +1,45 @@
+{
+  "compilerOptions": {
+    "outDir": "lib",
+    "rootDir": "src",
+    "types": ["vite/client"],
+    "paths": {
+      "@suid/base": ["./../base/src"],
+      "@suid/base/*": ["./../base/src/*"],
+      "@suid/icons-material": ["./../icons-material/lib"],
+      "@suid/icons-material/*": ["./../icons-material/lib/*"],
+      "@suid/material": ["./../material/src"],
+      "@suid/material/*": ["./../material/src/*"],
+      "@suid/system": ["./../system/src"],
+      "@suid/system/*": ["./../system/src/*"],
+      "@suid/types": ["./../types/src"],
+      "@suid/types/*": ["./../types/src/*"],
+      "@suid/utils": ["./../utils/src"],
+      "@suid/utils/*": ["./../utils/src/*"],
+      "~/*": ["./src/*"]
+    }
+  },
+  "exclude": ["src/**/*.test.*"],
+  "extends": "./../../tsconfig.json",
+  "include": ["src/**/*"],
+  "references": [
+    {
+      "path": "./../base"
+    },
+    {
+      "path": "./../icons-material"
+    },
+    {
+      "path": "./../material"
+    },
+    {
+      "path": "./../system"
+    },
+    {
+      "path": "./../types"
+    },
+    {
+      "path": "./../utils"
+    }
+  ]
+}
