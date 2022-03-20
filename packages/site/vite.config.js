@@ -35,6 +35,9 @@ export default defineConfig({
     target: "esnext",
     polyfillDynamicImport: false,
   },
+  esbuild: {
+    keepNames: true,
+  },
   resolve: {
     alias: {
       "~": resolve(__dirname, "src"),
