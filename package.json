@@ -1,0 +1,33 @@
+{
+  "name": "@suid/site",
+  "version": "0.0.0",
+  "homepage": "https://suid.io",
+  "bugs": {
+    "url": "https://github.com/swordev/suid.git/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/swordev/suid.git",
+    "directory": "packages/site"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Juanra GM",
+    "email": "juanrgm724@gmail.com",
+    "url": "https://github.com/juanrgm"
+  },
+  "files": [
+    "assets/**/*",
+    "index.html"
+  ],
+  "dependencies": {
+    "@suid/base": "0.0.0",
+    "@suid/icons-material": "0.0.0",
+    "@suid/material": "0.0.0",
+    "@suid/system": "0.0.0",
+    "@suid/types": "0.0.0",
+    "@suid/utils": "0.0.0",
+    "prism-themes": "^1.9.0",
+    "prismjs": "^1.27.0"
+  }
+}
