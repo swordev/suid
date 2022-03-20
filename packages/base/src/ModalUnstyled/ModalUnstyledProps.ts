@@ -143,6 +143,7 @@ export interface ModalUnstyledTypeMap<P = {}, D extends ElementType = "div"> {
      * If `true`, the component is shown.
      */
     open: boolean;
+    transition?: boolean;
   };
   props: P & ModalUnstyledTypeMap["selfProps"];
   defaultComponent: D;

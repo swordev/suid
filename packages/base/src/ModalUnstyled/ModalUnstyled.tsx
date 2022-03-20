@@ -1,14 +1,22 @@
 import { ModalUnstyledTypeMap } from ".";
 import Portal from "../Portal";
+import { TransitionContext } from "../Transition/TransitionContext";
 import createComponentFactory from "../createComponentFactory";
 import isHostComponent from "../utils/isHostComponent";
 import ModalManager, { ariaHidden } from "./ModalManager";
-import { Modal } from "./ModalManager";
 import { getModalUtilityClass } from "./modalUnstyledClasses";
 import createElementRef from "@suid/system/createElementRef";
 import { ComponentInProps } from "@suid/types";
+import ownerDocument from "@suid/utils/ownerDocument";
 import clsx from "clsx";
-import { createEffect, createSignal, JSX, onCleanup, Show } from "solid-js";
+import {
+  children,
+  createEffect,
+  createSignal,
+  JSX,
+  onCleanup,
+  Show,
+} from "solid-js";
 import { Dynamic } from "solid-js/web";
 
 const $ = createComponentFactory<
@@ -54,6 +62,7 @@ const $ = createComponentFactory<
     "onBackdropClick",
     "onClose",
     "open",
+    "transition",
   ],
   utilityClass: getModalUtilityClass,
   slotClasses: (ownerState) => ({
@@ -61,11 +70,11 @@ const $ = createComponentFactory<
   }),
 });
 
-/*function getContainer<T>(container: T | (() => T)): T {
+function getContainer<T>(container: T | (() => T)): T {
   return typeof container === "function"
     ? (container as Function)()
     : container;
-}*/
+}
 
 // A modal manager used to track and manage the state of open Modals.
 // Modals don't open on the server so this won't conflict with concurrent requests.
@@ -100,27 +109,19 @@ const ModalUnstyled = $.component(function ModalUnstyled({
 }) {
   const element = createElementRef(otherProps);
   const manager = defaultManager;
-  const [exited /*, setExited*/] = createSignal(true);
-
-  //const getDoc = () => ownerDocument(element.ref);
-  const getModal = () => {
-    return {
-      modalRef: element.ref,
-      mount: element.ref,
-    } as Modal;
-  };
+  const getDoc = () => ownerDocument(element.ref);
+  const [exited, setExited] = createSignal(true);
 
   const handleMounted = () => {
-    //manager.mount(getModal(), { disableScrollLock: props.disableScrollLock });
+    manager.mount(element, { disableScrollLock: props.disableScrollLock });
 
     // Fix a bug on Chrome where the scroll isn't initially 0.
     element.ref.scrollTop = 0;
   };
 
   const handleOpen = () => {
-    // [review]
-    //const resolvedContainer = getContainer(props.container) || getDoc().body;
-    //manager.add(getModal(), resolvedContainer as HTMLElement);
+    const resolvedContainer = getContainer(props.container) || getDoc().body;
+    manager.add(element, resolvedContainer as HTMLElement);
 
     // The element was already mounted.
     if (element.ref) {
@@ -128,13 +129,14 @@ const ModalUnstyled = $.component(function ModalUnstyled({
     }
   };
 
-  const isTopModal = () => manager.isTopModal(getModal());
-  const handleClose = () => manager.remove(getModal());
+  const isTopModal = () => manager.isTopModal(element);
+  const handleClose = () => manager.remove(element);
 
   onCleanup(handleClose);
 
   createEffect((firstTime) => {
     if (firstTime) {
+      if (props.open) handleOpen();
       if (props.open && isTopModal()) {
         handleMounted();
       } else {
@@ -143,14 +145,12 @@ const ModalUnstyled = $.component(function ModalUnstyled({
     } else {
       if (props.open) {
         handleOpen();
-      } else if (!props.closeAfterTransition) {
+      } else if (!props.transition || !props.closeAfterTransition) {
         handleClose();
       }
     }
     return false;
   }, true);
-
-  //const ownerState = mergeProps(allProps, () => ({ exited: exited() }));
 
   const handleBackdropClick: JSX.EventHandler<HTMLElement, MouseEvent> = (
     event
@@ -160,7 +160,6 @@ const ModalUnstyled = $.component(function ModalUnstyled({
     }
 
     props.onBackdropClick?.(event);
-
     props.onClose?.(event, "backdropClick");
   };
 
@@ -169,7 +168,6 @@ const ModalUnstyled = $.component(function ModalUnstyled({
   ) => {
     if (typeof otherProps.onKeyDown === "function")
       otherProps.onKeyDown?.(event);
-
     // The handler doesn't take event.defaultPrevented into account:
     //
     // event.preventDefault() is meant to stop default behaviors like
@@ -190,46 +188,64 @@ const ModalUnstyled = $.component(function ModalUnstyled({
 
   const Root = () => props.components.Root || otherProps.component;
   const rootProps = () => props.componentsProps.root || {};
-  const noMount = () => !props.keepMounted && !props.open && exited();
+  const noMount = () =>
+    !props.keepMounted && !props.open && (!props.transition || exited());
 
   return (
-    <Show when={!noMount()}>
-      <Portal container={props.container} disablePortal={props.disablePortal}>
-        {/*
-         * Marking an element with the role presentation indicates to assistive technology
-         * that this element should be ignored; it exists to support the web application and
-         * is not meant for humans to interact with directly.
-         * https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/no-static-element-interactions.md
-         */}
-        <Dynamic
-          {...otherProps}
-          component={Root()}
-          role="presentation"
-          {...rootProps()}
-          {...(!isHostComponent(Root()) && {
-            //component: baseProps.component,
-            ownerState: allProps,
-          })}
-          onKeyDown={handleKeyDown}
-          className={clsx(
-            classes.root,
-            rootProps().className,
-            otherProps.className
-          )}
-          ref={element}
-        >
-          <Show when={!props.hideBackdrop && !!props.BackdropComponent}>
-            <Dynamic
-              component={props.BackdropComponent}
-              open={props.open}
-              onClick={handleBackdropClick}
-              {...(props.BackdropProps ?? {})}
-            />
-          </Show>
-          {props.children}
-        </Dynamic>
-      </Portal>
-    </Show>
+    <TransitionContext.Provider
+      value={{
+        get in() {
+          return !!props.transition && props.open;
+        },
+        onEnter: () => {
+          props.transition && setExited(false);
+        },
+        onExited: () => {
+          if (props.transition) {
+            setExited(true);
+            if (props.closeAfterTransition) handleClose();
+          }
+        },
+      }}
+    >
+      <Show when={!noMount()}>
+        <Portal container={props.container} disablePortal={props.disablePortal}>
+          {/*
+           * Marking an element with the role presentation indicates to assistive technology
+           * that this element should be ignored; it exists to support the web application and
+           * is not meant for humans to interact with directly.
+           * https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/no-static-element-interactions.md
+           */}
+          <Dynamic
+            {...otherProps}
+            component={Root()}
+            role="presentation"
+            {...rootProps()}
+            {...(!isHostComponent(Root()) && {
+              //component: baseProps.component,
+              ownerState: allProps,
+            })}
+            onKeyDown={handleKeyDown}
+            className={clsx(
+              classes.root,
+              rootProps().className,
+              otherProps.className
+            )}
+            ref={element}
+          >
+            <Show when={!props.hideBackdrop && !!props.BackdropComponent}>
+              <Dynamic
+                component={props.BackdropComponent}
+                open={props.open}
+                onClick={handleBackdropClick}
+                {...(props.BackdropProps ?? {})}
+              />
+            </Show>
+            {props.children}
+          </Dynamic>
+        </Portal>
+      </Show>
+    </TransitionContext.Provider>
   );
 });
 

@@ -37,11 +37,10 @@ function getPaddingRight(element: Element): number {
 function ariaHiddenSiblings(
   container: Element,
   mountElement: Element,
-  currentElement: Element,
   elementsToExclude: readonly Element[] = [],
   show: boolean
 ): void {
-  const blacklist = [mountElement, currentElement, ...elementsToExclude];
+  const blacklist = [mountElement, ...elementsToExclude];
   const blacklistTagNames = ["TEMPLATE", "SCRIPT", "STYLE"];
 
   [].forEach.call(container.children, (element: Element) => {
@@ -167,8 +166,7 @@ function getHiddenSiblings(container: Element) {
 }
 
 export interface Modal {
-  mount: Element;
-  modalRef: Element;
+  ref: Element;
 }
 
 interface Container {
@@ -196,7 +194,7 @@ export default class ModalManager {
   }
 
   add(modal: Modal, container: HTMLElement): number {
-    let modalIndex = this.modals.indexOf(modal);
+    let modalIndex = this.modals.findIndex((v) => v.ref === modal.ref);
     if (modalIndex !== -1) {
       return modalIndex;
     }
@@ -204,19 +202,10 @@ export default class ModalManager {
     modalIndex = this.modals.length;
     this.modals.push(modal);
 
-    // If the modal we are adding is already in the DOM.
-    if (modal.modalRef) {
-      ariaHidden(modal.modalRef, false);
-    }
+    ariaHidden(modal.ref, false);
 
     const hiddenSiblings = getHiddenSiblings(container);
-    ariaHiddenSiblings(
-      container,
-      modal.mount,
-      modal.modalRef,
-      hiddenSiblings,
-      true
-    );
+    ariaHiddenSiblings(container, modal.ref, hiddenSiblings, true);
 
     const containerIndex = findIndexOf(
       this.containers,
@@ -240,7 +229,7 @@ export default class ModalManager {
   mount(modal: Modal, props: ManagedModalProps): void {
     const containerIndex = findIndexOf(
       this.containers,
-      (item) => item.modals.indexOf(modal) !== -1
+      (item) => !!item.modals.find((v) => v.ref === modal.ref)
     );
     const containerInfo = this.containers[containerIndex];
 
@@ -250,7 +239,7 @@ export default class ModalManager {
   }
 
   remove(modal: Modal): number {
-    const modalIndex = this.modals.indexOf(modal);
+    const modalIndex = this.modals.findIndex((v) => v.ref === modal.ref);
 
     if (modalIndex === -1) {
       return modalIndex;
@@ -258,11 +247,14 @@ export default class ModalManager {
 
     const containerIndex = findIndexOf(
       this.containers,
-      (item) => item.modals.indexOf(modal) !== -1
+      (item) => !!item.modals.find((v) => v.ref === modal.ref)
     );
     const containerInfo = this.containers[containerIndex];
 
-    containerInfo.modals.splice(containerInfo.modals.indexOf(modal), 1);
+    containerInfo.modals.splice(
+      containerInfo.modals.findIndex((v) => v.ref === modal.ref),
+      1
+    );
     this.modals.splice(modalIndex, 1);
 
     // If that was the last modal in a container, clean up the container.
@@ -272,15 +264,11 @@ export default class ModalManager {
         containerInfo.restore();
       }
 
-      if (modal.modalRef) {
-        // In case the modal wasn't in the DOM yet.
-        ariaHidden(modal.modalRef, true);
-      }
+      ariaHidden(modal.ref, true);
 
       ariaHiddenSiblings(
         containerInfo.container,
-        modal.mount,
-        modal.modalRef,
+        modal.ref,
         containerInfo.hiddenSiblings,
         false
       );
@@ -291,9 +279,8 @@ export default class ModalManager {
       // as soon as a modal is adding its modalRef is undefined. it can't set
       // aria-hidden because the dom element doesn't exist either
       // when modal was unmounted before modalRef gets null
-      if (nextTop.modalRef) {
-        ariaHidden(nextTop.modalRef, false);
-      }
+
+      ariaHidden(nextTop.ref, false);
     }
 
     return modalIndex;
@@ -301,7 +288,8 @@ export default class ModalManager {
 
   isTopModal(modal: Modal): boolean {
     return (
-      this.modals.length > 0 && this.modals[this.modals.length - 1] === modal
+      this.modals.length > 0 &&
+      this.modals[this.modals.length - 1].ref === modal.ref
     );
   }
 }
