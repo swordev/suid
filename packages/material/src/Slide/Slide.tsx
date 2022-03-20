@@ -2,10 +2,11 @@ import { SlideTypeMap } from ".";
 import useTheme from "../styles/useTheme";
 import { reflow, getTransitionProps } from "../transitions/utils";
 import Transition from "@suid/base/Transition";
+import { TransitionContext } from "@suid/base/Transition/TransitionContext";
 import createComponentFactory from "@suid/base/createComponentFactory";
 import debounce from "@suid/utils/debounce";
 import ownerWindow from "@suid/utils/ownerWindow";
-import { children, createEffect, onCleanup } from "solid-js";
+import { children, createEffect, onCleanup, useContext } from "solid-js";
 
 const $ = createComponentFactory<SlideTypeMap>()({
   name: "MuiSlide",
@@ -136,6 +137,7 @@ export function setTranslateValue(
 const Slide = $.component(function Slide({ props, otherProps }) {
   const theme = useTheme();
   const resolved = children(() => props.children) as () => HTMLElement;
+  const context = useContext(TransitionContext);
   let destructors: (() => any)[] = [];
 
   createEffect<(() => any) | undefined>((prev) => {
@@ -179,6 +181,7 @@ const Slide = $.component(function Slide({ props, otherProps }) {
         setTranslateValue(props.direction, node, props.container);
         reflow(node);
         otherProps.onEnter?.();
+        context?.onEnter?.();
       }}
       onEntering={() => {
         const node = resolved();
@@ -232,6 +235,7 @@ const Slide = $.component(function Slide({ props, otherProps }) {
         node.style.transition = "";
 
         otherProps.onExited?.();
+        context?.onExited?.();
       }}
     >
       {(state) => {
