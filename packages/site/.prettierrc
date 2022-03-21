@@ -1,8 +1,0 @@
-{
-  "importOrder": [
-    "^prismjs",
-    "^prismjs/components/prism-typescript$",
-    "^prismjs/components/prism-tsx$",
-    "^[./]"
-  ]
-}

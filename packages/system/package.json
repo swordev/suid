@@ -8,8 +8,13 @@
     "watch": "tsc --build -w"
   },
   "dependencies": {
-    "@suid/css": "0.0.0",
-    "@suid/types": "0.0.0",
-    "@suid/utils": "0.0.0"
+    "@suid/css": "workspace:*",
+    "@suid/types": "workspace:*",
+    "@suid/utils": "workspace:*",
+    "clsx": "^1.1.1",
+    "csstype": "^3.0.11"
+  },
+  "publishConfig": {
+    "directory": "lib"
   }
 }

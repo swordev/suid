@@ -11,12 +11,12 @@
     "watch": "vite"
   },
   "dependencies": {
-    "@suid/base": "0.0.1",
-    "@suid/icons-material": "0.0.1",
-    "@suid/material": "0.0.1",
-    "@suid/system": "0.0.0",
-    "@suid/types": "0.0.0",
-    "@suid/utils": "0.0.0",
+    "@suid/base": "workspace:*",
+    "@suid/icons-material": "workspace:*",
+    "@suid/material": "workspace:*",
+    "@suid/system": "workspace:*",
+    "@suid/types": "workspace:*",
+    "@suid/utils": "workspace:*",
     "prism-themes": "^1.9.0",
     "prismjs": "^1.27.0",
     "solid-app-router": "^0.3.1"

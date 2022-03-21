@@ -7,14 +7,17 @@
     "watch": "tsc --build -w"
   },
   "dependencies": {
-    "@suid/base": "0.0.1",
-    "@suid/css": "0.0.0",
-    "@suid/system": "0.0.0",
-    "@suid/types": "0.0.0",
-    "@suid/utils": "0.0.0",
+    "@suid/base": "workspace:*",
+    "@suid/css": "workspace:*",
+    "@suid/system": "workspace:*",
+    "@suid/types": "workspace:*",
+    "@suid/utils": "workspace:*",
     "clsx": "^1.1.1"
   },
   "peerDependencies": {
     "solid-js": "^1.3.7"
+  },
+  "publishConfig": {
+    "directory": "lib"
   }
 }

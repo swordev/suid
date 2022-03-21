@@ -1,5 +1,6 @@
 {
   "name": "@suid/scripts",
+  "version": "0.0.0",
   "private": true,
   "dependencies": {
     "commander": "^9.0.0"

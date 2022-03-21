@@ -7,9 +7,12 @@
     "watch": "tsc --build -w"
   },
   "dependencies": {
-    "@suid/material": "0.0.1"
+    "@suid/material": "workspace:*"
   },
   "peerDependencies": {
     "solid-js": "^1.3.7"
+  },
+  "publishConfig": {
+    "directory": "lib"
   }
 }

@@ -3,5 +3,6 @@ bk
 dist
 lib
 node_modules
+pnpm-lock.yaml
 temp
 tsconfig.tsbuildinfo
