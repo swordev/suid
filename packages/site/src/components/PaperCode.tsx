@@ -8,7 +8,6 @@ export default function PaperCode(props: CodeProps) {
     <Paper
       elevation={0}
       sx={{
-        p: 2,
         maxHeight: 400,
         overflow: "auto",
         border: 1,
@@ -18,7 +17,16 @@ export default function PaperCode(props: CodeProps) {
           theme.palette.grey[theme.palette.mode === "dark" ? 800 : 300],
       }}
     >
-      <Code {...props} />
+      <Code
+        {...props}
+        preProps={{
+          ...(props.preProps || {}),
+          sx: {
+            p: 2,
+            ...(props.preProps?.sx || {}),
+          },
+        }}
+      />
     </Paper>
   );
 }
