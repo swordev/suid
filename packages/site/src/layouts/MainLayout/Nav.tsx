@@ -95,6 +95,7 @@ const components: { section: string; components: string[] }[] = [
       "Textarea Autosize",
       //"Transitions",
       "Fade",
+      "Slide",
       "useMediaQuery",
     ],
   },
