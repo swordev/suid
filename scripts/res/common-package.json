@@ -27,6 +27,9 @@
     "ux"
   ],
   "license": "MIT",
+  "publishConfig": {
+    "directory": "lib"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/swordev/suid.git"
