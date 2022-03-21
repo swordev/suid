@@ -111,7 +111,16 @@ export default function HomePage() {
               }),
             }}
           >
-            <Typography component="h1" variant="h2" sx={{ fontWeight: 600 }}>
+            <Typography
+              component="h1"
+              variant="h2"
+              sx={{
+                fontWeight: 600,
+                ...(isDownMd() && {
+                  fontSize: "2.50rem",
+                }),
+              }}
+            >
               The ideal{" "}
               <Box component="span" sx={{ color: theme.palette.primary.main }}>
                 Solid.js
@@ -189,9 +198,11 @@ export default function HomePage() {
                   Get started
                 </Button>
               </Grid>
-              <Grid item>
-                <Typography>or</Typography>
-              </Grid>
+              <Show when={!isDownMd()}>
+                <Grid item>
+                  <Typography>or</Typography>
+                </Grid>
+              </Show>
               <Grid item>
                 <InstallButton />
               </Grid>
