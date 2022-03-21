@@ -38,6 +38,7 @@ async function genRes() {
     delete newPkg.keywords;
     delete newPkg.devDependencies;
     delete newPkg.peerDependencies;
+    delete newPkg.publishConfig;
     if (newPkg.dependencies) delete newPkg.dependencies["solid-app-router"];
 
     const readmePath = `${pkgDir}/README.md`;

@@ -6,6 +6,7 @@ type Package = {
   dependencies?: Record<string, string>;
   devDependencies?: Record<string, string>;
   peerDependencies?: Record<string, string>;
+  publishConfig?: Record<string, string>;
   keywords?: string[];
   repository?: {
     type?: string;
