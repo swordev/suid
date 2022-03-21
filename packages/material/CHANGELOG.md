@@ -1,6 +1,6 @@
-# @suid/site
+# @suid/material
 
-## 0.0.2
+## 0.0.1
 
 ### Patch Changes
 
@@ -8,11 +8,3 @@
 
 - Updated dependencies [[`98c7388`](https://github.com/swordev/suid/commit/98c73884966a6cbd29a3b652b4d2f3251149ac4e)]:
   - @suid/base@0.0.1
-  - @suid/material@0.0.1
-  - @suid/icons-material@0.0.1
-
-## 0.0.1
-
-### Patch Changes
-
-- [`f4a7a0c`](https://github.com/swordev/suid/commit/f4a7a0ca52d29972203d96660712e16665770e7b) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix errors
