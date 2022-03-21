@@ -77,6 +77,9 @@ export default function MainLayout() {
                   boxSizing: "border-box",
                 },
               }}
+              onClose={() => {
+                context.drawer.openState = !context.drawer.openState;
+              }}
             >
               <Toolbar />
               <Box sx={{ overflow: "auto" }}>
