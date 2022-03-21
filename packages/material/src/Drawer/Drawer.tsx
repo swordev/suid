@@ -267,6 +267,7 @@ const Drawer = $.component(function Drawer({
             ref={element}
             {...(otherProps ?? {})}
             {...(props.ModalProps ?? {})}
+            transition
           >
             {slidingDrawer}
           </DrawerRoot>
