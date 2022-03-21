@@ -16,6 +16,8 @@ jobs:
           node-version: 16
       - name: Use pnpm
         uses: pnpm/action-setup@v2
+        with:
+          version: 6
       - name: Install dependencies
         run: pnpm install
         env:
