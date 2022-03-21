@@ -1,6 +1,6 @@
 {
   "name": "@suid/site",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "files": [
     "assets/**/*",
     "index.html"
@@ -11,9 +11,9 @@
     "watch": "vite"
   },
   "dependencies": {
-    "@suid/base": "0.0.0",
-    "@suid/icons-material": "0.0.0",
-    "@suid/material": "0.0.0",
+    "@suid/base": "0.0.1",
+    "@suid/icons-material": "0.0.1",
+    "@suid/material": "0.0.1",
     "@suid/system": "0.0.0",
     "@suid/types": "0.0.0",
     "@suid/utils": "0.0.0",
