@@ -1,32 +1,32 @@
 {
-  "name": "@suid/site",
-  "version": "0.0.1",
-  "homepage": "https://suid.io",
-  "bugs": {
-    "url": "https://github.com/swordev/suid.git/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/swordev/suid.git",
-    "directory": "packages/site"
-  },
-  "license": "MIT",
   "author": {
     "name": "Juanra GM",
     "email": "juanrgm724@gmail.com",
     "url": "https://github.com/juanrgm"
   },
+  "bugs": {
+    "url": "https://github.com/swordev/suid.git/issues"
+  },
   "files": [
     "assets/**/*",
     "index.html"
   ],
+  "homepage": "https://suid.io",
+  "license": "MIT",
+  "repository": {
+    "directory": "packages/site",
+    "type": "git",
+    "url": "https://github.com/swordev/suid.git"
+  },
+  "name": "@suid/site",
+  "version": "0.0.3",
   "dependencies": {
-    "@suid/base": "0.0.0",
-    "@suid/icons-material": "0.0.0",
-    "@suid/material": "0.0.0",
-    "@suid/system": "0.0.0",
-    "@suid/types": "0.0.0",
-    "@suid/utils": "0.0.0",
+    "@suid/base": "workspace:*",
+    "@suid/icons-material": "workspace:*",
+    "@suid/material": "workspace:*",
+    "@suid/system": "workspace:*",
+    "@suid/types": "workspace:*",
+    "@suid/utils": "workspace:*",
     "prism-themes": "^1.9.0",
     "prismjs": "^1.27.0"
   }
