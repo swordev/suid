@@ -19,7 +19,7 @@
     "url": "https://github.com/swordev/suid.git"
   },
   "name": "@suid/site",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "dependencies": {
     "@suid/base": "workspace:*",
     "@suid/icons-material": "workspace:*",

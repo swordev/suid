@@ -1,5 +1,11 @@
 # @suid/site
 
+## 0.0.4
+
+### Patch Changes
+
+- [`c3093ab`](https://github.com/swordev/suid/commit/c3093ab328ecefa4b4f11a1adfff2d891b0f2ac8) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix deploy
+
 ## 0.0.3
 
 ### Patch Changes
