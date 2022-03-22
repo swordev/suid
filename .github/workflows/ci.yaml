@@ -31,7 +31,7 @@ jobs:
         uses: changesets/action@v1
         with:
           commit: "chore: update versions"
-          title: "chore: update versions"
+          title: Update versions
           publish: pnpm run release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -45,6 +45,10 @@ jobs:
           script: |-
             const published = JSON.parse(process.env.PUBLISHED_PACKAGES);
             published.forEach(({ name }) => core.setOutput(name, 'true'));
+      - name: Prepare gh-pages
+        if: steps.published.outputs['@suid/site'] == 'true'
+        run: |-
+          rm packages/site/dist/node_modules
       - name: Deploy gh-pages
         if: steps.published.outputs['@suid/site'] == 'true'
         uses: JamesIves/github-pages-deploy-action@v4.2.5
