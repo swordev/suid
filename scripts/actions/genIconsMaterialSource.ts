@@ -5,6 +5,7 @@ import { format } from "prettier";
 import { createProgressLog } from "~/util/cli";
 import { normalizeFileName } from "~/util/icons-material";
 import { muiSourcePath } from "~/util/material-ui";
+import { options } from "~/util/prettier";
 import { packagesPath } from "~/util/workspace";
 
 const outPath = join(packagesPath, "icons-material/lib");
@@ -21,6 +22,7 @@ function renderComponentContents(name: string, children: string[]) {
       );
     `,
     {
+      ...options,
       parser: "typescript",
     }
   );

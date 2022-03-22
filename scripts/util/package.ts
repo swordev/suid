@@ -1,5 +1,6 @@
 import { readFile, writeFile } from "fs/promises";
 import { format } from "prettier";
+import { options } from "~/util/prettier";
 
 type Package = {
   scripts?: Record<string, string>;
@@ -24,6 +25,7 @@ export async function writePackageFile(path: string, config: Package) {
   await writeFile(
     path,
     format(JSON.stringify(config), {
+      ...options,
       filepath: "package.json",
       parser: "json-stringify",
     })

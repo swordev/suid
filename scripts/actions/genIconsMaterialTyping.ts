@@ -2,6 +2,7 @@ import { readdir, writeFile } from "fs/promises";
 import { join } from "path";
 import { format } from "prettier";
 import { createProgressLog } from "~/util/cli";
+import { options } from "~/util/prettier";
 import { packagesPath } from "~/util/workspace";
 
 const outPath = join(packagesPath, "icons-material/lib");
@@ -14,6 +15,7 @@ async function genIconsMaterialTyping() {
     total: fileNames.length,
   });
   const contents = format(`export { default } from "@suid/material/SvgIcon"`, {
+    ...options,
     parser: "typescript",
   });
   for (const fileName of fileNames) {
