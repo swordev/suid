@@ -1,5 +1,18 @@
 # @suid/site
 
+## 0.0.5
+
+### Patch Changes
+
+- [`f3ffe55`](https://github.com/swordev/suid/commit/f3ffe5548ee8c37c1927a17717b31163c8922870) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix errors
+
+- Updated dependencies [[`f3ffe55`](https://github.com/swordev/suid/commit/f3ffe5548ee8c37c1927a17717b31163c8922870)]:
+  - @suid/base@0.0.3
+  - @suid/material@0.0.3
+  - @suid/system@0.0.2
+  - @suid/utils@0.0.2
+  - @suid/icons-material@0.0.3
+
 ## 0.0.4
 
 ### Patch Changes
