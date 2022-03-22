@@ -167,6 +167,9 @@ function NavLink(props: { text: string; href: string }) {
       sx={{ pl: "45px" }}
       href={props.href}
       onMouseEnter={tryPreload}
+      onClick={() => {
+        context.drawer.openState = false;
+      }}
     >
       <ListItemText
         primaryTypographyProps={{
