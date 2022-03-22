@@ -13,6 +13,7 @@ import List from "@suid/material/List";
 import ListItem from "@suid/material/ListItem";
 import ListItemIcon from "@suid/material/ListItemIcon";
 import ListItemText from "@suid/material/ListItemText";
+import Stack from "@suid/material/Stack";
 import Typography from "@suid/material/Typography";
 import useMediaQuery from "@suid/material/useMediaQuery";
 import createRef from "@suid/system/createRef";
@@ -116,21 +117,38 @@ export default function HomePage() {
               variant="h2"
               sx={{
                 fontWeight: 600,
-                ...(isDownMd() && {
+                [theme.breakpoints.down("md")]: {
                   fontSize: "2.50rem",
-                }),
+                },
+                [theme.breakpoints.down(450)]: {
+                  fontSize: "2rem",
+                },
+                [theme.breakpoints.down(400)]: {
+                  fontSize: "1.75rem",
+                },
+                [theme.breakpoints.down(350)]: {
+                  fontSize: "1.60rem",
+                },
               }}
             >
               The ideal{" "}
               <Box component="span" sx={{ color: theme.palette.primary.main }}>
                 Solid.js
               </Box>{" "}
-              UI library{" "}
+              UI <br />
+              library{" "}
               <Box
                 component="span"
-                sx={{ cursor: "pointer" }}
+                sx={{
+                  ...(finished() && {
+                    cursor: "pointer",
+                  }),
+                }}
                 onClick={() => {
-                  typingEffectActions.ref.restart();
+                  if (finished()) {
+                    setFinished(false);
+                    typingEffectActions.ref.restart();
+                  }
                 }}
               >
                 <TypingEffect
@@ -146,11 +164,23 @@ export default function HomePage() {
                     },
                     {
                       type: "delay",
+                      ms: 1000,
+                    },
+                    {
+                      type: "erase",
+                      length: "app".length,
+                    },
+                    {
+                      type: "write",
+                      text: "site",
+                    },
+                    {
+                      type: "delay",
                       ms: 2000,
                     },
                     {
                       type: "erase",
-                      length: "your app".length,
+                      length: "your site".length,
                     },
                     {
                       type: "write",
@@ -163,47 +193,35 @@ export default function HomePage() {
             </Typography>
             <Typography
               variant="body1"
-              sx={{ color: theme.palette.text.secondary, mt: 2 }}
+              sx={{ color: theme.palette.text.secondary, my: 3 }}
             >
               A port of Material UI design (
               <Link href="https://mui.com" target="_blank">
                 MUI
               </Link>
-              ) for Solid.js.
+              ) built with Solid.js.
             </Typography>{" "}
-            <Grid
-              container
+            <Stack
+              direction={isDownMd() ? "column" : "row"}
               spacing={2}
               sx={{
                 alignItems: "center",
-                mt: 2,
-                ...(isDownMd() && {
-                  flexBasis: "100%",
-                  textAlign: "center",
-                  justifyContent: "center",
-                }),
               }}
             >
-              <Grid item>
-                <Button<typeof RouterLink>
-                  variant="contained"
-                  size="large"
-                  component={RouterLink}
-                  href="/getting-started/installation"
-                  onMouseEnter={tryPreload}
-                >
-                  Get started
-                </Button>
-              </Grid>
+              <Button<typeof RouterLink>
+                variant="contained"
+                size="large"
+                component={RouterLink}
+                href="/getting-started/installation"
+                onMouseEnter={tryPreload}
+              >
+                Get started
+              </Button>
               <Show when={!isDownMd()}>
-                <Grid item>
-                  <Typography>or</Typography>
-                </Grid>
+                <Typography>or</Typography>
               </Show>
-              <Grid item>
-                <InstallButton />
-              </Grid>
-            </Grid>
+              <InstallButton />
+            </Stack>
           </Grid>
           <Show when={isDownMd()}>
             <Grid xs={12}>
