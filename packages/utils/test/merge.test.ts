@@ -1,11 +1,21 @@
 import merge from "../src/merge";
 
 describe("merge", () => {
-  it("shoulds not alter the first object", () => {
+  it("shoulds alter the first object", () => {
     const object = { a: 1 };
     merge(object, { b: 2 });
-    expect(object).toMatchObject({ a: 1 });
+    expect(object).toMatchObject({ a: 1, b: 2 });
   });
+
+  it("shoulds not alter the others object", () => {
+    const a = { a: 1 };
+    const b = { b: 1 };
+    const c = { c: 1 };
+    merge<any, any>(a, b, c);
+    expect(Object.keys(b)).toMatchObject(["b"]);
+    expect(Object.keys(c)).toMatchObject(["c"]);
+  });
+
   it("returns merged object", () => {
     expect(merge({ a: 1 }, { b: 2 })).toMatchObject({ a: 1, b: 2 });
     expect(merge({ a: 1 }, { b: 2 }, { c: 3 })).toMatchObject({
