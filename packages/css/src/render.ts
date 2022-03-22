@@ -42,7 +42,6 @@ function render(
 ): string[] {
   const props: string[] = [];
   const rules: string[] = [];
-  const mediaRules: Record<string, string[]> = {};
   for (let propKey in css) {
     const propValue = css[propKey];
     if (isGlobalSelector(propKey)) {
@@ -52,10 +51,12 @@ function render(
         );
       }
     } else if (isMediaQuery(propKey)) {
-      mediaRules[propKey] = render(propValue, selectors, {
-        ...options,
-        sublevel: true,
-      }).map((v) => `${propKey} {\n${v}\n}`);
+      rules.push(
+        ...render(propValue, selectors, {
+          ...options,
+          sublevel: true,
+        }).map((v) => `${propKey} {\n${v}\n}`)
+      );
     } else if (isVar(propKey)) {
       if (propValue !== undefined && propValue !== null)
         props.push(`${propKey}: ${propValue};`);
@@ -109,18 +110,9 @@ function render(
           ]
         : []),
       ...rules,
-      ...Object.keys(mediaRules)
-        .sort()
-        .flatMap((key) => mediaRules[key]),
     ];
   } else {
-    return [
-      ...(props.length ? [renderProps(0)] : []),
-      ...rules,
-      ...Object.keys(mediaRules)
-        .sort()
-        .flatMap((key) => mediaRules[key]),
-    ];
+    return [...(props.length ? [renderProps(0)] : []), ...rules];
   }
 }
 
