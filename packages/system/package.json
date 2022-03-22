@@ -1,6 +1,7 @@
 {
   "name": "@suid/system",
   "version": "0.0.2",
+  "main": "index.jsx",
   "scripts": {
     "build": "tsc --build",
     "clean": "tsc --build --clean",
