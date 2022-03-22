@@ -7,11 +7,7 @@
     "watch": "tsc --build -w"
   },
   "dependencies": {
-    "@suid/types": "workspace:*",
-    "lodash.mergewith": "^4.6.2"
-  },
-  "devDependencies": {
-    "@types/lodash.mergewith": "^4.6.6"
+    "@suid/types": "workspace:*"
   },
   "peerDependencies": {
     "solid-js": "^1.3.7"

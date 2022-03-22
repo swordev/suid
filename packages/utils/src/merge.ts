@@ -1,15 +1,10 @@
-import mergeWith from "lodash.mergewith";
+import deepmerge from "./deepmerge";
 
-export enum IterationTypeEnum {
-  None,
-  Array,
-  Object,
+export function merge<
+  TObject extends Record<string, any>,
+  TSource extends Record<string, any> | undefined
+>(object: TObject, ...sources: TSource[]) {
+  return sources.reduce((target, source) => deepmerge(target, source), object);
 }
 
-export function merge<TObject, TSource>(object: TObject, ...source: TSource[]) {
-  return mergeWith(object, ...source, (objValue: any, srcValue: any) => {
-    if (Array.isArray(objValue)) {
-      return srcValue;
-    }
-  }) as TObject & TSource;
-}
+export default merge;
