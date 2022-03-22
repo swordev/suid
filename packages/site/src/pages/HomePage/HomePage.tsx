@@ -18,7 +18,7 @@ import useMediaQuery from "@suid/material/useMediaQuery";
 import createRef from "@suid/system/createRef";
 import { Link as RouterLink } from "solid-app-router";
 import { createEffect, createSignal, onCleanup, Show } from "solid-js";
-import { PageComponents } from "~/Routing";
+import { tryPreload } from "~/Routing";
 import TypingEffect, {
   TypingsEffectActionsRef,
 } from "~/components/TypingEffect";
@@ -190,10 +190,7 @@ export default function HomePage() {
                   size="large"
                   component={RouterLink}
                   href="/getting-started/installation"
-                  onMouseEnter={(event) => {
-                    const href = event.target.getAttribute("href");
-                    if (href) PageComponents[href]?.preload();
-                  }}
+                  onMouseEnter={tryPreload}
                 >
                   Get started
                 </Button>

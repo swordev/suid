@@ -1,4 +1,5 @@
 import Container from "@suid/material/Container";
+import { EventParam } from "@suid/types";
 import { snakeCase, uncapitalize } from "@suid/utils/string";
 import { Route, Routes } from "solid-app-router";
 import { lazy } from "solid-js";
@@ -7,6 +8,13 @@ export const Pages = Object.assign(
   import.meta.glob(`./pages/**/*Page/index.{ts,tsx}`),
   import.meta.glob(`./pages/**/*Page.{ts,tsx}`)
 );
+
+export function tryPreload(input: string | EventParam) {
+  let href =
+    typeof input === "string" ? input : input.target?.getAttribute("href");
+  if (href?.startsWith("#")) href = href.slice(1);
+  if (href) PageComponents[href]?.preload();
+}
 
 export const PageComponents = Object.keys(Pages).reduce((result, localPath) => {
   const path = toPath(localPath);

@@ -11,7 +11,7 @@ import SvgIcon from "@suid/material/SvgIcon";
 import { snakeCase, uncapitalize } from "@suid/utils/string";
 import { Link as RouterLink, useLocation } from "solid-app-router";
 import { createMemo, JSXElement, mapArray } from "solid-js";
-import { PageComponents, Pages } from "~/Routing";
+import { Pages, tryPreload } from "~/Routing";
 import { useLayoutContext } from "./LayoutContext";
 
 const components: { section: string; components: string[] }[] = [
@@ -166,9 +166,7 @@ function NavLink(props: { text: string; href: string }) {
       component={RouterLink}
       sx={{ pl: "45px" }}
       href={props.href}
-      onMouseEnter={() => {
-        PageComponents[props.href]?.preload();
-      }}
+      onMouseEnter={tryPreload}
     >
       <ListItemText
         primaryTypographyProps={{
@@ -223,8 +221,3 @@ export function Nav() {
     </List>
   );
 }
-
-/* const nav = normalize(item);
-                  const path = `./api/${section}/${nav.name}Page/index.tsx`;
-                  const exists = !!Pages[path];
-                  if (!exists) return undefined;*/

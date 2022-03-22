@@ -12,6 +12,7 @@ import useMediaQuery from "@suid/material/useMediaQuery";
 import createSvgIcon from "@suid/material/utils/createSvgIcon";
 import { useLocation, Link as RouterLink } from "solid-app-router";
 import { Show } from "solid-js";
+import { tryPreload } from "~/Routing";
 import { useLayoutContext } from "./LayoutContext";
 
 const GitHubIcon = createSvgIcon(
@@ -68,10 +69,11 @@ export default function Header() {
           SUID
         </Typography>
         <Box sx={{ flexGrow: 1 }}>
-          <Button
+          <Button<typeof RouterLink>
             color="inherit"
             component={RouterLink}
             href="/getting-started/installation"
+            onMouseEnter={tryPreload}
           >
             Docs
           </Button>
