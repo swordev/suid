@@ -1,25 +1,25 @@
 {
+  "name": "@suid/site",
+  "version": "0.0.6",
+  "homepage": "https://suid.io",
+  "bugs": {
+    "url": "https://github.com/swordev/suid.git/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/swordev/suid.git",
+    "directory": "packages/site"
+  },
+  "license": "MIT",
   "author": {
     "name": "Juanra GM",
     "email": "juanrgm724@gmail.com",
     "url": "https://github.com/juanrgm"
   },
-  "bugs": {
-    "url": "https://github.com/swordev/suid.git/issues"
-  },
   "files": [
     "assets/**/*",
     "index.html"
   ],
-  "homepage": "https://suid.io",
-  "license": "MIT",
-  "repository": {
-    "directory": "packages/site",
-    "type": "git",
-    "url": "https://github.com/swordev/suid.git"
-  },
-  "name": "@suid/site",
-  "version": "0.0.5",
   "dependencies": {
     "@suid/base": "workspace:*",
     "@suid/icons-material": "workspace:*",
