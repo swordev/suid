@@ -1,5 +1,16 @@
 # @suid/utils
 
+## 0.0.3
+
+### Patch Changes
+
+- [`0048449`](https://github.com/swordev/suid/commit/0048449215bc85200987c34bef93173868220c1d) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix merge function
+
+* [`506b717`](https://github.com/swordev/suid/commit/506b717b0ea5ae2df82c3d0f34d5d3ffa98495b7) Thanks [@juanrgm](https://github.com/juanrgm)! - Format the generated files correctly
+
+* Updated dependencies [[`506b717`](https://github.com/swordev/suid/commit/506b717b0ea5ae2df82c3d0f34d5d3ffa98495b7)]:
+  - @suid/types@0.0.2
+
 ## 0.0.2
 
 ### Patch Changes
