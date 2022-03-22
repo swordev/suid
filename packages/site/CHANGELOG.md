@@ -1,5 +1,23 @@
 # @suid/site
 
+## 0.0.6
+
+### Patch Changes
+
+- [`a1f6a97`](https://github.com/swordev/suid/commit/a1f6a9735b6fcb0b0a2f5b210f498e81fbf51553) Thanks [@juanrgm](https://github.com/juanrgm)! - Enhance the home page
+
+* [`42e9b9b`](https://github.com/swordev/suid/commit/42e9b9b5ac3ca29a1218c25ca0e957ecf2388c5e) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix errors
+
+- [`506b717`](https://github.com/swordev/suid/commit/506b717b0ea5ae2df82c3d0f34d5d3ffa98495b7) Thanks [@juanrgm](https://github.com/juanrgm)! - Format the generated files correctly
+
+- Updated dependencies [[`0048449`](https://github.com/swordev/suid/commit/0048449215bc85200987c34bef93173868220c1d), [`506b717`](https://github.com/swordev/suid/commit/506b717b0ea5ae2df82c3d0f34d5d3ffa98495b7), [`460e00c`](https://github.com/swordev/suid/commit/460e00c2b14c2f720d9a1e959f2886a6a7be65e8)]:
+  - @suid/utils@0.0.3
+  - @suid/base@0.0.4
+  - @suid/icons-material@0.0.4
+  - @suid/material@0.0.4
+  - @suid/system@0.0.3
+  - @suid/types@0.0.2
+
 ## 0.0.5
 
 ### Patch Changes

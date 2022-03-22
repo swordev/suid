@@ -1,5 +1,14 @@
 # @suid/icons-material
 
+## 0.0.4
+
+### Patch Changes
+
+- [`506b717`](https://github.com/swordev/suid/commit/506b717b0ea5ae2df82c3d0f34d5d3ffa98495b7) Thanks [@juanrgm](https://github.com/juanrgm)! - Format the generated files correctly
+
+- Updated dependencies [[`506b717`](https://github.com/swordev/suid/commit/506b717b0ea5ae2df82c3d0f34d5d3ffa98495b7), [`460e00c`](https://github.com/swordev/suid/commit/460e00c2b14c2f720d9a1e959f2886a6a7be65e8)]:
+  - @suid/material@0.0.4
+
 ## 0.0.3
 
 ### Patch Changes
