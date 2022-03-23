@@ -1,4 +1,5 @@
 import Typography from "@suid/material/Typography";
+import PageNav from "~/components/PageNav";
 import PaperCode from "~/components/PaperCode";
 
 export default function InstallationPage() {
@@ -37,6 +38,7 @@ export default function InstallationPage() {
   href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
 />`}
       />
+      <PageNav sx={{ mt: 2 }} />
     </>
   );
 }

@@ -4,6 +4,7 @@ import Typography from "@suid/material/Typography";
 import { snakeCase, uncapitalize } from "@suid/utils/string";
 import { Component, createMemo, mapArray, Show } from "solid-js";
 import ComponentCode from "~/components/ComponentCode";
+import PageNav from "~/components/PageNav";
 import PaperCode from "~/components/PaperCode";
 
 export default function ComponentInfo(props: {
@@ -13,6 +14,8 @@ export default function ComponentInfo(props: {
   docsName?: string;
   docsApiName?: string;
   moreExamples?: boolean;
+  prevPage?: { text: string; href: string };
+  nextPage?: { text: string; href: string };
 }) {
   const name = createMemo(() => snakeCase(uncapitalize(props.name)));
   const docsName = createMemo(() => props.docsName ?? name());
@@ -78,6 +81,7 @@ export default function ComponentInfo(props: {
           </Link>
         </Box>
       </Show>
+      <PageNav sx={{ mt: 2 }} />
     </>
   );
 }

@@ -10,93 +10,207 @@ import ListItemText from "@suid/material/ListItemText";
 import SvgIcon from "@suid/material/SvgIcon";
 import { snakeCase, uncapitalize } from "@suid/utils/string";
 import { Link as RouterLink, useLocation } from "solid-app-router";
-import { createMemo, JSXElement, mapArray } from "solid-js";
+import { Component, createMemo, JSXElement, mapArray } from "solid-js";
 import { Pages, tryPreload } from "~/Routing";
 import { useLayoutContext } from "./LayoutContext";
 
-const components: { section: string; components: string[] }[] = [
+type LinkConfig = { type: "link"; text: string; href: string };
+
+type SectionConfig = {
+  type: "section";
+  text: string;
+  icon?: Component;
+  items?: Config[];
+};
+
+type Config = LinkConfig | SectionConfig;
+
+function toFolder(text: string) {
+  return snakeCase(uncapitalize(text.replaceAll(" ", "")));
+}
+
+function toComponentName(text: string) {
+  return `${text.replaceAll(" ", "")}Page`;
+}
+
+function checkComponentPage(rootPath: string, text: string) {
+  const componentName = toComponentName(text);
+  const localPath1 = `./pages/${rootPath}/${componentName}/index.tsx`;
+  const localPath2 = `./pages/${rootPath}/${componentName}/${componentName}.tsx`;
+  return !!Pages[localPath1] || !!Pages[localPath2];
+}
+
+export function findNavConfigs(href: string) {
+  let prev: LinkConfig | undefined;
+  let current: LinkConfig | undefined;
+  let next: LinkConfig | undefined;
+
+  const iterate = (configs: Config[]) => {
+    for (const config of configs) {
+      if (config.type === "section") {
+        if (config.items && !iterate(config.items)) break;
+      } else if (config.type === "link") {
+        if (config.href === href) {
+          current = config;
+        } else if (current) {
+          next = config;
+          return false;
+        } else {
+          prev = config;
+        }
+      }
+    }
+    return true;
+  };
+
+  iterate(navConfig);
+
+  return { prev, current, next };
+}
+
+function createLinkConfig(text: string, href: string) {
+  return {
+    type: "link",
+    text,
+    href,
+  } as LinkConfig;
+}
+
+export const navConfig: Config[] = [
   {
-    section: "Inputs",
-    components: [
-      "Autocomplete",
-      "Button",
-      "Button Group",
-      "Checkbox",
-      "Floating Action Button",
-      "Radio Button",
-      "Rating",
-      "Select",
-      "Slider",
-      "Switch",
-      "Text field",
-      "Transfer List",
-      "Toggle Button",
-    ],
+    type: "section",
+    text: "Getting started",
+    icon: RocketLaunchIcon,
+    items: ["Installation", "Usage"].map((text) => ({
+      type: "link",
+      href: `/getting-started/${toFolder(text)}`,
+      text,
+    })),
   },
   {
-    section: "Data display",
-    components: [
-      "Avatar",
-      "Badge",
-      "Chip",
-      "Divider",
-      "Icons",
-      "Icon Button", // extra
-      "Material Icons",
-      "List",
-      "Table",
-      "Tooltip",
-      "Typography",
-    ],
-  },
-  {
-    section: "Feedback",
-    components: [
-      "Alert",
-      "Backdrop",
-      "Dialogs",
-      "Progress",
-      "Skeleton",
-      "Snackbar",
-    ],
-  },
-  {
-    section: "Surfaces",
-    components: ["Accordion", "App Bar", "Card", "Paper"],
-  },
-  {
-    section: "Navigation",
-    components: [
-      "Bottom Navigation",
-      "Breadcrumbs",
-      "Drawer",
-      "Links",
-      "Menu",
-      "Pagination",
-      "Speed Dial",
-      "Stepper",
-      "Tabs",
-    ],
-  },
-  {
-    section: "Layout",
-    components: ["Box", "Container", "Grid", "Stack", "Image List", "Hidden"],
-  },
-  {
-    section: "Utils",
-    components: [
-      "Click Away Listener",
-      "CSS Baseline",
-      "Modal",
-      "No SSR",
-      "Popover",
-      "Popper",
-      "Portal",
-      "Textarea Autosize",
-      //"Transitions",
-      "Fade",
-      "Slide",
-      "useMediaQuery",
+    type: "section",
+    text: "Components",
+    icon: CodeIcon,
+    items: [
+      {
+        type: "section",
+        text: "Inputs",
+        items: [
+          "Autocomplete",
+          "Button",
+          "Button Group",
+          "Checkbox",
+          "Floating Action Button",
+          "Radio Button",
+          "Rating",
+          "Select",
+          "Slider",
+          "Switch",
+          "Text field",
+          "Transfer List",
+          "Toggle Button",
+        ]
+          .map((text) =>
+            createLinkConfig(text, `/components/${toFolder(text)}`)
+          )
+          .filter((item) => checkComponentPage("components", item.text)),
+      },
+      {
+        type: "section",
+        text: "Data display",
+        items: [
+          "Avatar",
+          "Badge",
+          "Chip",
+          "Divider",
+          "Icons",
+          "Icon Button", // extra
+          "Material Icons",
+          "List",
+          "Table",
+          "Tooltip",
+          "Typography",
+        ]
+          .map((text) =>
+            createLinkConfig(text, `/components/${toFolder(text)}`)
+          )
+          .filter((item) => checkComponentPage("components", item.text)),
+      },
+      {
+        type: "section",
+        text: "Feedback",
+        items: [
+          "Alert",
+          "Backdrop",
+          "Dialogs",
+          "Progress",
+          "Skeleton",
+          "Snackbar",
+        ]
+          .map((text) =>
+            createLinkConfig(text, `/components/${toFolder(text)}`)
+          )
+          .filter((item) => checkComponentPage("components", item.text)),
+      },
+      {
+        type: "section",
+        text: "Surfaces",
+        items: ["Accordion", "App Bar", "Card", "Paper"]
+          .map((text) =>
+            createLinkConfig(text, `/components/${toFolder(text)}`)
+          )
+          .filter((item) => checkComponentPage("components", item.text)),
+      },
+      {
+        type: "section",
+        text: "Navigation",
+        items: [
+          "Bottom Navigation",
+          "Breadcrumbs",
+          "Drawer",
+          "Links",
+          "Menu",
+          "Pagination",
+          "Speed Dial",
+          "Stepper",
+          "Tabs",
+        ]
+          .map((text) =>
+            createLinkConfig(text, `/components/${toFolder(text)}`)
+          )
+          .filter((item) => checkComponentPage("components", item.text)),
+      },
+      {
+        type: "section",
+        text: "Layout",
+        items: ["Box", "Container", "Grid", "Stack", "Image List", "Hidden"]
+          .map((text) =>
+            createLinkConfig(text, `/components/${toFolder(text)}`)
+          )
+          .filter((item) => checkComponentPage("components", item.text)),
+      },
+      {
+        type: "section",
+        text: "Utils",
+        items: [
+          "Click Away Listener",
+          "CSS Baseline",
+          "Modal",
+          "No SSR",
+          "Popover",
+          "Popper",
+          "Portal",
+          "Textarea Autosize",
+          //"Transitions",
+          "Fade",
+          "Slide",
+          "useMediaQuery",
+        ]
+          .map((text) =>
+            createLinkConfig(text, `/components/${toFolder(text)}`)
+          )
+          .filter((item) => checkComponentPage("components", item.text)),
+      },
     ],
   },
 ];
@@ -184,43 +298,55 @@ function NavLink(props: { text: string; href: string }) {
     </ListItemButton>
   );
 }
+
 export function Nav() {
   return (
     <List dense>
-      <NavSection icon={<RocketLaunchIcon />} text="Getting started">
-        <NavLink text="Installation" href="/getting-started/installation" />
-        <NavLink text="Usage" href="/getting-started/usage" />
-      </NavSection>
-      <Divider sx={{ my: 1 }} />
-
-      <NavSection icon={<CodeIcon />} text="Components">
-        {mapArray(
-          () => components,
-          (item) => {
+      {mapArray(
+        () => navConfig,
+        (item) => {
+          if (item.type === "section") {
             return (
               <>
-                <NavSubSection text={item.section} />
-                {mapArray(
-                  () => item.components,
-                  (name) => {
-                    const folder = snakeCase(
-                      uncapitalize(name.replaceAll(" ", ""))
-                    );
-                    const pageName = name.replaceAll(" ", "");
-                    const localPath1 = `./pages/components/${pageName}Page/index.tsx`;
-                    const localPath2 = `./pages/components/${pageName}Page/${pageName}Page.tsx`;
-                    const exists = Pages[localPath1] || Pages[localPath2];
-                    if (!exists) return <></>;
-                    return (
-                      <NavLink text={name} href={`/components/${folder}`} />
-                    );
-                  }
-                )}
+                <NavSection
+                  icon={item.icon ? <item.icon /> : undefined}
+                  text={item.text}
+                >
+                  {mapArray(
+                    () => item.items,
+                    (item) => {
+                      if (item.type === "section") {
+                        return (
+                          <>
+                            <NavSubSection text={item.text} />
+                            {mapArray(
+                              () => item.items,
+                              (item) => {
+                                if (item.type === "link")
+                                  return (
+                                    <NavLink
+                                      text={item.text}
+                                      href={item.href}
+                                    />
+                                  );
+                              }
+                            )}
+                          </>
+                        );
+                      } else if (item.type === "link") {
+                        return <NavLink text={item.text} href={item.href} />;
+                      }
+                    }
+                  )}
+                </NavSection>
+                <Divider sx={{ my: 1 }} />
               </>
             );
+          } else if (item.type === "link") {
+            return <NavLink text={item.text} href={item.href} />;
           }
-        )}
-      </NavSection>
+        }
+      )}
     </List>
   );
 }

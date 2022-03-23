@@ -1,4 +1,5 @@
 import Typography from "@suid/material/Typography";
+import PageNav from "~/components/PageNav";
 import PaperCode from "~/components/PaperCode";
 import example from "./UsagePage/Example?raw";
 
@@ -18,6 +19,7 @@ export default function UsagePage() {
           .filter((v) => !v.trim().startsWith("// eslint-disable"))
           .join("\n")}
       />
+      <PageNav sx={{ mt: 2 }} />
     </>
   );
 }
