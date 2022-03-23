@@ -3,7 +3,7 @@ import CheckBoxIcon from "@suid/icons-material/CheckBox";
 import ContentCopyRoundedIcon from "@suid/icons-material/ContentCopyRounded";
 import { useTheme } from "@suid/material";
 import Box from "@suid/material/Box";
-import Button from "@suid/material/Button";
+import Button, { buttonClasses, ButtonProps } from "@suid/material/Button";
 import Container from "@suid/material/Container";
 import Divider from "@suid/material/Divider";
 import Fade from "@suid/material/Fade";
@@ -25,7 +25,7 @@ import TypingEffect, {
 } from "~/components/TypingEffect";
 import copyText from "~/utils/copyText";
 
-function InstallButton() {
+function InstallButton(props: ButtonProps) {
   const [copied, setCopied] = createSignal(false);
   const code = "npm i @suid/material";
   let timeout: number | undefined;
@@ -39,22 +39,31 @@ function InstallButton() {
     <Button
       variant="outlined"
       size="large"
+      endIcon={
+        <Show when={copied()} fallback={<ContentCopyRoundedIcon />}>
+          <CheckIcon />
+        </Show>
+      }
+      {...props}
       sx={{
         textTransform: "none",
         borderRadius: 3,
+        ...(props.fullWidth && {
+          [`& .${buttonClasses.endIcon}`]: {
+            position: "absolute",
+            right: 0,
+            mr: "10px",
+          },
+        }),
+        ...(props.sx ?? {}),
       }}
-      onClick={() => {
+      onClick={(event) => {
         setCopied(true);
         copyText(code);
+        if (typeof props.onClick === "function") props.onClick(event);
       }}
     >
       {code}
-      <Show
-        when={copied()}
-        fallback={<ContentCopyRoundedIcon sx={{ ml: 2 }} />}
-      >
-        <CheckIcon sx={{ ml: 2 }} />
-      </Show>
     </Button>
   );
 }
@@ -94,6 +103,7 @@ export default function HomePage() {
   const theme = useTheme();
   const [finished, setFinished] = createSignal(false);
   const isDownMd = useMediaQuery(theme.breakpoints.down("md"));
+  const isXs = useMediaQuery(theme.breakpoints.down("sm"));
   const typingEffectActions = createRef<TypingsEffectActionsRef>();
   return (
     <>
@@ -214,13 +224,14 @@ export default function HomePage() {
                 component={RouterLink}
                 href="/getting-started/installation"
                 onMouseEnter={tryPreload}
+                fullWidth={isXs()}
               >
                 Get started
               </Button>
               <Show when={!isDownMd()}>
                 <Typography>or</Typography>
               </Show>
-              <InstallButton />
+              <InstallButton fullWidth={isXs()} />
             </Stack>
           </Grid>
           <Show when={isDownMd()}>
