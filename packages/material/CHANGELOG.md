@@ -1,5 +1,11 @@
 # @suid/material
 
+## 0.0.5
+
+### Patch Changes
+
+- [`b00e68a`](https://github.com/swordev/suid/commit/b00e68a4676dbf0413943cf4f20518bb51abcaad) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `skeleton` component
+
 ## 0.0.4
 
 ### Patch Changes
