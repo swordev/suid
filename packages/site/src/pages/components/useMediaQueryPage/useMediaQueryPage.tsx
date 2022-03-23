@@ -2,7 +2,7 @@ import useMediaQuery from "@suid/material/useMediaQuery";
 import ComponentInfo from "~/components/ComponentInfo";
 import Example from "~/pages/components/useMediaQueryPage/Example";
 
-export default function () {
+export default function useMediaQueryPage() {
   return (
     <ComponentInfo
       name={useMediaQuery.name}
