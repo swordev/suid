@@ -1,5 +1,15 @@
 # @suid/site
 
+## 0.0.7
+
+### Patch Changes
+
+- [`c5b748f`](https://github.com/swordev/suid/commit/c5b748fb96b519491d798ac32cae2e38f5516d7a) Thanks [@juanrgm](https://github.com/juanrgm)! - Add skeleton component page
+
+- Updated dependencies [[`b00e68a`](https://github.com/swordev/suid/commit/b00e68a4676dbf0413943cf4f20518bb51abcaad)]:
+  - @suid/material@0.0.5
+  - @suid/icons-material@0.0.5
+
 ## 0.0.6
 
 ### Patch Changes
