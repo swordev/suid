@@ -30,6 +30,7 @@ export { default as MuiListItemText } from "../ListItemText";
 export { default as MuiListSubheader } from "../ListSubheader";
 export { default as MuiModal } from "../Modal";
 export { default as MuiPaper } from "../Paper";
+export { default as MuiSkeleton } from "../Skeleton";
 export { default as MuiSlide } from "../Slide";
 export { default as MuiStack } from "../Stack";
 export { default as MuiSvgIcon } from "../SvgIcon";
