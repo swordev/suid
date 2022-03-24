@@ -11,6 +11,7 @@ export { default as MuiCardContent } from "../CardContent";
 export { default as MuiCardHeader } from "../CardHeader";
 export { default as MuiCardMedia } from "../CardMedia";
 export { default as MuiChip } from "../Chip";
+export { default as MuiCircularProgress } from "../CircularProgress";
 export { default as MuiContainer } from "../Container";
 export { default as MuiCssBaseline } from "../CssBaseline";
 export { default as MuiDivider } from "../Divider";
