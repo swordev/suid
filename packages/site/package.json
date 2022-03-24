@@ -1,6 +1,6 @@
 {
   "name": "@suid/site",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "files": [
     "assets/**/*",
     "index.html"
