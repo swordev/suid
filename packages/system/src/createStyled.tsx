@@ -150,7 +150,7 @@ function createStyled<
             props: M["props"] & { ownerState?: O };
           }>
         : C extends keyof JSX.IntrinsicElements
-        ? OverridableComponent<BoxTypeMap<{ ownerState?: O }>>
+        ? OverridableComponent<BoxTypeMap<{ ownerState?: O }, C>>
         : (props: ComponentProps<C> & { ownerState?: O }) => JSX.Element;
     };
   };
