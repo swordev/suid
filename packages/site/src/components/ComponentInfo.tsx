@@ -45,20 +45,22 @@ export default function ComponentInfo(props: {
         .
       </Typography>
 
-      <Typography component="h2" variant="h5" sx={{ mt: 2, mb: 1 }}>
+      <Typography component="h2" variant="h5" sx={{ my: 2 }}>
         Import
       </Typography>
 
       <PaperCode
         language="tsx"
+        sx={{
+          mb: 3,
+        }}
         value={`import ${props.name} from "@suid/${props.scope ?? "material"}/${
           props.name
         }"`}
       />
 
-      <Typography variant="body2" sx={{ mt: 2 }}></Typography>
       <Show when={!!props.examples?.length}>
-        <Typography component="h2" variant="h5" sx={{ mt: 2, mb: 1 }}>
+        <Typography component="h2" variant="h5" sx={{ my: 2 }}>
           Examples
         </Typography>
         {mapArray(

@@ -39,6 +39,7 @@ export default function Header() {
   const theme = useTheme();
   const location = useLocation();
   const isDownMd = useMediaQuery(theme.breakpoints.down("md"));
+  const xs = useMediaQuery(theme.breakpoints.down("sm"));
   const isMainPage = () => location.pathname === "/";
 
   return (
@@ -69,22 +70,24 @@ export default function Header() {
           SUID
         </Typography>
         <Box sx={{ flexGrow: 1 }}>
-          <Button<typeof RouterLink>
-            color="inherit"
-            component={RouterLink}
-            href="/getting-started/installation"
-            onMouseEnter={tryPreload}
-          >
-            Docs
-          </Button>
-          <Button<typeof RouterLink>
-            color="inherit"
-            component={RouterLink}
-            href="/getting-started/playground"
-            onMouseEnter={tryPreload}
-          >
-            Playground
-          </Button>
+          <Show when={!xs()}>
+            <Button<typeof RouterLink>
+              color="inherit"
+              component={RouterLink}
+              href="/getting-started/installation"
+              onMouseEnter={tryPreload}
+            >
+              Docs
+            </Button>
+            <Button<typeof RouterLink>
+              color="inherit"
+              component={RouterLink}
+              href="/getting-started/playground"
+              onMouseEnter={tryPreload}
+            >
+              Playground
+            </Button>
+          </Show>
         </Box>
         <IconButton
           color="inherit"

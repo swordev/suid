@@ -15,6 +15,7 @@ export default function PaperCode(props: CodeProps) {
           theme.palette.mode === "dark" ? theme.palette.grey[900] : "white",
         borderColor:
           theme.palette.grey[theme.palette.mode === "dark" ? 800 : 300],
+        ...(props.sx ?? {}),
       }}
     >
       <Code

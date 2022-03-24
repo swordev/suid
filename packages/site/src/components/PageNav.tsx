@@ -1,13 +1,56 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import NavigateBeforeIcon from "@suid/icons-material/NavigateBefore";
 import NavigateNextIcon from "@suid/icons-material/NavigateNext";
+import { useTheme } from "@suid/material";
 import Box from "@suid/material/Box";
 import Button from "@suid/material/Button";
 import Divider from "@suid/material/Divider";
+import Grid from "@suid/material/Grid";
+import useMediaQuery from "@suid/material/useMediaQuery";
 import SxProps from "@suid/system/sxProps";
 import { useLocation } from "solid-app-router";
 import { createMemo, mergeProps, Show } from "solid-js";
 import { tryPreload } from "~/Routing";
 import { findNavConfigs } from "~/layouts/MainLayout/Nav";
+
+function NavButton(props: {
+  href: string;
+  text: string;
+  dir: "prev" | "next";
+}) {
+  const theme = useTheme();
+  const xs = useMediaQuery(theme.breakpoints.down("sm"));
+
+  return (
+    <Button
+      component="a"
+      size="large"
+      fullWidth={xs()}
+      onMouseEnter={tryPreload}
+      variant="outlined"
+      href={props.href}
+      {...(props.dir === "prev"
+        ? {
+            startIcon: () => <NavigateBeforeIcon />,
+          }
+        : {})}
+      {...(props.dir === "next"
+        ? {
+            endIcon: () => <NavigateNextIcon />,
+          }
+        : {})}
+      sx={{
+        p: 2,
+        minWidth: 200,
+        ...(!xs() && {
+          justifyContent: props.dir === "prev" ? "start" : "end",
+        }),
+      }}
+    >
+      {props.text}
+    </Button>
+  );
+}
 
 export default function PageNav(inProps: {
   prev?: { text: string; href: string } | "auto" | false;
@@ -30,38 +73,27 @@ export default function PageNav(inProps: {
   return (
     <Box sx={props.sx}>
       <Divider />
-      <Box sx={{ mt: 1, display: "flex", justifyContent: "space-between" }}>
-        <Show when={!!props.prev} fallback={<div />}>
-          <Button
-            size="large"
-            component="a"
-            onMouseEnter={tryPreload}
-            variant="outlined"
-            href={props.prev?.href}
-            startIcon={<NavigateBeforeIcon sx={{ ml: 1 }} />}
-            sx={{
-              p: 2,
-              m: 2,
-              minWidth: 200,
-              justifyContent: "start",
-            }}
-          >
-            {props.prev?.text}
-          </Button>
-        </Show>
-        <Show when={!!props.next}>
-          <Button
-            size="large"
-            component="a"
-            onMouseEnter={tryPreload}
-            variant="outlined"
-            href={props.next?.href}
-            endIcon={<NavigateNextIcon sx={{ mr: 1 }} />}
-            sx={{ p: 2, m: 2, minWidth: 200, justifyContent: "end" }}
-          >
-            {props.next?.text}
-          </Button>
-        </Show>
+      <Box sx={{ mt: 3 }}>
+        <Grid container spacing={3}>
+          <Grid item xs={12} sm={6}>
+            <Show when={!!props.prev} fallback={<div />}>
+              <NavButton
+                dir="prev"
+                href={props.prev!.href}
+                text={props.prev!.text}
+              />
+            </Show>
+          </Grid>
+          <Grid item xs={12} sm={6} sx={{ textAlign: "right" }}>
+            <Show when={!!props.next}>
+              <NavButton
+                dir="next"
+                href={props.next!.href}
+                text={props.next!.text}
+              />
+            </Show>
+          </Grid>
+        </Grid>
       </Box>
     </Box>
   );
