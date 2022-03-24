@@ -1,5 +1,19 @@
 # @suid/site
 
+## 0.0.8
+
+### Patch Changes
+
+- [`25add66`](https://github.com/swordev/suid/commit/25add666d0a8f902d350ce92ff44cd0f0ae8e9f3) Thanks [@juanrgm](https://github.com/juanrgm)! - Add circular progress component page
+
+* [`395de2d`](https://github.com/swordev/suid/commit/395de2d031540d8e5402aac4a1c8d138fab98617) Thanks [@juanrgm](https://github.com/juanrgm)! - Add playground page
+
+* Updated dependencies [[`3dc9e3b`](https://github.com/swordev/suid/commit/3dc9e3b3ad467f867ec89030f524d42da4779e32), [`01c9e0d`](https://github.com/swordev/suid/commit/01c9e0deeaacea02b3d3893238a689b997903461), [`caac525`](https://github.com/swordev/suid/commit/caac52537a651392cb0cfac79b6f5c3e15d2701e)]:
+  - @suid/system@0.0.4
+  - @suid/material@0.0.6
+  - @suid/base@0.0.5
+  - @suid/icons-material@0.0.6
+
 ## 0.0.7
 
 ### Patch Changes

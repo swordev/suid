@@ -1,6 +1,6 @@
 {
   "name": "@suid/site",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "homepage": "https://suid.io",
   "bugs": {
     "url": "https://github.com/swordev/suid.git/issues"
@@ -21,6 +21,7 @@
     "index.html"
   ],
   "dependencies": {
+    "@stackblitz/sdk": "^1.6.0",
     "@suid/base": "workspace:*",
     "@suid/icons-material": "workspace:*",
     "@suid/material": "workspace:*",
