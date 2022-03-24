@@ -1,5 +1,11 @@
 # @suid/system
 
+## 0.0.4
+
+### Patch Changes
+
+- [`3dc9e3b`](https://github.com/swordev/suid/commit/3dc9e3b3ad467f867ec89030f524d42da4779e32) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix styled type
+
 ## 0.0.3
 
 ### Patch Changes

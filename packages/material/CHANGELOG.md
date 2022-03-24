@@ -1,5 +1,17 @@
 # @suid/material
 
+## 0.0.6
+
+### Patch Changes
+
+- [`01c9e0d`](https://github.com/swordev/suid/commit/01c9e0deeaacea02b3d3893238a689b997903461) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `CircularProgress` component
+
+* [`caac525`](https://github.com/swordev/suid/commit/caac52537a651392cb0cfac79b6f5c3e15d2701e) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `ToggleButton` and `ToggleButtonGroup` components
+
+* Updated dependencies [[`3dc9e3b`](https://github.com/swordev/suid/commit/3dc9e3b3ad467f867ec89030f524d42da4779e32)]:
+  - @suid/system@0.0.4
+  - @suid/base@0.0.5
+
 ## 0.0.5
 
 ### Patch Changes
