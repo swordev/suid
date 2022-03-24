@@ -77,6 +77,14 @@ export default function Header() {
           >
             Docs
           </Button>
+          <Button<typeof RouterLink>
+            color="inherit"
+            component={RouterLink}
+            href="/getting-started/playground"
+            onMouseEnter={tryPreload}
+          >
+            Playground
+          </Button>
         </Box>
         <IconButton
           color="inherit"

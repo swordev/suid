@@ -11,6 +11,7 @@
     "watch": "vite"
   },
   "dependencies": {
+    "@stackblitz/sdk": "^1.6.0",
     "@suid/base": "workspace:*",
     "@suid/icons-material": "workspace:*",
     "@suid/material": "workspace:*",

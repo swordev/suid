@@ -104,6 +104,7 @@ importers:
 
   packages/site:
     specifiers:
+      '@stackblitz/sdk': ^1.6.0
       '@suid/base': workspace:*
       '@suid/icons-material': workspace:*
       '@suid/material': workspace:*
@@ -119,6 +120,7 @@ importers:
       vite: ^2.8.6
       vite-plugin-solid: ^2.2.6
     dependencies:
+      '@stackblitz/sdk': 1.6.0
       '@suid/base': link:../base
       '@suid/icons-material': link:../icons-material
       '@suid/material': link:../material
@@ -2144,6 +2146,10 @@ packages:
     dependencies:
       '@sinonjs/commons': 1.8.3
     dev: true
+
+  /@stackblitz/sdk/1.6.0:
+    resolution: {integrity: sha512-PPB9m1zywojv6sOGSiHv+tvnb4Zc00Jce9yjUG0BzTymUdFf9AP+gKJRlc0iq9vbEEEXfYv1bgKa5KTn4gAzbQ==}
+    dev: false
 
   /@szmarczak/http-timer/1.1.2:
     resolution: {integrity: sha512-XIB2XbzHTN6ieIjfIMV9hlVcfPU26s2vafYWQcZHWXHOxiaRZYEDKEwdl129Zyg50+foYV2jCgtrqSA6qNuNSA==}
