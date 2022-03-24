@@ -1,5 +1,11 @@
 # @suid/site
 
+## 0.0.9
+
+### Patch Changes
+
+- [`014d05d`](https://github.com/swordev/suid/commit/014d05da1ec0ad3ded8d402d18e10cf073760132) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix responsive design
+
 ## 0.0.8
 
 ### Patch Changes
