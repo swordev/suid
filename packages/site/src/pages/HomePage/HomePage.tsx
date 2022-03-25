@@ -32,7 +32,7 @@ function InstallButton(props: ButtonProps) {
   createEffect(() => {
     if (!copied()) return;
     clearTimeout(timeout);
-    timeout = setTimeout(() => setCopied(false), 2000);
+    timeout = window.setTimeout(() => setCopied(false), 2000);
   });
   onCleanup(() => clearTimeout(timeout));
   return (
@@ -88,7 +88,7 @@ function ListItemComponents(props: { start?: boolean }) {
   createEffect(() => {
     if (!props.start || started) return;
     started = true;
-    interval = setInterval(() => {
+    interval = window.setInterval(() => {
       setAmount(amount() + 1);
       if (amount() === 30) {
         return clearInterval(interval);
