@@ -6,9 +6,10 @@ import Toolbar from "@suid/material/Toolbar";
 import { createPalette } from "@suid/material/styles/createPalette";
 import useMediaQuery from "@suid/material/useMediaQuery";
 import { useLocation } from "solid-app-router";
-import { createEffect, Show } from "solid-js";
+import { createEffect, createSignal, Show } from "solid-js";
 import { createMutable } from "solid-js/store";
-import { Routing } from "~/Routing";
+import { Routing, RoutingElementContainer } from "~/Routing";
+import PlaygroundPage from "~/pages/gettingStarted/PlaygroundPage";
 import Header from "./Header";
 import LayoutContext, { createLayoutMutable } from "./LayoutContext";
 import { Nav } from "./Nav";
@@ -58,6 +59,18 @@ export default function MainLayout() {
   const location = useLocation();
   const isDownMd = useMediaQuery(theme.breakpoints.down("md"));
   const isMainPage = () => location.pathname === "/";
+  const isPlaygroundPage = () =>
+    location.pathname === "/getting-started/playground";
+  const [playgroundLoaded, setPlaygroundLoaded] = createSignal(false);
+
+  createEffect<boolean>((loaded) => {
+    if (!loaded && isPlaygroundPage()) {
+      setPlaygroundLoaded(true);
+      return true;
+    } else {
+      return false;
+    }
+  }, playgroundLoaded());
 
   return (
     <LayoutContext.Provider value={context}>
@@ -89,6 +102,14 @@ export default function MainLayout() {
           </Show>
           <Box component="main" sx={{ width: 1 }}>
             <Toolbar />
+            <Show when={playgroundLoaded()}>
+              <RoutingElementContainer
+                Component={PlaygroundPage}
+                sx={{
+                  display: isPlaygroundPage() ? "block" : "none",
+                }}
+              />
+            </Show>
             <Routing />
           </Box>
         </Box>

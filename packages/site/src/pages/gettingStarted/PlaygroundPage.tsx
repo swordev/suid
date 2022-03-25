@@ -1,4 +1,3 @@
-import sdk from "@stackblitz/sdk";
 import Box from "@suid/material/Box";
 import Skeleton from "@suid/material/Skeleton";
 import Typography from "@suid/material/Typography";
@@ -6,18 +5,24 @@ import createElementRef from "@suid/system/createElementRef";
 import { createSignal, onMount, Show } from "solid-js";
 import PageNav from "~/components/PageNav";
 import { useLayoutContext } from "~/layouts/MainLayout/LayoutContext";
+import buildProjectOptions from "~/utils/stackblitz/buildProjectOptions";
+import embedProject from "~/utils/stackblitz/embedProject";
 
 export default function PlaygroundPage() {
   const element = createElementRef();
   const layoutContext = useLayoutContext();
   const [ready, setReady] = createSignal(false);
-  onMount(async () => {
-    sdk.embedProjectId(element.ref, "suid-playground", {
-      forceEmbedLayout: true,
-      openFile: "src/App.tsx",
-      theme: layoutContext.darkMode ? "dark" : "light",
-    });
-
+  onMount(() => {
+    embedProject(
+      element.ref,
+      buildProjectOptions({
+        title: "SUID Playground",
+      }),
+      {
+        forceEmbedLayout: true,
+        theme: layoutContext.darkMode ? "dark" : "light",
+      }
+    );
     setTimeout(() => {
       setReady(true);
     }, 1500);
