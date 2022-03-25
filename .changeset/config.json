@@ -9,7 +9,7 @@
     }
   ],
   "commit": false,
-  "ignore": [],
+  "ignore": ["@suid/scripts"],
   "linked": [],
   "updateInternalDependencies": "patch"
 }
