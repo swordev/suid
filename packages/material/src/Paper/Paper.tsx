@@ -82,7 +82,7 @@ const Paper = $.component(function Paper({
   otherProps,
   classes,
 }) {
-  if ((globalThis as any).ENV !== "production") {
+  if (process.env.NODE_ENV !== "production") {
     const theme = useTheme();
     if (theme.shadows[props.elevation as keyof Shadows] === undefined) {
       console.error(

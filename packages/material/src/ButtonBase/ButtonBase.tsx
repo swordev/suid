@@ -334,7 +334,7 @@ const ButtonBase = $.component(function ButtonBase({
   const enableTouchRipple = () =>
     mountedState() && !props.disableRipple && !props.disabled;
 
-  if ((globalThis as any).ENV !== "production") {
+  if (process.env.NODE_ENV !== "production") {
     createEffect(() => {
       if (enableTouchRipple() && !ripple.ref) {
         console.error(

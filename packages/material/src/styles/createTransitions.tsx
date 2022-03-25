@@ -74,7 +74,7 @@ export default function createTransitions(inputTransitions: {
       ...other
     } = options;
 
-    if ((globalThis as any).ENV !== "production") {
+    if (process.env.NODE_ENV !== "production") {
       const isString = (value: unknown) => typeof value === "string";
       // IE11 support, replace with Number.isNaN
       // eslint-disable-next-line no-restricted-globals

@@ -24,7 +24,7 @@ export function createUnaryUnit(
         return abs;
       }
 
-      if ((globalThis as any).ENV !== "production") {
+      if (process.env.NODE_ENV !== "production") {
         if (typeof abs !== "number") {
           console.error(
             `MUI: Expected ${propName} argument to be a number or a string, got ${abs}.`
@@ -41,7 +41,7 @@ export function createUnaryUnit(
         return abs;
       }
 
-      if ((globalThis as any).ENV !== "production") {
+      if (process.env.NODE_ENV !== "production") {
         if (!Number.isInteger(abs)) {
           console.error(
             [
@@ -70,7 +70,7 @@ export function createUnaryUnit(
     return themeSpacing;
   }
 
-  if ((globalThis as any).ENV !== "production") {
+  if (process.env.NODE_ENV !== "production") {
     console.error(
       [
         `MUI: The \`theme.${themeKey}\` value (${themeSpacing}) is invalid.`,

@@ -6,7 +6,7 @@
  * @returns {number} A number in the range [min, max]
  */
 function clamp(value: number, min = 0, max = 1) {
-  if ((globalThis as any).ENV !== "production") {
+  if (process.env.NODE_ENV !== "production") {
     if (value < min || value > max) {
       console.error(
         `MUI: The value provided ${value} is out of range [${min}, ${max}].`

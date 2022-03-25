@@ -27,7 +27,7 @@ export default function useControlled<T>(props: UseControlledProps<T>) {
     isControlled ? props.controlled : valueState()
   );
 
-  if ((globalThis as any).ENV !== "production") {
+  if (process.env.NODE_ENV !== "production") {
     createEffect(() => {
       if (isControlled !== (props.controlled !== undefined)) {
         console.error(
