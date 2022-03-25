@@ -1,5 +1,15 @@
 # @suid/site
 
+## 0.0.10
+
+### Patch Changes
+
+- [`3b7bc8b`](https://github.com/swordev/suid/commit/3b7bc8b8e5a9693baf1f28101a2e3a931e2e764b) Thanks [@juanrgm](https://github.com/juanrgm)! - Increase font size on home page
+
+* [`ea8c720`](https://github.com/swordev/suid/commit/ea8c720a5c0e227afcc576988e80938d8dd32fe6) Thanks [@juanrgm](https://github.com/juanrgm)! - Load the playground only once
+
+- [`eb60191`](https://github.com/swordev/suid/commit/eb601918093ca4bc2435db7bdcc4b430af9f7575) Thanks [@juanrgm](https://github.com/juanrgm)! - Add Stackblitz link in each example
+
 ## 0.0.9
 
 ### Patch Changes
