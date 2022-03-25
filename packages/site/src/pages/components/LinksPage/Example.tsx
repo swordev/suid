@@ -12,11 +12,13 @@ export default function Links() {
       }}
       onClick={(event) => event.preventDefault()}
     >
-      <Link href="#">Link</Link>
-      <Link href="#" color="inherit">
+      <Link href="#" target="none">
+        Link
+      </Link>
+      <Link href="#" color="inherit" target="none">
         {'color="inherit"'}
       </Link>
-      <Link href="#" variant="body2">
+      <Link href="#" variant="body2" target="none">
         {'variant="body2"'}
       </Link>
     </Box>

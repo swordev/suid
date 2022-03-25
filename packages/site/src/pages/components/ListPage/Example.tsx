@@ -48,7 +48,12 @@ export default function BasicList() {
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
-            <ListItemButton component="a" href="#simple-list">
+            <ListItemButton<"a">
+              component="a"
+              href="#simple-list"
+              target="none"
+              onClick={(event) => event.preventDefault()}
+            >
               <ListItemText primary="Spam" />
             </ListItemButton>
           </ListItem>
