@@ -67,7 +67,7 @@ export default function ComponentInfo(props: {
           () => props.examples,
           (c) => (
             <Box sx={{ mb: 2 }}>
-              <ComponentCode component={c} />
+              <ComponentCode name={props.name} component={c} />
             </Box>
           )
         )}

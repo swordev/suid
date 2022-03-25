@@ -3,6 +3,7 @@
     "outDir": "lib",
     "rootDir": "src",
     "types": ["vite/client"],
+    "baseUrl": ".",
     "paths": {
       "@suid/base": ["./../base/src"],
       "@suid/base/*": ["./../base/src/*"],

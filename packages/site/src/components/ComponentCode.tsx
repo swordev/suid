@@ -5,11 +5,23 @@ import IconButton from "@suid/material/IconButton";
 import Paper from "@suid/material/Paper";
 import Stack from "@suid/material/Stack";
 import useMediaQuery from "@suid/material/useMediaQuery";
+import createSvgIcon from "@suid/material/utils/createSvgIcon";
 import { Component, createMemo, createSignal, Show } from "solid-js";
 import PaperCode from "~/components/PaperCode";
 import copyText from "~/utils/copyText";
+import openProject from "~/utils/stackblitz/openProject";
 
-export default function ComponentCode(props: { component: Component }) {
+const StackblitzIcon = createSvgIcon(
+  () => (
+    <path d="M8.13378 16.1087H0L14.8696 0L10.8662 11.1522L19 11.1522L4.13043 27.2609L8.13378 16.1087Z" />
+  ),
+  "Stackblitz"
+);
+
+export default function ComponentCode(props: {
+  name?: string;
+  component: Component;
+}) {
   const [codeVisible, setCodeVisible] = createSignal(false);
   const theme = useTheme();
   const code = createMemo(() => (props.component as any).code);
@@ -53,6 +65,17 @@ export default function ComponentCode(props: { component: Component }) {
           onClick={() => copyText((props.component as any).code)}
         >
           <ContentCopyRoundedIcon fontSize="inherit" />
+        </IconButton>
+        <IconButton
+          size="small"
+          onClick={() => {
+            openProject({
+              title: props.name,
+              appCode: code(),
+            });
+          }}
+        >
+          <StackblitzIcon fontSize="inherit" />
         </IconButton>
       </Stack>
       <Show when={codeVisible()}>
