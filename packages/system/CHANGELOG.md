@@ -1,5 +1,11 @@
 # @suid/system
 
+## 0.0.5
+
+### Patch Changes
+
+- [`5b6b816`](https://github.com/swordev/suid/commit/5b6b816949c4a5eaa3d04f878d7ae94f7cf8e61a) Thanks [@juanrgm](https://github.com/juanrgm)! - Use `NODE_ENV` variable
+
 ## 0.0.4
 
 ### Patch Changes
