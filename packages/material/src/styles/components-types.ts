@@ -3,6 +3,7 @@ export { default as MuiAlertTitle } from "../AlertTitle";
 export { default as MuiAppBar } from "../AppBar";
 export { default as MuiBackdrop } from "../Backdrop";
 export { default as MuiBadge } from "../Badge";
+export { default as MuiBreadcrumbs } from "../Breadcrumbs";
 export { default as MuiButtonGroup } from "../ButtonGroup";
 export { default as MuiCard } from "../Card";
 export { default as MuiCardActionArea } from "../CardActionArea";
