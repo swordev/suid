@@ -9,14 +9,7 @@ import createElementRef from "@suid/system/createElementRef";
 import { ComponentInProps } from "@suid/types";
 import ownerDocument from "@suid/utils/ownerDocument";
 import clsx from "clsx";
-import {
-  children,
-  createEffect,
-  createSignal,
-  JSX,
-  onCleanup,
-  Show,
-} from "solid-js";
+import { createEffect, createSignal, JSX, onCleanup, Show } from "solid-js";
 import { Dynamic } from "solid-js/web";
 
 const $ = createComponentFactory<
