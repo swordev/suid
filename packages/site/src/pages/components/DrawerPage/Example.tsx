@@ -9,12 +9,13 @@ import ListItem from "@suid/material/ListItem";
 import ListItemButton from "@suid/material/ListItemButton";
 import ListItemIcon from "@suid/material/ListItemIcon";
 import ListItemText from "@suid/material/ListItemText";
-import { createSignal } from "solid-js";
+import { mapArray } from "solid-js";
+import { createMutable } from "solid-js/store";
 
 type Anchor = NonNullable<DrawerProps["anchor"]>;
 
 export default function TemporaryDrawer() {
-  const [state, setState] = createSignal<{
+  const state = createMutable<{
     [K in Anchor]: boolean;
   }>({
     top: false,
@@ -30,7 +31,7 @@ export default function TemporaryDrawer() {
         if (keyboardEvent.key === "Tab" || keyboardEvent.key === "Shift")
           return;
       }
-      setState({ ...state(), [anchor]: open });
+      state[anchor] = open;
     };
 
   const list = (anchor: Anchor) => (
@@ -41,48 +42,57 @@ export default function TemporaryDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
+        {mapArray(
+          () => ["Inbox", "Starred", "Send email", "Drafts"],
+          (text, index) => (
+            <ListItem disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                  {index() % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                </ListItemIcon>
+                <ListItemText primary={text} />
+              </ListItemButton>
+            </ListItem>
+          )
+        )}
       </List>
       <Divider />
       <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
+        {mapArray(
+          () => ["All mail", "Trash", "Spam"],
+          (text, index) => (
+            <ListItem disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                  {index() % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                </ListItemIcon>
+                <ListItemText primary={text} />
+              </ListItemButton>
+            </ListItem>
+          )
+        )}
       </List>
     </Box>
   );
 
   return (
     <div>
-      {(["left", "right", "top", "bottom"] as Anchor[]).map((anchor) => (
-        <>
-          <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
-          <Drawer
-            anchor={anchor}
-            open={state()[anchor]}
-            sx={{ zIndex: 9999 }}
-            onClose={toggleDrawer(anchor, false)}
-          >
-            {list(anchor)}
-          </Drawer>
-        </>
-      ))}
+      {mapArray(
+        () => ["left", "right", "top", "bottom"] as Anchor[],
+        (anchor) => (
+          <>
+            <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
+            <Drawer
+              anchor={anchor}
+              open={state[anchor]}
+              sx={{ zIndex: 9999 }}
+              onClose={toggleDrawer(anchor, false)}
+            >
+              {list(anchor)}
+            </Drawer>
+          </>
+        )
+      )}
     </div>
   );
 }
