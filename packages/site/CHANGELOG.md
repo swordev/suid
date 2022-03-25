@@ -1,5 +1,21 @@
 # @suid/site
 
+## 0.0.11
+
+### Patch Changes
+
+- [`826d260`](https://github.com/swordev/suid/commit/826d260b8644288cb6261501869f1244492a8b34) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `Fab` page
+
+* [`5b6b816`](https://github.com/swordev/suid/commit/5b6b816949c4a5eaa3d04f878d7ae94f7cf8e61a) Thanks [@juanrgm](https://github.com/juanrgm)! - Use `NODE_ENV` variable
+
+- [`0ce3e5b`](https://github.com/swordev/suid/commit/0ce3e5bc733d61d7291945198e900b20d2c5bfb7) Thanks [@juanrgm](https://github.com/juanrgm)! - Add breadcrumbs page
+
+- Updated dependencies [[`26ffb46`](https://github.com/swordev/suid/commit/26ffb461a650159aa6ed937c98433d312dbb25ac), [`5b6b816`](https://github.com/swordev/suid/commit/5b6b816949c4a5eaa3d04f878d7ae94f7cf8e61a), [`6ab331e`](https://github.com/swordev/suid/commit/6ab331ee814784d869b5392d4460a91421859e80)]:
+  - @suid/material@0.0.7
+  - @suid/system@0.0.5
+  - @suid/icons-material@0.0.7
+  - @suid/base@0.0.6
+
 ## 0.0.10
 
 ### Patch Changes
