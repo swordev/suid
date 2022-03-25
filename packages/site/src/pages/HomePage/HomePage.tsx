@@ -128,16 +128,22 @@ export default function HomePage() {
               sx={{
                 fontWeight: 600,
                 [theme.breakpoints.down("md")]: {
+                  fontSize: "3rem",
+                },
+                [theme.breakpoints.down(500)]: {
                   fontSize: "2.50rem",
                 },
                 [theme.breakpoints.down(450)]: {
-                  fontSize: "2rem",
+                  fontSize: "2.30rem",
                 },
                 [theme.breakpoints.down(400)]: {
-                  fontSize: "1.75rem",
+                  fontSize: "1.95rem",
                 },
                 [theme.breakpoints.down(350)]: {
                   fontSize: "1.60rem",
+                },
+                [theme.breakpoints.down(300)]: {
+                  fontSize: "1.50rem",
                 },
               }}
             >
