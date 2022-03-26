@@ -22,6 +22,7 @@ export { default as MuiFade } from "../Fade";
 export { default as MuiGrid } from "../Grid";
 export { default as MuiIcon } from "../Icon";
 export { default as MuiIconButton } from "../IconButton";
+export { default as MuiLinearProgress } from "../LinearProgress";
 export { default as MuiLink } from "../Link";
 export { default as MuiList } from "../List";
 export { default as MuiListItem } from "../ListItem";
