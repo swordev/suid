@@ -1,5 +1,17 @@
 # @suid/material
 
+## 0.0.8
+
+### Patch Changes
+
+- [`df7917b`](https://github.com/swordev/suid/commit/df7917bf24667959649bfc2076716a57305fa268) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `LinearProgress` component
+
+* [`c0092d5`](https://github.com/swordev/suid/commit/c0092d54b577e0a968ab1d28245f935f109dd7ec) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix errors
+
+* Updated dependencies [[`c0092d5`](https://github.com/swordev/suid/commit/c0092d54b577e0a968ab1d28245f935f109dd7ec)]:
+  - @suid/system@0.0.6
+  - @suid/base@0.0.7
+
 ## 0.0.7
 
 ### Patch Changes
