@@ -1,5 +1,19 @@
 # @suid/site
 
+## 0.0.12
+
+### Patch Changes
+
+- [`70f50ab`](https://github.com/swordev/suid/commit/70f50abaa9fc24e47f9b0092087e45bd156579b8) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `Linear Progress` page
+
+* [`d34a997`](https://github.com/swordev/suid/commit/d34a9976375855bd3a0b07cfc5cde1f87bb5b1ff) Thanks [@juanrgm](https://github.com/juanrgm)! - Run effects once
+
+* Updated dependencies [[`df7917b`](https://github.com/swordev/suid/commit/df7917bf24667959649bfc2076716a57305fa268), [`c0092d5`](https://github.com/swordev/suid/commit/c0092d54b577e0a968ab1d28245f935f109dd7ec)]:
+  - @suid/material@0.0.8
+  - @suid/system@0.0.6
+  - @suid/icons-material@0.0.8
+  - @suid/base@0.0.7
+
 ## 0.0.11
 
 ### Patch Changes
