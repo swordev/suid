@@ -11,7 +11,7 @@ type WriteEffectOptions = {
 
 function writeEffect(element: HTMLElement, options: WriteEffectOptions) {
   let index = 0;
-  const interval = setInterval(() => {
+  const interval = window.setInterval(() => {
     if (index < options.text.length) {
       element.append(options.text.charAt(index));
       index++;
@@ -31,7 +31,7 @@ type EraseEffectOptions = {
 
 function eraseEffect(element: HTMLElement, options: EraseEffectOptions) {
   let index = 0;
-  const interval = setInterval(() => {
+  const interval = window.setInterval(() => {
     if (index < options.length) {
       element.innerText = element.innerText.slice(0, -1);
       index++;
@@ -49,7 +49,7 @@ type DelayEffectOptions = {
 };
 
 function delayEffect(options: DelayEffectOptions) {
-  return setTimeout(() => {
+  return window.setTimeout(() => {
     options.onFinish?.();
   }, options.ms);
 }
@@ -85,6 +85,8 @@ export type TypingsEffectActionsRef = {
 export default function TypingEffect(props: {
   effects: EffectOptions[];
   actionsRef?: RefProp<TypingsEffectActionsRef>;
+  onStart?: () => void;
+  onFinish?: () => void;
 }) {
   const element = createElementRef();
   const [finished, setFinished] = createSignal(false);
@@ -96,6 +98,7 @@ export default function TypingEffect(props: {
       actions.stop();
       element.ref.innerText = "";
       setFinished(false);
+      props.onStart?.();
       runNextEffect(onFinish);
     },
     stop: () => {
@@ -128,6 +131,7 @@ export default function TypingEffect(props: {
       runNextEffect(onFinish);
     } else {
       setFinished(true);
+      props.onFinish?.();
     }
   };
 

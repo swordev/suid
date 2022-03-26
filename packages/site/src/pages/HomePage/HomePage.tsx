@@ -16,14 +16,14 @@ import ListItemText from "@suid/material/ListItemText";
 import Stack from "@suid/material/Stack";
 import Typography from "@suid/material/Typography";
 import useMediaQuery from "@suid/material/useMediaQuery";
-import createRef from "@suid/system/createRef";
 import { Link as RouterLink } from "solid-app-router";
 import { createEffect, createSignal, onCleanup, Show } from "solid-js";
 import { tryPreload } from "~/Routing";
-import TypingEffect, {
-  TypingsEffectActionsRef,
-} from "~/components/TypingEffect";
+import TypingEffect from "~/components/TypingEffect";
 import copyText from "~/utils/copyText";
+
+let typeEffect1 = true;
+let typeEffect2 = true;
 
 function InstallButton(props: ButtonProps) {
   const [copied, setCopied] = createSignal(false);
@@ -99,12 +99,83 @@ function ListItemComponents(props: { start?: boolean }) {
   return <ListItemFeature text={`+${amount()} Components`} />;
 }
 
+export function MainText(props: { onFinished?: () => void }) {
+  const theme = useTheme();
+  const [finished, setFinished] = createSignal(!typeEffect1);
+  typeEffect1 = false;
+  return (
+    <Box
+      component="span"
+      sx={{
+        ...(finished() && {
+          cursor: "pointer",
+          "&:hover": {
+            color: "primary.main",
+            transition: theme.transitions.create("color", {
+              duration: 1000,
+            }),
+          },
+        }),
+      }}
+      onClick={() => {
+        if (finished()) {
+          setFinished(false);
+        }
+      }}
+    >
+      <Show when={!finished()} fallback={<span>for you.</span>}>
+        <TypingEffect
+          onStart={() => setFinished(false)}
+          onFinish={() => {
+            setFinished(true);
+            props.onFinished?.();
+          }}
+          effects={[
+            {
+              type: "delay",
+              ms: 1200,
+            },
+            {
+              type: "write",
+              text: "for your app",
+            },
+            {
+              type: "delay",
+              ms: 1000,
+            },
+            {
+              type: "erase",
+              length: "app".length,
+            },
+            {
+              type: "write",
+              text: "site",
+            },
+            {
+              type: "delay",
+              ms: 2000,
+            },
+            {
+              type: "erase",
+              length: "your site".length,
+            },
+            {
+              type: "write",
+              text: "you.",
+            },
+          ]}
+        />
+      </Show>
+    </Box>
+  );
+}
+
 export default function HomePage() {
   const theme = useTheme();
-  const [finished, setFinished] = createSignal(false);
+  const [finished, setFinished] = createSignal(!typeEffect2);
   const isDownMd = useMediaQuery(theme.breakpoints.down("md"));
   const isXs = useMediaQuery(theme.breakpoints.down("sm"));
-  const typingEffectActions = createRef<TypingsEffectActionsRef>();
+  typeEffect2 = false;
   return (
     <>
       <Container maxWidth="md">
@@ -152,60 +223,7 @@ export default function HomePage() {
                 Solid.js
               </Box>{" "}
               UI <br />
-              library{" "}
-              <Box
-                component="span"
-                sx={{
-                  ...(finished() && {
-                    cursor: "pointer",
-                  }),
-                }}
-                onClick={() => {
-                  if (finished()) {
-                    setFinished(false);
-                    typingEffectActions.ref.restart();
-                  }
-                }}
-              >
-                <TypingEffect
-                  actionsRef={typingEffectActions}
-                  effects={[
-                    {
-                      type: "delay",
-                      ms: 1200,
-                    },
-                    {
-                      type: "write",
-                      text: "for your app",
-                    },
-                    {
-                      type: "delay",
-                      ms: 1000,
-                    },
-                    {
-                      type: "erase",
-                      length: "app".length,
-                    },
-                    {
-                      type: "write",
-                      text: "site",
-                    },
-                    {
-                      type: "delay",
-                      ms: 2000,
-                    },
-                    {
-                      type: "erase",
-                      length: "your site".length,
-                    },
-                    {
-                      type: "write",
-                      text: "you.",
-                      onFinish: () => setFinished(true),
-                    },
-                  ]}
-                />
-              </Box>
+              library <MainText onFinished={() => setFinished(true)} />
             </Typography>
             <Typography
               variant="body1"
