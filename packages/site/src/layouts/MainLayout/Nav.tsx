@@ -145,6 +145,7 @@ export const navConfig: Config[] = [
           "Dialogs",
           //"Progress",
           "Circular Progress",
+          "Linear Progress",
           "Skeleton",
           "Snackbar",
         ]
