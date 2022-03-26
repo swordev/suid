@@ -94,6 +94,7 @@ export function createTypography(
 ): ThemeTypographyType {
   const result: ThemeTypographyType = {
     ...merge(
+      {},
       typographyDefaults,
       {
         pxToRem: (size) => {

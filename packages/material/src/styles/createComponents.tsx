@@ -28,7 +28,11 @@ export function createComponents(
   data?: DeepPartial<ComponentsOptions>
 ): Components {
   const result: Components = {
-    ...merge(componentsDefault, data ?? {}),
+    ...merge(
+      {} as typeof componentsDefault,
+      componentsDefault,
+      data ?? ({} as typeof componentsDefault)
+    ),
   };
   return result;
 }

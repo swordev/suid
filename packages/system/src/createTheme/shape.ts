@@ -17,7 +17,7 @@ export function createShapeOptions(data: ShapeOptions) {
 
 export function createShape(options?: DeepPartial<ShapeOptions>) {
   const result: Shape = {
-    ...merge(shapeDefaults, options),
+    ...merge({} as typeof shapeDefaults, shapeDefaults, options),
   };
   return result;
 }

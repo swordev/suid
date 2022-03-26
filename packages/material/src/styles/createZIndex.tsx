@@ -29,7 +29,7 @@ export function createZIndexOptions(data: ZIndexOptions) {
 
 export function createZIndex(data?: DeepPartial<ZIndexOptions>) {
   const result: ZIndex = {
-    ...merge(zIndexDefaults, data),
+    ...merge({} as typeof zIndexDefaults, zIndexDefaults, data),
   };
   return result;
 }

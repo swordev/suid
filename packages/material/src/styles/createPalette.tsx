@@ -258,12 +258,12 @@ export function createPalette(options?: DeepPartial<PaletteOptions>) {
   ];
   const palleteDefaults = usePalleteDefaults();
   const result: Palette = {
-    ...(merge(
-      {},
+    ...merge(
+      {} as Palette,
       palleteDefaults,
       modes[options?.mode ?? palleteDefaults.mode](),
       options
-    ) as Palette),
+    ),
     isColorName(name): name is PaletteColorName {
       return colorNames.includes(name as any);
     },
