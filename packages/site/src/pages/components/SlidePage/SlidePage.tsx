@@ -3,5 +3,11 @@ import ComponentInfo from "~/components/ComponentInfo";
 import Example from "~/pages/components/SlidePage/Example";
 
 export default function SlidePage() {
-  return <ComponentInfo name={Slide.name} examples={[Example]} />;
+  return (
+    <ComponentInfo
+      name={Slide.name}
+      docsName="transitions"
+      examples={[Example]}
+    />
+  );
 }
