@@ -1,5 +1,13 @@
 # @suid/site
 
+## 0.0.16
+
+### Patch Changes
+
+- [`4214f55`](https://github.com/swordev/suid/commit/4214f55779be4a91f43fe1bcd5832804ffc8138f) Thanks [@juanrgm](https://github.com/juanrgm)! - Make responsive text
+
+* [`8b37039`](https://github.com/swordev/suid/commit/8b37039d9bd5f281b769780341e778adafb04c0c) Thanks [@juanrgm](https://github.com/juanrgm)! - Preload next/prev pages on touch devices
+
 ## 0.0.15
 
 ### Patch Changes
