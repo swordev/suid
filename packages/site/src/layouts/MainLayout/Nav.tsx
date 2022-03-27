@@ -1,4 +1,5 @@
 import CodeIcon from "@suid/icons-material/Code";
+import HandymanIcon from "@suid/icons-material/Handyman";
 import RocketLaunchIcon from "@suid/icons-material/RocketLaunch";
 import { useTheme } from "@suid/material";
 import Divider from "@suid/material/Divider";
@@ -26,7 +27,15 @@ type SectionConfig = {
 type Config = LinkConfig | SectionConfig;
 
 function toFolder(text: string) {
-  return snakeCase(uncapitalize(text.replaceAll(" ", "")));
+  return snakeCase(
+    uncapitalize(
+      text.replaceAll(" ", (name, index) => {
+        const nextChar = text[index + 1];
+        if (nextChar && nextChar === nextChar.toLowerCase()) return "-";
+        return "";
+      })
+    )
+  );
 }
 
 function toComponentName(text: string) {
@@ -84,6 +93,16 @@ export const navConfig: Config[] = [
     items: ["Installation", "Usage", "Playground"].map((text) => ({
       type: "link",
       href: `/getting-started/${toFolder(text)}`,
+      text,
+    })),
+  },
+  {
+    type: "section",
+    text: "System",
+    icon: HandymanIcon,
+    items: ["The sx prop", "styled"].map((text) => ({
+      type: "link",
+      href: `/system/${toFolder(text)}`,
       text,
     })),
   },
