@@ -1,5 +1,25 @@
 # @suid/site
 
+## 0.0.13
+
+### Patch Changes
+
+- [`0062d93`](https://github.com/swordev/suid/commit/0062d932183dce5ed547a5bbbeb5c7ac1319e539) Thanks [@juanrgm](https://github.com/juanrgm)! - Add system pages
+
+* [`05f8e23`](https://github.com/swordev/suid/commit/05f8e23bdb070f7d8398078a5bfd0ed101d533d8) Thanks [@juanrgm](https://github.com/juanrgm)! - Add contrasted background color in examples
+
+- [`3542ed4`](https://github.com/swordev/suid/commit/3542ed40b893f65a5ac4d38d4da53838e8e3cd56) Thanks [@juanrgm](https://github.com/juanrgm)! - Rename theme provider export and data prop
+
+* [`18bd5a8`](https://github.com/swordev/suid/commit/18bd5a8f4b421eeb0f9e08fc7919423af25ecf68) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix `createTheme`
+
+- [`f51909b`](https://github.com/swordev/suid/commit/f51909baf08a898d28bd0c7252dc3c2e5fa9e55f) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix sizing on playground page
+
+- Updated dependencies [[`3542ed4`](https://github.com/swordev/suid/commit/3542ed40b893f65a5ac4d38d4da53838e8e3cd56)]:
+  - @suid/material@0.0.9
+  - @suid/system@0.0.7
+  - @suid/icons-material@0.0.9
+  - @suid/base@0.0.8
+
 ## 0.0.12
 
 ### Patch Changes
