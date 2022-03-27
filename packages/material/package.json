@@ -1,6 +1,6 @@
 {
   "name": "@suid/material",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "main": "index.jsx",
   "scripts": {
     "build": "tsc --build",
