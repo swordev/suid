@@ -74,7 +74,7 @@ export default function MainLayout() {
 
   return (
     <LayoutContext.Provider value={context}>
-      <ThemeProvider data={theme}>
+      <ThemeProvider theme={theme}>
         <Box sx={{ display: "flex" }}>
           <CssBaseline enableColorScheme />
           <Header />
