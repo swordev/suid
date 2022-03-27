@@ -37,21 +37,23 @@ export default function PlaygroundPage() {
       <Box
         sx={{
           mt: 2,
-          "& iframe": {
-            height: "70vh",
+          height: "70vh",
+          [`& iframe`]: {
+            height: 1,
             border: 0,
           },
         }}
       >
         <Show when={!ready()}>
-          <Skeleton variant="rectangular" height="70vh" />
+          <Skeleton variant="rectangular" height="100%" />
         </Show>
 
         <Box
           sx={{
+            height: 1,
             ...(!ready() && {
               visibility: "hidden",
-              height: "0px",
+              height: 0,
             }),
           }}
         >
