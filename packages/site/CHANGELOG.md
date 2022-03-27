@@ -1,5 +1,17 @@
 # @suid/site
 
+## 0.0.14
+
+### Patch Changes
+
+- [`c103886`](https://github.com/swordev/suid/commit/c1038861ea7638e750c3f406327f37389fb60f28) Thanks [@juanrgm](https://github.com/juanrgm)! - Enhance home page
+
+- Updated dependencies [[`330f149`](https://github.com/swordev/suid/commit/330f1499d74af873f6717d42923753e7e31ea13a)]:
+  - @suid/system@0.0.8
+  - @suid/base@0.0.9
+  - @suid/material@0.0.10
+  - @suid/icons-material@0.0.10
+
 ## 0.0.13
 
 ### Patch Changes
