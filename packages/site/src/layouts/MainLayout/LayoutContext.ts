@@ -13,8 +13,12 @@ type Options = {
   };
 };
 
+function isSysThemeDark() {
+  return window.matchMedia("(prefers-color-scheme: dark)").matches;
+}
+
 export const defaultOptions: Options = {
-  darkMode: true,
+  darkMode: getSavedDarkMode() ?? isSysThemeDark(),
   drawer: {
     open: true,
     openState: false,
@@ -31,6 +35,16 @@ export function createLayoutMutable(input: DeepPartial<Options> = {}) {
 
 export function useLayoutContext() {
   return useContext(LayoutContext);
+}
+
+export function saveDarkMode(value: boolean) {
+  localStorage.setItem("darkMode", value ? "true" : "false");
+}
+
+export function getSavedDarkMode() {
+  const value = localStorage.getItem("darkMode");
+  if (value === "true") return true;
+  if (value === "false") return false;
 }
 
 export default LayoutContext;

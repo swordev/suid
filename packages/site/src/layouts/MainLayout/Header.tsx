@@ -13,7 +13,7 @@ import createSvgIcon from "@suid/material/utils/createSvgIcon";
 import { useLocation, Link as RouterLink } from "solid-app-router";
 import { Show } from "solid-js";
 import { tryPreload } from "~/Routing";
-import { useLayoutContext } from "./LayoutContext";
+import { saveDarkMode, useLayoutContext } from "./LayoutContext";
 
 const GitHubIcon = createSvgIcon(
   () => (
@@ -93,6 +93,7 @@ export default function Header() {
           color="inherit"
           onClick={() => {
             layoutContext.darkMode = !layoutContext.darkMode;
+            saveDarkMode(layoutContext.darkMode);
           }}
         >
           <Show
