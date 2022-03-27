@@ -1,5 +1,12 @@
 # @suid/icons-material
 
+## 0.0.10
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @suid/material@0.0.10
+
 ## 0.0.9
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @suid/system
 
+## 0.0.8
+
+### Patch Changes
+
+- [`330f149`](https://github.com/swordev/suid/commit/330f1499d74af873f6717d42923753e7e31ea13a) Thanks [@juanrgm](https://github.com/juanrgm)! - Add css vendor typings
+
 ## 0.0.7
 
 ### Patch Changes
