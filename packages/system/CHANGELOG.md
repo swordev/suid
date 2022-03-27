@@ -1,5 +1,11 @@
 # @suid/system
 
+## 0.0.7
+
+### Patch Changes
+
+- [`3542ed4`](https://github.com/swordev/suid/commit/3542ed40b893f65a5ac4d38d4da53838e8e3cd56) Thanks [@juanrgm](https://github.com/juanrgm)! - Rename theme provider export and data prop
+
 ## 0.0.6
 
 ### Patch Changes
