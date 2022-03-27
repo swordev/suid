@@ -6,8 +6,13 @@ export default function FadePage() {
   return (
     <ComponentInfo
       name={Fade.name}
-      docsName={"transitions"}
-      examples={[Example]}
+      docsName="transitions"
+      examples={[
+        {
+          bgcolor: "contrasted",
+          component: Example,
+        },
+      ]}
     />
   );
 }

@@ -6,6 +6,7 @@ import Paper from "@suid/material/Paper";
 import Stack from "@suid/material/Stack";
 import useMediaQuery from "@suid/material/useMediaQuery";
 import createSvgIcon from "@suid/material/utils/createSvgIcon";
+import { SxPropsObject } from "@suid/system/sxProps";
 import { Component, createMemo, createSignal, Show } from "solid-js";
 import PaperCode from "~/components/PaperCode";
 import copyText from "~/utils/copyText";
@@ -21,6 +22,7 @@ const StackblitzIcon = createSvgIcon(
 export default function ComponentCode(props: {
   name?: string;
   component: Component;
+  sx?: SxPropsObject;
 }) {
   const [codeVisible, setCodeVisible] = createSignal(false);
   const theme = useTheme();
@@ -45,6 +47,7 @@ export default function ComponentCode(props: {
             borderLeft: 0,
             borderRight: 0,
           }),
+          ...(props.sx || {}),
         }}
       >
         <props.component />

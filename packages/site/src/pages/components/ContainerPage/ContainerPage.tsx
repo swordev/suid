@@ -3,5 +3,15 @@ import ComponentInfo from "~/components/ComponentInfo";
 import Example from "~/pages/components/ContainerPage/Example";
 
 export default function ContainerPage() {
-  return <ComponentInfo name={Container.name} examples={[Example]} />;
+  return (
+    <ComponentInfo
+      name={Container.name}
+      examples={[
+        {
+          bgcolor: "contrasted",
+          component: Example,
+        },
+      ]}
+    />
+  );
 }

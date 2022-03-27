@@ -3,5 +3,15 @@ import ComponentInfo from "~/components/ComponentInfo";
 import Example from "~/pages/components/GridPage/Example";
 
 export default function GridPage() {
-  return <ComponentInfo name={Grid.name} examples={[Example]} />;
+  return (
+    <ComponentInfo
+      name={Grid.name}
+      examples={[
+        {
+          bgcolor: "contrasted",
+          component: Example,
+        },
+      ]}
+    />
+  );
 }

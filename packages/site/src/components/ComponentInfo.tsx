@@ -1,6 +1,7 @@
 import Box from "@suid/material/Box";
 import Link from "@suid/material/Link";
 import Typography from "@suid/material/Typography";
+import useTheme from "@suid/material/styles/useTheme";
 import { snakeCase, uncapitalize } from "@suid/utils/string";
 import { Component, createMemo, mapArray, Show } from "solid-js";
 import ComponentCode from "~/components/ComponentCode";
@@ -10,7 +11,11 @@ import PaperCode from "~/components/PaperCode";
 export default function ComponentInfo(props: {
   name: string;
   scope?: string;
-  examples?: Component[];
+  examples?: (Component | { component: Component; bgcolor?: string })[];
+  /**
+   * @default true
+   */
+  importInfo?: boolean;
   docsName?: string;
   docsApiName?: string;
   moreExamples?: boolean;
@@ -18,6 +23,7 @@ export default function ComponentInfo(props: {
   nextPage?: { text: string; href: string };
 }) {
   const name = createMemo(() => snakeCase(uncapitalize(props.name)));
+  const theme = useTheme();
   const docsName = createMemo(() => props.docsName ?? name());
   const docsApiPath = createMemo(() => {
     if (typeof props.docsApiName === "string") {
@@ -45,29 +51,49 @@ export default function ComponentInfo(props: {
         .
       </Typography>
 
-      <Typography component="h2" variant="h5" sx={{ my: 2 }}>
-        Import
-      </Typography>
+      <Show when={props.importInfo ?? true}>
+        <Typography component="h2" variant="h5" sx={{ my: 2 }}>
+          Import
+        </Typography>
 
-      <PaperCode
-        language="tsx"
-        sx={{
-          mb: 3,
-        }}
-        value={`import ${props.name} from "@suid/${props.scope ?? "material"}/${
-          props.name
-        }"`}
-      />
+        <PaperCode
+          language="tsx"
+          sx={{
+            mb: 3,
+          }}
+          value={`import ${props.name} from "@suid/${
+            props.scope ?? "material"
+          }/${props.name}"`}
+        />
+      </Show>
 
       <Show when={!!props.examples?.length}>
         <Typography component="h2" variant="h5" sx={{ my: 2 }}>
           Examples
         </Typography>
         {mapArray(
-          () => props.examples,
-          (c) => (
+          () =>
+            props.examples?.map((v) =>
+              typeof v === "function" ? { component: v } : v
+            ),
+          (example) => (
             <Box sx={{ mb: 2 }}>
-              <ComponentCode name={props.name} component={c} />
+              <ComponentCode
+                name={props.name}
+                component={example.component}
+                sx={{
+                  ...(example.bgcolor === "contrasted" && {
+                    bgcolor:
+                      theme.palette.mode === "light"
+                        ? "#E7EBF0"
+                        : "rgb(43 53 65)",
+                  }),
+                  ...(example.bgcolor &&
+                    example.bgcolor !== "contrasted" && {
+                      bgcolor: example.bgcolor,
+                    }),
+                }}
+              />
             </Box>
           )
         )}

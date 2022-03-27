@@ -8,7 +8,10 @@ export default function CardPage() {
     <ComponentInfo
       name={Card.name}
       docsName={"cards"}
-      examples={[Example1, Example2]}
+      examples={[
+        { component: Example1, bgcolor: "contrasted" },
+        { component: Example2, bgcolor: "contrasted" },
+      ]}
     />
   );
 }
