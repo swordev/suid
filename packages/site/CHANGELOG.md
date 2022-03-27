@@ -1,5 +1,11 @@
 # @suid/site
 
+## 0.0.15
+
+### Patch Changes
+
+- [`15b7486`](https://github.com/swordev/suid/commit/15b74863da500171ae5129da65482d5759e22bc3) Thanks [@juanrgm](https://github.com/juanrgm)! - Disable hash integration
+
 ## 0.0.14
 
 ### Patch Changes
