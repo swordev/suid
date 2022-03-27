@@ -13,14 +13,23 @@ import { createMemo, mergeProps, Show } from "solid-js";
 import { tryPreload } from "~/Routing";
 import { findNavConfigs } from "~/layouts/MainLayout/Nav";
 
+function isTouchDevice() {
+  return (
+    "ontouchstart" in window ||
+    navigator.maxTouchPoints > 0 ||
+    (navigator as any)["msMaxTouchPoints"] > 0
+  );
+}
+
 function NavButton(props: {
   href: string;
   text: string;
   dir: "prev" | "next";
+  preload?: boolean;
 }) {
   const theme = useTheme();
   const xs = useMediaQuery(theme.breakpoints.down("sm"));
-
+  if (props.preload && isTouchDevice()) tryPreload(props.href);
   return (
     <Button
       component="a"
@@ -55,6 +64,10 @@ function NavButton(props: {
 export default function PageNav(inProps: {
   prev?: { text: string; href: string } | "auto" | false;
   next?: { text: string; href: string } | "auto" | false;
+  /**
+   * @default true
+   */
+  preload?: boolean;
   sx?: SxProps;
 }) {
   const loc = useLocation();
@@ -79,6 +92,7 @@ export default function PageNav(inProps: {
             <Show when={!!props.prev} fallback={<div />}>
               <NavButton
                 dir="prev"
+                preload={props.preload ?? true}
                 href={props.prev!.href}
                 text={props.prev!.text}
               />
@@ -88,6 +102,7 @@ export default function PageNav(inProps: {
             <Show when={!!props.next}>
               <NavButton
                 dir="next"
+                preload={props.preload ?? true}
                 href={props.next!.href}
                 text={props.next!.text}
               />
