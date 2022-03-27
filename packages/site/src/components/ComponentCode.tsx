@@ -33,6 +33,7 @@ export default function ComponentCode(props: {
     <>
       <Paper
         elevation={0}
+        square={sm()}
         sx={{
           display: "flex",
           justifyItems: "center",
