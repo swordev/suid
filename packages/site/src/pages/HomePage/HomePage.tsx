@@ -100,7 +100,7 @@ function ListItemComponents(props: { start?: boolean }) {
   return <ListItemFeature text={`+${amount()} Components`} />;
 }
 
-export function MainText(props: { onFinished?: () => void }) {
+function MainText(props: { onFinished?: () => void }) {
   const theme = useTheme();
   const [finished, setFinished] = createSignal(!typeEffect1);
   typeEffect1 = false;
@@ -168,6 +168,64 @@ export function MainText(props: { onFinished?: () => void }) {
         />
       </Show>
     </Box>
+  );
+}
+
+function HeroText() {
+  const theme = useTheme();
+  const md = useMediaQuery(theme.breakpoints.down("md"));
+  const is720 = useMediaQuery(theme.breakpoints.down(720));
+  return (
+    <Paper
+      square
+      sx={{
+        bgcolor: "secondary.main",
+        color: "white",
+        my: md() ? 3 : 20,
+        backgroundImage: `linear-gradient(45deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+      }}
+    >
+      <Container maxWidth="md">
+        <Box sx={{ textAlign: "center", py: 5 }}>
+          <Typography
+            component="h2"
+            sx={{
+              fontSize: "2.3rem",
+              [theme.breakpoints.down("md")]: {
+                fontSize: "2rem",
+              },
+              [theme.breakpoints.down(500)]: {
+                fontSize: "1.8rem",
+              },
+              [theme.breakpoints.down(450)]: {
+                fontSize: "1.5rem",
+              },
+              [theme.breakpoints.down(400)]: {
+                fontSize: "1.4rem",
+              },
+              [theme.breakpoints.down(350)]: {
+                fontSize: "1.3rem",
+              },
+              [theme.breakpoints.down(300)]: {
+                fontSize: "1.20rem",
+              },
+            }}
+          >
+            Same API. Same Design.{" "}
+            <Show when={is720()}>
+              <br />
+            </Show>
+            Different technology.
+          </Typography>
+          <Typography
+            variant="body1"
+            sx={{ mt: 2, fontSize: is720() ? 16 : 18 }}
+          >
+            Power your MUI app by replacing React with Solid.js.
+          </Typography>
+        </Box>
+      </Container>
+    </Paper>
   );
 }
 
@@ -241,7 +299,11 @@ export default function HomePage() {
               <Link href="https://mui.com" target="_blank">
                 MUI
               </Link>
-              ) built with Solid.js.
+              ) built with{" "}
+              <Link href="https://solidjs.com" target="_blank">
+                Solid.js
+              </Link>
+              .
             </Typography>{" "}
             <Stack
               direction={isDownMd() ? "column" : "row"}
@@ -311,26 +373,7 @@ export default function HomePage() {
           </Grid>
         </Grid>
       </Container>
-      <Paper
-        square
-        sx={{
-          bgcolor: "secondary.main",
-          color: "white",
-          my: isDownMd() ? 3 : 20,
-          backgroundImage: `linear-gradient(45deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
-        }}
-      >
-        <Container maxWidth="md">
-          <Box sx={{ textAlign: "center", py: 5 }}>
-            <Typography component="h2" variant="h4" sx={{ fontSize: "2.5rem" }}>
-              Same API. Same Design. Different technology.
-            </Typography>
-            <Typography variant="body1" sx={{ mt: 2, fontSize: 18 }}>
-              Power your MUI app by replacing React with Solid.js.
-            </Typography>
-          </Box>
-        </Container>
-      </Paper>
+      <HeroText />
     </>
   );
 }
