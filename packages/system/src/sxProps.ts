@@ -1,8 +1,14 @@
 import { StyleProps } from "./createStylePropsFactory";
 import { Theme } from "./createTheme";
-import { StandardProperties, SvgProperties } from "csstype";
+import {
+  StandardProperties,
+  SvgProperties,
+  VendorLonghandProperties,
+} from "csstype";
 
-export type NativeStyleProps = StandardProperties & SvgProperties;
+export type NativeStyleProps = StandardProperties &
+  SvgProperties &
+  VendorLonghandProperties;
 export type CSSProps = Omit<NativeStyleProps, keyof StyleProps> & StyleProps;
 export type SxPropsObject =
   | {
