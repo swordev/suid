@@ -49,6 +49,7 @@ jobs:
         if: steps.published.outputs['@suid/site'] == 'true'
         run: |-
           rm packages/site/dist/node_modules
+          echo "/* /index.html 200" > packages/site/dist/_redirects
       - name: Deploy gh-pages
         if: steps.published.outputs['@suid/site'] == 'true'
         uses: JamesIves/github-pages-deploy-action@v4.2.5
