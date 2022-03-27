@@ -13,6 +13,7 @@ import List from "@suid/material/List";
 import ListItem from "@suid/material/ListItem";
 import ListItemIcon from "@suid/material/ListItemIcon";
 import ListItemText from "@suid/material/ListItemText";
+import Paper from "@suid/material/Paper";
 import Stack from "@suid/material/Stack";
 import Typography from "@suid/material/Typography";
 import useMediaQuery from "@suid/material/useMediaQuery";
@@ -219,7 +220,14 @@ export default function HomePage() {
               }}
             >
               The ideal{" "}
-              <Box component="span" sx={{ color: theme.palette.primary.main }}>
+              <Box
+                component="span"
+                sx={{
+                  backgroundImage: `linear-gradient(to right bottom, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                }}
+              >
                 Solid.js
               </Box>{" "}
               UI <br />
@@ -303,6 +311,26 @@ export default function HomePage() {
           </Grid>
         </Grid>
       </Container>
+      <Paper
+        square
+        sx={{
+          bgcolor: "secondary.main",
+          color: "white",
+          my: isDownMd() ? 3 : 20,
+          backgroundImage: `linear-gradient(45deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+        }}
+      >
+        <Container maxWidth="md">
+          <Box sx={{ textAlign: "center", py: 5 }}>
+            <Typography component="h2" variant="h4" sx={{ fontSize: "2.5rem" }}>
+              Same API. Same Design. Different technology.
+            </Typography>
+            <Typography variant="body1" sx={{ mt: 2, fontSize: 18 }}>
+              Power your MUI app by replacing React with Solid.js.
+            </Typography>
+          </Box>
+        </Container>
+      </Paper>
     </>
   );
 }

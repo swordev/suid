@@ -3,7 +3,7 @@ import { SxPropsObject } from "@suid/system/sxProps";
 import { EventParam } from "@suid/types";
 import { snakeCase, uncapitalize } from "@suid/utils/string";
 import { Route, Routes } from "solid-app-router";
-import { Component, lazy } from "solid-js";
+import { Component, lazy, Match, Switch } from "solid-js";
 
 export const Pages = Object.assign(
   import.meta.glob(`./pages/**/*Page/index.{ts,tsx}`),
@@ -57,11 +57,14 @@ export function Routing() {
       <Route
         path={path === "/home" ? "/" : path}
         element={
-          path !== "/getting-started/playground" ? (
-            <RoutingElementContainer Component={Component} />
-          ) : (
-            <></>
-          )
+          <Switch fallback={<RoutingElementContainer Component={Component} />}>
+            <Match when={path === "/getting-started/playground"}>
+              <></>
+            </Match>
+            <Match when={path === "/home"}>
+              <Component />
+            </Match>
+          </Switch>
         }
       />
     );
