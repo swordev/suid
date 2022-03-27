@@ -44,10 +44,6 @@ export function createTheme<T extends string = Breakpoint>(
 ): Theme<T> {
   const result: Theme<T> = {
     direction: "ltr",
-    ...data,
-    breakpoints: createBreakpoints(data?.breakpoints),
-    shape: createShape(data?.shape),
-    spacing: createSpacing(data?.spacing as any),
     shadows: undefined,
     transitions: undefined,
     components: undefined,
@@ -55,6 +51,10 @@ export function createTheme<T extends string = Breakpoint>(
     typography: undefined,
     zIndex: undefined,
     mixins: undefined,
+    ...data,
+    breakpoints: createBreakpoints(data?.breakpoints),
+    shape: createShape(data?.shape),
+    spacing: createSpacing(data?.spacing as any),
   };
   return result;
 }
