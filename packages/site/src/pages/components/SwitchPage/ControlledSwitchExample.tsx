@@ -1,7 +1,7 @@
 import Switch from "@suid/material/Switch";
 import { createSignal } from "solid-js";
 
-export default function ControlledExample() {
+export default function ControlledSwitch() {
   const [checked, setChecked] = createSignal(false);
 
   return (

@@ -1,7 +1,12 @@
 import ToggleButton from "@suid/material/ToggleButton";
 import ComponentInfo from "~/components/ComponentInfo";
-import Example from "./Example";
+import ExclusiveSelectionExample from "./ExclusiveSelectionExample";
 
 export default function ToggleButtonPage() {
-  return <ComponentInfo name={ToggleButton.name} examples={[Example]} />;
+  return (
+    <ComponentInfo
+      name={ToggleButton.name}
+      examples={[ExclusiveSelectionExample]}
+    />
+  );
 }

@@ -1,6 +1,6 @@
 import ComponentInfo from "~/components/ComponentInfo";
-import Example1 from "./Example1";
-import Example2 from "./Example2";
+import BasicUsageExample from "./BasicUsageExample";
+import ThemeUsageExample from "./ThemeUsageExample";
 
 export default function StyledPage() {
   return (
@@ -9,7 +9,13 @@ export default function StyledPage() {
       moreExamples={false}
       name="styled"
       docsApiName="system/styled"
-      examples={[Example1, Example2]}
+      examples={[
+        BasicUsageExample,
+        {
+          component: ThemeUsageExample,
+          title: "Using the theme",
+        },
+      ]}
     />
   );
 }

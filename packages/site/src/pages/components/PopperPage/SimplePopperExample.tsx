@@ -2,7 +2,7 @@ import Box from "@suid/material/Box";
 import Popper from "@suid/material/Popper";
 import { createMemo, createSignal } from "solid-js";
 
-export default function SimplePopper() {
+export default function SimplePopperExample() {
   const [anchorEl, setAnchorEl] = createSignal<HTMLButtonElement | null>(null);
 
   const open = createMemo(() => !!anchorEl());

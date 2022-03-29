@@ -1,13 +1,13 @@
 import Button from "@suid/material/Button";
 import ComponentInfo from "~/components/ComponentInfo";
-import Example from "./Example";
+import BasicButtonsExample from "./BasicButtonsExample";
 
 export default function ButtonPage() {
   return (
     <ComponentInfo
       name={Button.name}
       docsName={"buttons"}
-      examples={[Example]}
+      examples={[BasicButtonsExample]}
     />
   );
 }

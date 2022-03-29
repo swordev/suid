@@ -3,7 +3,7 @@ import AlarmIcon from "@suid/icons-material/Alarm";
 import DeleteIcon from "@suid/icons-material/Delete";
 import IconButton from "@suid/material/IconButton";
 
-export default function IconButtons() {
+export default function Example() {
   return (
     <>
       <IconButton aria-label="delete">

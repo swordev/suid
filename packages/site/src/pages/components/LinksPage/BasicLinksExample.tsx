@@ -1,7 +1,7 @@
 import Box from "@suid/material/Box";
 import Link from "@suid/material/Link";
 
-export default function Links() {
+export default function BasicLinks() {
   return (
     <Box
       sx={{

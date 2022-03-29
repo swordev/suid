@@ -1,9 +1,13 @@
 import List from "@suid/material/List";
 import ComponentInfo from "~/components/ComponentInfo";
-import Example from "~/pages/components/ListPage/Example";
+import BasicListExample from "~/pages/components/ListPage/BasicListExample";
 
 export default function ListPage() {
   return (
-    <ComponentInfo name={List.name} docsName="lists" examples={[Example]} />
+    <ComponentInfo
+      name={List.name}
+      docsName="lists"
+      examples={[BasicListExample]}
+    />
   );
 }

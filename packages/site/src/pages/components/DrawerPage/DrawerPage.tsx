@@ -1,6 +1,6 @@
 import Drawer from "@suid/material/Drawer";
 import ComponentInfo from "~/components/ComponentInfo";
-import Example from "~/pages/components/DrawerPage/Example";
+import TemporaryDrawerExample from "./TemporaryDrawerExample";
 
 export default function DrawerPage() {
   return (
@@ -8,7 +8,7 @@ export default function DrawerPage() {
       scope="material"
       name={Drawer.name}
       docsName={"drawers"}
-      examples={[Example]}
+      examples={[TemporaryDrawerExample]}
     />
   );
 }

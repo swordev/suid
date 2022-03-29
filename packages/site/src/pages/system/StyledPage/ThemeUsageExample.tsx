@@ -18,7 +18,7 @@ const MyThemeComponent = styled("div")(({ theme }) => ({
   borderRadius: theme.shape.borderRadius,
 }));
 
-export default function Example2() {
+export default function ThemeUsage() {
   return (
     <ThemeProvider theme={customTheme}>
       <MyThemeComponent>Styled div with theme</MyThemeComponent>

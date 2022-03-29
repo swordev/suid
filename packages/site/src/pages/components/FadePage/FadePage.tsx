@@ -1,6 +1,6 @@
 import Fade from "@suid/material/Fade";
 import ComponentInfo from "~/components/ComponentInfo";
-import Example from "./Example";
+import SimpleFadeExample from "./SimpleFadeExample";
 
 export default function FadePage() {
   return (
@@ -10,7 +10,7 @@ export default function FadePage() {
       examples={[
         {
           bgcolor: "contrasted",
-          component: Example,
+          component: SimpleFadeExample,
         },
       ]}
     />

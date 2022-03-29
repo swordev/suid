@@ -6,7 +6,7 @@ import ToggleButton from "@suid/material/ToggleButton";
 import ToggleButtonGroup from "@suid/material/ToggleButtonGroup";
 import { createSignal } from "solid-js";
 
-export default function ToggleButtons() {
+export default function ExclusiveSelection() {
   const [alignment, setAlignment] = createSignal("left");
 
   return (

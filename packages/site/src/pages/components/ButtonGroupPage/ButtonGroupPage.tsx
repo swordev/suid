@@ -1,7 +1,12 @@
 import ButtonGroup from "@suid/material/ButtonGroup";
 import ComponentInfo from "~/components/ComponentInfo";
-import Example from "./Example";
+import BasicButtonGroupExample from "./BasicButtonGroupExample";
 
 export default function ButtonGroupPage() {
-  return <ComponentInfo name={ButtonGroup.name} examples={[Example]} />;
+  return (
+    <ComponentInfo
+      name={ButtonGroup.name}
+      examples={[BasicButtonGroupExample]}
+    />
+  );
 }

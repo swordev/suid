@@ -1,7 +1,7 @@
 import Box from "@suid/material/Box";
 import Paper from "@suid/material/Paper";
 
-export default function SimplePaper() {
+export default function BasicPaper() {
   return (
     <Box
       sx={{

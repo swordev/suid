@@ -1,6 +1,6 @@
 import Container from "@suid/material/Container";
 import ComponentInfo from "~/components/ComponentInfo";
-import Example from "~/pages/components/ContainerPage/Example";
+import SimpleContainerExample from "./SimpleContainerExample";
 
 export default function ContainerPage() {
   return (
@@ -9,7 +9,7 @@ export default function ContainerPage() {
       examples={[
         {
           bgcolor: "contrasted",
-          component: Example,
+          component: SimpleContainerExample,
         },
       ]}
     />

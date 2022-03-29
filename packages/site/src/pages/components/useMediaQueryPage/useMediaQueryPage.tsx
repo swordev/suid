@@ -1,13 +1,13 @@
 import useMediaQuery from "@suid/material/useMediaQuery";
 import ComponentInfo from "~/components/ComponentInfo";
-import Example from "~/pages/components/useMediaQueryPage/Example";
+import SimpleMediaQueryExample from "./SimpleMediaQueryExample";
 
 export default function useMediaQueryPage() {
   return (
     <ComponentInfo
       name={useMediaQuery.name}
       docsApiName="components/use-media-query"
-      examples={[Example]}
+      examples={[SimpleMediaQueryExample]}
       moreExamples={false}
     />
   );

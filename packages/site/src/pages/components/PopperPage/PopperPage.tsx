@@ -1,8 +1,13 @@
 import Popper from "@suid/material/Popper";
 import ComponentInfo from "~/components/ComponentInfo";
-import Example from "~/pages/components/PopperPage/Example";
-import Example2 from "~/pages/components/PopperPage/Example2";
+import SimplePopperExample from "./SimplePopperExample";
+import TransitionsPopperExample from "./TransitionsPopperExample";
 
 export default function PopperPage() {
-  return <ComponentInfo name={Popper.name} examples={[Example, Example2]} />;
+  return (
+    <ComponentInfo
+      name={Popper.name}
+      examples={[SimplePopperExample, TransitionsPopperExample]}
+    />
+  );
 }

@@ -1,7 +1,7 @@
 import Skeleton from "@suid/material/Skeleton";
 import ComponentInfo from "~/components/ComponentInfo";
-import Example from "./Example";
+import VariantsExample from "./VariantsExample";
 
 export default function SkeletonPage() {
-  return <ComponentInfo name={Skeleton.name} examples={[Example]} />;
+  return <ComponentInfo name={Skeleton.name} examples={[VariantsExample]} />;
 }

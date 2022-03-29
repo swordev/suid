@@ -6,7 +6,7 @@ import IconButton from "@suid/material/IconButton";
 import Toolbar from "@suid/material/Toolbar";
 import Typography from "@suid/material/Typography";
 
-export default function ButtonAppBar() {
+export default function BasicAppBar() {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">

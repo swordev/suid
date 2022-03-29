@@ -1,6 +1,6 @@
 import AppBar from "@suid/material/AppBar";
 import ComponentInfo from "~/components/ComponentInfo";
-import Example from "./Example";
+import BasicAppBarExample from "./BasicAppBarExample";
 
 export default function AppBarPage() {
   return (
@@ -9,7 +9,7 @@ export default function AppBarPage() {
       examples={[
         {
           bgcolor: "contrasted",
-          component: Example,
+          component: BasicAppBarExample,
         },
       ]}
     />

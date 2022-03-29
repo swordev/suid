@@ -1,6 +1,6 @@
 import Stack from "@suid/material/Stack";
 import ComponentInfo from "~/components/ComponentInfo";
-import Example from "./Example";
+import BasicStackExample from "./BasicStackExample";
 
 export default function StackPage() {
   return (
@@ -9,7 +9,7 @@ export default function StackPage() {
       examples={[
         {
           bgcolor: "contrasted",
-          component: Example,
+          component: BasicStackExample,
         },
       ]}
     />

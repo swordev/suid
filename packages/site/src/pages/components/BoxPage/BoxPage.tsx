@@ -1,6 +1,6 @@
 import Box from "@suid/material/Box";
 import ComponentInfo from "~/components/ComponentInfo";
-import Example from "~/pages/components/BoxPage/Example";
+import BoxSxExample from "./BoxSxExample";
 
 export default function BoxPage() {
   return (
@@ -8,7 +8,12 @@ export default function BoxPage() {
       name={Box.name}
       docsApiName={"components/box"}
       moreExamples={false}
-      examples={[Example]}
+      examples={[
+        {
+          component: BoxSxExample,
+          title: false,
+        },
+      ]}
     />
   );
 }

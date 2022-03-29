@@ -1,7 +1,7 @@
 import Modal from "@suid/material/Modal";
 import ComponentInfo from "~/components/ComponentInfo";
-import Example from "~/pages/components/ModalPage/Example";
+import BasicModalExample from "./BasicModalExample";
 
 export default function ModalPage() {
-  return <ComponentInfo name={Modal.name} examples={[Example]} />;
+  return <ComponentInfo name={Modal.name} examples={[BasicModalExample]} />;
 }

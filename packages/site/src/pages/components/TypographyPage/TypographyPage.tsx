@@ -1,7 +1,7 @@
 import Typography from "@suid/material/Typography";
 import ComponentInfo from "~/components/ComponentInfo";
-import Example from "~/pages/components/TypographyPage/Example";
+import TypesExample from "./TypesExample";
 
 export default function TypographyPage() {
-  return <ComponentInfo name={Typography.name} examples={[Example]} />;
+  return <ComponentInfo name={Typography.name} examples={[TypesExample]} />;
 }

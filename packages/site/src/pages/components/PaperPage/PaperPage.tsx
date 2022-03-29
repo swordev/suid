@@ -1,6 +1,6 @@
 import Paper from "@suid/material/Paper";
 import ComponentInfo from "~/components/ComponentInfo";
-import Example from "~/pages/components/PaperPage/Example";
+import BasicPaperExample from "./BasicPaperExample";
 
 export default function PaperPage() {
   return (
@@ -9,7 +9,7 @@ export default function PaperPage() {
       examples={[
         {
           bgcolor: "contrasted",
-          component: Example,
+          component: BasicPaperExample,
         },
       ]}
     />

@@ -1,6 +1,6 @@
 import Grid from "@suid/material/Grid";
 import ComponentInfo from "~/components/ComponentInfo";
-import Example from "~/pages/components/GridPage/Example";
+import FullWidthGridExample from "./FullWidthGridExample";
 
 export default function GridPage() {
   return (
@@ -9,7 +9,7 @@ export default function GridPage() {
       examples={[
         {
           bgcolor: "contrasted",
-          component: Example,
+          component: FullWidthGridExample,
         },
       ]}
     />

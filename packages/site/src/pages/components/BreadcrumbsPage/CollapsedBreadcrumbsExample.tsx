@@ -2,7 +2,7 @@ import Breadcrumbs from "@suid/material/Breadcrumbs";
 import Link from "@suid/material/Link";
 import Typography from "@suid/material/Typography";
 
-export default function CollapsedExample() {
+export default function CollapsedBreadcrumbs() {
   return (
     <div
       role="presentation"

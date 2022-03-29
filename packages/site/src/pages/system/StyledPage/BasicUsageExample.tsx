@@ -7,6 +7,6 @@ const MyComponent = styled("div")({
   borderRadius: 4,
 });
 
-export default function Example1() {
+export default function BasicUsage() {
   return <MyComponent>Styled div</MyComponent>;
 }
