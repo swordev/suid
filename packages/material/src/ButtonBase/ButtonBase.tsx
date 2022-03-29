@@ -190,8 +190,8 @@ const ButtonBase = $.component(function ButtonBase({
       if (focus.isFocusVisibleRef.current === false) {
         setFocusVisible(false);
       }
-      if (typeof otherProps.onBlur === "function") {
-        otherProps.onBlur(event);
+      if (typeof otherProps.onFocusOut === "function") {
+        otherProps.onFocusOut(event);
       }
     },
     false
@@ -212,8 +212,8 @@ const ButtonBase = $.component(function ButtonBase({
       }
     }
 
-    if (typeof otherProps.onFocus === "function") {
-      otherProps.onFocus(event);
+    if (typeof otherProps.onFocusIn === "function") {
+      otherProps.onFocusIn(event);
     }
   };
 
@@ -353,10 +353,10 @@ const ButtonBase = $.component(function ButtonBase({
       {...otherProps}
       className={clsx(classes.root, otherProps.className)}
       ownerState={ownerState}
-      onBlur={handleBlur}
+      onFocusOut={handleBlur}
       onClick={otherProps.onClick}
       onContextMenu={handleContextMenu}
-      onFocus={handleFocus}
+      onFocusIn={handleFocus}
       onKeyDown={handleKeyDown}
       onKeyUp={handleKeyUp}
       onMouseDown={handleMouseDown}
