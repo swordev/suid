@@ -1,7 +1,7 @@
 export type RefProp<T = any> = (v: T) => void; //JSX.IntrinsicAttributes["ref"];
 
 function createRef<T>(
-  input?: { ref?: unknown } | (() => RefProp<T> | undefined)
+  input?: { ref?: unknown } | (() => RefProp<T> | undefined | null)
 ): {
   (value: T): void;
   ref: T;
