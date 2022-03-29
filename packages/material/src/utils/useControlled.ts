@@ -1,14 +1,14 @@
-import { createEffect, createSignal, createMemo, on } from "solid-js";
+import { createEffect, createSignal, createMemo, on, Accessor } from "solid-js";
 
 export interface UseControlledProps<T = unknown> {
   /**
    * Holds the component value when it's controlled.
    */
-  controlled: T | undefined;
+  controlled: Accessor<T | undefined>;
   /**
    * The default value when uncontrolled.
    */
-  default: T | undefined;
+  default: Accessor<T | undefined>;
   /**
    * The component name displayed in warnings.
    */
@@ -21,15 +21,20 @@ export interface UseControlledProps<T = unknown> {
 
 export default function useControlled<T>(props: UseControlledProps<T>) {
   // isControlled is ignored in the hook dependency lists as it should never change.
-  const isControlled = props.controlled !== undefined;
-  const [valueState, setValue] = createSignal(props.default);
+  const isControlled = props.controlled() !== undefined;
+  const [valueState, setValue] = createSignal(props.default());
   const value = createMemo(() =>
-    isControlled ? props.controlled : valueState()
+    isControlled ? props.controlled() : valueState()
   );
+
+  if (isControlled)
+    createEffect(() => {
+      setValue(() => value());
+    });
 
   if (process.env.NODE_ENV !== "production") {
     createEffect(() => {
-      if (isControlled !== (props.controlled !== undefined)) {
+      if (isControlled !== (props.controlled() !== undefined)) {
         console.error(
           [
             `MUI: A component is changing the ${
@@ -47,23 +52,29 @@ export default function useControlled<T>(props: UseControlledProps<T>) {
       }
     });
 
+    let first = true;
+
     createEffect(
-      on(props.default as any, (first: boolean) => {
-        if (!first && !isControlled) {
-          console.error(
-            [
-              `MUI: A component is changing the default ${
-                props.state ?? "value"
-              } state of an uncontrolled ${
-                props.name
-              } after being initialized. ` +
-                `To suppress this warning opt to use a controlled ${props.name}.`,
-            ].join("\n")
-          );
+      on(
+        () => props.default(),
+        () => {
+          if (first) {
+            first = false;
+            return;
+          } else if (!isControlled) {
+            console.error(
+              [
+                `MUI: A component is changing the default ${
+                  props.state ?? "value"
+                } state of an uncontrolled ${
+                  props.name
+                } after being initialized. ` +
+                  `To suppress this warning opt to use a controlled ${props.name}.`,
+              ].join("\n")
+            );
+          }
         }
-        return false;
-      }),
-      true
+      )
     );
   }
 
