@@ -218,14 +218,34 @@ const SwitchThumb = styled("span", {
  * - [Switch API](https://mui.com/api/switch/)
  * - inherits [IconButton API](https://mui.com/api/icon-button/)
  */
-const Switch = $.component(function Switch({ allProps, classes, otherProps }) {
+const Switch = $.component(function Switch({
+  allProps,
+  props,
+  classes,
+  otherProps,
+}) {
   const icon = createMemo(() => (
     <SwitchThumb className={classes.thumb} ownerState={allProps} />
   ));
   const allClasses = mergeProps(classes, () => ({
     root: classes.switchBase,
   }));
-  const [, baseProps] = splitProps(otherProps, ["sx"]);
+
+  const [, otherPropsWithoutSx] = splitProps(otherProps, ["sx"]);
+
+  const baseProps = mergeProps(
+    () => ({
+      icon: icon(),
+      checkedIcon: icon(),
+    }),
+    () => ({
+      checkedIcon: props.checkedIcon,
+      disabled: props.disabled,
+      icon: props.icon,
+      value: props.value,
+    }),
+    otherPropsWithoutSx
+  );
 
   return (
     <SwitchRoot
@@ -235,8 +255,6 @@ const Switch = $.component(function Switch({ allProps, classes, otherProps }) {
     >
       <SwitchSwitchBase
         type="checkbox"
-        icon={icon()}
-        checkedIcon={icon()}
         ownerState={allProps}
         {...baseProps}
         classes={allClasses}
