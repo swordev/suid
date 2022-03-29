@@ -19,6 +19,7 @@ export { default as MuiDivider } from "../Divider";
 export { default as MuiDrawer } from "../Drawer";
 export { default as MuiFab } from "../Fab";
 export { default as MuiFade } from "../Fade";
+export { default as MuiFormControl } from "../FormControl";
 export { default as MuiGrid } from "../Grid";
 export { default as MuiIcon } from "../Icon";
 export { default as MuiIconButton } from "../IconButton";
