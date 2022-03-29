@@ -39,6 +39,7 @@ export { default as MuiSkeleton } from "../Skeleton";
 export { default as MuiSlide } from "../Slide";
 export { default as MuiStack } from "../Stack";
 export { default as MuiSvgIcon } from "../SvgIcon";
+export { default as MuiSwitchBase } from "../internal/SwitchBase";
 export { default as MuiToggleButton } from "../ToggleButton";
 export { default as MuiToggleButtonGroup } from "../ToggleButtonGroup";
 export { default as MuiToolbar } from "../Toolbar";
