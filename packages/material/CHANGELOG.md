@@ -1,5 +1,15 @@
 # @suid/material
 
+## 0.0.11
+
+### Patch Changes
+
+- [`b2ed678`](https://github.com/swordev/suid/commit/b2ed678fcc4e6f6618eb14854b9aa8bb7f52fa43) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `Switch` component
+
+- Updated dependencies [[`adafe7d`](https://github.com/swordev/suid/commit/adafe7d0d794bc992402c60d5fe9b6b29ffd7eb5)]:
+  - @suid/system@0.0.9
+  - @suid/base@0.0.10
+
 ## 0.0.10
 
 ### Patch Changes
