@@ -1,5 +1,11 @@
 # @suid/system
 
+## 0.0.9
+
+### Patch Changes
+
+- [`adafe7d`](https://github.com/swordev/suid/commit/adafe7d0d794bc992402c60d5fe9b6b29ffd7eb5) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix typings
+
 ## 0.0.8
 
 ### Patch Changes
