@@ -73,13 +73,13 @@ function createComponentFactory<
       const theme = useTheme();
       const set = (v: any) => v;
       const inProps = mergeProps(
-        () => theme.components?.[options.name]?.defaultProps ?? {},
         () =>
           options.propDefaults?.({
             set,
             theme,
             inProps: input.inProps ?? (inProps as any),
           }) ?? {},
+        () => theme.components?.[options.name]?.defaultProps ?? {},
         input.inProps
       ) as InProps;
       const [props, otherProps] = splitProps(inProps, options.selfPropNames);
