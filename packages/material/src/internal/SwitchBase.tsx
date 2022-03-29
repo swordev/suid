@@ -136,7 +136,7 @@ const SwitchBase = $.component(function SwitchBase({
       centerRipple
       focusRipple={!props.disableFocusRipple}
       disabled={disabled()}
-      tabIndex={""}
+      tabIndex={null as any}
       role={undefined}
       onFocus={(event) => {
         if (typeof otherProps.onFocus === "function") {
