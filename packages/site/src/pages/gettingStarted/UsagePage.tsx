@@ -1,3 +1,4 @@
+import Link from "@suid/material/Link";
 import Typography from "@suid/material/Typography";
 import PageNav from "~/components/PageNav";
 import PaperCode from "~/components/PaperCode";
@@ -8,6 +9,13 @@ export default function UsagePage() {
     <>
       <Typography component="h1" variant="h4" sx={{ mt: 1 }}>
         Usage
+      </Typography>
+      <Typography variant="body1" sx={{ mt: 2 }}>
+        For a completed usage guide, please go to{" "}
+        <Link href="https://mui.com" target="_blank">
+          MUI
+        </Link>
+        .
       </Typography>
       <Typography component="h2" variant="h5" sx={{ mt: 2, mb: 1 }}>
         Quick usage
