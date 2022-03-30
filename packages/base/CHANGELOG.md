@@ -1,5 +1,19 @@
 # @suid/base
 
+## 0.0.11
+
+### Patch Changes
+
+- [`508d60f`](https://github.com/swordev/suid/commit/508d60fc29b908519b857a78568efa7e4308ca2a) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix default props
+
+* [`56ca9f2`](https://github.com/swordev/suid/commit/56ca9f2d42e75b6f2882f53a7fdda98b278a2578) Thanks [@juanrgm](https://github.com/juanrgm)! - Add license files
+
+* Updated dependencies [[`56ca9f2`](https://github.com/swordev/suid/commit/56ca9f2d42e75b6f2882f53a7fdda98b278a2578)]:
+  - @suid/css@0.0.4
+  - @suid/system@0.0.10
+  - @suid/types@0.0.3
+  - @suid/utils@0.0.4
+
 ## 0.0.10
 
 ### Patch Changes

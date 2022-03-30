@@ -1,5 +1,14 @@
 # @suid/utils
 
+## 0.0.4
+
+### Patch Changes
+
+- [`56ca9f2`](https://github.com/swordev/suid/commit/56ca9f2d42e75b6f2882f53a7fdda98b278a2578) Thanks [@juanrgm](https://github.com/juanrgm)! - Add license files
+
+- Updated dependencies [[`56ca9f2`](https://github.com/swordev/suid/commit/56ca9f2d42e75b6f2882f53a7fdda98b278a2578)]:
+  - @suid/types@0.0.3
+
 ## 0.0.3
 
 ### Patch Changes

@@ -1,5 +1,25 @@
 # @suid/site
 
+## 0.0.18
+
+### Patch Changes
+
+- [`56ca9f2`](https://github.com/swordev/suid/commit/56ca9f2d42e75b6f2882f53a7fdda98b278a2578) Thanks [@juanrgm](https://github.com/juanrgm)! - Add license files
+
+* [`0021962`](https://github.com/swordev/suid/commit/0021962635a30c6b7b347a4780ef89cfaa61b8a1) Thanks [@juanrgm](https://github.com/juanrgm)! - Add descriptions to the examples
+
+- [`6b4f425`](https://github.com/swordev/suid/commit/6b4f425011cf573ca5fb9c72b9a7856e5148ed73) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `Material Icons` page
+
+* [`3b28ebe`](https://github.com/swordev/suid/commit/3b28ebe0d41cd6807e7d26c63d7ad2433cbe1721) Thanks [@juanrgm](https://github.com/juanrgm)! - Add customization pages
+
+* Updated dependencies [[`508d60f`](https://github.com/swordev/suid/commit/508d60fc29b908519b857a78568efa7e4308ca2a), [`0b25151`](https://github.com/swordev/suid/commit/0b25151aed681dd94352dfb5856c7ed487809d0c), [`56ca9f2`](https://github.com/swordev/suid/commit/56ca9f2d42e75b6f2882f53a7fdda98b278a2578)]:
+  - @suid/base@0.0.11
+  - @suid/material@0.0.12
+  - @suid/icons-material@0.0.12
+  - @suid/system@0.0.10
+  - @suid/types@0.0.3
+  - @suid/utils@0.0.4
+
 ## 0.0.17
 
 ### Patch Changes
