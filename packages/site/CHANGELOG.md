@@ -1,5 +1,19 @@
 # @suid/site
 
+## 0.0.20
+
+### Patch Changes
+
+- [`da3846f`](https://github.com/swordev/suid/commit/da3846ff5b1151bfdc7a562d63091fe28e38cd28) Thanks [@juanrgm](https://github.com/juanrgm)! - Add readme file
+
+- Updated dependencies [[`778a57d`](https://github.com/swordev/suid/commit/778a57d5881f1f07b6127884b24bee56492e7e2f), [`da3846f`](https://github.com/swordev/suid/commit/da3846ff5b1151bfdc7a562d63091fe28e38cd28)]:
+  - @suid/base@0.0.13
+  - @suid/material@0.0.14
+  - @suid/system@0.0.12
+  - @suid/icons-material@0.0.14
+  - @suid/types@0.0.4
+  - @suid/utils@0.0.5
+
 ## 0.0.19
 
 ### Patch Changes

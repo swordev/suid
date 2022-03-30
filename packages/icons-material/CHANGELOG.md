@@ -1,5 +1,14 @@
 # @suid/icons-material
 
+## 0.0.14
+
+### Patch Changes
+
+- [`da3846f`](https://github.com/swordev/suid/commit/da3846ff5b1151bfdc7a562d63091fe28e38cd28) Thanks [@juanrgm](https://github.com/juanrgm)! - Add readme file
+
+- Updated dependencies [[`778a57d`](https://github.com/swordev/suid/commit/778a57d5881f1f07b6127884b24bee56492e7e2f), [`da3846f`](https://github.com/swordev/suid/commit/da3846ff5b1151bfdc7a562d63091fe28e38cd28)]:
+  - @suid/material@0.0.14
+
 ## 0.0.13
 
 ### Patch Changes

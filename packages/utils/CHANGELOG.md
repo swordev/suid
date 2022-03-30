@@ -1,5 +1,14 @@
 # @suid/utils
 
+## 0.0.5
+
+### Patch Changes
+
+- [`da3846f`](https://github.com/swordev/suid/commit/da3846ff5b1151bfdc7a562d63091fe28e38cd28) Thanks [@juanrgm](https://github.com/juanrgm)! - Add readme file
+
+- Updated dependencies [[`da3846f`](https://github.com/swordev/suid/commit/da3846ff5b1151bfdc7a562d63091fe28e38cd28)]:
+  - @suid/types@0.0.4
+
 ## 0.0.4
 
 ### Patch Changes
