@@ -3,7 +3,7 @@ import { SxPropsObject } from "@suid/system/sxProps";
 import { EventParam } from "@suid/types";
 import { snakeCase, uncapitalize } from "@suid/utils/string";
 import { Route, Routes } from "solid-app-router";
-import { Component, lazy, Match, Switch } from "solid-js";
+import { Component, JSXElement, lazy, Match, Switch } from "solid-js";
 
 export const Pages = Object.assign(
   import.meta.glob(`./pages/**/*Page/index.{ts,tsx}`),
@@ -41,12 +41,14 @@ export function toPath(localPath: string) {
 }
 
 export function RoutingElementContainer(props: {
-  Component: Component;
+  Component?: Component;
+  children?: JSXElement;
   sx?: SxPropsObject;
 }) {
   return (
     <Container maxWidth="lg" sx={{ flexGrow: 1, p: 3, ...(props.sx || {}) }}>
-      <props.Component />
+      {!!props.Component && <props.Component />}
+      {props.children}
     </Container>
   );
 }

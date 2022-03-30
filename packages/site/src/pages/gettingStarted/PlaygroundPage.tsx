@@ -2,19 +2,25 @@ import Box from "@suid/material/Box";
 import Skeleton from "@suid/material/Skeleton";
 import Typography from "@suid/material/Typography";
 import createElementRef from "@suid/system/createElementRef";
-import { createSignal, onMount, Show } from "solid-js";
+import { createEffect, createSignal, Show } from "solid-js";
 import PageNav from "~/components/PageNav";
 import { useLayoutContext } from "~/layouts/MainLayout/LayoutContext";
 import buildProjectOptions from "~/utils/stackblitz/buildProjectOptions";
 import embedProject from "~/utils/stackblitz/embedProject";
 
-export default function PlaygroundPage() {
-  const element = createElementRef();
+let embed = false;
+
+export default function PlaygroundPage(props: { visible: boolean }) {
+  const wrapper = createElementRef();
   const layoutContext = useLayoutContext();
   const [ready, setReady] = createSignal(false);
-  onMount(() => {
+
+  const start = () => {
+    const aside = document.createElement("aside");
+    wrapper.ref.innerHTML = "";
+    wrapper.ref.append(aside);
     embedProject(
-      element.ref,
+      aside,
       buildProjectOptions({
         title: "SUID Playground",
       }),
@@ -22,10 +28,19 @@ export default function PlaygroundPage() {
         forceEmbedLayout: true,
         theme: layoutContext.darkMode ? "dark" : "light",
       }
-    );
-    setTimeout(() => {
-      setReady(true);
-    }, 1500);
+    ).then(() => {
+      embed = true;
+    });
+  };
+
+  setTimeout(() => {
+    setReady(true);
+  }, 1500);
+
+  createEffect(() => {
+    if (props.visible && !embed) {
+      start();
+    }
   });
 
   return (
@@ -49,6 +64,7 @@ export default function PlaygroundPage() {
         </Show>
 
         <Box
+          ref={wrapper}
           sx={{
             height: 1,
             ...(!ready() && {
@@ -56,9 +72,7 @@ export default function PlaygroundPage() {
               height: 0,
             }),
           }}
-        >
-          <aside ref={element} />
-        </Box>
+        />
       </Box>
       <PageNav sx={{ mt: 2 }} />
     </>

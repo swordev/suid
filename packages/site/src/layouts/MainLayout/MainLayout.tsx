@@ -104,11 +104,12 @@ export default function MainLayout() {
             <Toolbar />
             <Show when={playgroundLoaded()}>
               <RoutingElementContainer
-                Component={PlaygroundPage}
                 sx={{
                   display: isPlaygroundPage() ? "block" : "none",
                 }}
-              />
+              >
+                <PlaygroundPage visible={isPlaygroundPage()} />
+              </RoutingElementContainer>
             </Show>
             <Routing />
           </Box>
