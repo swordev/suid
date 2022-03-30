@@ -9,7 +9,7 @@ import { SxPropsObject } from "../sxProps";
 import sxPropsFactory from "../sxPropsFactory";
 import useTheme from "../useTheme";
 import { BoxTypeMap } from "./BoxProps";
-import { mergeProps, splitProps } from "solid-js";
+import { createMemo, mergeProps, splitProps } from "solid-js";
 
 export const boxSelfProps: (keyof BoxSelfProps)[] = ["sx", "theme"];
 
@@ -23,9 +23,15 @@ export const Box = defineComponent<BoxTypeMap>(function Box(inProps) {
   const [props, otherProps] = splitProps(allProps, boxSelfProps);
   const element = createElementRef(otherProps);
   const theme = useTheme();
+  const forwardSx = createMemo(
+    () => !!inProps.component && typeof inProps.component !== "string"
+  );
+  const dynamicProps = mergeProps(otherProps, () => ({
+    sx: forwardSx() ? inProps.sx : undefined,
+  }));
 
   const sxClass = createSxClass(() => {
-    if (!props.sx) return [];
+    if (!props.sx || forwardSx()) return [];
     const sxArray = Array.isArray(props.sx) ? props.sx : [props.sx];
     const result = sxArray.map(
       (object: SxPropsObject & { resolved?: boolean }) => {
@@ -46,16 +52,16 @@ export const Box = defineComponent<BoxTypeMap>(function Box(inProps) {
   });
 
   createClassListEffect(element, () =>
-    [...(otherProps.className?.split(" ") || []), sxClass()].reduce(
-      (result, name) => {
-        if (name?.length) result[name] = true;
-        return result;
-      },
-      {} as Record<string, boolean>
-    )
+    [
+      ...(otherProps.className?.split(" ") || []),
+      ...(forwardSx() ? [] : [sxClass()]),
+    ].reduce((result, name) => {
+      if (name?.length) result[name] = true;
+      return result;
+    }, {} as Record<string, boolean>)
   );
 
-  return <Dynamic {...otherProps} ref={element} />;
+  return <Dynamic {...dynamicProps} ref={element} />;
 });
 
 export default Box;
