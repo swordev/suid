@@ -57,7 +57,7 @@ export function findNavConfigs(href: string) {
   const iterate = (configs: Config[]) => {
     for (const config of configs) {
       if (config.type === "section") {
-        if (config.items && !iterate(config.items)) break;
+        if (config.items && !iterate(config.items)) return false;
       } else if (config.type === "link") {
         if (config.href === href) {
           current = config;
