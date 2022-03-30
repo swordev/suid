@@ -7,10 +7,11 @@ import defineComponent from "../defineComponent";
 import resolveStyleProps from "../resolveStyleProps";
 import { SxPropsObject } from "../sxProps";
 import sxPropsFactory from "../sxPropsFactory";
+import useTheme from "../useTheme";
 import { BoxTypeMap } from "./BoxProps";
 import { mergeProps, splitProps } from "solid-js";
 
-export const boxSelfProps: (keyof BoxSelfProps)[] = ["sx"];
+export const boxSelfProps: (keyof BoxSelfProps)[] = ["sx", "theme"];
 
 export const Box = defineComponent<BoxTypeMap>(function Box(inProps) {
   const allProps = mergeProps(
@@ -21,6 +22,7 @@ export const Box = defineComponent<BoxTypeMap>(function Box(inProps) {
   );
   const [props, otherProps] = splitProps(allProps, boxSelfProps);
   const element = createElementRef(otherProps);
+  const theme = useTheme();
 
   const sxClass = createSxClass(() => {
     if (!props.sx) return [];
@@ -32,7 +34,11 @@ export const Box = defineComponent<BoxTypeMap>(function Box(inProps) {
           const { resolved, ...restObject } = object;
           return restObject;
         } else {
-          return resolveStyleProps(object, sxPropsFactory);
+          return resolveStyleProps(
+            object,
+            props.theme || theme,
+            sxPropsFactory
+          );
         }
       }
     );

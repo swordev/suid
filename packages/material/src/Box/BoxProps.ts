@@ -4,7 +4,7 @@ import { ElementType, OverrideProps } from "@suid/types";
 export interface BoxTypeMap<P = {}, D extends ElementType = "div"> {
   name: "MuiBox";
   selfProps: {};
-  props: P & SysBoxTypeMap["props"] & BoxTypeMap["selfProps"];
+  props: P & Omit<SysBoxTypeMap["props"], "theme"> & BoxTypeMap["selfProps"];
   defaultComponent: D;
 }
 

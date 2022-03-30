@@ -1,7 +1,6 @@
 import createStylePropsFactory from "./createStylePropsFactory";
 import { Theme } from "./createTheme";
 import getThemeValue from "./getThemeValue";
-import useTheme from "./useTheme";
 
 export function resolveThemeValue(
   theme: Theme,
@@ -30,8 +29,7 @@ function createSxPropsFactory(
 ) {
   return createStylePropsFactory({
     border: {
-      onValue: (name, value) => {
-        const theme = useTheme();
+      onValue: (name, value, theme) => {
         if (name === "borderRadius") {
           if (typeof value === "number") {
             if (options.border?.themeBorderRadius) {
@@ -48,24 +46,21 @@ function createSxPropsFactory(
       },
     },
     palette: {
-      onValue: (name, value) => {
-        const theme = useTheme();
+      onValue: (name, value, theme) => {
         return resolveThemeValue(theme, "palette", value);
       },
     },
     position: {
-      onValue: (name, value) => {
+      onValue: (name, value, theme) => {
         if (name === "zIndex") {
-          const theme = useTheme();
           value = theme.zIndex?.[name] ?? value;
         }
         return value;
       },
     },
     sizing: {
-      onValue: (name, value) => {
+      onValue: (name, value, theme) => {
         if (name === "maxWidth") {
-          const theme = useTheme();
           value = theme.breakpoints.values[name as "xs"] ?? value;
         }
         if (typeof value === "number" && value > 0 && value <= 1) {
@@ -76,14 +71,12 @@ function createSxPropsFactory(
       },
     },
     spacing: {
-      onValue: (name, value) => {
-        const theme = useTheme();
+      onValue: (name, value, theme) => {
         return options.spacing?.themeSpacing ? theme.spacing(value) : value;
       },
     },
     typography: {
-      onValue: (name, value) => {
-        const theme = useTheme();
+      onValue: (name, value, theme) => {
         if (name === "typography") {
           return getThemeValue(theme, "typography", value);
         } else if (typeof value === "string") {

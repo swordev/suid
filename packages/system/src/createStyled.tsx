@@ -53,7 +53,7 @@ export const skipProps: (keyof StyledProps<any, any>)[] = [
 function createStyled<
   T extends Theme<any>,
   CM extends Record<string, any> = {}
->(config?: { defaultTheme?: T | (() => T) }) {
+>(config?: { onUseTheme?: () => T }) {
   return function styled<C extends ElementType, N extends string = string>(
     Component: C,
     options: StyledOptions<N> = {}
@@ -87,7 +87,9 @@ function createStyled<
       >[]
     ) {
       return function (inProps: _ComponentProps<C> & StyledProps<T, O>) {
-        const theme = useTheme(config?.defaultTheme) as T;
+        const theme = config?.onUseTheme
+          ? config.onUseTheme()
+          : (useTheme() as T);
         const [, otherProps] = splitProps(
           inProps,
           options.skipProps ?? skipProps
@@ -109,7 +111,7 @@ function createStyled<
                 } else if (v) {
                   object = v;
                 }
-                if (object) return resolveStyleProps(object);
+                if (object) return resolveStyleProps(object, theme);
               })
               .filter((v) => !!v) as SxPropsObject[]
         ) as Accessor<SxPropsObject[]>;

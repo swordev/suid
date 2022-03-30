@@ -1,6 +1,6 @@
 import composeClasses from "./composeClasses";
+import useTheme from "./useTheme";
 import { Theme } from "@suid/system/createTheme";
-import useTheme from "@suid/system/useTheme";
 import {
   ComponentDefaultProps,
   ComponentInProps,

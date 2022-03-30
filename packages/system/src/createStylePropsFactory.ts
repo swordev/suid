@@ -1,3 +1,5 @@
+import { Theme } from "./createTheme";
+
 const dirMap = {
   t: ["Top"],
   r: ["Right"],
@@ -14,7 +16,7 @@ export type StyleProps = {
 };
 
 export type PropsOptions = {
-  onValue?: (name: string, value: any) => any;
+  onValue?: (name: string, value: any, theme: Theme) => any;
 };
 
 export type Dir = keyof typeof dirMap;
@@ -26,9 +28,9 @@ function numberProp(
   valueSuffix?: string
 ) {
   const names = suffix.length ? suffix.map((v) => `${name}${v}`) : [name];
-  return (value: string | number) => {
+  return (value: string | number, theme: Theme) => {
     return names.reduce((result, name) => {
-      value = options.onValue ? options.onValue(name, value) : value;
+      value = options.onValue ? options.onValue(name, value, theme) : value;
       if (typeof value === "number")
         value = valueSuffix ? `${value}${valueSuffix}` : value;
       result[name] = value;
@@ -42,9 +44,9 @@ function pxProp(name: string, suffix: string[], options: PropsOptions = {}) {
 }
 
 function prop<V>(name: string, options: PropsOptions = {}) {
-  return (value: V) => {
+  return (value: V, theme: Theme) => {
     return {
-      [name]: options.onValue ? options.onValue(name, value) : value,
+      [name]: options.onValue ? options.onValue(name, value, theme) : value,
     } as Record<string, any>;
   };
 }
