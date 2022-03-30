@@ -1,5 +1,17 @@
 # @suid/site
 
+## 0.0.19
+
+### Patch Changes
+
+- [`92846c8`](https://github.com/swordev/suid/commit/92846c8836150fa29a71ef9d570d39daf2972bfb) Thanks [@juanrgm](https://github.com/juanrgm)! - Add meta tags
+
+- Updated dependencies [[`f02b15e`](https://github.com/swordev/suid/commit/f02b15ea8cb290534dfabc10e9436603143f50e9)]:
+  - @suid/material@0.0.13
+  - @suid/system@0.0.11
+  - @suid/icons-material@0.0.13
+  - @suid/base@0.0.12
+
 ## 0.0.18
 
 ### Patch Changes
