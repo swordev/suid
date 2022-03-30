@@ -1,6 +1,6 @@
 {
   "name": "@suid/base",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "scripts": {
     "build": "tsc --build",
     "clean": "tsc --build --clean",

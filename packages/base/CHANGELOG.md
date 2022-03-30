@@ -1,5 +1,19 @@
 # @suid/base
 
+## 0.0.13
+
+### Patch Changes
+
+- [`778a57d`](https://github.com/swordev/suid/commit/778a57d5881f1f07b6127884b24bee56492e7e2f) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix `useTheme` when is used with `vite` in server mode
+
+* [`da3846f`](https://github.com/swordev/suid/commit/da3846ff5b1151bfdc7a562d63091fe28e38cd28) Thanks [@juanrgm](https://github.com/juanrgm)! - Add readme file
+
+* Updated dependencies [[`778a57d`](https://github.com/swordev/suid/commit/778a57d5881f1f07b6127884b24bee56492e7e2f), [`da3846f`](https://github.com/swordev/suid/commit/da3846ff5b1151bfdc7a562d63091fe28e38cd28)]:
+  - @suid/system@0.0.12
+  - @suid/css@0.0.5
+  - @suid/types@0.0.4
+  - @suid/utils@0.0.5
+
 ## 0.0.12
 
 ### Patch Changes
