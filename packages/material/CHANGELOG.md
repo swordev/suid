@@ -1,5 +1,15 @@
 # @suid/material
 
+## 0.0.13
+
+### Patch Changes
+
+- [`f02b15e`](https://github.com/swordev/suid/commit/f02b15ea8cb290534dfabc10e9436603143f50e9) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix `useTheme`
+
+- Updated dependencies [[`f02b15e`](https://github.com/swordev/suid/commit/f02b15ea8cb290534dfabc10e9436603143f50e9)]:
+  - @suid/system@0.0.11
+  - @suid/base@0.0.12
+
 ## 0.0.12
 
 ### Patch Changes
