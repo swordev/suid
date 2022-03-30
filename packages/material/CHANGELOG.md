@@ -1,5 +1,20 @@
 # @suid/material
 
+## 0.0.12
+
+### Patch Changes
+
+- [`0b25151`](https://github.com/swordev/suid/commit/0b25151aed681dd94352dfb5856c7ed487809d0c) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix errors
+
+* [`56ca9f2`](https://github.com/swordev/suid/commit/56ca9f2d42e75b6f2882f53a7fdda98b278a2578) Thanks [@juanrgm](https://github.com/juanrgm)! - Add license files
+
+* Updated dependencies [[`508d60f`](https://github.com/swordev/suid/commit/508d60fc29b908519b857a78568efa7e4308ca2a), [`56ca9f2`](https://github.com/swordev/suid/commit/56ca9f2d42e75b6f2882f53a7fdda98b278a2578)]:
+  - @suid/base@0.0.11
+  - @suid/css@0.0.4
+  - @suid/system@0.0.10
+  - @suid/types@0.0.3
+  - @suid/utils@0.0.4
+
 ## 0.0.11
 
 ### Patch Changes

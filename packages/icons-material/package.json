@@ -1,6 +1,6 @@
 {
   "name": "@suid/icons-material",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "scripts": {
     "build": "tsc --build",
     "clean": "tsc --build --clean",
