@@ -77,8 +77,10 @@ async function genRes() {
     if (
       ["base", "icons-material", "material", "system"].includes(packageName)
     ) {
+      await copyFile(muiLicensePath, `${targetPath}/../LICENSE`);
       await copyFile(muiLicensePath, `${targetPath}/LICENSE`);
     } else {
+      await copyFile(commonLicensePath, `${targetPath}/../LICENSE`);
       await copyFile(commonLicensePath, `${targetPath}/LICENSE`);
     }
 
