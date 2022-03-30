@@ -1,4 +1,5 @@
 import CodeIcon from "@suid/icons-material/Code";
+import EditRoundedIcon from "@suid/icons-material/EditRounded";
 import HandymanIcon from "@suid/icons-material/Handyman";
 import RocketLaunchIcon from "@suid/icons-material/RocketLaunch";
 import { useTheme } from "@suid/material";
@@ -105,6 +106,39 @@ export const navConfig: Config[] = [
       href: `/system/${toFolder(text)}`,
       text,
     })),
+  },
+  {
+    type: "section",
+    text: "Customization",
+    icon: EditRoundedIcon,
+    items: [
+      {
+        type: "section",
+        text: "Theme",
+        items: [
+          "Theming",
+          "Palette",
+          "Dark mode",
+          "Typography",
+          "Spacing",
+          "Breakpoints",
+          "Density",
+          "z-index",
+          "Transitions",
+          "Components",
+          "Default Theme",
+          "How to Customize",
+          "Color",
+          "Unstyled Components",
+        ]
+          .map((text) =>
+            createLinkConfig(text, `/customization/theme/${toFolder(text)}`)
+          )
+          .filter((item) =>
+            checkComponentPage("customization/theme", item.text)
+          ),
+      },
+    ],
   },
   {
     type: "section",
