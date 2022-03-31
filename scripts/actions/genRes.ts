@@ -1,31 +1,9 @@
-import { copyFile, mkdir, readlink, symlink, unlink } from "fs/promises";
+import { copyFile, mkdir } from "fs/promises";
 import { safeStat } from "~/util/fs";
 import { parsePackageFile, writePackageFile } from "~/util/package";
-import { getPackageNames, packagesPath } from "~/util/workspace";
+import { getPackageNames, packagesPath, rootPath } from "~/util/workspace";
 
 const resPath = `${__dirname}/../res`;
-
-async function syncModulesDir(sourceDir: string, targetPath: string) {
-  const modulesFolder = "node_modules";
-  const sourceModulesPath = `${sourceDir}/${modulesFolder}`;
-  const targetModulesPath = `${targetPath}/${modulesFolder}`;
-
-  if (await safeStat(sourceModulesPath)) {
-    try {
-      await symlink(sourceModulesPath, targetModulesPath, "junction");
-    } catch (error) {
-      if ((error as NodeJS.ErrnoException).code !== "EEXIST") throw error;
-    }
-  } else {
-    let existsLink = false;
-    try {
-      existsLink = !!(await readlink(targetModulesPath));
-    } catch (error) {
-      if ((error as NodeJS.ErrnoException).code !== "ENOENT") throw error;
-    }
-    if (existsLink) await unlink(targetModulesPath);
-  }
-}
 
 async function genRes() {
   const { name } = genRes;
@@ -79,7 +57,6 @@ async function genRes() {
     }
 
     await writePackageFile(outPkgPath, newPkg);
-    await syncModulesDir(pkgDir, targetPath);
   }
 }
 

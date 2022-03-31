@@ -6,7 +6,10 @@ import extractMaterialSource from "~/actions/extractMaterialSource";
 import genIconsMaterialSource from "~/actions/genIconsMaterialSource";
 import genIconsMaterialTyping from "~/actions/genIconsMaterialTyping";
 import genRes from "~/actions/genRes";
+import patchLibModulesLinks from "~/actions/patchLibModulesLinks";
 import patchTsConfigs from "~/actions/patchTsConfigs";
+import postbuild from "~/actions/postbuild";
+import prebuild from "~/actions/prebuild";
 import syncIconsMaterial from "~/actions/syncIconsMaterial";
 
 export function snakeCase(value: string) {
@@ -46,7 +49,15 @@ program
   .command(snakeCase(genIconsMaterialTyping.name))
   .action(() => genIconsMaterialTyping());
 
+program
+  .command(snakeCase(patchLibModulesLinks.name))
+  .action(() => patchLibModulesLinks());
+
 program.command(snakeCase(patchTsConfigs.name)).action(() => patchTsConfigs());
+
+program.command(snakeCase(postbuild.name)).action(() => postbuild());
+
+program.command(snakeCase(prebuild.name)).action(() => prebuild());
 
 program.command(snakeCase(genRes.name)).action(() => genRes());
 
