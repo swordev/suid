@@ -1,6 +1,7 @@
 {
   "name": "@suid/site",
-  "version": "0.0.21",
+  "version": "0.0.22",
+  "description": "SUID website.",
   "keywords": [
     "best_ecosystem",
     "components",
