@@ -6,6 +6,7 @@ import extractMaterialSource from "~/actions/extractMaterialSource";
 import genIconsMaterialSource from "~/actions/genIconsMaterialSource";
 import genIconsMaterialTyping from "~/actions/genIconsMaterialTyping";
 import genRes from "~/actions/genRes";
+import genRoadmap from "~/actions/genRoadmap";
 import patchLibModulesLinks from "~/actions/patchLibModulesLinks";
 import patchTsConfigs from "~/actions/patchTsConfigs";
 import postbuild from "~/actions/postbuild";
@@ -58,6 +59,11 @@ program.command(snakeCase(patchTsConfigs.name)).action(() => patchTsConfigs());
 program.command(snakeCase(postbuild.name)).action(() => postbuild());
 
 program.command(snakeCase(prebuild.name)).action(() => prebuild());
+
+program
+  .command(snakeCase(genRoadmap.name))
+  .option("--version [value]", "Material UI version", version)
+  .action((options: { version: string }) => genRoadmap(options));
 
 program.command(snakeCase(genRes.name)).action(() => genRes());
 
