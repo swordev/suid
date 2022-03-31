@@ -56,6 +56,7 @@ async function genRes() {
       await copyFile(commonLicensePath, `${targetPath}/LICENSE`);
     }
 
+    await copyFile(commonLicensePath, `${rootPath}/LICENSE`);
     await writePackageFile(outPkgPath, newPkg);
   }
 }
