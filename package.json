@@ -1,6 +1,22 @@
 {
   "name": "@suid/site",
-  "version": "0.0.20",
+  "version": "0.0.21",
+  "keywords": [
+    "best_ecosystem",
+    "components",
+    "material",
+    "material-design",
+    "material-ui",
+    "mui",
+    "solid",
+    "solid-js",
+    "solid.js",
+    "solidhack",
+    "solidjs",
+    "styled-component",
+    "ui",
+    "ux"
+  ],
   "homepage": "https://suid.io",
   "bugs": {
     "url": "https://github.com/swordev/suid.git/issues"
@@ -29,6 +45,17 @@
     "@suid/types": "workspace:*",
     "@suid/utils": "workspace:*",
     "prism-themes": "^1.9.0",
-    "prismjs": "^1.27.0"
+    "prismjs": "^1.27.0",
+    "solid-app-router": "^0.3.1"
+  },
+  "devDependencies": {
+    "@types/prismjs": "^1.26.0",
+    "rimraf": "^3.0.2",
+    "sass": "^1.49.9",
+    "vite": "^2.8.6",
+    "vite-plugin-solid": "^2.2.6"
+  },
+  "peerDependencies": {
+    "solid-js": "^1.3.7"
   }
 }
