@@ -14,6 +14,27 @@ npm install @suid/material
 
 https://suid.io
 
+## Roadmap
+
+For details about the project status go [here](https://github.com/swordev/suid/blob/main/ROADMAP.md).
+
+## Development
+
+### Requirements
+
+- [Node.js v16](https://nodejs.org)
+- [pnpm](https://pnpm.io)
+
+### Startup
+
+```sh
+git clone https://github.com/swordev/suid
+cd suid
+pnpm install
+pnpm build
+pnpm start
+```
+
 ## Contributing
 
 To contribute to the project, follow these steps:
@@ -29,4 +50,4 @@ To contribute to the project, follow these steps:
 
 ## License
 
-Distributed under the MIT License. See LICENSE for more information.
+Distributed under the MIT License. See LICENSE file in each package for more information.
