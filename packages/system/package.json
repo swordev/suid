@@ -1,6 +1,7 @@
 {
   "name": "@suid/system",
   "version": "0.0.13",
+  "description": "Styles system used by suid packages.",
   "main": "index.jsx",
   "scripts": {
     "build": "tsc --build",

@@ -1,6 +1,7 @@
 {
   "name": "@suid/site",
   "version": "0.0.21",
+  "description": "SUID website.",
   "files": [
     "assets/**/*",
     "index.html"

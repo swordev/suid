@@ -1,6 +1,7 @@
 {
   "name": "@suid/utils",
   "version": "0.0.6",
+  "description": "Utils used by suid packages.",
   "scripts": {
     "build": "tsc --build",
     "clean": "tsc --build --clean",

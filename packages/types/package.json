@@ -1,6 +1,7 @@
 {
   "name": "@suid/types",
   "version": "0.0.5",
+  "description": "Types used by suid packages.",
   "scripts": {
     "build": "tsc --build",
     "clean": "tsc --build --clean",
