@@ -48,20 +48,14 @@ async function genRes() {
         ...(commonPkg.repository || {}),
         ...(pkg.repository || {}),
       },
-      keywords: [...(commonPkg?.keywords ?? []), ...(pkg.keywords ?? [])]
-        .sort()
-        .filter(
-          (v) =>
-            !["best_ecosystem", "solid"].some((pattern) => v.includes(pattern))
-        ),
+      keywords: [
+        ...(commonPkg?.keywords ?? []),
+        ...(pkg.keywords ?? []),
+      ].sort(),
     };
 
     delete newPkg.scripts;
-    delete newPkg.keywords;
-    delete newPkg.devDependencies;
-    delete newPkg.peerDependencies;
     delete newPkg.publishConfig;
-    if (newPkg.dependencies) delete newPkg.dependencies["solid-app-router"];
 
     const readmePath = `${pkgDir}/README.md`;
     const changelogPath = `${pkgDir}/CHANGELOG.md`;
