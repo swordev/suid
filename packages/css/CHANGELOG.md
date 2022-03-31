@@ -1,5 +1,14 @@
 # @suid/css
 
+## 0.0.7
+
+### Patch Changes
+
+- [`ef21396`](https://github.com/swordev/suid/commit/ef21396ead087c64b44a1744834f09a68a1f45a2) Thanks [@juanrgm](https://github.com/juanrgm)! - Add package description
+
+- Updated dependencies [[`ef21396`](https://github.com/swordev/suid/commit/ef21396ead087c64b44a1744834f09a68a1f45a2)]:
+  - @suid/utils@0.0.7
+
 ## 0.0.6
 
 ### Patch Changes

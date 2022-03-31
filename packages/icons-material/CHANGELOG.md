@@ -1,5 +1,14 @@
 # @suid/icons-material
 
+## 0.0.16
+
+### Patch Changes
+
+- [`ef21396`](https://github.com/swordev/suid/commit/ef21396ead087c64b44a1744834f09a68a1f45a2) Thanks [@juanrgm](https://github.com/juanrgm)! - Add package description
+
+- Updated dependencies [[`ef21396`](https://github.com/swordev/suid/commit/ef21396ead087c64b44a1744834f09a68a1f45a2)]:
+  - @suid/material@0.0.16
+
 ## 0.0.15
 
 ### Patch Changes
