@@ -312,10 +312,9 @@ export default function HomePage() {
                 alignItems: "center",
               }}
             >
-              <Button<typeof RouterLink>
+              <Button
                 variant="contained"
                 size="large"
-                component={RouterLink}
                 href="/getting-started/installation"
                 onMouseEnter={tryPreload}
                 fullWidth={isXs()}

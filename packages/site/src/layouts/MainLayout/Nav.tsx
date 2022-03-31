@@ -11,7 +11,7 @@ import ListItemIcon from "@suid/material/ListItemIcon";
 import ListItemText from "@suid/material/ListItemText";
 import SvgIcon from "@suid/material/SvgIcon";
 import { snakeCase, uncapitalize } from "@suid/utils/string";
-import { Link as RouterLink, useLocation } from "solid-app-router";
+import { useLocation } from "solid-app-router";
 import { Component, createMemo, JSXElement, mapArray } from "solid-js";
 import { Pages, tryPreload } from "~/Routing";
 import { useLayoutContext } from "./LayoutContext";
@@ -332,7 +332,7 @@ function NavLink(props: { text: string; href: string }) {
   return (
     <ListItemButton
       selected={selected()}
-      component={RouterLink}
+      component="a"
       sx={{ pl: "45px" }}
       href={props.href}
       onMouseEnter={tryPreload}

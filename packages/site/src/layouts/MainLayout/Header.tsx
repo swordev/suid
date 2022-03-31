@@ -61,9 +61,9 @@ export default function Header() {
           </IconButton>
         </Show>
         <Typography
+          component="a"
           variant="h6"
           noWrap
-          component={RouterLink}
           sx={{ mr: 3, textDecoration: "none", color: "inherit" }}
           href="/"
         >
@@ -71,17 +71,15 @@ export default function Header() {
         </Typography>
         <Box sx={{ flexGrow: 1 }}>
           <Show when={!xs()}>
-            <Button<typeof RouterLink>
+            <Button
               color="inherit"
-              component={RouterLink}
               href="/getting-started/installation"
               onMouseEnter={tryPreload}
             >
               Docs
             </Button>
-            <Button<typeof RouterLink>
+            <Button
               color="inherit"
-              component={RouterLink}
               href="/getting-started/playground"
               onMouseEnter={tryPreload}
             >
