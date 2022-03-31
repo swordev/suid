@@ -1,5 +1,18 @@
 # @suid/system
 
+## 0.0.13
+
+### Patch Changes
+
+- [`506fade`](https://github.com/swordev/suid/commit/506fadee9e15acc91a776b4c59da5814ae6fe66c) Thanks [@juanrgm](https://github.com/juanrgm)! - Add package info
+
+* [`d1a1f65`](https://github.com/swordev/suid/commit/d1a1f65fc409a4f69d83aeb6d65ef3e9075fbcf3) Thanks [@juanrgm](https://github.com/juanrgm)! - Forward `sx` prop for avoiding create two classes
+
+* Updated dependencies [[`506fade`](https://github.com/swordev/suid/commit/506fadee9e15acc91a776b4c59da5814ae6fe66c)]:
+  - @suid/css@0.0.6
+  - @suid/types@0.0.5
+  - @suid/utils@0.0.6
+
 ## 0.0.12
 
 ### Patch Changes

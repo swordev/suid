@@ -1,5 +1,14 @@
 # @suid/icons-material
 
+## 0.0.15
+
+### Patch Changes
+
+- [`506fade`](https://github.com/swordev/suid/commit/506fadee9e15acc91a776b4c59da5814ae6fe66c) Thanks [@juanrgm](https://github.com/juanrgm)! - Add package info
+
+- Updated dependencies [[`506fade`](https://github.com/swordev/suid/commit/506fadee9e15acc91a776b4c59da5814ae6fe66c)]:
+  - @suid/material@0.0.15
+
 ## 0.0.14
 
 ### Patch Changes

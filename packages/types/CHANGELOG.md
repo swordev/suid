@@ -1,5 +1,11 @@
 # @suid/types
 
+## 0.0.5
+
+### Patch Changes
+
+- [`506fade`](https://github.com/swordev/suid/commit/506fadee9e15acc91a776b4c59da5814ae6fe66c) Thanks [@juanrgm](https://github.com/juanrgm)! - Add package info
+
 ## 0.0.4
 
 ### Patch Changes
