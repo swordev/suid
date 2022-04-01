@@ -1,5 +1,11 @@
 # @suid/material
 
+## 0.0.17
+
+### Patch Changes
+
+- [`dcfa251`](https://github.com/swordev/suid/commit/dcfa2513c59d6518cb5a910c9fa5ac616f88ca27) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `FormControlLabel` component
+
 ## 0.0.16
 
 ### Patch Changes
