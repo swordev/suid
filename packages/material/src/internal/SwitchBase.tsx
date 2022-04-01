@@ -1,5 +1,6 @@
 import ButtonBase from "../ButtonBase";
 import useFormControl from "../FormControl/useFormControl";
+import useFormControlLabel from "../FormControlLabel/useFormControlLabel";
 import styled from "../styles/styled";
 import capitalize from "../utils/capitalize";
 import useControlled from "../utils/useControlled";
@@ -89,8 +90,9 @@ const SwitchBase = $.component(function SwitchBase({
   otherProps,
   props,
 }) {
+  const formControlLabel = useFormControlLabel();
   const [checked, setCheckedState] = useControlled({
-    controlled: () => props.checked,
+    controlled: () => props.checked ?? formControlLabel?.checked,
     default: () => Boolean(props.defaultChecked),
     name: "SwitchBase",
     state: "checked",
@@ -99,10 +101,18 @@ const SwitchBase = $.component(function SwitchBase({
   const muiFormControl = useFormControl();
 
   const disabled = createMemo(() => {
-    if (muiFormControl && typeof props.disabled === "undefined") {
+    if (typeof formControlLabel?.disabled !== "undefined") {
+      return formControlLabel.disabled;
+    } else if (muiFormControl && typeof props.disabled === "undefined") {
       return muiFormControl.disabled;
     } else {
       return props.disabled;
+    }
+  });
+
+  createEffect(() => {
+    if (formControlLabel) {
+      formControlLabel.setDisabled(!!disabled());
     }
   });
 
@@ -117,6 +127,12 @@ const SwitchBase = $.component(function SwitchBase({
 
   const classes = $.useClasses(ownerState);
   const element = createRef(() => props.inputRef);
+
+  const inputValue = createMemo(() => {
+    if (props.type === "checkbox") {
+      return props.value ?? formControlLabel?.value;
+    }
+  });
 
   createEffect(() => {
     if (typeof props.defaultChecked === "boolean")
@@ -158,7 +174,7 @@ const SwitchBase = $.component(function SwitchBase({
         className={classes.input}
         disabled={disabled()}
         id={hasLabelFor() ? props.id : undefined}
-        name={props.name}
+        name={props.name ?? formControlLabel?.name}
         onClick={(event) => {
           // Workaround for https://github.com/facebook/react/issues/9023
           if (event.defaultPrevented) {
@@ -174,20 +190,23 @@ const SwitchBase = $.component(function SwitchBase({
           if (typeof props.onChange === "function") {
             // TODO v6: remove the second argument.
             props.onChange(event, newChecked);
+          } else {
+            formControlLabel?.onChange?.(event, newChecked);
           }
 
           if (typeof otherProps.onClick === "function")
             otherProps.onClick(event);
         }}
         readOnly={props.readOnly}
-        ref={element}
+        ref={(e) => {
+          element(e);
+          if (!props.inputRef) formControlLabel?.inputRef?.(e);
+        }}
         required={props.required}
         ownerState={ownerState}
         tabIndex={props.tabIndex}
         type={props.type}
-        {...(props.type === "checkbox" && props.value === undefined
-          ? {}
-          : { value: props.value as any })}
+        {...{ value: inputValue() }}
         {...(props.inputProps || {})}
       />
       {checked() ? props.checkedIcon : props.icon}

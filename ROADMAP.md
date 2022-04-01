@@ -59,7 +59,7 @@
 | Fade                    |  ✅   |
 | FilledInput             |       |
 | FormControl             |  ✅   |
-| FormControlLabel        |       |
+| FormControlLabel        |  ✅   |
 | FormGroup               |       |
 | FormHelperText          |       |
 | FormLabel               |       |
