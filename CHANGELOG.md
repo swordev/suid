@@ -1,5 +1,15 @@
 # @suid/site
 
+## 0.0.23
+
+### Patch Changes
+
+- [`463c01d`](https://github.com/swordev/suid/commit/463c01dcbb0fedb651a4c98df9ea9a02637ed9a9) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `FormControlLabel` example
+
+- Updated dependencies [[`dcfa251`](https://github.com/swordev/suid/commit/dcfa2513c59d6518cb5a910c9fa5ac616f88ca27)]:
+  - @suid/material@0.0.17
+  - @suid/icons-material@0.0.17
+
 ## 0.0.22
 
 ### Patch Changes
