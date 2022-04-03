@@ -1,5 +1,11 @@
 # @suid/system
 
+## 0.0.15
+
+### Patch Changes
+
+- [`16dcdd3`](https://github.com/swordev/suid/commit/16dcdd341bb7c7148126046a848b81ed85ae210c) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix CSS property order
+
 ## 0.0.14
 
 ### Patch Changes

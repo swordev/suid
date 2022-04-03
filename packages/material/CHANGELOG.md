@@ -1,5 +1,19 @@
 # @suid/material
 
+## 0.0.18
+
+### Patch Changes
+
+- [`67076af`](https://github.com/swordev/suid/commit/67076af65e0bb7a8c9c4186a64ddf59c6262af78) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `FormGroup` component
+
+* [`b819235`](https://github.com/swordev/suid/commit/b819235dd3f4988d62492d0d4290043b3e00cc18) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `Checkbox` component
+
+- [`16dcdd3`](https://github.com/swordev/suid/commit/16dcdd341bb7c7148126046a848b81ed85ae210c) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix CSS property order
+
+- Updated dependencies [[`16dcdd3`](https://github.com/swordev/suid/commit/16dcdd341bb7c7148126046a848b81ed85ae210c)]:
+  - @suid/system@0.0.15
+  - @suid/base@0.0.16
+
 ## 0.0.17
 
 ### Patch Changes
