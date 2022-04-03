@@ -60,7 +60,7 @@
 | FilledInput             |       |
 | FormControl             |  ✅   |
 | FormControlLabel        |  ✅   |
-| FormGroup               |       |
+| FormGroup               |  ✅   |
 | FormHelperText          |       |
 | FormLabel               |       |
 | GlobalStyles            |       |
