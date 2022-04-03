@@ -8,6 +8,15 @@ export function isPlainObject(
 
 export interface DeepmergeOptions {
   clone?: boolean;
+  sortKeys?: boolean;
+}
+
+function sortKeys<T extends Record<string, any>>(object: T, keys: (keyof T)[]) {
+  for (const key of keys) {
+    const value = object[key];
+    delete object[key];
+    object[key] = value;
+  }
 }
 
 export default function deepmerge<T>(
@@ -39,6 +48,9 @@ export default function deepmerge<T>(
         (output as Record<keyof any, unknown>)[key] = source[key];
       }
     });
+
+    if (options.sortKeys)
+      sortKeys(output, Object.keys(source) as (keyof typeof output)[]);
   }
 
   return output;

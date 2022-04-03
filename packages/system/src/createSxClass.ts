@@ -1,3 +1,4 @@
+import mergeSxObjects from "./mergeSxObjects";
 import SxProps from "./sxProps";
 import createStyle from "@suid/css/createStyle";
 import {
@@ -6,7 +7,6 @@ import {
   subscribeStyle,
   unsubscribeStyle,
 } from "@suid/css/style-element";
-import { merge } from "@suid/utils/merge";
 import { createRenderEffect, createSignal, onCleanup } from "solid-js";
 
 function createSxClass(value: () => SxProps | undefined) {
@@ -25,7 +25,7 @@ function createSxClass(value: () => SxProps | undefined) {
 
       const css = styles.reduce<Record<string, any>>((result, style) => {
         if ("name" in style) result[`--${style.name}`] = "";
-        merge(result, style);
+        mergeSxObjects(result, style);
         return result;
       }, {});
 

@@ -7,9 +7,9 @@ import {
   ThemeBreakpointBase,
 } from "@suid/system";
 import { Breakpoint } from "@suid/system/createTheme/createBreakpoints";
+import mergeSxObjects from "@suid/system/mergeSxObjects";
 import { createUnarySpacing } from "@suid/system/spacing";
 import { SxPropsObject } from "@suid/system/sxProps";
-import { merge } from "@suid/utils/merge";
 import { JSXElement, Show } from "solid-js";
 
 const $ = createComponentFactory<StackTypeMap>()({
@@ -107,7 +107,7 @@ const StackRoot = styled("div", {
         },
       } as SxPropsObject;
     };
-    styles = merge(
+    styles = mergeSxObjects(
       styles,
       handleBreakpoints({ theme }, spacingValues, styleFromPropValue)
     );
