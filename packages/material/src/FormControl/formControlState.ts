@@ -1,9 +1,11 @@
 import { FormControlState } from ".";
 import { createMemo } from "solid-js";
 
-export default function formControlState(data: {
+export default function formControlState<
+  S extends keyof FormControlState
+>(data: {
   props: Record<string, any>;
-  states: (keyof FormControlState)[];
+  states: S[];
   muiFormControl?: FormControlState;
 }) {
   return createMemo(() => {
@@ -17,6 +19,6 @@ export default function formControlState(data: {
       }
 
       return acc;
-    }, {} as Record<keyof FormControlState, any>);
+    }, {} as Pick<FormControlState, S>);
   });
 }
