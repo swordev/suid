@@ -41,7 +41,7 @@
 | CardContent             |  ✅   |
 | CardHeader              |  ✅   |
 | CardMedia               |  ✅   |
-| Checkbox                |       |
+| Checkbox                |  ✅   |
 | Chip                    |  ✅   |
 | CircularProgress        |  ✅   |
 | ClickAwayListener       |       |

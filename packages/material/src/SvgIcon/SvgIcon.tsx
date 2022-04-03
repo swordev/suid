@@ -1,10 +1,11 @@
 import styled from "../styles/styled";
+import SvgIconContext from "./SvgIconContext";
 import { SvgIconTypeMap } from "./SvgIconProps";
 import { getSvgIconUtilityClass } from "./svgIconClasses";
 import createComponentFactory from "@suid/base/createComponentFactory";
 import { capitalize } from "@suid/utils/string";
 import clsx from "clsx";
-import { Show } from "solid-js";
+import { Show, useContext } from "solid-js";
 
 const $ = createComponentFactory<SvgIconTypeMap>()({
   name: "MuiSvgIcon",
@@ -19,14 +20,16 @@ const $ = createComponentFactory<SvgIconTypeMap>()({
     "titleAccess",
     "viewBox",
   ],
-  propDefaults: ({ set }) =>
-    set({
+  propDefaults: ({ set }) => {
+    const context = useContext(SvgIconContext);
+    return set({
       component: "svg",
       color: "inherit",
-      fontSize: "medium",
+      fontSize: context?.fontSize ?? "medium",
       inheritViewBox: false,
       viewBox: "0 0 24 24",
-    }),
+    });
+  },
   utilityClass: getSvgIconUtilityClass,
   slotClasses: (o) => ({
     root: [
