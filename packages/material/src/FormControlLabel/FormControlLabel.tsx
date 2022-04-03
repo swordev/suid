@@ -20,7 +20,7 @@ import {
 } from "solid-js";
 
 type OwnerState = ComponentInProps<FormControlLabelTypeMap> & {
-  error: boolean;
+  error?: boolean;
 };
 
 const $ = createComponentFactory<FormControlLabelTypeMap, OwnerState>()({
