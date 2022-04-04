@@ -80,7 +80,7 @@ export default function Header() {
             </Button>
             <Button
               color="inherit"
-              href="/getting-started/playground"
+              href="/tools/playground"
               onMouseEnter={tryPreload}
             >
               Playground

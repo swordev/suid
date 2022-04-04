@@ -86,7 +86,7 @@ export function Routing() {
         path={path === "/home" ? "/" : path}
         element={
           <Switch fallback={<RoutingElementContainer Component={Component} />}>
-            <Match when={path === "/getting-started/playground"}>
+            <Match when={path === "/tools/playground"}>
               <></>
             </Match>
             <Match when={path === "/home"}>

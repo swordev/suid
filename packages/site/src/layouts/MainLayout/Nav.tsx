@@ -91,9 +91,19 @@ export const navConfig: Config[] = [
     type: "section",
     text: "Getting started",
     icon: RocketLaunchIcon,
-    items: ["Installation", "Usage", "Playground"].map((text) => ({
+    items: ["Installation", "Usage"].map((text) => ({
       type: "link",
       href: `/getting-started/${toFolder(text)}`,
+      text,
+    })),
+  },
+  {
+    type: "section",
+    text: "Tools",
+    icon: HandymanIcon,
+    items: ["Playground"].map((text) => ({
+      type: "link",
+      href: `/tools/${toFolder(text)}`,
       text,
     })),
   },

@@ -59,8 +59,7 @@ export default function MainLayout() {
   const location = useLocation();
   const isDownMd = useMediaQuery(theme.breakpoints.down("md"));
   const isMainPage = () => location.pathname === "/";
-  const isPlaygroundPage = () =>
-    location.pathname === "/getting-started/playground";
+  const isPlaygroundPage = () => location.pathname === "/tools/playground";
   const [playgroundLoaded, setPlaygroundLoaded] = createSignal(false);
 
   createEffect<boolean>((loaded) => {
