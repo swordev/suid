@@ -48,7 +48,9 @@ export default function PlaygroundPage(props: { visible: boolean }) {
       <Typography component="h1" variant="h4" sx={{ mt: 1 }}>
         Playground
       </Typography>
-
+      <Typography variant="body1" sx={{ mt: 2 }}>
+        Have fun playing with SUID.
+      </Typography>
       <Box
         sx={{
           mt: 2,
