@@ -58,7 +58,8 @@ export default function MainLayout() {
 
   const location = useLocation();
   const isDownMd = useMediaQuery(theme.breakpoints.down("md"));
-  const isMainPage = () => location.pathname === "/";
+  const isFullWidthPage = () =>
+    location.pathname === "/" || location.pathname.startsWith("/tools/");
   const isPlaygroundPage = () => location.pathname === "/tools/playground";
   const [playgroundLoaded, setPlaygroundLoaded] = createSignal(false);
 
@@ -77,7 +78,7 @@ export default function MainLayout() {
         <Box sx={{ display: "flex" }}>
           <CssBaseline enableColorScheme />
           <Header />
-          <Show when={!isMainPage()}>
+          <Show when={!isFullWidthPage()}>
             <Drawer
               open={context.drawer.open}
               variant={context.drawer.permanent ? "permanent" : "temporary"}
@@ -103,6 +104,7 @@ export default function MainLayout() {
             <Toolbar />
             <Show when={playgroundLoaded()}>
               <RoutingElementContainer
+                fullWidth
                 sx={{
                   display: isPlaygroundPage() ? "block" : "none",
                 }}
