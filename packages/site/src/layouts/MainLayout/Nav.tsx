@@ -2,6 +2,7 @@ import CodeIcon from "@suid/icons-material/Code";
 import EditRoundedIcon from "@suid/icons-material/EditRounded";
 import HandymanIcon from "@suid/icons-material/Handyman";
 import RocketLaunchIcon from "@suid/icons-material/RocketLaunch";
+import WebIcon from "@suid/icons-material/Web";
 import { useTheme } from "@suid/material";
 import Divider from "@suid/material/Divider";
 import List from "@suid/material/List";
@@ -100,7 +101,7 @@ export const navConfig: Config[] = [
   {
     type: "section",
     text: "Tools",
-    icon: HandymanIcon,
+    icon: WebIcon,
     items: ["Playground", "React to Solid"].map((text) => ({
       type: "link",
       href: `/tools/${toFolder(text)}`,
