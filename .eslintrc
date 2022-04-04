@@ -4,6 +4,7 @@
     {
       "files": [
         "./**/vite.config.{js,ts}",
+        "./**/vite/*.{js,ts}",
         "./**/scripts/**/*.js",
         "jest.config.js"
       ],

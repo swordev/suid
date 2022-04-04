@@ -69,7 +69,14 @@ export default function Header() {
         >
           SUID
         </Typography>
-        <Box sx={{ flexGrow: 1 }}>
+        <Box
+          sx={{
+            flexGrow: 1,
+            [`.${Button}`]: {
+              mx: 0.5,
+            },
+          }}
+        >
           <Show when={!xs()}>
             <Button
               color="inherit"
@@ -84,6 +91,13 @@ export default function Header() {
               onMouseEnter={tryPreload}
             >
               Playground
+            </Button>
+            <Button
+              color="inherit"
+              href="/tools/react-to-solid"
+              onMouseEnter={tryPreload}
+            >
+              React2Solid
             </Button>
           </Show>
         </Box>

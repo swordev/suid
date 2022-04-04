@@ -89,6 +89,9 @@ export function Routing() {
             <Match when={path === "/tools/playground"}>
               <></>
             </Match>
+            <Match when={path === "/tools/react-to-solid"}>
+              <RoutingElementContainer fullWidth Component={Component} />
+            </Match>
             <Match when={path === "/home"}>
               <Component />
             </Match>

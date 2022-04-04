@@ -7,6 +7,8 @@
     "paths": {
       "@suid/base": ["./../base/src"],
       "@suid/base/*": ["./../base/src/*"],
+      "@suid/codemod": ["./../codemod/src"],
+      "@suid/codemod/*": ["./../codemod/src/*"],
       "@suid/icons-material": ["./../icons-material/lib"],
       "@suid/icons-material/*": ["./../icons-material/lib/*"],
       "@suid/material": ["./../material/src"],
@@ -26,6 +28,9 @@
   "references": [
     {
       "path": "./../base"
+    },
+    {
+      "path": "./../codemod"
     },
     {
       "path": "./../icons-material"

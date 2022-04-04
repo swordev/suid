@@ -1,8 +1,11 @@
 import { readdirSync, readFileSync } from "fs";
-import { resolve } from "path";
+import { dirname, resolve } from "path";
 import { defineConfig } from "vite";
 import solidPlugin from "vite-plugin-solid";
+import readTypings from "./vite/readTypings";
 
+const solidJsPath = dirname(dirname(require.resolve("solid-js")));
+const SOLID_TYPINGS = readTypings(solidJsPath);
 const packageDir = `${__dirname}/../`;
 const parseJsonFile = (path) => JSON.parse(readFileSync(path).toString());
 
@@ -14,6 +17,8 @@ const SUID_VERSIONS = SUID_PKG_NAMES.reduce((result, name) => {
     result["solid-js"] = pkg.peerDependencies["solid-js"];
     result["vite"] = pkg.devDependencies["vite"];
     result["vite-plugin-solid"] = pkg.devDependencies["vite-plugin-solid"];
+  } else if (name === "codemod") {
+    result["ts-morph"] = pkg.dependencies["ts-morph"];
   }
   return result;
 }, {});
@@ -25,6 +30,7 @@ export default defineConfig({
   define: {
     SUID_PKG_NAMES: SUID_PKG_NAMES.map((name) => `@suid/${name}`),
     SUID_VERSIONS,
+    SOLID_TYPINGS,
   },
   plugins: [
     {
@@ -63,8 +69,10 @@ export default defineConfig({
   },
   resolve: {
     alias: {
+      "ts-morph": `https://esm.sh/ts-morph@${SUID_VERSIONS["ts-morph"]}`,
       "~": resolve(__dirname, "src"),
       "@suid/types": resolve(__dirname, "../types/src"),
+      "@suid/codemod": resolve(__dirname, "../codemod/src"),
       "@suid/css": resolve(__dirname, "../css/src"),
       "@suid/utils": resolve(__dirname, "../utils/src"),
       "@suid/base": resolve(__dirname, "../base/src"),
