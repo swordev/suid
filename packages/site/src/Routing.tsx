@@ -1,9 +1,18 @@
+import Box from "@suid/material/Box";
 import Container from "@suid/material/Container";
 import { SxPropsObject } from "@suid/system/sxProps";
 import { EventParam } from "@suid/types";
 import { snakeCase, uncapitalize } from "@suid/utils/string";
 import { Route, Routes } from "solid-app-router";
-import { Component, JSXElement, lazy, Match, Switch } from "solid-js";
+import {
+  Component,
+  createMemo,
+  JSXElement,
+  lazy,
+  Match,
+  Show,
+  Switch,
+} from "solid-js";
 
 export const Pages = Object.assign(
   import.meta.glob(`./pages/**/*Page/index.{ts,tsx}`),
@@ -43,13 +52,30 @@ export function toPath(localPath: string) {
 export function RoutingElementContainer(props: {
   Component?: Component;
   children?: JSXElement;
+  fullWidth?: boolean;
   sx?: SxPropsObject;
 }) {
-  return (
-    <Container maxWidth="lg" sx={{ flexGrow: 1, p: 3, ...(props.sx || {}) }}>
+  const sx = createMemo(
+    () =>
+      ({
+        flexGrow: 1,
+        p: 3,
+        ...(props.sx || {}),
+      } as SxPropsObject)
+  );
+  const children = createMemo(() => (
+    <>
       {!!props.Component && <props.Component />}
       {props.children}
-    </Container>
+    </>
+  ));
+  return (
+    <Show
+      when={!props.fullWidth}
+      fallback={<Box sx={sx()} children={children()} />}
+    >
+      <Container maxWidth="lg" sx={sx()} children={children()} />
+    </Show>
   );
 }
 
