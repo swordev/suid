@@ -10,7 +10,7 @@ import Toolbar from "@suid/material/Toolbar";
 import Typography from "@suid/material/Typography";
 import useMediaQuery from "@suid/material/useMediaQuery";
 import createSvgIcon from "@suid/material/utils/createSvgIcon";
-import { useLocation, Link as RouterLink } from "solid-app-router";
+import { useLocation } from "solid-app-router";
 import { Show } from "solid-js";
 import { tryPreload } from "~/Routing";
 import { saveDarkMode, useLayoutContext } from "./LayoutContext";
