@@ -1,5 +1,14 @@
 # @suid/site
 
+## 0.0.25
+
+### Patch Changes
+
+- [`c417667`](https://github.com/swordev/suid/commit/c417667b28b6bc5c9f64b03c23ba02cdef97d971) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `ReactToSolid` tools page
+
+- Updated dependencies [[`8895644`](https://github.com/swordev/suid/commit/8895644da660d10b80c48c6f2a4de3597a6f7345)]:
+  - @suid/codemod@0.0.2
+
 ## 0.0.24
 
 ### Patch Changes
