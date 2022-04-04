@@ -101,7 +101,7 @@ export const navConfig: Config[] = [
     type: "section",
     text: "Tools",
     icon: HandymanIcon,
-    items: ["Playground"].map((text) => ({
+    items: ["Playground", "React to Solid"].map((text) => ({
       type: "link",
       href: `/tools/${toFolder(text)}`,
       text,
