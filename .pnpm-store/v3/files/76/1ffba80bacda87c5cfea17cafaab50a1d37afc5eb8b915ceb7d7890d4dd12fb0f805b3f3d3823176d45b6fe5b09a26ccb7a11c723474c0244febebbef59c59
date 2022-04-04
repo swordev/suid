@@ -1,0 +1,58 @@
+{
+  "name": "enhanced-resolve-jest",
+  "description": "Resolver for Jest which uses the enhanced-resolve module",
+  "version": "1.1.0",
+  "author": "Dylan Piercey <dpiercey@ebay.com>",
+  "bugs": "https://github.com/mlrawlings/enhanced-resolve-jest/issues",
+  "devDependencies": {
+    "@commitlint/cli": "^8.0.0",
+    "@commitlint/config-conventional": "^8.0.0",
+    "@types/enhanced-resolve": "^3.0.6",
+    "@types/jest": "^24.0.15",
+    "@types/node": "^12.0.8",
+    "coveralls": "^3.0.4",
+    "husky": "^2.4.1",
+    "jest": "^24.8.0",
+    "lint-staged": "^8.2.1",
+    "nyc": "^14.1.1",
+    "prettier": "^1.18.2",
+    "ts-jest": "^24.0.2",
+    "ts-node": "^8.3.0",
+    "tslint": "^5.17.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.5.2"
+  },
+  "files": [
+    "dist"
+  ],
+  "homepage": "https://github.com/mlrawlings/enhanced-resolve-jest",
+  "keywords": [
+    "jest",
+    "resolver",
+    "resolve",
+    "webpack",
+    "enhanced",
+    "module",
+    "browser"
+  ],
+  "license": "MIT",
+  "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mlrawlings/enhanced-resolve-jest"
+  },
+  "scripts": {
+    "build": "tsc",
+    "ci:report": "cat coverage/lcov.info | coveralls",
+    "ci:test": "npm test -- --coverage",
+    "format": "prettier \"**/*.{json,md,js,ts}\" --write",
+    "lint": "tsc --noEmit && tslint -t codeFrame -c tslint.json '{src,test}/**/*.ts'",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "types": "dist/index.d.ts",
+  "dependencies": {
+    "enhanced-resolve": "^4.1.0",
+    "tslib": "^1.10.0"
+  }
+}

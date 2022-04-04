@@ -1,0 +1,342 @@
+import { createComponent, createContext, createMemo, createRenderEffect, createSignal, on, onCleanup, untrack, useContext, useTransition, resetErrorBoundaries } from "solid-js";
+import { isServer } from "solid-js/web";
+import { normalizeIntegration } from "./integration";
+import { createMemoObject, extractSearchParams, invariant, resolvePath, createMatcher, joinPaths, scoreRoute, mergeSearchString } from "./utils";
+const MAX_REDIRECTS = 100;
+export const RouterContextObj = createContext();
+export const RouteContextObj = createContext();
+export const useRouter = () => invariant(useContext(RouterContextObj), "Make sure your app is wrapped in a <Router />");
+export const useRoute = () => useContext(RouteContextObj) || useRouter().base;
+export const useResolvedPath = (path) => {
+    const route = useRoute();
+    return createMemo(() => route.resolvePath(path()));
+};
+export const useHref = (to) => {
+    const router = useRouter();
+    return createMemo(() => {
+        const to_ = to();
+        return to_ !== undefined ? router.renderPath(to_) : to_;
+    });
+};
+export const useNavigate = () => useRouter().navigatorFactory();
+export const useLocation = () => useRouter().location;
+export const useIsRouting = () => useRouter().isRouting;
+export const useMatch = (path) => {
+    const location = useLocation();
+    const matcher = createMemo(() => createMatcher(path()));
+    return createMemo(() => matcher()(location.pathname));
+};
+export const useParams = () => useRoute().params;
+export const useRouteData = () => useRoute().data;
+export const useSearchParams = () => {
+    const location = useLocation();
+    const navigate = useNavigate();
+    const setSearchParams = (params, options) => {
+        const searchString = mergeSearchString(location.search, params);
+        navigate(searchString ? `?${searchString}` : "", { scroll: false, ...options, resolve: true });
+    };
+    return [location.query, setSearchParams];
+};
+export function createRoute(routeDef, base = "", fallback) {
+    const { path: originalPath, component, data, children } = routeDef;
+    const isLeaf = !children || (Array.isArray(children) && !children.length);
+    const path = joinPaths(base, originalPath);
+    const pattern = isLeaf ? path : path.split("/*", 1)[0];
+    return {
+        originalPath,
+        pattern,
+        element: component
+            ? () => createComponent(component, {})
+            : () => {
+                const { element } = routeDef;
+                return element === undefined && fallback
+                    ? createComponent(fallback, {})
+                    : element;
+            },
+        preload: routeDef.component
+            ? component.preload
+            : routeDef.preload,
+        data,
+        matcher: createMatcher(pattern, !isLeaf)
+    };
+}
+export function createBranch(routes, index = 0) {
+    return {
+        routes,
+        score: scoreRoute(routes[routes.length - 1]) * 10000 - index,
+        matcher(location) {
+            const matches = [];
+            for (let i = routes.length - 1; i >= 0; i--) {
+                const route = routes[i];
+                const match = route.matcher(location);
+                if (!match) {
+                    return null;
+                }
+                matches.unshift({
+                    ...match,
+                    route
+                });
+            }
+            return matches;
+        }
+    };
+}
+export function createBranches(routeDef, base = "", fallback, stack = [], branches = []) {
+    const routeDefs = Array.isArray(routeDef) ? routeDef : [routeDef];
+    for (let i = 0, len = routeDefs.length; i < len; i++) {
+        const def = routeDefs[i];
+        if (def && typeof def === "object" && def.hasOwnProperty("path")) {
+            const route = createRoute(def, base, fallback);
+            stack.push(route);
+            if (def.children) {
+                createBranches(def.children, route.pattern, fallback, stack, branches);
+            }
+            else {
+                const branch = createBranch([...stack], branches.length);
+                branches.push(branch);
+            }
+            stack.pop();
+        }
+    }
+    // Stack will be empty on final return
+    return stack.length ? branches : branches.sort((a, b) => b.score - a.score);
+}
+export function getRouteMatches(branches, location) {
+    for (let i = 0, len = branches.length; i < len; i++) {
+        const match = branches[i].matcher(location);
+        if (match) {
+            return match;
+        }
+    }
+    return [];
+}
+export function createLocation(path, state) {
+    const origin = new URL("http://sar");
+    const url = createMemo(prev => {
+        const path_ = path();
+        try {
+            return new URL(path_, origin);
+        }
+        catch (err) {
+            console.error(`Invalid path ${path_}`);
+            return prev;
+        }
+    }, origin, {
+        equals: (a, b) => a.href === b.href
+    });
+    const pathname = createMemo(() => url().pathname);
+    const search = createMemo(() => url().search.slice(1));
+    const hash = createMemo(() => url().hash.slice(1));
+    const key = createMemo(() => "");
+    return {
+        get pathname() {
+            return pathname();
+        },
+        get search() {
+            return search();
+        },
+        get hash() {
+            return hash();
+        },
+        get state() {
+            return state();
+        },
+        get key() {
+            return key();
+        },
+        query: createMemoObject(on(search, () => extractSearchParams(url())))
+    };
+}
+export function createRouterContext(integration, base = "", data, out) {
+    const { signal: [source, setSource], utils = {} } = normalizeIntegration(integration);
+    const parsePath = utils.parsePath || (p => p);
+    const renderPath = utils.renderPath || (p => p);
+    const basePath = resolvePath("", base);
+    const output = isServer && out
+        ? Object.assign(out, {
+            matches: [],
+            url: undefined
+        })
+        : undefined;
+    if (basePath === undefined) {
+        throw new Error(`${basePath} is not a valid base path`);
+    }
+    else if (basePath && !source().value) {
+        setSource({ value: basePath, replace: true, scroll: false });
+    }
+    const [isRouting, start] = useTransition();
+    const [reference, setReference] = createSignal(source().value);
+    const [state, setState] = createSignal(source().state);
+    const location = createLocation(reference, state);
+    const referrers = [];
+    const baseRoute = {
+        pattern: basePath,
+        params: {},
+        path: () => basePath,
+        outlet: () => null,
+        resolvePath(to) {
+            return resolvePath(basePath, to);
+        }
+    };
+    baseRoute.data =
+        data &&
+            data({
+                data: undefined,
+                params: {},
+                location,
+                navigate: navigatorFactory(baseRoute)
+            });
+    function navigateFromRoute(route, to, options) {
+        // Untrack in case someone navigates in an effect - don't want to track `reference` or route paths
+        untrack(() => {
+            if (typeof to === "number") {
+                if (!to) {
+                    // A delta of 0 means stay at the current location, so it is ignored
+                }
+                else if (utils.go) {
+                    utils.go(to);
+                }
+                else {
+                    console.warn("Router integration does not support relative routing");
+                }
+                return;
+            }
+            const { replace, resolve, scroll, state: nextState } = {
+                replace: false,
+                resolve: true,
+                scroll: true,
+                ...options
+            };
+            const resolvedTo = resolve ? route.resolvePath(to) : resolvePath("", to);
+            if (resolvedTo === undefined) {
+                throw new Error(`Path '${to}' is not a routable path`);
+            }
+            else if (referrers.length >= MAX_REDIRECTS) {
+                throw new Error("Too many redirects");
+            }
+            const current = reference();
+            if (resolvedTo !== current || nextState !== state()) {
+                if (isServer) {
+                    if (output) {
+                        output.url = resolvedTo;
+                    }
+                    setSource({ value: resolvedTo, replace, scroll, state: nextState });
+                }
+                else {
+                    const len = referrers.push({ value: current, replace, scroll, state });
+                    start(() => {
+                        setReference(resolvedTo);
+                        setState(nextState);
+                        resetErrorBoundaries();
+                    }).then(() => {
+                        if (referrers.length === len) {
+                            navigateEnd({
+                                value: resolvedTo,
+                                state: nextState
+                            });
+                        }
+                    });
+                }
+            }
+        });
+    }
+    function navigatorFactory(route) {
+        // Workaround for vite issue (https://github.com/vitejs/vite/issues/3803)
+        route = route || useContext(RouteContextObj) || baseRoute;
+        return (to, options) => navigateFromRoute(route, to, options);
+    }
+    function navigateEnd(next) {
+        const first = referrers[0];
+        if (first) {
+            if (next.value !== first.value || next.state !== first.state) {
+                setSource({
+                    ...next,
+                    replace: first.replace,
+                    scroll: first.scroll
+                });
+            }
+            referrers.length = 0;
+        }
+    }
+    createRenderEffect(() => {
+        const { value, state } = source();
+        if (value !== untrack(reference)) {
+            start(() => {
+                setReference(value);
+                setState(state);
+            });
+        }
+    });
+    if (!isServer) {
+        function handleAnchorClick(evt) {
+            if (evt.defaultPrevented ||
+                evt.button !== 0 ||
+                evt.metaKey ||
+                evt.altKey ||
+                evt.ctrlKey ||
+                evt.shiftKey)
+                return;
+            const a = evt
+                .composedPath()
+                .find(el => el instanceof Node && el.nodeName.toUpperCase() === "A");
+            if (!a)
+                return;
+            const isSvg = a instanceof SVGAElement;
+            const href = isSvg ? a.href.baseVal : a.href;
+            const target = isSvg ? a.target.baseVal : a.target;
+            if (target || (!href && !a.hasAttribute("state")))
+                return;
+            const rel = (a.getAttribute("rel") || "").split(/\s+/);
+            if (a.hasAttribute("download") || (rel && rel.includes("external")))
+                return;
+            const url = isSvg ? new URL(href, document.baseURI) : new URL(href);
+            if (url.origin !== window.location.origin ||
+                (basePath && url.pathname && !url.pathname.toLowerCase().startsWith(basePath.toLowerCase())))
+                return;
+            const to = parsePath(url.pathname + url.search + url.hash);
+            const state = a.getAttribute("state");
+            evt.preventDefault();
+            navigateFromRoute(baseRoute, to, {
+                resolve: false,
+                replace: a.hasAttribute("replace"),
+                scroll: !a.hasAttribute("noscroll"),
+                state: state && JSON.parse(state)
+            });
+        }
+        document.addEventListener("click", handleAnchorClick);
+        onCleanup(() => document.removeEventListener("click", handleAnchorClick));
+    }
+    return {
+        base: baseRoute,
+        out: output,
+        location,
+        isRouting,
+        renderPath,
+        parsePath,
+        navigatorFactory
+    };
+}
+export function createRouteContext(router, parent, child, match) {
+    const { base, location, navigatorFactory } = router;
+    const { pattern, element: outlet, preload, data } = match().route;
+    const path = createMemo(() => match().path);
+    const params = createMemoObject(() => match().params);
+    preload && preload();
+    const route = {
+        parent,
+        pattern,
+        get child() {
+            return child();
+        },
+        path,
+        params,
+        outlet,
+        resolvePath(to) {
+            return resolvePath(base.path(), to, path());
+        }
+    };
+    route.data = data
+        ? data({ data: parent.data, params, location, navigate: navigatorFactory(route) })
+        : parent.data;
+    return route;
+}

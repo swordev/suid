@@ -1,0 +1,24 @@
+{
+  "name": "cint",
+  "version": "6.0.0",
+  "homepage": "https://github.com/metaraine/cint",
+  "authors": [
+    "metaraine <raineorshine@gmail.com>"
+  ],
+  "description": "A Javascript utility belt with a focus on Functional Programming.",
+  "main": "cint.js",
+  "keywords": [
+    "functional",
+    "utility",
+    "underscore",
+    "lodash"
+  ],
+  "license": "ISC",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

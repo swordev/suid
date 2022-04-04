@@ -1,0 +1,25 @@
+import { ResolverFactory } from "enhanced-resolve";
+declare type CreateResolver = typeof ResolverFactory.createResolver;
+declare type ResolverOpts = Parameters<CreateResolver>[0];
+declare type JestResolveOpts = Parameters<typeof import("jest-resolve/build/defaultResolver").default>[1];
+declare type getConfigOpts = Pick<JestResolveOpts, "browser" | "extensions" | "moduleDirectory">;
+declare const _default: (modulePath: string, jestOpts: {
+    basedir: string;
+    browser?: boolean | undefined;
+    defaultResolver: typeof import("jest-resolve/build/defaultResolver").default;
+    extensions?: string[] | undefined;
+    moduleDirectory?: string[] | undefined;
+    paths?: string[] | undefined;
+    rootDir?: string | undefined;
+}) => string;
+export default _default;
+export declare function create(getConfig: (opts: getConfigOpts) => ResolverOpts): (modulePath: string, jestOpts: {
+    basedir: string;
+    browser?: boolean | undefined;
+    defaultResolver: typeof import("jest-resolve/build/defaultResolver").default;
+    extensions?: string[] | undefined;
+    moduleDirectory?: string[] | undefined;
+    paths?: string[] | undefined;
+    rootDir?: string | undefined;
+}) => string;
+export declare function getDefaultConfig(opts: getConfigOpts): ResolverOpts;

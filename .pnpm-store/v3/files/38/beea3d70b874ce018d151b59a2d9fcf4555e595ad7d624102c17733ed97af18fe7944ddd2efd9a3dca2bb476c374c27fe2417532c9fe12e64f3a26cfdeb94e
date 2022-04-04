@@ -1,0 +1,5 @@
+import type { Ui, Result, Options } from "./types";
+declare function render(ui: Ui, options?: Options): Result;
+declare function cleanup(): void;
+export * from "@testing-library/dom";
+export { render, cleanup };

@@ -1,0 +1,5 @@
+/** A Javascript utility belt with an emphasis on Functional Programming.
+	@module <%= name %>
+	@author <%= author %>
+	@version v<%= version %> (<%= buildtime %>)
+*/

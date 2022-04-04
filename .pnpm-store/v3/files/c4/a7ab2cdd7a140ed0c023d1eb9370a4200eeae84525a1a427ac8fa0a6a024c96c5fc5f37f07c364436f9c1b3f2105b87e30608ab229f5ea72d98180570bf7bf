@@ -1,0 +1,12 @@
+import { Project, OpenOptions, EmbedOptions } from './interfaces';
+import { VM } from './VM';
+declare const StackBlitzSDK: {
+    connect(frameEl: HTMLIFrameElement): Promise<VM>;
+    openGithubProject(repoSlug: string, options?: OpenOptions | undefined): void;
+    openProject(project: Project, options?: OpenOptions | undefined): void;
+    openProjectId(projectId: string, options?: OpenOptions | undefined): void;
+    embedGithubProject(elementOrId: string | HTMLElement, repoSlug: string, options?: EmbedOptions | undefined): Promise<VM>;
+    embedProject(elementOrId: string | HTMLElement, project: Project, options?: EmbedOptions | undefined): Promise<VM>;
+    embedProjectId(elementOrId: string | HTMLElement, projectId: string, options?: EmbedOptions | undefined): Promise<VM>;
+};
+export default StackBlitzSDK;

@@ -1,0 +1,64 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const knownNamespaces = ["on", "oncapture", "use", "prop", "attr"];
+const styleNamespaces = ["style", "class"];
+const rule = {
+    meta: {
+        type: "problem",
+        docs: {
+            recommended: "error",
+            description: "Enforce using only Solid-specific namespaced attribute names (i.e. `'on:'` in `<div on:click={...} />`).",
+            url: "https://github.com/joshwilsonvu/eslint-plugin-solid/blob/main/docs/no-unknown-namespaces.md",
+        },
+        schema: [
+            {
+                type: "object",
+                properties: {
+                    allowedNamespaces: {
+                        description: "an array of additional namespace names to allow",
+                        type: "array",
+                        items: {
+                            type: "string",
+                            minItems: 1,
+                            uniqueItems: true,
+                        },
+                    },
+                },
+                additionalProperties: false,
+            },
+        ],
+        messages: {
+            unknown: `'{{namespace}}:' is not one of Solid's special prefixes for JSX attributes (${knownNamespaces
+                .map((n) => `'${n}:'`)
+                .join(", ")}).`,
+            style: "Using the '{{namespace}}:' special prefix is potentially confusing, prefer the '{{namespace}}' prop instead.",
+        },
+    },
+    create(context) {
+        var _a, _b;
+        const explicitlyAllowedNamespaces = (_b = (_a = context.options) === null || _a === void 0 ? void 0 : _a[0]) === null || _b === void 0 ? void 0 : _b.allowedNamespaces;
+        return {
+            "JSXAttribute > JSXNamespacedName": (node) => {
+                var _a;
+                const namespace = (_a = node.namespace) === null || _a === void 0 ? void 0 : _a.name;
+                if (!(knownNamespaces.includes(namespace) || (explicitlyAllowedNamespaces === null || explicitlyAllowedNamespaces === void 0 ? void 0 : explicitlyAllowedNamespaces.includes(namespace)))) {
+                    if (styleNamespaces.includes(namespace)) {
+                        context.report({
+                            node,
+                            messageId: "style",
+                            data: { namespace },
+                        });
+                    }
+                    else {
+                        context.report({
+                            node,
+                            messageId: "unknown",
+                            data: { namespace },
+                        });
+                    }
+                }
+            },
+        };
+    },
+};
+exports.default = rule;

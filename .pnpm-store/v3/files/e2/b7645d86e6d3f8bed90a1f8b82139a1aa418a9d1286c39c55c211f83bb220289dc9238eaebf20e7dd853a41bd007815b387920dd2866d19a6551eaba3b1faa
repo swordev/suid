@@ -1,0 +1,84 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.trackImports = exports.getCommentAfter = exports.getCommentBefore = exports.findInScope = exports.isProgramOrFunctionNode = exports.isFunctionNode = exports.findParent = exports.find = exports.formatList = exports.isPropsByName = exports.isDOMElementName = void 0;
+const domElementRegex = /^[a-z]/;
+const isDOMElementName = (name) => domElementRegex.test(name);
+exports.isDOMElementName = isDOMElementName;
+const propsRegex = /[pP]rops/;
+const isPropsByName = (name) => propsRegex.test(name);
+exports.isPropsByName = isPropsByName;
+const formatList = (strings) => {
+    if (strings.length === 0) {
+        return "";
+    }
+    else if (strings.length === 1) {
+        return `'${strings[0]}'`;
+    }
+    else if (strings.length === 2) {
+        return `'${strings[0]}' and '${strings[1]}'`;
+    }
+    else {
+        const last = strings.length - 1;
+        return `${strings
+            .slice(0, last)
+            .map((s) => `'${s}'`)
+            .join(", ")}, and '${strings[last]}'`;
+    }
+};
+exports.formatList = formatList;
+const find = (node, predicate) => {
+    let n = node;
+    while (n) {
+        const result = predicate(n);
+        if (result) {
+            return n;
+        }
+        n = n.parent;
+    }
+    return null;
+};
+exports.find = find;
+function findParent(node, predicate) {
+    return node.parent ? exports.find(node.parent, predicate) : null;
+}
+exports.findParent = findParent;
+const FUNCTION_TYPES = ["FunctionExpression", "ArrowFunctionExpression", "FunctionDeclaration"];
+const isFunctionNode = (node) => !!node && FUNCTION_TYPES.includes(node.type);
+exports.isFunctionNode = isFunctionNode;
+const PROGRAM_OR_FUNCTION_TYPES = ["Program"].concat(FUNCTION_TYPES);
+const isProgramOrFunctionNode = (node) => !!node && PROGRAM_OR_FUNCTION_TYPES.includes(node.type);
+exports.isProgramOrFunctionNode = isProgramOrFunctionNode;
+function findInScope(node, scope, predicate) {
+    const found = exports.find(node, (node) => node === scope || predicate(node));
+    return found === scope ? null : found;
+}
+exports.findInScope = findInScope;
+const getCommentBefore = (node, sourceCode) => sourceCode
+    .getCommentsBefore(node)
+    .find((comment) => comment.loc.end.line >= node.loc.start.line - 1);
+exports.getCommentBefore = getCommentBefore;
+const getCommentAfter = (node, sourceCode) => sourceCode
+    .getCommentsAfter(node)
+    .find((comment) => comment.loc.start.line === node.loc.end.line);
+exports.getCommentAfter = getCommentAfter;
+const trackImports = (fromModule = /^solid-js(?:\/?|\b)/) => {
+    const importMap = new Map();
+    const handleImportDeclaration = (node) => {
+        if (fromModule.test(node.source.value)) {
+            for (const specifier of node.specifiers) {
+                if (specifier.type === "ImportSpecifier") {
+                    importMap.set(specifier.imported.name, specifier.local.name);
+                }
+            }
+        }
+    };
+    const matchImport = (imports, str) => {
+        const importArr = Array.isArray(imports) ? imports : [imports];
+        return importArr
+            .map((i) => importMap.get(i))
+            .filter(Boolean)
+            .includes(str);
+    };
+    return { matchImport, handleImportDeclaration };
+};
+exports.trackImports = trackImports;

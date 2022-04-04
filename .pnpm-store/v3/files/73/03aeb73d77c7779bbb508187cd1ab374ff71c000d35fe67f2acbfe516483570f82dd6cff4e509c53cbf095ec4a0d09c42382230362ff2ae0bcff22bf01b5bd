@@ -1,0 +1,47 @@
+{
+  "name": "spawn-please",
+  "version": "1.0.0",
+  "description": "Promisified child_process.spawn. *Supports stdin* *Rejects on stderr*",
+  "license": "ISC",
+  "repository": "raineorshine/spawn-please",
+  "author": {
+    "name": "Raine Revere",
+    "url": "https://github.com/raineorshine"
+  },
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "test": "mocha",
+    "lint": "eslint .",
+    "lintfix": "eslint --fix .",
+    "watch": "nodemon -w index.js -w test -x 'npm test'"
+  },
+  "keywords": [
+    "promise",
+    "promisified",
+    "child_process",
+    "child process",
+    "exec",
+    "spawn",
+    "stdin",
+    "stdout",
+    "stderr"
+  ],
+  "devDependencies": {
+    "bluebird": "^3.7.2",
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "eslint": "^7.13.0",
+    "eslint-config-standard": "^16.0.1",
+    "eslint-plugin-fp": "^2.3.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsdoc": "^30.7.7",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.2",
+    "mocha": "^8.2.1",
+    "nodemon": "^2.0.6",
+    "require-new": "^1.1.0"
+  }
+}
