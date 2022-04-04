@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "outDir": "lib",
+    "rootDir": "src",
+    "module": "CommonJS",
+    "paths": {}
+  },
+  "exclude": ["src/**/*.test.*"],
+  "extends": "./../../tsconfig.json",
+  "include": ["src/**/*"],
+  "references": []
+}

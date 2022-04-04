@@ -1,0 +1,16 @@
+{
+  "name": "@suid/codemod",
+  "version": "0.0.1",
+  "description": "Tool for migrating MUI React code to SUID SolidJS.",
+  "scripts": {
+    "build": "tsc --build",
+    "clean": "tsc --build --clean",
+    "watch": "tsc --build -w"
+  },
+  "dependencies": {
+    "ts-morph": "^14.0.0"
+  },
+  "publishConfig": {
+    "directory": "lib"
+  }
+}

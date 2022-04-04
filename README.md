@@ -1,6 +1,6 @@
 # Solid.js User Interface Design (SUID)
 
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/swordev/suid/CI) ![npm (scoped)](https://img.shields.io/npm/v/@suid/material?label=@suid/material) ![npm (scoped)](https://img.shields.io/npm/v/@suid/icons-material?label=@suid/icons-material) <br/> ![npm (scoped)](https://img.shields.io/npm/v/@suid/css?label=@suid/css) ![npm (scoped)](https://img.shields.io/npm/v/@suid/system?label=@suid/system) ![npm (scoped)](https://img.shields.io/npm/v/@suid/base?label=@suid/base) ![npm (scoped)](https://img.shields.io/npm/v/@suid/types?label=@suid/types) ![npm (scoped)](https://img.shields.io/npm/v/@suid/site?label=@suid/site)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/swordev/suid/CI) ![npm (scoped)](https://img.shields.io/npm/v/@suid/material?label=@suid/material) ![npm (scoped)](https://img.shields.io/npm/v/@suid/icons-material?label=@suid/icons-material) <br/> ![npm (scoped)](https://img.shields.io/npm/v/@suid/css?label=@suid/css) ![npm (scoped)](https://img.shields.io/npm/v/@suid/system?label=@suid/system) ![npm (scoped)](https://img.shields.io/npm/v/@suid/base?label=@suid/base) ![npm (scoped)](https://img.shields.io/npm/v/@suid/types?label=@suid/types) ![npm (scoped)](https://img.shields.io/npm/v/@suid/codemod?label=@suid/codemod) ![npm (scoped)](https://img.shields.io/npm/v/@suid/site?label=@suid/site)
 
 > A port of Material UI design ([MUI](https://mui.com)) built with [Solid.js](https://solidjs.com)
 

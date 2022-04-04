@@ -5,6 +5,9 @@
       "path": "packages/base"
     },
     {
+      "path": "packages/codemod"
+    },
+    {
       "path": "packages/css"
     },
     {

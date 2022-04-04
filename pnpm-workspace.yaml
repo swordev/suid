@@ -2,6 +2,7 @@ packages:
   - scripts
   - packages/types
   - packages/utils
+  - packages/codemod
   - packages/css
   - packages/system
   - packages/base
