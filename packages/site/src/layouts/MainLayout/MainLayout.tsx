@@ -9,6 +9,7 @@ import { useLocation } from "solid-app-router";
 import { createEffect, createSignal, Show } from "solid-js";
 import { createMutable } from "solid-js/store";
 import { Routing, RoutingElementContainer } from "~/Routing";
+import Footer from "~/layouts/MainLayout/Footer";
 import PlaygroundPage from "~/pages/tools/PlaygroundPage";
 import Header from "./Header";
 import LayoutContext, { createLayoutMutable } from "./LayoutContext";
@@ -72,10 +73,18 @@ export default function MainLayout() {
     }
   }, playgroundLoaded());
 
+  createEffect(() => {
+    if (context.drawer.open && context.drawer.permanent && !isFullWidthPage()) {
+      context.drawer.visibleWidth = drawerWidth;
+    } else {
+      context.drawer.visibleWidth = 0;
+    }
+  });
+
   return (
     <LayoutContext.Provider value={context}>
       <ThemeProvider theme={theme}>
-        <Box sx={{ display: "flex" }}>
+        <Box sx={{ display: "flex", minHeight: "calc(100vh - 100px)" }}>
           <CssBaseline enableColorScheme />
           <Header />
           <Show when={!isFullWidthPage()}>
@@ -115,6 +124,7 @@ export default function MainLayout() {
             <Routing />
           </Box>
         </Box>
+        <Footer />
       </ThemeProvider>
     </LayoutContext.Provider>
   );

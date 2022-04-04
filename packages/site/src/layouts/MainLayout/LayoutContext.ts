@@ -10,6 +10,7 @@ type Options = {
     openState: boolean;
     permanent: boolean;
     width: number;
+    visibleWidth: number;
   };
 };
 
@@ -24,6 +25,7 @@ export const defaultOptions: Options = {
     openState: false,
     permanent: true,
     width: 0,
+    visibleWidth: 0,
   },
 };
 

@@ -1,6 +1,8 @@
 import Box from "@suid/material/Box";
 import Skeleton from "@suid/material/Skeleton";
 import Typography from "@suid/material/Typography";
+import { useTheme } from "@suid/material/styles";
+import useMediaQuery from "@suid/material/useMediaQuery";
 import createElementRef from "@suid/system/createElementRef";
 import { createEffect, createSignal, Show } from "solid-js";
 import PageNav from "~/components/PageNav";
@@ -14,6 +16,8 @@ export default function PlaygroundPage(props: { visible: boolean }) {
   const wrapper = createElementRef();
   const layoutContext = useLayoutContext();
   const [ready, setReady] = createSignal(false);
+  const theme = useTheme();
+  const xs = useMediaQuery(theme.breakpoints.down("sm"));
 
   const start = () => {
     const aside = document.createElement("aside");
@@ -54,7 +58,8 @@ export default function PlaygroundPage(props: { visible: boolean }) {
       <Box
         sx={{
           mt: 2,
-          height: "70vh",
+          minHeight: "400px",
+          height: `calc(100vh - ${theme.spacing(xs() ? 65 : 55)})`,
           [`& iframe`]: {
             height: 1,
             border: 0,
