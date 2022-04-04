@@ -9,7 +9,7 @@ import { useLocation } from "solid-app-router";
 import { createEffect, createSignal, Show } from "solid-js";
 import { createMutable } from "solid-js/store";
 import { Routing, RoutingElementContainer } from "~/Routing";
-import PlaygroundPage from "~/pages/gettingStarted/PlaygroundPage";
+import PlaygroundPage from "~/pages/tools/PlaygroundPage";
 import Header from "./Header";
 import LayoutContext, { createLayoutMutable } from "./LayoutContext";
 import { Nav } from "./Nav";
