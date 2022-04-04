@@ -1,0 +1,128 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const utils_1 = require("@typescript-eslint/utils");
+const jsx_ast_utils_1 = require("jsx-ast-utils");
+const is_html_1 = __importDefault(require("is-html"));
+const { getStringIfConstant } = utils_1.ASTUtils;
+const rule = {
+    meta: {
+        type: "problem",
+        docs: {
+            recommended: "error",
+            description: "Disallow usage of the innerHTML attribute, which can often lead to security vulnerabilities.",
+            url: "https://github.com/joshwilsonvu/eslint-plugin-solid/blob/main/docs/no-innerhtml.md",
+        },
+        fixable: "code",
+        hasSuggestions: true,
+        schema: [
+            {
+                type: "object",
+                properties: {
+                    allowStatic: {
+                        description: "if the innerHTML value is guaranteed to be a static HTML string (i.e. no user input), allow it",
+                        type: "boolean",
+                    },
+                },
+                additionalProperties: false,
+            },
+        ],
+        messages: {
+            dangerous: "The innerHTML attribute is dangerous; passing unsanitized input can lead to security vulnerabilities.",
+            conflict: "The innerHTML attribute should not be used on an element with child elements; they will be overwritten.",
+            notHtml: "The string passed to innerHTML does not appear to be valid HTML.",
+            useInnerText: "For text content, using innerText is clearer and safer.",
+            dangerouslySetInnerHTML: "The dangerouslySetInnerHTML prop is not supported; use innerHTML instead.",
+        },
+    },
+    create(context) {
+        var _a;
+        const allowStatic = Boolean((_a = context.options[0]) === null || _a === void 0 ? void 0 : _a.allowStatic);
+        return {
+            JSXAttribute(node) {
+                var _a, _b, _c, _d, _e;
+                if (jsx_ast_utils_1.propName(node) === "dangerouslySetInnerHTML") {
+                    if (((_a = node.value) === null || _a === void 0 ? void 0 : _a.type) === "JSXExpressionContainer" &&
+                        node.value.expression.type === "ObjectExpression" &&
+                        node.value.expression.properties.length === 1) {
+                        const htmlProp = node.value.expression.properties[0];
+                        if (htmlProp.type === "Property" &&
+                            htmlProp.key.type === "Identifier" &&
+                            htmlProp.key.name === "__html") {
+                            context.report({
+                                node,
+                                messageId: "dangerouslySetInnerHTML",
+                                fix: (fixer) => {
+                                    const propRange = node.range;
+                                    const valueRange = htmlProp.value.range;
+                                    return [
+                                        fixer.replaceTextRange([propRange[0], valueRange[0]], "innerHTML={"),
+                                        fixer.replaceTextRange([valueRange[1], propRange[1]], "}"),
+                                    ];
+                                },
+                            });
+                        }
+                        else {
+                            context.report({
+                                node,
+                                messageId: "dangerouslySetInnerHTML",
+                            });
+                        }
+                    }
+                    else {
+                        context.report({
+                            node,
+                            messageId: "dangerouslySetInnerHTML",
+                        });
+                    }
+                    return;
+                }
+                else if (jsx_ast_utils_1.propName(node) !== "innerHTML") {
+                    return;
+                }
+                if (allowStatic) {
+                    const innerHtmlNode = ((_b = node.value) === null || _b === void 0 ? void 0 : _b.type) === "JSXExpressionContainer" ? node.value.expression : node.value;
+                    const innerHtml = innerHtmlNode && getStringIfConstant(innerHtmlNode);
+                    if (typeof innerHtml === "string") {
+                        if (is_html_1.default(innerHtml)) {
+                            if (((_d = (_c = node.parent) === null || _c === void 0 ? void 0 : _c.parent) === null || _d === void 0 ? void 0 : _d.type) === "JSXElement" &&
+                                ((_e = node.parent.parent.children) === null || _e === void 0 ? void 0 : _e.length)) {
+                                context.report({
+                                    node: node.parent.parent,
+                                    messageId: "conflict",
+                                });
+                            }
+                        }
+                        else {
+                            context.report({
+                                node,
+                                messageId: "notHtml",
+                                suggest: [
+                                    {
+                                        fix: (fixer) => fixer.replaceText(node.name, "innerText"),
+                                        messageId: "useInnerText",
+                                    },
+                                ],
+                            });
+                        }
+                    }
+                    else {
+                        context.report({
+                            node,
+                            messageId: "dangerous",
+                        });
+                    }
+                }
+                else {
+                    context.report({
+                        node,
+                        messageId: "dangerous",
+                    });
+                }
+            },
+        };
+    },
+};
+exports.default = rule;

@@ -1,0 +1,15 @@
+import type { DeepMutable, SetStoreFunction, Store } from "store";
+export declare const $RAW: unique symbol;
+export declare function isWrappable(obj: any): boolean;
+export declare function unwrap<T>(item: any): T;
+export declare function setProperty(state: any, property: PropertyKey, value: any, force?: boolean): void;
+export declare function updatePath(current: any, path: any[], traversed?: PropertyKey[]): void;
+export declare function createStore<T>(state: T | Store<T>): [Store<T>, SetStoreFunction<T>];
+export declare function createMutable<T>(state: T | Store<T>): T;
+declare type ReconcileOptions = {
+    key?: string | null;
+    merge?: boolean;
+};
+export declare function reconcile<T extends U, U>(value: T, options?: ReconcileOptions): (state: U) => T;
+export declare function produce<T>(fn: (state: DeepMutable<T>) => void): (state: T) => T;
+export {};

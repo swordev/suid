@@ -1,0 +1,37 @@
+{
+	"name": "is-html",
+	"version": "2.0.0",
+	"description": "Check if a string is HTML",
+	"license": "MIT",
+	"repository": "sindresorhus/is-html",
+	"author": {
+		"name": "Sindre Sorhus",
+		"email": "sindresorhus@gmail.com",
+		"url": "sindresorhus.com"
+	},
+	"engines": {
+		"node": ">=8"
+	},
+	"scripts": {
+		"test": "xo && ava"
+	},
+	"files": [
+		"index.js"
+	],
+	"keywords": [
+		"html",
+		"detect",
+		"check",
+		"is",
+		"tags",
+		"elements",
+		"string"
+	],
+	"dependencies": {
+		"html-tags": "^3.0.0"
+	},
+	"devDependencies": {
+		"ava": "^1.4.1",
+		"xo": "^0.24.0"
+	}
+}

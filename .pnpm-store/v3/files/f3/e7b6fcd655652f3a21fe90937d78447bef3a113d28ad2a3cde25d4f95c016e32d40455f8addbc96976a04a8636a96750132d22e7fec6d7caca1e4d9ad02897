@@ -1,0 +1,600 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const utils_1 = require("@typescript-eslint/utils");
+const utils_2 = require("../utils");
+const { findVariable, getFunctionHeadLocation } = utils_1.ASTUtils;
+class ScopeStackItem {
+    constructor(node) {
+        this.trackedScopes = [];
+        this.unnamedDerivedSignals = new Set();
+        this.hasJSX = false;
+        this.node = node;
+    }
+}
+class ScopeStack extends Array {
+    constructor() {
+        super(...arguments);
+        this.currentScope = () => this[this.length - 1];
+        this.syncCallbacks = new Set();
+        this.findDeepestDeclarationScope = (a, b) => {
+            if (a === b)
+                return a;
+            for (let i = this.length - 1; i >= 0; i -= 1) {
+                const { node } = this[i];
+                if (a === node || b === node) {
+                    return node;
+                }
+            }
+            throw new Error("This should never happen");
+        };
+        this.signals = [];
+        this.props = [];
+    }
+    pushSignal(variable, declarationScope = this.currentScope().node) {
+        this.signals.push({
+            references: variable.references.filter((reference) => !reference.init),
+            variable,
+            declarationScope,
+        });
+    }
+    pushUniqueSignal(variable, declarationScope) {
+        const foundSignal = this.signals.find((s) => s.variable === variable);
+        if (!foundSignal) {
+            this.pushSignal(variable, declarationScope);
+        }
+        else {
+            foundSignal.declarationScope = this.findDeepestDeclarationScope(foundSignal.declarationScope, declarationScope);
+        }
+    }
+    pushProps(variable, declarationScope = this.currentScope().node) {
+        this.props.push({
+            references: variable.references.filter((reference) => !reference.init),
+            variable,
+            declarationScope,
+        });
+    }
+    *consumeSignalReferencesInScope() {
+        yield* this.consumeReferencesInScope(this.signals);
+        this.signals = this.signals.filter((variable) => variable.references.length !== 0);
+    }
+    *consumePropsReferencesInScope() {
+        yield* this.consumeReferencesInScope(this.props);
+        this.props = this.props.filter((variable) => variable.references.length !== 0);
+    }
+    *consumeReferencesInScope(variables) {
+        for (const variable of variables) {
+            const { references } = variable;
+            const inScope = [], notInScope = [];
+            references.forEach((reference) => {
+                if (this.isReferenceInCurrentScope(reference)) {
+                    inScope.push(reference);
+                }
+                else {
+                    notInScope.push(reference);
+                }
+            });
+            yield* inScope.map((reference) => ({
+                reference,
+                declarationScope: variable.declarationScope,
+            }));
+            variable.references = notInScope;
+        }
+    }
+    isReferenceInCurrentScope(reference) {
+        let parentFunction = utils_2.findParent(reference.identifier, utils_2.isProgramOrFunctionNode);
+        while (utils_2.isFunctionNode(parentFunction) && this.syncCallbacks.has(parentFunction)) {
+            parentFunction = utils_2.findParent(parentFunction, utils_2.isProgramOrFunctionNode);
+        }
+        return parentFunction === this.currentScope().node;
+    }
+}
+const getNthDestructuredVar = (id, n, scope) => {
+    if ((id === null || id === void 0 ? void 0 : id.type) === "ArrayPattern") {
+        const el = id.elements[n];
+        if ((el === null || el === void 0 ? void 0 : el.type) === "Identifier") {
+            return findVariable(scope, el.name);
+        }
+    }
+    return null;
+};
+const getReturnedVar = (id, scope) => {
+    if (id.type === "Identifier") {
+        return findVariable(scope, id.name);
+    }
+    return null;
+};
+const rule = {
+    meta: {
+        type: "problem",
+        docs: {
+            recommended: "warn",
+            description: "Enforce that reactive expressions (props, signals, memos, etc.) are only used in tracked scopes; otherwise, they won't update the view as expected.",
+            url: "https://github.com/joshwilsonvu/eslint-plugin-solid/blob/main/docs/reactivity.md",
+        },
+        schema: [],
+        messages: {
+            noWrite: "The reactive variable '{{name}}' should not be reassigned or altered.",
+            untrackedReactive: "The reactive variable '{{name}}' should be used within a tracked scope.",
+            badSignal: "The reactive variable '{{name}}' should be called as a function when used in JSX.",
+            badUnnamedDerivedSignal: "This function should be passed to a tracked scope because it contains reactivity.",
+            shouldDestructure: "Array destructuring should be used to capture the {{nth}}result of this function call.",
+            shouldAssign: "A variable should be used to capture the result of this function call.",
+            noAsyncTrackedScope: "This tracked scope should not be async. Solid's reactivity only tracks synchronously.",
+        },
+    },
+    create(context) {
+        const warnShouldDestructure = (node, nth) => context.report({
+            node,
+            messageId: "shouldDestructure",
+            data: nth ? { nth: nth + " " } : undefined,
+        });
+        const warnShouldAssign = (node) => context.report({ node, messageId: "shouldAssign" });
+        const sourceCode = context.getSourceCode();
+        const scopeStack = new ScopeStack();
+        const { currentScope } = scopeStack;
+        const { matchImport, handleImportDeclaration } = utils_2.trackImports();
+        const onFunctionEnter = (node) => {
+            if (utils_2.isFunctionNode(node) && scopeStack.syncCallbacks.has(node)) {
+                return;
+            }
+            scopeStack.push(new ScopeStackItem(node));
+        };
+        const matchTrackedScope = (trackedScope, node) => {
+            switch (trackedScope.expect) {
+                case "function":
+                case "called-function":
+                    return node === trackedScope.node;
+                case "expression":
+                    return Boolean(utils_2.findInScope(node, currentScope().node, (node) => node === trackedScope.node));
+            }
+        };
+        const handleTrackedScopes = (identifier, declarationScope) => {
+            var _a, _b, _c, _d, _e, _f, _g, _h, _j;
+            const currentScopeNode = currentScope().node;
+            if (!currentScope().trackedScopes.some((trackedScope) => matchTrackedScope(trackedScope, identifier))) {
+                if (declarationScope === currentScopeNode) {
+                    let parentMemberExpression = null;
+                    if (((_a = identifier.parent) === null || _a === void 0 ? void 0 : _a.type) === "MemberExpression") {
+                        parentMemberExpression = identifier.parent;
+                        while (((_b = parentMemberExpression.parent) === null || _b === void 0 ? void 0 : _b.type) === "MemberExpression") {
+                            parentMemberExpression = parentMemberExpression.parent;
+                        }
+                    }
+                    const parentCallExpression = ((_c = identifier.parent) === null || _c === void 0 ? void 0 : _c.type) === "CallExpression" ? identifier.parent : null;
+                    context.report({
+                        node: (_d = parentMemberExpression !== null && parentMemberExpression !== void 0 ? parentMemberExpression : parentCallExpression) !== null && _d !== void 0 ? _d : identifier,
+                        messageId: "untrackedReactive",
+                        data: { name: identifier.name },
+                    });
+                }
+                else {
+                    const parentScope = scopeStack[scopeStack.length - 2];
+                    if (!parentScope || !utils_2.isFunctionNode(currentScopeNode)) {
+                        throw new Error("this shouldn't happen!");
+                    }
+                    const pushUnnamedDerivedSignal = () => { var _a; return ((_a = parentScope.unnamedDerivedSignals) !== null && _a !== void 0 ? _a : (parentScope.unnamedDerivedSignals = new Set())).add(currentScopeNode); };
+                    if (currentScopeNode.type === "FunctionDeclaration") {
+                        const functionVariable = (_f = (_e = sourceCode.scopeManager) === null || _e === void 0 ? void 0 : _e.getDeclaredVariables(currentScopeNode)) === null || _f === void 0 ? void 0 : _f[0];
+                        if (functionVariable) {
+                            scopeStack.pushUniqueSignal(functionVariable, declarationScope);
+                        }
+                        else {
+                            pushUnnamedDerivedSignal();
+                        }
+                    }
+                    else if (((_g = currentScopeNode.parent) === null || _g === void 0 ? void 0 : _g.type) === "VariableDeclarator") {
+                        const declarator = currentScopeNode.parent;
+                        const functionVariable = (_j = (_h = sourceCode.scopeManager) === null || _h === void 0 ? void 0 : _h.getDeclaredVariables(declarator)) === null || _j === void 0 ? void 0 : _j[0];
+                        if (functionVariable) {
+                            scopeStack.pushUniqueSignal(functionVariable, declarationScope);
+                        }
+                        else {
+                            pushUnnamedDerivedSignal();
+                        }
+                    }
+                    else {
+                        pushUnnamedDerivedSignal();
+                    }
+                }
+            }
+        };
+        const onFunctionExit = (currentScopeNode) => {
+            var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
+            if (utils_2.isFunctionNode(currentScopeNode) && scopeStack.syncCallbacks.has(currentScopeNode)) {
+                scopeStack.syncCallbacks.delete(currentScopeNode);
+                return;
+            }
+            if (utils_2.isFunctionNode(currentScopeNode) && currentScopeNode.params.length === 1) {
+                const paramsNode = currentScopeNode.params[0];
+                if ((paramsNode === null || paramsNode === void 0 ? void 0 : paramsNode.type) === "Identifier" &&
+                    (currentScope().hasJSX || utils_2.isPropsByName(paramsNode.name)) &&
+                    ((_a = currentScopeNode.parent) === null || _a === void 0 ? void 0 : _a.type) !== "JSXExpressionContainer") {
+                    const propsParam = findVariable(context.getScope(), paramsNode);
+                    if (propsParam) {
+                        scopeStack.pushProps(propsParam);
+                    }
+                }
+            }
+            for (const { reference, declarationScope } of scopeStack.consumeSignalReferencesInScope()) {
+                const identifier = reference.identifier;
+                if (reference.isWrite()) {
+                    context.report({
+                        node: identifier,
+                        messageId: "noWrite",
+                        data: {
+                            name: identifier.name,
+                        },
+                    });
+                }
+                else if (identifier.type === "Identifier" &&
+                    (((_b = identifier.parent) === null || _b === void 0 ? void 0 : _b.type) === "CallExpression" ||
+                        (((_c = identifier.parent) === null || _c === void 0 ? void 0 : _c.type) === "ArrayExpression" &&
+                            ((_d = identifier.parent.parent) === null || _d === void 0 ? void 0 : _d.type) === "CallExpression"))) {
+                    handleTrackedScopes(identifier, declarationScope);
+                }
+                else if (identifier.type === "Identifier" &&
+                    ((_e = identifier.parent) === null || _e === void 0 ? void 0 : _e.type) === "JSXExpressionContainer" &&
+                    ((_f = identifier.parent.parent) === null || _f === void 0 ? void 0 : _f.type) === "JSXElement") {
+                    context.report({
+                        node: identifier,
+                        messageId: "badSignal",
+                        data: {
+                            name: identifier.name,
+                        },
+                    });
+                }
+            }
+            for (const { reference, declarationScope } of scopeStack.consumePropsReferencesInScope()) {
+                const identifier = reference.identifier;
+                if (reference.isWrite()) {
+                    context.report({
+                        node: identifier,
+                        messageId: "noWrite",
+                        data: {
+                            name: identifier.name,
+                        },
+                    });
+                }
+                else if (((_g = identifier.parent) === null || _g === void 0 ? void 0 : _g.type) === "MemberExpression" &&
+                    identifier.parent.object === identifier) {
+                    if (((_h = identifier.parent.parent) === null || _h === void 0 ? void 0 : _h.type) === "AssignmentExpression") {
+                        context.report({
+                            node: identifier,
+                            messageId: "noWrite",
+                            data: {
+                                name: identifier.name,
+                            },
+                        });
+                    }
+                    else {
+                        handleTrackedScopes(identifier, declarationScope);
+                    }
+                }
+                else if (((_j = identifier.parent) === null || _j === void 0 ? void 0 : _j.type) === "AssignmentExpression" ||
+                    ((_k = identifier.parent) === null || _k === void 0 ? void 0 : _k.type) === "VariableDeclarator") {
+                    context.report({
+                        node: identifier,
+                        messageId: "untrackedReactive",
+                        data: { name: identifier.name },
+                    });
+                }
+            }
+            const { unnamedDerivedSignals } = currentScope();
+            if (unnamedDerivedSignals) {
+                for (const node of unnamedDerivedSignals) {
+                    if (!currentScope().trackedScopes.find((trackedScope) => trackedScope.node === node)) {
+                        context.report({
+                            loc: getFunctionHeadLocation(node, sourceCode),
+                            messageId: "badUnnamedDerivedSignal",
+                        });
+                    }
+                }
+            }
+            scopeStack.pop();
+        };
+        const checkForSyncCallbacks = (node) => {
+            var _a, _b;
+            if (node.arguments.length === 1 &&
+                utils_2.isFunctionNode(node.arguments[0]) &&
+                !node.arguments[0].async) {
+                if (node.callee.type === "Identifier" &&
+                    matchImport(["untrack", "batch", "onCleanup", "onError", "produce"], node.callee.name)) {
+                    scopeStack.syncCallbacks.add(node.arguments[0]);
+                }
+                else if (node.callee.type === "MemberExpression" &&
+                    !node.callee.computed &&
+                    node.callee.object.type !== "ObjectExpression" &&
+                    /^(?:forEach|map|flatMap|reduce|reduceRight|find|findIndex|filter|every|some)$/.test(node.callee.property.name)) {
+                    scopeStack.syncCallbacks.add(node.arguments[0]);
+                }
+            }
+            if (node.callee.type === "Identifier" &&
+                matchImport(["createSignal", "createStore"], node.callee.name) &&
+                ((_a = node.parent) === null || _a === void 0 ? void 0 : _a.type) === "VariableDeclarator") {
+                const setter = getNthDestructuredVar(node.parent.id, 1, context.getScope());
+                if (setter) {
+                    for (const reference of setter.references) {
+                        const { identifier } = reference;
+                        if (!reference.init &&
+                            reference.isRead() &&
+                            ((_b = identifier.parent) === null || _b === void 0 ? void 0 : _b.type) === "CallExpression") {
+                            for (const arg of identifier.parent.arguments) {
+                                if (utils_2.isFunctionNode(arg) && !arg.async) {
+                                    scopeStack.syncCallbacks.add(arg);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        };
+        const checkForReactiveAssignment = (id, init) => {
+            if (init.type === "CallExpression" && init.callee.type === "Identifier") {
+                const { callee } = init;
+                if (matchImport(["createSignal", "useTransition"], callee.name)) {
+                    const signal = id && getNthDestructuredVar(id, 0, context.getScope());
+                    if (signal) {
+                        scopeStack.pushSignal(signal, currentScope().node);
+                    }
+                    else {
+                        warnShouldDestructure(id !== null && id !== void 0 ? id : init, "first");
+                    }
+                }
+                else if (matchImport(["createMemo", "createSelector"], callee.name)) {
+                    const memo = id && getReturnedVar(id, context.getScope());
+                    if (memo) {
+                        scopeStack.pushSignal(memo, currentScope().node);
+                    }
+                    else {
+                        warnShouldAssign(id !== null && id !== void 0 ? id : init);
+                    }
+                }
+                else if (matchImport("createStore", callee.name)) {
+                    const store = id && getNthDestructuredVar(id, 0, context.getScope());
+                    if (store) {
+                        scopeStack.pushProps(store, currentScope().node);
+                    }
+                    else {
+                        warnShouldDestructure(id !== null && id !== void 0 ? id : init, "first");
+                    }
+                }
+                else if (matchImport("mergeProps", callee.name)) {
+                    const merged = id && getReturnedVar(id, context.getScope());
+                    if (merged) {
+                        scopeStack.pushProps(merged, currentScope().node);
+                    }
+                    else {
+                        warnShouldAssign(id !== null && id !== void 0 ? id : init);
+                    }
+                }
+                else if (matchImport("splitProps", callee.name)) {
+                    if ((id === null || id === void 0 ? void 0 : id.type) === "ArrayPattern") {
+                        const vars = id.elements
+                            .map((_, i) => getNthDestructuredVar(id, i, context.getScope()))
+                            .filter(Boolean);
+                        if (vars.length === 0) {
+                            warnShouldDestructure(id);
+                        }
+                        else {
+                            vars.forEach((variable) => {
+                                scopeStack.pushProps(variable, currentScope().node);
+                            });
+                        }
+                    }
+                    else {
+                        const vars = id && getReturnedVar(id, context.getScope());
+                        if (vars) {
+                            scopeStack.pushProps(vars, currentScope().node);
+                        }
+                    }
+                }
+                else if (matchImport("createResource", callee.name)) {
+                    const resourceReturn = id && getNthDestructuredVar(id, 0, context.getScope());
+                    if (resourceReturn) {
+                        scopeStack.pushProps(resourceReturn, currentScope().node);
+                    }
+                }
+                else if (matchImport("createMutable", callee.name)) {
+                    const mutable = id && getReturnedVar(id, context.getScope());
+                    if (mutable) {
+                        scopeStack.pushProps(mutable, currentScope().node);
+                    }
+                }
+            }
+        };
+        const checkForTrackedScopes = (node) => {
+            var _a, _b, _c, _d;
+            const pushTrackedScope = (node, expect) => {
+                currentScope().trackedScopes.push({ node, expect });
+                if (expect !== "called-function" && utils_2.isFunctionNode(node) && node.async) {
+                    context.report({
+                        node,
+                        messageId: "noAsyncTrackedScope",
+                    });
+                }
+            };
+            if (node.type === "JSXExpressionContainer") {
+                const expect = ((_a = node.parent) === null || _a === void 0 ? void 0 : _a.type) === "JSXAttribute" &&
+                    sourceCode.getText(node.parent.name).match(/^on[:A-Z]/)
+                    ? "called-function"
+                    : "expression";
+                pushTrackedScope(node.expression, expect);
+            }
+            else if (node.type === "CallExpression" && node.callee.type === "Identifier") {
+                const callee = node.callee;
+                const arg0 = node.arguments[0];
+                if (matchImport([
+                    "createMemo",
+                    "children",
+                    "createEffect",
+                    "createRenderEffect",
+                    "createDeferred",
+                    "createComputed",
+                    "createSelector",
+                ], callee.name) ||
+                    (matchImport("createResource", callee.name) && node.arguments.length >= 2)) {
+                    pushTrackedScope(arg0, "function");
+                }
+                else if (matchImport("onMount", callee.name) ||
+                    [
+                        "setInterval",
+                        "setTimeout",
+                        "setImmediate",
+                        "requestAnimationFrame",
+                        "requestIdleCallback",
+                    ].includes(callee.name)) {
+                    pushTrackedScope(arg0, "called-function");
+                }
+                else if (matchImport("createMutable", callee.name) && arg0) {
+                    pushTrackedScope(arg0, "expression");
+                }
+                else if (matchImport("on", callee.name)) {
+                    if (arg0) {
+                        if (arg0.type === "ArrayExpression") {
+                            arg0.elements.forEach((element) => {
+                                pushTrackedScope(element, "function");
+                            });
+                        }
+                        else {
+                            pushTrackedScope(arg0, "function");
+                        }
+                    }
+                    if (node.arguments[1]) {
+                        pushTrackedScope(node.arguments[1], "called-function");
+                    }
+                }
+                else if (matchImport("runWithOwner", callee.name)) {
+                    if (node.arguments[1]) {
+                        let isTrackedScope = true;
+                        const owner = node.arguments[0].type === "Identifier" &&
+                            findVariable(context.getScope(), node.arguments[0]);
+                        if (owner) {
+                            const decl = owner.defs[0];
+                            if (decl &&
+                                decl.node.type === "VariableDeclarator" &&
+                                ((_b = decl.node.init) === null || _b === void 0 ? void 0 : _b.type) === "CallExpression" &&
+                                decl.node.init.callee.type === "Identifier" &&
+                                matchImport("getOwner", decl.node.init.callee.name)) {
+                                const ownerFunction = utils_2.findParent(decl.node, utils_2.isProgramOrFunctionNode);
+                                const scopeStackIndex = scopeStack.findIndex(({ node }) => ownerFunction === node);
+                                if ((scopeStackIndex >= 1 &&
+                                    !scopeStack[scopeStackIndex - 1].trackedScopes.some((trackedScope) => trackedScope.expect === "function" && trackedScope.node === ownerFunction)) ||
+                                    scopeStackIndex === 0) {
+                                    isTrackedScope = false;
+                                }
+                            }
+                        }
+                        if (isTrackedScope) {
+                            pushTrackedScope(node.arguments[1], "function");
+                        }
+                    }
+                }
+                else if (/^(?:use|create)[A-Z]/.test(callee.name)) {
+                    node.arguments
+                        .filter((arg) => utils_2.isFunctionNode(arg) || arg.type === "Identifier")
+                        .forEach((arg) => {
+                        pushTrackedScope(arg, "called-function");
+                    });
+                }
+            }
+            else if (node.type === "VariableDeclarator") {
+                if (((_c = node.init) === null || _c === void 0 ? void 0 : _c.type) === "CallExpression" && node.init.callee.type === "Identifier") {
+                    if (matchImport(["createReactive", "createReaction"], node.init.callee.name)) {
+                        const track = getReturnedVar(node.id, context.getScope());
+                        if (track) {
+                            for (const reference of track.references) {
+                                if (!reference.init &&
+                                    reference.isReadOnly() &&
+                                    ((_d = reference.identifier.parent) === null || _d === void 0 ? void 0 : _d.type) === "CallExpression" &&
+                                    reference.identifier.parent.callee === reference.identifier) {
+                                    const arg0 = reference.identifier.parent.arguments[0];
+                                    arg0 && pushTrackedScope(arg0, "function");
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            else if (node.type === "AssignmentExpression") {
+                if (node.left.type === "MemberExpression" &&
+                    node.left.property.type === "Identifier" &&
+                    utils_2.isFunctionNode(node.right) &&
+                    /^on[a-z]+$/.test(node.left.property.name)) {
+                    pushTrackedScope(node.right, "called-function");
+                }
+            }
+        };
+        return {
+            ImportDeclaration: handleImportDeclaration,
+            JSXExpressionContainer(node) {
+                checkForTrackedScopes(node);
+            },
+            CallExpression(node) {
+                var _a, _b;
+                checkForTrackedScopes(node);
+                checkForSyncCallbacks(node);
+                if (!["AssignmentExpression", "VariableDeclarator"].includes((_b = (_a = node.parent) === null || _a === void 0 ? void 0 : _a.type) !== null && _b !== void 0 ? _b : "")) {
+                    checkForReactiveAssignment(null, node);
+                }
+            },
+            VariableDeclarator(node) {
+                if (node.init) {
+                    checkForReactiveAssignment(node.id, node.init);
+                    checkForTrackedScopes(node);
+                }
+            },
+            AssignmentExpression(node) {
+                if (node.left.type !== "MemberExpression") {
+                    checkForReactiveAssignment(node.left, node.right);
+                }
+                checkForTrackedScopes(node);
+            },
+            "JSXElement > JSXExpressionContainer > :function"(node) {
+                var _a, _b;
+                if (utils_2.isFunctionNode(node) &&
+                    ((_a = node.parent) === null || _a === void 0 ? void 0 : _a.type) === "JSXExpressionContainer" &&
+                    ((_b = node.parent.parent) === null || _b === void 0 ? void 0 : _b.type) === "JSXElement") {
+                    const element = node.parent.parent;
+                    if (element.openingElement.name.type === "JSXIdentifier") {
+                        const tagName = element.openingElement.name.name;
+                        if (matchImport("For", tagName) &&
+                            node.params.length === 2 &&
+                            node.params[1].type === "Identifier") {
+                            const index = findVariable(context.getScope(), node.params[1]);
+                            if (index) {
+                                scopeStack.pushSignal(index, currentScope().node);
+                            }
+                        }
+                        else if (matchImport("Index", tagName) &&
+                            node.params.length >= 1 &&
+                            node.params[0].type === "Identifier") {
+                            const item = findVariable(context.getScope(), node.params[0]);
+                            if (item) {
+                                scopeStack.pushSignal(item, currentScope().node);
+                            }
+                        }
+                    }
+                }
+            },
+            FunctionExpression: onFunctionEnter,
+            ArrowFunctionExpression: onFunctionEnter,
+            FunctionDeclaration: onFunctionEnter,
+            Program: onFunctionEnter,
+            "FunctionExpression:exit": onFunctionExit,
+            "ArrowFunctionExpression:exit": onFunctionExit,
+            "FunctionDeclaration:exit": onFunctionExit,
+            "Program:exit": onFunctionExit,
+            JSXElement() {
+                if (scopeStack.length) {
+                    currentScope().hasJSX = true;
+                }
+            },
+            JSXFragment() {
+                if (scopeStack.length) {
+                    currentScope().hasJSX = true;
+                }
+            },
+        };
+    },
+};
+exports.default = rule;

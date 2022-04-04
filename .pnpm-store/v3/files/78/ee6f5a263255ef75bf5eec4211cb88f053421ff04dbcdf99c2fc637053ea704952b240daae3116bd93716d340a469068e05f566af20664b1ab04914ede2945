@@ -1,0 +1,70 @@
+"use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.cleanup = exports.render = void 0;
+const dom_1 = require("@testing-library/dom");
+const web_1 = require("solid-js/web");
+/* istanbul ignore next */
+if (!process.env.STL_SKIP_AUTO_CLEANUP) {
+    if (typeof afterEach === "function") {
+        afterEach(async () => {
+            await cleanup();
+        });
+    }
+    else if (typeof teardown === "function") {
+        teardown(async () => {
+            await cleanup();
+        });
+    }
+}
+const mountedContainers = new Set();
+function render(ui, options = {}) {
+    let { container, baseElement = container, queries, hydrate = false } = options;
+    if (!baseElement) {
+        // Default to document.body instead of documentElement to avoid output of potentially-large
+        // head elements (such as JSS style blocks) in debug output.
+        baseElement = document.body;
+    }
+    if (!container) {
+        container = baseElement.appendChild(document.createElement("div"));
+    }
+    const dispose = hydrate
+        ? (0, web_1.hydrate)(ui, container)
+        : (0, web_1.render)(ui, container);
+    // We'll add it to the mounted containers regardless of whether it's actually
+    // added to document.body so the cleanup method works regardless of whether
+    // they're passing us a custom container or not.
+    mountedContainers.add({ container, dispose });
+    return {
+        container,
+        baseElement,
+        debug: (el = baseElement, maxLength, options) => Array.isArray(el)
+            ? el.forEach(e => console.log((0, dom_1.prettyDOM)(e, maxLength, options)))
+            : console.log((0, dom_1.prettyDOM)(el, maxLength, options)),
+        unmount: dispose,
+        ...(0, dom_1.getQueriesForElement)(baseElement, queries)
+    };
+}
+exports.render = render;
+function cleanupAtContainer(ref) {
+    const { container, dispose } = ref;
+    dispose();
+    if (container.parentNode === document.body) {
+        document.body.removeChild(container);
+    }
+    mountedContainers.delete(ref);
+}
+function cleanup() {
+    mountedContainers.forEach(cleanupAtContainer);
+}
+exports.cleanup = cleanup;
+__exportStar(require("@testing-library/dom"), exports);

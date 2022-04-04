@@ -1,0 +1,40 @@
+{
+  "name": "cint",
+  "version": "8.2.1",
+  "description": "A library of Javascript utility functions with an emphasis on Functional Programming.",
+  "main": "cint.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/metaraine/cint.git"
+  },
+  "keywords": [
+    "functional",
+    "utility"
+  ],
+  "author": "Raine Lourie",
+  "license": "ISC",
+  "readmeFilename": "README.md",
+  "gitHead": "ba9f4a85fd605fdad2bde942d59b57c7415bd709",
+  "devDependencies": {
+    "chai": "^2.0.0",
+    "gulp": "^3.5.2",
+    "gulp-clean": "^0.2.4",
+    "gulp-header": "^1.0.2",
+    "gulp-jshint": "^1.4.2",
+    "gulp-open": "^0.2.8",
+    "gulp-rename": "^1.1.0",
+    "gulp-template": "^0.1.1",
+    "gulp-uglify": "^0.2.1",
+    "gulp-util": "^2.2.14",
+    "jshint-stylish": "^0.1.5",
+    "lodash.assign": "^2.4.1",
+    "mocha": "^2.1.0"
+  },
+  "dependencies": {}
+}

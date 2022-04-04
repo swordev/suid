@@ -1,0 +1,34 @@
+{
+  "name": "solid-jest",
+  "version": "0.2.0",
+  "description": "Jest presets for SolidJS",
+  "author": "Ryan Carniato <ryansolid@gmail.com>",
+  "homepage": "https://github.com/solidjs/solid-jest#readme",
+  "license": "MIT",
+  "files": [
+    "preset"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/solidjs/solid-jest.git"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "bugs": {
+    "url": "https://github.com/solidjs/solid/issues"
+  },
+  "devDependencies": {
+    "babel-preset-solid": "^1.0.0",
+    "jest": "^27.0.0",
+    "solid-js": "^1.0.0"
+  },
+  "peerDependencies": {
+    "babel-preset-solid": "^1.0.0"
+  },
+  "dependencies": {
+    "@babel/preset-env": "^7.13.9",
+    "babel-jest": "^27.0.0",
+    "enhanced-resolve-jest": "^1.1.0"
+  }
+}

@@ -1,0 +1,81 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const jsx_no_undef_1 = __importDefault(require("./rules/jsx-no-undef"));
+const jsx_uses_vars_1 = __importDefault(require("./rules/jsx-uses-vars"));
+const no_destructure_1 = __importDefault(require("./rules/no-destructure"));
+const no_innerhtml_1 = __importDefault(require("./rules/no-innerhtml"));
+const no_react_specific_props_1 = __importDefault(require("./rules/no-react-specific-props"));
+const no_unknown_namespaces_1 = __importDefault(require("./rules/no-unknown-namespaces"));
+const prefer_classlist_1 = __importDefault(require("./rules/prefer-classlist"));
+const prefer_for_1 = __importDefault(require("./rules/prefer-for"));
+const prefer_show_1 = __importDefault(require("./rules/prefer-show"));
+const reactivity_1 = __importDefault(require("./rules/reactivity"));
+const style_prop_1 = __importDefault(require("./rules/style-prop"));
+const allRules = {
+    "jsx-no-undef": jsx_no_undef_1.default,
+    "jsx-uses-vars": jsx_uses_vars_1.default,
+    "no-destructure": no_destructure_1.default,
+    "no-innerhtml": no_innerhtml_1.default,
+    "no-react-specific-props": no_react_specific_props_1.default,
+    "no-unknown-namespaces": no_unknown_namespaces_1.default,
+    "prefer-classlist": prefer_classlist_1.default,
+    "prefer-for": prefer_for_1.default,
+    "prefer-show": prefer_show_1.default,
+    reactivity: reactivity_1.default,
+    "style-prop": style_prop_1.default,
+};
+module.exports = {
+    rules: allRules,
+    configs: {
+        recommended: {
+            plugins: ["solid"],
+            env: {
+                browser: true,
+                es6: true,
+            },
+            parserOptions: {
+                sourceType: "module",
+                ecmaFeatures: {
+                    jsx: true,
+                    impliedStrict: true,
+                },
+            },
+            rules: {
+                "solid/jsx-no-undef": 2,
+                "solid/jsx-uses-vars": 2,
+                "solid/no-unknown-namespaces": 2,
+                "solid/no-innerhtml": [2, { allowStatic: true }],
+                "solid/no-destructure": 2,
+                "solid/prefer-for": 2,
+                "solid/reactivity": 1,
+                "solid/style-prop": 1,
+                "solid/no-react-specific-props": 1,
+                "solid/prefer-classlist": 1,
+                "solid/prefer-show": 0,
+            },
+        },
+        typescript: {
+            plugins: ["solid"],
+            env: {
+                browser: true,
+                es6: true,
+            },
+            rules: {
+                "solid/jsx-no-undef": [2, { typescriptEnabled: true }],
+                "solid/jsx-uses-vars": 2,
+                "solid/no-innerhtml": [2, { allowStatic: true }],
+                "solid/no-destructure": 2,
+                "solid/prefer-for": 2,
+                "solid/reactivity": 1,
+                "solid/prefer-show": 1,
+                "solid/no-react-specific-props": 1,
+                "solid/prefer-classlist": 1,
+                "solid/style-prop": 0,
+                "solid/no-unknown-namespaces": 0,
+            },
+        },
+    },
+};

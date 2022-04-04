@@ -1,0 +1,79 @@
+{
+  "name": "eslint-plugin-solid",
+  "version": "0.4.4",
+  "description": "Solid-specific linting rules for ESLint.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "repository": "https://github.com/joshwilsonvu/eslint-plugin-solid",
+  "author": "Josh Wilson <joshwilsonvu@gmail.com>",
+  "license": "MIT",
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "scripts": {
+    "prepare": "husky install",
+    "prepublishOnly": "yarn build && yarn lint && prettier --check src && yarn test:all",
+    "build": "tsc -p tsconfig.build.json && yarn run docs",
+    "docs": "PARSER=none ts-node --transpile-only scripts/docs.ts",
+    "lint": "eslint src",
+    "test": "jest --runInBand",
+    "test:ts": "PARSER=ts yarn test",
+    "test:babel": "PARSER=babel yarn test",
+    "test:v6": "PARSER=v6 yarn test",
+    "test:v7": "PARSER=v7 yarn test",
+    "test:all": "PARSER=all yarn test"
+  },
+  "files": [
+    "src",
+    "dist",
+    "README.md"
+  ],
+  "dependencies": {
+    "@typescript-eslint/utils": "^5.10.0",
+    "is-html": "^2.0.0",
+    "jsx-ast-utils": "^3.2.0",
+    "kebab-case": "^1.0.1",
+    "known-css-properties": "^0.24.0",
+    "style-to-object": "^0.3.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.14.8",
+    "@babel/eslint-parser": "^7.14.7",
+    "@types/eslint": "^8.2.1",
+    "@types/fs-extra": "^9.0.13",
+    "@types/is-html": "^2.0.0",
+    "@types/jest": "^27.0.3",
+    "@types/markdown-magic": "^1.0.1",
+    "@types/node": "^16.4.0",
+    "@typescript-eslint/eslint-plugin": "^5.10.0",
+    "@typescript-eslint/parser": "^5.6.0",
+    "eslint": "^8.4.1",
+    "eslint-plugin-eslint-plugin": "^4.0.3",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-v6": "npm:eslint@^6.0.0",
+    "eslint-v7": "npm:eslint@^7.0.0",
+    "fast-glob": "^3.2.11",
+    "fs-extra": "^10.0.0",
+    "husky": "^7.0.0",
+    "jest": "^27.4.4",
+    "jest-node-exports-resolver": "^1.1.2",
+    "lint-staged": "^11.0.0",
+    "markdown-magic": "^2.5.2",
+    "prettier": "^2.3.2",
+    "ts-jest": "^27.1.1",
+    "ts-node": "^10.0.0",
+    "typescript": "^4.3.5"
+  },
+  "peerDependencies": {
+    "eslint": "^6.0.0 || ^7.0.0 || ^8.0.0"
+  },
+  "lint-staged": {
+    "*!(test).{js,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  },
+  "prettier": {
+    "printWidth": 100
+  }
+}

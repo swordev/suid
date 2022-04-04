@@ -1,0 +1,110 @@
+import { createMemo, getOwner, runWithOwner } from "solid-js";
+const hasSchemeRegex = /^(?:[a-z0-9]+:)?\/\//i;
+const trimPathRegex = /^\/+|\/+$|\s+/g;
+function normalize(path) {
+    const s = path.replace(trimPathRegex, "");
+    return s ? (s.startsWith("?") ? s : "/" + s) : "";
+}
+export function resolvePath(base, path, from) {
+    if (hasSchemeRegex.test(path)) {
+        return undefined;
+    }
+    const basePath = normalize(base);
+    const fromPath = from && normalize(from);
+    let result = "";
+    if (!fromPath || path.charAt(0) === "/") {
+        result = basePath;
+    }
+    else if (fromPath.toLowerCase().indexOf(basePath.toLowerCase()) !== 0) {
+        result = basePath + fromPath;
+    }
+    else {
+        result = fromPath;
+    }
+    return result + normalize(path) || "/";
+}
+export function invariant(value, message) {
+    if (value == null) {
+        throw new Error(message);
+    }
+    return value;
+}
+export function joinPaths(from, to) {
+    return normalize(from).replace(/\/*(\*.*)?$/g, "") + normalize(to);
+}
+export function extractSearchParams(url) {
+    const params = {};
+    url.searchParams.forEach((value, key) => {
+        params[key] = value;
+    });
+    return params;
+}
+export function createMatcher(path, partial) {
+    const [pattern, splat] = path.split("/*", 2);
+    const segments = pattern.split("/").filter(Boolean);
+    const len = segments.length;
+    return (location) => {
+        const locSegments = location.split("/").filter(Boolean);
+        const lenDiff = locSegments.length - len;
+        if (lenDiff < 0 || (lenDiff > 0 && splat === undefined && !partial)) {
+            return null;
+        }
+        const match = {
+            path: len ? "" : "/",
+            params: {}
+        };
+        for (let i = 0; i < len; i++) {
+            const segment = segments[i];
+            const locSegment = locSegments[i];
+            if (segment[0] === ":") {
+                match.params[segment.slice(1)] = locSegment;
+            }
+            else if (segment.localeCompare(locSegment, undefined, { sensitivity: "base" }) !== 0) {
+                return null;
+            }
+            match.path += `/${locSegment}`;
+        }
+        if (splat) {
+            match.params[splat] = lenDiff ? locSegments.slice(-lenDiff).join("/") : "";
+        }
+        return match;
+    };
+}
+export function scoreRoute(route) {
+    const [pattern, splat] = route.pattern.split("/*", 2);
+    const segments = pattern.split("/").filter(Boolean);
+    return segments.reduce((score, segment) => score + (segment.startsWith(":") ? 2 : 3), segments.length - (splat === undefined ? 0 : 1));
+}
+export function createMemoObject(fn) {
+    const map = new Map();
+    const owner = getOwner();
+    return new Proxy({}, {
+        get(_, property) {
+            if (!map.has(property)) {
+                runWithOwner(owner, () => map.set(property, createMemo(() => fn()[property])));
+            }
+            return map.get(property)();
+        },
+        getOwnPropertyDescriptor() {
+            return {
+                enumerable: true,
+                configurable: true
+            };
+        },
+        ownKeys() {
+            return Reflect.ownKeys(fn());
+        }
+    });
+}
+export function mergeSearchString(search, params) {
+    const merged = new URLSearchParams(search);
+    Object.entries(params).forEach(([key, value]) => {
+        if (value == null || value === "") {
+            merged.delete(key);
+        }
+        else {
+            merged.set(key, String(value));
+        }
+    });
+    return merged.toString();
+}

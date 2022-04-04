@@ -1,0 +1,126 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const utils_1 = require("@typescript-eslint/utils");
+const kebab_case_1 = __importDefault(require("kebab-case"));
+const known_css_properties_1 = require("known-css-properties");
+const style_to_object_1 = __importDefault(require("style-to-object"));
+const jsx_ast_utils_1 = require("jsx-ast-utils");
+const { getPropertyName, getStaticValue } = utils_1.ASTUtils;
+const rule = {
+    meta: {
+        type: "problem",
+        docs: {
+            recommended: "warn",
+            description: "Require CSS properties in the `style` prop to be valid and kebab-cased (ex. 'font-size'), not camel-cased (ex. 'fontSize') like in React, " +
+                "and that property values are strings, not numbers with implicit 'px' units.",
+            url: "https://github.com/joshwilsonvu/eslint-plugin-solid/blob/main/docs/style-prop.md",
+        },
+        fixable: "code",
+        schema: [
+            {
+                type: "object",
+                properties: {
+                    styleProps: {
+                        description: "an array of prop names to treat as a CSS style object",
+                        default: ["style"],
+                        type: "array",
+                        items: {
+                            type: "string",
+                            minItems: 1,
+                            uniqueItems: true,
+                        },
+                    },
+                    allowString: {
+                        description: "if allowString is set to true, this rule will not convert a style string literal into a style object (not recommended for performance)",
+                        type: "boolean",
+                    },
+                },
+                additionalProperties: false,
+            },
+        ],
+        messages: {
+            invalidStyleProp: "{{ name }} is not a valid CSS property.",
+            numericStyleValue: 'CSS property values should be strings only, but {{ value }} is a number; convert to string and add a unit like "px" if appropriate.',
+            zeroStyleValue: 'A CSS property value of 0 should be passed as the string "0".',
+            stringStyle: "Use an object for the style prop instead of a string.",
+        },
+    },
+    create(context) {
+        var _a, _b;
+        const allCssPropertiesSet = new Set(known_css_properties_1.all);
+        const allowString = Boolean((_a = context.options[0]) === null || _a === void 0 ? void 0 : _a.allowString);
+        const styleProps = ((_b = context.options[0]) === null || _b === void 0 ? void 0 : _b.styleProps) || ["style"];
+        return {
+            JSXAttribute(node) {
+                var _a, _b;
+                if (styleProps.indexOf(jsx_ast_utils_1.propName(node)) === -1) {
+                    return;
+                }
+                const style = ((_a = node.value) === null || _a === void 0 ? void 0 : _a.type) === "JSXExpressionContainer" ? node.value.expression : node.value;
+                if (!style) {
+                    return;
+                }
+                else if (style.type === "Literal" && typeof style.value === "string" && !allowString) {
+                    let objectStyles;
+                    try {
+                        objectStyles = (_b = style_to_object_1.default(style.value)) !== null && _b !== void 0 ? _b : undefined;
+                    }
+                    catch (e) { }
+                    context.report({
+                        node: style,
+                        messageId: "stringStyle",
+                        fix: objectStyles &&
+                            ((fixer) => fixer.replaceText(node.value, `{${JSON.stringify(objectStyles)}}`)),
+                    });
+                }
+                else if (style.type === "TemplateLiteral" && !allowString) {
+                    context.report({
+                        node: style,
+                        messageId: "stringStyle",
+                    });
+                }
+                else if (style.type === "ObjectExpression") {
+                    const properties = style.properties.filter((prop) => prop.type === "Property");
+                    properties.forEach((prop) => {
+                        var _a;
+                        const name = getPropertyName(prop, context.getScope());
+                        if (name && !name.startsWith("--") && !allCssPropertiesSet.has(name)) {
+                            const kebabName = kebab_case_1.default(name);
+                            context.report({
+                                node: prop.key,
+                                messageId: "invalidStyleProp",
+                                data: { name },
+                                fix: allCssPropertiesSet.has(kebabName)
+                                    ? (fixer) => fixer.replaceText(prop.key, `"${kebabName}"`)
+                                    : undefined,
+                            });
+                        }
+                        const value = (_a = getStaticValue(prop.value)) === null || _a === void 0 ? void 0 : _a.value;
+                        if (typeof value === "number") {
+                            if (value === 0) {
+                                context.report({
+                                    node: prop.value,
+                                    messageId: "zeroStyleValue",
+                                    fix: (fixer) => fixer.replaceText(prop.value, '"0"'),
+                                });
+                            }
+                            else {
+                                context.report({
+                                    node: prop.value,
+                                    messageId: "numericStyleValue",
+                                    data: {
+                                        value: String(value),
+                                    },
+                                });
+                            }
+                        }
+                    });
+                }
+            },
+        };
+    },
+};
+exports.default = rule;

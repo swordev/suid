@@ -1,0 +1,43 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const jsx_ast_utils_1 = require("jsx-ast-utils");
+const reactSpecificProps = [
+    { from: "className", to: "class" },
+    { from: "htmlFor", to: "for" },
+];
+const rule = {
+    meta: {
+        type: "problem",
+        docs: {
+            recommended: "warn",
+            description: "Disallow usage of React-specific `className`/`htmlFor` props (though they are supported for compatibility).",
+            url: "https://github.com/joshwilsonvu/eslint-plugin-solid/blob/main/docs/no-react-specific-props.md",
+        },
+        fixable: "code",
+        schema: [],
+        messages: {
+            prefer: "Prefer the `{{ to }}` prop over `{{ from }}`.",
+        },
+    },
+    create(context) {
+        return {
+            JSXOpeningElement(node) {
+                for (const { from, to } of reactSpecificProps) {
+                    const classNameAttribute = jsx_ast_utils_1.getProp(node.attributes, from);
+                    if (classNameAttribute) {
+                        const fix = !jsx_ast_utils_1.hasProp(node.attributes, to, { ignoreCase: false })
+                            ? (fixer) => fixer.replaceText(classNameAttribute.name, to)
+                            : undefined;
+                        context.report({
+                            node: classNameAttribute,
+                            messageId: "prefer",
+                            data: { from, to },
+                            fix,
+                        });
+                    }
+                }
+            },
+        };
+    },
+};
+exports.default = rule;

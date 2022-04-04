@@ -1,0 +1,186 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const utils_1 = require("../utils");
+const AUTO_COMPONENTS = ["Show", "For", "Index", "Switch", "Match"];
+const SOURCE_MODULE = "solid-js";
+const rule = {
+    meta: {
+        type: "problem",
+        docs: {
+            recommended: "error",
+            description: "Disallow references to undefined variables in JSX. Handles custom directives.",
+            url: "https://github.com/joshwilsonvu/eslint-plugin-solid/blob/main/docs/jsx-no-undef.md",
+        },
+        fixable: "code",
+        schema: [
+            {
+                type: "object",
+                properties: {
+                    allowGlobals: {
+                        type: "boolean",
+                        description: "When true, the rule will consider the global scope when checking for defined components.",
+                        default: false,
+                    },
+                    autoImport: {
+                        type: "boolean",
+                        description: 'Automatically import certain components from `"solid-js"` if they are undefined.',
+                        default: true,
+                    },
+                    typescriptEnabled: {
+                        type: "boolean",
+                        description: "Adjusts behavior not to conflict with TypeScript's type checking.",
+                        default: false,
+                    },
+                },
+                additionalProperties: false,
+            },
+        ],
+        messages: {
+            undefined: "'{{identifier}}' is not defined.",
+            customDirectiveUndefined: "Custom directive '{{identifier}}' is not defined.",
+            autoImport: "{{imports}} should be imported from '{{source}}'.",
+        },
+    },
+    create(context) {
+        var _a, _b, _c, _d, _e;
+        const allowGlobals = (_b = (_a = context.options[0]) === null || _a === void 0 ? void 0 : _a.allowGlobals) !== null && _b !== void 0 ? _b : false;
+        const autoImport = ((_c = context.options[0]) === null || _c === void 0 ? void 0 : _c.autoImport) !== false;
+        const isTypeScriptEnabled = (_e = (_d = context.options[0]) === null || _d === void 0 ? void 0 : _d.typescriptEnabled) !== null && _e !== void 0 ? _e : false;
+        const missingComponentsSet = new Set();
+        function checkIdentifierInJSX(node, { isComponent, isCustomDirective, } = {}) {
+            let scope = context.getScope();
+            const sourceCode = context.getSourceCode();
+            const sourceType = sourceCode.ast.sourceType;
+            const scopeUpperBound = !allowGlobals && sourceType === "module" ? "module" : "global";
+            const variables = [...scope.variables];
+            if (node.name === "this") {
+                return;
+            }
+            while (scope.type !== scopeUpperBound && scope.type !== "global" && scope.upper) {
+                scope = scope.upper;
+                variables.push(...scope.variables);
+            }
+            if (scope.childScopes.length) {
+                variables.push(...scope.childScopes[0].variables);
+                if (scope.childScopes[0].childScopes.length) {
+                    variables.push(...scope.childScopes[0].childScopes[0].variables);
+                }
+            }
+            if (variables.find((variable) => variable.name === node.name)) {
+                return;
+            }
+            if (isComponent &&
+                autoImport &&
+                AUTO_COMPONENTS.includes(node.name) &&
+                !missingComponentsSet.has(node.name)) {
+                missingComponentsSet.add(node.name);
+            }
+            else if (isCustomDirective) {
+                context.report({
+                    node,
+                    messageId: "customDirectiveUndefined",
+                    data: {
+                        identifier: node.name,
+                    },
+                });
+            }
+            else if (!isTypeScriptEnabled) {
+                context.report({
+                    node,
+                    messageId: "undefined",
+                    data: {
+                        identifier: node.name,
+                    },
+                });
+            }
+        }
+        return {
+            JSXOpeningElement(node) {
+                let n;
+                switch (node.name.type) {
+                    case "JSXIdentifier":
+                        if (!utils_1.isDOMElementName(node.name.name)) {
+                            checkIdentifierInJSX(node.name, { isComponent: true });
+                        }
+                        break;
+                    case "JSXMemberExpression":
+                        n = node.name;
+                        do {
+                            n = n.object;
+                        } while (n && n.type !== "JSXIdentifier");
+                        if (n) {
+                            checkIdentifierInJSX(n);
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            },
+            "JSXAttribute > JSXNamespacedName": (node) => {
+                var _a, _b;
+                if (((_a = node.namespace) === null || _a === void 0 ? void 0 : _a.type) === "JSXIdentifier" &&
+                    node.namespace.name === "use" &&
+                    ((_b = node.name) === null || _b === void 0 ? void 0 : _b.type) === "JSXIdentifier") {
+                    checkIdentifierInJSX(node.name, { isCustomDirective: true });
+                }
+            },
+            "Program:exit": (programNode) => {
+                const missingComponents = Array.from(missingComponentsSet.values());
+                if (autoImport && missingComponents.length) {
+                    const identifiersString = missingComponents.join(", ");
+                    const importNode = programNode.body.find((n) => n.type === "ImportDeclaration" &&
+                        n.importKind !== "type" &&
+                        n.source.type === "Literal" &&
+                        n.source.value === SOURCE_MODULE);
+                    if (importNode) {
+                        context.report({
+                            node: importNode,
+                            messageId: "autoImport",
+                            data: {
+                                imports: utils_1.formatList(missingComponents),
+                                source: SOURCE_MODULE,
+                            },
+                            fix: (fixer) => {
+                                const reversedSpecifiers = importNode.specifiers.slice().reverse();
+                                const lastSpecifier = reversedSpecifiers.find((s) => s.type === "ImportSpecifier");
+                                if (lastSpecifier) {
+                                    return fixer.insertTextAfter(lastSpecifier, `, ${identifiersString}`);
+                                }
+                                const otherSpecifier = importNode.specifiers.find((s) => s.type === "ImportDefaultSpecifier" || s.type === "ImportNamespaceSpecifier");
+                                if (otherSpecifier) {
+                                    return fixer.insertTextAfter(otherSpecifier, `, { ${identifiersString} }`);
+                                }
+                                if (importNode.specifiers.length === 0) {
+                                    const importToken = context.getSourceCode().getFirstToken(importNode);
+                                    return importToken
+                                        ? fixer.insertTextAfter(importToken, ` { ${identifiersString} } from`)
+                                        : null;
+                                }
+                                return null;
+                            },
+                        });
+                    }
+                    else {
+                        context.report({
+                            node: programNode,
+                            messageId: "autoImport",
+                            data: {
+                                imports: utils_1.formatList(missingComponents),
+                                source: SOURCE_MODULE,
+                            },
+                            fix: (fixer) => {
+                                var _a;
+                                const firstImport = programNode.body.find((n) => n.type === "ImportDeclaration");
+                                if (firstImport) {
+                                    return fixer.insertTextBeforeRange(((_a = utils_1.getCommentBefore(firstImport, context.getSourceCode())) !== null && _a !== void 0 ? _a : firstImport).range, `import { ${identifiersString} } from "${SOURCE_MODULE}";\n`);
+                                }
+                                return fixer.insertTextBeforeRange([0, 0], `import { ${identifiersString} } from "${SOURCE_MODULE}";\n`);
+                            },
+                        });
+                    }
+                }
+            },
+        };
+    },
+};
+exports.default = rule;

@@ -1,0 +1,105 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.isReturningJSX = void 0;
+const estraverse_1 = __importDefault(require("estraverse"));
+function traverse(ASTnode, visitor) {
+    const opts = Object.assign(Object.assign({ fallback(node) {
+            return Object.keys(node).filter((key) => key === "children" || key === "argument");
+        } }, visitor), { keys: Object.assign(Object.assign({}, visitor.keys), { JSXElement: ["children"], JSXFragment: ["children"] }) });
+    estraverse_1.default.traverse(ASTnode, opts);
+}
+function findReturnStatement(node) {
+    if ((!node.value || !node.value.body || !node.value.body.body) &&
+        (!node.body || !node.body.body)) {
+        return false;
+    }
+    const bodyNodes = node.value ? node.value.body.body : node.body.body;
+    return (function loopNodes(nodes) {
+        let i = nodes.length - 1;
+        for (; i >= 0; i--) {
+            if (nodes[i].type === "ReturnStatement") {
+                return nodes[i];
+            }
+            if (nodes[i].type === "SwitchStatement") {
+                let j = nodes[i].cases.length - 1;
+                for (; j >= 0; j--) {
+                    return loopNodes(nodes[i].cases[j].consequent);
+                }
+            }
+        }
+        return false;
+    })(bodyNodes);
+}
+function traverseReturns(ASTNode, enterFunc) {
+    const nodeType = ASTNode.type;
+    if (nodeType === "ReturnStatement") {
+        return enterFunc(ASTNode);
+    }
+    if (nodeType === "ArrowFunctionExpression" && ASTNode.expression) {
+        return enterFunc(ASTNode.body);
+    }
+    if (nodeType !== "FunctionExpression" &&
+        nodeType !== "FunctionDeclaration" &&
+        nodeType !== "ArrowFunctionExpression") {
+        return;
+    }
+    traverse(ASTNode.body, {
+        enter(node) {
+            switch (node.type) {
+                case "ReturnStatement":
+                    this.skip();
+                    return enterFunc(node);
+                case "FunctionExpression":
+                case "FunctionDeclaration":
+                case "ArrowFunctionExpression":
+                    return this.skip();
+                default:
+            }
+        },
+    });
+}
+function isJSX(node) {
+    return node && ["JSXElement", "JSXFragment"].indexOf(node.type) >= 0;
+}
+function isReturningJSX(ASTnode) {
+    let found = false;
+    traverseReturns(ASTnode, (node) => {
+        traverse(node, {
+            enter(childNode) {
+                switch (childNode.type) {
+                    case "FunctionExpression":
+                    case "FunctionDeclaration":
+                    case "ArrowFunctionExpression":
+                        return this.skip();
+                    case "ConditionalExpression":
+                        if (isJSX(childNode.consequent) || isJSX(childNode.alternate)) {
+                            found = true;
+                            this.break();
+                        }
+                        this.skip();
+                        break;
+                    case "LogicalExpression":
+                        if ((childNode.operator === "&&" && isJSX(childNode.right)) ||
+                            (childNode.operator === "||" && (isJSX(childNode.left) || isJSX(childNode.right)))) {
+                            found = true;
+                            this.break();
+                        }
+                        this.skip();
+                        break;
+                    case "JSXElement":
+                    case "JSXFragment":
+                        found = true;
+                        this.break;
+                        break;
+                    default:
+                }
+            },
+        });
+        return found && estraverse_1.default.VisitorOption.Break;
+    });
+    return found;
+}
+exports.isReturningJSX = isReturningJSX;

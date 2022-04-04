@@ -1,0 +1,55 @@
+{
+  "name": "npm-package-arg",
+  "version": "9.0.1",
+  "description": "Parse the things that can be arguments to `npm install`",
+  "main": "./lib/npa.js",
+  "directories": {
+    "test": "test"
+  },
+  "files": [
+    "bin",
+    "lib"
+  ],
+  "dependencies": {
+    "hosted-git-info": "^5.0.0",
+    "semver": "^7.3.5",
+    "validate-npm-package-name": "^3.0.0"
+  },
+  "devDependencies": {
+    "@npmcli/template-oss": "^2.9.2",
+    "tap": "^15.1.6"
+  },
+  "scripts": {
+    "preversion": "npm test",
+    "postversion": "npm publish",
+    "prepublishOnly": "git push origin --follow-tags",
+    "test": "tap",
+    "snap": "tap",
+    "npmclilint": "npmcli-lint",
+    "lint": "eslint '**/*.js'",
+    "lintfix": "npm run lint -- --fix",
+    "posttest": "npm run lint",
+    "postsnap": "npm run lintfix --",
+    "postlint": "npm-template-check",
+    "template-copy": "npm-template-copy --force"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/npm/npm-package-arg"
+  },
+  "author": "GitHub Inc.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/npm/npm-package-arg/issues"
+  },
+  "homepage": "https://github.com/npm/npm-package-arg",
+  "engines": {
+    "node": "^12.13.0 || ^14.15.0 || >=16"
+  },
+  "tap": {
+    "branches": 97
+  },
+  "templateOSS": {
+    "version": "2.9.2"
+  }
+}

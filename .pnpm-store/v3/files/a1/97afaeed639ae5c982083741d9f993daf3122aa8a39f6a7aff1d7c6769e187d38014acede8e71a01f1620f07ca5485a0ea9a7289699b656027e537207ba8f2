@@ -1,0 +1,26 @@
+{
+  "name": "@stackblitz/sdk",
+  "version": "1.6.0",
+  "description": "",
+  "main": "./bundles/sdk.js",
+  "module": "./bundles/sdk.m.js",
+  "unpkg": "./bundles/sdk.umd.js",
+  "jsdelivr": "./bundles/sdk.umd.js",
+  "typings": "./typings/index.d.ts",
+  "scripts": {
+    "build": "npm run compile && npm run bundle",
+    "compile": "tsc --p tsconfig.json",
+    "bundle": "npx microbundle --i dist/index.js --name StackBlitzSDK --target=browser"
+  },
+  "files": [
+    "bundles",
+    "typings"
+  ],
+  "author": "Eric Simons",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "microbundle": "^0.3.1",
+    "typescript": "^2.9.2"
+  }
+}
