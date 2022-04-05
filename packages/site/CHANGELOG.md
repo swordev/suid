@@ -1,5 +1,11 @@
 # @suid/site
 
+## 0.0.26
+
+### Patch Changes
+
+- [`efa06bd5`](https://github.com/swordev/suid/commit/efa06bd55c4a83fc6f5ad72c39276e8f7500032e) Thanks [@juanrgm](https://github.com/juanrgm)! - Add code editor loading state
+
 ## 0.0.25
 
 ### Patch Changes
