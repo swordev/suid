@@ -1,5 +1,20 @@
 # @suid/site
 
+## 0.0.27
+
+### Patch Changes
+
+- [`407cb210`](https://github.com/swordev/suid/commit/407cb210675900129701859980e6f52d817b26ff) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
+* [`36e26ccd`](https://github.com/swordev/suid/commit/36e26ccdc2bc6d8160f4624db3294df567c17245) Thanks [@juanrgm](https://github.com/juanrgm)! - Add loading state on transforming action
+
+- [`f1b5dbd8`](https://github.com/swordev/suid/commit/f1b5dbd80c77061556a7666d10413b984d8a417a) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `NotFound` page
+
+- Updated dependencies [[`407cb210`](https://github.com/swordev/suid/commit/407cb210675900129701859980e6f52d817b26ff)]:
+  - @suid/base@0.0.17
+  - @suid/material@0.0.19
+  - @suid/icons-material@0.0.19
+
 ## 0.0.26
 
 ### Patch Changes

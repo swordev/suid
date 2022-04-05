@@ -1,5 +1,11 @@
 # @suid/base
 
+## 0.0.17
+
+### Patch Changes
+
+- [`407cb210`](https://github.com/swordev/suid/commit/407cb210675900129701859980e6f52d817b26ff) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
 ## 0.0.16
 
 ### Patch Changes
