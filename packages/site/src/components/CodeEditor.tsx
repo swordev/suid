@@ -1,15 +1,18 @@
 import Box from "@suid/material/Box";
 import createElementRef from "@suid/system/createElementRef";
+import { SxPropsObject } from "@suid/system/sxProps";
 import { editor, Uri } from "monaco-editor";
 import { createEffect, onCleanup, onMount } from "solid-js";
 import setupEditor from "~/components/CodeEditor/setupEditor";
 import { useLayoutContext } from "~/layouts/MainLayout/LayoutContext";
 
 export default function CodeEditor(props: {
+  sx?: SxPropsObject;
   fileName: string;
   value?: string;
   language?: string;
   onChange?: (code: string) => void;
+  onReady?: () => void;
 }) {
   setupEditor();
 
@@ -40,6 +43,7 @@ export default function CodeEditor(props: {
     editorInstance.onDidChangeModelContent(() => {
       props.onChange?.(model.getLinesContent().join("\n"));
     });
+    props.onReady?.();
   });
 
   createEffect(() => {
@@ -50,5 +54,10 @@ export default function CodeEditor(props: {
   createEffect(() => {
     editorInstance?.getModel()?.setValue(props.value || "");
   });
-  return <Box style={{ width: "100%", height: "400px" }} ref={element} />;
+  return (
+    <Box
+      sx={{ width: "100%", height: "400px", ...(props.sx || {}) }}
+      ref={element}
+    />
+  );
 }

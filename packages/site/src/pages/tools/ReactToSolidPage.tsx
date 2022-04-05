@@ -1,10 +1,9 @@
-import react2solid from "@suid/codemod/react2solid";
 import Box from "@suid/material/Box";
 import Button from "@suid/material/Button";
 import Grid from "@suid/material/Grid";
+import Skeleton from "@suid/material/Skeleton";
 import Typography from "@suid/material/Typography";
-import { createSignal } from "solid-js";
-import CodeEditor from "~/components/CodeEditor";
+import { createSignal, lazy, Show } from "solid-js";
 import PageNav from "~/components/PageNav";
 
 const defaultCode = `import * as React from "react"
@@ -20,10 +19,15 @@ const localStorageInputCodeKey = "react2solid-input-code";
 
 export default function ReactToSolidPage() {
   const localInputCode = localStorage.getItem(localStorageInputCodeKey);
+  const [readyInputEditor, setReadyInputEditor] = createSignal(false);
+  const [readyOutputEditor, setReadyOutputEditor] = createSignal(false);
   const [inputCode, setInputCode] = createSignal(
     localInputCode?.length ? localInputCode : defaultCode
   );
   const [outputCode, setOutputCode] = createSignal("");
+
+  const CodeEditor = lazy(() => import("~/components/CodeEditor"));
+
   return (
     <>
       <Typography component="h1" variant="h4" sx={{ mt: 1 }}>
@@ -38,9 +42,13 @@ export default function ReactToSolidPage() {
           <Typography component="h3" variant="h6" sx={{ mt: 2, mb: 1 }}>
             Input React code
           </Typography>
+          <Show when={!readyInputEditor()}>
+            <Skeleton variant="rectangular" height={400} />
+          </Show>
           <CodeEditor
             fileName="react.tsx"
             value={inputCode()}
+            onReady={() => setReadyInputEditor(true)}
             onChange={(code) => {
               localStorage.setItem(localStorageInputCodeKey, code);
               setInputCode(code);
@@ -51,7 +59,14 @@ export default function ReactToSolidPage() {
           <Typography component="h3" variant="h6" sx={{ mt: 2, mb: 1 }}>
             Output SolidJS code
           </Typography>
-          <CodeEditor fileName="solid.tsx" value={outputCode()} />
+          <Show when={!readyOutputEditor()}>
+            <Skeleton variant="rectangular" height={400} />
+          </Show>
+          <CodeEditor
+            fileName="solid.tsx"
+            value={outputCode()}
+            onReady={() => setReadyOutputEditor(true)}
+          />
         </Grid>
         <Grid item xs={12}>
           <Box sx={{ textAlign: "center", my: 2 }}>
@@ -60,10 +75,14 @@ export default function ReactToSolidPage() {
               sx={{ p: 2, minWidth: 150 }}
               fullWidth
               size="large"
-              onClick={() => {
+              onMouseEnter={() => {
+                import("@suid/codemod/react2solid");
+              }}
+              onClick={async () => {
                 let result = inputCode();
                 try {
-                  result = react2solid({
+                  const react2solid = await import("@suid/codemod/react2solid");
+                  result = react2solid.default({
                     "file.tsx": inputCode(),
                   })["file.tsx"];
                 } catch (error) {
