@@ -1,6 +1,6 @@
 # ROADMAP
 
-## System
+## @suid/system
 
 | Feature                        | State |
 | ------------------------------ | :---: |
@@ -12,7 +12,7 @@
 | Breakpoints as an object/array |  ⏳   |
 | `styleOverrides`               |       |
 
-## Codemod
+## @suid/codemod
 
 | Transformer             | State |
 | ----------------------- | :---: |
@@ -26,9 +26,9 @@
 | `React.useRef`          |       |
 | `React.useLayoutEffect` |  ⏳   |
 
-## Components
+## @suid/material
 
-| Name                    | State |
+| Component               | State |
 | ----------------------- | :---: |
 | Accordion               |       |
 | AccordionActions        |       |

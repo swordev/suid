@@ -97,7 +97,7 @@ async function genRoadmap(options: { version: string }) {
   const componentsTable = markdownTable(
     [
       {
-        value: "Name",
+        value: "Component",
       },
       {
         value: "State",
@@ -119,13 +119,13 @@ async function genRoadmap(options: { version: string }) {
   const contents = format(
     [
       `# ROADMAP\n`,
-      `\n## System`,
+      `\n## @suid/system`,
       systemTable,
       "\n",
-      `\n## Codemod`,
+      `\n## @suid/codemod`,
       codemodTable,
       "\n",
-      `\n## Components`,
+      `\n## @suid/material`,
       componentsTable,
     ].join("\n"),
     {
