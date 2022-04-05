@@ -15,6 +15,7 @@ import {
   Show,
   Switch,
 } from "solid-js";
+import NotFoundPage from "~/pages/NotFoundPage";
 
 export const Pages = Object.assign(
   import.meta.glob(`./pages/**/*Page/index.{ts,tsx}`),
@@ -114,5 +115,16 @@ export function Routing() {
       />
     );
   });
-  return <Routes>{Children}</Routes>;
+  return (
+    <Routes>
+      {Children.concat(
+        <Route
+          path="/*"
+          element={
+            <RoutingElementContainer fullWidth Component={NotFoundPage} />
+          }
+        />
+      )}
+    </Routes>
+  );
 }
