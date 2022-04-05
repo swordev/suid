@@ -23,14 +23,14 @@
     "monaco-editor": "^0.33.0",
     "prism-themes": "^1.9.0",
     "prismjs": "^1.27.0",
-    "solid-app-router": "^0.3.1"
+    "solid-app-router": "^0.3.2"
   },
   "devDependencies": {
     "@types/prismjs": "^1.26.0",
     "fast-glob": "^3.2.11",
     "rimraf": "^3.0.2",
-    "sass": "^1.49.9",
-    "vite": "^2.8.6",
+    "sass": "^1.49.11",
+    "vite": "^2.9.1",
     "vite-plugin-solid": "^2.2.6"
   },
   "peerDependencies": {
