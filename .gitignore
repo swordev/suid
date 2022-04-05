@@ -1,4 +1,5 @@
 .history
+.pnpm-store
 bk
 dist
 lib
