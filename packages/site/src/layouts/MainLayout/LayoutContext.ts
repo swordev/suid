@@ -6,7 +6,7 @@ import { createMutable } from "solid-js/store";
 type Options = {
   darkMode: boolean;
   drawer: {
-    open: boolean;
+    visible: boolean;
     openState: boolean;
     permanent: boolean;
     width: number;
@@ -21,7 +21,7 @@ function isSysThemeDark() {
 export const defaultOptions: Options = {
   darkMode: getSavedDarkMode() ?? isSysThemeDark(),
   drawer: {
-    open: true,
+    visible: true,
     openState: false,
     permanent: true,
     width: 0,

@@ -6,7 +6,7 @@ import Toolbar from "@suid/material/Toolbar";
 import { createPalette } from "@suid/material/styles/createPalette";
 import useMediaQuery from "@suid/material/useMediaQuery";
 import { useLocation } from "solid-app-router";
-import { createEffect, createSignal, Show } from "solid-js";
+import { createEffect, createMemo, createSignal, Show } from "solid-js";
 import { createMutable } from "solid-js/store";
 import { Routing, RoutingElementContainer } from "~/Routing";
 import Footer from "~/layouts/MainLayout/Footer";
@@ -44,10 +44,27 @@ export default function MainLayout() {
     })
   );
 
+  const location = useLocation();
+  const md = useMediaQuery(theme.breakpoints.down("md"));
+  const isFullWidthPage = () =>
+    location.pathname === "/" || location.pathname.startsWith("/tools/");
+  const showMenu = createMemo(() => location.pathname !== "/");
+  const isPlaygroundPage = () => location.pathname === "/tools/playground";
+  const [playgroundLoaded, setPlaygroundLoaded] = createSignal(false);
+
+  createEffect(() => (context.drawer.permanent = md() ? false : true));
   createEffect(
-    () => (context.drawer.open = context.drawer.openState || !isDownMd())
+    () =>
+      (context.drawer.visible =
+        context.drawer.permanent || context.drawer.openState)
   );
-  createEffect(() => (context.drawer.permanent = !isDownMd()));
+  createEffect(() => {
+    if (context.drawer.visible && !isFullWidthPage()) {
+      context.drawer.visibleWidth = drawerWidth;
+    } else {
+      context.drawer.visibleWidth = 0;
+    }
+  });
 
   createEffect((darkMode) => {
     if (darkMode !== context.darkMode)
@@ -56,13 +73,6 @@ export default function MainLayout() {
       );
     return context.darkMode;
   }, context.darkMode);
-
-  const location = useLocation();
-  const isDownMd = useMediaQuery(theme.breakpoints.down("md"));
-  const isFullWidthPage = () =>
-    location.pathname === "/" || location.pathname.startsWith("/tools/");
-  const isPlaygroundPage = () => location.pathname === "/tools/playground";
-  const [playgroundLoaded, setPlaygroundLoaded] = createSignal(false);
 
   createEffect<boolean>((loaded) => {
     if (!loaded && isPlaygroundPage()) {
@@ -73,23 +83,15 @@ export default function MainLayout() {
     }
   }, playgroundLoaded());
 
-  createEffect(() => {
-    if (context.drawer.open && context.drawer.permanent && !isFullWidthPage()) {
-      context.drawer.visibleWidth = drawerWidth;
-    } else {
-      context.drawer.visibleWidth = 0;
-    }
-  });
-
   return (
     <LayoutContext.Provider value={context}>
       <ThemeProvider theme={theme}>
         <Box sx={{ display: "flex", minHeight: "calc(100vh - 100px)" }}>
           <CssBaseline enableColorScheme />
           <Header />
-          <Show when={!isFullWidthPage()}>
+          <Show when={showMenu()}>
             <Drawer
-              open={context.drawer.open}
+              open={context.drawer.visible}
               variant={context.drawer.permanent ? "permanent" : "temporary"}
               sx={{
                 width: drawerWidth,

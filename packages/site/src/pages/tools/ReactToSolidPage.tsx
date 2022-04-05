@@ -41,7 +41,7 @@ export default function ReactToSolidPage() {
       </Typography>
 
       <Grid container spacing={2}>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} xl={6}>
           <Typography component="h3" variant="h6" sx={{ mt: 2, mb: 1 }}>
             Input React code
           </Typography>
@@ -58,7 +58,7 @@ export default function ReactToSolidPage() {
             }}
           />
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} xl={6}>
           <Typography component="h3" variant="h6" sx={{ mt: 2, mb: 1 }}>
             Output SolidJS code
           </Typography>

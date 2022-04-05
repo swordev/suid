@@ -1,5 +1,7 @@
 import Box from "@suid/material/Box";
 import Container from "@suid/material/Container";
+import { useTheme } from "@suid/material/styles";
+import useMediaQuery from "@suid/material/useMediaQuery";
 import { SxPropsObject } from "@suid/system/sxProps";
 import { EventParam } from "@suid/types";
 import { snakeCase, uncapitalize } from "@suid/utils/string";
@@ -55,6 +57,8 @@ export function RoutingElementContainer(props: {
   fullWidth?: boolean;
   sx?: SxPropsObject;
 }) {
+  const theme = useTheme();
+  const xs = useMediaQuery(theme.breakpoints.down("md"));
   const sx = createMemo(
     () =>
       ({
@@ -72,7 +76,17 @@ export function RoutingElementContainer(props: {
   return (
     <Show
       when={!props.fullWidth}
-      fallback={<Box sx={sx()} children={children()} />}
+      fallback={
+        <Box
+          sx={{
+            ...sx(),
+            ...(!xs() && {
+              px: 5,
+            }),
+          }}
+          children={children()}
+        />
+      }
     >
       <Container maxWidth="lg" sx={sx()} children={children()} />
     </Show>
