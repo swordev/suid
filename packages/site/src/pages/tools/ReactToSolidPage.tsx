@@ -1,5 +1,7 @@
 import Box from "@suid/material/Box";
 import Button from "@suid/material/Button";
+import { buttonBaseClasses } from "@suid/material/ButtonBase";
+import CircularProgress from "@suid/material/CircularProgress";
 import Grid from "@suid/material/Grid";
 import Skeleton from "@suid/material/Skeleton";
 import Typography from "@suid/material/Typography";
@@ -7,7 +9,7 @@ import { createSignal, lazy, Show } from "solid-js";
 import PageNav from "~/components/PageNav";
 
 const defaultCode = `import * as React from "react"
-import Button from "@mui/Button/Button"
+import Button from "@mui/material/Button"
 
 export default function Counter() {
   const [state, setState] = React.useState(0)
@@ -21,6 +23,7 @@ export default function ReactToSolidPage() {
   const localInputCode = localStorage.getItem(localStorageInputCodeKey);
   const [readyInputEditor, setReadyInputEditor] = createSignal(false);
   const [readyOutputEditor, setReadyOutputEditor] = createSignal(false);
+  const [loading, setLoading] = createSignal(false);
   const [inputCode, setInputCode] = createSignal(
     localInputCode?.length ? localInputCode : defaultCode
   );
@@ -75,11 +78,13 @@ export default function ReactToSolidPage() {
               sx={{ p: 2, minWidth: 150 }}
               fullWidth
               size="large"
+              className={loading() ? buttonBaseClasses.disabled : ""}
               onMouseEnter={() => {
                 import("@suid/codemod/react2solid");
               }}
               onClick={async () => {
                 let result = inputCode();
+                setLoading(true);
                 try {
                   const react2solid = await import("@suid/codemod/react2solid");
                   result = react2solid.default({
@@ -87,11 +92,20 @@ export default function ReactToSolidPage() {
                   })["file.tsx"];
                 } catch (error) {
                   console.error(error);
+                } finally {
+                  setTimeout(() => {
+                    setOutputCode(result);
+                    setLoading(false);
+                  }, 500);
                 }
-                setOutputCode(result);
               }}
             >
-              Transform
+              <Show when={loading()} fallback="Transform">
+                Transforming
+                <CircularProgress
+                  sx={{ width: 40, opacity: 0.8, position: "absolute" }}
+                />
+              </Show>
             </Button>
           </Box>
         </Grid>
