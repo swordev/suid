@@ -16,6 +16,18 @@ const systemFeatures: Record<string, boolean | "pending"> = {
   "`styleOverrides`": false,
 };
 
+const codemodTransformers: Record<string, boolean | "pending"> = {
+  "MUI imports": true,
+  "MUI components": "pending",
+  "`React.useState`": true,
+  "`React.useEffect`": "pending",
+  "`React.useContext`": "pending",
+  "`React.useCallback`": "pending",
+  "`React.useMemo`": "pending",
+  "`React.useRef`": false,
+  "`React.useLayoutEffect`": "pending",
+};
+
 const pendingComponents = [
   "Input",
   "InputBase",
@@ -66,6 +78,22 @@ async function genRoadmap(options: { version: string }) {
     ])
   );
 
+  const codemodTable = markdownTable(
+    [
+      {
+        value: "Transformer",
+      },
+      {
+        value: "State",
+        align: "center",
+      },
+    ],
+    Object.entries(codemodTransformers).map(([name, state]) => [
+      name,
+      stateIcon(state),
+    ])
+  );
+
   const componentsTable = markdownTable(
     [
       {
@@ -93,6 +121,9 @@ async function genRoadmap(options: { version: string }) {
       `# ROADMAP\n`,
       `\n## System`,
       systemTable,
+      "\n",
+      `\n## Codemod`,
+      codemodTable,
       "\n",
       `\n## Components`,
       componentsTable,
