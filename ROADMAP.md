@@ -8,8 +8,8 @@
 | `sx` property                  |  ✅   |
 | Theme context                  |  ✅   |
 | Slot classes                   |  ✅   |
-| Design tokens as props         |       |
-| Breakpoints as an object/array |       |
+| Design tokens as props         |  ⏳   |
+| Breakpoints as an object/array |  ⏳   |
 | `styleOverrides`               |       |
 
 ## Components
@@ -57,7 +57,7 @@
 | Drawer                  |  ✅   |
 | Fab                     |  ✅   |
 | Fade                    |  ✅   |
-| FilledInput             |       |
+| FilledInput             |  ⏳   |
 | FormControl             |  ✅   |
 | FormControlLabel        |  ✅   |
 | FormGroup               |  ✅   |
@@ -72,9 +72,9 @@
 | ImageList               |       |
 | ImageListItem           |       |
 | ImageListItemBar        |       |
-| Input                   |       |
+| Input                   |  ⏳   |
 | InputAdornment          |       |
-| InputBase               |       |
+| InputBase               |  ⏳   |
 | InputLabel              |       |
 | LinearProgress          |  ✅   |
 | Link                    |  ✅   |
@@ -93,7 +93,7 @@
 | Modal                   |  ✅   |
 | NativeSelect            |       |
 | NoSsr                   |       |
-| OutlinedInput           |       |
+| OutlinedInput           |  ⏳   |
 | Pagination              |       |
 | PaginationItem          |       |
 | Paper                   |  ✅   |
@@ -104,7 +104,7 @@
 | RadioGroup              |       |
 | Rating                  |       |
 | ScopedCssBaseline       |       |
-| Select                  |       |
+| Select                  |  ⏳   |
 | Skeleton                |  ✅   |
 | Slide                   |  ✅   |
 | Slider                  |       |
@@ -138,7 +138,7 @@
 | Tabs                    |       |
 | TabScrollButton         |       |
 | TextareaAutosize        |       |
-| TextField               |       |
+| TextField               |  ⏳   |
 | ToggleButton            |  ✅   |
 | ToggleButtonGroup       |  ✅   |
 | Toolbar                 |  ✅   |

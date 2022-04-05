@@ -6,15 +6,30 @@ import { muiSourcePath } from "~/util/material-ui";
 import { options as prettierOptions } from "~/util/prettier";
 import { rootPath } from "~/util/workspace";
 
-const systemFeatures = {
+const systemFeatures: Record<string, boolean | "pending"> = {
   "`styled`": true,
   "`sx` property": true,
   "Theme context": true,
   "Slot classes": true,
-  "Design tokens as props": false,
-  "Breakpoints as an object/array": false,
+  "Design tokens as props": "pending",
+  "Breakpoints as an object/array": "pending",
   "`styleOverrides`": false,
 };
+
+const pendingComponents = [
+  "Input",
+  "InputBase",
+  "TextField",
+  "FilledInput",
+  "OutlinedInput",
+  "Select",
+];
+
+function stateIcon(state: boolean | "pending") {
+  if (state === true) return "✅";
+  if (state === "pending") return "⏳";
+  return "";
+}
 
 async function genRoadmap(options: { version: string }) {
   const { name } = genRoadmap;
@@ -47,7 +62,7 @@ async function genRoadmap(options: { version: string }) {
     ],
     Object.entries(systemFeatures).map(([name, state]) => [
       name,
-      state ? "✅" : "",
+      stateIcon(state),
     ])
   );
 
@@ -64,7 +79,11 @@ async function genRoadmap(options: { version: string }) {
     [
       ...sourceComponentNames.map((name) => [
         name,
-        targetComponentNames.includes(name) ? "✅" : "",
+        stateIcon(
+          pendingComponents.includes(name)
+            ? "pending"
+            : targetComponentNames.includes(name)
+        ),
       ]),
     ]
   );
