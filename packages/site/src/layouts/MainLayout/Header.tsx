@@ -109,7 +109,7 @@ export default function Header() {
           }}
         >
           <Show
-            when={layoutContext.darkMode}
+            when={!layoutContext.darkMode}
             fallback={<LightModeOutlinedIcon />}
           >
             <DarkModeOutlinedIcon />
