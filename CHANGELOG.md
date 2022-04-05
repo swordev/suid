@@ -1,12 +1,18 @@
 # @suid/site
 
+## 0.0.26
+
+### Patch Changes
+
+- [`efa06bd5`](https://github.com/swordev/suid/commit/efa06bd55c4a83fc6f5ad72c39276e8f7500032e) Thanks [@juanrgm](https://github.com/juanrgm)! - Add code editor loading state
+
 ## 0.0.25
 
 ### Patch Changes
 
-- [`c417667`](https://github.com/swordev/suid/commit/c417667b28b6bc5c9f64b03c23ba02cdef97d971) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `ReactToSolid` tools page
+- [`c417667b`](https://github.com/swordev/suid/commit/c417667b28b6bc5c9f64b03c23ba02cdef97d971) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `ReactToSolid` tools page
 
-- Updated dependencies [[`8895644`](https://github.com/swordev/suid/commit/8895644da660d10b80c48c6f2a4de3597a6f7345)]:
+- Updated dependencies [[`8895644d`](https://github.com/swordev/suid/commit/8895644da660d10b80c48c6f2a4de3597a6f7345)]:
   - @suid/codemod@0.0.2
 
 ## 0.0.24
