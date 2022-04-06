@@ -1,5 +1,11 @@
 # @suid/codemod
 
+## 0.0.3
+
+### Patch Changes
+
+- [`7ec9e0ea`](https://github.com/swordev/suid/commit/7ec9e0ea85da73ba7542cf384f781590ce166605) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `React.Fragment` transform
+
 ## 0.0.2
 
 ### Patch Changes
