@@ -26,6 +26,7 @@ const codemodTransformers: Record<string, boolean | "pending"> = {
   "`React.useMemo`": "pending",
   "`React.useRef`": false,
   "`React.useLayoutEffect`": "pending",
+  "`React.Fragment`": true,
 };
 
 const pendingComponents = [

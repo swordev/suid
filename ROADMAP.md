@@ -25,6 +25,7 @@
 | `React.useMemo`         |  ⏳   |
 | `React.useRef`          |       |
 | `React.useLayoutEffect` |  ⏳   |
+| `React.Fragment`        |  ✅   |
 
 ## @suid/material
 
