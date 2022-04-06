@@ -1,5 +1,5 @@
-import { callFunctionMagicKey } from "./transforms/renameGetterVarToCall";
 import transformReactSource from "./transforms/transformReactSource";
+import getReplacePatterns from "./utils/getReplacePatterns";
 import { Project, SourceFile, ts } from "ts-morph";
 
 export default function react2solid(files: Record<string, string>) {
@@ -26,7 +26,12 @@ export default function react2solid(files: Record<string, string>) {
   for (const path in sourceFiles) {
     const sourceFile = sourceFiles[path];
     transformReactSource(sourceFiles[path]);
-    result[path] = sourceFile.getText().replaceAll(callFunctionMagicKey, "()");
+    const replaceTextPatterns = getReplacePatterns(sourceFile) || {};
+    let sourceText = sourceFile.getText();
+    for (const [pattern, text] of Object.entries(replaceTextPatterns)) {
+      sourceText = sourceText.replaceAll(pattern, text);
+    }
+    result[path] = sourceText;
   }
 
   return result;

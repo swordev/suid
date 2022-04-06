@@ -1,10 +1,12 @@
 import renameGetterVarToCall from "./renameGetterVarToCall";
-import { CallExpression, ts } from "ts-morph";
+import { Identifier, ts } from "ts-morph";
 
-export default function replaceReactUseState(call: CallExpression) {
-  const variableDec = call.getFirstAncestorByKind(
+export default function replaceReactUseState(node: Identifier) {
+  const call = node.getFirstAncestorByKind(ts.SyntaxKind.CallExpression);
+  const variableDec = call?.getFirstAncestorByKind(
     ts.SyntaxKind.VariableDeclaration
   );
+
   if (variableDec) {
     const array = variableDec.getFirstDescendantByKind(
       ts.SyntaxKind.ArrayBindingPattern
@@ -22,13 +24,13 @@ export default function replaceReactUseState(call: CallExpression) {
     }
   }
 
-  const callProp = call.getFirstDescendantByKind(
+  const callProp = call?.getFirstDescendantByKind(
     ts.SyntaxKind.PropertyAccessExpression
   );
 
   callProp?.replaceWithText("createSignal");
 
-  call.getSourceFile().addImportDeclaration({
+  node.getSourceFile().addImportDeclaration({
     namedImports: ["createSignal"],
     moduleSpecifier: "solid-js",
   });

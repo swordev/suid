@@ -1,4 +1,4 @@
-import findReactCalls from "../navigations/findReactCalls";
+import findReactObjects from "../navigations/findReactObjects";
 import groupImports from "./groupImports";
 import removeReactImports from "./removeReactImports";
 import renameMuiImports from "./renameMuiImports";
@@ -6,10 +6,11 @@ import replaceReactUseState from "./replaceReactUseState";
 import { SourceFile } from "ts-morph";
 
 export default function transformReactSource(source: SourceFile) {
-  const reactCalls = findReactCalls(source);
-  for (const reactCall of reactCalls) {
-    if (reactCall.methodName === "useState") {
-      replaceReactUseState(reactCall.node);
+  const reactObjects = findReactObjects(source);
+  for (const reactObject of reactObjects) {
+    if (reactObject.node.wasForgotten()) continue;
+    if (reactObject.name === "useState") {
+      replaceReactUseState(reactObject.node);
     }
   }
   renameMuiImports(source);
