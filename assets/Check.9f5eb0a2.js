@@ -1,0 +1,1 @@
+import{c as e,t}from"./index.a5663dcd.js";const o=t('<svg><path d="M0 0h24v24H0z" fill="none"></path></svg>',4,!0),a=t('<svg><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg>',4,!0);var l=e(()=>[o.cloneNode(!0),a.cloneNode(!0)],"Check");export{l as C};
