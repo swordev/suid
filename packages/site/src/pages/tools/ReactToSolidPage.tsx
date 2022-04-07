@@ -24,9 +24,10 @@ export default function ReactToSolidPage() {
   const [readyInputEditor, setReadyInputEditor] = createSignal(false);
   const [readyOutputEditor, setReadyOutputEditor] = createSignal(false);
   const [loading, setLoading] = createSignal(false);
-  const [inputCode, setInputCode] = createSignal(
-    localInputCode?.length ? localInputCode : defaultCode
-  );
+  const defaultInputCode = localInputCode?.length
+    ? localInputCode
+    : defaultCode;
+  const [inputCode, setInputCode] = createSignal(defaultInputCode);
   const [outputCode, setOutputCode] = createSignal("");
 
   const CodeEditor = lazy(() => import("~/components/CodeEditor"));
@@ -50,7 +51,7 @@ export default function ReactToSolidPage() {
           </Show>
           <CodeEditor
             fileName="react.tsx"
-            value={inputCode()}
+            defaultValue={defaultInputCode}
             onReady={() => setReadyInputEditor(true)}
             onChange={(code) => {
               localStorage.setItem(localStorageInputCodeKey, code);
