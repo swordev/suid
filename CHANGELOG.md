@@ -1,5 +1,11 @@
 # @suid/site
 
+## 0.0.29
+
+### Patch Changes
+
+- [`04c635ad`](https://github.com/swordev/suid/commit/04c635ad7bbee1042d24d7d7b446a87d27b3c3c1) Thanks [@juanrgm](https://github.com/juanrgm)! - Avoid reload the code editor on changes
+
 ## 0.0.28
 
 ### Patch Changes
