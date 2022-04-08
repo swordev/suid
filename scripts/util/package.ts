@@ -3,6 +3,8 @@ import { format } from "prettier";
 import { options } from "~/util/prettier";
 
 type Package = {
+  private?: boolean;
+  files?: string[];
   scripts?: Record<string, string>;
   dependencies?: Record<string, string>;
   devDependencies?: Record<string, string>;

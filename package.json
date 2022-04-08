@@ -1,6 +1,40 @@
 {
   "name": "suid",
+  "version": "1.0.0",
   "private": true,
+  "description": "A port of Materia-UI (MUI) built with Solid.js.",
+  "keywords": [
+    "best_ecosystem",
+    "components",
+    "material",
+    "material-design",
+    "material-ui",
+    "mui",
+    "solid",
+    "solid-js",
+    "solid.js",
+    "solidhack",
+    "solidjs",
+    "styled-component",
+    "ui",
+    "ux"
+  ],
+  "homepage": "https://suid.io",
+  "bugs": {
+    "url": "https://github.com/swordev/suid.git/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/swordev/suid.git"
+  },
+  "license": "MIT",
+  "contributors": [
+    {
+      "name": "Juanra GM",
+      "email": "juanrgm724@gmail.com",
+      "url": "https://github.com/juanrgm"
+    }
+  ],
   "workspaces": [
     "scripts",
     "packages/types",

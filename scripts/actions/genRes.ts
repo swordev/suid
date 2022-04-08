@@ -7,22 +7,33 @@ const resPath = `${__dirname}/../res`;
 
 async function genRes() {
   const { name } = genRes;
-  const packageNames = await getPackageNames();
+  const packageNames = ["root", ...(await getPackageNames())];
   const commonPkg = await parsePackageFile(`${resPath}//common-package.json`);
   const commonLicensePath = `${resPath}/common-license`;
   const muiLicensePath = `${resPath}/mui-license`;
 
   for (const packageName of packageNames) {
     console.log(`[${name}] ${packageName}`);
-    const pkgDir = `${packagesPath}/${packageName}`;
-    const pkg = await parsePackageFile(`${pkgDir}/package.json`);
-    const targetPath = `${pkgDir}/${packageName === "site" ? "dist" : "lib"}/`;
+    const pkgDir =
+      packageName === "root" ? rootPath : `${packagesPath}/${packageName}`;
+    const pkgPath = `${pkgDir}/package.json`;
+    const pkg = await parsePackageFile(pkgPath);
+    let targetPath: string;
+    if (packageName === "root") {
+      targetPath = pkgDir;
+    } else if (packageName === "site") {
+      targetPath = `${pkgDir}/dist/`;
+    } else {
+      targetPath = `${pkgDir}/lib/`;
+    }
     const outPkgPath = `${targetPath}/package.json`;
     const newPkg: typeof pkg = {
       ...commonPkg,
       ...pkg,
       repository: {
-        directory: `packages/${packageName}`,
+        ...(packageName !== "root" && {
+          directory: `packages/${packageName}`,
+        }),
         ...(commonPkg.repository || {}),
         ...(pkg.repository || {}),
       },
@@ -32,31 +43,33 @@ async function genRes() {
       ].sort(),
     };
 
-    delete newPkg.scripts;
     delete newPkg.publishConfig;
 
-    const readmePath = `${pkgDir}/README.md`;
-    const changelogPath = `${pkgDir}/CHANGELOG.md`;
+    if (newPkg.private) delete newPkg.files;
 
-    if (!(await safeStat(targetPath))) await mkdir(targetPath);
+    if (packageName !== "root") {
+      delete newPkg.scripts;
+      const readmePath = `${pkgDir}/README.md`;
+      const changelogPath = `${pkgDir}/CHANGELOG.md`;
+      if (!(await safeStat(targetPath))) await mkdir(targetPath);
+      if (await safeStat(readmePath)) {
+        await copyFile(readmePath, `${targetPath}/README.md`);
+      }
+      if (await safeStat(changelogPath)) {
+        await copyFile(changelogPath, `${targetPath}/CHANGELOG.md`);
+      }
+      if (
+        ["base", "icons-material", "material", "system"].includes(packageName)
+      ) {
+        await copyFile(muiLicensePath, `${targetPath}/../LICENSE`);
+        await copyFile(muiLicensePath, `${targetPath}/LICENSE`);
+      } else {
+        await copyFile(commonLicensePath, `${targetPath}/../LICENSE`);
+        await copyFile(commonLicensePath, `${targetPath}/LICENSE`);
+      }
 
-    if (await safeStat(readmePath)) {
-      await copyFile(readmePath, `${targetPath}/README.md`);
+      await copyFile(commonLicensePath, `${rootPath}/LICENSE`);
     }
-    if (await safeStat(changelogPath)) {
-      await copyFile(changelogPath, `${targetPath}/CHANGELOG.md`);
-    }
-    if (
-      ["base", "icons-material", "material", "system"].includes(packageName)
-    ) {
-      await copyFile(muiLicensePath, `${targetPath}/../LICENSE`);
-      await copyFile(muiLicensePath, `${targetPath}/LICENSE`);
-    } else {
-      await copyFile(commonLicensePath, `${targetPath}/../LICENSE`);
-      await copyFile(commonLicensePath, `${targetPath}/LICENSE`);
-    }
-
-    await copyFile(commonLicensePath, `${rootPath}/LICENSE`);
     await writePackageFile(outPkgPath, newPkg);
   }
 }

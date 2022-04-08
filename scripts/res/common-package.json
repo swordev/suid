@@ -1,12 +1,14 @@
 {
-  "author": {
-    "name": "Juanra GM",
-    "email": "juanrgm724@gmail.com",
-    "url": "https://github.com/juanrgm"
-  },
   "bugs": {
     "url": "https://github.com/swordev/suid.git/issues"
   },
+  "contributors": [
+    {
+      "name": "Juanra GM",
+      "email": "juanrgm724@gmail.com",
+      "url": "https://github.com/juanrgm"
+    }
+  ],
   "files": ["**/*.js", "**/*.jsx", "**/*.d.ts"],
   "homepage": "https://suid.io",
   "keywords": [
