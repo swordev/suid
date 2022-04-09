@@ -77,7 +77,7 @@
 | FormControlLabel        |  ✅   |
 | FormGroup               |  ✅   |
 | FormHelperText          |  ✅   |
-| FormLabel               |       |
+| FormLabel               |  ✅   |
 | GlobalStyles            |  ✅   |
 | Grid                    |  ✅   |
 | Grow                    |       |
