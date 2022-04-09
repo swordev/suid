@@ -143,7 +143,9 @@ const FormControl = $.component(function FormControl({
     return initialAdornedStart;
   });*/
 
-  /*const [filled, setFilled] = React.useState(() => {
+  const [filled, setFilled] = createSignal(false);
+  // [review]
+  /*() => {
     // We need to iterate through the children and find the Input in order
     // to fully support server-side rendering.
     let initialFilled = false;
@@ -161,7 +163,7 @@ const FormControl = $.component(function FormControl({
     }
 
     return initialFilled;
-  });*/
+  }*/
 
   const [focusedState, setFocused] = createSignal(false);
 
@@ -213,7 +215,7 @@ const FormControl = $.component(function FormControl({
           return props.error;
         },
         get filled() {
-          return false;
+          return filled();
         },
         get focused() {
           return focused();
@@ -231,10 +233,10 @@ const FormControl = $.component(function FormControl({
           setFocused(false);
         },
         onEmpty: () => {
-          return undefined;
+          setFilled(false);
         },
         onFilled: () => {
-          return undefined;
+          setFilled(true);
         },
         onFocus: () => {
           setFocused(true);

@@ -89,7 +89,7 @@
 | ImageListItemBar        |       |
 | Input                   |  ⏳   |
 | InputAdornment          |       |
-| InputBase               |  ⏳   |
+| InputBase               |  ✅   |
 | InputLabel              |  ✅   |
 | LinearProgress          |  ✅   |
 | Link                    |  ✅   |
