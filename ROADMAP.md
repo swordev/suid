@@ -90,7 +90,7 @@
 | Input                   |  ⏳   |
 | InputAdornment          |       |
 | InputBase               |  ⏳   |
-| InputLabel              |       |
+| InputLabel              |  ✅   |
 | LinearProgress          |  ✅   |
 | Link                    |  ✅   |
 | List                    |  ✅   |
