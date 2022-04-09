@@ -40,7 +40,7 @@ type StyledOptions<N extends string> = {
   overridesResolver?: (
     props: Record<string, any>,
     styles: Record<string, any>
-  ) => string[];
+  ) => (string | false)[];
 };
 
 export const skipProps: (keyof StyledProps<any, any>)[] = [
