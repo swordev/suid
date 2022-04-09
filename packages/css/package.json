@@ -9,8 +9,7 @@
     "watch": "tsc --build -w"
   },
   "dependencies": {
-    "@suid/utils": "workspace:*",
-    "csstype": "^3.0.11"
+    "@suid/utils": "workspace:*"
   },
   "publishConfig": {
     "directory": "lib"

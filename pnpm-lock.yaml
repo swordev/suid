@@ -74,17 +74,17 @@ importers:
 
   packages/codemod:
     specifiers:
+      '@suid/utils': '*'
       ts-morph: ^14.0.0
     dependencies:
+      '@suid/utils': link:../utils
       ts-morph: 14.0.0
 
   packages/css:
     specifiers:
       '@suid/utils': workspace:*
-      csstype: ^3.0.11
     dependencies:
       '@suid/utils': link:../utils
-      csstype: 3.0.11
 
   packages/icons-material:
     specifiers:
