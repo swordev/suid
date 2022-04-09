@@ -32,6 +32,7 @@ export { default as MuiGlobalStyles } from "../GlobalStyles";
 export { default as MuiGrid } from "../Grid";
 export { default as MuiIcon } from "../Icon";
 export { default as MuiIconButton } from "../IconButton";
+export { default as MuiInput } from "../Input";
 export { default as MuiInputBase } from "../InputBase";
 export { default as MuiInputLabel } from "../InputLabel";
 export { default as MuiLinearProgress } from "../LinearProgress";

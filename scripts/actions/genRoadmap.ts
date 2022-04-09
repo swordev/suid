@@ -30,7 +30,6 @@ const codemodTransformers: Record<string, boolean | "pending"> = {
 };
 
 const pendingComponents = [
-  "Input",
   "TextField",
   "FilledInput",
   "OutlinedInput",

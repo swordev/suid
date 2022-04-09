@@ -87,7 +87,7 @@
 | ImageList               |       |
 | ImageListItem           |       |
 | ImageListItemBar        |       |
-| Input                   |  ⏳   |
+| Input                   |  ✅   |
 | InputAdornment          |       |
 | InputBase               |  ✅   |
 | InputLabel              |  ✅   |
