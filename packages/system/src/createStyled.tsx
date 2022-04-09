@@ -125,7 +125,6 @@ function createStyled<
         );
 
         const sx = createMemo(() => [...inStyles(), ...inSx()]);
-
         return (
           <Show
             when={typeof Component === "string"}
@@ -135,6 +134,7 @@ function createStyled<
                 component={inProps.as}
                 sx={sx()}
                 className={clsx([inProps.className, className])}
+                ownerState={inProps.ownerState}
               />
             }
           >
