@@ -1,4 +1,4 @@
-#!/usr/bin/env -S npx ts-node --project ./scripts/tsconfig.json -r tsconfig-paths/register
+#!/usr/bin/env -S npx ts-node --project ./scripts/tsconfig.json -r ./scripts/node_modules/tsconfig-paths/register
 import { program } from "commander";
 import clean from "~/actions/clean";
 import downloadMaterialSource from "~/actions/downloadMaterialSource";

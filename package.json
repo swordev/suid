@@ -59,7 +59,7 @@
     "lint": "eslint --ignore-path .gitignore .",
     "prepare": "husky install",
     "release": "changeset publish",
-    "scripts": "ts-node --project ./scripts/tsconfig.json -r tsconfig-paths/register scripts",
+    "scripts": "ts-node --project ./scripts/tsconfig.json -r ./scripts/node_modules/tsconfig-paths/register scripts",
     "start": "pnpm watch --filter ./packages/site",
     "test": "jest",
     "update": "ncu",
