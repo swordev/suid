@@ -22,7 +22,7 @@ function renderSelector(
 ) {
   const subselectors = propKey.split(",").map((v) => {
     v = v.trim();
-    return v.startsWith("&") ? v : `& ${v}`;
+    return v.includes("&") ? v : `& ${v}`;
   });
   return render(
     propValue,
