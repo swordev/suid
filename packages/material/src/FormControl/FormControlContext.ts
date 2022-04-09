@@ -28,6 +28,6 @@ export interface FormControlState
 /**
  * @ignore - internal component.
  */
-const FormControlContext = createContext<FormControlState>();
+const FormControlContext = createContext<FormControlState | undefined>();
 
 export default FormControlContext;
