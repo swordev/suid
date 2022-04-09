@@ -60,17 +60,16 @@ const FormGroup = $.component(function FormGroup({
   allProps,
   classes,
   otherProps,
-  props,
 }) {
   const muiFormControl = useFormControl();
   const fcs = formControlState({
-    props,
+    props: allProps,
     muiFormControl,
     states: ["error"],
   });
 
   const ownerState = mergeProps(allProps, () => ({
-    error: fcs().error,
+    error: fcs.error,
   }));
 
   return (

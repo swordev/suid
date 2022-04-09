@@ -136,7 +136,7 @@ const FormControlLabel = $.component(function FormControlLabel({
   });
 
   const fcs = formControlState({
-    props,
+    props: allProps,
     muiFormControl,
     states: ["error"],
   });
@@ -144,7 +144,7 @@ const FormControlLabel = $.component(function FormControlLabel({
   const ownerState = mergeProps(
     allProps,
     () => ({
-      error: fcs().error,
+      error: fcs.error,
     }),
     () => ({
       disabled: childDisabled(),

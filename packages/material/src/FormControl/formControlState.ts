@@ -1,5 +1,6 @@
 import { FormControlState } from ".";
-import { createMemo } from "solid-js";
+import { batch, createRenderEffect } from "solid-js";
+import { createMutable } from "solid-js/store";
 
 export default function formControlState<
   S extends keyof FormControlState
@@ -8,10 +9,9 @@ export default function formControlState<
   states: S[];
   muiFormControl?: FormControlState;
 }) {
-  return createMemo(() => {
+  const compose = () => {
     return data.states.reduce((acc, state) => {
       acc[state] = data.props[state];
-
       if (data.muiFormControl) {
         if (typeof data.props[state] === "undefined") {
           acc[state] = data.muiFormControl[state];
@@ -20,5 +20,21 @@ export default function formControlState<
 
       return acc;
     }, {} as Pick<FormControlState, S>);
+  };
+  const object = createMutable(compose());
+
+  createRenderEffect(() => {
+    const newObject = compose();
+    batch(() => {
+      for (const key in newObject) {
+        if (object[key] !== newObject[key]) object[key] = newObject[key];
+      }
+      const newKeys = Object.keys(newObject);
+      for (const key in object) {
+        if (!newKeys.includes(key)) delete object[key];
+      }
+    });
   });
+
+  return object as Readonly<ReturnType<typeof compose>>;
 }
