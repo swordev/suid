@@ -1,7 +1,7 @@
+import GlobalStyles from "../GlobalStyles";
 import { Theme, useTheme } from "../styles";
 import { CssBaselineTypeMap } from "./CssBaselineProps";
 import createComponentFactory from "@suid/base/createComponentFactory";
-import createSxClass from "@suid/system/createSxClass";
 import { SxPropsObject } from "@suid/system/sxProps";
 
 const $ = createComponentFactory<CssBaselineTypeMap>()({
@@ -77,12 +77,7 @@ export const styles = (theme: Theme, enableColorScheme = false) => {
  */
 const CssBaseline = $.component(function CssBaseline({ props }) {
   const theme = useTheme();
-
-  createSxClass(() => ({
-    "@global": styles(theme, props.enableColorScheme),
-  }));
-
-  return <></>;
+  return <GlobalStyles styles={styles(theme, props.enableColorScheme)} />;
 });
 
 export default CssBaseline;

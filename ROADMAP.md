@@ -78,7 +78,7 @@
 | FormGroup               |  ✅   |
 | FormHelperText          |       |
 | FormLabel               |       |
-| GlobalStyles            |       |
+| GlobalStyles            |  ✅   |
 | Grid                    |  ✅   |
 | Grow                    |       |
 | Hidden                  |       |
