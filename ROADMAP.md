@@ -108,7 +108,7 @@
 | Modal                   |  ✅   |
 | NativeSelect            |       |
 | NoSsr                   |       |
-| OutlinedInput           |  ⏳   |
+| OutlinedInput           |  ✅   |
 | Pagination              |       |
 | PaginationItem          |       |
 | Paper                   |  ✅   |
