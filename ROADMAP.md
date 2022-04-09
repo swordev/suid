@@ -76,7 +76,7 @@
 | FormControl             |  ✅   |
 | FormControlLabel        |  ✅   |
 | FormGroup               |  ✅   |
-| FormHelperText          |       |
+| FormHelperText          |  ✅   |
 | FormLabel               |       |
 | GlobalStyles            |  ✅   |
 | Grid                    |  ✅   |

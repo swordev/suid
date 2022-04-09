@@ -26,6 +26,7 @@ export { default as MuiFade } from "../Fade";
 export { default as MuiFormControl } from "../FormControl";
 export { default as MuiFormControlLabel } from "../FormControlLabel";
 export { default as MuiFormGroup } from "../FormGroup";
+export { default as MuiFormHelperText } from "../FormHelperText";
 export { default as MuiGlobalStyles } from "../GlobalStyles";
 export { default as MuiGrid } from "../Grid";
 export { default as MuiIcon } from "../Icon";
