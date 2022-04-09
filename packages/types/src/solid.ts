@@ -7,11 +7,6 @@ export {};
 
 export type ElementType = Component<any> | keyof JSX.IntrinsicElements;
 
-export type EventParam<T = HTMLElement, E extends Event = Event> = E & {
-  currentTarget: T;
-  target: Element;
-};
-
 export type Ref<T> = ((ref: T) => void) | null;
 
 export interface RefAttributes<T> {
