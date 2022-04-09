@@ -29,7 +29,7 @@ const codemodTransformers: Record<string, boolean | "pending"> = {
   "`React.Fragment`": true,
 };
 
-const pendingComponents = ["TextField", "Select"];
+const pendingComponents = ["Select"];
 
 function stateIcon(state: boolean | "pending") {
   if (state === true) return "✅";

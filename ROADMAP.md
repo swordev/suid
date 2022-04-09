@@ -153,7 +153,7 @@
 | Tabs                    |       |
 | TabScrollButton         |       |
 | TextareaAutosize        |       |
-| TextField               |  ⏳   |
+| TextField               |  ✅   |
 | ToggleButton            |  ✅   |
 | ToggleButtonGroup       |  ✅   |
 | Toolbar                 |  ✅   |
