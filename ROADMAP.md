@@ -72,7 +72,7 @@
 | Drawer                  |  ✅   |
 | Fab                     |  ✅   |
 | Fade                    |  ✅   |
-| FilledInput             |  ⏳   |
+| FilledInput             |  ✅   |
 | FormControl             |  ✅   |
 | FormControlLabel        |  ✅   |
 | FormGroup               |  ✅   |

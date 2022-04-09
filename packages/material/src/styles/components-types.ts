@@ -23,6 +23,7 @@ export { default as MuiDivider } from "../Divider";
 export { default as MuiDrawer } from "../Drawer";
 export { default as MuiFab } from "../Fab";
 export { default as MuiFade } from "../Fade";
+export { default as MuiFilledInput } from "../FilledInput";
 export { default as MuiFormControl } from "../FormControl";
 export { default as MuiFormControlLabel } from "../FormControlLabel";
 export { default as MuiFormGroup } from "../FormGroup";
