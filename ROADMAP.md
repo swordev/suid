@@ -119,7 +119,7 @@
 | Paper                   |  ✅   |
 | Popover                 |       |
 | Popper                  |  ✅   |
-| Portal                  |       |
+| Portal                  |  ✅   |
 | Radio                   |       |
 | RadioGroup              |       |
 | Rating                  |       |
