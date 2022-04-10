@@ -253,8 +253,8 @@ export default function HomePage() {
               variant="body1"
               sx={{ color: theme.palette.text.secondary, my: 3 }}
             >
-              A port of Material UI design (
-              <Link href="https://mui.com" target="_blank">
+              A port of Material-UI (
+              <Link href="https://mui.com/core" target="_blank">
                 MUI
               </Link>
               ) built with{" "}

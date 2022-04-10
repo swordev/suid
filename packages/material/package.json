@@ -1,7 +1,7 @@
 {
   "name": "@suid/material",
   "version": "0.0.20",
-  "description": "A port of Material UI design (MUI) built with Solid.js.",
+  "description": "A port of Material-UI (MUI) built with Solid.js.",
   "main": "index.jsx",
   "scripts": {
     "build": "tsc --build",
