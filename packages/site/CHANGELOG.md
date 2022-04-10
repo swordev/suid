@@ -1,5 +1,18 @@
 # @suid/site
 
+## 0.0.31
+
+### Patch Changes
+
+- [`ad188507`](https://github.com/swordev/suid/commit/ad188507782cace49d81fd4644a7fbdb1015de2a) Thanks [@juanrgm](https://github.com/juanrgm)! - Enhance home and installation pages
+
+* [`1f24b0ff`](https://github.com/swordev/suid/commit/1f24b0ffa8cce3fadfd172a08b9e7030d744f577) Thanks [@juanrgm](https://github.com/juanrgm)! - Update the project description
+
+* Updated dependencies [[`e2243098`](https://github.com/swordev/suid/commit/e2243098cc474c2ef60867d0c61aa5a7320dba60), [`32167197`](https://github.com/swordev/suid/commit/321671977f645719e132a3975526bad3f6a8671e), [`1f24b0ff`](https://github.com/swordev/suid/commit/1f24b0ffa8cce3fadfd172a08b9e7030d744f577)]:
+  - @suid/material@0.0.21
+  - @suid/codemod@0.0.4
+  - @suid/icons-material@0.0.21
+
 ## 0.0.30
 
 ### Patch Changes
