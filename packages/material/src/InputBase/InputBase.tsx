@@ -6,7 +6,9 @@ import useFormControl from "../FormControl/useFormControl";
 import GlobalStyles from "../GlobalStyles";
 import styled from "../styles/styled";
 import capitalize from "../utils/capitalize";
-//import useControlled from "../utils/useControlled";
+import prepareControlledInput from "../utils/controlledInput/prepareControlledInput";
+import setControlledInputValue from "../utils/controlledInput/setControlledInputValue";
+import useControlled from "../utils/useControlled";
 import { InputBaseTypeMap } from "./InputBaseProps";
 import inputBaseClasses, { getInputBaseUtilityClass } from "./inputBaseClasses";
 import { isFilled } from "./utils";
@@ -305,20 +307,20 @@ const InputBase = $.component(function InputBase({
   otherProps,
   props,
 }) {
-  const value = createMemo(
+  const inputValue = createMemo(
     () =>
       (props.inputProps.value != null
         ? props.inputProps.value
         : props.value) as string | undefined
   );
 
-  const isControlled = (value() ?? null) !== null;
+  const isControlled = (inputValue() ?? null) !== null;
 
-  /*const [controlledValue, setValue] = useControlled({
-    controlled: () => value(),
+  const [value, setValue] = useControlled({
+    controlled: () => inputValue(),
     default: () => props.defaultValue,
     name: "InputBase",
-  });*/
+  });
 
   const inputRef = createRef<HTMLInputElement | HTMLTextAreaElement>({
     ref: (instance: HTMLInputElement | HTMLTextAreaElement) => {
@@ -336,6 +338,52 @@ const InputBase = $.component(function InputBase({
       if (typeof props.inputRef === "function") props.inputRef(instance);
     },
   });
+
+  let lastStart: number | undefined;
+
+  if (isControlled) {
+    onMount(() => {
+      prepareControlledInput({
+        element: inputRef.ref,
+        onChange: (event, value, start) => {
+          lastStart = start;
+          if (typeof props.inputProps.onChange === "function") {
+            props.inputProps.onChange(event as any);
+          }
+          setValue(value);
+          if (typeof props.onChange === "function") {
+            props.onChange(event as any, value);
+          }
+        },
+      });
+    });
+  } else {
+    onMount(() => {
+      inputRef.ref.addEventListener("input", (event) => {
+        const value = inputRef.ref.value;
+        if (typeof props.inputProps.onChange === "function") {
+          props.inputProps.onChange(event as any);
+        }
+        setValue(value);
+        if (typeof props.onChange === "function") {
+          props.onChange(event as any, value);
+        }
+      });
+    });
+  }
+
+  createEffect<boolean>((loadDefaultValue) => {
+    if (isControlled || loadDefaultValue) {
+      const v = value();
+      if (typeof v === "string") {
+        setControlledInputValue({
+          element: inputRef.ref,
+          valueAndStart: [v, lastStart],
+        });
+      }
+    }
+    return false;
+  }, true);
 
   const [focused, setFocused] = createSignal(false);
   const muiFormControl = useFormControl();
@@ -529,7 +577,6 @@ const InputBase = $.component(function InputBase({
             readOnly={props.readOnly}
             required={fcs.required}
             rows={props.rows}
-            value={value()}
             onKeyDown={props.onKeyDown}
             onKeyUp={props.onKeyUp}
             type={props.type}
@@ -570,13 +617,6 @@ const InputBase = $.component(function InputBase({
                   checkDirty({
                     value: element.value,
                   });
-                }
-                if (typeof props.inputProps.onChange === "function") {
-                  props.inputProps.onChange(event as any);
-                }
-
-                if (typeof props.onChange === "function") {
-                  props.onChange(event as any);
                 }
               }) as InputEventHandler<HTMLInputElement | HTMLTextAreaElement>
             }

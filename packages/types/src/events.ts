@@ -8,7 +8,10 @@ export type EventParam<T = HTMLElement, E extends Event = Event> = E & {
 type EH<T, E extends Event> = JSX.EventHandler<T, E>;
 
 export type AnimationEventHandler<T = Element> = EH<T, AnimationEvent>;
-export type ChangeEventHandler<T = Element> = EH<T, KeyboardEvent>;
+export type ChangeEventHandler<T = Element, V = string> = (
+  event: Parameters<EH<T, KeyboardEvent>>[0],
+  value: V
+) => void;
 export type ClipboardEventHandler<T = Element> = EH<T, ClipboardEvent>;
 export type CompositionEventHandler<T = Element> = EH<T, CompositionEvent>;
 export type DragEventHandler<T = Element> = EH<T, DragEvent>;
