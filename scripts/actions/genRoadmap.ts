@@ -19,14 +19,19 @@ const systemFeatures: Record<string, boolean | "pending"> = {
 const codemodTransformers: Record<string, boolean | "pending"> = {
   "MUI imports": true,
   "MUI components": "pending",
-  "`React.useState`": true,
-  "`React.useEffect`": "pending",
-  "`React.useContext`": "pending",
-  "`React.useCallback`": "pending",
-  "`React.useMemo`": "pending",
-  "`React.useRef`": false,
-  "`React.useLayoutEffect`": "pending",
+  "`React.*EventHandler`": true,
+  "`React.ElementType`": true,
   "`React.Fragment`": true,
+  "`React.HTMLAttributes`": true,
+  "`React.ReactNode`": true,
+  "`React.Ref`": true,
+  "`React.useCallback`": true,
+  "`React.useContext`": true,
+  "`React.useEffect`": "pending",
+  "`React.useLayoutEffect`": "pending",
+  "`React.useMemo`": "pending",
+  "`React.useRef`": true,
+  "`React.useState`": true,
 };
 
 const pendingComponents = ["Select"];

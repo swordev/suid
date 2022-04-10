@@ -18,14 +18,19 @@
 | ----------------------- | :---: |
 | MUI imports             |  ✅   |
 | MUI components          |  ⏳   |
-| `React.useState`        |  ✅   |
-| `React.useEffect`       |  ⏳   |
-| `React.useContext`      |  ⏳   |
-| `React.useCallback`     |  ⏳   |
-| `React.useMemo`         |  ⏳   |
-| `React.useRef`          |       |
-| `React.useLayoutEffect` |  ⏳   |
+| `React.*EventHandler`   |  ✅   |
+| `React.ElementType`     |  ✅   |
 | `React.Fragment`        |  ✅   |
+| `React.HTMLAttributes`  |  ✅   |
+| `React.ReactNode`       |  ✅   |
+| `React.Ref`             |  ✅   |
+| `React.useCallback`     |  ✅   |
+| `React.useContext`      |  ✅   |
+| `React.useEffect`       |  ⏳   |
+| `React.useLayoutEffect` |  ⏳   |
+| `React.useMemo`         |  ⏳   |
+| `React.useRef`          |  ✅   |
+| `React.useState`        |  ✅   |
 
 ## @suid/material
 

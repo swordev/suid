@@ -1,3 +1,4 @@
+import getParentExpr from "./getParentExpr";
 import { Identifier, SourceFile, ts } from "ts-morph";
 
 export default function findReactObjects(source: SourceFile) {
@@ -8,16 +9,15 @@ export default function findReactObjects(source: SourceFile) {
     if (ns)
       for (const ref of ns.findReferencesAsNodes()) {
         if (ref.getFirstAncestorByKind(ts.SyntaxKind.NamespaceImport)) continue;
-        const propertyAccess = ref.getFirstAncestorByKind(
-          ts.SyntaxKind.PropertyAccessExpression
-        );
-        const lastIdentifier = propertyAccess?.getLastChildByKind(
+        const parent = getParentExpr(ref);
+        const lastIdentifier = parent?.getLastChildByKind(
           ts.SyntaxKind.Identifier
         );
-
-        if (lastIdentifier) {
-          result.push({ name: lastIdentifier.getText(), node: lastIdentifier });
-        }
+        if (lastIdentifier)
+          result.push({
+            name: lastIdentifier.getText(),
+            node: lastIdentifier,
+          });
       }
   }
   return result;
