@@ -1,5 +1,11 @@
 # @suid/codemod
 
+## 0.0.4
+
+### Patch Changes
+
+- [`32167197`](https://github.com/swordev/suid/commit/321671977f645719e132a3975526bad3f6a8671e) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `React` transformers
+
 ## 0.0.3
 
 ### Patch Changes
