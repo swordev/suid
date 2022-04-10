@@ -1,6 +1,6 @@
 {
   "name": "@suid/material",
-  "version": "0.0.19",
+  "version": "0.0.20",
   "description": "A port of Material UI design (MUI) built with Solid.js.",
   "main": "index.jsx",
   "scripts": {

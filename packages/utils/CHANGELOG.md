@@ -1,5 +1,14 @@
 # @suid/utils
 
+## 0.0.8
+
+### Patch Changes
+
+- [`f2b336d5`](https://github.com/swordev/suid/commit/f2b336d52e0c4ee8e2c01a3ad3b87c8eb41537f0) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `createUniqueId` and `uncapitalize` functions
+
+- Updated dependencies [[`009ffee6`](https://github.com/swordev/suid/commit/009ffee68cffda8287a49c8c2debc936401d92a5)]:
+  - @suid/types@0.0.7
+
 ## 0.0.7
 
 ### Patch Changes

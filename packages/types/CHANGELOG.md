@@ -1,5 +1,11 @@
 # @suid/types
 
+## 0.0.7
+
+### Patch Changes
+
+- [`009ffee6`](https://github.com/swordev/suid/commit/009ffee68cffda8287a49c8c2debc936401d92a5) Thanks [@juanrgm](https://github.com/juanrgm)! - Add event handlers
+
 ## 0.0.6
 
 ### Patch Changes
