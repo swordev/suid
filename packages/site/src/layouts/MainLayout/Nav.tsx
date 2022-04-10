@@ -170,7 +170,7 @@ export const navConfig: Config[] = [
           "Select",
           "Slider",
           "Switch",
-          "Text field",
+          "Text Field",
           "Transfer List",
           "Toggle Button",
         ]
