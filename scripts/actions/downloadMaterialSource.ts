@@ -1,4 +1,6 @@
 import { spawn } from "child_process";
+import { mkdir } from "fs/promises";
+import { dirname } from "path";
 import { safeStat } from "~/util/fs";
 import { muiSourcePath } from "~/util/material-ui";
 
@@ -10,6 +12,7 @@ async function downloadMaterialSource(options: { version: string }) {
   } else {
     const url = `https://github.com/mui/material-ui/archive/refs/tags/v${options.version}.zip`;
     console.log(`[${name}] Downloading ${url}`);
+    await mkdir(dirname(zipPath));
     const p = spawn("curl", [url, "-L", "-o", zipPath], {
       stdio: "inherit",
     });
