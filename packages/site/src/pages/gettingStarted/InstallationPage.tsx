@@ -9,24 +9,33 @@ export default function InstallationPage() {
         Installation
       </Typography>
       <Typography variant="body2" sx={{ mt: 2 }}>
-        Basic guide to setup the library.
+        Basic guide to install the library.
       </Typography>
-
-      <Typography component="h2" variant="h5" sx={{ mt: 2, mb: 1 }}>
-        Solid.js
-      </Typography>
-      <PaperCode language="bash" value="npm i solid-js" />
 
       <Typography component="h2" variant="h5" sx={{ mt: 2, mb: 1 }}>
         SUID Material
       </Typography>
-      <PaperCode language="bash" value="npm i @suid/material" />
+      <PaperCode language="bash" value="npm install @suid/material" />
 
       <Typography component="h2" variant="h5" sx={{ mt: 2, mb: 1 }}>
         SUID Icons Material
       </Typography>
 
-      <PaperCode language="bash" value="npm i @suid/icons-material" />
+      <PaperCode language="bash" value="npm install @suid/icons-material" />
+
+      <Typography component="h2" variant="h5" sx={{ mt: 2, mb: 1 }}>
+        Required dependencies
+      </Typography>
+      <PaperCode language="bash" value="npm install solid-js" />
+
+      <Typography component="h2" variant="h5" sx={{ mt: 2, mb: 1 }}>
+        Development dependencies
+      </Typography>
+
+      <PaperCode
+        language="bash"
+        value="npm install typescript vite vite-plugin-solid"
+      />
 
       <Typography component="h2" variant="h5" sx={{ mt: 2, mb: 1 }}>
         Roboto font
@@ -38,6 +47,7 @@ export default function InstallationPage() {
   href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
 />`}
       />
+
       <PageNav sx={{ mt: 2 }} />
     </>
   );

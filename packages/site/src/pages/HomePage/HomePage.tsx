@@ -45,7 +45,7 @@ function ListItemComponents(props: { start?: boolean }) {
     started = true;
     interval = window.setInterval(() => {
       setAmount(amount() + 1);
-      if (amount() === 30) {
+      if (amount() === 50) {
         return clearInterval(interval);
       }
     }, 80);
@@ -315,14 +315,15 @@ export default function HomePage() {
               sx={{
                 pl: 3,
                 [`& .${Typography}`]: {
-                  fontSize: 25,
+                  fontSize: 21,
                   fontWeight: 200,
                 },
               }}
             >
-              <ListItemFeature text="Typescript" checkbox />
+              <ListItemFeature text="TypeScript" checkbox />
               <ListItemFeature text="Material Design" checkbox />
               <ListItemFeature text="Styled Components" checkbox />
+              <ListItemFeature text="Controlled Components" checkbox />
               <Fade in={finished()} timeout={1000}>
                 <ListItemComponents start={finished()} />
               </Fade>
