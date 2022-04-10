@@ -1,5 +1,36 @@
 # @suid/material
 
+## 0.0.20
+
+### Patch Changes
+
+- [`2ab060b5`](https://github.com/swordev/suid/commit/2ab060b54009fcf4dff5f076a1d193b84379be59) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `Input` component
+
+* [`3e4e1935`](https://github.com/swordev/suid/commit/3e4e1935997ebdd22cddd4797c6529f39958e55b) Thanks [@juanrgm](https://github.com/juanrgm)! - Support controlled input value
+
+- [`78cc2dff`](https://github.com/swordev/suid/commit/78cc2dff41d2dc5cb1ef854f476849c41dd9ad37) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `FormHelperText` component
+
+* [`593ffd87`](https://github.com/swordev/suid/commit/593ffd874e0720d1e28943abc02c7a7d4e62d4da) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `FilledInput` component
+
+- [`9105f369`](https://github.com/swordev/suid/commit/9105f369122e0a0ad0e84f8000724afc24b735b0) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `InputLabel` component
+
+* [`e10d6f22`](https://github.com/swordev/suid/commit/e10d6f2257f284516a41c67342361d2a298a6ad8) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `TextField` component
+
+- [`ce3cc599`](https://github.com/swordev/suid/commit/ce3cc59951a069551dcc6b3a432e3fdc5f478083) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `FormLabel` component
+
+* [`e9a82720`](https://github.com/swordev/suid/commit/e9a827206268cd07c642c48f996b68e388818dd7) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `GlobalStyles` component
+
+- [`43fec430`](https://github.com/swordev/suid/commit/43fec430145cb8b0d4f29beb41860b4d242eb5f7) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `InputBase` component
+
+* [`0315c70e`](https://github.com/swordev/suid/commit/0315c70e33394d2c7dff45620befe9c01a47bf92) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `OutlinedInput` component
+
+* Updated dependencies [[`aee1cfe4`](https://github.com/swordev/suid/commit/aee1cfe494d8d8919f6f7499cbefd986bf2920a6), [`fd42bc02`](https://github.com/swordev/suid/commit/fd42bc02cb0fc4a5163172ce0d9116a63490b421), [`009ffee6`](https://github.com/swordev/suid/commit/009ffee68cffda8287a49c8c2debc936401d92a5), [`f2b336d5`](https://github.com/swordev/suid/commit/f2b336d52e0c4ee8e2c01a3ad3b87c8eb41537f0)]:
+  - @suid/system@0.0.16
+  - @suid/css@0.0.8
+  - @suid/types@0.0.7
+  - @suid/utils@0.0.8
+  - @suid/base@0.0.18
+
 ## 0.0.19
 
 ### Patch Changes

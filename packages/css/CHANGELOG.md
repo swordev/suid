@@ -1,5 +1,14 @@
 # @suid/css
 
+## 0.0.8
+
+### Patch Changes
+
+- [`fd42bc02`](https://github.com/swordev/suid/commit/fd42bc02cb0fc4a5163172ce0d9116a63490b421) Thanks [@juanrgm](https://github.com/juanrgm)! - Allow adjacent sibling combinator
+
+- Updated dependencies [[`f2b336d5`](https://github.com/swordev/suid/commit/f2b336d52e0c4ee8e2c01a3ad3b87c8eb41537f0)]:
+  - @suid/utils@0.0.8
+
 ## 0.0.7
 
 ### Patch Changes
