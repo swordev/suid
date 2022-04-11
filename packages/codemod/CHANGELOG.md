@@ -1,5 +1,11 @@
 # @suid/codemod
 
+## 0.0.6
+
+### Patch Changes
+
+- [`ffac84e6`](https://github.com/swordev/suid/commit/ffac84e6b3894364d25b77b4061b6379661eb101) Thanks [@juanrgm](https://github.com/juanrgm)! - Add codemod cli
+
 ## 0.0.5
 
 ### Patch Changes
