@@ -38,9 +38,10 @@ export default function Header() {
   const layoutContext = useLayoutContext();
   const theme = useTheme();
   const location = useLocation();
-  const isDownMd = useMediaQuery(theme.breakpoints.down("md"));
-  const xs = useMediaQuery(theme.breakpoints.down("sm"));
+  const hideNextVersion = useMediaQuery(theme.breakpoints.down(350));
+  const hideButtons = useMediaQuery(theme.breakpoints.down(700));
   const isMainPage = () => location.pathname === "/";
+  const isDownMd = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
     <AppBar
@@ -83,7 +84,7 @@ export default function Header() {
             },
           }}
         >
-          <Show when={!xs()}>
+          <Show when={!hideButtons()}>
             <Button
               color="inherit"
               href="/getting-started/installation"
@@ -107,6 +108,22 @@ export default function Header() {
             </Button>
           </Show>
         </Box>
+
+        <Show
+          when={
+            !globalThis.location.host.startsWith("next.") && !hideNextVersion()
+          }
+        >
+          <Button
+            color="inherit"
+            size="small"
+            href="https://next.suid.io"
+            sx={{ mr: 1 }}
+          >
+            next version
+          </Button>
+        </Show>
+
         <IconButton
           color="inherit"
           onClick={() => {
