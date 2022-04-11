@@ -412,13 +412,13 @@ const Chip = $.component(function Chip({
   const deleteIcon = createMemo(() => {
     if (!props.onDelete) return undefined;
     const node = children(() => props.deleteIcon)();
-    if (node && node instanceof HTMLElement) {
-      const result = node.cloneNode(true) as HTMLElement;
-      result.setAttribute(
+    if (node && node instanceof Element) {
+      node.setAttribute(
         "class",
-        clsx(result.getAttribute("class"), classes.deleteIcon)
+        clsx(node.getAttribute("class"), classes.deleteIcon)
       );
-      result.onclick = handleDeleteIconClick;
+      if (node instanceof SVGElement || node instanceof HTMLElement)
+        node.onclick = handleDeleteIconClick;
     } else {
       return (
         <CancelIcon
@@ -431,26 +431,24 @@ const Chip = $.component(function Chip({
 
   const avatar = createMemo(() => {
     const node = children(() => props.avatar)();
-    if (node && node instanceof HTMLElement) {
-      const result = node.cloneNode(true) as HTMLElement;
-      result.setAttribute(
+    if (node && node instanceof Element) {
+      node.setAttribute(
         "class",
-        clsx(result.getAttribute("class"), classes.avatar)
+        clsx(node.getAttribute("class"), classes.avatar)
       );
-      return result;
     }
+    return node;
   });
 
   const icon = createMemo(() => {
     const node = children(() => props.icon)();
-    if (node && node instanceof HTMLElement) {
-      const result = node.cloneNode(true) as HTMLElement;
-      result.setAttribute(
+    if (node && node instanceof Element) {
+      node.setAttribute(
         "class",
-        clsx(result.getAttribute("class"), classes.icon)
+        clsx(node.getAttribute("class"), classes.icon)
       );
-      return result;
     }
+    return node;
   });
 
   if (process.env.NODE_ENV !== "production") {
