@@ -6,11 +6,11 @@ import ButtonGroupContext from "./../ButtonGroup/ButtonGroupContext";
 import buttonClasses, { getButtonUtilityClass } from "./buttonClasses";
 import createComponentFactory from "@suid/base/createComponentFactory";
 import { alpha } from "@suid/system";
-import { ComponentInProps } from "@suid/types";
+import { InPropsOf } from "@suid/types";
 import clsx from "clsx";
 import { Show, useContext } from "solid-js";
 
-type OwnerState = ComponentInProps<ButtonTypeMap>;
+type OwnerState = InPropsOf<ButtonTypeMap>;
 
 const $ = createComponentFactory<ButtonTypeMap>()({
   name: "MuiButton",

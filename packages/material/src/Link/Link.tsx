@@ -6,12 +6,12 @@ import linkClasses, { getLinkUtilityClass } from "./linkClasses";
 import createComponentFactory from "@suid/base/createComponentFactory";
 import { alpha } from "@suid/system";
 import getThemeValue from "@suid/system/getThemeValue";
-import { ComponentInProps } from "@suid/types";
+import { InPropsOf } from "@suid/types";
 import useIsFocusVisible from "@suid/utils/useIsFocusVisible";
 import clsx from "clsx";
 import { createSignal, mergeProps } from "solid-js";
 
-type OwnerState = ComponentInProps<LinkTypeMap> & {
+type OwnerState = InPropsOf<LinkTypeMap> & {
   focusVisible: boolean;
 };
 

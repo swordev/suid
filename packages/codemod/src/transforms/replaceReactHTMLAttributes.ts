@@ -200,7 +200,7 @@ export default function replaceReactHTMLAttributes(node: Identifier) {
         factory.createLiteralTypeNode(factory.createStringLiteral(tag))
       );
 
-    parentExpr?.replaceWithText("ST.ComponentProps");
+    parentExpr?.replaceWithText("ST.PropsOf");
     node.getSourceFile().addImportDeclaration({
       namespaceImport: "ST",
       moduleSpecifier: "@suid/types",

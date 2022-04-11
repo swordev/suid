@@ -4,7 +4,7 @@ import styled from "../styles/styled";
 import capitalize from "../utils/capitalize";
 import { getAppBarUtilityClass } from "./appBarClasses";
 import createComponentFactory from "@suid/base/createComponentFactory";
-import { ComponentInProps } from "@suid/types";
+import { InPropsOf } from "@suid/types";
 import clsx from "clsx";
 
 const $ = createComponentFactory<AppBarTypeMap>()({
@@ -37,7 +37,7 @@ const AppBarRoot = styled(Paper, {
       styles[`color${capitalize(props.ownerState.color)}`],
     ];
   },
-})<ComponentInProps<AppBarTypeMap>>(({ theme, ownerState }) => {
+})<InPropsOf<AppBarTypeMap>>(({ theme, ownerState }) => {
   const backgroundColorDefault =
     theme.palette.mode === "light"
       ? theme.palette.grey[100]

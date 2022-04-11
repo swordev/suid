@@ -4,11 +4,11 @@ import styled from "../styles/styled";
 import { FormGroupTypeMap } from "./FormGroupProps";
 import { getFormGroupUtilityClass } from "./formGroupClasses";
 import createComponentFactory from "@suid/base/createComponentFactory";
-import { ComponentInProps } from "@suid/types";
+import { InPropsOf } from "@suid/types";
 import clsx from "clsx";
 import { mergeProps } from "solid-js";
 
-type OwnerState = ComponentInProps<FormGroupTypeMap> & {
+type OwnerState = InPropsOf<FormGroupTypeMap> & {
   error?: boolean;
 };
 

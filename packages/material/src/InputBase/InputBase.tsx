@@ -18,7 +18,7 @@ import Dynamic from "@suid/system/Dynamic";
 import createRef from "@suid/system/createRef";
 import {
   AnimationEventHandler,
-  ComponentInProps,
+  InPropsOf,
   FocusEventHandler,
   InputEventHandler,
 } from "@suid/types";
@@ -32,7 +32,7 @@ import {
   onMount,
 } from "solid-js";
 
-export type OwnerState = ComponentInProps<InputBaseTypeMap> & {
+export type OwnerState = InPropsOf<InputBaseTypeMap> & {
   error?: boolean;
   focused: boolean;
   formControl?: FormControlState;

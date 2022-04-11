@@ -2,11 +2,11 @@ import { CardMediaTypeMap } from ".";
 import styled from "../styles/styled";
 import { getCardMediaUtilityClass } from "./cardMediaClasses";
 import createComponentFactory from "@suid/base/createComponentFactory";
-import { ComponentInProps } from "@suid/types";
+import { InPropsOf } from "@suid/types";
 import clsx from "clsx";
 import { createMemo, mergeProps } from "solid-js";
 
-type OwnerState = ComponentInProps<CardMediaTypeMap> & {
+type OwnerState = InPropsOf<CardMediaTypeMap> & {
   isMediaComponent: boolean;
   isImageComponent: boolean;
 };

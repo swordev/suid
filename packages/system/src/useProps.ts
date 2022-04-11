@@ -1,14 +1,12 @@
-import { ComponentInProps, ComponentProps } from "@suid/types";
+import { InPropsOf, PropsOf } from "@suid/types";
 import { mergeProps } from "solid-js";
 
 export default function useProps<CM>(options: {
-  props: ComponentProps<CM>;
+  props: PropsOf<CM>;
   propDefaults?: (data: {
-    set: (
-      props: Omit<ComponentInProps<CM>, "children">
-    ) => ComponentInProps<CM>;
-    inProps: ComponentProps<CM>;
-  }) => ComponentInProps<CM>;
+    set: (props: Omit<InPropsOf<CM>, "children">) => InPropsOf<CM>;
+    inProps: PropsOf<CM>;
+  }) => InPropsOf<CM>;
 }) {
   const set = (v: any) => v;
   const inProps = mergeProps(
@@ -18,6 +16,6 @@ export default function useProps<CM>(options: {
         inProps: options.props ?? (inProps as any),
       }) ?? {},
     options.props
-  ) as ComponentInProps<CM>;
+  ) as InPropsOf<CM>;
   return inProps;
 }

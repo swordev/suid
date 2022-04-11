@@ -1,6 +1,6 @@
 import * as ComponentTypes from "./components-types";
 import useTheme from "./useTheme";
-import { ComponentProps, ComponentInProps } from "@suid/types";
+import { PropsOf, InPropsOf } from "@suid/types";
 import { mergeProps } from "solid-js";
 
 export type UseThemePropsName = keyof typeof ComponentTypes;
@@ -11,11 +11,11 @@ export type UseThemePropsOptions<
   C = UseThemePropsComponent<N>
 > = {
   name: N;
-  props: ComponentProps<C>;
+  props: PropsOf<C>;
   propDefaults?: (data: {
-    set: (props: ComponentInProps<C>) => ComponentInProps<C>;
-    inProps: ComponentProps<C>;
-  }) => ComponentInProps<C>;
+    set: (props: InPropsOf<C>) => InPropsOf<C>;
+    inProps: PropsOf<C>;
+  }) => InPropsOf<C>;
 };
 
 export default function useThemeProps<
@@ -32,6 +32,6 @@ export default function useThemeProps<
         inProps: options.props ?? (inProps as any),
       }) ?? {},
     options.props
-  ) as ComponentInProps<C>;
+  ) as InPropsOf<C>;
   return inProps;
 }

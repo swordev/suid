@@ -2,11 +2,7 @@ import { OverrideProps } from "../OverridableComponent";
 import { Theme } from "../styles";
 import { FormLabelClasses } from "./formLabelClasses";
 import { SxProps } from "@suid/system";
-import {
-  OverridableStringUnion,
-  ElementType,
-  ComponentProps,
-} from "@suid/types";
+import { OverridableStringUnion, ElementType, PropsOf } from "@suid/types";
 import { JSXElement } from "solid-js";
 
 export interface FormLabelPropsColorOverrides {}
@@ -58,7 +54,7 @@ export interface FormLabelTypeMap<P = {}, D extends ElementType = "label"> {
   defaultComponent: D;
 }
 
-export type FormLabelBaseProps = ComponentProps<"label">;
+export type FormLabelBaseProps = PropsOf<"label">;
 
 export type FormLabelProps<
   D extends ElementType = FormLabelTypeMap["defaultComponent"],

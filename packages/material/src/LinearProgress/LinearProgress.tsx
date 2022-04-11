@@ -8,7 +8,7 @@ import { getLinearProgressUtilityClass } from "./linearProgressClasses";
 import createComponentFactory from "@suid/base/createComponentFactory";
 import { darken, lighten } from "@suid/system/colorManipulator";
 import createElementRef from "@suid/system/createElementRef";
-import { ComponentInProps } from "@suid/types";
+import { InPropsOf } from "@suid/types";
 import { randomString } from "@suid/utils/crypto";
 import clsx from "clsx";
 import { createEffect, createSignal, JSX, Show } from "solid-js";
@@ -71,7 +71,7 @@ const LinearProgressRoot = styled("span", {
       styles[ownerState.variant],
     ];
   },
-})<ComponentInProps<LinearProgressTypeMap>>(({ ownerState, theme }) => ({
+})<InPropsOf<LinearProgressTypeMap>>(({ ownerState, theme }) => ({
   position: "relative",
   overflow: "hidden",
   display: "block",
@@ -110,7 +110,7 @@ const LinearProgressDashed = styled("span", {
       styles[`dashedColor${capitalize(ownerState.color)}`],
     ];
   },
-})<ComponentInProps<LinearProgressTypeMap>>(
+})<InPropsOf<LinearProgressTypeMap>>(
   ({ ownerState, theme }) => {
     const backgroundColor = getColorShade(theme, ownerState.color);
 
@@ -164,7 +164,7 @@ const LinearProgressBar1 = styled("span", {
       ownerState.variant === "buffer" && styles.bar1Buffer,
     ];
   },
-})<ComponentInProps<LinearProgressTypeMap>>(
+})<InPropsOf<LinearProgressTypeMap>>(
   ({ ownerState, theme }) => ({
     width: "100%",
     position: "absolute",
@@ -224,7 +224,7 @@ const LinearProgressBar2 = styled("span", {
       ownerState.variant === "buffer" && styles.bar2Buffer,
     ];
   },
-})<ComponentInProps<LinearProgressTypeMap>>(
+})<InPropsOf<LinearProgressTypeMap>>(
   ({ ownerState, theme }) => ({
     width: "100%",
     position: "absolute",

@@ -3,11 +3,11 @@ import styled from "../styles/styled";
 import { ListItemSecondaryActionTypeMap } from "./ListItemSecondaryActionProps";
 import { getListItemSecondaryActionClassesUtilityClass } from "./listItemSecondaryActionClasses";
 import createComponentFactory from "@suid/base/createComponentFactory";
-import { ComponentInProps } from "@suid/types";
+import { InPropsOf } from "@suid/types";
 import clsx from "clsx";
 import { mergeProps } from "solid-js";
 
-type OwnerState = ComponentInProps<ListItemSecondaryActionTypeMap> & {
+type OwnerState = InPropsOf<ListItemSecondaryActionTypeMap> & {
   disableGutters: boolean;
 };
 

@@ -4,11 +4,11 @@ import styled from "../styles/styled";
 import { getSkeletonUtilityClass } from "./skeletonClasses";
 import createComponentFactory from "@suid/base/createComponentFactory";
 import { alpha } from "@suid/system/colorManipulator";
-import { ComponentInProps } from "@suid/types";
+import { InPropsOf } from "@suid/types";
 import clsx from "clsx";
 import { createMemo, mergeProps } from "solid-js";
 
-type OwnerState = ComponentInProps<SkeletonTypeMap> & {
+type OwnerState = InPropsOf<SkeletonTypeMap> & {
   hasChildren: boolean;
 };
 

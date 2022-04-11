@@ -7,7 +7,7 @@ import buttonBaseClasses, {
 } from "./buttonBaseClasses";
 import createComponentFactory from "@suid/base/createComponentFactory";
 import createRef from "@suid/system/createRef";
-import { ComponentInProps, EventParam } from "@suid/types";
+import { InPropsOf, EventParam } from "@suid/types";
 import useIsFocusVisible from "@suid/utils/useIsFocusVisible";
 import clsx from "clsx";
 import {
@@ -22,7 +22,7 @@ import {
 
 const $ = createComponentFactory<
   ButtonBaseTypeMap,
-  ComponentInProps<ButtonBaseTypeMap> & {
+  InPropsOf<ButtonBaseTypeMap> & {
     focusVisible: boolean;
   }
 >()({

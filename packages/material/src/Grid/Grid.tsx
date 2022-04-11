@@ -20,7 +20,7 @@ import {
   resolveBreakpointValues,
 } from "@suid/system";
 import { SxPropsObject } from "@suid/system/sxProps";
-import { ComponentInProps } from "@suid/types";
+import { InPropsOf } from "@suid/types";
 import clsx from "clsx";
 import { JSXElement, useContext } from "solid-js";
 
@@ -88,7 +88,7 @@ function getOffset(val: string) {
 
 export function generateGrid(input: {
   theme: Theme;
-  ownerState: ComponentInProps<GridTypeMap>;
+  ownerState: InPropsOf<GridTypeMap>;
 }) {
   const { theme, ownerState } = input;
   let size: number | boolean | "auto";
@@ -182,7 +182,7 @@ export function generateGrid(input: {
 
 export function generateDirection(input: {
   theme: Theme;
-  ownerState: ComponentInProps<GridTypeMap>;
+  ownerState: InPropsOf<GridTypeMap>;
 }) {
   const { theme, ownerState } = input;
   const directionValues = resolveBreakpointValues({
@@ -210,7 +210,7 @@ export function generateDirection(input: {
 
 export function generateRowGap(input: {
   theme: Theme;
-  ownerState: ComponentInProps<GridTypeMap>;
+  ownerState: InPropsOf<GridTypeMap>;
 }) {
   const { theme, ownerState } = input;
   const { container, rowSpacing } = ownerState;
@@ -243,7 +243,7 @@ export function generateRowGap(input: {
 
 export function generateColumnGap(input: {
   theme: Theme;
-  ownerState: ComponentInProps<GridTypeMap>;
+  ownerState: InPropsOf<GridTypeMap>;
 }) {
   const { theme, ownerState } = input;
   const { container, columnSpacing } = ownerState;
@@ -356,7 +356,7 @@ const GridRoot = styled("div", {
       xl !== false && styles[`grid-xl-${String(xl)}`],
     ];
   },
-})<ComponentInProps<GridTypeMap>>(
+})<InPropsOf<GridTypeMap>>(
   ({ ownerState }) => ({
     boxSizing: "border-box",
     ...(ownerState.container && {

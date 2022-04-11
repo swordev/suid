@@ -2,9 +2,9 @@ import composeClasses from "./composeClasses";
 import useTheme from "./useTheme";
 import { Theme } from "@suid/system/createTheme";
 import {
-  ComponentDefaultProps,
-  ComponentInProps,
-  ComponentProps,
+  DefaultPropsOf,
+  InPropsOf,
+  PropsOf,
   OverridableComponent,
   OverridableTypeMap,
   SuidComponentType,
@@ -15,15 +15,15 @@ import { createMutable } from "solid-js/store";
 
 function createComponentFactory<
   C extends SuidComponentType,
-  O = ComponentInProps<C>
+  O = InPropsOf<C>
 >() {
-  type Props = ComponentProps<C>;
-  type InProps = ComponentInProps<C>;
+  type Props = PropsOf<C>;
+  type InProps = InPropsOf<C>;
   return function <S extends Record<string, (string | false)[]>>(options: {
     name: NonNullable<C["name"]>;
     selfPropNames: Exclude<keyof C["selfProps"], "sx">[];
     propDefaults?: (data: {
-      set: (props: Omit<ComponentDefaultProps<C>, "children">) => InProps;
+      set: (props: Omit<DefaultPropsOf<C>, "children">) => InProps;
       theme: Theme;
       inProps: Props;
     }) => InProps;

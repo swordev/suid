@@ -4,7 +4,7 @@ import capitalize from "../utils/capitalize";
 import { FabTypeMap } from "./FabProps";
 import fabClasses, { getFabUtilityClass } from "./fabClasses";
 import createComponentFactory from "@suid/base/createComponentFactory";
-import { ComponentInProps } from "@suid/types";
+import { InPropsOf } from "@suid/types";
 import clsx from "clsx";
 
 const $ = createComponentFactory<FabTypeMap>()({
@@ -55,7 +55,7 @@ const FabRoot = styled(ButtonBase, {
       styles[ownerState.color],
     ];
   },
-})<ComponentInProps<FabTypeMap>>(
+})<InPropsOf<FabTypeMap>>(
   ({ theme, ownerState }) => ({
     ...theme.typography.button,
     minHeight: 36,

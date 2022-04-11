@@ -7,7 +7,7 @@ import breadcrumbsClasses, {
 } from "./breadcrumbsClasses";
 import createComponentFactory from "@suid/base/createComponentFactory";
 import createElementRef from "@suid/system/createElementRef";
-import { ComponentInProps } from "@suid/types";
+import { InPropsOf } from "@suid/types";
 import clsx from "clsx";
 import {
   children,
@@ -82,7 +82,7 @@ function insertSeparators(
   items: any[],
   className: string,
   separator: JSXElement,
-  ownerState: ComponentInProps<BreadcrumbsTypeMap>
+  ownerState: InPropsOf<BreadcrumbsTypeMap>
 ) {
   return items.reduce((acc, current, index) => {
     if (index < items.length - 1) {

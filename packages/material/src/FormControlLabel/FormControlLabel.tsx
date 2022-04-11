@@ -9,7 +9,7 @@ import formControlLabelClasses, {
   getFormControlLabelUtilityClasses,
 } from "./formControlLabelClasses";
 import createComponentFactory from "@suid/base/createComponentFactory";
-import { ComponentInProps } from "@suid/types";
+import { InPropsOf } from "@suid/types";
 import clsx from "clsx";
 import {
   children,
@@ -19,7 +19,7 @@ import {
   splitProps,
 } from "solid-js";
 
-type OwnerState = ComponentInProps<FormControlLabelTypeMap> & {
+type OwnerState = InPropsOf<FormControlLabelTypeMap> & {
   error?: boolean;
 };
 

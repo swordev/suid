@@ -23,7 +23,7 @@ export type InferPropsType<T> = T extends (props: infer PropsType) => any
   ? JSX.IntrinsicElements[T]
   : never;
 
-export type ComponentProps<T> = T extends OverridableTypeMap
+export type PropsOf<T> = T extends OverridableTypeMap
   ? DefaultComponentProps<T> & { component?: ElementType }
   : T extends SuidComponentType
   ? DefaultComponentProps<T>
@@ -35,9 +35,7 @@ export type ComponentProps<T> = T extends OverridableTypeMap
   ? _ComponentProps<T>
   : unknown;
 
-export type ComponentInProps<T> = T extends
-  | OverridableTypeMap
-  | SuidComponentType
+export type InPropsOf<T> = T extends OverridableTypeMap | SuidComponentType
   ? OverridableInProps<T>
   : T extends SuidElement<infer C1> | OverridableComponent<infer C1>
   ? OverridableInProps<C1>
@@ -45,9 +43,7 @@ export type ComponentInProps<T> = T extends
   ? _ComponentProps<T>
   : unknown;
 
-export type ComponentDefaultProps<T> = T extends
-  | OverridableTypeMap
-  | SuidComponentType
+export type DefaultPropsOf<T> = T extends OverridableTypeMap | SuidComponentType
   ? OverridableDefaultProps<T>
   : T extends SuidElement<infer C1> | OverridableComponent<infer C1>
   ? OverridableDefaultProps<C1>

@@ -9,7 +9,7 @@ import {
   ElementType,
   OverridableComponent,
   OverridableInProps,
-  ComponentProps,
+  PropsOf,
 } from "@suid/types";
 import clsx from "clsx";
 import { createMemo, Accessor } from "solid-js";
@@ -80,9 +80,9 @@ function createStyled<
         T,
         N extends keyof CM
           ? CM[N] extends OverridableComponent<infer M3>
-            ? ComponentProps<M3>
-            : ComponentProps<C>
-          : ComponentProps<C>,
+            ? PropsOf<M3>
+            : PropsOf<C>
+          : PropsOf<C>,
         O
       >[]
     ) {
@@ -153,7 +153,7 @@ function createStyled<
           }>
         : C extends keyof JSX.IntrinsicElements
         ? OverridableComponent<BoxTypeMap<{ ownerState?: O }, C>>
-        : (props: ComponentProps<C> & { ownerState?: O }) => JSX.Element;
+        : (props: PropsOf<C> & { ownerState?: O }) => JSX.Element;
     };
   };
 }

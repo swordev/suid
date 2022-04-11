@@ -8,11 +8,11 @@ import { SwitchBaseTypeMap } from "./SwitchBaseProps";
 import { getSwitchBaseUtilityClass } from "./switchBaseClasses";
 import createComponentFactory from "@suid/base/createComponentFactory";
 import createRef from "@suid/system/createRef";
-import { ComponentInProps } from "@suid/types";
+import { InPropsOf } from "@suid/types";
 import clsx from "clsx";
 import { createEffect, createMemo, mergeProps } from "solid-js";
 
-type OwnerState = ComponentInProps<SwitchBaseTypeMap> & {
+type OwnerState = InPropsOf<SwitchBaseTypeMap> & {
   size?: string;
 };
 

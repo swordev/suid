@@ -8,11 +8,11 @@ import formHelperTextClasses, {
   getFormHelperTextUtilityClasses,
 } from "./formHelperTextClasses";
 import createComponentFactory from "@suid/base/createComponentFactory";
-import { ComponentProps } from "@suid/types";
+import { PropsOf } from "@suid/types";
 import clsx from "clsx";
 import { children, mergeProps } from "solid-js";
 
-type OwnerState = ComponentProps<FormHelperTextTypeMap> &
+type OwnerState = PropsOf<FormHelperTextTypeMap> &
   Pick<
     FormControlState,
     | "variant"

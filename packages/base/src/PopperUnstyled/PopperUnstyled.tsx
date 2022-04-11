@@ -6,7 +6,7 @@ import { createPopper } from "@popperjs/core";
 import { Instance, Options } from "@popperjs/core";
 import createElementRef from "@suid/system/createElementRef";
 import createRef from "@suid/system/createRef";
-import { ComponentInProps } from "@suid/types";
+import { InPropsOf } from "@suid/types";
 import ownerDocument from "@suid/utils/ownerDocument";
 import {
   createEffect,
@@ -45,7 +45,7 @@ const $ = createComponentFactory<PopperUnstyledTypeMap>()({
     }),
 });
 
-type PopperUnstyledInProps = ComponentInProps<PopperUnstyledTypeMap>;
+type PopperUnstyledInProps = InPropsOf<PopperUnstyledTypeMap>;
 
 function flipPlacement(
   placement: PopperUnstyledInProps["placement"],

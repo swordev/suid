@@ -9,11 +9,11 @@ import formLabelClasses, {
   getFormLabelUtilityClasses,
 } from "./formLabelClasses";
 import createComponentFactory from "@suid/base/createComponentFactory";
-import { ComponentProps } from "@suid/types";
+import { PropsOf } from "@suid/types";
 import clsx from "clsx";
 import { mergeProps, Show } from "solid-js";
 
-type OwnerState = ComponentProps<FormLabelTypeMap> &
+type OwnerState = PropsOf<FormLabelTypeMap> &
   Pick<
     FormControlState,
     "disabled" | "error" | "filled" | "focused" | "required"

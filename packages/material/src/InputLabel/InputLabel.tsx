@@ -6,10 +6,10 @@ import styled, { skipRootProps } from "../styles/styled";
 import { InputLabelTypeMap } from "./InputLabelProps";
 import { getInputLabelUtilityClasses } from "./inputLabelClasses";
 import createComponentFactory from "@suid/base/createComponentFactory";
-import { ComponentProps } from "@suid/types";
+import { PropsOf } from "@suid/types";
 import { createMemo, mergeProps, splitProps } from "solid-js";
 
-type OwnerState = ComponentProps<InputLabelTypeMap> &
+type OwnerState = PropsOf<InputLabelTypeMap> &
   Pick<FormControlState, "size" | "variant" | "required"> & {
     formControl?: FormControlState;
     shrink?: boolean;

@@ -4,7 +4,7 @@ import capitalize from "../utils/capitalize";
 import { getCircularProgressUtilityClass } from "./circularProgressClasses";
 import createComponentFactory from "@suid/base/createComponentFactory";
 import SxProps from "@suid/system/sxProps";
-import { ComponentProps } from "@suid/types";
+import { PropsOf } from "@suid/types";
 import { randomString } from "@suid/utils/crypto";
 import clsx from "clsx";
 import { createMemo } from "solid-js";
@@ -178,7 +178,7 @@ const CircularProgress = $.component(function CircularProgress({
     if (props.variant !== "determinate") return {};
     return {
       "aria-valuenow": Math.round(props.value),
-    } as ComponentProps<CircularProgressTypeMap>;
+    } as PropsOf<CircularProgressTypeMap>;
   });
 
   return (

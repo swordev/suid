@@ -10,7 +10,7 @@ import { Theme } from "../styles";
 import { TextFieldClasses } from "./textFieldClasses";
 import { SxProps } from "@suid/system";
 import {
-  ComponentProps,
+  PropsOf,
   ElementType,
   OverridableStringUnion,
   OverrideProps,
@@ -237,7 +237,7 @@ export interface TextFieldTypeMap<P = {}, D extends ElementType = "div"> {
     /**
      * Type of the `input` element. It should be [a valid HTML5 input type](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Form_%3Cinput%3E_types).
      */
-    type?: ComponentProps<"input">["type"];
+    type?: PropsOf<"input">["type"];
     /**
      * The value of the `input` element, required for a controlled component.
      */

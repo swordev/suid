@@ -4,7 +4,7 @@ import { SxProps } from "@suid/system";
 import {
   OverridableStringUnion,
   ElementType,
-  ComponentProps,
+  PropsOf,
   Ref,
   OverrideProps,
   FocusEventHandler,
@@ -116,7 +116,7 @@ export interface InputBaseTypeMap<P = {}, D extends ElementType = "div"> {
      * [Attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Attributes) applied to the `input` element.
      * @default {}
      */
-    inputProps?: ComponentProps<"input" | "textarea">;
+    inputProps?: PropsOf<"input" | "textarea">;
     /**
      * Pass a ref to the `input` element.
      */

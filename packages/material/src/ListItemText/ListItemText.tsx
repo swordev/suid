@@ -6,11 +6,11 @@ import listItemTextClasses, {
   getListItemTextUtilityClass,
 } from "./listItemTextClasses";
 import createComponentFactory from "@suid/base/createComponentFactory";
-import { ComponentInProps } from "@suid/types";
+import { InPropsOf } from "@suid/types";
 import clsx from "clsx";
 import { children, createMemo, mergeProps } from "solid-js";
 
-type OwnerState = ComponentInProps<ListItemTextTypeMap> & {
+type OwnerState = InPropsOf<ListItemTextTypeMap> & {
   dense: boolean;
 };
 

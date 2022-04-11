@@ -1,10 +1,10 @@
 import styled from "../styles/styled";
 import { NotchedOutlineTypeMap } from "./NotchedOutlineProps";
 import createComponentFactory from "@suid/base/createComponentFactory";
-import { ComponentProps } from "@suid/types";
+import { PropsOf } from "@suid/types";
 import { createMemo, mergeProps, Show } from "solid-js";
 
-type OwnerState = ComponentProps<NotchedOutlineTypeMap> & {
+type OwnerState = PropsOf<NotchedOutlineTypeMap> & {
   withLabel: boolean;
 };
 

@@ -12,7 +12,7 @@ import filledInputClasses, {
   getFilledInputUtilityClass,
 } from "./filledInputClasses";
 import createComponentFactory from "@suid/base/createComponentFactory";
-import { ComponentProps } from "@suid/types";
+import { PropsOf } from "@suid/types";
 import deepmerge from "@suid/utils/deepmerge";
 import { createMemo, mergeProps } from "solid-js";
 
@@ -47,7 +47,7 @@ const FilledInputRoot = styled(InputBaseRoot, {
       !ownerState.disableUnderline && styles.underline,
     ];
   },
-})<ComponentProps<FilledInputTypeMap>>(({ theme, ownerState }) => {
+})<PropsOf<FilledInputTypeMap>>(({ theme, ownerState }) => {
   const light = theme.palette.mode === "light";
   const bottomLineColor = light
     ? "rgba(0, 0, 0, 0.42)"
@@ -151,7 +151,7 @@ const FilledInputInput = styled(InputBaseInput, {
   name: "MuiFilledInput",
   slot: "Input",
   overridesResolver: inputBaseInputOverridesResolver as any,
-})<ComponentProps<FilledInputTypeMap>>(({ theme, ownerState }) => ({
+})<PropsOf<FilledInputTypeMap>>(({ theme, ownerState }) => ({
   paddingTop: 25,
   paddingRight: 12,
   paddingBottom: 8,

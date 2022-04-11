@@ -3,14 +3,13 @@ import createComponentFactory from "../createComponentFactory";
 import appendOwnerState from "../utils/appendOwnerState";
 import { getBadgeUtilityClass } from "./badgeUnstyledClasses";
 import useBadge from "./useBadge";
-import { ComponentInProps } from "@suid/types";
+import { InPropsOf } from "@suid/types";
 import capitalize from "@suid/utils/capitalize";
 import clsx from "clsx";
 import { createMemo, mergeProps } from "solid-js";
 import { Dynamic } from "solid-js/web";
 
-type OnwerState = ComponentInProps<BadgeUnstyledTypeMap> &
-  ReturnType<typeof useBadge>;
+type OnwerState = InPropsOf<BadgeUnstyledTypeMap> & ReturnType<typeof useBadge>;
 
 const $ = createComponentFactory<BadgeUnstyledTypeMap, OnwerState>()({
   name: "MuiBadgeUnstyled",

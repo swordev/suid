@@ -10,7 +10,7 @@ import toggleButtonClasses, {
 } from "./toggleButtonClasses";
 import createComponentFactory from "@suid/base/createComponentFactory";
 import { alpha } from "@suid/system/colorManipulator";
-import { ComponentInProps } from "@suid/types";
+import { InPropsOf } from "@suid/types";
 import clsx from "clsx";
 import { mergeProps, useContext } from "solid-js";
 
@@ -59,7 +59,7 @@ const ToggleButtonRoot = styled(ButtonBase, {
 
     return [styles.root, styles[`size${capitalize(ownerState.size)}`]];
   },
-})<ComponentInProps<ToggleButtonTypeMap>>(({ theme, ownerState }) => {
+})<InPropsOf<ToggleButtonTypeMap>>(({ theme, ownerState }) => {
   const selectedColor =
     ownerState.color === "standard"
       ? theme.palette.text.primary
