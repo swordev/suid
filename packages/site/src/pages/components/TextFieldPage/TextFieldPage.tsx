@@ -11,8 +11,14 @@ export default function TextFieldPage() {
       docsName={"text-fields"}
       examples={[
         BasicTextFieldsExample,
-        FormPropsTextFieldsExample,
-        StateTextFieldsExample,
+        {
+          title: "Form props",
+          component: FormPropsTextFieldsExample,
+        },
+        {
+          title: "Uncontrolled vs. Controlled",
+          component: StateTextFieldsExample,
+        },
       ]}
     />
   );

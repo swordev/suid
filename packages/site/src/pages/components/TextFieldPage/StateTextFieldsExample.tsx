@@ -5,7 +5,7 @@ import { createSignal } from "solid-js";
 function capitalizeWords(value: string) {
   return value
     .split(" ")
-    .map((v) => v.slice(0, 1).toUpperCase() + v.slice(1))
+    .map((v) => v.slice(0, 1).toUpperCase() + v.slice(1).toLowerCase())
     .join(" ");
 }
 
