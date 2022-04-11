@@ -1,5 +1,18 @@
 # @suid/site
 
+## 0.0.33
+
+### Patch Changes
+
+- Updated dependencies [[`769de8c6`](https://github.com/swordev/suid/commit/769de8c622e3696d2c2ffbdeb84fa30b54e9f5ea), [`ed0ee1c4`](https://github.com/swordev/suid/commit/ed0ee1c4d4d95937e59970455f2975dc5689b035)]:
+  - @suid/material@0.0.23
+  - @suid/base@0.0.19
+  - @suid/codemod@0.0.5
+  - @suid/system@0.0.17
+  - @suid/types@0.0.8
+  - @suid/icons-material@0.0.23
+  - @suid/utils@0.0.9
+
 ## 0.0.32
 
 ### Patch Changes

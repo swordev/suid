@@ -1,5 +1,12 @@
 # @suid/utils
 
+## 0.0.9
+
+### Patch Changes
+
+- Updated dependencies [[`ed0ee1c4`](https://github.com/swordev/suid/commit/ed0ee1c4d4d95937e59970455f2975dc5689b035)]:
+  - @suid/types@0.0.8
+
 ## 0.0.8
 
 ### Patch Changes

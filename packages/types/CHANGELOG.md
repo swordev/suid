@@ -1,5 +1,11 @@
 # @suid/types
 
+## 0.0.8
+
+### Patch Changes
+
+- [`ed0ee1c4`](https://github.com/swordev/suid/commit/ed0ee1c4d4d95937e59970455f2975dc5689b035) Thanks [@juanrgm](https://github.com/juanrgm)! - Rename `ComponentProps` and `ComponentInProps`
+
 ## 0.0.7
 
 ### Patch Changes
