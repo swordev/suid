@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import react2solid from "./actions/react2solid";
 import { program } from "commander";
 
