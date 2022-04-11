@@ -6,8 +6,6 @@ import useFormControl from "../FormControl/useFormControl";
 import GlobalStyles from "../GlobalStyles";
 import styled from "../styles/styled";
 import capitalize from "../utils/capitalize";
-import prepareControlledInput from "../utils/controlledInput/prepareControlledInput";
-import setControlledInputValue from "../utils/controlledInput/setControlledInputValue";
 import useControlled from "../utils/useControlled";
 import { InputBaseTypeMap } from "./InputBaseProps";
 import inputBaseClasses, { getInputBaseUtilityClass } from "./inputBaseClasses";
@@ -318,7 +316,7 @@ const InputBase = $.component(function InputBase({
 
   const [value, setValue] = useControlled({
     controlled: () => inputValue(),
-    default: () => props.defaultValue,
+    default: () => props.defaultValue as any as string,
     name: "InputBase",
   });
 
@@ -339,47 +337,45 @@ const InputBase = $.component(function InputBase({
     },
   });
 
-  let lastStart: number | undefined;
+  let lastSelectionStart: number | undefined;
+  let controlledValueUpdated = false;
 
-  if (isControlled) {
-    onMount(() => {
-      prepareControlledInput({
-        element: inputRef.ref,
-        onChange: (event, value, start) => {
-          lastStart = start;
-          if (typeof props.inputProps.onChange === "function") {
-            props.inputProps.onChange(event as any);
-          }
-          setValue(value);
-          if (typeof props.onChange === "function") {
-            props.onChange(event as any, value);
-          }
-        },
-      });
+  onMount(() => {
+    inputRef.ref.addEventListener("input", (event) => {
+      const nodeValue = inputRef.ref.value;
+      const start = inputRef.ref.selectionStart ?? nodeValue.length;
+
+      lastSelectionStart = start;
+      controlledValueUpdated = false;
+
+      if (typeof props.inputProps.onChange === "function") {
+        props.inputProps.onChange(event as any);
+      }
+
+      setValue(nodeValue);
+
+      if (typeof props.onChange === "function") {
+        props.onChange(event as any, nodeValue);
+      }
+
+      if (isControlled && !controlledValueUpdated)
+        inputRef.ref.value = value() ?? "";
     });
-  } else {
-    onMount(() => {
-      inputRef.ref.addEventListener("input", (event) => {
-        const value = inputRef.ref.value;
-        if (typeof props.inputProps.onChange === "function") {
-          props.inputProps.onChange(event as any);
-        }
-        setValue(value);
-        if (typeof props.onChange === "function") {
-          props.onChange(event as any, value);
-        }
-      });
-    });
-  }
+  });
 
   createEffect<boolean>((loadDefaultValue) => {
     if (isControlled || loadDefaultValue) {
+      controlledValueUpdated = true;
       const v = value();
+
       if (typeof v === "string") {
-        setControlledInputValue({
-          element: inputRef.ref,
-          valueAndStart: [v, lastStart],
-        });
+        const selectionStart = lastSelectionStart ?? v.length;
+        if (v !== inputRef.ref.value) {
+          inputRef.ref.value = v;
+        }
+        if (inputRef.ref.selectionStart !== selectionStart) {
+          inputRef.ref.setSelectionRange(selectionStart, selectionStart);
+        }
       }
     }
     return false;
