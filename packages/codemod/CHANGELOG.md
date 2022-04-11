@@ -1,5 +1,11 @@
 # @suid/codemod
 
+## 0.0.7
+
+### Patch Changes
+
+- [`c726026c`](https://github.com/swordev/suid/commit/c726026c9daf494d723e0d21a49b175cb8c23c1e) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix binary
+
 ## 0.0.6
 
 ### Patch Changes

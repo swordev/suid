@@ -1,5 +1,12 @@
 # @suid/site
 
+## 0.0.35
+
+### Patch Changes
+
+- Updated dependencies [[`c726026c`](https://github.com/swordev/suid/commit/c726026c9daf494d723e0d21a49b175cb8c23c1e)]:
+  - @suid/codemod@0.0.7
+
 ## 0.0.34
 
 ### Patch Changes
