@@ -1,5 +1,11 @@
 # @suid/material
 
+## 0.0.22
+
+### Patch Changes
+
+- [`ea949c3e`](https://github.com/swordev/suid/commit/ea949c3ebee795cf1e21a2ae2b880cb6a4122624) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix controlled input value
+
 ## 0.0.21
 
 ### Patch Changes
