@@ -1,5 +1,15 @@
 # @suid/site
 
+## 0.0.32
+
+### Patch Changes
+
+- [`55f73f2b`](https://github.com/swordev/suid/commit/55f73f2b1c26795c292f1426c375d0bad43dea34) Thanks [@juanrgm](https://github.com/juanrgm)! - Enhance `TextField` examples
+
+- Updated dependencies [[`ea949c3e`](https://github.com/swordev/suid/commit/ea949c3ebee795cf1e21a2ae2b880cb6a4122624)]:
+  - @suid/material@0.0.22
+  - @suid/icons-material@0.0.22
+
 ## 0.0.31
 
 ### Patch Changes
