@@ -1,3 +1,4 @@
+import Alert from "@suid/material/Alert";
 import Box from "@suid/material/Box";
 import Button from "@suid/material/Button";
 import { buttonBaseClasses } from "@suid/material/ButtonBase";
@@ -41,6 +42,10 @@ export default function ReactToSolidPage() {
         Transform your MUI React code to SUID SolidJS.
       </Typography>
 
+      <Alert severity="info" sx={{ mt: 2 }}>
+        You can also transform your code from the console: npx @suid/codemod
+      </Alert>
+
       <Grid container spacing={2}>
         <Grid item xs={12} xl={6}>
           <Typography component="h3" variant="h6" sx={{ mt: 2, mb: 1 }}>
@@ -81,16 +86,22 @@ export default function ReactToSolidPage() {
               size="large"
               className={loading() ? buttonBaseClasses.disabled : ""}
               onMouseEnter={() => {
-                import("@suid/codemod/react2solid");
+                import("@suid/codemod/utils/applyTransforms");
+                import("@suid/codemod/transforms/transformReactSource");
               }}
               onClick={async () => {
                 let result = inputCode();
                 setLoading(true);
                 try {
-                  const react2solid = await import("@suid/codemod/react2solid");
-                  result = react2solid.default({
-                    "file.tsx": inputCode(),
-                  })["file.tsx"];
+                  const applyTransforms = await import(
+                    "@suid/codemod/utils/applyTransforms"
+                  );
+                  const transformReactSource = await import(
+                    "@suid/codemod/transforms/transformReactSource"
+                  );
+                  result = applyTransforms.default(inputCode(), [
+                    transformReactSource.default,
+                  ]);
                 } catch (error) {
                   console.error(error);
                 } finally {
@@ -111,6 +122,7 @@ export default function ReactToSolidPage() {
           </Box>
         </Grid>
       </Grid>
+
       <PageNav sx={{ mt: 2 }} />
     </>
   );

@@ -36,7 +36,6 @@ export default function transformReactSource(source: SourceFile) {
       if (reactObject.name.endsWith("EventHandler"))
         transformer = replaceReactEventHandlers;
     }
-    console.log(reactObject);
     transformer?.(reactObject.node);
   }
   renameMuiImports(source);

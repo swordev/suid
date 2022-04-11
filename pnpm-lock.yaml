@@ -80,8 +80,18 @@ importers:
 
   packages/codemod:
     specifiers:
+      '@suid/utils': '*'
+      '@types/micromatch': ^4.0.2
+      commander: ^9.0.0
+      fast-glob: ^3.2.11
+      micromatch: ^4.0.5
       ts-morph: ^14.0.0
     dependencies:
+      '@suid/utils': 0.0.9_solid-js@1.3.13
+      '@types/micromatch': 4.0.2
+      commander: 9.1.0
+      fast-glob: 3.2.11
+      micromatch: 4.0.5
       ts-morph: 14.0.0
 
   packages/css:
@@ -2178,6 +2188,23 @@ packages:
     resolution: {integrity: sha512-PPB9m1zywojv6sOGSiHv+tvnb4Zc00Jce9yjUG0BzTymUdFf9AP+gKJRlc0iq9vbEEEXfYv1bgKa5KTn4gAzbQ==}
     dev: false
 
+  /@suid/types/0.0.8_solid-js@1.3.13:
+    resolution: {integrity: sha512-wc+F0D/yte3RZGBMods7CcG0WMGVNKAgMBqBt08Lb4AIOLZ0L/XSpEcsoXXwE4Eu6N+WLiMeFpQR+WBB325Dlg==}
+    peerDependencies:
+      solid-js: ^1.3.7
+    dependencies:
+      solid-js: 1.3.13
+    dev: false
+
+  /@suid/utils/0.0.9_solid-js@1.3.13:
+    resolution: {integrity: sha512-WYxDGr9Z/PuGJtxYF4Rt3MLigUnyUD3vuTxUpU8DuKBK6gABc73f9zR2VK6XXJQsJnJ3ULUxScoiWMPeIwyttw==}
+    peerDependencies:
+      solid-js: ^1.3.7
+    dependencies:
+      '@suid/types': 0.0.8_solid-js@1.3.13
+      solid-js: 1.3.13
+    dev: false
+
   /@szmarczak/http-timer/1.1.2:
     resolution: {integrity: sha512-XIB2XbzHTN6ieIjfIMV9hlVcfPU26s2vafYWQcZHWXHOxiaRZYEDKEwdl129Zyg50+foYV2jCgtrqSA6qNuNSA==}
     engines: {node: '>=6'}
@@ -2284,6 +2311,10 @@ packages:
       '@babel/types': 7.17.0
     dev: true
 
+  /@types/braces/3.0.1:
+    resolution: {integrity: sha512-+euflG6ygo4bn0JHtn4pYqcXwRtLvElQ7/nnjDu7iYG56H0+OhCd7d6Ug0IE3WcFpZozBKW2+80FUbv5QGk5AQ==}
+    dev: false
+
   /@types/glob/7.2.0:
     resolution: {integrity: sha512-ZUxbzKl0IfJILTS6t7ip5fQQM/J3TJYubDm3nMbgubNNYS62eXeUpoLUC8/7fJNiFYHTrGPQn7hspDUzIHX3UA==}
     dependencies:
@@ -2333,6 +2364,12 @@ packages:
   /@types/json5/0.0.29:
     resolution: {integrity: sha1-7ihweulOEdK4J7y+UnC86n8+ce4=}
     dev: true
+
+  /@types/micromatch/4.0.2:
+    resolution: {integrity: sha512-oqXqVb0ci19GtH0vOA/U2TmHTcRY9kuZl4mqUxe0QmJAlIW13kzhuK5pi1i9+ngav8FjpSb9FVS/GE00GLX1VA==}
+    dependencies:
+      '@types/braces': 3.0.1
+    dev: false
 
   /@types/minimatch/3.0.5:
     resolution: {integrity: sha512-Klz949h02Gz2uZCMGwDUSDS1YBlTdDDgbWHi+81l29tQALUtvz4rAYi5uoVhE5Lagoq6DeqAUlbrHvW/mXDgdQ==}
@@ -4295,7 +4332,7 @@ packages:
       '@nodelib/fs.walk': 1.2.8
       glob-parent: 5.1.2
       merge2: 1.4.1
-      micromatch: 4.0.4
+      micromatch: 4.0.5
 
   /fast-json-stable-stringify/2.1.0:
     resolution: {integrity: sha512-lhd/wF+Lk98HZoTCtlVraHtfh5XYijIjalXck7saUtuanSDyLMxnHhSXEDJqHxD7msR8D0uCmqlkwjCV8xvwHw==}
@@ -5970,6 +6007,14 @@ packages:
 
   /micromatch/4.0.4:
     resolution: {integrity: sha512-pRmzw/XUcwXGpD9aI9q/0XOwLNygjETJ8y0ao0wdqprrzDa4YnxLcz7fQRZr8voh8V10kGhABbNcHVk5wHgWwg==}
+    engines: {node: '>=8.6'}
+    dependencies:
+      braces: 3.0.2
+      picomatch: 2.3.1
+    dev: true
+
+  /micromatch/4.0.5:
+    resolution: {integrity: sha512-DMy+ERcEW2q8Z2Po+WNXuw3c5YaUSFjAO5GsJqfEl7UjvtIuFKO6ZrKvcItdy98dwFI2N1tg3zNIdKaQT+aNdA==}
     engines: {node: '>=8.6'}
     dependencies:
       braces: 3.0.2

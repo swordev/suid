@@ -1,8 +1,20 @@
-import transformReactSource from "./transforms/transformReactSource";
-import getReplacePatterns from "./utils/getReplacePatterns";
+import getReplacePatterns from "./getReplacePatterns";
 import { Project, SourceFile, ts } from "ts-morph";
 
-export default function react2solid(files: Record<string, string>) {
+type Transform = (sourceFile: SourceFile) => any;
+
+export default function applyTransforms(
+  input: string,
+  transforms: Transform[]
+): string;
+export default function applyTransforms(
+  input: Record<string, string>,
+  transforms: Transform[]
+): Record<string, string>;
+export default function applyTransforms(
+  input: string | Record<string, string>,
+  transforms: Transform[]
+) {
   const project = new Project({
     useInMemoryFileSystem: true,
     compilerOptions: {
@@ -17,15 +29,19 @@ export default function react2solid(files: Record<string, string>) {
     },
   });
 
+  const fileMap = (
+    typeof input === "string" ? { "file.tsx": input } : input
+  ) as Record<string, string>;
+
   const sourceFiles: Record<string, SourceFile> = {};
-  for (const path in files) {
-    sourceFiles[path] = project.createSourceFile(path, files[path]);
+  for (const path in fileMap) {
+    sourceFiles[path] = project.createSourceFile(path, fileMap[path]);
   }
 
   const result: Record<string, string> = {};
   for (const path in sourceFiles) {
     const sourceFile = sourceFiles[path];
-    transformReactSource(sourceFiles[path]);
+    for (const transform of transforms) transform(sourceFile);
     const replaceTextPatterns = getReplacePatterns(sourceFile) || {};
     let sourceText = sourceFile.getText();
     for (const [pattern, text] of Object.entries(replaceTextPatterns)) {
@@ -33,6 +49,8 @@ export default function react2solid(files: Record<string, string>) {
     }
     result[path] = sourceText;
   }
+
+  if (typeof input === "string") return Object.values(result)[0];
 
   return result;
 }
