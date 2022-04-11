@@ -49,17 +49,23 @@ export default function Header() {
       sx={{ zIndex: theme.zIndex.drawer + 1 }}
     >
       <Toolbar>
-        <Show when={isDownMd() && !isMainPage()}>
+        <Box
+          sx={{
+            display: isDownMd() && !isMainPage() ? "inline-block" : "none",
+          }}
+        >
           <IconButton
             color="inherit"
-            sx={{ mr: 1 }}
+            sx={{
+              mr: 1,
+            }}
             onClick={() => {
               layoutContext.drawer.openState = !layoutContext.drawer.openState;
             }}
           >
             <MenuIcon />
           </IconButton>
-        </Show>
+        </Box>
         <Typography
           component="a"
           variant="h6"
