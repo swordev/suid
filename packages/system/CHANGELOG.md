@@ -1,5 +1,16 @@
 # @suid/system
 
+## 0.0.17
+
+### Patch Changes
+
+- [`ed0ee1c4`](https://github.com/swordev/suid/commit/ed0ee1c4d4d95937e59970455f2975dc5689b035) Thanks [@juanrgm](https://github.com/juanrgm)! - Rename `ComponentProps` and `ComponentInProps`
+
+- Updated dependencies [[`ed0ee1c4`](https://github.com/swordev/suid/commit/ed0ee1c4d4d95937e59970455f2975dc5689b035)]:
+  - @suid/types@0.0.8
+  - @suid/utils@0.0.9
+  - @suid/css@0.0.9
+
 ## 0.0.16
 
 ### Patch Changes
