@@ -29,14 +29,16 @@ const $ = createComponentFactory<ToggleButtonTypeMap>()({
     "size",
     "value",
   ],
-  propDefaults: ({ set }) =>
-    set({
-      color: "standard",
-      disabled: false,
+  propDefaults: ({ set }) => {
+    const context = useContext(ToggleButtonGroupContext);
+    return set({
+      color: context.color ?? "standard",
+      disabled: context.disabled ?? false,
       disableFocusRipple: false,
       fullWidth: false,
-      size: "medium",
-    }),
+      size: context.size ?? "medium",
+    });
+  },
   autoCallUseClasses: false,
   utilityClass: getToggleButtonUtilityClass,
   slotClasses: (ownerState) => ({
@@ -141,9 +143,6 @@ const ToggleButton = $.component(function ToggleButton({
 
   const allProps = mergeProps(
     () => ({
-      color: context.color,
-      disabled: context.disabled,
-      size: context.size,
       selected: isValueSelected(props.value, context.value),
     }),
     _allProps,
