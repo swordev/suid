@@ -1,0 +1,17 @@
+{
+  "changesets": [],
+  "initialVersions": {
+    "@suid/base": "0.1.0",
+    "@suid/codemod": "0.1.0",
+    "@suid/css": "0.1.0",
+    "@suid/icons-material": "0.1.0",
+    "@suid/material": "0.1.0",
+    "@suid/site": "0.1.0",
+    "@suid/system": "0.1.0",
+    "@suid/types": "0.1.0",
+    "@suid/utils": "0.1.0",
+    "@suid/scripts": "0.0.0"
+  },
+  "mode": "pre",
+  "tag": "next"
+}

@@ -2,7 +2,7 @@ name: CI
 on:
   push:
     branches:
-      - main
+      - develop
 env:
   PNPM_CACHE_FOLDER: .pnpm-store
 jobs:
@@ -55,14 +55,14 @@ jobs:
           script: |-
             const published = JSON.parse(process.env.PUBLISHED_PACKAGES);
             published.forEach(({ name }) => core.setOutput(name, 'true'));
-      - name: Prepare gh-pages
+      - name: Prepare gh-pages-next
         if: steps.published.outputs['@suid/site'] == 'true'
         run: |-
           rm packages/site/dist/node_modules
           echo "/* /index.html 200" > packages/site/dist/_redirects
-      - name: Deploy gh-pages
+      - name: Deploy gh-pages-next
         if: steps.published.outputs['@suid/site'] == 'true'
         uses: JamesIves/github-pages-deploy-action@v4.2.5
         with:
-          branch: gh-pages
+          branch: gh-pages-next
           folder: packages/site/dist
