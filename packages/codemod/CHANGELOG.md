@@ -1,5 +1,16 @@
 # @suid/codemod
 
+## 0.1.0
+
+### Minor Changes
+
+- [`01cdd2d6`](https://github.com/swordev/suid/commit/01cdd2d6cbc8e6131c30c70a13e597cb5b36f548) Thanks [@juanrgm](https://github.com/juanrgm)! - Update versions
+
+### Patch Changes
+
+- Updated dependencies [[`01cdd2d6`](https://github.com/swordev/suid/commit/01cdd2d6cbc8e6131c30c70a13e597cb5b36f548)]:
+  - @suid/utils@0.1.0
+
 ## 0.0.8
 
 ### Patch Changes

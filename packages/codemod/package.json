@@ -1,6 +1,6 @@
 {
   "name": "@suid/codemod",
-  "version": "0.0.8",
+  "version": "0.1.0",
   "description": "Tool for migrating MUI React code to SUID SolidJS.",
   "bin": "bin.js",
   "scripts": {
