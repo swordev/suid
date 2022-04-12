@@ -6,3 +6,4 @@ node_modules
 pnpm-lock.yaml
 temp
 tsconfig.tsbuildinfo
+.changeset/pre.json
