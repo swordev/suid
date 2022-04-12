@@ -1,7 +1,5 @@
 import { BoxSelfProps } from ".";
 import Dynamic from "../Dynamic/Dynamic";
-import createClassListEffect from "../createClassListEffect";
-import createElementRef from "../createElementRef";
 import createSxClass from "../createSxClass";
 import defineComponent from "../defineComponent";
 import resolveStyleProps from "../resolveStyleProps";
@@ -21,7 +19,6 @@ export const Box = defineComponent<BoxTypeMap>(function Box(inProps) {
     inProps
   );
   const [props, otherProps] = splitProps(allProps, boxSelfProps);
-  const element = createElementRef(otherProps);
   const theme = useTheme();
   const forwardSx = createMemo(
     () => !!inProps.component && typeof inProps.component !== "string"
@@ -51,17 +48,17 @@ export const Box = defineComponent<BoxTypeMap>(function Box(inProps) {
     return result;
   });
 
-  createClassListEffect(element, () =>
-    [
-      ...(otherProps.className?.split(" ") || []),
-      ...(forwardSx() ? [] : [sxClass()]),
-    ].reduce((result, name) => {
-      if (name?.length) result[name] = true;
-      return result;
-    }, {} as Record<string, boolean>)
-  );
+  const className = createMemo(() => {
+    const className = otherProps.className;
+    const sxClassValue = sxClass();
+    if (sxClassValue?.length) {
+      return className ? `${className} ${sxClassValue}` : sxClassValue;
+    } else {
+      return className;
+    }
+  });
 
-  return <Dynamic {...dynamicProps} ref={element} />;
+  return <Dynamic {...dynamicProps} className={className()} />;
 });
 
 export default Box;
