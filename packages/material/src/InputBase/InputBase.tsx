@@ -489,7 +489,6 @@ const InputBase = $.component(function InputBase({
   });
 
   const ownerState = mergeProps(allProps, () => ({
-    ...props,
     color: fcs.color || "primary",
     disabled: fcs.disabled,
     error: fcs.error,

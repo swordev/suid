@@ -14,7 +14,7 @@ import outlinedInputClasses, {
   getOutlinedInputUtilityClass,
 } from "./outlinedInputClasses";
 import createComponentFactory from "@suid/base/createComponentFactory";
-import { createMemo } from "solid-js";
+import { createMemo, mergeProps } from "solid-js";
 
 const $ = createComponentFactory<OutlinedInputTypeMap>()({
   name: "MuiOutlinedInput",
@@ -150,6 +150,10 @@ const OutlinedInput = $.component(function OutlinedInput({
     );
   });
 
+  const allClasses = mergeProps(classes, () => props.classes || {}, {
+    notchedOutline: null,
+  });
+
   return (
     <InputBase
       renderSuffix={(state) => (
@@ -169,11 +173,7 @@ const OutlinedInput = $.component(function OutlinedInput({
         Input: OutlinedInputInput,
         ...(otherProps.components || {}),
       }}
-      classes={{
-        ...classes,
-        ...props.classes,
-        ["notchedOutline" as any]: null,
-      }}
+      classes={allClasses}
     />
   );
 });
