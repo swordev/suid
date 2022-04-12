@@ -8,6 +8,7 @@ import Skeleton from "@suid/material/Skeleton";
 import Typography from "@suid/material/Typography";
 import { createSignal, lazy, Show } from "solid-js";
 import PageNav from "~/components/PageNav";
+import { getDependencyName } from "~/utils/getDependencyName";
 
 const defaultCode = `import * as React from "react"
 import Button from "@mui/material/Button"
@@ -43,7 +44,8 @@ export default function ReactToSolidPage() {
       </Typography>
 
       <Alert severity="info" sx={{ mt: 2 }}>
-        You can also transform your code from the console: npx @suid/codemod
+        You can also transform your code from the console: npx{" "}
+        {getDependencyName("@suid/codemod")}
       </Alert>
 
       <Grid container spacing={2}>
