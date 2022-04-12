@@ -1,13 +1,21 @@
 import Button from "@suid/material/Button";
 import ComponentInfo from "~/components/ComponentInfo";
 import BasicButtonsExample from "./BasicButtonsExample";
+import ButtonSizesExample from "./ButtonSizesExample";
+import ColorButtonsExample from "./ColorButtonsExample";
+import UploadButtonExample from "./UploadButtonExample";
 
 export default function ButtonPage() {
   return (
     <ComponentInfo
       name={Button.name}
       docsName={"buttons"}
-      examples={[BasicButtonsExample]}
+      examples={[
+        BasicButtonsExample,
+        ColorButtonsExample,
+        ButtonSizesExample,
+        UploadButtonExample,
+      ]}
     />
   );
 }

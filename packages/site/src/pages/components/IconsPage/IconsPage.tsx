@@ -1,5 +1,6 @@
 import Icon from "@suid/material/Icon";
 import ComponentInfo from "~/components/ComponentInfo";
+import SvgIconSizeExample from "./SvgIconSizeExample";
 import SvgIconsColorExample from "./SvgIconsColorExample";
 
 export default function IconsPage() {
@@ -10,6 +11,10 @@ export default function IconsPage() {
         {
           component: SvgIconsColorExample,
           title: "Color",
+        },
+        {
+          title: "Size",
+          component: SvgIconSizeExample,
         },
       ]}
       docsName="icons"

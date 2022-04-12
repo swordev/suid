@@ -1,8 +1,10 @@
 import { useTheme } from "@suid/material";
 import Box from "@suid/material/Box";
 import Button from "@suid/material/Button";
+import FormControlLabel from "@suid/material/FormControlLabel";
 import Paper from "@suid/material/Paper";
 import Slide from "@suid/material/Slide";
+import Switch from "@suid/material/Switch";
 import createElementRef from "@suid/system/createElementRef";
 import { createSignal } from "solid-js";
 
@@ -47,7 +49,10 @@ export default function SimpleSlide() {
       ref={element}
     >
       <Box sx={{ width: 200 }}>
-        <Button onClick={handleChange}>{checked() ? "true" : "false"}</Button>
+        <FormControlLabel
+          control={<Switch checked={checked()} onChange={handleChange} />}
+          label="Show"
+        />
         <Slide direction="up" in={checked()} container={element.ref}>
           <Icon />
         </Slide>

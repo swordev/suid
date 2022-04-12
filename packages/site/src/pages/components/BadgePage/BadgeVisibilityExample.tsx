@@ -4,6 +4,8 @@ import RemoveIcon from "@suid/icons-material/Remove";
 import Badge from "@suid/material/Badge";
 import Box from "@suid/material/Box";
 import Button from "@suid/material/Button";
+import FormControlLabel from "@suid/material/FormControlLabel";
+import Switch from "@suid/material/Switch";
 import { createSignal } from "solid-js";
 
 export default function BadgeVisibility() {
@@ -54,9 +56,13 @@ export default function BadgeVisibility() {
           <MailIcon />
         </Badge>
 
-        <Button onClick={handleBadgeVisibility}>
-          invisible={invisible() ? "true" : "false"}
-        </Button>
+        <FormControlLabel
+          sx={{ color: "text.primary" }}
+          control={
+            <Switch checked={!invisible()} onChange={handleBadgeVisibility} />
+          }
+          label="Show Badge"
+        />
       </div>
     </Box>
   );

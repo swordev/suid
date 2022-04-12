@@ -1,5 +1,6 @@
 import Fab from "@suid/material/Fab";
 import ComponentInfo from "~/components/ComponentInfo";
+import FloatingActionButtonSizeExample from "./FloatingActionButtonSizeExample";
 import FloatingActionButtonsExample from "./FloatingActionButtonsExample";
 
 export default function FloatingActionButtonPage() {
@@ -10,6 +11,10 @@ export default function FloatingActionButtonPage() {
         {
           component: FloatingActionButtonsExample,
           title: "Basic FAB",
+        },
+        {
+          title: "Size",
+          component: FloatingActionButtonSizeExample,
         },
       ]}
       docsName="floating-action-button"

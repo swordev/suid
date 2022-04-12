@@ -1,7 +1,9 @@
 import Box from "@suid/material/Box";
 import Button from "@suid/material/Button";
 import Fade from "@suid/material/Fade";
+import FormControlLabel from "@suid/material/FormControlLabel";
 import Paper from "@suid/material/Paper";
+import Switch from "@suid/material/Switch";
 import useTheme from "@suid/material/styles/useTheme";
 import { createSignal } from "solid-js";
 
@@ -29,9 +31,13 @@ export default function SimpleFade() {
 
   return (
     <Box sx={{ height: 180 }}>
-      <Button onClick={() => setChecked(!checked())}>
-        {checked() ? "true" : "false"}
-      </Button>
+      <FormControlLabel
+        control={
+          <Switch checked={checked()} onChange={() => setChecked(!checked())} />
+        }
+        label="Show"
+      />
+
       <Box sx={{ display: "flex" }}>
         <Fade in={checked()}>
           <Icon />

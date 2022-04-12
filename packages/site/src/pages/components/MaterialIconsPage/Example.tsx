@@ -2,6 +2,8 @@ import CheckIcon from "@suid/icons-material/Check";
 import HomeIcon from "@suid/icons-material/Home";
 import RefreshIcon from "@suid/icons-material/Refresh";
 import SearchIcon from "@suid/icons-material/Search";
+import Button from "@suid/material/Button";
+import Link from "@suid/material/Link";
 import Stack from "@suid/material/Stack";
 
 export default function Example() {
@@ -11,6 +13,9 @@ export default function Example() {
       <CheckIcon />
       <HomeIcon />
       <SearchIcon />
+      <Link href="https://mui.com/components/material-icons/" target="_blank">
+        ...
+      </Link>
     </Stack>
   );
 }
