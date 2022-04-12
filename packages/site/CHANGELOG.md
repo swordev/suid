@@ -1,5 +1,17 @@
 # @suid/site
 
+## 0.1.1-next.1
+
+### Patch Changes
+
+- [`c033eed5`](https://github.com/swordev/suid/commit/c033eed58c347d3122f84fdd02312c9cf0026341) Thanks [@juanrgm](https://github.com/juanrgm)! - Remove unneeded memoization
+
+- Updated dependencies [[`e5f54799`](https://github.com/swordev/suid/commit/e5f547992297185eec34af73a59b629e7c970ecf), [`c033eed5`](https://github.com/swordev/suid/commit/c033eed58c347d3122f84fdd02312c9cf0026341), [`73bc609a`](https://github.com/swordev/suid/commit/73bc609ac89fc18d1534c1e238a8c3d5d767a57f), [`b9f0d48f`](https://github.com/swordev/suid/commit/b9f0d48f8e1d8db71c5204c6e9cf02b4151de7bb), [`f1812d32`](https://github.com/swordev/suid/commit/f1812d32eb430bf6cf4bd88c13f8c1a925716e1c)]:
+  - @suid/material@0.1.1-next.0
+  - @suid/base@0.1.1-next.0
+  - @suid/system@0.1.1-next.0
+  - @suid/icons-material@0.1.1-next.0
+
 ## 0.1.1-next.0
 
 ### Patch Changes
