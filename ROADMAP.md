@@ -22,13 +22,14 @@
 | `React.ElementType`     |  ✅   |
 | `React.Fragment`        |  ✅   |
 | `React.HTMLAttributes`  |  ✅   |
+| `React.memo`            |  ✅   |
 | `React.ReactNode`       |  ✅   |
 | `React.Ref`             |  ✅   |
 | `React.useCallback`     |  ✅   |
 | `React.useContext`      |  ✅   |
 | `React.useEffect`       |  ⏳   |
 | `React.useLayoutEffect` |  ⏳   |
-| `React.useMemo`         |  ⏳   |
+| `React.useMemo`         |  ✅   |
 | `React.useRef`          |  ✅   |
 | `React.useState`        |  ✅   |
 
