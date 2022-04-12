@@ -1,5 +1,7 @@
 {
-  "changesets": [],
+  "changesets": [
+    "chatty-zoos-decide"
+  ],
   "initialVersions": {
     "@suid/base": "0.1.0",
     "@suid/codemod": "0.1.0",
