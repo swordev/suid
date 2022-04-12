@@ -1,8 +1,10 @@
+import getParentExpr from "../navigations/getParentExpr";
 import renameGetterVarToCall from "./renameGetterVarToCall";
 import { Identifier, ts } from "ts-morph";
 
 export default function replaceReactUseState(node: Identifier) {
-  const call = node.getFirstAncestorByKind(ts.SyntaxKind.CallExpression);
+  const expr = getParentExpr(node);
+  const call = expr.getFirstAncestorByKind(ts.SyntaxKind.CallExpression);
   const variableDec = call?.getFirstAncestorByKind(
     ts.SyntaxKind.VariableDeclaration
   );
@@ -24,11 +26,7 @@ export default function replaceReactUseState(node: Identifier) {
     }
   }
 
-  const callProp = call?.getFirstDescendantByKind(
-    ts.SyntaxKind.PropertyAccessExpression
-  );
-
-  callProp?.replaceWithText("createSignal");
+  expr.replaceWithText("createSignal");
 
   node.getSourceFile().addImportDeclaration({
     namedImports: ["createSignal"],
