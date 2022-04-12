@@ -1,5 +1,11 @@
 # @suid/codemod
 
+## 0.0.8
+
+### Patch Changes
+
+- [`7c0c0548`](https://github.com/swordev/suid/commit/7c0c05488d40b2707ebb71221e2c12683a3c7d00) Thanks [@juanrgm](https://github.com/juanrgm)! - Find named exported React objects
+
 ## 0.0.7
 
 ### Patch Changes

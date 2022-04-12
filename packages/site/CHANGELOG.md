@@ -1,5 +1,14 @@
 # @suid/site
 
+## 0.0.36
+
+### Patch Changes
+
+- [`1694df84`](https://github.com/swordev/suid/commit/1694df84cd8622779c8853d38c0d76f3dde62d4d) Thanks [@juanrgm](https://github.com/juanrgm)! - Add more component examples
+
+- Updated dependencies [[`7c0c0548`](https://github.com/swordev/suid/commit/7c0c05488d40b2707ebb71221e2c12683a3c7d00)]:
+  - @suid/codemod@0.0.8
+
 ## 0.0.35
 
 ### Patch Changes
