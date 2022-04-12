@@ -8,9 +8,15 @@
 npm install @suid/codemod
 ```
 
-## Documentation
+## Usage
 
-https://suid.io
+```sh
+npx @suid/codemod --help
+```
+
+### Resources
+
+[React to SolidJS](https://suid.io/tools/react-to-solid)
 
 ## License
 

@@ -10,11 +10,13 @@ MUI has one of the largest development communities on the scene, a long history,
 
 The main idea behing the project is to create a bridge between the MUI and SUID repository for syncing the incoming changes. This is possible thanks to tools integrated in SUID like codemod (a React to Solid transformer).
 
-With this target in mind, the project avoids becoming another library, avoiding all its complexities, living under the shadow of MUI.
+With this smart target in mind, the project avoids becoming another library that could fall into oblivion, avoiding all its complexities, developing under the shadow of MUI.
 
 ## Notice
 
-The main branch will be locked due to [SolidHack 2022](https://hack.solidjs.com/). New changes will be pushed to the [develop](https://github.com/swordev/suid/tree/develop) branch (https://next.suid.io).
+The main branch will be locked due to [SolidHack 2022](https://hack.solidjs.com). New changes will be pushed to the [develop](https://github.com/swordev/suid/tree/develop) branch (https://next.suid.io).
+
+If you want to support the project, you have the possibility to do so [here](https://hack.solidjs.com).
 
 ## Installation
 
@@ -22,9 +24,11 @@ The main branch will be locked due to [SolidHack 2022](https://hack.solidjs.com/
 npm install @suid/material
 ```
 
-## Documentation
+## Resources
 
-https://suid.io
+- [Documentation](https://suid.io)
+- [Playground](https://suid.io/tools/playground)
+- [React to SolidJS](https://suid.io/tools/react-to-solid)
 
 ## Roadmap
 
