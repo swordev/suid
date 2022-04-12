@@ -1,5 +1,5 @@
 import { FormControlState } from ".";
-import { batch, createRenderEffect } from "solid-js";
+import { batch, createComputed } from "solid-js";
 import { createMutable } from "solid-js/store";
 
 export default function formControlState<
@@ -21,9 +21,9 @@ export default function formControlState<
       return acc;
     }, {} as Pick<FormControlState, S>);
   };
-  const object = createMutable(compose());
+  const object: ReturnType<typeof compose> = createMutable({} as any);
 
-  createRenderEffect(() => {
+  createComputed(() => {
     const newObject = compose();
     batch(() => {
       for (const key in newObject) {

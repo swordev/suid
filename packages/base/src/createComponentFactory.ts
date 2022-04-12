@@ -10,7 +10,13 @@ import {
   SuidComponentType,
   SuidElement,
 } from "@suid/types";
-import { createEffect, JSXElement, mergeProps, splitProps } from "solid-js";
+import {
+  batch,
+  createComputed,
+  JSXElement,
+  mergeProps,
+  splitProps,
+} from "solid-js";
 import { createMutable } from "solid-js/store";
 
 function createComponentFactory<
@@ -50,17 +56,17 @@ function createComponentFactory<
         ) as { [K in keyof S]: string };
       };
 
-      const classes: { [K in keyof S]: string } = createMutable(
-        haveSlotClasses ? compose() : ({} as any)
-      );
+      const classes: { [K in keyof S]: string } = createMutable({} as any);
 
       if (haveSlotClasses)
-        createEffect(() => {
+        createComputed(() => {
           const result = compose();
-          for (const slot in result) classes[slot] = result[slot];
+          batch(() => {
+            for (const slot in result) classes[slot] = result[slot];
+          });
         });
 
-      return classes;
+      return classes as Readonly<typeof classes>;
     }
 
     function useProps(input: {
