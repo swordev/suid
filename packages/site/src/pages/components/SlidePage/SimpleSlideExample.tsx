@@ -1,6 +1,5 @@
 import { useTheme } from "@suid/material";
 import Box from "@suid/material/Box";
-import Button from "@suid/material/Button";
 import FormControlLabel from "@suid/material/FormControlLabel";
 import Paper from "@suid/material/Paper";
 import Slide from "@suid/material/Slide";

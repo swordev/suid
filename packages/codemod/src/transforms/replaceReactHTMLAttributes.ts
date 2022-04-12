@@ -1,5 +1,4 @@
 import getParentExpr from "../navigations/getParentExpr";
-import renameExpr from "./renameExpr";
 import { Identifier, ts } from "ts-morph";
 
 const { factory } = ts;

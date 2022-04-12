@@ -1,5 +1,4 @@
 import Box from "@suid/material/Box";
-import Button from "@suid/material/Button";
 import Fade from "@suid/material/Fade";
 import FormControlLabel from "@suid/material/FormControlLabel";
 import Paper from "@suid/material/Paper";

@@ -1,5 +1,5 @@
 import getParentExpr from "../navigations/getParentExpr";
-import { Identifier, ts } from "ts-morph";
+import { Identifier } from "ts-morph";
 
 export default function renameExpr(
   node: Identifier,
