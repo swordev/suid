@@ -179,13 +179,13 @@ const ListItem = $.component(function ListItem({
   const Root = createMemo(
     () => (props.components.Root || ListItemRoot) as ElementType
   );
-  const rootProps = props.componentsProps.root || {};
+  const rootProps = () => props.componentsProps.root || {};
   const [, componentProps] = splitProps(
     mergeProps(
       () => ({
         className: clsx(
           classes.root,
-          rootProps.className,
+          rootProps().className,
           otherProps.className
         ),
       }),
@@ -204,7 +204,7 @@ const ListItem = $.component(function ListItem({
         {...(!isHostComponent(Root()) && {
           ownerState: mergeProps(
             ownerState,
-            () => (rootProps as any).ownerState || {}
+            () => (rootProps() as any).ownerState || {}
           ),
         })}
         {...componentProps}
