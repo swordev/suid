@@ -8,10 +8,13 @@ export default function groupImports(source: SourceFile) {
     if (!imports[name]) {
       imports[name] = node;
     } else {
-      const namedImports = node.getNamedImports().map((v) => v.getText());
+      const namedImports = imports[name]
+        .getNamedImports()
+        .map((v) => v.getText());
       for (const named of node.getNamedImports()) {
         const namedText = named.getText();
-        if (!namedImports.includes(namedText)) node.addNamedImport(namedText);
+        if (!namedImports.includes(namedText))
+          imports[name].addNamedImport(namedText);
       }
       node.remove();
     }
