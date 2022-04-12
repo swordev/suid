@@ -305,12 +305,10 @@ const InputBase = $.component(function InputBase({
   otherProps,
   props,
 }) {
-  const inputValue = createMemo(
-    () =>
-      (props.inputProps.value != null
-        ? props.inputProps.value
-        : props.value) as string | undefined
-  );
+  const inputValue = () =>
+    (props.inputProps.value != null ? props.inputProps.value : props.value) as
+      | string
+      | undefined;
 
   const isControlled = (inputValue() ?? null) !== null;
 
@@ -420,8 +418,8 @@ const InputBase = $.component(function InputBase({
     }
   });
 
-  const onFilled = createMemo(() => muiFormControl && muiFormControl.onFilled);
-  const onEmpty = createMemo(() => muiFormControl && muiFormControl.onEmpty);
+  const onFilled = () => muiFormControl && muiFormControl.onFilled;
+  const onEmpty = () => muiFormControl && muiFormControl.onEmpty;
 
   const checkDirty = (obj: { value: any }) => {
     if (isFilled(obj)) {
@@ -443,17 +441,16 @@ const InputBase = $.component(function InputBase({
     checkDirty(inputRef.ref);
   });
 
-  const isMultilineInput = createMemo(
-    () => props.multiline && props.inputComponent === "input"
-  );
-  const InputComponent = createMemo(() => {
+  const isMultilineInput = () =>
+    props.multiline && props.inputComponent === "input";
+  const InputComponent = () => {
     const InputComponent = props.inputComponent;
     if (isMultilineInput()) {
       // [review]
       //InputComponent = TextareaAutosize;
     }
     return InputComponent;
-  });
+  };
 
   const inputProps = createMemo(() => {
     let inputProps = props.inputProps;
@@ -499,9 +496,9 @@ const InputBase = $.component(function InputBase({
   }));
 
   const classes = $.useClasses(ownerState);
-  const Root = createMemo(() => props.components.Root || InputBaseRoot);
-  const rootProps = createMemo(() => props.componentsProps.root || {});
-  const Input = createMemo(() => props.components.Input || InputBaseComponent);
+  const Root = () => props.components.Root || InputBaseRoot;
+  const rootProps = () => props.componentsProps.root || {};
+  const Input = () => props.components.Input || InputBaseComponent;
 
   const rootOwnerState = mergeProps(
     () => ownerState,

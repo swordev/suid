@@ -7,7 +7,7 @@ import {
 import { getButtonUnstyledUtilityClass } from "./buttonUnstyledClasses";
 import useButton from "./useButton";
 import clsx from "clsx";
-import { createMemo, mergeProps } from "solid-js";
+import { mergeProps } from "solid-js";
 import { Dynamic } from "solid-js/web";
 
 const $ = createComponentFactory<
@@ -58,9 +58,8 @@ const ButtonUnstyled = $.component(function ButtonUnstyled({
     focusVisible: button.focusVisible,
   }));
 
-  const ButtonRoot = createMemo(
-    () => otherProps.component ?? otherProps.components?.Root ?? "button"
-  );
+  const ButtonRoot = () =>
+    otherProps.component ?? otherProps.components?.Root ?? "button";
 
   const buttonRootProps = appendOwnerState(
     ButtonRoot,

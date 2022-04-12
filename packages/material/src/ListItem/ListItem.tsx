@@ -11,13 +11,7 @@ import Dynamic from "@suid/system/Dynamic";
 import createElementRef from "@suid/system/createElementRef";
 import { ElementType } from "@suid/types";
 import clsx from "clsx";
-import {
-  createEffect,
-  createMemo,
-  mergeProps,
-  Show,
-  splitProps,
-} from "solid-js";
+import { createEffect, mergeProps, Show, splitProps } from "solid-js";
 
 const $ = createComponentFactory<ListItemTypeMap>()({
   name: "MuiListItem",
@@ -176,9 +170,7 @@ const ListItem = $.component(function ListItem({
     dense: childContext.dense,
   }));
 
-  const Root = createMemo(
-    () => (props.components.Root || ListItemRoot) as ElementType
-  );
+  const Root = () => (props.components.Root || ListItemRoot) as ElementType;
   const rootProps = () => props.componentsProps.root || {};
   const [, componentProps] = splitProps(
     mergeProps(

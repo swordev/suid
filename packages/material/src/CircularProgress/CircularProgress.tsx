@@ -168,18 +168,18 @@ const CircularProgress = $.component(function CircularProgress({
       ).toFixed(3)}px`,
     } as SxProps;
   });
-  const rootStyle = createMemo(() => {
+  const rootStyle = () => {
     if (props.variant !== "determinate") return {};
     return {
       transform: "rotate(-90deg)",
     } as SxProps;
-  });
-  const rootProps = createMemo(() => {
+  };
+  const rootProps = () => {
     if (props.variant !== "determinate") return {};
     return {
       "aria-valuenow": Math.round(props.value),
     } as PropsOf<CircularProgressTypeMap>;
-  });
+  };
 
   return (
     <CircularProgressRoot

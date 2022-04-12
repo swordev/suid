@@ -37,7 +37,7 @@ export default function ComponentInfo(props: {
 }) {
   const name = createMemo(() => snakeCase(uncapitalize(props.name)));
   const theme = useTheme();
-  const docsName = createMemo(() => props.docsName ?? name());
+  const docsName = () => props.docsName ?? name();
   const docsApiPath = createMemo(() => {
     if (typeof props.docsApiName === "string") {
       if (props.docsApiName.includes("/")) {

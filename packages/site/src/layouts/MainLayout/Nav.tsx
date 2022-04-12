@@ -13,7 +13,7 @@ import ListItemText from "@suid/material/ListItemText";
 import SvgIcon from "@suid/material/SvgIcon";
 import { snakeCase, uncapitalize } from "@suid/utils/string";
 import { useLocation } from "solid-app-router";
-import { Component, createMemo, JSXElement, mapArray } from "solid-js";
+import { Component, JSXElement, mapArray } from "solid-js";
 import { Pages, tryPreload } from "~/Routing";
 import { useLayoutContext } from "./LayoutContext";
 
@@ -338,7 +338,7 @@ function NavLink(props: { text: string; href: string }) {
   const theme = useTheme();
   const context = useLayoutContext();
   const location = useLocation();
-  const selected = createMemo(() => location.pathname === props.href);
+  const selected = () => location.pathname === props.href;
 
   return (
     <ListItemButton

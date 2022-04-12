@@ -6,7 +6,7 @@ import createComponentFactory from "@suid/base/createComponentFactory";
 import { alpha } from "@suid/system/colorManipulator";
 import { InPropsOf } from "@suid/types";
 import clsx from "clsx";
-import { createMemo, mergeProps } from "solid-js";
+import { mergeProps } from "solid-js";
 
 type OwnerState = InPropsOf<SkeletonTypeMap> & {
   hasChildren: boolean;
@@ -166,13 +166,12 @@ const Skeleton = $.component(function Skeleton({
   otherProps,
   props,
 }) {
-  const hasChildren = createMemo(() =>
+  const hasChildren = () =>
     typeof props.children === "undefined"
       ? false
       : Array.isArray(props.children)
       ? !!props.children.length
-      : true
-  );
+      : true;
 
   const ownerState = mergeProps(allProps, () => ({
     hasChildren: hasChildren(),

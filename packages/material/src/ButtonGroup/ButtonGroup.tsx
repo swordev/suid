@@ -8,7 +8,6 @@ import buttonGroupClasses, {
 import createComponentFactory from "@suid/base/createComponentFactory";
 import { alpha } from "@suid/system";
 import clsx from "clsx";
-import { createMemo } from "solid-js";
 
 const $ = createComponentFactory<ButtonGroupTypeMap>()({
   name: "MuiButtonGroup",
@@ -227,7 +226,7 @@ const ButtonGroup = $.component(function ButtonGroup({
   otherProps,
   props,
 }) {
-  const context = createMemo(() => ({
+  const context = () => ({
     className: classes.grouped,
     color: props.color,
     disabled: props.disabled,
@@ -237,7 +236,7 @@ const ButtonGroup = $.component(function ButtonGroup({
     fullWidth: props.fullWidth,
     size: props.size,
     variant: props.variant,
-  }));
+  });
 
   return (
     <ButtonGroupRoot

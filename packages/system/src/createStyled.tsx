@@ -124,7 +124,7 @@ function createStyled<
             : []
         );
 
-        const sx = createMemo(() => [...inStyles(), ...inSx()]);
+        const sx = () => [...inStyles(), ...inSx()];
         return (
           <Show
             when={typeof Component === "string"}

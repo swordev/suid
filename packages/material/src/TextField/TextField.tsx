@@ -160,13 +160,11 @@ const TextField = $.component(function TextField({
   });
 
   const id = createUniqueId(() => props.id);
-  const helperTextId = createMemo(() =>
-    props.helperText && id() ? `${id()}-helper-text` : undefined
-  );
-  const inputLabelId = createMemo(() =>
-    props.label && id() ? `${id()}-label` : undefined
-  );
-  const InputComponent = createMemo(() => variantComponent[props.variant]);
+  const helperTextId = () =>
+    props.helperText && id() ? `${id()}-helper-text` : undefined;
+  const inputLabelId = () =>
+    props.label && id() ? `${id()}-label` : undefined;
+  const InputComponent = () => variantComponent[props.variant];
   const InputElement = () => (
     <Dynamic
       component={InputComponent()}

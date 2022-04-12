@@ -10,7 +10,7 @@ import createComponentFactory from "@suid/base/createComponentFactory";
 import createRef from "@suid/system/createRef";
 import { InPropsOf } from "@suid/types";
 import clsx from "clsx";
-import { createEffect, createMemo, mergeProps } from "solid-js";
+import { createEffect, mergeProps } from "solid-js";
 
 type OwnerState = InPropsOf<SwitchBaseTypeMap> & {
   size?: string;
@@ -100,7 +100,7 @@ const SwitchBase = $.component(function SwitchBase({
 
   const muiFormControl = useFormControl();
 
-  const disabled = createMemo(() => {
+  const disabled = () => {
     if (typeof formControlLabel?.disabled !== "undefined") {
       return formControlLabel.disabled;
     } else if (muiFormControl && typeof props.disabled === "undefined") {
@@ -108,7 +108,7 @@ const SwitchBase = $.component(function SwitchBase({
     } else {
       return props.disabled;
     }
-  });
+  };
 
   createEffect(() => {
     if (formControlLabel) {
@@ -116,9 +116,7 @@ const SwitchBase = $.component(function SwitchBase({
     }
   });
 
-  const hasLabelFor = createMemo(
-    () => props.type === "checkbox" || props.type === "radio"
-  );
+  const hasLabelFor = () => props.type === "checkbox" || props.type === "radio";
 
   const ownerState = mergeProps(allProps, () => ({
     checked: checked(),
@@ -128,11 +126,11 @@ const SwitchBase = $.component(function SwitchBase({
   const classes = $.useClasses(ownerState);
   const element = createRef(() => props.inputRef);
 
-  const inputValue = createMemo(() => {
+  const inputValue = () => {
     if (props.type === "checkbox") {
       return props.value ?? formControlLabel?.value;
     }
-  });
+  };
 
   createEffect(() => {
     if (typeof props.defaultChecked === "boolean")

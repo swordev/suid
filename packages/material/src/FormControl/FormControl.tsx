@@ -5,7 +5,7 @@ import FormControlContext from "./FormControlContext";
 import { getFormControlUtilityClasses } from "./formControlClasses";
 import createComponentFactory from "@suid/base/createComponentFactory";
 import clsx from "clsx";
-import { createEffect, createMemo, createSignal } from "solid-js";
+import { createEffect, createSignal } from "solid-js";
 
 const $ = createComponentFactory<FormControlTypeMap>()({
   name: "MuiFormControl",
@@ -171,11 +171,10 @@ const FormControl = $.component(function FormControl({
     if (props.disabled && focusedState()) setFocused(false);
   });
 
-  const focused = createMemo(() =>
+  const focused = () =>
     props.focused !== undefined && !props.disabled
       ? props.focused
-      : focusedState()
-  );
+      : focusedState();
 
   let registerEffect: undefined | (() => void);
   if (process.env.NODE_ENV !== "production") {

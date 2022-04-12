@@ -7,7 +7,7 @@ import { InputLabelTypeMap } from "./InputLabelProps";
 import { getInputLabelUtilityClasses } from "./inputLabelClasses";
 import createComponentFactory from "@suid/base/createComponentFactory";
 import { PropsOf } from "@suid/types";
-import { createMemo, mergeProps, splitProps } from "solid-js";
+import { mergeProps, splitProps } from "solid-js";
 
 type OwnerState = PropsOf<InputLabelTypeMap> &
   Pick<FormControlState, "size" | "variant" | "required"> & {
@@ -156,7 +156,7 @@ const InputLabel = $.component(function InputLabel({ allProps, props }) {
     "variant",
   ]);
 
-  const shrink = createMemo(() => {
+  const shrink = () => {
     let shrink = props.shrink;
     if (typeof shrink === "undefined" && muiFormControl) {
       shrink =
@@ -165,7 +165,7 @@ const InputLabel = $.component(function InputLabel({ allProps, props }) {
         muiFormControl.adornedStart;
     }
     return shrink;
-  });
+  };
 
   const fcs = formControlState({
     props: allProps,

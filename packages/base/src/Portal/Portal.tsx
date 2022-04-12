@@ -1,5 +1,5 @@
 import { PortalProps } from "./PortalProps";
-import { createMemo, Show } from "solid-js";
+import { Show } from "solid-js";
 import { Portal as SolidPortal } from "solid-js/web";
 
 /**
@@ -15,7 +15,7 @@ import { Portal as SolidPortal } from "solid-js/web";
  * - [Portal API](https://mui.com/api/portal/)
  */
 export function Portal(props: PortalProps) {
-  const container = createMemo(() => props.container ?? document.body);
+  const container = () => props.container ?? document.body;
   return (
     <Show when={!props.disablePortal} fallback={props.children}>
       <SolidPortal mount={container()}>{props.children}</SolidPortal>

@@ -6,7 +6,6 @@ import { getTypographyUtilityClass } from "./typographyClasses";
 import createComponentFactory from "@suid/base/createComponentFactory";
 import getThemeValue from "@suid/system/getThemeValue";
 import clsx from "clsx";
-import { createMemo } from "solid-js";
 
 const $ = createComponentFactory<TypographyTypeMap>()({
   name: "MuiTypography",
@@ -133,15 +132,13 @@ const Typography = $.component(function Typography({
   otherProps,
   props,
 }) {
-  const Component = createMemo(
-    () =>
-      otherProps.component ||
-      (props.paragraph
-        ? "p"
-        : props.variantMapping[props.variant] ||
-          defaultVariantMapping[props.variant]) ||
-      "span"
-  );
+  const Component = () =>
+    otherProps.component ||
+    (props.paragraph
+      ? "p"
+      : props.variantMapping[props.variant] ||
+        defaultVariantMapping[props.variant]) ||
+    "span";
 
   return (
     <TypographyRoot

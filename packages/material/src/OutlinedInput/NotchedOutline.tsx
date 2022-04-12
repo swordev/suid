@@ -2,7 +2,7 @@ import styled from "../styles/styled";
 import { NotchedOutlineTypeMap } from "./NotchedOutlineProps";
 import createComponentFactory from "@suid/base/createComponentFactory";
 import { PropsOf } from "@suid/types";
-import { createMemo, mergeProps, Show } from "solid-js";
+import { mergeProps, Show } from "solid-js";
 
 type OwnerState = PropsOf<NotchedOutlineTypeMap> & {
   withLabel: boolean;
@@ -82,7 +82,7 @@ const NotchedOutline = $.component(function NotchedOutline({
   otherProps,
   props,
 }) {
-  const withLabel = createMemo(() => props.label != null && props.label !== "");
+  const withLabel = () => props.label != null && props.label !== "";
   const ownerState = mergeProps(allProps, () => ({
     withLabel: withLabel(),
   }));

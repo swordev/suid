@@ -19,11 +19,10 @@ export type CodeProps = {
 
 export default function Code(props: CodeProps) {
   const theme = useTheme();
-  const themeClassName = createMemo(() =>
+  const themeClassName = () =>
     theme.palette.mode === "dark"
       ? "prism-vsc-dark-plus"
-      : "prism-material-light"
-  );
+      : "prism-material-light";
   const code = createMemo(() =>
     Prism.highlight(
       props.value,

@@ -391,13 +391,11 @@ const Chip = $.component(function Chip({
     if (typeof otherProps.onKeyUp === "function") otherProps.onKeyUp(event);
   };
 
-  const clickable = createMemo(() =>
-    props.clickable !== false && otherProps.onClick ? true : props.clickable
-  );
+  const clickable = () =>
+    props.clickable !== false && otherProps.onClick ? true : props.clickable;
 
-  const component = createMemo(() =>
-    clickable() || props.onDelete ? ButtonBase : otherProps.component || "div"
-  );
+  const component = () =>
+    clickable() || props.onDelete ? ButtonBase : otherProps.component || "div";
 
   const moreProps = createMemo(() =>
     component() === ButtonBase

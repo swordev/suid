@@ -48,7 +48,7 @@ export const Box = defineComponent<BoxTypeMap>(function Box(inProps) {
     return result;
   });
 
-  const className = createMemo(() => {
+  const className = () => {
     const className = otherProps.className;
     const sxClassValue = sxClass();
     if (sxClassValue?.length) {
@@ -56,7 +56,7 @@ export const Box = defineComponent<BoxTypeMap>(function Box(inProps) {
     } else {
       return className;
     }
-  });
+  };
 
   return <Dynamic {...dynamicProps} className={className()} />;
 });

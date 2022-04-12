@@ -1,13 +1,13 @@
 import Box from "@suid/material/Box";
 import Fade from "@suid/material/Fade";
 import Popper from "@suid/material/Popper";
-import { createMemo, createSignal } from "solid-js";
+import { createSignal } from "solid-js";
 
 export default function TransitionsPopperExample() {
   const [open, setOpen] = createSignal(false);
   const [anchorEl, setAnchorEl] = createSignal<HTMLButtonElement | null>(null);
-  const canBeOpen = createMemo(() => open() && !!anchorEl());
-  const id = createMemo(() => (canBeOpen() ? "transition-popper" : undefined));
+  const canBeOpen = () => open() && !!anchorEl();
+  const id = () => (canBeOpen() ? "transition-popper" : undefined);
 
   return (
     <div>

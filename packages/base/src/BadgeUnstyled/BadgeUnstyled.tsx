@@ -6,7 +6,7 @@ import useBadge from "./useBadge";
 import { InPropsOf } from "@suid/types";
 import capitalize from "@suid/utils/capitalize";
 import clsx from "clsx";
-import { createMemo, mergeProps } from "solid-js";
+import { mergeProps } from "solid-js";
 import { Dynamic } from "solid-js/web";
 
 type OnwerState = InPropsOf<BadgeUnstyledTypeMap> & ReturnType<typeof useBadge>;
@@ -71,15 +71,13 @@ const BadgeUnstyled = $.component(function BadgeUnstyled({
 }) {
   const badge = useBadge(allProps);
   const ownerState = mergeProps(allProps, badge);
-  const Root = createMemo(
-    () => otherProps.component || props.components.Root || "span"
-  );
+  const Root = () => otherProps.component || props.components.Root || "span";
   const rootProps = appendOwnerState(
     Root,
     () => mergeProps(otherProps, props.componentsProps.root || {}),
     ownerState
   );
-  const Badge = createMemo(() => props.components.Badge || "span");
+  const Badge = () => props.components.Badge || "span";
   const badgeProps = appendOwnerState(
     Badge,
     () => props.componentsProps.badge || {},
