@@ -1,6 +1,11 @@
 {
   "changesets": [
-    "chatty-zoos-decide"
+    "chatty-zoos-decide",
+    "five-ads-compare",
+    "green-geese-knock",
+    "sixty-pans-hide",
+    "tall-owls-crash",
+    "two-rings-provide"
   ],
   "initialVersions": {
     "@suid/base": "0.1.0",
