@@ -1,5 +1,11 @@
 # @suid/site
 
+## 0.1.1-next.3
+
+### Patch Changes
+
+- [`6169a2ba`](https://github.com/swordev/suid/commit/6169a2ba3c431b0435f7896447b7a69c8bd39e98) Thanks [@juanrgm](https://github.com/juanrgm)! - Align text fields
+
 ## 0.1.1-next.2
 
 ### Patch Changes
