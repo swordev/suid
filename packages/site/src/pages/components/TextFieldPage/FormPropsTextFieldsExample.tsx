@@ -8,6 +8,7 @@ export default function FormPropsTextFields() {
       sx={{
         maxWidth: 764,
         [`& .${TextField}`]: { m: 1, width: "25ch" },
+        textAlign: "center",
       }}
       noValidate
       autocomplete="off"

@@ -17,6 +17,7 @@ export default function StateTextFields() {
       component="form"
       sx={{
         "& > :not(style)": { m: 1, width: "25ch" },
+        textAlign: "center",
       }}
       novalidate
       autocomplete="off"
