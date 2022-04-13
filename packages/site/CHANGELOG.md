@@ -1,5 +1,11 @@
 # @suid/site
 
+## 0.1.1-next.2
+
+### Patch Changes
+
+- [`c88ede2a`](https://github.com/swordev/suid/commit/c88ede2a582cdcfc782b0480e564c25a5902faf9) Thanks [@juanrgm](https://github.com/juanrgm)! - Show dependency full version
+
 ## 0.1.1-next.1
 
 ### Patch Changes
