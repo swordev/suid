@@ -7,7 +7,6 @@ import { createPalette } from "@suid/material/styles/createPalette";
 import useMediaQuery from "@suid/material/useMediaQuery";
 import { useLocation } from "solid-app-router";
 import { createEffect, createMemo, createSignal, Show } from "solid-js";
-import { createMutable } from "solid-js/store";
 import { Routing, RoutingElementContainer } from "~/Routing";
 import Footer from "~/layouts/MainLayout/Footer";
 import PlaygroundPage from "~/pages/tools/PlaygroundPage";
@@ -17,18 +16,6 @@ import { Nav } from "./Nav";
 
 const drawerWidth = 240;
 
-export function getDefaultPaletteData(mode: "dark" | "light") {
-  return {
-    mode,
-    primary: {
-      main: "#1976d2",
-    },
-    secondary: {
-      main: "#01579b",
-    },
-  };
-}
-
 export default function MainLayout() {
   const context = createLayoutMutable({
     drawer: {
@@ -36,13 +23,21 @@ export default function MainLayout() {
     },
   });
 
-  const theme = createMutable(
-    createTheme({
-      palette: createPalette(
-        getDefaultPaletteData(context.darkMode ? "dark" : "light")
-      ),
+  const palette = createMemo(() =>
+    createPalette({
+      mode: context.darkMode ? "dark" : "light",
+      primary: {
+        main: "#1976d2",
+      },
+      secondary: {
+        main: "#01579b",
+      },
     })
   );
+
+  const theme = createTheme({
+    palette,
+  });
 
   const location = useLocation();
   const md = useMediaQuery(theme.breakpoints.down("md"));
@@ -65,14 +60,6 @@ export default function MainLayout() {
       context.drawer.visibleWidth = 0;
     }
   });
-
-  createEffect((darkMode) => {
-    if (darkMode !== context.darkMode)
-      theme.palette = createPalette(
-        getDefaultPaletteData(context.darkMode ? "dark" : "light")
-      );
-    return context.darkMode;
-  }, context.darkMode);
 
   createEffect<boolean>((loaded) => {
     if (!loaded && isPlaygroundPage()) {

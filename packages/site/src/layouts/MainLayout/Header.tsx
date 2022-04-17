@@ -22,18 +22,6 @@ const GitHubIcon = createSvgIcon(
   "GitHub"
 );
 
-export function getDefaultPaletteData(mode: "dark" | "light") {
-  return {
-    mode,
-    primary: {
-      main: "#af1c2e",
-    },
-    secondary: {
-      main: "#af1c2e",
-    },
-  };
-}
-
 export default function Header() {
   const layoutContext = useLayoutContext();
   const theme = useTheme();
