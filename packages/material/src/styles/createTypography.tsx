@@ -92,19 +92,17 @@ export function makeVariant(
 export function createTypography(
   options?: DeepPartial<TypographyOptions>
 ): ThemeTypographyType {
-  const result: ThemeTypographyType = {
-    ...merge(
-      {},
-      typographyDefaults,
-      {
-        pxToRem: (size) => {
-          const coef = result.fontSize / 14;
-          return `${(size / result.htmlFontSize) * coef}rem`;
-        },
-      } as ThemeTypographyType,
-      options ?? ({} as any)
-    ),
-  } as any;
+  const result = merge(
+    {},
+    typographyDefaults,
+    {
+      pxToRem: (size) => {
+        const coef = result.fontSize / 14;
+        return `${(size / result.htmlFontSize) * coef}rem`;
+      },
+    } as ThemeTypographyType,
+    options ?? ({} as any)
+  ) as ThemeTypographyType;
 
   const variants = merge(
     {
@@ -139,6 +137,7 @@ export function createTypography(
     }
   );
 
-  Object.assign(result, variants);
+  merge(result, variants);
+
   return result;
 }
