@@ -58,7 +58,11 @@ const ListItemSecondaryAction = $.component(function ListItemSecondaryAction({
 }) {
   const context = useListContext();
   const ownerState = mergeProps(
-    () => ({ disableGutters: !!context.disableGutters }),
+    {
+      get disableGutters() {
+        return !!context.disableGutters;
+      },
+    },
     allProps
   );
   const classes = $.useClasses(ownerState);

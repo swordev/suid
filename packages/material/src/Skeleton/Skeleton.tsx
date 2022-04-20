@@ -173,9 +173,11 @@ const Skeleton = $.component(function Skeleton({
       ? !!props.children.length
       : true;
 
-  const ownerState = mergeProps(allProps, () => ({
-    hasChildren: hasChildren(),
-  }));
+  const ownerState = mergeProps(allProps, {
+    get hasChildren() {
+      return hasChildren();
+    },
+  });
 
   return (
     <SkeletonRoot

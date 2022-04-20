@@ -7,7 +7,7 @@ import { SxPropsObject } from "../sxProps";
 import sxPropsFactory from "../sxPropsFactory";
 import useTheme from "../useTheme";
 import { BoxTypeMap } from "./BoxProps";
-import { createMemo, mergeProps, splitProps } from "solid-js";
+import { mergeProps, splitProps } from "solid-js";
 
 export const boxSelfProps: (keyof BoxSelfProps)[] = ["sx", "theme"];
 
@@ -20,12 +20,13 @@ export const Box = defineComponent<BoxTypeMap>(function Box(inProps) {
   );
   const [props, otherProps] = splitProps(allProps, boxSelfProps);
   const theme = useTheme();
-  const forwardSx = createMemo(
-    () => !!inProps.component && typeof inProps.component !== "string"
-  );
-  const dynamicProps = mergeProps(otherProps, () => ({
-    sx: forwardSx() ? inProps.sx : undefined,
-  }));
+  const forwardSx = () =>
+    !!inProps.component && typeof inProps.component !== "string";
+  const dynamicProps = mergeProps(otherProps, {
+    get sx() {
+      return forwardSx() ? inProps.sx : undefined;
+    },
+  });
 
   const sxClass = createSxClass(() => {
     if (!props.sx || forwardSx()) return [];

@@ -93,7 +93,11 @@ const ListItemText = $.component(function ListItemText({
 }) {
   const context = useListContext();
 
-  const ownerState = mergeProps(allProps, () => ({ dense: context.dense }));
+  const ownerState = mergeProps(allProps, {
+    get dense() {
+      return context.dense;
+    },
+  });
 
   const isDefined = (v: unknown) => v !== "undefined" && v !== null;
   const isTypography = (v: unknown) =>

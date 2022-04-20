@@ -86,11 +86,15 @@ const CardMedia = $.component(function CardMedia({
       : {}
   );
 
-  const ownerState = mergeProps(allProps, () => ({
-    isMediaComponent: isMediaComponent(),
-    isImageComponent:
-      IMAGE_COMPONENTS.indexOf(otherProps.component as any) !== -1,
-  }));
+  const ownerState = mergeProps(allProps, {
+    get isMediaComponent() {
+      return isMediaComponent();
+    },
+    get isImageComponent() {
+      return IMAGE_COMPONENTS.indexOf(otherProps.component as any) !== -1;
+    },
+  });
+
   return (
     <CardMediaRoot
       role={!isMediaComponent() && props.image ? "img" : undefined}

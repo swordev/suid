@@ -135,9 +135,11 @@ const LinkRoot = styled(Typography, {
 const Link = $.component(function Link({ allProps, otherProps, props }) {
   const visible = useIsFocusVisible();
   const [focusVisible, setFocusVisible] = createSignal(false);
-  const ownerState = mergeProps(allProps, () => ({
-    focusVisible: focusVisible(),
-  }));
+  const ownerState = mergeProps(allProps, {
+    get focusVisible() {
+      return focusVisible();
+    },
+  });
   const classes = $.useClasses(ownerState);
 
   return (

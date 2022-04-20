@@ -78,10 +78,14 @@ export default function PageNav(inProps: {
       return findNavConfigs(loc.pathname);
     }
   });
-  const props = mergeProps(inProps, () => ({
-    prev: prevProp() === "auto" ? navConfigs()?.prev : undefined,
-    next: nextProp() === "auto" ? navConfigs()?.next : undefined,
-  }));
+  const props = mergeProps(inProps, {
+    get prev() {
+      return prevProp() === "auto" ? navConfigs()?.prev : undefined;
+    },
+    get next() {
+      return nextProp() === "auto" ? navConfigs()?.next : undefined;
+    },
+  });
 
   return (
     <Box sx={props.sx}>

@@ -68,9 +68,11 @@ const FormGroup = $.component(function FormGroup({
     states: ["error"],
   });
 
-  const ownerState = mergeProps(allProps, () => ({
-    error: fcs.error,
-  }));
+  const ownerState = mergeProps(allProps, {
+    get error() {
+      return fcs.error;
+    },
+  });
 
   return (
     <FormGroupRoot

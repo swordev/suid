@@ -173,13 +173,23 @@ const InputLabel = $.component(function InputLabel({ allProps, props }) {
     states: ["size", "variant", "required"],
   });
 
-  const ownerState = mergeProps(allProps, () => ({
-    formControl: muiFormControl,
-    shrink: shrink(),
-    size: fcs.size,
-    variant: fcs.variant,
-    required: fcs.required,
-  }));
+  const ownerState = mergeProps(allProps, {
+    get formControl() {
+      return muiFormControl;
+    },
+    get shrink() {
+      return shrink();
+    },
+    get size() {
+      return fcs.size;
+    },
+    get variant() {
+      return fcs.variant;
+    },
+    get required() {
+      return fcs.required;
+    },
+  });
 
   const classes = $.useClasses(ownerState);
 

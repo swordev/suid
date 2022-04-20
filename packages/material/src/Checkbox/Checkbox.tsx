@@ -120,10 +120,7 @@ const Checkbox = $.component(function Checkbox({ allProps, classes, props }) {
     "size",
   ]);
 
-  const allClasses = mergeProps(
-    () => props.classes || {},
-    () => classes
-  );
+  const allClasses = mergeProps(() => props.classes || {}, classes);
 
   return (
     <SvgIconContext.Provider

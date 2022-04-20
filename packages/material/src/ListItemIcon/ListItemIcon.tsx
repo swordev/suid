@@ -62,7 +62,11 @@ const ListItemIcon = $.component(function ListItemIcon({
 }) {
   const context = useListContext();
   const ownerState = mergeProps(
-    () => ({ alignItems: context.alignItems }),
+    {
+      get alignItems() {
+        return context.alignItems;
+      },
+    },
     allProps
   );
   return (

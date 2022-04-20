@@ -224,28 +224,31 @@ const Switch = $.component(function Switch({
   classes,
   otherProps,
 }) {
-  const icon = createMemo(() => (
+  const icon = () => (
     <SwitchThumb className={classes.thumb} ownerState={allProps} />
-  ));
-  const allClasses = mergeProps(classes, () => ({
-    root: classes.switchBase,
-  }));
+  );
+  const allClasses = mergeProps(classes, {
+    get root() {
+      return classes.switchBase;
+    },
+  });
 
   const [, otherPropsWithoutSx] = splitProps(otherProps, ["sx"]);
 
-  const baseProps = mergeProps(
-    () => ({
-      icon: icon(),
-      checkedIcon: icon(),
-    }),
-    () => ({
-      checkedIcon: props.checkedIcon,
-      disabled: props.disabled,
-      icon: props.icon,
-      value: props.value,
-    }),
-    otherPropsWithoutSx
-  );
+  const baseProps = mergeProps(otherPropsWithoutSx, {
+    get checkedIcon() {
+      return props.checkedIcon || icon;
+    },
+    get disabled() {
+      return props.disabled;
+    },
+    get icon() {
+      return props.icon || icon;
+    },
+    get value() {
+      return props.value;
+    },
+  });
 
   return (
     <SwitchRoot

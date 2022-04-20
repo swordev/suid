@@ -148,11 +148,17 @@ const ListItem = $.component(function ListItem({
 }) {
   const element = createElementRef(otherProps);
   const context = useListContext();
-  const childContext = mergeProps(() => ({
-    dense: props.dense || context.dense || false,
-    alignItems: props.alignItems,
-    disableGutters: props.disableGutters,
-  }));
+  const childContext = {
+    get dense() {
+      return props.dense || context.dense || false;
+    },
+    get alignItems() {
+      return props.alignItems;
+    },
+    get disableGutters() {
+      return props.disableGutters;
+    },
+  };
 
   createEffect(() => {
     if (props.autoFocus) {
@@ -166,21 +172,25 @@ const ListItem = $.component(function ListItem({
     }
   });
 
-  const ownerState = mergeProps(allProps, () => ({
-    dense: childContext.dense,
-  }));
+  const ownerState = mergeProps(allProps, {
+    get dense() {
+      return childContext.dense;
+    },
+  });
 
   const Root = () => (props.components.Root || ListItemRoot) as ElementType;
   const rootProps = () => props.componentsProps.root || {};
   const [, componentProps] = splitProps(
     mergeProps(
-      () => ({
-        className: clsx(
-          classes.root,
-          rootProps().className,
-          otherProps.className
-        ),
-      }),
+      {
+        get className() {
+          return clsx(
+            classes.root,
+            rootProps().className,
+            otherProps.className
+          );
+        },
+      },
       otherProps
     ),
     ["component", "ref"]

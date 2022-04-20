@@ -118,10 +118,14 @@ const SwitchBase = $.component(function SwitchBase({
 
   const hasLabelFor = () => props.type === "checkbox" || props.type === "radio";
 
-  const ownerState = mergeProps(allProps, () => ({
-    checked: checked(),
-    disabled: disabled(),
-  }));
+  const ownerState = mergeProps(allProps, {
+    get checked() {
+      return checked();
+    },
+    get disabled() {
+      return disabled();
+    },
+  });
 
   const classes = $.useClasses(ownerState);
   const element = createRef(() => props.inputRef);

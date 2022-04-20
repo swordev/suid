@@ -15,16 +15,12 @@ export default function appendOwnerState(
   ownerState: object
 ) {
   const mergedOwnerState = mergeProps(
-    () => existingProps().ownerState,
-    () => ownerState
+    () => existingProps().ownerState || {},
+    ownerState
   );
-  return mergeProps(existingProps, () => {
-    if (isHostComponent(elementType())) {
-      return {};
-    } else {
-      return {
-        ownerState: mergedOwnerState,
-      };
-    }
+  return mergeProps(existingProps, {
+    get ownerState() {
+      if (!isHostComponent(elementType())) return mergedOwnerState;
+    },
   });
 }

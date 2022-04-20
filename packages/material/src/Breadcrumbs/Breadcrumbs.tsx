@@ -123,9 +123,11 @@ const Breadcrumbs = $.component(function Breadcrumbs({
 }) {
   const [expanded, setExpanded] = createSignal(false);
   const listElement = createElementRef();
-  const ownerState = mergeProps(allProps, () => ({
-    expanded: expanded(),
-  }));
+  const ownerState = mergeProps(allProps, {
+    get expanded() {
+      return expanded();
+    },
+  });
 
   const handleClickExpand = () => {
     setExpanded(true);

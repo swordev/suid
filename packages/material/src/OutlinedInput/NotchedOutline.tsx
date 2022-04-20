@@ -83,9 +83,11 @@ const NotchedOutline = $.component(function NotchedOutline({
   props,
 }) {
   const withLabel = () => props.label != null && props.label !== "";
-  const ownerState = mergeProps(allProps, () => ({
-    withLabel: withLabel(),
-  }));
+  const ownerState = mergeProps(allProps, {
+    get withLabel() {
+      return withLabel();
+    },
+  });
   return (
     <NotchedOutlineRoot
       {...otherProps}

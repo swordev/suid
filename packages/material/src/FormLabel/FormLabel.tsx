@@ -101,14 +101,26 @@ const FormLabel = $.component(function FormLabel({
     states: ["color", "required", "focused", "disabled", "error", "filled"],
   });
 
-  const ownerState = mergeProps(allProps, () => ({
-    color: fcs.color || "primary",
-    disabled: fcs.disabled,
-    error: fcs.error,
-    filled: fcs.filled,
-    focused: fcs.focused,
-    required: fcs.required,
-  }));
+  const ownerState = mergeProps(allProps, {
+    get color() {
+      return fcs.color || "primary";
+    },
+    get disabled() {
+      return fcs.disabled;
+    },
+    get error() {
+      return fcs.error;
+    },
+    get filled() {
+      return fcs.filled;
+    },
+    get focused() {
+      return fcs.focused;
+    },
+    get required() {
+      return fcs.required;
+    },
+  });
 
   const classes = $.useClasses(ownerState);
 

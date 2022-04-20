@@ -53,10 +53,14 @@ const ButtonUnstyled = $.component(function ButtonUnstyled({
   props,
 }) {
   const button = useButton(props);
-  const ownerState = mergeProps(props, () => ({
-    active: button.active,
-    focusVisible: button.focusVisible,
-  }));
+  const ownerState = mergeProps(props, {
+    get active() {
+      return button.active;
+    },
+    get focusVisible() {
+      return button.focusVisible;
+    },
+  });
 
   const ButtonRoot = () =>
     otherProps.component ?? otherProps.components?.Root ?? "button";

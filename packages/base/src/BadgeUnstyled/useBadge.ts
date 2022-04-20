@@ -56,8 +56,12 @@ export default function useBadge(inProps: UseBadgeProps) {
     }
   });
 
-  return mergeProps(badge, () => ({
-    invisible: invisible(),
-    displayValue: displayValue(),
-  }));
+  return mergeProps(badge, {
+    get invisible() {
+      return invisible();
+    },
+    get displayValue() {
+      return displayValue();
+    },
+  });
 }

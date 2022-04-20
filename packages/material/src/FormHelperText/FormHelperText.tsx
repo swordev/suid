@@ -115,16 +115,32 @@ const FormHelperText = $.component(function FormHelperText({
     ],
   });
 
-  const ownerState = mergeProps(allProps, () => ({
-    contained: fcs.variant === "filled" || fcs.variant === "outlined",
-    variant: fcs.variant,
-    size: fcs.size,
-    disabled: fcs.disabled,
-    error: fcs.error,
-    filled: fcs.filled,
-    focused: fcs.focused,
-    required: fcs.required,
-  }));
+  const ownerState = mergeProps(allProps, {
+    get contained() {
+      return fcs.variant === "filled" || fcs.variant === "outlined";
+    },
+    get variant() {
+      return fcs.variant;
+    },
+    get size() {
+      return fcs.size;
+    },
+    get disabled() {
+      return fcs.disabled;
+    },
+    get error() {
+      return fcs.error;
+    },
+    get filled() {
+      return fcs.filled;
+    },
+    get focused() {
+      return fcs.focused;
+    },
+    get required() {
+      return fcs.required;
+    },
+  });
 
   const resolved = children(() => props.children);
 

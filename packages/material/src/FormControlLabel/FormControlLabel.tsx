@@ -141,15 +141,14 @@ const FormControlLabel = $.component(function FormControlLabel({
     states: ["error"],
   });
 
-  const ownerState = mergeProps(
-    allProps,
-    () => ({
-      error: fcs.error,
-    }),
-    () => ({
-      disabled: childDisabled(),
-    })
-  );
+  const ownerState = mergeProps(allProps, {
+    get error() {
+      return fcs.error;
+    },
+    get disabled() {
+      return childDisabled();
+    },
+  });
 
   const classes = $.useClasses(ownerState);
 

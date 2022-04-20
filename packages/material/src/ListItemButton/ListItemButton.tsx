@@ -159,9 +159,11 @@ const ListItemButton = $.component(function ListItemButton({
     disableGutters: props.disableGutters,
   });
 
-  const ownerState = mergeProps(allProps, () => ({
-    dense: childContext.dense,
-  }));
+  const ownerState = mergeProps(allProps, {
+    get dense() {
+      return childContext.dense;
+    },
+  });
 
   const element = createElementRef(otherProps);
 

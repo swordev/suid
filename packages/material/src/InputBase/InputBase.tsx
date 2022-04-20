@@ -402,12 +402,11 @@ const InputBase = $.component(function InputBase({
     ],
   });
 
-  const fcs = mergeProps(
-    () => partialFcs,
-    () => ({
-      focused: muiFormControl ? muiFormControl.focused : focused(),
-    })
-  );
+  const fcs = mergeProps(partialFcs, {
+    get focused() {
+      return muiFormControl ? muiFormControl.focused : focused();
+    },
+  });
 
   // The blur won't fire when the disabled state is set on a focused input.
   // We need to book keep the focused state manually.
@@ -485,15 +484,29 @@ const InputBase = $.component(function InputBase({
     muiFormControl?.setAdornedStart(Boolean(props.startAdornment));
   });
 
-  const ownerState = mergeProps(allProps, () => ({
-    color: fcs.color || "primary",
-    disabled: fcs.disabled,
-    error: fcs.error,
-    focused: fcs.focused,
-    formControl: muiFormControl,
-    hiddenLabel: fcs.hiddenLabel,
-    size: fcs.size,
-  }));
+  const ownerState = mergeProps(allProps, {
+    get color() {
+      return fcs.color || "primary";
+    },
+    get disabled() {
+      return fcs.disabled;
+    },
+    get error() {
+      return fcs.error;
+    },
+    get focused() {
+      return fcs.focused;
+    },
+    get formControl() {
+      return muiFormControl;
+    },
+    get hiddenLabel() {
+      return fcs.hiddenLabel;
+    },
+    get size() {
+      return fcs.size;
+    },
+  });
 
   const classes = $.useClasses(ownerState);
   const Root = () => props.components.Root || InputBaseRoot;
@@ -501,17 +514,19 @@ const InputBase = $.component(function InputBase({
   const Input = () => props.components.Input || InputBaseComponent;
 
   const rootOwnerState = mergeProps(
-    () => ownerState,
+    ownerState,
     () => ((rootProps() as any)["ownerState"] || {}) as typeof ownerState
   );
   const inputOwnerState = mergeProps(
-    () => ownerState,
+    ownerState,
     () => ((inputProps() as any)["ownerState"] || {}) as typeof ownerState
   );
 
-  const renderSuffixProps = mergeProps(fcs, () => ({
-    startAdornment: props.startAdornment,
-  }));
+  const renderSuffixProps = mergeProps(fcs, {
+    get startAdornment() {
+      return props.startAdornment;
+    },
+  });
 
   const suffix = createMemo(() => props.renderSuffix?.(renderSuffixProps));
 

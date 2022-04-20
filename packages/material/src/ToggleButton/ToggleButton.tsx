@@ -141,16 +141,17 @@ const ToggleButton = $.component(function ToggleButton({
 }) {
   const context = useContext(ToggleButtonGroupContext);
 
-  const allProps = mergeProps(
-    () => ({
-      selected: isValueSelected(props.value, context.value),
-    }),
-    _allProps,
-    () => ({
-      fullWidth: context.fullWidth,
-      onChange: context.onChange,
-    })
-  );
+  const allProps = mergeProps(_allProps, {
+    get selected() {
+      return _allProps.selected || isValueSelected(props.value, context.value);
+    },
+    get fullWidth() {
+      return context.fullWidth;
+    },
+    get onChange() {
+      return context.onChange;
+    },
+  });
 
   const classes = $.useClasses(allProps);
 

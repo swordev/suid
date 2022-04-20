@@ -241,9 +241,11 @@ const Badge = $.component(function Badge({ allProps, otherProps, props }) {
   const invisible = useBadgeInvisibleMemo(allProps);
   const badge = mergeProps(() => (invisible() ? prevProps : allProps));
 
-  const ownerState = mergeProps(allProps, () => ({
-    invisible: invisible(),
-  }));
+  const ownerState = mergeProps(allProps, {
+    get invisible() {
+      return invisible();
+    },
+  });
 
   const classes = $.useClasses(ownerState);
 
