@@ -129,7 +129,9 @@ const ButtonBase = $.component(function ButtonBase({
   const [focusVisible, setFocusVisible] = createSignal(false);
   const [mountedState, setMountedState] = createSignal(false);
   const ownerState = mergeProps(allProps, {
-    focusVisible,
+    get focusVisible() {
+      return focusVisible();
+    },
   });
 
   onMount(() => {
@@ -349,7 +351,7 @@ const ButtonBase = $.component(function ButtonBase({
 
   return (
     <ButtonBaseRoot
-      {...buttonProps}
+      {...buttonProps()}
       {...otherProps}
       className={clsx(classes.root, otherProps.className)}
       ownerState={ownerState}
