@@ -260,16 +260,24 @@ const Badge = $.component(function Badge({ allProps, otherProps, props }) {
   const rootOwnerState = mergeProps(
     () => (otherProps.componentsProps.root as any)?.["ownerState"] || {},
     {
-      color: badge.color,
-      overlap: badge.overlap,
+      get color() {
+        return badge.color;
+      },
+      get overlap() {
+        return badge.overlap;
+      },
     }
   );
 
   const badgeOwnerState = mergeProps(
     () => (otherProps.componentsProps.badge as any)?.["ownerState"] || {},
     {
-      color: badge.color,
-      overlap: badge.overlap,
+      get color() {
+        return badge.color;
+      },
+      get overlap() {
+        return badge.overlap;
+      },
     }
   );
 

@@ -153,11 +153,17 @@ const ListItemButton = $.component(function ListItemButton({
 }) {
   const context = useListContext();
 
-  const childContext = mergeProps({
-    dense: props.dense || context.dense || false,
-    alignItems: props.alignItems,
-    disableGutters: props.disableGutters,
-  });
+  const childContext = {
+    get dense() {
+      return props.dense || context.dense || false;
+    },
+    get alignItems() {
+      return props.alignItems;
+    },
+    get disableGutters() {
+      return props.disableGutters;
+    },
+  };
 
   const ownerState = mergeProps(allProps, {
     get dense() {

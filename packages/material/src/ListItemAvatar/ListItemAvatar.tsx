@@ -58,7 +58,14 @@ const ListItemAvatar = $.component(function ListItemAvatar({
   otherProps,
 }) {
   const context = useListContext();
-  const ownerState = mergeProps({ alignItems: context.alignItems }, allProps);
+  const ownerState = mergeProps(
+    {
+      get alignItems() {
+        return context.alignItems;
+      },
+    },
+    allProps
+  );
 
   return (
     <ListItemAvatarRoot
