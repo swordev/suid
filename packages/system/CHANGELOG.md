@@ -1,5 +1,11 @@
 # @suid/system
 
+## 0.1.1-next.1
+
+### Patch Changes
+
+- [`6d3daf3e`](https://github.com/swordev/suid/commit/6d3daf3e00f5d1b159076fa0b9fea8916fceaa9f) Thanks [@juanrgm](https://github.com/juanrgm)! - Improve performance
+
 ## 0.1.1-next.0
 
 ### Patch Changes

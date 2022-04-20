@@ -1,6 +1,6 @@
 {
   "name": "@suid/system",
-  "version": "0.1.1-next.0",
+  "version": "0.1.1-next.1",
   "description": "Styles system used by suid packages.",
   "main": "index.jsx",
   "scripts": {
