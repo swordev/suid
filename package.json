@@ -56,6 +56,7 @@
     "clean:ts": "tsc --build tsconfig.build.json --clean",
     "format": "prettier -w .",
     "format:check": "prettier -c .",
+    "postinstall": "pnpm scripts postinstall",
     "lint": "eslint --ignore-path .gitignore .",
     "prepare": "husky install",
     "release": "changeset publish",

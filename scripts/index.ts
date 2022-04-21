@@ -9,7 +9,9 @@ import genRes from "~/actions/genRes";
 import genRoadmap from "~/actions/genRoadmap";
 import patchLibModulesLinks from "~/actions/patchLibModulesLinks";
 import patchTsConfigs from "~/actions/patchTsConfigs";
+import patchWsModulesLinks from "~/actions/patchWsModulesLinks";
 import postbuild from "~/actions/postbuild";
+import postinstall from "~/actions/postinstall";
 import prebuild from "~/actions/prebuild";
 import syncIconsMaterial from "~/actions/syncIconsMaterial";
 
@@ -56,8 +58,12 @@ program
 
 program.command(snakeCase(patchTsConfigs.name)).action(() => patchTsConfigs());
 
-program.command(snakeCase(postbuild.name)).action(() => postbuild());
+program
+  .command(snakeCase(patchWsModulesLinks.name))
+  .action(() => patchWsModulesLinks());
 
+program.command(snakeCase(postbuild.name)).action(() => postbuild());
+program.command(snakeCase(postinstall.name)).action(() => postinstall());
 program.command(snakeCase(prebuild.name)).action(() => prebuild());
 
 program
