@@ -96,5 +96,10 @@
     "ts-node": "^10.7.0",
     "typescript": "^4.6.3"
   },
-  "info": "SUID is all a set of utils and components ported from MUI Core and much more."
+  "info": "SUID is all a set of utils and components ported from MUI Core and much more.",
+  "pnpm": {
+    "overrides": {
+      "@trivago/prettier-plugin-sort-imports>@babel/parser": "7.17.9"
+    }
+  }
 }

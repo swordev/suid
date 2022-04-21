@@ -1,5 +1,8 @@
 lockfileVersion: 5.3
 
+overrides:
+  '@trivago/prettier-plugin-sort-imports>@babel/parser': 7.17.9
+
 importers:
 
   .:
@@ -87,7 +90,7 @@ importers:
       micromatch: ^4.0.5
       ts-morph: ^14.0.0
     dependencies:
-      '@suid/utils': 0.0.9_solid-js@1.3.13
+      '@suid/utils': link:../utils
       '@types/micromatch': 4.0.2
       commander: 9.1.0
       fast-glob: 3.2.11
@@ -239,7 +242,7 @@ packages:
       '@babel/helper-compilation-targets': 7.17.7_@babel+core@7.13.10
       '@babel/helper-module-transforms': 7.17.7
       '@babel/helpers': 7.17.8
-      '@babel/parser': 7.17.8
+      '@babel/parser': 7.17.9
       '@babel/template': 7.16.7
       '@babel/traverse': 7.17.3
       '@babel/types': 7.17.0
@@ -582,14 +585,14 @@ packages:
       js-tokens: 4.0.0
     dev: true
 
-  /@babel/parser/7.14.6:
-    resolution: {integrity: sha512-oG0ej7efjEXxb4UgE+klVx+3j4MVo+A2vCzm7OUN4CLo6WhQ+vSOD2yJ8m7B+DghObxtLxt3EfgMWpq+AsWehQ==}
+  /@babel/parser/7.17.8:
+    resolution: {integrity: sha512-BoHhDJrJXqcg+ZL16Xv39H9n+AqJ4pcDrQBGZN+wHxIysrLZ3/ECwCBUch/1zUNhnsXULcONU3Ei5Hmkfk6kiQ==}
     engines: {node: '>=6.0.0'}
     hasBin: true
     dev: true
 
-  /@babel/parser/7.17.8:
-    resolution: {integrity: sha512-BoHhDJrJXqcg+ZL16Xv39H9n+AqJ4pcDrQBGZN+wHxIysrLZ3/ECwCBUch/1zUNhnsXULcONU3Ei5Hmkfk6kiQ==}
+  /@babel/parser/7.17.9:
+    resolution: {integrity: sha512-vqUSBLP8dQHFPdPi9bc5GK9vRkYHJ49fsZdtoJ8EQ8ibpwk5rPKfvNIwChB0KVXcIjcepEBBd2VHC5r9Gy8ueg==}
     engines: {node: '>=6.0.0'}
     hasBin: true
     dev: true
@@ -1523,7 +1526,7 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/code-frame': 7.16.7
-      '@babel/parser': 7.17.8
+      '@babel/parser': 7.17.9
       '@babel/types': 7.17.0
     dev: true
 
@@ -1534,7 +1537,7 @@ packages:
       '@babel/generator': 7.17.7
       '@babel/helper-function-name': 7.16.7
       '@babel/helper-split-export-declaration': 7.16.7
-      '@babel/parser': 7.17.8
+      '@babel/parser': 7.17.9
       '@babel/types': 7.17.0
       debug: 4.3.4
       globals: 11.12.0
@@ -1553,7 +1556,7 @@ packages:
       '@babel/helper-function-name': 7.16.7
       '@babel/helper-hoist-variables': 7.16.7
       '@babel/helper-split-export-declaration': 7.16.7
-      '@babel/parser': 7.17.8
+      '@babel/parser': 7.17.9
       '@babel/types': 7.17.0
       debug: 4.3.4
       globals: 11.12.0
@@ -2188,23 +2191,6 @@ packages:
     resolution: {integrity: sha512-PPB9m1zywojv6sOGSiHv+tvnb4Zc00Jce9yjUG0BzTymUdFf9AP+gKJRlc0iq9vbEEEXfYv1bgKa5KTn4gAzbQ==}
     dev: false
 
-  /@suid/types/0.0.8_solid-js@1.3.13:
-    resolution: {integrity: sha512-wc+F0D/yte3RZGBMods7CcG0WMGVNKAgMBqBt08Lb4AIOLZ0L/XSpEcsoXXwE4Eu6N+WLiMeFpQR+WBB325Dlg==}
-    peerDependencies:
-      solid-js: ^1.3.7
-    dependencies:
-      solid-js: 1.3.13
-    dev: false
-
-  /@suid/utils/0.0.9_solid-js@1.3.13:
-    resolution: {integrity: sha512-WYxDGr9Z/PuGJtxYF4Rt3MLigUnyUD3vuTxUpU8DuKBK6gABc73f9zR2VK6XXJQsJnJ3ULUxScoiWMPeIwyttw==}
-    peerDependencies:
-      solid-js: ^1.3.7
-    dependencies:
-      '@suid/types': 0.0.8_solid-js@1.3.13
-      solid-js: 1.3.13
-    dev: false
-
   /@szmarczak/http-timer/1.1.2:
     resolution: {integrity: sha512-XIB2XbzHTN6ieIjfIMV9hlVcfPU26s2vafYWQcZHWXHOxiaRZYEDKEwdl129Zyg50+foYV2jCgtrqSA6qNuNSA==}
     engines: {node: '>=6'}
@@ -2243,7 +2229,7 @@ packages:
     dependencies:
       '@babel/core': 7.13.10
       '@babel/generator': 7.13.9
-      '@babel/parser': 7.14.6
+      '@babel/parser': 7.17.9
       '@babel/traverse': 7.13.0
       '@babel/types': 7.13.0
       javascript-natural-sort: 0.7.1
@@ -2301,7 +2287,7 @@ packages:
   /@types/babel__template/7.4.1:
     resolution: {integrity: sha512-azBFKemX6kMg5Io+/rdGT0dkGreboUVR0Cdm3fz9QJWpaQGJRQXl7C+6hOTCZcMll7KFyEQpgbYI2lHdsS4U7g==}
     dependencies:
-      '@babel/parser': 7.17.8
+      '@babel/parser': 7.17.9
       '@babel/types': 7.17.0
     dev: true
 
@@ -5114,7 +5100,7 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       '@babel/core': 7.17.8
-      '@babel/parser': 7.17.8
+      '@babel/parser': 7.17.9
       '@istanbuljs/schema': 0.1.3
       istanbul-lib-coverage: 3.2.0
       semver: 6.3.0
