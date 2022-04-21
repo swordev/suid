@@ -40,7 +40,7 @@ export default function Code(props: CodeProps) {
         m: 0,
         overflow: "auto",
         maxWidth: `calc(100vw - ${24 * 2}px - ${
-          context.drawer.visibleWidth
+          context.drawer.permanent ? context.drawer.visibleWidth : 0
         }px)`,
         ...(props.preProps?.sx || {}),
       }}
