@@ -1,9 +1,17 @@
 import getParentExpr from "./getParentExpr";
 import { Identifier, Node, SourceFile, ts } from "ts-morph";
 
-export default function findReactObjects(source: SourceFile) {
+export default function findReactObjects(source: SourceFile, names?: string[]) {
   const reactImport = source.getImportDeclaration("react");
   const result: { name: string; node: Identifier }[] = [];
+  const push = (ref: Identifier) => {
+    const name = ref.getText();
+    if (!names || names.includes(name))
+      result.push({
+        name,
+        node: ref,
+      });
+  };
   if (reactImport) {
     const ns = reactImport.getNamespaceImport();
     const named = reactImport.getNamedImports();
@@ -12,11 +20,7 @@ export default function findReactObjects(source: SourceFile) {
       if (identifier) {
         for (const ref of identifier.findReferencesAsNodes()) {
           if (ref === identifier) continue;
-          if (Node.isIdentifier(ref))
-            result.push({
-              name: ref.getText(),
-              node: ref,
-            });
+          if (Node.isIdentifier(ref)) push(ref);
         }
       }
     }
@@ -28,11 +32,7 @@ export default function findReactObjects(source: SourceFile) {
         const lastIdentifier = parent?.getLastChildByKind(
           ts.SyntaxKind.Identifier
         );
-        if (lastIdentifier)
-          result.push({
-            name: lastIdentifier.getText(),
-            node: lastIdentifier,
-          });
+        if (lastIdentifier) push(lastIdentifier);
       }
   }
   return result;
