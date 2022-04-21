@@ -3,6 +3,7 @@ import groupImports from "./groupImports";
 import removePropTypes from "./removePropTypes";
 import removeReactImports from "./removeReactImports";
 import renameMuiImports from "./renameMuiImports";
+import replaceReactCreateContext from "./replaceReactCreateContext";
 import replaceReactElementType from "./replaceReactElementType";
 import replaceReactEventHandlers from "./replaceReactEventHandlers";
 import replaceReactFragment from "./replaceReactFragment";
@@ -19,6 +20,7 @@ import { Identifier, SourceFile } from "ts-morph";
 
 const reactObjectTransformers: Record<string, (node: Identifier) => void> = {
   Fragment: replaceReactFragment,
+  createContext: replaceReactCreateContext,
   ElementType: replaceReactElementType,
   HTMLAttributes: replaceReactHTMLAttributes,
   memo: replaceReactMemo,
