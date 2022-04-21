@@ -6,7 +6,7 @@ import switchClasses, { getSwitchUtilityClass } from "./switchClasses";
 import createComponentFactory from "@suid/base/createComponentFactory";
 import { alpha, darken, lighten } from "@suid/system";
 import clsx from "clsx";
-import { createMemo, mergeProps, splitProps } from "solid-js";
+import { mergeProps, splitProps } from "solid-js";
 
 const $ = createComponentFactory<SwitchTypeMap>()({
   name: "MuiSwitch",
