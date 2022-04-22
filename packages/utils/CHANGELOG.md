@@ -1,5 +1,19 @@
 # @suid/utils
 
+## 0.2.0-next.0
+
+### Minor Changes
+
+- [`5c341c3d`](https://github.com/swordev/suid/commit/5c341c3d7692ae92fe6762bb0a03a7d67250f6b5) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `cloneObject` function
+
+### Patch Changes
+
+- [`e003704a`](https://github.com/swordev/suid/commit/e003704af0bed136188314d8e38964a66d5f8d08) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix `merge` function
+
+* [`db4d5676`](https://github.com/swordev/suid/commit/db4d56761854cb724ce231d90fb4774ab935229d) Thanks [@juanrgm](https://github.com/juanrgm)! - Use default imports
+
+- [#48](https://github.com/swordev/suid/pull/48) [`5abb76ef`](https://github.com/swordev/suid/commit/5abb76efb419d8ceebe219f8b75f42cccca3aaaf) Thanks [@github-actions](https://github.com/apps/github-actions)! - Convert packages into ES6 modules
+
 ## 0.1.0
 
 ### Minor Changes

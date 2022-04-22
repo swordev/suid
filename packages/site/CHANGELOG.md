@@ -1,5 +1,21 @@
 # @suid/site
 
+## 0.1.1-next.5
+
+### Patch Changes
+
+- [#48](https://github.com/swordev/suid/pull/48) [`cb184af2`](https://github.com/swordev/suid/commit/cb184af2d993da7f8c54a2d6638de10d98a450ec) Thanks [@github-actions](https://github.com/apps/github-actions)! - Fix max width
+
+* [`db4d5676`](https://github.com/swordev/suid/commit/db4d56761854cb724ce231d90fb4774ab935229d) Thanks [@juanrgm](https://github.com/juanrgm)! - Use default imports
+
+* Updated dependencies [[`44fc4eda`](https://github.com/swordev/suid/commit/44fc4edac8d0791ecd3cab826a75c7d6e4982b65), [`0bbdd9b7`](https://github.com/swordev/suid/commit/0bbdd9b714866cbcd4de246e895c1ac9eac3fd31), [`5c341c3d`](https://github.com/swordev/suid/commit/5c341c3d7692ae92fe6762bb0a03a7d67250f6b5), [`e003704a`](https://github.com/swordev/suid/commit/e003704af0bed136188314d8e38964a66d5f8d08), [`db4d5676`](https://github.com/swordev/suid/commit/db4d56761854cb724ce231d90fb4774ab935229d), [`00ea1f06`](https://github.com/swordev/suid/commit/00ea1f062b21a8acacfe50b68d15be1fd8a1f000), [`5abb76ef`](https://github.com/swordev/suid/commit/5abb76efb419d8ceebe219f8b75f42cccca3aaaf)]:
+  - @suid/codemod@0.1.1-next.0
+  - @suid/material@0.1.1-next.2
+  - @suid/utils@0.2.0-next.0
+  - @suid/system@0.1.1-next.2
+  - @suid/icons-material@0.1.1-next.2
+  - @suid/base@0.1.1-next.2
+
 ## 0.1.1-next.4
 
 ### Patch Changes
