@@ -24,6 +24,22 @@ describe("merge", () => {
       c: 3,
     });
   });
+
+  it("returns target object", () => {
+    const target = { a: 1 };
+    const merged = merge(target, { b: 2 }, { c: 3 });
+    expect(merged === target).toBeTruthy();
+  });
+
+  it("shoulds create new objects", () => {
+    const a = { a: {} };
+    const b = { b: {} };
+    const c = { c: {} };
+    const merged = merge<{ a: any; b?: any; c?: any }>(a, b, c);
+    expect(merged.b === b.b).toBeFalsy();
+    expect(merged.c === c.c).toBeFalsy();
+  });
+
   it("returns deep merged object", () => {
     expect(
       merge(

@@ -1,14 +1,13 @@
+import cloneObject from "./cloneObject";
 import deepmerge from "./deepmerge";
 
-export default function merge<TObject extends Record<string, any>>(
-  object: TObject,
+export default function merge<TTarget extends Record<string, any>>(
+  target: TTarget,
   ...sources: (Record<string, any> | undefined)[]
 ) {
-  return sources.reduce(
-    (target, source, index) =>
-      deepmerge(target, source, {
-        clone: !!index,
-      }),
-    object
-  );
+  for (const source of sources)
+    deepmerge(target, cloneObject(source), {
+      clone: false,
+    });
+  return target;
 }
