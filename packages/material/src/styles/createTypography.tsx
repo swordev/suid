@@ -72,7 +72,7 @@ function round(value: number) {
 }
 
 export function makeVariant(
-  store: Pick<ThemeTypographyType, "pxToRem" | "fontFamily">,
+  base: Pick<ThemeTypographyType, "pxToRem" | "fontFamily">,
   fontWeight: number,
   size: number,
   lineHeight: number,
@@ -80,9 +80,9 @@ export function makeVariant(
   casing?: boolean
 ) {
   return {
-    fontFamily: store.fontFamily,
+    fontFamily: base.fontFamily,
     fontWeight,
-    fontSize: store.pxToRem(size),
+    fontSize: base.pxToRem(size),
     lineHeight: `${lineHeight}`,
     letterSpacing: `${round(letterSpacing / size)}em`,
     ...(casing ? { textTransform: "uppercase" } : {}),
@@ -90,54 +90,39 @@ export function makeVariant(
 }
 
 export function createTypography(
-  options?: DeepPartial<TypographyOptions>
+  options: DeepPartial<TypographyOptions> = {}
 ): ThemeTypographyType {
-  const result = merge(
-    {},
-    typographyDefaults,
-    {
-      pxToRem: (size) => {
-        const coef = result.fontSize / 14;
-        return `${(size / result.htmlFontSize) * coef}rem`;
-      },
-    } as ThemeTypographyType,
-    options ?? ({} as any)
-  ) as ThemeTypographyType;
-
-  const variants = merge(
-    {
-      h1: makeVariant(result, fontWeight.light, 96, 1.167, -1.5),
-      h2: makeVariant(result, fontWeight.light, 60, 1.2, -0.5),
-      h3: makeVariant(result, fontWeight.regular, 48, 1.167, 0),
-      h4: makeVariant(result, fontWeight.regular, 34, 1.235, 0.25),
-      h5: makeVariant(result, fontWeight.regular, 24, 1.334, 0),
-      h6: makeVariant(result, fontWeight.medium, 20, 1.6, 0.15),
-      subtitle1: makeVariant(result, fontWeight.regular, 16, 1.75, 0.15),
-      subtitle2: makeVariant(result, fontWeight.medium, 14, 1.57, 0.1),
-      body1: makeVariant(result, fontWeight.regular, 16, 1.5, 0.15),
-      body2: makeVariant(result, fontWeight.regular, 14, 1.43, 0.15),
-      button: makeVariant(result, fontWeight.medium, 14, 1.75, 0.4, true),
-      caption: makeVariant(result, fontWeight.regular, 12, 1.66, 0.4),
-      overline: makeVariant(result, fontWeight.regular, 12, 2.66, 1, true),
+  const base: Pick<
+    ThemeTypographyType,
+    "fontFamily" | "fontSize" | "htmlFontSize" | "pxToRem"
+  > = {
+    fontFamily: options.fontFamily ?? typographyDefaults.fontFamily,
+    fontSize: options.fontSize ?? typographyDefaults.fontSize,
+    htmlFontSize: options?.htmlFontSize ?? typographyDefaults.htmlFontSize,
+    pxToRem: (size) => {
+      const coef = base.fontSize / 14;
+      return `${(size / base.htmlFontSize) * coef}rem`;
     },
+  };
+
+  return merge(
+    base as ThemeTypographyType,
     {
-      h1: typographyDefaults.h1 ?? {},
-      h2: typographyDefaults.h2 ?? {},
-      h3: typographyDefaults.h3 ?? {},
-      h4: typographyDefaults.h4 ?? {},
-      h5: typographyDefaults.h5 ?? {},
-      h6: typographyDefaults.h6 ?? {},
-      subtitle1: typographyDefaults.subtitle1 ?? {},
-      subtitle2: typographyDefaults.subtitle2 ?? {},
-      body1: typographyDefaults.body1 ?? {},
-      body2: typographyDefaults.body2 ?? {},
-      button: typographyDefaults.button ?? {},
-      caption: typographyDefaults.caption ?? {},
-      overline: typographyDefaults.overline ?? {},
-    }
+      h1: makeVariant(base, fontWeight.light, 96, 1.167, -1.5),
+      h2: makeVariant(base, fontWeight.light, 60, 1.2, -0.5),
+      h3: makeVariant(base, fontWeight.regular, 48, 1.167, 0),
+      h4: makeVariant(base, fontWeight.regular, 34, 1.235, 0.25),
+      h5: makeVariant(base, fontWeight.regular, 24, 1.334, 0),
+      h6: makeVariant(base, fontWeight.medium, 20, 1.6, 0.15),
+      subtitle1: makeVariant(base, fontWeight.regular, 16, 1.75, 0.15),
+      subtitle2: makeVariant(base, fontWeight.medium, 14, 1.57, 0.1),
+      body1: makeVariant(base, fontWeight.regular, 16, 1.5, 0.15),
+      body2: makeVariant(base, fontWeight.regular, 14, 1.43, 0.15),
+      button: makeVariant(base, fontWeight.medium, 14, 1.75, 0.4, true),
+      caption: makeVariant(base, fontWeight.regular, 12, 1.66, 0.4),
+      overline: makeVariant(base, fontWeight.regular, 12, 2.66, 1, true),
+    },
+    typographyDefaults,
+    options
   );
-
-  merge(result, variants);
-
-  return result;
 }
