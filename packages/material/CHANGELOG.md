@@ -1,5 +1,19 @@
 # @suid/material
 
+## 0.1.1-next.2
+
+### Patch Changes
+
+- [`0bbdd9b7`](https://github.com/swordev/suid/commit/0bbdd9b714866cbcd4de246e895c1ac9eac3fd31) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix `createTypography`
+
+* [`db4d5676`](https://github.com/swordev/suid/commit/db4d56761854cb724ce231d90fb4774ab935229d) Thanks [@juanrgm](https://github.com/juanrgm)! - Use default imports
+
+* Updated dependencies [[`5c341c3d`](https://github.com/swordev/suid/commit/5c341c3d7692ae92fe6762bb0a03a7d67250f6b5), [`e003704a`](https://github.com/swordev/suid/commit/e003704af0bed136188314d8e38964a66d5f8d08), [`db4d5676`](https://github.com/swordev/suid/commit/db4d56761854cb724ce231d90fb4774ab935229d), [`5abb76ef`](https://github.com/swordev/suid/commit/5abb76efb419d8ceebe219f8b75f42cccca3aaaf)]:
+  - @suid/utils@0.2.0-next.0
+  - @suid/css@0.1.1-next.0
+  - @suid/system@0.1.1-next.2
+  - @suid/base@0.1.1-next.2
+
 ## 0.1.1-next.1
 
 ### Patch Changes
