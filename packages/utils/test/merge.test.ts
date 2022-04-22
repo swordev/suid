@@ -11,7 +11,7 @@ describe("merge", () => {
     const a = { a: 1 };
     const b = { b: 1 };
     const c = { c: 1 };
-    merge<any, any>(a, b, c);
+    merge(a, b, c);
     expect(Object.keys(b)).toMatchObject(["b"]);
     expect(Object.keys(c)).toMatchObject(["c"]);
   });

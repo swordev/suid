@@ -5,7 +5,7 @@ import { getCircularProgressUtilityClass } from "./circularProgressClasses";
 import createComponentFactory from "@suid/base/createComponentFactory";
 import SxProps from "@suid/system/sxProps";
 import { PropsOf } from "@suid/types";
-import { randomString } from "@suid/utils/crypto";
+import randomString from "@suid/utils/randomString";
 import clsx from "clsx";
 import { createMemo } from "solid-js";
 

@@ -1,6 +1,6 @@
 import { NativeStyleProps, CSSProps } from "@suid/system/sxProps";
 import { DeepPartial } from "@suid/types";
-import { merge } from "@suid/utils/merge";
+import merge from "@suid/utils/merge";
 
 export type ThemeTypographyType = TypographyOptions & {
   pxToRem: (px: number) => string;

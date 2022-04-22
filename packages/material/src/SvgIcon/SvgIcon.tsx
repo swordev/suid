@@ -3,7 +3,7 @@ import SvgIconContext from "./SvgIconContext";
 import { SvgIconTypeMap } from "./SvgIconProps";
 import { getSvgIconUtilityClass } from "./svgIconClasses";
 import createComponentFactory from "@suid/base/createComponentFactory";
-import { capitalize } from "@suid/utils/string";
+import capitalize from "@suid/utils/capitalize";
 import clsx from "clsx";
 import { Show, useContext } from "solid-js";
 

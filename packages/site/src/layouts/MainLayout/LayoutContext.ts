@@ -1,5 +1,5 @@
 import { DeepPartial } from "@suid/types";
-import { merge } from "@suid/utils/merge";
+import merge from "@suid/utils/merge";
 import { createContext, useContext } from "solid-js";
 import { createMutable } from "solid-js/store";
 

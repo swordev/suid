@@ -3,7 +3,8 @@ import Link from "@suid/material/Link";
 import Typography from "@suid/material/Typography";
 import useTheme from "@suid/material/styles/useTheme";
 import capitalize from "@suid/utils/capitalize";
-import { snakeCase, uncapitalize } from "@suid/utils/string";
+import snakeCase from "@suid/utils/snakeCase";
+import uncapitalize from "@suid/utils/uncapitalize";
 import {
   Component,
   createMemo,

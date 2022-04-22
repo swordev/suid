@@ -1,7 +1,7 @@
 import sysCache from "./cache";
 import render from "./render";
-import { randomString } from "@suid/utils/crypto";
-import { resolveFunction } from "@suid/utils/function";
+import randomString from "@suid/utils/randomString";
+import resolveFunction from "@suid/utils/resolveFunction";
 
 function createStyle(options: {
   name: string;

@@ -5,7 +5,7 @@ import {
   isSelector,
   isVar,
 } from "./assert";
-import { snakeCase } from "@suid/utils/string";
+import snakeCase from "@suid/utils/snakeCase";
 
 type RenderOptions = {
   sublevel?: boolean;

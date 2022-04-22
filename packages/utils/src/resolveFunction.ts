@@ -1,4 +1,4 @@
-export function resolveFunction<T, TArgs extends any[]>(
+export default function resolveFunction<T, TArgs extends any[]>(
   value: T | ((...args: TArgs) => T),
   args?: TArgs
 ): T {

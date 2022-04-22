@@ -1,7 +1,7 @@
 import ThemeContext from "./ThemeContext";
 import { Theme } from "./createTheme";
 import getDefaultTheme from "./getDefaultTheme";
-import { isEmptyObject } from "@suid/utils/object";
+import isEmptyObject from "@suid/utils/isEmptyObject";
 import { useContext } from "solid-js";
 
 function useTheme(

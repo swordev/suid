@@ -9,7 +9,7 @@ import createComponentFactory from "@suid/base/createComponentFactory";
 import { darken, lighten } from "@suid/system/colorManipulator";
 import createElementRef from "@suid/system/createElementRef";
 import { InPropsOf } from "@suid/types";
-import { randomString } from "@suid/utils/crypto";
+import randomString from "@suid/utils/randomString";
 import clsx from "clsx";
 import { createEffect, createSignal, JSX, Show } from "solid-js";
 

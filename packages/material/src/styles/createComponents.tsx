@@ -1,6 +1,6 @@
 import type * as ComponentsTypes from "./components-types";
 import { DeepPartial, InferPropsType } from "@suid/types";
-import { merge } from "@suid/utils/merge";
+import merge from "@suid/utils/merge";
 
 export type Components = ComponentsOptions & {};
 

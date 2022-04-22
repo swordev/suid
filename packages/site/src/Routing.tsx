@@ -4,7 +4,8 @@ import { useTheme } from "@suid/material/styles";
 import useMediaQuery from "@suid/material/useMediaQuery";
 import { SxPropsObject } from "@suid/system/sxProps";
 import { EventParam } from "@suid/types";
-import { snakeCase, uncapitalize } from "@suid/utils/string";
+import snakeCase from "@suid/utils/snakeCase";
+import uncapitalize from "@suid/utils/uncapitalize";
 import { Route, Routes } from "solid-app-router";
 import {
   Component,

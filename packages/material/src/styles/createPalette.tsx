@@ -14,7 +14,7 @@ import {
   lighten,
 } from "@suid/system/colorManipulator";
 import { DeepPartial, DoRequired } from "@suid/types";
-import { merge } from "@suid/utils/merge";
+import merge from "@suid/utils/merge";
 
 export type PaletteColorOptions = {
   light: string;

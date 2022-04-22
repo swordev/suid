@@ -1,9 +1,9 @@
 import deepmerge from "./deepmerge";
 
-export function merge<
-  TObject extends Record<string, any>,
-  TSource extends Record<string, any> | undefined
->(object: TObject, ...sources: TSource[]) {
+export default function merge<TObject extends Record<string, any>>(
+  object: TObject,
+  ...sources: (Record<string, any> | undefined)[]
+) {
   return sources.reduce(
     (target, source, index) =>
       deepmerge(target, source, {
@@ -12,5 +12,3 @@ export function merge<
     object
   );
 }
-
-export default merge;
