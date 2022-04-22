@@ -2,6 +2,7 @@
   "name": "@suid/utils",
   "version": "0.1.0",
   "description": "Utils used by suid packages.",
+  "type": "module",
   "scripts": {
     "build": "tsc --build",
     "clean": "tsc --build --clean",
