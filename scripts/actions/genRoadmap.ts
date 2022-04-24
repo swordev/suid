@@ -20,6 +20,7 @@ const codemodTransformers: Record<string, boolean | "pending"> = {
   "MUI imports": true,
   "MUI components": "pending",
   "`React.*EventHandler`": true,
+  "`React.Context`": true,
   "`React.createContext`": true,
   "`React.ElementType`": true,
   "`React.Fragment`": true,
