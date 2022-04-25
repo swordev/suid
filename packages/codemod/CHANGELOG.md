@@ -1,5 +1,15 @@
 # @suid/codemod
 
+## 0.2.0-next.1
+
+### Minor Changes
+
+- [#49](https://github.com/swordev/suid/pull/49) [`ce295dc2`](https://github.com/swordev/suid/commit/ce295dc211b077b476ac63f0238df3345fb23571) Thanks [@github-actions](https://github.com/apps/github-actions)! - Add `React.Context` transform
+
+### Patch Changes
+
+- [`8e301557`](https://github.com/swordev/suid/commit/8e3015570968441eafaa2fb8eb61b9e75e1d7149) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix `React.HTMLAttributes` transform
+
 ## 0.1.1-next.0
 
 ### Patch Changes

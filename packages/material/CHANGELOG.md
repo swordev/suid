@@ -1,5 +1,11 @@
 # @suid/material
 
+## 0.2.0-next.3
+
+### Minor Changes
+
+- [`3589e103`](https://github.com/swordev/suid/commit/3589e10386e6578ab1f7548757708a743e88ed01) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `Table`, `TableBody`, `TableCell`, `TableContainer`, `TableHead` and `TableRow` components
+
 ## 0.1.1-next.2
 
 ### Patch Changes
