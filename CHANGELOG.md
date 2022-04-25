@@ -1,5 +1,18 @@
 # @suid/site
 
+## 0.2.0-next.6
+
+### Minor Changes
+
+- [`8d70bd38`](https://github.com/swordev/suid/commit/8d70bd3829950f0446cb58caab6f210c7eb6ec41) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `Table` component page
+
+### Patch Changes
+
+- Updated dependencies [[`8e301557`](https://github.com/swordev/suid/commit/8e3015570968441eafaa2fb8eb61b9e75e1d7149), [`3589e103`](https://github.com/swordev/suid/commit/3589e10386e6578ab1f7548757708a743e88ed01), [`ce295dc2`](https://github.com/swordev/suid/commit/ce295dc211b077b476ac63f0238df3345fb23571)]:
+  - @suid/codemod@0.2.0-next.1
+  - @suid/material@0.2.0-next.3
+  - @suid/icons-material@0.1.1-next.3
+
 ## 0.1.1-next.5
 
 ### Patch Changes
