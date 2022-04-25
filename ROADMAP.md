@@ -149,14 +149,14 @@
 | SwipeableDrawer         |       |
 | Switch                  |  ✅   |
 | Tab                     |       |
-| Table                   |       |
-| TableBody               |       |
-| TableCell               |       |
-| TableContainer          |       |
+| Table                   |  ✅   |
+| TableBody               |  ✅   |
+| TableCell               |  ✅   |
+| TableContainer          |  ✅   |
 | TableFooter             |       |
-| TableHead               |       |
+| TableHead               |  ✅   |
 | TablePagination         |       |
-| TableRow                |       |
+| TableRow                |  ✅   |
 | TableSortLabel          |       |
 | Tabs                    |       |
 | TabScrollButton         |       |
