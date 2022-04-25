@@ -17,14 +17,13 @@ import replaceReactUseContext from "./replaceReactUseContext";
 import replaceReactUseEffect from "./replaceReactUseEffect";
 import replaceReactUseMemo from "./replaceReactUseMemo";
 import replaceReactUseState from "./replaceReactUseState";
-import { Identifier, SourceFile } from "ts-morph";
+import { Identifier, SourceFile, ts } from "ts-morph";
 
 const reactObjectTransformers: Record<string, (node: Identifier) => void> = {
   Fragment: replaceReactFragment,
   Context: replaceReactContext,
   createContext: replaceReactCreateContext,
   ElementType: replaceReactElementType,
-  HTMLAttributes: replaceReactHTMLAttributes,
   memo: replaceReactMemo,
   ReactNode: replaceReactNode,
   Ref: replaceReactRef,
@@ -41,8 +40,11 @@ export default function transformReactSource(source: SourceFile) {
     if (reactObject.node.wasForgotten()) continue;
     let transformer = reactObjectTransformers[reactObject.name];
     if (!transformer) {
-      if (reactObject.name.endsWith("EventHandler"))
+      if (reactObject.name.endsWith("EventHandler")) {
         transformer = replaceReactEventHandlers;
+      } else if (reactObject.name.endsWith("HTMLAttributes")) {
+        transformer = replaceReactHTMLAttributes;
+      }
     }
     transformer?.(reactObject.node);
   }

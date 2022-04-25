@@ -19,11 +19,11 @@
 | MUI imports             |  ✅   |
 | MUI components          |  ⏳   |
 | `React.*EventHandler`   |  ✅   |
+| `React.*HTMLAttributes` |  ✅   |
 | `React.Context`         |  ✅   |
 | `React.createContext`   |  ✅   |
 | `React.ElementType`     |  ✅   |
 | `React.Fragment`        |  ✅   |
-| `React.HTMLAttributes`  |  ✅   |
 | `React.memo`            |  ✅   |
 | `React.ReactNode`       |  ✅   |
 | `React.Ref`             |  ✅   |

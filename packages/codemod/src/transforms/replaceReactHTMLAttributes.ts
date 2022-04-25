@@ -1,4 +1,5 @@
 import getParentExpr from "../navigations/getParentExpr";
+import uncapitalize from "@suid/utils/uncapitalize";
 import { Identifier, ts } from "ts-morph";
 
 const { factory } = ts;
@@ -194,10 +195,19 @@ export default function replaceReactHTMLAttributes(node: Identifier) {
       .getLastChildByKind(ts.SyntaxKind.Identifier)
       ?.getText();
     const tag = genericTypeText ? findTag(genericTypeText) : null;
-    if (tag)
+
+    if (tag) {
       genericType.transform(() =>
         factory.createLiteralTypeNode(factory.createStringLiteral(tag))
       );
+    } else {
+      // React.*HTMLAttributes<NonElement> -> ST.PropsOf<*>
+      const tag = uncapitalize(node.getText().replace(/HTMLAttributes$/, ""));
+      if (tag.length)
+        genericType.transform(() =>
+          factory.createLiteralTypeNode(factory.createStringLiteral(tag))
+        );
+    }
 
     parentExpr?.replaceWithText("ST.PropsOf");
     node.getSourceFile().addImportDeclaration({
