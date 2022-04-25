@@ -25,7 +25,9 @@ function createComponentFactory<
 >() {
   type Props = PropsOf<C>;
   type InProps = InPropsOf<C>;
-  return function <S extends Record<string, (string | false)[]>>(options: {
+  return function <
+    S extends Record<string, (string | false | undefined)[]>
+  >(options: {
     name: NonNullable<C["name"]>;
     selfPropNames: Exclude<keyof C["selfProps"], "sx">[];
     propDefaults?: (data: {
