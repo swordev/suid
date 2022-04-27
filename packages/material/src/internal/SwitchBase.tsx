@@ -129,12 +129,7 @@ const SwitchBase = $.component(function SwitchBase({
 
   const classes = $.useClasses(ownerState);
   const element = createRef(() => props.inputRef);
-
-  const inputValue = () => {
-    if (props.type === "checkbox") {
-      return props.value ?? formControlLabel?.value;
-    }
-  };
+  const inputValue = () => props.value ?? formControlLabel?.value;
 
   createEffect(() => {
     if (typeof props.defaultChecked === "boolean")
@@ -208,7 +203,7 @@ const SwitchBase = $.component(function SwitchBase({
         ownerState={ownerState}
         tabIndex={props.tabIndex}
         type={props.type}
-        {...{ value: inputValue() }}
+        value={inputValue()}
         {...(props.inputProps || {})}
       />
       {checked() ? props.checkedIcon : props.icon}
