@@ -21,11 +21,15 @@ const $ = createComponentFactory<DividerTypeMap>()({
   propDefaults: ({ set, inProps }) =>
     set({
       absolute: false,
-      component: inProps.children ? "div" : "hr",
+      get component() {
+        return inProps.children ? "div" : "hr";
+      },
       flexItem: false,
       light: false,
       orientation: "horizontal",
-      role: inProps.component !== "hr" ? "separator" : undefined,
+      get role() {
+        return inProps.component !== "hr" ? "separator" : undefined;
+      },
       textAlign: "center",
       variant: "fullWidth",
     }),

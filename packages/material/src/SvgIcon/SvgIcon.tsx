@@ -25,7 +25,9 @@ const $ = createComponentFactory<SvgIconTypeMap>()({
     return set({
       component: "svg",
       color: "inherit",
-      fontSize: context?.fontSize ?? "medium",
+      get fontSize() {
+        return context?.fontSize ?? "medium";
+      },
       inheritViewBox: false,
       viewBox: "0 0 24 24",
     });

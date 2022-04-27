@@ -49,9 +49,8 @@ const $ = createComponentFactory<DrawerTypeMap>()({
         `paperAnchorDocked${capitalize(ownerState.anchor)}`,
     ],
   }),
-  propDefaults: ({ set }) => {
-    const theme = useTheme();
-    return set({
+  propDefaults: ({ set, theme }) =>
+    set({
       component: "div",
       anchor: "left",
       elevation: 16,
@@ -59,13 +58,14 @@ const $ = createComponentFactory<DrawerTypeMap>()({
       ModalProps: {},
       open: false,
       PaperProps: {},
-      transitionDuration: {
-        enter: theme.transitions.duration.enteringScreen,
-        exit: theme.transitions.duration.leavingScreen,
+      get transitionDuration() {
+        return {
+          enter: theme.transitions.duration.enteringScreen,
+          exit: theme.transitions.duration.leavingScreen,
+        };
       },
       variant: "temporary",
-    });
-  },
+    }),
 });
 
 const DrawerRoot = styled(Modal, {

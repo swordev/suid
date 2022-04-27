@@ -59,8 +59,12 @@ const $ = createComponentFactory<GridTypeMap>()({
       xl: false,
       xs: false,
       zeroMinWidth: false,
-      rowSpacing: inProps.rowSpacing ?? inProps.spacing ?? 0,
-      columnSpacing: inProps.columnSpacing ?? inProps.spacing ?? 0,
+      get rowSpacing() {
+        return inProps.rowSpacing ?? inProps.spacing ?? 0;
+      },
+      get columnSpacing() {
+        return inProps.columnSpacing ?? inProps.spacing ?? 0;
+      },
     }),
   utilityClass: getGridUtilityClass,
   slotClasses: (o) => ({

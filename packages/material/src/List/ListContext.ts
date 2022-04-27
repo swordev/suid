@@ -1,5 +1,4 @@
 import { createContext, useContext } from "solid-js";
-import { createMutable } from "solid-js/store";
 
 export interface ListContext {
   dense: boolean;
@@ -13,10 +12,6 @@ const ListContext = createContext<ListContext>({
 
 export function useListContext() {
   return useContext(ListContext);
-}
-
-export function createListContextMutable(data: ListContext) {
-  return createMutable(data);
 }
 
 export default ListContext;

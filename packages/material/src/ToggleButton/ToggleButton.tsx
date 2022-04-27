@@ -32,11 +32,17 @@ const $ = createComponentFactory<ToggleButtonTypeMap>()({
   propDefaults: ({ set }) => {
     const context = useContext(ToggleButtonGroupContext);
     return set({
-      color: context.color ?? "standard",
-      disabled: context.disabled ?? false,
+      get color() {
+        return context.color ?? "standard";
+      },
+      get disabled() {
+        return context.disabled ?? false;
+      },
       disableFocusRipple: false,
       fullWidth: false,
-      size: context.size ?? "medium",
+      get size() {
+        return context.size ?? "medium";
+      },
     });
   },
   autoCallUseClasses: false,

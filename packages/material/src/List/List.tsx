@@ -1,5 +1,5 @@
 import styled from "../styles/styled";
-import ListContext, { createListContextMutable } from "./ListContext";
+import ListContext from "./ListContext";
 import { ListTypeMap } from "./ListProps";
 import { getListUtilityClass } from "./listClasses";
 import createComponentFactory from "@suid/base/createComponentFactory";
@@ -75,11 +75,14 @@ const List = $.component(function List({
   otherProps,
   props,
 }) {
-  const context = createListContextMutable({
-    dense: props.dense,
-  });
   return (
-    <ListContext.Provider value={context}>
+    <ListContext.Provider
+      value={{
+        get dense() {
+          return props.dense;
+        },
+      }}
+    >
       <ListRoot
         {...otherProps}
         className={clsx(classes.root, otherProps.className)}

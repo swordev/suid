@@ -31,14 +31,28 @@ const $ = createComponentFactory<ButtonTypeMap>()({
   propDefaults: ({ set }) => {
     const contextProps = useContext(ButtonGroupContext);
     return set({
-      color: contextProps.color ?? "primary",
+      get color() {
+        return contextProps.color ?? "primary";
+      },
       component: "button",
-      disabled: contextProps.disabled ?? false,
-      disableElevation: contextProps.disableElevation ?? false,
-      disableFocusRipple: contextProps.disableFocusRipple ?? false,
-      fullWidth: contextProps.fullWidth ?? false,
-      size: contextProps.size ?? "medium",
-      variant: contextProps.variant ?? "text",
+      get disabled() {
+        return contextProps.disabled ?? false;
+      },
+      get disableElevation() {
+        return contextProps.disableElevation ?? false;
+      },
+      get disableFocusRipple() {
+        return contextProps.disableFocusRipple ?? false;
+      },
+      get fullWidth() {
+        return contextProps.fullWidth ?? false;
+      },
+      get size() {
+        return contextProps.size ?? "medium";
+      },
+      get variant() {
+        return contextProps.variant ?? "text";
+      },
     });
   },
   utilityClass: getButtonUtilityClass,

@@ -19,21 +19,23 @@ const $ = createComponentFactory<SlideTypeMap>()({
     "in",
     "timeout",
   ],
-  propDefaults: ({ set }) => {
-    const theme = useTheme();
-    return set({
+  propDefaults: ({ set, theme }) =>
+    set({
       appear: true,
       direction: "down",
-      easing: {
-        enter: theme.transitions.easing.easeOut,
-        exit: theme.transitions.easing.sharp,
+      get easing() {
+        return {
+          enter: theme.transitions.easing.easeOut,
+          exit: theme.transitions.easing.sharp,
+        };
       },
-      timeout: {
-        enter: theme.transitions.duration.enteringScreen,
-        exit: theme.transitions.duration.leavingScreen,
+      get timeout() {
+        return {
+          enter: theme.transitions.duration.enteringScreen,
+          exit: theme.transitions.duration.leavingScreen,
+        };
       },
-    });
-  },
+    }),
 });
 
 type Direction = "left" | "right" | "up" | "down";
