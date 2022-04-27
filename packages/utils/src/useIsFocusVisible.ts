@@ -1,6 +1,6 @@
 // based on https://github.com/WICG/focus-visible/blob/v4.1.5/src/focus-visible.js
 import { EventParam } from "@suid/types";
-import { createMutable } from "solid-js/store";
+import { createSignal } from "solid-js";
 
 let hadKeyboardEvent = true;
 let hadFocusVisibleRecently = false;
@@ -134,9 +134,7 @@ export default function useIsFocusVisible(): UseIsFocusVisibleResult {
     }
   };
 
-  const isFocusVisibleRef = createMutable({
-    current: false,
-  });
+  const [isFocusVisibleRef, setFocusVisibleRef] = createSignal(false);
 
   /**
    * Should be called if a blur event is fired
@@ -147,7 +145,7 @@ export default function useIsFocusVisible(): UseIsFocusVisibleResult {
     // Ideally we would adjust `isFocusVisible(event)` to look at `relatedTarget` for blur events.
     // This doesn't work in IE11 due to https://github.com/facebook/react/issues/3751
     // TODO: check again if React releases their internal changes to focus event handling (https://github.com/facebook/react/pull/19186).
-    if (isFocusVisibleRef.current) {
+    if (isFocusVisibleRef()) {
       // To detect a tab/window switch, we look for a blur event followed
       // rapidly by a visibility change.
       // If we don't see a visibility change within 100ms, it's probably a
@@ -158,7 +156,7 @@ export default function useIsFocusVisible(): UseIsFocusVisibleResult {
         hadFocusVisibleRecently = false;
       }, 100);
 
-      isFocusVisibleRef.current = false;
+      setFocusVisibleRef(false);
 
       return true;
     }
@@ -171,14 +169,18 @@ export default function useIsFocusVisible(): UseIsFocusVisibleResult {
    */
   function handleFocusVisible(event: EventParam<HTMLElement, FocusEvent>) {
     if (isFocusVisible(event)) {
-      isFocusVisibleRef.current = true;
+      setFocusVisibleRef(true);
       return true;
     }
     return false;
   }
 
   return {
-    isFocusVisibleRef,
+    isFocusVisibleRef: {
+      get current() {
+        return isFocusVisibleRef();
+      },
+    },
     onFocus: handleFocusVisible,
     onBlur: handleBlurVisible,
     ref,
