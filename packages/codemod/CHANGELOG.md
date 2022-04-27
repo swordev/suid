@@ -1,5 +1,20 @@
 # @suid/codemod
 
+## 0.2.0-next.2
+
+### Minor Changes
+
+- [`4a206164`](https://github.com/swordev/suid/commit/4a206164145966d5f9d9da39c66fcca9b9ce9d4b) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `React.*Event` transform
+
+### Patch Changes
+
+- [`04d9c1b2`](https://github.com/swordev/suid/commit/04d9c1b2ad05ecf5017986251f3beadda79b0884) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix `React.Node` transform
+
+* [`f85e5cac`](https://github.com/swordev/suid/commit/f85e5cac1c4d8f87a69741b53a442969f523519c) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix `groupImports` transform
+
+* Updated dependencies []:
+  - @suid/utils@0.2.0-next.1
+
 ## 0.2.0-next.1
 
 ### Minor Changes

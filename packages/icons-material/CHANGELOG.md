@@ -1,5 +1,12 @@
 # @suid/icons-material
 
+## 0.1.1-next.4
+
+### Patch Changes
+
+- Updated dependencies [[`d8f106bb`](https://github.com/swordev/suid/commit/d8f106bbbecf53c599a10b9cda9fc7848bd0599c), [`7f4e452a`](https://github.com/swordev/suid/commit/7f4e452aca41c9629e24ea191ac8c967366e81d9), [`e7246bcc`](https://github.com/swordev/suid/commit/e7246bcc298af75cb0e2fb439e8fea5aae83347d), [`70a0607f`](https://github.com/swordev/suid/commit/70a0607f57804d11d01888cac21d1cdfcabac684), [`938d0548`](https://github.com/swordev/suid/commit/938d0548959f93620630c6498351aa8ee2b93e74), [`9cd38067`](https://github.com/swordev/suid/commit/9cd3806780873031f4828dd83196cb28a2f3a28b)]:
+  - @suid/material@0.2.0-next.4
+
 ## 0.1.1-next.3
 
 ### Patch Changes

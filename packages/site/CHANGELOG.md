@@ -1,5 +1,22 @@
 # @suid/site
 
+## 0.2.0-next.7
+
+### Minor Changes
+
+- [`76efa604`](https://github.com/swordev/suid/commit/76efa604f74f19cc94a01910c87b9ca081cee592) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `RadioButton` component page
+
+### Patch Changes
+
+- Updated dependencies [[`04d9c1b2`](https://github.com/swordev/suid/commit/04d9c1b2ad05ecf5017986251f3beadda79b0884), [`d8f106bb`](https://github.com/swordev/suid/commit/d8f106bbbecf53c599a10b9cda9fc7848bd0599c), [`7f4e452a`](https://github.com/swordev/suid/commit/7f4e452aca41c9629e24ea191ac8c967366e81d9), [`e7246bcc`](https://github.com/swordev/suid/commit/e7246bcc298af75cb0e2fb439e8fea5aae83347d), [`70a0607f`](https://github.com/swordev/suid/commit/70a0607f57804d11d01888cac21d1cdfcabac684), [`69bef979`](https://github.com/swordev/suid/commit/69bef979c7ef78c865b750bd3a3d43f8d283d8a5), [`938d0548`](https://github.com/swordev/suid/commit/938d0548959f93620630c6498351aa8ee2b93e74), [`9cd38067`](https://github.com/swordev/suid/commit/9cd3806780873031f4828dd83196cb28a2f3a28b), [`4a206164`](https://github.com/swordev/suid/commit/4a206164145966d5f9d9da39c66fcca9b9ce9d4b), [`f85e5cac`](https://github.com/swordev/suid/commit/f85e5cac1c4d8f87a69741b53a442969f523519c)]:
+  - @suid/codemod@0.2.0-next.2
+  - @suid/material@0.2.0-next.4
+  - @suid/types@0.1.1-next.0
+  - @suid/base@0.1.1-next.3
+  - @suid/icons-material@0.1.1-next.4
+  - @suid/system@0.1.1-next.3
+  - @suid/utils@0.2.0-next.1
+
 ## 0.2.0-next.6
 
 ### Minor Changes
