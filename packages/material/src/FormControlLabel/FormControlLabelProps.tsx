@@ -3,7 +3,7 @@ import { TypographyProps } from "../Typography";
 import { FormControlLabelClasses } from "./formControlLabelClasses";
 import { SxProps } from "@suid/system";
 import { RefProp } from "@suid/system/createRef";
-import { ElementType, EventParam, OverrideProps } from "@suid/types";
+import { ChangeEvent, ElementType, OverrideProps } from "@suid/types";
 import { JSXElement } from "solid-js";
 
 export interface FormControlLabelTypeMap<
@@ -62,13 +62,10 @@ export interface FormControlLabelTypeMap<
     /**
      * Callback fired when the state is changed.
      *
-     * @param {EventParam<HTMLElement, MouseEvent>} event The event source of the callback.
+     * @param {ChangeEvent<HTMLElement>} event The event source of the callback.
      * You can pull out the new checked state by accessing `event.target.checked` (boolean).
      */
-    onChange?: (
-      event: EventParam<HTMLElement, MouseEvent>,
-      checked: boolean
-    ) => void;
+    onChange?: (event: ChangeEvent<HTMLElement>, checked: boolean) => void;
     /**
      * The system prop that allows defining system overrides as well as additional CSS styles.
      */

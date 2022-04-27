@@ -1,6 +1,6 @@
 import { OverrideProps } from "../OverridableComponent";
 import { SwitchBaseClasses } from "./switchBaseClasses";
-import { ElementType, EventParam, Ref } from "@suid/types";
+import { ElementType, Ref, ChangeEvent } from "@suid/types";
 import { JSX, JSXElement } from "solid-js";
 
 export interface SwitchBasePropsVariantOverrides {}
@@ -61,14 +61,11 @@ export interface SwitchBaseTypeMap<P = {}, D extends ElementType = "div"> {
     /**
      * Callback fired when the state is changed.
      *
-     * @param {EventParam<HTMLInputElement, MouseEvent>} event The event source of the callback.
+     * @param {ChangeEvent<HTMLInputElement>} event The event source of the callback.
      * You can pull out the new value by accessing `event.target.value` (string).
      * You can pull out the new checked state by accessing `event.target.checked` (boolean).
      */
-    onChange?: (
-      event: EventParam<HTMLInputElement, MouseEvent>,
-      checked: boolean
-    ) => void;
+    onChange?: (event: ChangeEvent<HTMLInputElement>, checked: boolean) => void;
     readOnly?: boolean;
     /**
      * If `true`, the `input` element is required.

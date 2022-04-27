@@ -191,9 +191,9 @@ const SwitchBase = $.component(function SwitchBase({
 
           if (typeof props.onChange === "function") {
             // TODO v6: remove the second argument.
-            props.onChange(event, newChecked);
+            props.onChange(event as any, newChecked);
           } else {
-            formControlLabel?.onChange?.(event, newChecked);
+            formControlLabel?.onChange?.(event as any, newChecked);
           }
 
           if (typeof otherProps.onClick === "function")
