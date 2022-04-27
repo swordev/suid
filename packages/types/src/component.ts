@@ -27,8 +27,6 @@ export type PropsOf<T> = T extends OverridableTypeMap
   ? DefaultComponentProps<T> & { component?: ElementType }
   : T extends SuidComponentType
   ? DefaultComponentProps<T>
-  : T extends SuidElement<infer C1>
-  ? DefaultComponentProps<C1>
   : T extends OverridableComponent<infer C2>
   ? DefaultComponentProps<C2> & { component?: ElementType }
   : T extends ElementType
@@ -37,7 +35,7 @@ export type PropsOf<T> = T extends OverridableTypeMap
 
 export type InPropsOf<T> = T extends OverridableTypeMap | SuidComponentType
   ? OverridableInProps<T>
-  : T extends SuidElement<infer C1> | OverridableComponent<infer C1>
+  : T extends OverridableComponent<infer C1>
   ? OverridableInProps<C1>
   : T extends ElementType
   ? _ComponentProps<T>
@@ -45,7 +43,7 @@ export type InPropsOf<T> = T extends OverridableTypeMap | SuidComponentType
 
 export type DefaultPropsOf<T> = T extends OverridableTypeMap | SuidComponentType
   ? OverridableDefaultProps<T>
-  : T extends SuidElement<infer C1> | OverridableComponent<infer C1>
+  : T extends OverridableComponent<infer C1>
   ? OverridableDefaultProps<C1>
   : T extends ElementType
   ? _ComponentProps<T>
