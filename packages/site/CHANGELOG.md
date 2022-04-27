@@ -1,5 +1,20 @@
 # @suid/site
 
+## 0.2.0-next.8
+
+### Patch Changes
+
+- [`8f2a158c`](https://github.com/swordev/suid/commit/8f2a158c8eeac1f25cd3c9cde3e3fe4952f8695d) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
+- Updated dependencies [[`8f2a158c`](https://github.com/swordev/suid/commit/8f2a158c8eeac1f25cd3c9cde3e3fe4952f8695d), [`e1a7827e`](https://github.com/swordev/suid/commit/e1a7827e49b80bf2699334631a4db9d41151925a)]:
+  - @suid/base@0.1.1-next.4
+  - @suid/codemod@0.2.0-next.3
+  - @suid/icons-material@0.1.1-next.5
+  - @suid/material@0.2.0-next.5
+  - @suid/types@0.1.1-next.1
+  - @suid/utils@0.2.0-next.2
+  - @suid/system@0.1.1-next.4
+
 ## 0.2.0-next.7
 
 ### Minor Changes

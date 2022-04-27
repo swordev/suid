@@ -1,5 +1,16 @@
 # @suid/codemod
 
+## 0.2.0-next.3
+
+### Patch Changes
+
+- [`8f2a158c`](https://github.com/swordev/suid/commit/8f2a158c8eeac1f25cd3c9cde3e3fe4952f8695d) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
+* [`e1a7827e`](https://github.com/swordev/suid/commit/e1a7827e49b80bf2699334631a4db9d41151925a) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix dependency
+
+* Updated dependencies [[`8f2a158c`](https://github.com/swordev/suid/commit/8f2a158c8eeac1f25cd3c9cde3e3fe4952f8695d)]:
+  - @suid/utils@0.2.0-next.2
+
 ## 0.2.0-next.2
 
 ### Minor Changes

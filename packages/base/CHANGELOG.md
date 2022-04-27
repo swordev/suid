@@ -1,5 +1,17 @@
 # @suid/base
 
+## 0.1.1-next.4
+
+### Patch Changes
+
+- [`8f2a158c`](https://github.com/swordev/suid/commit/8f2a158c8eeac1f25cd3c9cde3e3fe4952f8695d) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
+- Updated dependencies [[`8f2a158c`](https://github.com/swordev/suid/commit/8f2a158c8eeac1f25cd3c9cde3e3fe4952f8695d)]:
+  - @suid/types@0.1.1-next.1
+  - @suid/utils@0.2.0-next.2
+  - @suid/system@0.1.1-next.4
+  - @suid/css@0.1.1-next.2
+
 ## 0.1.1-next.3
 
 ### Patch Changes

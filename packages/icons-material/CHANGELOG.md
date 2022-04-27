@@ -1,5 +1,14 @@
 # @suid/icons-material
 
+## 0.1.1-next.5
+
+### Patch Changes
+
+- [`8f2a158c`](https://github.com/swordev/suid/commit/8f2a158c8eeac1f25cd3c9cde3e3fe4952f8695d) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
+- Updated dependencies [[`8f2a158c`](https://github.com/swordev/suid/commit/8f2a158c8eeac1f25cd3c9cde3e3fe4952f8695d)]:
+  - @suid/material@0.2.0-next.5
+
 ## 0.1.1-next.4
 
 ### Patch Changes
