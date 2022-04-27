@@ -207,6 +207,7 @@ const SwitchBase = $.component(function SwitchBase({
         {...(props.inputProps || {})}
       />
       {checked() ? props.checkedIcon : props.icon}
+      {otherProps.children}
     </SwitchBaseRoot>
   );
 });

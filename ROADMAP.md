@@ -123,8 +123,8 @@
 | Popover                 |       |
 | Popper                  |  ✅   |
 | Portal                  |  ✅   |
-| Radio                   |       |
-| RadioGroup              |       |
+| Radio                   |  ✅   |
+| RadioGroup              |  ✅   |
 | Rating                  |       |
 | ScopedCssBaseline       |       |
 | Select                  |  ⏳   |
