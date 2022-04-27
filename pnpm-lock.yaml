@@ -83,7 +83,7 @@ importers:
 
   packages/codemod:
     specifiers:
-      '@suid/utils': 0.2.0-next.0
+      '@suid/utils': workspace:*
       '@types/micromatch': ^4.0.2
       commander: ^9.0.0
       fast-glob: ^3.2.11
