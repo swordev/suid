@@ -99,16 +99,16 @@ const SvgIcon = $.component(function SvgIcon({
 }) {
   return (
     <SvgIconRoot
-      className={clsx(classes.root, otherProps.className)}
-      ownerState={allProps}
-      color={props.htmlColor}
       aria-hidden={props.titleAccess ? undefined : true}
       role={props.titleAccess ? "img" : undefined}
       viewBox={!props.inheritViewBox ? props.viewBox : undefined}
       {...{
         ["focusable" as any]: "false",
       }}
+      color={props.htmlColor}
       {...otherProps}
+      className={clsx(classes.root, otherProps.className)}
+      ownerState={allProps}
     >
       {props.children}
       <Show when={!!props.titleAccess}>
