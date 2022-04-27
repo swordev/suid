@@ -2,11 +2,18 @@
   "compilerOptions": {
     "outDir": "lib",
     "rootDir": "src",
-    "module": "CommonJS",
-    "paths": {}
+    "module": "ESNext",
+    "paths": {
+      "@suid/utils": ["./../utils/src"],
+      "@suid/utils/*": ["./../utils/src/*"]
+    }
   },
   "exclude": ["src/**/*.test.*"],
   "extends": "./../../tsconfig.json",
   "include": ["src/**/*"],
-  "references": []
+  "references": [
+    {
+      "path": "./../utils"
+    }
+  ]
 }
