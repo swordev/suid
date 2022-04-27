@@ -57,6 +57,7 @@ const FormGroupRoot = styled("div", {
  * - [FormGroup API](https://mui.com/api/form-group/)
  */
 const FormGroup = $.component(function FormGroup({
+  props,
   allProps,
   classes,
   otherProps,
@@ -79,7 +80,9 @@ const FormGroup = $.component(function FormGroup({
       {...otherProps}
       className={clsx(classes.root, otherProps.className)}
       ownerState={ownerState}
-    />
+    >
+      {props.children}
+    </FormGroupRoot>
   );
 });
 
