@@ -1,5 +1,30 @@
 # @suid/material
 
+## 0.2.0-next.4
+
+### Minor Changes
+
+- [`9cd38067`](https://github.com/swordev/suid/commit/9cd3806780873031f4828dd83196cb28a2f3a28b) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `Radio` and `RadioGroup` components
+
+### Patch Changes
+
+- [`d8f106bb`](https://github.com/swordev/suid/commit/d8f106bbbecf53c599a10b9cda9fc7848bd0599c) Thanks [@juanrgm](https://github.com/juanrgm)! - Use children property in `FormGroup` component
+
+* [`7f4e452a`](https://github.com/swordev/suid/commit/7f4e452aca41c9629e24ea191ac8c967366e81d9) Thanks [@juanrgm](https://github.com/juanrgm)! - Prioritize internal properties in `SvgIcon` component
+
+- [`e7246bcc`](https://github.com/swordev/suid/commit/e7246bcc298af75cb0e2fb439e8fea5aae83347d) Thanks [@juanrgm](https://github.com/juanrgm)! - Use change event type
+
+* [`70a0607f`](https://github.com/swordev/suid/commit/70a0607f57804d11d01888cac21d1cdfcabac684) Thanks [@juanrgm](https://github.com/juanrgm)! - Increase performance reducing calls
+
+- [`938d0548`](https://github.com/swordev/suid/commit/938d0548959f93620630c6498351aa8ee2b93e74) Thanks [@juanrgm](https://github.com/juanrgm)! - Pass always value property in `SwitchBase` component
+
+- Updated dependencies [[`e7246bcc`](https://github.com/swordev/suid/commit/e7246bcc298af75cb0e2fb439e8fea5aae83347d), [`70a0607f`](https://github.com/swordev/suid/commit/70a0607f57804d11d01888cac21d1cdfcabac684), [`69bef979`](https://github.com/swordev/suid/commit/69bef979c7ef78c865b750bd3a3d43f8d283d8a5)]:
+  - @suid/types@0.1.1-next.0
+  - @suid/base@0.1.1-next.3
+  - @suid/system@0.1.1-next.3
+  - @suid/utils@0.2.0-next.1
+  - @suid/css@0.1.1-next.1
+
 ## 0.2.0-next.3
 
 ### Minor Changes

@@ -1,5 +1,14 @@
 # @suid/system
 
+## 0.1.1-next.3
+
+### Patch Changes
+
+- Updated dependencies [[`e7246bcc`](https://github.com/swordev/suid/commit/e7246bcc298af75cb0e2fb439e8fea5aae83347d), [`69bef979`](https://github.com/swordev/suid/commit/69bef979c7ef78c865b750bd3a3d43f8d283d8a5)]:
+  - @suid/types@0.1.1-next.0
+  - @suid/utils@0.2.0-next.1
+  - @suid/css@0.1.1-next.1
+
 ## 0.1.1-next.2
 
 ### Patch Changes
