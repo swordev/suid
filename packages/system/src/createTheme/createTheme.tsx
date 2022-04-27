@@ -7,7 +7,6 @@ import {
 import { createSpacing, Spacing, SpacingOptions } from "./createSpacing";
 import { createShape, Shape, ShapeOptions } from "./shape";
 import { DeepPartial } from "@suid/types";
-import { createMutable } from "solid-js/store";
 
 export interface Theme<T extends string = Breakpoint> {
   breakpoints: Breakpoints<T>;
@@ -57,12 +56,6 @@ export function createTheme<T extends string = Breakpoint>(
     spacing: createSpacing(data?.spacing as any),
   };
   return result;
-}
-
-export function createThemeStore<T extends string = Breakpoint>(
-  data?: DeepPartial<ThemeOptions<T>>
-) {
-  return createMutable(createTheme(data as any));
 }
 
 export default createTheme;

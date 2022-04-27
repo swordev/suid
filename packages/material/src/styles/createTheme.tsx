@@ -23,7 +23,6 @@ import createBreakpoints, {
 import createSpacing from "@suid/system/createTheme/createSpacing";
 import createShape from "@suid/system/createTheme/shape";
 import { DeepPartial } from "@suid/types";
-import { createMutable } from "solid-js/store";
 
 export interface Theme<T extends string = Breakpoint> extends SysTheme<T> {
   components: Components;
@@ -111,12 +110,6 @@ export function createTheme<T extends string = Breakpoint>(
   def("zIndex", (input) => createZIndex(input.zIndex));
   def("mixins", () => createMixins(theme.breakpoints));
   return theme;
-}
-
-export function createThemeStore<T extends string = Breakpoint>(
-  data?: DeepPartial<ThemeOptions<T>>
-) {
-  return createMutable(createTheme(data as any));
 }
 
 export default createTheme;
