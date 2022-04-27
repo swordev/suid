@@ -7,6 +7,7 @@ import replaceReactContext from "./replaceReactContext";
 import replaceReactCreateContext from "./replaceReactCreateContext";
 import replaceReactElementType from "./replaceReactElementType";
 import replaceReactEventHandlers from "./replaceReactEventHandlers";
+import replaceReactEvents from "./replaceReactEvents";
 import replaceReactFragment from "./replaceReactFragment";
 import replaceReactHTMLAttributes from "./replaceReactHTMLAttributes";
 import replaceReactMemo from "./replaceReactMemo";
@@ -42,6 +43,8 @@ export default function transformReactSource(source: SourceFile) {
     if (!transformer) {
       if (reactObject.name.endsWith("EventHandler")) {
         transformer = replaceReactEventHandlers;
+      } else if (reactObject.name.endsWith("Event")) {
+        transformer = replaceReactEvents;
       } else if (reactObject.name.endsWith("HTMLAttributes")) {
         transformer = replaceReactHTMLAttributes;
       }

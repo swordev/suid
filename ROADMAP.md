@@ -18,6 +18,7 @@
 | ----------------------- | :---: |
 | MUI imports             |  ✅   |
 | MUI components          |  ⏳   |
+| `React.*Event`          |  ✅   |
 | `React.*EventHandler`   |  ✅   |
 | `React.*HTMLAttributes` |  ✅   |
 | `React.Context`         |  ✅   |

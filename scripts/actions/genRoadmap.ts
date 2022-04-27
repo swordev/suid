@@ -19,6 +19,7 @@ const systemFeatures: Record<string, boolean | "pending"> = {
 const codemodTransformers: Record<string, boolean | "pending"> = {
   "MUI imports": true,
   "MUI components": "pending",
+  "`React.*Event`": true,
   "`React.*EventHandler`": true,
   "`React.*HTMLAttributes`": true,
   "`React.Context`": true,
