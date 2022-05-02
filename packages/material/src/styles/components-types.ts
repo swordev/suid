@@ -31,6 +31,7 @@ export { default as MuiFormHelperText } from "../FormHelperText";
 export { default as MuiFormLabel } from "../FormLabel";
 export { default as MuiGlobalStyles } from "../GlobalStyles";
 export { default as MuiGrid } from "../Grid";
+export { default as MuiGrow } from "../Grow";
 export { default as MuiIcon } from "../Icon";
 export { default as MuiIconButton } from "../IconButton";
 export { default as MuiInput } from "../Input";
