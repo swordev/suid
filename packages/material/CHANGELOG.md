@@ -1,5 +1,19 @@
 # @suid/material
 
+## 0.2.0-next.6
+
+### Minor Changes
+
+- [`aaa686f3`](https://github.com/swordev/suid/commit/aaa686f3361c055a422929c685bb23a9c05339d1) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `Grow` component
+
+### Patch Changes
+
+- [`7c5faf66`](https://github.com/swordev/suid/commit/7c5faf66ed142db30d73acfba8dc3e3194ba89f3) Thanks [@juanrgm](https://github.com/juanrgm)! - Extract `createComponentFactory` functions
+
+- Updated dependencies [[`2a0a505e`](https://github.com/swordev/suid/commit/2a0a505e48e36f20f46c53452c356aa43750439a), [`7c5faf66`](https://github.com/swordev/suid/commit/7c5faf66ed142db30d73acfba8dc3e3194ba89f3), [`5b7d59bd`](https://github.com/swordev/suid/commit/5b7d59bdbe34d5149e3462e7511636fad8a783f9), [`7f2d7633`](https://github.com/swordev/suid/commit/7f2d7633bb6b5c6d927c7d463bfcb285b6f4867e)]:
+  - @suid/base@0.2.0-next.5
+  - @suid/system@0.2.0-next.5
+
 ## 0.2.0-next.5
 
 ### Patch Changes

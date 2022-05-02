@@ -1,5 +1,17 @@
 # @suid/codemod
 
+## 0.2.0-next.4
+
+### Minor Changes
+
+- [`cf1289c1`](https://github.com/swordev/suid/commit/cf1289c16197c2998255d0166fe12e62a6670703) Thanks [@juanrgm](https://github.com/juanrgm)! - Add cleanup if necessary in `React.useEffect` transform
+
+* [`5670ce07`](https://github.com/swordev/suid/commit/5670ce0728bb0c852b9484db2666dcbf1be288b9) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `ObjectBinding` and `SpreadAssignment` transforms
+
+### Patch Changes
+
+- [`dae0596c`](https://github.com/swordev/suid/commit/dae0596c79e7025e83e5116e30e80d359447ddcf) Thanks [@juanrgm](https://github.com/juanrgm)! - Respect shorthand property assignment and types on renaming identifiers
+
 ## 0.2.0-next.3
 
 ### Patch Changes
