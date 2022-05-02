@@ -13,7 +13,7 @@ export interface TransitionProps extends TransitionActions {
   mountOnEnter?: boolean;
   unmountOnExit?: boolean;
   timeout?: number | { appear?: number; enter?: number; exit?: number };
-  addEndListener?: (node: HTMLElement, done: () => void) => void;
+  addEndListener?: (done: () => void) => void;
   onEnter?: () => void;
   onEntering?: () => void;
   onEntered?: () => void;

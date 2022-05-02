@@ -84,10 +84,18 @@ export function Transition(inProps: TransitionProps) {
   function onTransitionEnd(ms: number, cb: () => void) {
     const next = () => setTimeout(cb, ms);
     let timeout: ReturnType<typeof setTimeout> | undefined;
+    let stopped = false;
     const stop = () => {
+      stopped = true;
       timeout && clearTimeout(timeout);
     };
-    timeout = next();
+    if (props.addEndListener) {
+      props.addEndListener(() => {
+        if (!stopped) timeout = next();
+      });
+    } else {
+      timeout = next();
+    }
     return stop;
   }
 
