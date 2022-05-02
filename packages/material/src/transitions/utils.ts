@@ -10,7 +10,7 @@ interface ComponentProps {
         "transitionDuration" | "transitionTimingFunction" | "transitionDelay"
       >
     | undefined;
-  timeout: number | { enter?: number; exit?: number };
+  timeout: number | "auto" | { enter?: number; exit?: number };
 }
 
 interface Options {
@@ -32,7 +32,11 @@ export function getTransitionProps(
   return {
     duration:
       style.transitionDuration ??
-      (typeof timeout === "number" ? timeout : timeout[options.mode] || 0),
+      (typeof timeout === "number"
+        ? timeout
+        : typeof timeout === "string"
+        ? 0
+        : timeout[options.mode] || 0),
     easing:
       style.transitionTimingFunction ??
       (typeof easing === "object" ? easing[options.mode] : easing),
