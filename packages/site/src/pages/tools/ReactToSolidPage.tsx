@@ -6,33 +6,60 @@ import CircularProgress from "@suid/material/CircularProgress";
 import Grid from "@suid/material/Grid";
 import Skeleton from "@suid/material/Skeleton";
 import Typography from "@suid/material/Typography";
-import { createSignal, lazy, Show } from "solid-js";
+import { createSignal, lazy, onMount, Show } from "solid-js";
 import PageNav from "~/components/PageNav";
 import { getDependencyName } from "~/utils/getDependencyName";
 
 const defaultCode = `import * as React from "react"
 import Button from "@mui/material/Button"
 
-export default function Counter() {
-  const [state, setState] = React.useState(0)
-  return <Button onClick={() => setState(state + 1)}>{state}</Button>
+export default function Counter(props: any) {
+  const [value, setValue] = React.useState(0);
+  const { label = 'Increment', ...otherProps } = props;
+  const propsAndValue = { ...props, value };
+  const onClick = () => setValue(value + 1);
+
+  React.useEffect(() => {
+    console.log("Value: " + propsAndValue.value);
+  }, [value]);
+
+  return <div {...otherProps}>
+    Value: {value}
+    <Button onClick={onClick}>{label}</Button>
+  </div>
 }
 `;
 
 const localStorageInputCodeKey = "react2solid-input-code";
+
+function decodeHash() {
+  if (location.hash.length > 1) {
+    try {
+      return window.atob(location.hash.slice(1));
+    } catch (_error) {
+      console.error(_error);
+    }
+  }
+}
 
 export default function ReactToSolidPage() {
   const localInputCode = localStorage.getItem(localStorageInputCodeKey);
   const [readyInputEditor, setReadyInputEditor] = createSignal(false);
   const [readyOutputEditor, setReadyOutputEditor] = createSignal(false);
   const [loading, setLoading] = createSignal(false);
-  const defaultInputCode = localInputCode?.length
-    ? localInputCode
-    : defaultCode;
+  const defaultInputCode =
+    decodeHash() ?? (localInputCode?.length ? localInputCode : defaultCode);
   const [inputCode, setInputCode] = createSignal(defaultInputCode);
   const [outputCode, setOutputCode] = createSignal("");
 
   const CodeEditor = lazy(() => import("~/components/CodeEditor"));
+
+  onMount(() => {
+    // avoid double mount
+    setTimeout(() => {
+      location.hash = window.btoa(defaultInputCode);
+    });
+  });
 
   return (
     <>
@@ -61,6 +88,7 @@ export default function ReactToSolidPage() {
             defaultValue={defaultInputCode}
             onReady={() => setReadyInputEditor(true)}
             onChange={(code) => {
+              location.hash = window.btoa(code);
               localStorage.setItem(localStorageInputCodeKey, code);
               setInputCode(code);
             }}
