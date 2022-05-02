@@ -271,6 +271,7 @@ export const navConfig: Config[] = [
           //"Transitions",
           "Fade",
           "Slide",
+          "Grow",
           "useMediaQuery",
         ]
           .map((text) =>
