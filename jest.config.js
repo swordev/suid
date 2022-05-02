@@ -10,9 +10,6 @@ module.exports = {
     "<rootDir>/packages/*/test/**/*.test.{ts,tsx}",
   ],
   modulePathIgnorePatterns: ["lib", "temp"],
-  transform: {
-    "^.+\\.[tj]s$": "ts-jest",
-  },
   globals: {
     "ts-jest": {
       tsconfig: "<rootDir>/tsconfig.jest.json",
@@ -25,5 +22,7 @@ module.exports = {
     "solid-js/web": `${solidjsPath}/web/dist/web.cjs`,
     "solid-js/store": `${solidjsPath}/store/dist/store.cjs`,
     "solid-js": `${solidjsPath}/dist/solid.cjs`,
+    "@suid/(.*)/(.*)": "<rootDir>/packages/$1/src/$2",
+    "@suid/(.*)": "<rootDir>/packages/$1/src/index.ts",
   },
 };
