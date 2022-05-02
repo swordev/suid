@@ -1,8 +1,9 @@
 import composeClasses from "./composeClasses";
-import useTheme from "./useTheme";
-import { Theme } from "@suid/system/createTheme";
+import useBaseThemeProps, {
+  PropDefaultsCb,
+  ThemePropOptions,
+} from "./useThemeProps";
 import {
-  DefaultPropsOf,
   InPropsOf,
   PropsOf,
   OverridableComponent,
@@ -10,13 +11,7 @@ import {
   SuidComponentType,
   SuidElement,
 } from "@suid/types";
-import {
-  batch,
-  createComputed,
-  JSXElement,
-  mergeProps,
-  splitProps,
-} from "solid-js";
+import { batch, createComputed, JSXElement, splitProps } from "solid-js";
 import { createMutable } from "solid-js/store";
 
 function createComponentFactory<
@@ -30,11 +25,7 @@ function createComponentFactory<
   >(options: {
     name: NonNullable<C["name"]>;
     selfPropNames: Exclude<keyof C["selfProps"], "sx">[];
-    propDefaults?: (data: {
-      set: (props: Omit<DefaultPropsOf<C>, "children">) => InProps;
-      theme: Theme;
-      inProps: Props;
-    }) => InProps;
+    propDefaults?: PropDefaultsCb<C>;
     utilityClass?: (slot: string) => string;
     slotClasses?: (ownerState: O) => S;
     /**
@@ -71,26 +62,22 @@ function createComponentFactory<
       return classes as Readonly<typeof classes>;
     }
 
-    function useProps(input: {
-      inProps: Props;
-      propDefaults?: (data: {
-        set: (props: InProps) => InProps;
-        inProps: Props;
-      }) => InProps;
-    }) {
-      const theme = useTheme();
-      const set = (v: any) => v;
-      const inProps = mergeProps(
-        options.propDefaults?.({
-          set,
-          theme,
-          inProps: input.inProps,
-        }) || {},
-        () => theme.components?.[options.name]?.defaultProps || {},
-        input.inProps
-      ) as InProps;
-      const [props, otherProps] = splitProps(inProps, options.selfPropNames);
-      return { allProps: inProps, props, otherProps };
+    function splitInProps(allProps: InPropsOf<C>) {
+      const [props, otherProps] = splitProps(allProps, options.selfPropNames);
+      return { allProps, props, otherProps };
+    }
+
+    function useThemeProps(input: Omit<ThemePropOptions<C>, "name">) {
+      return useBaseThemeProps({
+        propDefaults: options.propDefaults,
+        ...input,
+        name: options.name,
+      });
+    }
+
+    function useProps(props: PropsOf<C>) {
+      const themeProps = useThemeProps({ props });
+      return splitInProps(themeProps);
     }
 
     function defineComponent(
@@ -109,11 +96,7 @@ function createComponentFactory<
       }) => JSXElement
     ): C extends OverridableTypeMap ? OverridableComponent<C> : SuidElement<C> {
       const Component = defineComponent(function Component(inProps) {
-        const { allProps, otherProps, props } = useProps({
-          inProps,
-          propDefaults: options.propDefaults as any,
-        });
-
+        const { allProps, otherProps, props } = useProps(inProps);
         const classes =
           options.autoCallUseClasses ?? true
             ? useClasses(allProps as O)
@@ -134,7 +117,11 @@ function createComponentFactory<
       name: options.name,
       selfPropNames: options.selfPropNames,
       component,
+      defineComponent,
       useClasses,
+      useThemeProps,
+      useProps,
+      splitInProps,
     };
   };
 }
