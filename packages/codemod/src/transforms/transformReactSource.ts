@@ -57,7 +57,9 @@ export default function transformReactSource(source: SourceFile) {
   renameMuiImports(source);
   removeReactImports(source);
   removePropTypes(source);
-  findObjectBindingPatterns(source).forEach(replaceObjectBinding);
+  findObjectBindingPatterns(source).forEach((node) =>
+    replaceObjectBinding(node)
+  );
   source
     .getDescendantsOfKind(ts.SyntaxKind.ObjectLiteralExpression)
     .forEach(replaceSpreadAsignment);
