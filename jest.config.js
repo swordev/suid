@@ -10,6 +10,9 @@ module.exports = {
     "<rootDir>/packages/*/test/**/*.test.{ts,tsx}",
   ],
   modulePathIgnorePatterns: ["lib", "temp"],
+  transform: {
+    "^.+\\.[tj]s$": "ts-jest",
+  },
   globals: {
     "ts-jest": {
       tsconfig: "<rootDir>/tsconfig.jest.json",

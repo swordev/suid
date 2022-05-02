@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "allowJs": true,
     "paths": {
       "@suid/base": ["./packages/base/src"],
       "@suid/base/*": ["./packages/base/src/*"],
