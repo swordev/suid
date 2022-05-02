@@ -43,6 +43,7 @@ export default function applyTransforms(
     const sourceFile = sourceFiles[path];
     for (const transform of transforms) transform(sourceFile);
     const replaceTextPatterns = getReplacePatterns(sourceFile) || {};
+    sourceFile.formatText();
     let sourceText = sourceFile.getText();
     for (const [pattern, text] of Object.entries(replaceTextPatterns)) {
       sourceText = sourceText.replaceAll(pattern, text);

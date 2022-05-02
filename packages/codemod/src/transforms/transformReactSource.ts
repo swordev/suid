@@ -1,8 +1,10 @@
+import findObjectBindingPatterns from "../navigations/findObjectBindingPatterns";
 import findReactObjects from "../navigations/findReactObjects";
 import groupImports from "./groupImports";
 import removePropTypes from "./removePropTypes";
 import removeReactImports from "./removeReactImports";
 import renameMuiImports from "./renameMuiImports";
+import replaceObjectBinding from "./replaceObjectBinding";
 import replaceReactContext from "./replaceReactContext";
 import replaceReactCreateContext from "./replaceReactCreateContext";
 import replaceReactElementType from "./replaceReactElementType";
@@ -18,6 +20,7 @@ import replaceReactUseContext from "./replaceReactUseContext";
 import replaceReactUseEffect from "./replaceReactUseEffect";
 import replaceReactUseMemo from "./replaceReactUseMemo";
 import replaceReactUseState from "./replaceReactUseState";
+import replaceSpreadAsignment from "./replaceSpreadAsignment";
 import { Identifier, SourceFile, ts } from "ts-morph";
 
 const reactObjectTransformers: Record<string, (node: Identifier) => void> = {
@@ -54,5 +57,9 @@ export default function transformReactSource(source: SourceFile) {
   renameMuiImports(source);
   removeReactImports(source);
   removePropTypes(source);
+  findObjectBindingPatterns(source).forEach(replaceObjectBinding);
+  source
+    .getDescendantsOfKind(ts.SyntaxKind.ObjectLiteralExpression)
+    .forEach(replaceSpreadAsignment);
   groupImports(source);
 }
