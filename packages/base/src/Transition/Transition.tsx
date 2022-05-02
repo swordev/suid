@@ -4,6 +4,7 @@ import {
   createMemo,
   createSignal,
   mergeProps,
+  on,
   onCleanup,
   untrack,
 } from "solid-js";
@@ -75,39 +76,58 @@ export function Transition(inProps: TransitionProps) {
     initialStatus
   );
 
-  let enteredTimeout: ReturnType<typeof setTimeout> | undefined;
-  let exitedTimeout: ReturnType<typeof setTimeout> | undefined;
+  let enteredTimeout: (() => void) | undefined;
+  let exitedTimeout: (() => void) | undefined;
   let inTimeout: ReturnType<typeof setTimeout> | undefined;
   let firstStatusChange = true;
 
-  const result = createMemo(() => {
-    const v = status();
-    const result = v !== "unmounted" ? props.children(v) : undefined;
-    if (firstStatusChange) {
-      firstStatusChange = false;
-      return result;
-    }
-    if (v === "entering") {
-      untrack(() => props.onEntering?.());
-      exitedTimeout && clearTimeout(exitedTimeout);
-      enteredTimeout = setTimeout(
-        () => setStatus("entered"),
-        untrack(() => timeouts().enter)
-      );
-    } else if (v === "entered") {
-      untrack(() => props.onEntered?.());
-    } else if (v === "exiting") {
-      untrack(() => props.onExiting?.());
-      enteredTimeout && clearTimeout(enteredTimeout);
-      exitedTimeout = setTimeout(
-        () => setStatus("exited"),
-        untrack(() => timeouts().exit)
-      );
-    } else if (v === "exited") {
-      untrack(() => props.onExited?.());
-    }
-    return result;
-  });
+  function onTransitionEnd(ms: number, cb: () => void) {
+    const next = () => setTimeout(cb, ms);
+    let timeout: ReturnType<typeof setTimeout> | undefined;
+    const stop = () => {
+      timeout && clearTimeout(timeout);
+    };
+    timeout = next();
+    return stop;
+  }
+
+  const result = createMemo(
+    on(
+      () => [status()],
+      () => {
+        const v = status();
+        const result = v !== "unmounted" ? props.children(v) : undefined;
+        if (firstStatusChange) {
+          firstStatusChange = false;
+          return result;
+        }
+        if (v === "entering") {
+          props.onEntering?.();
+          if (exitedTimeout) {
+            exitedTimeout();
+            exitedTimeout = undefined;
+          }
+          enteredTimeout = onTransitionEnd(timeouts().enter, () =>
+            setStatus("entered")
+          );
+        } else if (v === "entered") {
+          props.onEntered?.();
+        } else if (v === "exiting") {
+          props.onExiting?.();
+          if (enteredTimeout) {
+            enteredTimeout();
+            enteredTimeout = undefined;
+          }
+          exitedTimeout = onTransitionEnd(timeouts().exit, () =>
+            setStatus("exited")
+          );
+        } else if (v === "exited") {
+          props.onExited?.();
+        }
+        return result;
+      }
+    )
+  );
 
   createEffect((firstTime) => {
     if (props.in) {
@@ -123,8 +143,8 @@ export function Transition(inProps: TransitionProps) {
   }, true);
 
   onCleanup(() => {
-    enteredTimeout && clearTimeout(enteredTimeout);
-    exitedTimeout && clearTimeout(exitedTimeout);
+    enteredTimeout?.();
+    exitedTimeout?.();
     inTimeout && clearTimeout(inTimeout);
   });
 
