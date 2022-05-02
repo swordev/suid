@@ -1,5 +1,22 @@
 # @suid/site
 
+## 0.2.0-next.9
+
+### Minor Changes
+
+- [`21ccb3aa`](https://github.com/swordev/suid/commit/21ccb3aae335c3f48d1dab15a5ebec5bb33a455e) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `Grow` page component
+
+* [`a9c1f58c`](https://github.com/swordev/suid/commit/a9c1f58ceaa2a7212352332d97d4a62285a3bc50) Thanks [@juanrgm](https://github.com/juanrgm)! - Update default code on `ReactToSolid` page and save the input code in the URL
+
+### Patch Changes
+
+- Updated dependencies [[`aaa686f3`](https://github.com/swordev/suid/commit/aaa686f3361c055a422929c685bb23a9c05339d1), [`dae0596c`](https://github.com/swordev/suid/commit/dae0596c79e7025e83e5116e30e80d359447ddcf), [`cf1289c1`](https://github.com/swordev/suid/commit/cf1289c16197c2998255d0166fe12e62a6670703), [`2a0a505e`](https://github.com/swordev/suid/commit/2a0a505e48e36f20f46c53452c356aa43750439a), [`7c5faf66`](https://github.com/swordev/suid/commit/7c5faf66ed142db30d73acfba8dc3e3194ba89f3), [`5b7d59bd`](https://github.com/swordev/suid/commit/5b7d59bdbe34d5149e3462e7511636fad8a783f9), [`5670ce07`](https://github.com/swordev/suid/commit/5670ce0728bb0c852b9484db2666dcbf1be288b9), [`7f2d7633`](https://github.com/swordev/suid/commit/7f2d7633bb6b5c6d927c7d463bfcb285b6f4867e)]:
+  - @suid/material@0.2.0-next.6
+  - @suid/codemod@0.2.0-next.4
+  - @suid/base@0.2.0-next.5
+  - @suid/system@0.2.0-next.5
+  - @suid/icons-material@0.1.1-next.6
+
 ## 0.2.0-next.8
 
 ### Patch Changes
