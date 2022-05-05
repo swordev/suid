@@ -1,5 +1,60 @@
 # @suid/material
 
+## 0.2.0
+
+### Minor Changes
+
+- [`aaa686f3`](https://github.com/swordev/suid/commit/aaa686f3361c055a422929c685bb23a9c05339d1) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `Grow` component
+
+* [`3589e103`](https://github.com/swordev/suid/commit/3589e10386e6578ab1f7548757708a743e88ed01) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `Table`, `TableBody`, `TableCell`, `TableContainer`, `TableHead` and `TableRow` components
+
+- [`9cd38067`](https://github.com/swordev/suid/commit/9cd3806780873031f4828dd83196cb28a2f3a28b) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `Radio` and `RadioGroup` components
+
+### Patch Changes
+
+- [`8f2a158c`](https://github.com/swordev/suid/commit/8f2a158c8eeac1f25cd3c9cde3e3fe4952f8695d) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
+* [`cf32d32f`](https://github.com/swordev/suid/commit/cf32d32fcfb6fe2fd5946720f1bb501053d890c4) Thanks [@juanrgm](https://github.com/juanrgm)! - Allow passing theme objects
+
+- [`0bbdd9b7`](https://github.com/swordev/suid/commit/0bbdd9b714866cbcd4de246e895c1ac9eac3fd31) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix `createTypography`
+
+* [`d8f106bb`](https://github.com/swordev/suid/commit/d8f106bbbecf53c599a10b9cda9fc7848bd0599c) Thanks [@juanrgm](https://github.com/juanrgm)! - Use children property in `FormGroup` component
+
+- [`7f4e452a`](https://github.com/swordev/suid/commit/7f4e452aca41c9629e24ea191ac8c967366e81d9) Thanks [@juanrgm](https://github.com/juanrgm)! - Prioritize internal properties in `SvgIcon` component
+
+* [`e5f54799`](https://github.com/swordev/suid/commit/e5f547992297185eec34af73a59b629e7c970ecf) Thanks [@juanrgm](https://github.com/juanrgm)! - Use callback value in `ListItem`
+
+- [`e7246bcc`](https://github.com/swordev/suid/commit/e7246bcc298af75cb0e2fb439e8fea5aae83347d) Thanks [@juanrgm](https://github.com/juanrgm)! - Use change event type
+
+* [`70a0607f`](https://github.com/swordev/suid/commit/70a0607f57804d11d01888cac21d1cdfcabac684) Thanks [@juanrgm](https://github.com/juanrgm)! - Increase performance reducing calls
+
+- [`c033eed5`](https://github.com/swordev/suid/commit/c033eed58c347d3122f84fdd02312c9cf0026341) Thanks [@juanrgm](https://github.com/juanrgm)! - Remove unneeded memoization
+
+* [`de3f0a2c`](https://github.com/swordev/suid/commit/de3f0a2c420e4cf61c3364d3b33d61fc5baa9919) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix `createTypography`
+
+- [`7c5faf66`](https://github.com/swordev/suid/commit/7c5faf66ed142db30d73acfba8dc3e3194ba89f3) Thanks [@juanrgm](https://github.com/juanrgm)! - Extract `createComponentFactory` functions
+
+* [`938d0548`](https://github.com/swordev/suid/commit/938d0548959f93620630c6498351aa8ee2b93e74) Thanks [@juanrgm](https://github.com/juanrgm)! - Pass always value property in `SwitchBase` component
+
+- [`db4d5676`](https://github.com/swordev/suid/commit/db4d56761854cb724ce231d90fb4774ab935229d) Thanks [@juanrgm](https://github.com/juanrgm)! - Use default imports
+
+* [`33d66c94`](https://github.com/swordev/suid/commit/33d66c949043adac0ebe450292a3af772f44b8e5) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix `ButtonBase` props
+
+- [`94903b98`](https://github.com/swordev/suid/commit/94903b98e152b492588d5e0da8bcfde4d840ea0c) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix reactivity
+
+* [`b9f0d48f`](https://github.com/swordev/suid/commit/b9f0d48f8e1d8db71c5204c6e9cf02b4151de7bb) Thanks [@juanrgm](https://github.com/juanrgm)! - Avoid destructuring properties
+
+- [`6d3daf3e`](https://github.com/swordev/suid/commit/6d3daf3e00f5d1b159076fa0b9fea8916fceaa9f) Thanks [@juanrgm](https://github.com/juanrgm)! - Improve performance
+
+* [`f1812d32`](https://github.com/swordev/suid/commit/f1812d32eb430bf6cf4bd88c13f8c1a925716e1c) Thanks [@juanrgm](https://github.com/juanrgm)! - Avoid double computation
+
+* Updated dependencies [[`8f2a158c`](https://github.com/swordev/suid/commit/8f2a158c8eeac1f25cd3c9cde3e3fe4952f8695d), [`e7246bcc`](https://github.com/swordev/suid/commit/e7246bcc298af75cb0e2fb439e8fea5aae83347d), [`70a0607f`](https://github.com/swordev/suid/commit/70a0607f57804d11d01888cac21d1cdfcabac684), [`c033eed5`](https://github.com/swordev/suid/commit/c033eed58c347d3122f84fdd02312c9cf0026341), [`2a0a505e`](https://github.com/swordev/suid/commit/2a0a505e48e36f20f46c53452c356aa43750439a), [`7c5faf66`](https://github.com/swordev/suid/commit/7c5faf66ed142db30d73acfba8dc3e3194ba89f3), [`5b7d59bd`](https://github.com/swordev/suid/commit/5b7d59bdbe34d5149e3462e7511636fad8a783f9), [`5c341c3d`](https://github.com/swordev/suid/commit/5c341c3d7692ae92fe6762bb0a03a7d67250f6b5), [`69bef979`](https://github.com/swordev/suid/commit/69bef979c7ef78c865b750bd3a3d43f8d283d8a5), [`e003704a`](https://github.com/swordev/suid/commit/e003704af0bed136188314d8e38964a66d5f8d08), [`db4d5676`](https://github.com/swordev/suid/commit/db4d56761854cb724ce231d90fb4774ab935229d), [`73bc609a`](https://github.com/swordev/suid/commit/73bc609ac89fc18d1534c1e238a8c3d5d767a57f), [`5abb76ef`](https://github.com/swordev/suid/commit/5abb76efb419d8ceebe219f8b75f42cccca3aaaf), [`7f2d7633`](https://github.com/swordev/suid/commit/7f2d7633bb6b5c6d927c7d463bfcb285b6f4867e), [`6d3daf3e`](https://github.com/swordev/suid/commit/6d3daf3e00f5d1b159076fa0b9fea8916fceaa9f), [`f1812d32`](https://github.com/swordev/suid/commit/f1812d32eb430bf6cf4bd88c13f8c1a925716e1c)]:
+  - @suid/base@0.2.0
+  - @suid/types@0.1.1
+  - @suid/utils@0.2.0
+  - @suid/system@0.2.0
+  - @suid/css@0.1.1
+
 ## 0.2.0-next.6
 
 ### Minor Changes
