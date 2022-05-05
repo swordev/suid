@@ -1,5 +1,24 @@
 # @suid/utils
 
+## 0.2.0
+
+### Minor Changes
+
+- [`5c341c3d`](https://github.com/swordev/suid/commit/5c341c3d7692ae92fe6762bb0a03a7d67250f6b5) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `cloneObject` function
+
+### Patch Changes
+
+- [`8f2a158c`](https://github.com/swordev/suid/commit/8f2a158c8eeac1f25cd3c9cde3e3fe4952f8695d) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
+* [`e003704a`](https://github.com/swordev/suid/commit/e003704af0bed136188314d8e38964a66d5f8d08) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix `merge` function
+
+- [`db4d5676`](https://github.com/swordev/suid/commit/db4d56761854cb724ce231d90fb4774ab935229d) Thanks [@juanrgm](https://github.com/juanrgm)! - Use default imports
+
+* [`5abb76ef`](https://github.com/swordev/suid/commit/5abb76efb419d8ceebe219f8b75f42cccca3aaaf) Thanks [@juanrgm](https://github.com/juanrgm)! - Convert packages into ES6 modules
+
+* Updated dependencies [[`8f2a158c`](https://github.com/swordev/suid/commit/8f2a158c8eeac1f25cd3c9cde3e3fe4952f8695d), [`e7246bcc`](https://github.com/swordev/suid/commit/e7246bcc298af75cb0e2fb439e8fea5aae83347d), [`69bef979`](https://github.com/swordev/suid/commit/69bef979c7ef78c865b750bd3a3d43f8d283d8a5)]:
+  - @suid/types@0.1.1
+
 ## 0.2.0-next.2
 
 ### Patch Changes

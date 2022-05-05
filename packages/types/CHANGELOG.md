@@ -1,5 +1,15 @@
 # @suid/types
 
+## 0.1.1
+
+### Patch Changes
+
+- [`8f2a158c`](https://github.com/swordev/suid/commit/8f2a158c8eeac1f25cd3c9cde3e3fe4952f8695d) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
+* [`e7246bcc`](https://github.com/swordev/suid/commit/e7246bcc298af75cb0e2fb439e8fea5aae83347d) Thanks [@juanrgm](https://github.com/juanrgm)! - Use change event type
+
+- [`69bef979`](https://github.com/swordev/suid/commit/69bef979c7ef78c865b750bd3a3d43f8d283d8a5) Thanks [@juanrgm](https://github.com/juanrgm)! - Remove component type without default component for avoiding conflicts with non SUID components
+
 ## 0.1.1-next.1
 
 ### Patch Changes

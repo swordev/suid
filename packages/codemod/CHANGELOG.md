@@ -1,5 +1,42 @@
 # @suid/codemod
 
+## 0.2.0
+
+### Minor Changes
+
+- [`cf1289c1`](https://github.com/swordev/suid/commit/cf1289c16197c2998255d0166fe12e62a6670703) Thanks [@juanrgm](https://github.com/juanrgm)! - Add cleanup if necessary in `React.useEffect` transform
+
+* [`ce295dc2`](https://github.com/swordev/suid/commit/ce295dc211b077b476ac63f0238df3345fb23571) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `React.Context` transform
+
+- [`5670ce07`](https://github.com/swordev/suid/commit/5670ce0728bb0c852b9484db2666dcbf1be288b9) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `ObjectBinding` and `SpreadAssignment` transforms
+
+* [`4a206164`](https://github.com/swordev/suid/commit/4a206164145966d5f9d9da39c66fcca9b9ce9d4b) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `React.*Event` transform
+
+### Patch Changes
+
+- [`44fc4eda`](https://github.com/swordev/suid/commit/44fc4edac8d0791ecd3cab826a75c7d6e4982b65) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `React.createContext` transformer
+
+* [`04d9c1b2`](https://github.com/swordev/suid/commit/04d9c1b2ad05ecf5017986251f3beadda79b0884) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix `React.Node` transform
+
+- [`8e301557`](https://github.com/swordev/suid/commit/8e3015570968441eafaa2fb8eb61b9e75e1d7149) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix `React.HTMLAttributes` transform
+
+* [`8f2a158c`](https://github.com/swordev/suid/commit/8f2a158c8eeac1f25cd3c9cde3e3fe4952f8695d) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
+- [`e1a7827e`](https://github.com/swordev/suid/commit/e1a7827e49b80bf2699334631a4db9d41151925a) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix dependency
+
+* [`dae0596c`](https://github.com/swordev/suid/commit/dae0596c79e7025e83e5116e30e80d359447ddcf) Thanks [@juanrgm](https://github.com/juanrgm)! - Respect shorthand property assignment and types on renaming identifiers
+
+- [`9c452652`](https://github.com/swordev/suid/commit/9c4526527a8fa4dc333e7c51ef9fad2b48726c33) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix `ObjectBinding` transform
+
+* [`00ea1f06`](https://github.com/swordev/suid/commit/00ea1f062b21a8acacfe50b68d15be1fd8a1f000) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix `React.Node` transformer
+
+- [`5abb76ef`](https://github.com/swordev/suid/commit/5abb76efb419d8ceebe219f8b75f42cccca3aaaf) Thanks [@juanrgm](https://github.com/juanrgm)! - Convert packages into ES6 modules
+
+* [`f85e5cac`](https://github.com/swordev/suid/commit/f85e5cac1c4d8f87a69741b53a442969f523519c) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix `groupImports` transform
+
+* Updated dependencies [[`8f2a158c`](https://github.com/swordev/suid/commit/8f2a158c8eeac1f25cd3c9cde3e3fe4952f8695d), [`5c341c3d`](https://github.com/swordev/suid/commit/5c341c3d7692ae92fe6762bb0a03a7d67250f6b5), [`e003704a`](https://github.com/swordev/suid/commit/e003704af0bed136188314d8e38964a66d5f8d08), [`db4d5676`](https://github.com/swordev/suid/commit/db4d56761854cb724ce231d90fb4774ab935229d), [`5abb76ef`](https://github.com/swordev/suid/commit/5abb76efb419d8ceebe219f8b75f42cccca3aaaf)]:
+  - @suid/utils@0.2.0
+
 ## 0.2.0-next.5
 
 ### Patch Changes
