@@ -10,8 +10,9 @@ import Toolbar from "@suid/material/Toolbar";
 import Typography from "@suid/material/Typography";
 import useMediaQuery from "@suid/material/useMediaQuery";
 import createSvgIcon from "@suid/material/utils/createSvgIcon";
+import gt from "semver/functions/gt";
 import { useLocation } from "solid-app-router";
-import { Show } from "solid-js";
+import { createSignal, Show } from "solid-js";
 import { tryPreload } from "~/Routing";
 import { saveDarkMode, useLayoutContext } from "./LayoutContext";
 
@@ -22,6 +23,23 @@ const GitHubIcon = createSvgIcon(
   "GitHub"
 );
 
+async function fetchNextVersion() {
+  const { protocol, host } = globalThis.location;
+  const nextPrefix = "next.";
+  if (host.startsWith(nextPrefix)) return;
+  const pkgUrl = `${protocol}//${nextPrefix}${host}/package.json?${Date.now()}`;
+  const pkgRaw = await fetch(pkgUrl);
+  const pkg: { version?: string } | undefined = await pkgRaw.json();
+  return pkg?.version;
+}
+
+async function existsNextVersion() {
+  const nextVersion = await fetchNextVersion();
+  if (!nextVersion) return false;
+  const version = SUID_VERSIONS["@suid/site"];
+  return gt(nextVersion, version);
+}
+
 export default function Header() {
   const layoutContext = useLayoutContext();
   const theme = useTheme();
@@ -30,6 +48,12 @@ export default function Header() {
   const hideButtons = useMediaQuery(theme.breakpoints.down(700));
   const isMainPage = () => location.pathname === "/";
   const isDownMd = useMediaQuery(theme.breakpoints.down("md"));
+  const [nextVersion, setNextVersion] = createSignal(false);
+
+  existsNextVersion()
+    .then((result) => setNextVersion(result))
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    .catch(() => {});
 
   return (
     <AppBar
@@ -97,11 +121,7 @@ export default function Header() {
           </Show>
         </Box>
 
-        <Show
-          when={
-            !globalThis.location.host.startsWith("next.") && !hideNextVersion()
-          }
-        >
+        <Show when={nextVersion() && !hideNextVersion()}>
           <Button
             color="inherit"
             size="small"
