@@ -2,6 +2,7 @@ name: CI
 on:
   push:
     branches:
+      - main
       - develop
 env:
   PNPM_CACHE_FOLDER: .pnpm-store
@@ -46,23 +47,23 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - name: Build changesets meta
-        id: published
+      - name: Build metadata
+        id: metadata
         uses: actions/github-script@v5
         env:
           PUBLISHED_PACKAGES: ${{ steps.changesets.outputs.publishedPackages }}
         with:
-          script: |-
-            const published = JSON.parse(process.env.PUBLISHED_PACKAGES);
-            published.forEach(({ name }) => core.setOutput(name, 'true'));
-      - name: Prepare gh-pages-next
-        if: steps.published.outputs['@suid/site'] == 'true'
+          script: |
+            const metadata = require('./.github/workflows/metadata.js')
+            await metadata({ github, context, core })
+      - name: Prepare gh-pages
+        if: steps.metadata.outputs['@suid/site:published'] == true
         run: |-
           rm packages/site/dist/node_modules
           echo "/* /index.html 200" > packages/site/dist/_redirects
-      - name: Deploy gh-pages-next
-        if: steps.published.outputs['@suid/site'] == 'true'
+      - name: Deploy gh-pages
+        if: steps.metadata.outputs['@suid/site:published'] == true
         uses: JamesIves/github-pages-deploy-action@v4.2.5
         with:
-          branch: gh-pages-next
+          branch: ${{ steps.metadata.outputs['@suid/site:gh-pages-branch'] }}
           folder: packages/site/dist
