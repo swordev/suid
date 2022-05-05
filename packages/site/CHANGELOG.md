@@ -1,5 +1,11 @@
 # @suid/site
 
+## 0.2.0-next.11
+
+### Patch Changes
+
+- [`ae40012a`](https://github.com/swordev/suid/commit/ae40012a951b1ce3ef4af16373b20a2cf5897046) Thanks [@juanrgm](https://github.com/juanrgm)! - Update version
+
 ## 0.2.0-next.10
 
 ### Patch Changes
