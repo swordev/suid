@@ -1,5 +1,187 @@
 # @suid/site
 
+## 0.2.0
+
+### Minor Changes
+
+- [`21ccb3aa`](https://github.com/swordev/suid/commit/21ccb3aae335c3f48d1dab15a5ebec5bb33a455e) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `Grow` page component
+
+* [`76efa604`](https://github.com/swordev/suid/commit/76efa604f74f19cc94a01910c87b9ca081cee592) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `RadioButton` component page
+
+- [`8d70bd38`](https://github.com/swordev/suid/commit/8d70bd3829950f0446cb58caab6f210c7eb6ec41) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `Table` component page
+
+* [`a9c1f58c`](https://github.com/swordev/suid/commit/a9c1f58ceaa2a7212352332d97d4a62285a3bc50) Thanks [@juanrgm](https://github.com/juanrgm)! - Update default code on `ReactToSolid` page and save the input code in the URL
+
+### Patch Changes
+
+- [`6169a2ba`](https://github.com/swordev/suid/commit/6169a2ba3c431b0435f7896447b7a69c8bd39e98) Thanks [@juanrgm](https://github.com/juanrgm)! - Align text fields
+
+* [`e350e619`](https://github.com/swordev/suid/commit/e350e619c1946822c14335e684adb37a08a80bab) Thanks [@juanrgm](https://github.com/juanrgm)! - Update version
+
+- [`8f2a158c`](https://github.com/swordev/suid/commit/8f2a158c8eeac1f25cd3c9cde3e3fe4952f8695d) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
+* [`812bed25`](https://github.com/swordev/suid/commit/812bed254f08bcccbadd5245ecca51d17c9ec546) Thanks [@juanrgm](https://github.com/juanrgm)! - Show next version button dynamically
+
+- [`cb184af2`](https://github.com/swordev/suid/commit/cb184af2d993da7f8c54a2d6638de10d98a450ec) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix max width
+
+* [`c033eed5`](https://github.com/swordev/suid/commit/c033eed58c347d3122f84fdd02312c9cf0026341) Thanks [@juanrgm](https://github.com/juanrgm)! - Remove unneeded memoization
+
+- [`c88ede2a`](https://github.com/swordev/suid/commit/c88ede2a582cdcfc782b0480e564c25a5902faf9) Thanks [@juanrgm](https://github.com/juanrgm)! - Show dependency full version
+
+* [`db4d5676`](https://github.com/swordev/suid/commit/db4d56761854cb724ce231d90fb4774ab935229d) Thanks [@juanrgm](https://github.com/juanrgm)! - Use default imports
+
+- [`343cdbfa`](https://github.com/swordev/suid/commit/343cdbfa71a336d2d0dbefcc48994b25bfe199fd) Thanks [@juanrgm](https://github.com/juanrgm)! - Force reload when page is not found
+
+* [`ae40012a`](https://github.com/swordev/suid/commit/ae40012a951b1ce3ef4af16373b20a2cf5897046) Thanks [@juanrgm](https://github.com/juanrgm)! - Update version
+
+- [`6d3daf3e`](https://github.com/swordev/suid/commit/6d3daf3e00f5d1b159076fa0b9fea8916fceaa9f) Thanks [@juanrgm](https://github.com/juanrgm)! - Improve performance
+
+- Updated dependencies [[`44fc4eda`](https://github.com/swordev/suid/commit/44fc4edac8d0791ecd3cab826a75c7d6e4982b65), [`04d9c1b2`](https://github.com/swordev/suid/commit/04d9c1b2ad05ecf5017986251f3beadda79b0884), [`aaa686f3`](https://github.com/swordev/suid/commit/aaa686f3361c055a422929c685bb23a9c05339d1), [`8e301557`](https://github.com/swordev/suid/commit/8e3015570968441eafaa2fb8eb61b9e75e1d7149), [`8f2a158c`](https://github.com/swordev/suid/commit/8f2a158c8eeac1f25cd3c9cde3e3fe4952f8695d), [`cf32d32f`](https://github.com/swordev/suid/commit/cf32d32fcfb6fe2fd5946720f1bb501053d890c4), [`e1a7827e`](https://github.com/swordev/suid/commit/e1a7827e49b80bf2699334631a4db9d41151925a), [`0bbdd9b7`](https://github.com/swordev/suid/commit/0bbdd9b714866cbcd4de246e895c1ac9eac3fd31), [`d8f106bb`](https://github.com/swordev/suid/commit/d8f106bbbecf53c599a10b9cda9fc7848bd0599c), [`7f4e452a`](https://github.com/swordev/suid/commit/7f4e452aca41c9629e24ea191ac8c967366e81d9), [`e5f54799`](https://github.com/swordev/suid/commit/e5f547992297185eec34af73a59b629e7c970ecf), [`e7246bcc`](https://github.com/swordev/suid/commit/e7246bcc298af75cb0e2fb439e8fea5aae83347d), [`70a0607f`](https://github.com/swordev/suid/commit/70a0607f57804d11d01888cac21d1cdfcabac684), [`dae0596c`](https://github.com/swordev/suid/commit/dae0596c79e7025e83e5116e30e80d359447ddcf), [`c033eed5`](https://github.com/swordev/suid/commit/c033eed58c347d3122f84fdd02312c9cf0026341), [`cf1289c1`](https://github.com/swordev/suid/commit/cf1289c16197c2998255d0166fe12e62a6670703), [`de3f0a2c`](https://github.com/swordev/suid/commit/de3f0a2c420e4cf61c3364d3b33d61fc5baa9919), [`2a0a505e`](https://github.com/swordev/suid/commit/2a0a505e48e36f20f46c53452c356aa43750439a), [`3589e103`](https://github.com/swordev/suid/commit/3589e10386e6578ab1f7548757708a743e88ed01), [`ce295dc2`](https://github.com/swordev/suid/commit/ce295dc211b077b476ac63f0238df3345fb23571), [`7c5faf66`](https://github.com/swordev/suid/commit/7c5faf66ed142db30d73acfba8dc3e3194ba89f3), [`5b7d59bd`](https://github.com/swordev/suid/commit/5b7d59bdbe34d5149e3462e7511636fad8a783f9), [`5c341c3d`](https://github.com/swordev/suid/commit/5c341c3d7692ae92fe6762bb0a03a7d67250f6b5), [`69bef979`](https://github.com/swordev/suid/commit/69bef979c7ef78c865b750bd3a3d43f8d283d8a5), [`e003704a`](https://github.com/swordev/suid/commit/e003704af0bed136188314d8e38964a66d5f8d08), [`938d0548`](https://github.com/swordev/suid/commit/938d0548959f93620630c6498351aa8ee2b93e74), [`5670ce07`](https://github.com/swordev/suid/commit/5670ce0728bb0c852b9484db2666dcbf1be288b9), [`9c452652`](https://github.com/swordev/suid/commit/9c4526527a8fa4dc333e7c51ef9fad2b48726c33), [`9cd38067`](https://github.com/swordev/suid/commit/9cd3806780873031f4828dd83196cb28a2f3a28b), [`db4d5676`](https://github.com/swordev/suid/commit/db4d56761854cb724ce231d90fb4774ab935229d), [`33d66c94`](https://github.com/swordev/suid/commit/33d66c949043adac0ebe450292a3af772f44b8e5), [`73bc609a`](https://github.com/swordev/suid/commit/73bc609ac89fc18d1534c1e238a8c3d5d767a57f), [`4a206164`](https://github.com/swordev/suid/commit/4a206164145966d5f9d9da39c66fcca9b9ce9d4b), [`00ea1f06`](https://github.com/swordev/suid/commit/00ea1f062b21a8acacfe50b68d15be1fd8a1f000), [`5abb76ef`](https://github.com/swordev/suid/commit/5abb76efb419d8ceebe219f8b75f42cccca3aaaf), [`94903b98`](https://github.com/swordev/suid/commit/94903b98e152b492588d5e0da8bcfde4d840ea0c), [`7f2d7633`](https://github.com/swordev/suid/commit/7f2d7633bb6b5c6d927c7d463bfcb285b6f4867e), [`b9f0d48f`](https://github.com/swordev/suid/commit/b9f0d48f8e1d8db71c5204c6e9cf02b4151de7bb), [`f85e5cac`](https://github.com/swordev/suid/commit/f85e5cac1c4d8f87a69741b53a442969f523519c), [`6d3daf3e`](https://github.com/swordev/suid/commit/6d3daf3e00f5d1b159076fa0b9fea8916fceaa9f), [`f1812d32`](https://github.com/swordev/suid/commit/f1812d32eb430bf6cf4bd88c13f8c1a925716e1c)]:
+  - @suid/codemod@0.2.0
+  - @suid/material@0.2.0
+  - @suid/base@0.2.0
+  - @suid/icons-material@0.1.1
+  - @suid/types@0.1.1
+  - @suid/utils@0.2.0
+  - @suid/system@0.2.0
+
+## 0.2.0-next.11
+
+### Patch Changes
+
+- [`ae40012a`](https://github.com/swordev/suid/commit/ae40012a951b1ce3ef4af16373b20a2cf5897046) Thanks [@juanrgm](https://github.com/juanrgm)! - Update version
+
+## 0.2.0-next.10
+
+### Patch Changes
+
+- [`812bed25`](https://github.com/swordev/suid/commit/812bed254f08bcccbadd5245ecca51d17c9ec546) Thanks [@juanrgm](https://github.com/juanrgm)! - Show next version button dynamically
+
+* [`343cdbfa`](https://github.com/swordev/suid/commit/343cdbfa71a336d2d0dbefcc48994b25bfe199fd) Thanks [@juanrgm](https://github.com/juanrgm)! - Force reload when page is not found
+
+* Updated dependencies [[`9c452652`](https://github.com/swordev/suid/commit/9c4526527a8fa4dc333e7c51ef9fad2b48726c33)]:
+  - @suid/codemod@0.2.0-next.5
+
+## 0.2.0-next.9
+
+### Minor Changes
+
+- [`21ccb3aa`](https://github.com/swordev/suid/commit/21ccb3aae335c3f48d1dab15a5ebec5bb33a455e) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `Grow` page component
+
+* [`a9c1f58c`](https://github.com/swordev/suid/commit/a9c1f58ceaa2a7212352332d97d4a62285a3bc50) Thanks [@juanrgm](https://github.com/juanrgm)! - Update default code on `ReactToSolid` page and save the input code in the URL
+
+### Patch Changes
+
+- Updated dependencies [[`aaa686f3`](https://github.com/swordev/suid/commit/aaa686f3361c055a422929c685bb23a9c05339d1), [`dae0596c`](https://github.com/swordev/suid/commit/dae0596c79e7025e83e5116e30e80d359447ddcf), [`cf1289c1`](https://github.com/swordev/suid/commit/cf1289c16197c2998255d0166fe12e62a6670703), [`2a0a505e`](https://github.com/swordev/suid/commit/2a0a505e48e36f20f46c53452c356aa43750439a), [`7c5faf66`](https://github.com/swordev/suid/commit/7c5faf66ed142db30d73acfba8dc3e3194ba89f3), [`5b7d59bd`](https://github.com/swordev/suid/commit/5b7d59bdbe34d5149e3462e7511636fad8a783f9), [`5670ce07`](https://github.com/swordev/suid/commit/5670ce0728bb0c852b9484db2666dcbf1be288b9), [`7f2d7633`](https://github.com/swordev/suid/commit/7f2d7633bb6b5c6d927c7d463bfcb285b6f4867e)]:
+  - @suid/material@0.2.0-next.6
+  - @suid/codemod@0.2.0-next.4
+  - @suid/base@0.2.0-next.5
+  - @suid/system@0.2.0-next.5
+  - @suid/icons-material@0.1.1-next.6
+
+## 0.2.0-next.8
+
+### Patch Changes
+
+- [`8f2a158c`](https://github.com/swordev/suid/commit/8f2a158c8eeac1f25cd3c9cde3e3fe4952f8695d) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
+- Updated dependencies [[`8f2a158c`](https://github.com/swordev/suid/commit/8f2a158c8eeac1f25cd3c9cde3e3fe4952f8695d), [`e1a7827e`](https://github.com/swordev/suid/commit/e1a7827e49b80bf2699334631a4db9d41151925a)]:
+  - @suid/base@0.1.1-next.4
+  - @suid/codemod@0.2.0-next.3
+  - @suid/icons-material@0.1.1-next.5
+  - @suid/material@0.2.0-next.5
+  - @suid/types@0.1.1-next.1
+  - @suid/utils@0.2.0-next.2
+  - @suid/system@0.1.1-next.4
+
+## 0.2.0-next.7
+
+### Minor Changes
+
+- [`76efa604`](https://github.com/swordev/suid/commit/76efa604f74f19cc94a01910c87b9ca081cee592) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `RadioButton` component page
+
+### Patch Changes
+
+- Updated dependencies [[`04d9c1b2`](https://github.com/swordev/suid/commit/04d9c1b2ad05ecf5017986251f3beadda79b0884), [`d8f106bb`](https://github.com/swordev/suid/commit/d8f106bbbecf53c599a10b9cda9fc7848bd0599c), [`7f4e452a`](https://github.com/swordev/suid/commit/7f4e452aca41c9629e24ea191ac8c967366e81d9), [`e7246bcc`](https://github.com/swordev/suid/commit/e7246bcc298af75cb0e2fb439e8fea5aae83347d), [`70a0607f`](https://github.com/swordev/suid/commit/70a0607f57804d11d01888cac21d1cdfcabac684), [`69bef979`](https://github.com/swordev/suid/commit/69bef979c7ef78c865b750bd3a3d43f8d283d8a5), [`938d0548`](https://github.com/swordev/suid/commit/938d0548959f93620630c6498351aa8ee2b93e74), [`9cd38067`](https://github.com/swordev/suid/commit/9cd3806780873031f4828dd83196cb28a2f3a28b), [`4a206164`](https://github.com/swordev/suid/commit/4a206164145966d5f9d9da39c66fcca9b9ce9d4b), [`f85e5cac`](https://github.com/swordev/suid/commit/f85e5cac1c4d8f87a69741b53a442969f523519c)]:
+  - @suid/codemod@0.2.0-next.2
+  - @suid/material@0.2.0-next.4
+  - @suid/types@0.1.1-next.0
+  - @suid/base@0.1.1-next.3
+  - @suid/icons-material@0.1.1-next.4
+  - @suid/system@0.1.1-next.3
+  - @suid/utils@0.2.0-next.1
+
+## 0.2.0-next.6
+
+### Minor Changes
+
+- [`8d70bd38`](https://github.com/swordev/suid/commit/8d70bd3829950f0446cb58caab6f210c7eb6ec41) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `Table` component page
+
+### Patch Changes
+
+- Updated dependencies [[`8e301557`](https://github.com/swordev/suid/commit/8e3015570968441eafaa2fb8eb61b9e75e1d7149), [`3589e103`](https://github.com/swordev/suid/commit/3589e10386e6578ab1f7548757708a743e88ed01), [`ce295dc2`](https://github.com/swordev/suid/commit/ce295dc211b077b476ac63f0238df3345fb23571)]:
+  - @suid/codemod@0.2.0-next.1
+  - @suid/material@0.2.0-next.3
+  - @suid/icons-material@0.1.1-next.3
+
+## 0.1.1-next.5
+
+### Patch Changes
+
+- [#48](https://github.com/swordev/suid/pull/48) [`cb184af2`](https://github.com/swordev/suid/commit/cb184af2d993da7f8c54a2d6638de10d98a450ec) Thanks [@github-actions](https://github.com/apps/github-actions)! - Fix max width
+
+* [`db4d5676`](https://github.com/swordev/suid/commit/db4d56761854cb724ce231d90fb4774ab935229d) Thanks [@juanrgm](https://github.com/juanrgm)! - Use default imports
+
+* Updated dependencies [[`44fc4eda`](https://github.com/swordev/suid/commit/44fc4edac8d0791ecd3cab826a75c7d6e4982b65), [`0bbdd9b7`](https://github.com/swordev/suid/commit/0bbdd9b714866cbcd4de246e895c1ac9eac3fd31), [`5c341c3d`](https://github.com/swordev/suid/commit/5c341c3d7692ae92fe6762bb0a03a7d67250f6b5), [`e003704a`](https://github.com/swordev/suid/commit/e003704af0bed136188314d8e38964a66d5f8d08), [`db4d5676`](https://github.com/swordev/suid/commit/db4d56761854cb724ce231d90fb4774ab935229d), [`00ea1f06`](https://github.com/swordev/suid/commit/00ea1f062b21a8acacfe50b68d15be1fd8a1f000), [`5abb76ef`](https://github.com/swordev/suid/commit/5abb76efb419d8ceebe219f8b75f42cccca3aaaf)]:
+  - @suid/codemod@0.1.1-next.0
+  - @suid/material@0.1.1-next.2
+  - @suid/utils@0.2.0-next.0
+  - @suid/system@0.1.1-next.2
+  - @suid/icons-material@0.1.1-next.2
+  - @suid/base@0.1.1-next.2
+
+## 0.1.1-next.4
+
+### Patch Changes
+
+- [`6d3daf3e`](https://github.com/swordev/suid/commit/6d3daf3e00f5d1b159076fa0b9fea8916fceaa9f) Thanks [@juanrgm](https://github.com/juanrgm)! - Improve performance
+
+- Updated dependencies [[`cf32d32f`](https://github.com/swordev/suid/commit/cf32d32fcfb6fe2fd5946720f1bb501053d890c4), [`de3f0a2c`](https://github.com/swordev/suid/commit/de3f0a2c420e4cf61c3364d3b33d61fc5baa9919), [`33d66c94`](https://github.com/swordev/suid/commit/33d66c949043adac0ebe450292a3af772f44b8e5), [`94903b98`](https://github.com/swordev/suid/commit/94903b98e152b492588d5e0da8bcfde4d840ea0c), [`6d3daf3e`](https://github.com/swordev/suid/commit/6d3daf3e00f5d1b159076fa0b9fea8916fceaa9f)]:
+  - @suid/material@0.1.1-next.1
+  - @suid/base@0.1.1-next.1
+  - @suid/system@0.1.1-next.1
+  - @suid/icons-material@0.1.1-next.1
+
+## 0.1.1-next.3
+
+### Patch Changes
+
+- [`6169a2ba`](https://github.com/swordev/suid/commit/6169a2ba3c431b0435f7896447b7a69c8bd39e98) Thanks [@juanrgm](https://github.com/juanrgm)! - Align text fields
+
+## 0.1.1-next.2
+
+### Patch Changes
+
+- [`c88ede2a`](https://github.com/swordev/suid/commit/c88ede2a582cdcfc782b0480e564c25a5902faf9) Thanks [@juanrgm](https://github.com/juanrgm)! - Show dependency full version
+
+## 0.1.1-next.1
+
+### Patch Changes
+
+- [`c033eed5`](https://github.com/swordev/suid/commit/c033eed58c347d3122f84fdd02312c9cf0026341) Thanks [@juanrgm](https://github.com/juanrgm)! - Remove unneeded memoization
+
+- Updated dependencies [[`e5f54799`](https://github.com/swordev/suid/commit/e5f547992297185eec34af73a59b629e7c970ecf), [`c033eed5`](https://github.com/swordev/suid/commit/c033eed58c347d3122f84fdd02312c9cf0026341), [`73bc609a`](https://github.com/swordev/suid/commit/73bc609ac89fc18d1534c1e238a8c3d5d767a57f), [`b9f0d48f`](https://github.com/swordev/suid/commit/b9f0d48f8e1d8db71c5204c6e9cf02b4151de7bb), [`f1812d32`](https://github.com/swordev/suid/commit/f1812d32eb430bf6cf4bd88c13f8c1a925716e1c)]:
+  - @suid/material@0.1.1-next.0
+  - @suid/base@0.1.1-next.0
+  - @suid/system@0.1.1-next.0
+  - @suid/icons-material@0.1.1-next.0
+
+## 0.1.1-next.0
+
+### Patch Changes
+
+- [`e350e619`](https://github.com/swordev/suid/commit/e350e619c1946822c14335e684adb37a08a80bab) Thanks [@juanrgm](https://github.com/juanrgm)! - Update version
+
 ## 0.1.0
 
 ### Minor Changes
