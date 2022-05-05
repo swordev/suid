@@ -54,9 +54,19 @@ function toJson(node: ObjectBindingPattern) {
   return result;
 }
 
-function safePropName(name: string, accessor = true) {
+function safePropName(
+  name: string,
+  accessor: boolean | "withMergeProps" = true
+) {
   if (name.endsWith("?")) name = name.slice(0, -1) + " || {}";
-  if (accessor && name.includes(".")) name = `() => ${name}`;
+  if (accessor && name.includes(".")) {
+    if (accessor) {
+      name = `() => ${name}`;
+    }
+    if (accessor === "withMergeProps") {
+      name = `mergeProps(${name})`;
+    }
+  }
   return name;
 }
 
@@ -77,7 +87,10 @@ function generateSentences(name: string, objects: ObjectBindingJson[]) {
     );
     solidNamedImports.push("splitProps");
     sentences.push(
-      `const [, ${varName}] = splitProps(${safePropName(name)}, ${propNames});`
+      `const [, ${varName}] = splitProps(${safePropName(
+        name,
+        "withMergeProps"
+      )}, ${propNames});`
     );
     renameIdentifiers(restObject.identifier, varName);
   }

@@ -60,7 +60,7 @@ describe("replaceObjectBinding", () => {
     ).toBe(
       format(`
         import { splitProps } from "solid-js";
-        const [, other] = splitProps(() => props.sub, ["b"]);
+        const [, other] = splitProps(mergeProps(() => props.sub), ["b"]);
         console.log(props.sub.b, other)
       `)
     );
@@ -71,7 +71,7 @@ describe("replaceObjectBinding", () => {
     ).toBe(
       format(`
         import { splitProps } from "solid-js";
-        const [, other] = splitProps(() => props.sub || {}, ["b"]);
+        const [, other] = splitProps(mergeProps(() => props.sub || {}), ["b"]);
         console.log(props.sub?.b, other)
       `)
     );
