@@ -6,15 +6,39 @@ import Toolbar from "@suid/material/Toolbar";
 import { createPalette } from "@suid/material/styles/createPalette";
 import useMediaQuery from "@suid/material/useMediaQuery";
 import { useLocation } from "solid-app-router";
-import { createEffect, createMemo, createSignal, Show } from "solid-js";
+import {
+  createEffect,
+  createMemo,
+  createSignal,
+  ErrorBoundary,
+  Show,
+} from "solid-js";
 import { Routing, RoutingElementContainer } from "~/Routing";
 import Footer from "~/layouts/MainLayout/Footer";
+import ErrorPage from "~/pages/ErrorPage";
 import PlaygroundPage from "~/pages/tools/PlaygroundPage";
 import Header from "./Header";
 import LayoutContext, { createLayoutMutable } from "./LayoutContext";
 import { Nav } from "./Nav";
 
 const drawerWidth = 240;
+
+function ErrorFallback(error: Error) {
+  console.error(error);
+  const loc = globalThis.location;
+  if (error.message.startsWith("Failed to fetch dynamically imported module")) {
+    if (!loc.search.includes("redirected")) {
+      // Wait for load the location href
+      setTimeout(() => {
+        globalThis.location.href = loc.origin + loc.pathname + `?redirected`;
+      });
+    } else {
+      return <ErrorPage title="Page not found." code="404" />;
+    }
+  } else {
+    return <ErrorPage title="Unexpected error." code="500" />;
+  }
+}
 
 export default function MainLayout() {
   const context = createLayoutMutable({
@@ -110,7 +134,9 @@ export default function MainLayout() {
                 <PlaygroundPage visible={isPlaygroundPage()} />
               </RoutingElementContainer>
             </Show>
-            <Routing />
+            <ErrorBoundary fallback={ErrorFallback}>
+              <Routing />
+            </ErrorBoundary>
           </Box>
         </Box>
         <Footer />

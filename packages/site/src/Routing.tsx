@@ -16,7 +16,7 @@ import {
   Show,
   Switch,
 } from "solid-js";
-import NotFoundPage from "~/pages/NotFoundPage";
+import ErrorPage from "~/pages/ErrorPage";
 
 export const Pages = Object.assign(
   import.meta.glob(`./pages/**/*Page/index.{ts,tsx}`),
@@ -122,7 +122,9 @@ export function Routing() {
         <Route
           path="/*"
           element={
-            <RoutingElementContainer fullWidth Component={NotFoundPage} />
+            <RoutingElementContainer fullWidth>
+              <ErrorPage title="Page not found." code="404" />
+            </RoutingElementContainer>
           }
         />
       )}
