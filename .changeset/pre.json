@@ -65,6 +65,6 @@
     "@suid/utils": "0.1.0",
     "@suid/scripts": "0.0.0"
   },
-  "mode": "pre",
+  "mode": "exit",
   "tag": "next"
 }
