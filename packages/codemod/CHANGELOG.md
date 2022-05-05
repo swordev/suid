@@ -1,5 +1,11 @@
 # @suid/codemod
 
+## 0.2.0-next.5
+
+### Patch Changes
+
+- [`9c452652`](https://github.com/swordev/suid/commit/9c4526527a8fa4dc333e7c51ef9fad2b48726c33) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix `ObjectBinding` transform
+
 ## 0.2.0-next.4
 
 ### Minor Changes
