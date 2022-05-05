@@ -1,6 +1,6 @@
 {
   "name": "@suid/site",
-  "version": "0.2.0-next.9",
+  "version": "0.2.0-next.11",
   "description": "SUID website.",
   "keywords": [
     "best_ecosystem",
@@ -51,10 +51,12 @@
     "monaco-editor": "^0.33.0",
     "prism-themes": "^1.9.0",
     "prismjs": "^1.28.0",
+    "semver": "^7.3.7",
     "solid-app-router": "^0.3.2"
   },
   "devDependencies": {
     "@types/prismjs": "^1.26.0",
+    "@types/semver": "^7.3.9",
     "fast-glob": "^3.2.11",
     "rimraf": "^3.0.2",
     "sass": "^1.51.0",

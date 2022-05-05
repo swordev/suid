@@ -1,5 +1,22 @@
 # @suid/site
 
+## 0.2.0-next.11
+
+### Patch Changes
+
+- [`ae40012a`](https://github.com/swordev/suid/commit/ae40012a951b1ce3ef4af16373b20a2cf5897046) Thanks [@juanrgm](https://github.com/juanrgm)! - Update version
+
+## 0.2.0-next.10
+
+### Patch Changes
+
+- [`812bed25`](https://github.com/swordev/suid/commit/812bed254f08bcccbadd5245ecca51d17c9ec546) Thanks [@juanrgm](https://github.com/juanrgm)! - Show next version button dynamically
+
+* [`343cdbfa`](https://github.com/swordev/suid/commit/343cdbfa71a336d2d0dbefcc48994b25bfe199fd) Thanks [@juanrgm](https://github.com/juanrgm)! - Force reload when page is not found
+
+* Updated dependencies [[`9c452652`](https://github.com/swordev/suid/commit/9c4526527a8fa4dc333e7c51ef9fad2b48726c33)]:
+  - @suid/codemod@0.2.0-next.5
+
 ## 0.2.0-next.9
 
 ### Minor Changes
