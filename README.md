@@ -12,12 +12,6 @@ The main idea behing the project is to create a bridge between the MUI and SUID 
 
 With this smart target in mind, the project avoids becoming another library that could fall into oblivion, avoiding all its complexities, developing under the shadow of MUI.
 
-## Notice
-
-The main branch will be locked due to [SolidHack 2022](https://hack.solidjs.com). New changes will be pushed to the [develop](https://github.com/swordev/suid/tree/develop) branch (https://next.suid.io).
-
-If you want to support the project, you have the possibility to do so [here](https://hack.solidjs.com).
-
 ## Installation
 
 ```sh
