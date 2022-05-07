@@ -10,6 +10,7 @@ export default function groupImports(source: SourceFile) {
     string,
     {
       nodes: ImportDeclaration[];
+      withoutFrom: boolean;
       named: string[];
       defaults: string[];
       namespaces: string[];
@@ -21,6 +22,7 @@ export default function groupImports(source: SourceFile) {
     if (!grouped[name]) {
       grouped[name] = {
         nodes: [],
+        withoutFrom: true,
         named: [],
         defaults: [],
         namespaces: [],
@@ -30,19 +32,30 @@ export default function groupImports(source: SourceFile) {
     grouped[name].nodes.push(node);
 
     for (const named of node.getNamedImports()) {
+      grouped[name].withoutFrom = false;
       add(grouped[name].named, named.getText());
     }
 
     const defaultImport = node.getDefaultImport();
-    if (defaultImport) add(grouped[name].defaults, defaultImport.getText());
+    if (defaultImport) {
+      grouped[name].withoutFrom = false;
+      add(grouped[name].defaults, defaultImport.getText());
+    }
 
     const namespaceImport = node.getNamespaceImport();
-    if (namespaceImport)
+    if (namespaceImport) {
+      grouped[name].withoutFrom = false;
       add(grouped[name].namespaces, namespaceImport.getText());
+    }
   }
 
   for (const moduleSpecifier in grouped) {
     const config = grouped[moduleSpecifier];
+
+    if (config.withoutFrom)
+      source.addImportDeclaration({
+        moduleSpecifier,
+      });
 
     if (config.named.length)
       source.addImportDeclaration({
