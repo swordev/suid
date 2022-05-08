@@ -1,6 +1,9 @@
 # Solid.js User Interface Design (SUID)
 
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/swordev/suid/CI) ![npm (scoped)](https://img.shields.io/npm/v/@suid/material?label=@suid/material) ![npm (scoped)](https://img.shields.io/npm/v/@suid/icons-material?label=@suid/icons-material) <br/> ![npm (scoped)](https://img.shields.io/npm/v/@suid/css?label=@suid/css) ![npm (scoped)](https://img.shields.io/npm/v/@suid/system?label=@suid/system) ![npm (scoped)](https://img.shields.io/npm/v/@suid/base?label=@suid/base) ![npm (scoped)](https://img.shields.io/npm/v/@suid/types?label=@suid/types) ![npm (scoped)](https://img.shields.io/npm/v/@suid/codemod?label=@suid/codemod) ![npm (scoped)](https://img.shields.io/npm/v/@suid/site?label=@suid/site)
+![workflow-badge] ![license-badge]
+
+[workflow-badge]: https://img.shields.io/github/workflow/status/swordev/suid/CI
+[license-badge]: https://img.shields.io/github/license/swordev/suid
 
 > A port of Material-UI ([MUI](https://mui.com/core)) built with [Solid.js](https://solidjs.com)
 
@@ -11,6 +14,28 @@ MUI has one of the largest development communities on the scene, a long history,
 The main idea behing the project is to create a bridge between the MUI and SUID repository for syncing the incoming changes. This is possible thanks to tools integrated in SUID like codemod (a React to Solid transformer).
 
 With this smart target in mind, the project avoids becoming another library that could fall into oblivion, avoiding all its complexities, developing under the shadow of MUI.
+
+## Packages
+
+| Name                                             |        Version        | Description                                        |
+| ------------------------------------------------ | :-------------------: | -------------------------------------------------- |
+| [@suid/material](/packages/material)             |    ![material-npm]    | A port of Material-UI (MUI) built with Solid.js.   |
+| [@suid/icons-material](/packages/icons-material) | ![icons-material-npm] | Material Design icons as SVG Solid.js components.  |
+| [@suid/codemod](/packages/codemod)               |    ![codemod-npm]     | Tool for migrating MUI React code to SUID SolidJS. |
+| [@suid/system](/packages/system)                 |     ![system-npm]     | Styles system used by suid packages.               |
+| [@suid/base](/packages/base)                     |      ![base-npm]      | Unstyled base components used by @suid/material.   |
+| [@suid/css](/packages/css)                       |      ![css-npm]       | CSS render in JS.                                  |
+| [@suid/types](/packages/types)                   |     ![types-npm]      | Types used by suid packages.                       |
+| [@suid/site](/packages/site)                     |      ![site-npm]      | SUID website.                                      |
+
+[material-npm]: https://img.shields.io/npm/v/@suid/material
+[icons-material-npm]: https://img.shields.io/npm/v/@suid/icons-material
+[codemod-npm]: https://img.shields.io/npm/v/@suid/codemod
+[site-npm]: https://img.shields.io/npm/v/@suid/site
+[css-npm]: https://img.shields.io/npm/v/@suid/css
+[system-npm]: https://img.shields.io/npm/v/@suid/system
+[base-npm]: https://img.shields.io/npm/v/@suid/base
+[types-npm]: https://img.shields.io/npm/v/@suid/types
 
 ## Installation
 
