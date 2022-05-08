@@ -1,6 +1,6 @@
 {
   "name": "@suid/icons-material",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Material Design icons as SVG Solid.js components.",
   "scripts": {
     "build": "tsc --build",
