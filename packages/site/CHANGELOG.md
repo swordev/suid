@@ -1,5 +1,14 @@
 # @suid/site
 
+## 0.2.1
+
+### Patch Changes
+
+- Updated dependencies [[`222c93bb`](https://github.com/swordev/suid/commit/222c93bbf105b2998ab0ec313aae7fc6508f3013), [`caa81cee`](https://github.com/swordev/suid/commit/caa81ceee7289510f34c08e8292145968aa935b8), [`167dbcec`](https://github.com/swordev/suid/commit/167dbcec69bc70a1211d856f595d6ce2ff8ead93)]:
+  - @suid/codemod@0.2.1
+  - @suid/material@0.2.1
+  - @suid/icons-material@0.1.2
+
 ## 0.2.0
 
 ### Minor Changes

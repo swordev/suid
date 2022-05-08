@@ -1,5 +1,11 @@
 # @suid/material
 
+## 0.2.1
+
+### Patch Changes
+
+- [`167dbcec`](https://github.com/swordev/suid/commit/167dbcec69bc70a1211d856f595d6ce2ff8ead93) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix `styled` function
+
 ## 0.2.0
 
 ### Minor Changes
