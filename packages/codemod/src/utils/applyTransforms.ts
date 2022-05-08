@@ -1,41 +1,34 @@
+import createProject from "./createProject";
 import getReplacePatterns from "./getReplacePatterns";
-import { Project, SourceFile, ts } from "ts-morph";
+import { Project, SourceFile } from "ts-morph";
 
 type Transform = (sourceFile: SourceFile) => any;
 
 export default function applyTransforms(
   input: string,
-  transforms: Transform[]
+  transforms: Transform[],
+  project?: Project
 ): string;
 export default function applyTransforms(
   input: Record<string, string>,
-  transforms: Transform[]
+  transforms: Transform[],
+  project?: Project
 ): Record<string, string>;
 export default function applyTransforms(
   input: string | Record<string, string>,
-  transforms: Transform[]
+  transforms: Transform[],
+  project?: Project
 ) {
-  const project = new Project({
-    useInMemoryFileSystem: true,
-    compilerOptions: {
-      strict: true,
-      target: ts.ScriptTarget.ESNext,
-      module: ts.ModuleKind.ESNext,
-      moduleResolution: ts.ModuleResolutionKind.NodeNext,
-      forceConsistentCasingInFileNames: true,
-      allowSyntheticDefaultImports: true,
-      esModuleInterop: true,
-      jsx: ts.JsxEmit.Preserve,
-    },
-  });
-
+  if (!project) project = createProject();
   const fileMap = (
     typeof input === "string" ? { "file.tsx": input } : input
   ) as Record<string, string>;
 
   const sourceFiles: Record<string, SourceFile> = {};
   for (const path in fileMap) {
-    sourceFiles[path] = project.createSourceFile(path, fileMap[path]);
+    sourceFiles[path] = project.createSourceFile(path, fileMap[path], {
+      overwrite: true,
+    });
   }
 
   const result: Record<string, string> = {};
