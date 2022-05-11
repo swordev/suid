@@ -1,5 +1,6 @@
 import findObjectBindingPatterns from "../navigations/findObjectBindingPatterns";
 import findReactObjects from "../navigations/findReactObjects";
+import findObjectLiteralExpressions from "../utils/findObjectLiteralExpressions";
 import groupImports from "./groupImports";
 import removePropTypes from "./removePropTypes";
 import removeReactImports from "./removeReactImports";
@@ -60,8 +61,8 @@ export default function transformReactSource(source: SourceFile) {
   findObjectBindingPatterns(source).forEach((node) =>
     replaceObjectBinding(node)
   );
-  source
-    .getDescendantsOfKind(ts.SyntaxKind.ObjectLiteralExpression)
-    .forEach(replaceSpreadAsignment);
+  findObjectLiteralExpressions(source).forEach((node) =>
+    replaceSpreadAsignment(node)
+  );
   groupImports(source);
 }
