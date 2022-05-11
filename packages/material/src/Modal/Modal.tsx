@@ -1,30 +1,16 @@
 import { ModalTypeMap } from ".";
 import Backdrop from "../Backdrop";
 import styled from "../styles/styled";
-import ModalUnstyled, { modalUnstyledClasses } from "@suid/base/ModalUnstyled";
+import { modalUnstyledClasses } from "@suid/base/ModalUnstyled";
+import ModalUnstyled from "@suid/base/ModalUnstyled";
 import createComponentFactory from "@suid/base/createComponentFactory";
 import isHostComponent from "@suid/base/utils/isHostComponent";
-import createElementRef from "@suid/system/createElementRef";
+import { InPropsOf } from "@suid/types";
+import { createSignal, splitProps, mergeProps } from "solid-js";
 
 const $ = createComponentFactory<ModalTypeMap>()({
   name: "MuiModal",
   selfPropNames: ["BackdropComponent", "BackdropProps"],
-  propDefaults: ({ set }) =>
-    set({
-      component: "div",
-      open: false,
-      closeAfterTransition: false,
-      components: {},
-      componentsProps: {},
-      disableAutoFocus: false,
-      disableEnforceFocus: false,
-      disableEscapeKeyDown: false,
-      disablePortal: false,
-      disableRestoreFocus: false,
-      disableScrollLock: false,
-      hideBackdrop: false,
-      keepMounted: false,
-    }),
 });
 
 export const modalClasses = modalUnstyledClasses;
@@ -40,13 +26,21 @@ const ModalRoot = styled("div", {
       !ownerState.open && ownerState.exited && styles.hidden,
     ];
   },
-})(({ theme }) => ({
+})<
+  InPropsOf<ModalTypeMap> & {
+    exited: boolean;
+  }
+>(({ theme, ownerState }) => ({
   position: "fixed",
   zIndex: theme.zIndex.modal,
   right: 0,
   bottom: 0,
   top: 0,
   left: 0,
+  ...(!ownerState.open &&
+    ownerState.exited && {
+      visibility: "hidden",
+    }),
 }));
 
 const ModalBackdrop = styled(Backdrop, {
@@ -62,40 +56,124 @@ const ModalBackdrop = styled(Backdrop, {
 /**
  * Modal is a lower-level construct that is leveraged by the following components:
  *
- * - [Dialog](/api/dialog/)
- * - [Drawer](/api/drawer/)
- * - [Menu](/api/menu/)
- * - [Popover](/api/popover/)
+ * *   [Dialog](https://mui.com/api/dialog/)
+ * *   [Drawer](https://mui.com/api/drawer/)
+ * *   [Menu](https://mui.com/api/menu/)
+ * *   [Popover](https://mui.com/api/popover/)
  *
- * If you are creating a modal dialog, you probably want to use the [Dialog](/api/dialog/) component
+ * If you are creating a modal dialog, you probably want to use the [Dialog](https://mui.com/api/dialog/) component
  * rather than directly using Modal.
  *
  * This component shares many concepts with [react-overlays](https://react-bootstrap.github.io/react-overlays/#modals).
+ *
+ * Demos:
+ *
+ * - [Modal](https://mui.com/components/modal/)
+ *
+ * API:
+ *
+ * - [Modal API](https://mui.com/api/modal/)
  */
-const Modal = $.component(function Modal({ otherProps }) {
-  const element = createElementRef(otherProps);
+const Modal = $.defineComponent(function Modal(inProps) {
+  const props = $.useThemeProps({ props: inProps });
+  const [, other] = splitProps(props, [
+    "BackdropComponent",
+    "closeAfterTransition",
+    "children",
+    "components",
+    "componentsProps",
+    "disableAutoFocus",
+    "disableEnforceFocus",
+    "disableEscapeKeyDown",
+    "disablePortal",
+    "disableRestoreFocus",
+    "disableScrollLock",
+    "hideBackdrop",
+    "keepMounted",
+  ]);
+
+  const baseProps = mergeProps(
+    {
+      BackdropComponent: ModalBackdrop,
+      closeAfterTransition: false,
+      components: {},
+      componentsProps: {},
+      disableAutoFocus: false,
+      disableEnforceFocus: false,
+      disableEscapeKeyDown: false,
+      disablePortal: false,
+      disableRestoreFocus: false,
+      disableScrollLock: false,
+      hideBackdrop: false,
+      keepMounted: false,
+    },
+    props
+  );
+
+  const [exited] = createSignal(true);
+
+  const commonProps = {
+    get closeAfterTransition() {
+      return baseProps.closeAfterTransition;
+    },
+    get disableAutoFocus() {
+      return baseProps.disableAutoFocus;
+    },
+    get disableEnforceFocus() {
+      return baseProps.disableEnforceFocus;
+    },
+    get disableEscapeKeyDown() {
+      return baseProps.disableEscapeKeyDown;
+    },
+    get disablePortal() {
+      return baseProps.disablePortal;
+    },
+    get disableRestoreFocus() {
+      return baseProps.disableRestoreFocus;
+    },
+    get disableScrollLock() {
+      return baseProps.disableScrollLock;
+    },
+    get hideBackdrop() {
+      return baseProps.hideBackdrop;
+    },
+    get keepMounted() {
+      return baseProps.keepMounted;
+    },
+  };
+
+  const ownerState = mergeProps(props, commonProps, {
+    get exited() {
+      return exited();
+    },
+  });
+
   return (
     <ModalUnstyled
-      BackdropComponent={ModalBackdrop}
-      {...otherProps}
-      components={{
-        Root: ModalRoot,
-        ...otherProps.components,
-      }}
+      components={mergeProps({ Root: ModalRoot }, () => baseProps.components)}
       componentsProps={{
-        root: {
-          ...(otherProps.componentsProps.root ?? {}),
-          ...((!otherProps.components.Root ||
-            !isHostComponent(otherProps.components.Root)) &&
-            {
-              // ownerState: { ...componentsProps.root?.ownerState },
-            }),
+        get root() {
+          return mergeProps(
+            () => baseProps.componentsProps.root || {},
+            () =>
+              !baseProps.components.Root ||
+              (!isHostComponent(baseProps.components.Root) && {
+                get ownerState() {
+                  return (
+                    (baseProps.componentsProps.root as any)?.ownerState || {}
+                  );
+                },
+              }) ||
+              {}
+          );
         },
       }}
-      classes={otherProps.classes}
-      ref={element}
+      BackdropComponent={baseProps.BackdropComponent}
+      {...other}
+      classes={ownerState.classes}
+      {...commonProps}
     >
-      {otherProps.children}
+      {props.children}
     </ModalUnstyled>
   );
 });
