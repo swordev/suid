@@ -1,6 +1,10 @@
-import hasAncestorComponent from "../utils/hasAncestorComponent";
+import checkNodeScope, { NodeScope } from "../utils/checkNodeScope";
 import isStaticValue from "../utils/isStaticValue";
 import { Node, ObjectLiteralExpression } from "ts-morph";
+
+export type ReplaceSpreadAsignmentOptions = {
+  scopes?: NodeScope[];
+};
 
 function getSpreadAsignment(node: ObjectLiteralExpression) {
   if (node.wasForgotten()) return "";
@@ -49,15 +53,23 @@ function getSpreadAsignment(node: ObjectLiteralExpression) {
 
   drainProperties();
   if (requireMergeProps) {
+    node.getSourceFile().addImportDeclaration({
+      namedImports: ["mergeProps"],
+      moduleSpecifier: "solid-js",
+    });
     return `mergeProps(${mergeValues.join(", ")})`;
   } else {
     return mergeValues[0] ?? "{}";
   }
 }
 
-function replaceSpreadAsignment(node: ObjectLiteralExpression) {
-  if (node.wasForgotten()) return;
-  if (!hasAncestorComponent(node)) return;
+function replaceSpreadAsignment(
+  node: ObjectLiteralExpression,
+  options: ReplaceSpreadAsignmentOptions = {
+    scopes: ["component-top-level", "jsx"],
+  }
+) {
+  if (node.wasForgotten() || !checkNodeScope(node, options.scopes)) return;
   node.replaceWithText(getSpreadAsignment(node));
 }
 

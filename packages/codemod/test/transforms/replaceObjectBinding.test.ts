@@ -7,7 +7,7 @@ const t = (code: string) =>
   transform(code, [
     (source) => {
       findObjectBindingPatterns(source).forEach((node) =>
-        replaceObjectBinding(node, false)
+        replaceObjectBinding(node, {})
       );
     },
   ]);

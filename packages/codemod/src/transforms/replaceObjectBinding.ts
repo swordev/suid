@@ -1,8 +1,12 @@
-import hasAncestorComponent from "../utils/hasAncestorComponent";
+import checkNodeScope, { NodeScope } from "../utils/checkNodeScope";
 import isStaticValue from "../utils/isStaticValue";
 import renameIdentifiers from "../utils/renameIdentifiers";
 import capitalize from "@suid/utils/capitalize";
 import { Identifier, Node, ObjectBindingPattern, ts } from "ts-morph";
+
+export type ReplaceObjectBindingOptions = {
+  scopes?: NodeScope[];
+};
 
 type ObjectBindingJson = {
   name: string;
@@ -162,10 +166,11 @@ function generateSentences(name: string, objects: ObjectBindingJson[]) {
 
 function replaceObjectBinding(
   node: ObjectBindingPattern,
-  onlyComponents = true
+  options: ReplaceObjectBindingOptions = {
+    scopes: ["component-top-level", "jsx"],
+  }
 ) {
-  if (node.wasForgotten()) return;
-  if (onlyComponents && !hasAncestorComponent(node)) return;
+  if (node.wasForgotten() || !checkNodeScope(node, options.scopes)) return;
   const parent = node.getParent();
 
   let name!: string;
