@@ -28,6 +28,7 @@
 | `React.ElementType`          |  ✅   |
 | `React.Fragment`             |  ✅   |
 | `React.memo`                 |  ✅   |
+| `React.ReactElement`         |  ✅   |
 | `React.ReactNode`            |  ✅   |
 | `React.Ref`                  |  ✅   |
 | `React.useCallback`          |  ✅   |

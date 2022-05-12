@@ -29,6 +29,7 @@ const codemodTransformers: Record<string, boolean | "pending"> = {
   "`React.ElementType`": true,
   "`React.Fragment`": true,
   "`React.memo`": true,
+  "`React.ReactElement`": true,
   "`React.ReactNode`": true,
   "`React.Ref`": true,
   "`React.useCallback`": true,

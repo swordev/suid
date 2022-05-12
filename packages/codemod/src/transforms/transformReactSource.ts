@@ -15,6 +15,7 @@ import replaceReactFragment from "./replaceReactFragment";
 import replaceReactHTMLAttributes from "./replaceReactHTMLAttributes";
 import replaceReactMemo from "./replaceReactMemo";
 import replaceReactNode from "./replaceReactNode";
+import replaceReactReactElement from "./replaceReactReactElement";
 import replaceReactRef from "./replaceReactRef";
 import replaceReactUseCallback from "./replaceReactUseCallback";
 import replaceReactUseContext from "./replaceReactUseContext";
@@ -28,6 +29,7 @@ const reactObjectTransformers: Record<string, (node: Identifier) => void> = {
   Fragment: replaceReactFragment,
   Context: replaceReactContext,
   createContext: replaceReactCreateContext,
+  ReactElement: replaceReactReactElement,
   ElementType: replaceReactElementType,
   memo: replaceReactMemo,
   ReactNode: replaceReactNode,
