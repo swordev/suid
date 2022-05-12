@@ -13,6 +13,7 @@ import replaceReactEventHandlers from "./replaceReactEventHandlers";
 import replaceReactEvents from "./replaceReactEvents";
 import replaceReactFragment from "./replaceReactFragment";
 import replaceReactHTMLAttributes from "./replaceReactHTMLAttributes";
+import replaceReactJSXElementConstructor from "./replaceReactJSXElementConstructor";
 import replaceReactMemo from "./replaceReactMemo";
 import replaceReactNode from "./replaceReactNode";
 import replaceReactReactElement from "./replaceReactReactElement";
@@ -37,6 +38,7 @@ const reactObjectTransformers: Record<string, (node: Identifier) => void> = {
   useCallback: replaceReactUseCallback,
   useContext: replaceReactUseContext,
   useState: replaceReactUseState,
+  JSXElementConstructor: replaceReactJSXElementConstructor,
   useMemo: replaceReactUseMemo,
   useEffect: replaceReactUseEffect,
 };

@@ -28,6 +28,7 @@ const codemodTransformers: Record<string, boolean | "pending"> = {
   "`React.createContext`": true,
   "`React.ElementType`": true,
   "`React.Fragment`": true,
+  "`React.JSXElementConstructor`": true,
   "`React.memo`": true,
   "`React.ReactElement`": true,
   "`React.ReactNode`": true,
