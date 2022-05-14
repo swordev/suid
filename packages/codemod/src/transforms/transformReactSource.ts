@@ -24,7 +24,7 @@ import replaceReactUseEffect from "./replaceReactUseEffect";
 import replaceReactUseMemo from "./replaceReactUseMemo";
 import replaceReactUseState from "./replaceReactUseState";
 import replaceSpreadAsignment from "./replaceSpreadAsignment";
-import { Identifier, SourceFile, ts } from "ts-morph";
+import { Identifier, SourceFile } from "ts-morph";
 
 const reactObjectTransformers: Record<string, (node: Identifier) => void> = {
   Fragment: replaceReactFragment,
