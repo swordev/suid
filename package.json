@@ -54,6 +54,7 @@
     "changeset": "changeset",
     "check": "pnpm format:check && pnpm lint",
     "clean:ts": "tsc --build tsconfig.build.json --clean",
+    "codemod": "node --no-warnings --experimental-specifier-resolution=node --loader ts-node/esm packages/codemod/src/bin.ts",
     "format": "prettier -w .",
     "format:check": "prettier -c .",
     "postinstall": "pnpm scripts postinstall",
