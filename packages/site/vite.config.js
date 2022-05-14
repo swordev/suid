@@ -14,7 +14,7 @@ const SUID_VERSIONS = SUID_PKG_NAMES.reduce((result, name) => {
   const pkg = parseJsonFile(`${packageDir}/${name}/package.json`);
   result[`@suid/${name}`] = pkg.version;
   if (name === "site") {
-    result["solid-js"] = pkg.peerDependencies["solid-js"];
+    result["solid-js"] = pkg.dependencies["solid-js"];
     result["vite"] = pkg.devDependencies["vite"];
     result["vite-plugin-solid"] = pkg.devDependencies["vite-plugin-solid"];
   } else if (name === "codemod") {

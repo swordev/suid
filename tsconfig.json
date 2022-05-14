@@ -12,8 +12,7 @@
     "composite": true,
     "isolatedModules": false,
     "declaration": true,
-    "declarationMap": true,
-    "types": ["ts-jest"]
+    "declarationMap": true
   },
   "exclude": ["**/temp/", "**/.*/", "**/lib", "**/node_modules"]
 }
