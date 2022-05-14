@@ -49,7 +49,7 @@
   ],
   "scripts": {
     "build": "pnpm scripts prebuild && pnpm build:ts && pnpm build:site && pnpm scripts postbuild",
-    "build:site": "pnpm run build --filter ./packages/site",
+    "build:site": "pnpm --filter @suid/site build",
     "build:ts": "tsc --build tsconfig.build.json",
     "changeset": "changeset",
     "check": "pnpm format:check && pnpm lint",
@@ -62,7 +62,7 @@
     "prepare": "husky install",
     "release": "changeset publish",
     "scripts": "ts-node --project ./scripts/tsconfig.json -r ./scripts/node_modules/tsconfig-paths/register scripts",
-    "start": "pnpm watch --filter ./packages/site",
+    "start": "pnpm --filter @suid/site start",
     "test": "jest",
     "update": "ncu",
     "watch": "tsc --build tsconfig.build.json -w"
