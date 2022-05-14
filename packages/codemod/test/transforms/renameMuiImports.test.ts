@@ -7,7 +7,7 @@ const t = (code: string) => transform(code, [renameMuiImports]);
 describe("renameMuiImports", () => {
   it("transforms mui imports", () => {
     expect(t("import Button from '@mui/material/Button'")).toBe(
-      "import Button from '@suid/material/Button'"
+      format("import Button from '@suid/material/Button'")
     );
   });
   it("transforms only one imports", () => {
@@ -25,17 +25,17 @@ describe("renameMuiImports", () => {
   });
   it("keeps the import", () => {
     expect(t("import Button from 'thirdparty/material/Button'")).toBe(
-      "import Button from 'thirdparty/material/Button'"
+      format("import Button from 'thirdparty/material/Button'")
     );
   });
   it("replaces by default import", () => {
     expect(t("import { any } from '@mui/base'")).toBe(
-      `import any from "@suid/base/any";`
+      format(`import any from "@suid/base/any";`)
     );
   });
   it("replaces by other module", () => {
     expect(t("import { isHostComponent } from '@mui/base'")).toBe(
-      `import isHostComponent from "@suid/base/utils/isHostComponent";`
+      format(`import isHostComponent from "@suid/base/utils/isHostComponent";`)
     );
   });
 });

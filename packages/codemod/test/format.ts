@@ -1,16 +1,9 @@
-import createProject from "../src/utils/createProject";
-import { Project } from "ts-morph";
+import { format as _format } from "prettier";
 
-let project: Project | undefined;
 export default function format(code: string) {
-  if (!project) project = createProject();
-  const s = project.createSourceFile(
-    "file.tsx",
-    code.replace(/\s+/g, " ").trim(),
-    {
-      overwrite: true,
-    }
-  );
-  s.formatText();
-  return s.getText();
+  return _format(code, {
+    filepath: "file.tsx",
+  })
+    .split(/[\n]+/)
+    .join("\n");
 }

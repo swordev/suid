@@ -17,6 +17,9 @@
     "micromatch": "^4.0.5",
     "ts-morph": "^14.0.0"
   },
+  "devDependencies": {
+    "prettier": "^2.6.2"
+  },
   "publishConfig": {
     "directory": "lib"
   }

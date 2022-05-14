@@ -15,33 +15,33 @@ const t = (code: string) =>
 describe("replaceObjectBinding", () => {
   it("adds var prefix", () => {
     expect(t("const { a } = props; console.log(a)")).toBe(
-      `console.log(props.a)`
+      format(`console.log(props.a)`)
     );
   });
   it("uses original var name", () => {
     expect(t("const { a: b } = props; console.log(b)")).toBe(
-      `console.log(props.a)`
+      format(`console.log(props.a)`)
     );
   });
   it("uses mergeProps", () => {
     expect(t("const { a = 1 } = props; console.log(a)")).toBe(
       format(`
-      import { mergeProps } from "solid-js";
-      const baseProps = mergeProps({
-           a: 1,
-      }, props);
-      console.log(baseProps.a)
+        import { mergeProps } from "solid-js";
+        const baseProps = mergeProps({
+            a: 1,
+        }, props);
+        console.log(baseProps.a)
       `)
     );
   });
   it("uses mergeProps with getter", () => {
     expect(t("const { a = value() } = props; console.log(a)")).toBe(
       format(`
-      import { mergeProps } from "solid-js";
-      const baseProps = mergeProps({
-          get a() { return value(); }
-      }, props);
-      console.log(baseProps.a)
+        import { mergeProps } from "solid-js";
+        const baseProps = mergeProps({
+            get a() { return value(); }
+        }, props);
+        console.log(baseProps.a)
       `)
     );
   });

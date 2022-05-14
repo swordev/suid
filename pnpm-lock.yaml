@@ -88,6 +88,7 @@ importers:
       commander: ^9.2.0
       fast-glob: ^3.2.11
       micromatch: ^4.0.5
+      prettier: ^2.6.2
       ts-morph: ^14.0.0
     dependencies:
       '@suid/utils': link:../utils
@@ -96,6 +97,8 @@ importers:
       fast-glob: 3.2.11
       micromatch: 4.0.5
       ts-morph: 14.0.0
+    devDependencies:
+      prettier: 2.6.2
 
   packages/css:
     specifiers:
