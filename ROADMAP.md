@@ -34,7 +34,7 @@
 | `React.Ref`                   |  ✅   |
 | `React.useCallback`           |  ✅   |
 | `React.useContext`            |  ✅   |
-| `React.useEffect`             |  ⏳   |
+| `React.useEffect`             |  ✅   |
 | `React.useLayoutEffect`       |  ⏳   |
 | `React.useMemo`               |  ✅   |
 | `React.useRef`                |  ✅   |

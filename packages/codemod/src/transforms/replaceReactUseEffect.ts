@@ -1,58 +1,113 @@
 import getParentExpr from "../navigations/getParentExpr";
-import { Identifier, ts, Node, ReturnStatement } from "ts-morph";
+import {
+  Identifier,
+  ts,
+  Node,
+  ArrowFunction,
+  FunctionExpression,
+  ArrayLiteralExpression,
+  FunctionDeclaration,
+} from "ts-morph";
 
-export default function replaceReactUseEffect(node: Identifier) {
+export type ReplaceReactUseEffectOptions = {
+  removeDependencies?: boolean;
+};
+
+function getInlineReturn(node: Node) {
+  if (Node.isArrowFunction(node)) {
+    const children = node.forEachChildAsArray();
+    if (children.length === 2) return children[1];
+  }
+}
+
+type AnyFunction = FunctionExpression | FunctionDeclaration | ArrowFunction;
+
+function isAnyFunction(node: Node): node is AnyFunction {
+  return (
+    Node.isFunctionDeclaration(node) ||
+    Node.isFunctionExpression(node) ||
+    Node.isArrowFunction(node)
+  );
+}
+
+export default function replaceReactUseEffect(
+  node: Identifier,
+  options: ReplaceReactUseEffectOptions = {}
+) {
   const expr = getParentExpr(node);
   const call = expr.getParentIfKind(ts.SyntaxKind.CallExpression);
   let functionName = "createEffect";
-  let withCleanup = false;
-  let onlyReturn: ReturnStatement | undefined;
+  let withCleaning = false;
+  let useOn = false;
+  let onlyReturnFunction: AnyFunction | undefined;
+  let callback: AnyFunction | undefined;
+  let dependencies: ArrayLiteralExpression | undefined;
 
   if (call) {
-    const [cb, vars] = call.getArguments();
-    onlyReturn = (
-      call.getFirstChildByKind(ts.SyntaxKind.ArrowFunction) ||
-      call.getFirstChildByKind(ts.SyntaxKind.FunctionExpression)
-    )
-      ?.getFirstChildByKind(ts.SyntaxKind.Block)
-      ?.getChildSyntaxList()
-      ?.getFirstChildIfKind(ts.SyntaxKind.ReturnStatement);
+    const [pseudoCallback, pseudoDependencies] = call.getArguments();
+    if (isAnyFunction(pseudoCallback)) {
+      callback = pseudoCallback;
+      const returnType = callback.getReturnType().getText();
+      withCleaning =
+        returnType.startsWith("() =>") || returnType.startsWith("function");
 
-    let returnType = "";
-    if (Node.isFunctionExpression(cb) || Node.isArrowFunction(cb)) {
-      returnType = cb.getReturnType().getText();
+      const inlineReturnValue = getInlineReturn(callback);
+
+      // () => function() {}
+      if (inlineReturnValue) {
+        if (isAnyFunction(inlineReturnValue))
+          onlyReturnFunction = inlineReturnValue;
+      } else {
+        const body = callback
+          .getFirstChildByKindOrThrow(ts.SyntaxKind.Block)
+          .getChildSyntaxListOrThrow();
+        const bodyReturn = body.getFirstChildByKind(
+          ts.SyntaxKind.ReturnStatement
+        );
+        // () => { return function() {} }
+        if (bodyReturn && body.getChildren().length === 1) {
+          const [bodyReturnValue] = bodyReturn.forEachChildAsArray();
+          if (isAnyFunction(bodyReturnValue))
+            onlyReturnFunction = bodyReturnValue;
+        }
+      }
     }
-    withCleanup =
-      returnType.startsWith("() =>") || returnType.startsWith("function");
-    if (Node.isArrayLiteralExpression(vars) && !vars.getElements().length) {
-      functionName = "onMount";
+
+    if (Node.isArrayLiteralExpression(pseudoDependencies)) {
+      dependencies = pseudoDependencies;
+      const elements = dependencies.getElements();
+      if (!elements.length) {
+        functionName = "onMount";
+      } else if (!options.removeDependencies) {
+        useOn = true;
+      }
     }
-    if (vars) call.removeArgument(vars);
   }
 
-  if (withCleanup) {
-    if (functionName === "onMount" && onlyReturn) {
+  if (withCleaning) {
+    if (functionName === "onMount" && onlyReturnFunction) {
       functionName = "onCleanup";
-      const body = (
-        onlyReturn.getFirstChildByKind(ts.SyntaxKind.ArrowFunction) ||
-        onlyReturn.getFirstChildByKindOrThrow(ts.SyntaxKind.FunctionExpression)
-      )
-        .getFirstChildByKindOrThrow(ts.SyntaxKind.Block)
-        .getChildSyntaxListOrThrow();
-      onlyReturn.replaceWithText(body.getText());
+      callback?.replaceWithText(onlyReturnFunction.getText());
     } else {
       functionName += "WithCleaning";
     }
     expr.replaceWithText(functionName);
     node.getSourceFile().addImportDeclaration({
-      namedImports: [functionName],
-      moduleSpecifier: "@suid/system",
+      defaultImport: functionName,
+      moduleSpecifier: `@suid/system/${functionName}`,
     });
   } else {
     expr.replaceWithText(functionName);
     node.getSourceFile().addImportDeclaration({
-      namedImports: [functionName],
+      namedImports: [functionName, ...(useOn ? ["on"] : [])],
       moduleSpecifier: "solid-js",
     });
   }
+
+  if (callback && dependencies && useOn) {
+    callback.replaceWithText(
+      `on(\n() => ${dependencies.getText()},\n${callback.getText()}\n)`
+    );
+  }
+  if (dependencies) call?.removeArgument(dependencies);
 }
