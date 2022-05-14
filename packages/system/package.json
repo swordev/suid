@@ -16,6 +16,9 @@
     "clsx": "^1.1.1",
     "csstype": "^3.0.11"
   },
+  "peerDependencies": {
+    "solid-js": "^1.3.0"
+  },
   "publishConfig": {
     "directory": "lib"
   }
