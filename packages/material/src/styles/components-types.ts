@@ -50,6 +50,7 @@ export { default as MuiListSubheader } from "../ListSubheader";
 export { default as MuiModal } from "../Modal";
 export { default as MuiOutlinedInput } from "../OutlinedInput";
 export { default as MuiPaper } from "../Paper";
+export { default as MuiPopover } from "../Popover";
 export { default as MuiRadio } from "../Radio";
 export { default as MuiRadioGroup } from "../RadioGroup";
 export { default as MuiSkeleton } from "../Skeleton";

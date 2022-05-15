@@ -125,7 +125,7 @@
 | Pagination              |       |
 | PaginationItem          |       |
 | Paper                   |  ✅   |
-| Popover                 |  ✅   |
+| Popover                 |       |
 | Popper                  |  ✅   |
 | Portal                  |  ✅   |
 | Radio                   |  ✅   |
