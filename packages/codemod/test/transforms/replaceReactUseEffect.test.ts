@@ -110,4 +110,22 @@ describe("replaceReactUseEffect", () => {
       `)
     );
   });
+  it("transforms by onCleanup", () => {
+    expect(
+      t(
+        `
+        import * as React from "react";
+        React.useEffect(() => {
+          return () => console.log('cleanup');
+        }, [])
+      `
+      )
+    ).toBe(
+      format(`
+        import * as React from "react";
+        import { onCleanup } from "solid-js";
+        onCleanup(() => console.log('cleanup'))
+      `)
+    );
+  });
 });

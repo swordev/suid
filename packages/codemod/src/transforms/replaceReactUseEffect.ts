@@ -14,7 +14,10 @@ export type ReplaceReactUseEffectOptions = {
 };
 
 function getInlineReturn(node: Node) {
-  if (Node.isArrowFunction(node)) {
+  if (
+    Node.isArrowFunction(node) &&
+    !node.getChildrenOfKind(ts.SyntaxKind.Block)
+  ) {
     const children = node.forEachChildAsArray();
     if (children.length === 2) return children[1];
   }
@@ -88,14 +91,18 @@ export default function replaceReactUseEffect(
     if (functionName === "onMount" && onlyReturnFunction) {
       functionName = "onCleanup";
       callback?.replaceWithText(onlyReturnFunction.getText());
+      node.getSourceFile().addImportDeclaration({
+        namedImports: [functionName],
+        moduleSpecifier: "solid-js",
+      });
     } else {
       functionName += "WithCleaning";
+      node.getSourceFile().addImportDeclaration({
+        defaultImport: functionName,
+        moduleSpecifier: `@suid/system/${functionName}`,
+      });
     }
     expr.replaceWithText(functionName);
-    node.getSourceFile().addImportDeclaration({
-      defaultImport: functionName,
-      moduleSpecifier: `@suid/system/${functionName}`,
-    });
   } else {
     expr.replaceWithText(functionName);
     node.getSourceFile().addImportDeclaration({
