@@ -128,4 +128,28 @@ describe("replaceReactUseEffect", () => {
       `)
     );
   });
+  it("transforms by createRenderEffect", () => {
+    expect(
+      t(
+        `
+        import * as React from "react";
+        React.useEffect(() => {
+          console.log("effect")
+        }, [a])
+      `,
+        {
+          functionName: "createRenderEffect",
+          removeDependencies: true,
+        }
+      )
+    ).toBe(
+      format(`
+        import * as React from "react";
+        import { createRenderEffect } from "solid-js";
+        createRenderEffect(() => {
+          console.log('effect')
+        })
+      `)
+    );
+  });
 });

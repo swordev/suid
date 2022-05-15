@@ -36,7 +36,7 @@ const codemodTransformers: Record<string, boolean | "pending"> = {
   "`React.useCallback`": true,
   "`React.useContext`": true,
   "`React.useEffect`": true,
-  "`React.useLayoutEffect`": "pending",
+  "`React.useLayoutEffect`": true,
   "`React.useMemo`": true,
   "`React.useRef`": true,
   "`React.useState`": true,

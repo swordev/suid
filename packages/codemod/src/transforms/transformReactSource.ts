@@ -21,6 +21,7 @@ import replaceReactRef from "./replaceReactRef";
 import replaceReactUseCallback from "./replaceReactUseCallback";
 import replaceReactUseContext from "./replaceReactUseContext";
 import replaceReactUseEffect from "./replaceReactUseEffect";
+import replaceReactUseLayoutEffect from "./replaceReactUseLayoutEffect";
 import replaceReactUseMemo from "./replaceReactUseMemo";
 import replaceReactUseState from "./replaceReactUseState";
 import replaceSpreadAsignment from "./replaceSpreadAsignment";
@@ -41,6 +42,7 @@ const reactObjectTransformers: Record<string, (node: Identifier) => void> = {
   JSXElementConstructor: replaceReactJSXElementConstructor,
   useMemo: replaceReactUseMemo,
   useEffect: replaceReactUseEffect,
+  useLayoutEffect: replaceReactUseLayoutEffect,
 };
 
 export default function transformReactSource(source: SourceFile) {

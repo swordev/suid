@@ -11,6 +11,10 @@ import {
 
 export type ReplaceReactUseEffectOptions = {
   removeDependencies?: boolean;
+  /**
+   * @default "createEffect"
+   */
+  functionName?: string;
 };
 
 function getInlineReturn(node: Node) {
@@ -39,7 +43,7 @@ export default function replaceReactUseEffect(
 ) {
   const expr = getParentExpr(node);
   const call = expr.getParentIfKind(ts.SyntaxKind.CallExpression);
-  let functionName = "createEffect";
+  let functionName = options.functionName || "createEffect";
   let withCleaning = false;
   let useOn = false;
   let onlyReturnFunction: AnyFunction | undefined;
