@@ -1,12 +1,20 @@
-#!/usr/bin/env node
+#!/usr/bin/env -S node --no-warnings --experimental-specifier-resolution=node
 import react2solid from "./actions/react2solid";
 import { program } from "commander";
+import { dirname } from "path";
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const pkg = require(`${__dirname}/package.json`);
+const rootPath = import.meta.url.endsWith(".ts")
+  ? dirname(dirname(import.meta.url))
+  : dirname(import.meta.url);
 
-program.name(pkg.name);
-program.version(pkg.version);
+const {
+  default: { name, version },
+} = (await import(`${rootPath}/package.json`)) as {
+  default: { name: string; version: string };
+};
+
+program.name(name);
+program.version(version);
 
 program
   .command("react2solid")
