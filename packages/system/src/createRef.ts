@@ -5,9 +5,13 @@ function createRef<T>(
 ): {
   (value: T): void;
   ref: T;
+  /**
+   * @alias
+   */
+  current: T;
 } {
   const cb: any = (e: any) => {
-    cb.ref = e;
+    cb.ref = cb.current = e;
     if (typeof input === "function") {
       const inputResult = input();
       if (typeof inputResult === "function") {
