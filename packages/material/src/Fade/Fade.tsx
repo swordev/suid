@@ -11,8 +11,9 @@ import { children, createMemo, useContext } from "solid-js";
 const $ = createComponentFactory<FadeTypeMap>()({
   name: "MuiFader",
   selfPropNames: ["appear", "children", "easing", "in", "timeout"],
-  propDefaults: ({ set, theme }) =>
-    set({
+  propDefaults: ({ set }) => {
+    const theme = useTheme();
+    return set({
       appear: true,
       get timeout() {
         return {
@@ -20,7 +21,8 @@ const $ = createComponentFactory<FadeTypeMap>()({
           exit: theme.transitions.duration.leavingScreen,
         };
       },
-    }),
+    });
+  },
 });
 
 export const fadeSelfPropNames = $.selfPropNames;

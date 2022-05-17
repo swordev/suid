@@ -10,7 +10,6 @@ export type ThemePropOptions<C> = {
 
 export type PropDefaultsCb<C> = (data: {
   set: (props: Omit<DefaultPropsOf<C>, "children">) => InPropsOf<C>;
-  theme: ReturnType<typeof useTheme>;
   inProps: PropsOf<C>;
 }) => InPropsOf<C>;
 
@@ -21,7 +20,6 @@ export default function useThemeProps<C>(options: ThemePropOptions<C>) {
     typeof options.propDefaults === "function"
       ? (options.propDefaults as PropDefaultsCb<C>)({
           set,
-          theme,
           inProps: options.props,
         })
       : options.propDefaults;

@@ -19,8 +19,9 @@ const $ = createComponentFactory<SlideTypeMap>()({
     "in",
     "timeout",
   ],
-  propDefaults: ({ set, theme }) =>
-    set({
+  propDefaults: ({ set }) => {
+    const theme = useTheme();
+    return set({
       appear: true,
       direction: "down",
       get easing() {
@@ -35,7 +36,8 @@ const $ = createComponentFactory<SlideTypeMap>()({
           exit: theme.transitions.duration.leavingScreen,
         };
       },
-    }),
+    });
+  },
 });
 
 type Direction = "left" | "right" | "up" | "down";
