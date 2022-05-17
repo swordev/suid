@@ -1,5 +1,30 @@
 # @suid/material
 
+## 0.3.0
+
+### Minor Changes
+
+- [`5e39842b`](https://github.com/swordev/suid/commit/5e39842b4f354e11688c38c88bcce0206209bc45) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `Avatar` component
+
+* [`3d6f9228`](https://github.com/swordev/suid/commit/3d6f922807e159c66b5244ba505b06bbb5a06ba1) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `Popover` component
+
+### Patch Changes
+
+- [`831fca11`](https://github.com/swordev/suid/commit/831fca114d55a0b41595d2b2500e0e18553c28d4) Thanks [@juanrgm](https://github.com/juanrgm)! - Use the `InputBase` classes
+
+* [`2cbe2233`](https://github.com/swordev/suid/commit/2cbe2233ac25e7d152523213446e7ba9bcbf6da6) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix `Chip` ellipsis
+
+- [`5eea1f4d`](https://github.com/swordev/suid/commit/5eea1f4d039bd8d8faab869ace8027c6ef321ae9) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
+* [`74f92e00`](https://github.com/swordev/suid/commit/74f92e00ff379a5ceb83be02613fe4b775de715c) Thanks [@juanrgm](https://github.com/juanrgm)! - Use `BackdropProps` property in `Modal` component
+
+* Updated dependencies [[`1678375e`](https://github.com/swordev/suid/commit/1678375ea0e0fb3e9cf5332562d4425f82a5c0f2), [`5de407a6`](https://github.com/swordev/suid/commit/5de407a6ffd97eb98069bb3528fe2b0c4c6baa00), [`5eea1f4d`](https://github.com/swordev/suid/commit/5eea1f4d039bd8d8faab869ace8027c6ef321ae9), [`a5301430`](https://github.com/swordev/suid/commit/a5301430638a936acded48116bd1eaf42e51584b)]:
+  - @suid/system@0.3.0
+  - @suid/base@0.2.1
+  - @suid/types@0.1.2
+  - @suid/utils@0.2.1
+  - @suid/css@0.1.2
+
 ## 0.2.1
 
 ### Patch Changes

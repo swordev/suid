@@ -1,6 +1,6 @@
 {
   "name": "@suid/utils",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Utils used by suid packages.",
   "type": "module",
   "scripts": {

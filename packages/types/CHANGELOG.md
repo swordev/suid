@@ -1,5 +1,11 @@
 # @suid/types
 
+## 0.1.2
+
+### Patch Changes
+
+- [`5eea1f4d`](https://github.com/swordev/suid/commit/5eea1f4d039bd8d8faab869ace8027c6ef321ae9) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
 ## 0.1.1
 
 ### Patch Changes

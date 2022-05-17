@@ -1,5 +1,26 @@
 # @suid/site
 
+## 0.3.0
+
+### Minor Changes
+
+- [`d89f7937`](https://github.com/swordev/suid/commit/d89f7937a915ce57292baaf4984668ea8c489fad) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `Popover` page component
+
+* [`e2829fec`](https://github.com/swordev/suid/commit/e2829fec82e2af2d7e09b4cb5af727557f482fbe) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `Avatar` page component
+
+### Patch Changes
+
+- [`5eea1f4d`](https://github.com/swordev/suid/commit/5eea1f4d039bd8d8faab869ace8027c6ef321ae9) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
+- Updated dependencies [[`f001a375`](https://github.com/swordev/suid/commit/f001a37546116252da900c44122de384cd05692e), [`1678375e`](https://github.com/swordev/suid/commit/1678375ea0e0fb3e9cf5332562d4425f82a5c0f2), [`77ae4dbd`](https://github.com/swordev/suid/commit/77ae4dbdbbdeb63674b85d901650279ce8fdb10c), [`831fca11`](https://github.com/swordev/suid/commit/831fca114d55a0b41595d2b2500e0e18553c28d4), [`5de407a6`](https://github.com/swordev/suid/commit/5de407a6ffd97eb98069bb3528fe2b0c4c6baa00), [`2cbe2233`](https://github.com/swordev/suid/commit/2cbe2233ac25e7d152523213446e7ba9bcbf6da6), [`f8ec1d59`](https://github.com/swordev/suid/commit/f8ec1d594a876024ed4b09120eb5de83fb500ba5), [`15e77556`](https://github.com/swordev/suid/commit/15e7755617a782908eb5bb7e13f4854b2871e454), [`c0f6b40b`](https://github.com/swordev/suid/commit/c0f6b40b438cafa15bd2646d60b66f8e2d630a6f), [`5eea1f4d`](https://github.com/swordev/suid/commit/5eea1f4d039bd8d8faab869ace8027c6ef321ae9), [`b3db5308`](https://github.com/swordev/suid/commit/b3db5308da43f288f71886c6f427c68b304b0882), [`5e39842b`](https://github.com/swordev/suid/commit/5e39842b4f354e11688c38c88bcce0206209bc45), [`faa8f0d8`](https://github.com/swordev/suid/commit/faa8f0d8e5c1f4e908ca5ca50b5a7083abbd67af), [`b7d0a871`](https://github.com/swordev/suid/commit/b7d0a87131e5123b7780b9c72dbe7a6767302311), [`74f92e00`](https://github.com/swordev/suid/commit/74f92e00ff379a5ceb83be02613fe4b775de715c), [`3d6f9228`](https://github.com/swordev/suid/commit/3d6f922807e159c66b5244ba505b06bbb5a06ba1), [`a5301430`](https://github.com/swordev/suid/commit/a5301430638a936acded48116bd1eaf42e51584b)]:
+  - @suid/codemod@0.3.0
+  - @suid/system@0.3.0
+  - @suid/material@0.3.0
+  - @suid/icons-material@0.2.0
+  - @suid/base@0.2.1
+  - @suid/types@0.1.2
+  - @suid/utils@0.2.1
+
 ## 0.2.1
 
 ### Patch Changes

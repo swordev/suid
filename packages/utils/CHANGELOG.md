@@ -1,5 +1,14 @@
 # @suid/utils
 
+## 0.2.1
+
+### Patch Changes
+
+- [`5eea1f4d`](https://github.com/swordev/suid/commit/5eea1f4d039bd8d8faab869ace8027c6ef321ae9) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
+- Updated dependencies [[`5eea1f4d`](https://github.com/swordev/suid/commit/5eea1f4d039bd8d8faab869ace8027c6ef321ae9)]:
+  - @suid/types@0.1.2
+
 ## 0.2.0
 
 ### Minor Changes
