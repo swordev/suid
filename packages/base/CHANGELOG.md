@@ -1,5 +1,17 @@
 # @suid/base
 
+## 0.2.1
+
+### Patch Changes
+
+- [`5eea1f4d`](https://github.com/swordev/suid/commit/5eea1f4d039bd8d8faab869ace8027c6ef321ae9) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
+- Updated dependencies [[`1678375e`](https://github.com/swordev/suid/commit/1678375ea0e0fb3e9cf5332562d4425f82a5c0f2), [`5de407a6`](https://github.com/swordev/suid/commit/5de407a6ffd97eb98069bb3528fe2b0c4c6baa00), [`5eea1f4d`](https://github.com/swordev/suid/commit/5eea1f4d039bd8d8faab869ace8027c6ef321ae9), [`a5301430`](https://github.com/swordev/suid/commit/a5301430638a936acded48116bd1eaf42e51584b)]:
+  - @suid/system@0.3.0
+  - @suid/types@0.1.2
+  - @suid/utils@0.2.1
+  - @suid/css@0.1.2
+
 ## 0.2.0
 
 ### Minor Changes

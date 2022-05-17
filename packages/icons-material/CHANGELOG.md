@@ -1,5 +1,18 @@
 # @suid/icons-material
 
+## 0.2.0
+
+### Minor Changes
+
+- [`f8ec1d59`](https://github.com/swordev/suid/commit/f8ec1d594a876024ed4b09120eb5de83fb500ba5) Thanks [@juanrgm](https://github.com/juanrgm)! - Sync with MUI v5.5.0 (+416 icons)
+
+### Patch Changes
+
+- [`5eea1f4d`](https://github.com/swordev/suid/commit/5eea1f4d039bd8d8faab869ace8027c6ef321ae9) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
+- Updated dependencies [[`831fca11`](https://github.com/swordev/suid/commit/831fca114d55a0b41595d2b2500e0e18553c28d4), [`2cbe2233`](https://github.com/swordev/suid/commit/2cbe2233ac25e7d152523213446e7ba9bcbf6da6), [`5eea1f4d`](https://github.com/swordev/suid/commit/5eea1f4d039bd8d8faab869ace8027c6ef321ae9), [`5e39842b`](https://github.com/swordev/suid/commit/5e39842b4f354e11688c38c88bcce0206209bc45), [`74f92e00`](https://github.com/swordev/suid/commit/74f92e00ff379a5ceb83be02613fe4b775de715c), [`3d6f9228`](https://github.com/swordev/suid/commit/3d6f922807e159c66b5244ba505b06bbb5a06ba1)]:
+  - @suid/material@0.3.0
+
 ## 0.1.2
 
 ### Patch Changes

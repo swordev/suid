@@ -1,5 +1,28 @@
 # @suid/codemod
 
+## 0.3.0
+
+### Minor Changes
+
+- [`77ae4dbd`](https://github.com/swordev/suid/commit/77ae4dbdbbdeb63674b85d901650279ce8fdb10c) Thanks [@juanrgm](https://github.com/juanrgm)! - Transform `React.useEffect` dependencies
+
+* [`15e77556`](https://github.com/swordev/suid/commit/15e7755617a782908eb5bb7e13f4854b2871e454) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `React.JSXElementConstructor` transform
+
+- [`c0f6b40b`](https://github.com/swordev/suid/commit/c0f6b40b438cafa15bd2646d60b66f8e2d630a6f) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `React.ReactElement` transform
+
+* [`b3db5308`](https://github.com/swordev/suid/commit/b3db5308da43f288f71886c6f427c68b304b0882) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `React.useLayoutEffect` transform
+
+- [`faa8f0d8`](https://github.com/swordev/suid/commit/faa8f0d8e5c1f4e908ca5ca50b5a7083abbd67af) Thanks [@juanrgm](https://github.com/juanrgm)! - Limit the `ObjectBinding`/`SpreadAsignment` transforms to `jsx`/`component-top-level` scopes
+
+* [`b7d0a871`](https://github.com/swordev/suid/commit/b7d0a87131e5123b7780b9c72dbe7a6767302311) Thanks [@juanrgm](https://github.com/juanrgm)! - Transform internal MUI imports
+
+### Patch Changes
+
+- [`f001a375`](https://github.com/swordev/suid/commit/f001a37546116252da900c44122de384cd05692e) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix binary file
+
+- Updated dependencies [[`5eea1f4d`](https://github.com/swordev/suid/commit/5eea1f4d039bd8d8faab869ace8027c6ef321ae9)]:
+  - @suid/utils@0.2.1
+
 ## 0.2.1
 
 ### Patch Changes
