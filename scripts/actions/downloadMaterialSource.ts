@@ -12,7 +12,7 @@ async function downloadMaterialSource(options: { version: string }) {
   } else {
     const url = `https://github.com/mui/material-ui/archive/refs/tags/v${options.version}.zip`;
     console.log(`[${name}] Downloading ${url}`);
-    await mkdir(dirname(zipPath));
+    await mkdir(dirname(zipPath), { recursive: true });
     const p = spawn("curl", [url, "-L", "-o", zipPath], {
       stdio: "inherit",
     });
