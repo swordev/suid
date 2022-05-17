@@ -1,3 +1,4 @@
+import inputBaseClasses from "../InputBase/inputBaseClasses";
 import { generateUtilityClasses, generateUtilityClass } from "@suid/base";
 
 export interface FilledInputClasses {
@@ -43,27 +44,9 @@ export function getFilledInputUtilityClass(slot: string): string {
   return generateUtilityClass("MuiFilledInput", slot);
 }
 
-const filledInputClasses: FilledInputClasses = generateUtilityClasses(
-  "MuiFilledInput",
-  [
-    "root",
-    "colorSecondary",
-    "underline",
-    "focused",
-    "disabled",
-    "adornedStart",
-    "adornedEnd",
-    "error",
-    "sizeSmall",
-    "multiline",
-    "hiddenLabel",
-    "input",
-    "inputSizeSmall",
-    "inputHiddenLabel",
-    "inputMultiline",
-    "inputAdornedStart",
-    "inputAdornedEnd",
-  ]
-);
+const filledInputClasses: FilledInputClasses = {
+  ...inputBaseClasses,
+  ...generateUtilityClasses("MuiFilledInput", ["root", "underline", "input"]),
+};
 
 export default filledInputClasses;

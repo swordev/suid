@@ -1,3 +1,4 @@
+import inputBaseClasses from "../InputBase/inputBaseClasses";
 import { generateUtilityClasses, generateUtilityClass } from "@suid/base";
 
 export interface OutlinedInputClasses {
@@ -39,25 +40,13 @@ export function getOutlinedInputUtilityClass(slot: string): string {
   return generateUtilityClass("MuiOutlinedInput", slot);
 }
 
-const outlinedInputClasses: OutlinedInputClasses = generateUtilityClasses(
-  "MuiOutlinedInput",
-  [
+const outlinedInputClasses: OutlinedInputClasses = {
+  ...inputBaseClasses,
+  ...generateUtilityClasses("MuiOutlinedInput", [
     "root",
-    "colorSecondary",
-    "focused",
-    "disabled",
-    "adornedStart",
-    "adornedEnd",
-    "error",
-    "sizeSmall",
-    "multiline",
     "notchedOutline",
     "input",
-    "inputSizeSmall",
-    "inputMultiline",
-    "inputAdornedStart",
-    "inputAdornedEnd",
-  ]
-);
+  ]),
+};
 
 export default outlinedInputClasses;
