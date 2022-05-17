@@ -92,7 +92,7 @@ export interface ButtonBaseTypeMap<P = {}, D extends ElementType = "button"> {
      */
     TouchRippleProps?: Partial<TouchRippleProps>;
     /**
-     * A ref that points to the `TouchRippple` element.
+     * A ref that points to the `TouchRipple` element.
      */
     touchRippleRef?: RefProp<TouchRippleActions>;
   };
