@@ -1,4 +1,5 @@
 export { default as MuiAlert } from "../Alert";
+export { default as MuiAvatar } from "../Avatar";
 export { default as MuiAlertTitle } from "../AlertTitle";
 export { default as MuiAppBar } from "../AppBar";
 export { default as MuiBackdrop } from "../Backdrop";

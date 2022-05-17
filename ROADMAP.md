@@ -52,7 +52,7 @@
 | AlertTitle              |  ✅   |
 | AppBar                  |  ✅   |
 | Autocomplete            |       |
-| Avatar                  |       |
+| Avatar                  |  ✅   |
 | AvatarGroup             |       |
 | Backdrop                |  ✅   |
 | Badge                   |  ✅   |
