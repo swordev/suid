@@ -1,0 +1,10 @@
+import $ from "./utils/createSvgIcon";
+
+export default $(
+  () => (
+    <g>
+      <path d="M16.75,6L16,6V3H8v3L7.25,6C3.97,6,1.1,8.53,1,11.82C0.9,15.21,3.62,18,7,18v3h2v-3h6v3h2v-3c3.38,0,6.1-2.79,6-6.18 C22.9,8.53,20.03,6,16.75,6z M10,5h4v1h-4V5z" />
+    </g>
+  ),
+  "PropaneSharp"
+);
