@@ -1,5 +1,11 @@
 # @suid/base
 
+## 0.2.2
+
+### Patch Changes
+
+- [`ef28e9f1`](https://github.com/swordev/suid/commit/ef28e9f1d77d585ff6e37901e770197e4b0d0a03) Thanks [@juanrgm](https://github.com/juanrgm)! - Use material `Theme` context
+
 ## 0.2.1
 
 ### Patch Changes
