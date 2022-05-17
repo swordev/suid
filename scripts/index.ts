@@ -19,7 +19,7 @@ export function snakeCase(value: string) {
   return value.replace(/[A-Z]/g, (letter) => `-${letter.toLowerCase()}`);
 }
 
-const version = "5.4.2";
+const version = "5.5.0";
 
 program
   .command(snakeCase(clean.name))
