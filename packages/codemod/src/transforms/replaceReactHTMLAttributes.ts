@@ -1,4 +1,4 @@
-import getParentExpr from "../navigations/getParentExpr";
+import getParentExpr from "../utils/getParentExpr";
 import uncapitalize from "@suid/utils/uncapitalize";
 import { Identifier, ts } from "ts-morph";
 

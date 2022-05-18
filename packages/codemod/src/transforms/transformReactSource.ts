@@ -1,6 +1,6 @@
 import findObjectBindingPatterns from "../navigations/findObjectBindingPatterns";
+import findObjectLiteralExpressions from "../navigations/findObjectLiteralExpressions";
 import findReactObjects from "../navigations/findReactObjects";
-import findObjectLiteralExpressions from "../utils/findObjectLiteralExpressions";
 import groupImports from "./groupImports";
 import removePropTypes from "./removePropTypes";
 import removeReactImports from "./removeReactImports";

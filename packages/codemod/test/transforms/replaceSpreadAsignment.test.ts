@@ -1,5 +1,5 @@
+import findObjectLiteralExpressions from "../../src/navigations/findObjectLiteralExpressions";
 import replaceSpreadAsignment from "../../src/transforms/replaceSpreadAsignment";
-import findObjectLiteralExpressions from "../../src/utils/findObjectLiteralExpressions";
 import f from "../format";
 import transform from "../transform";
 

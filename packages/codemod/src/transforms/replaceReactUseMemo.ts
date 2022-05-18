@@ -1,4 +1,4 @@
-import getParentExpr from "../navigations/getParentExpr";
+import getParentExpr from "../utils/getParentExpr";
 import renameGetterVarToCall from "./renameGetterVarToCall";
 import { Identifier, ts } from "ts-morph";
 

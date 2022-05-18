@@ -1,4 +1,4 @@
-import getParentExpr from "./getParentExpr";
+import getParentExpr from "../utils/getParentExpr";
 import { Identifier, Node, SourceFile, ts } from "ts-morph";
 
 export default function findReactObjects(source: SourceFile, names?: string[]) {
