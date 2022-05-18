@@ -8,6 +8,7 @@ import removeReactImports from "./removeReactImports";
 import removeKeyAttr from "./removeReactKeyAttr";
 import renameMuiImports from "./renameMuiImports";
 import replaceObjectBinding from "./replaceObjectBinding";
+import replaceReactClassNameAttr from "./replaceReactClassNameAttr";
 import replaceReactContext from "./replaceReactContext";
 import replaceReactCreateContext from "./replaceReactCreateContext";
 import replaceReactElementType from "./replaceReactElementType";
@@ -48,6 +49,7 @@ const reactObjectTransformers: Record<string, (node: Identifier) => void> = {
 };
 
 const attrTransforms: Record<string, (node: JsxAttribute) => void> = {
+  className: replaceReactClassNameAttr,
   key: removeKeyAttr,
 };
 
