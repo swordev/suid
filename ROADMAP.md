@@ -23,6 +23,7 @@
 | `React.*Event`                |  ✅   |
 | `React.*EventHandler`         |  ✅   |
 | `React.*HTMLAttributes`       |  ✅   |
+| `React.Attributes.key`        |  ✅   |
 | `React.Context`               |  ✅   |
 | `React.createContext`         |  ✅   |
 | `React.ElementType`           |  ✅   |

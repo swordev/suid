@@ -24,6 +24,7 @@ const codemodTransformers: Record<string, boolean | "pending"> = {
   "`React.*Event`": true,
   "`React.*EventHandler`": true,
   "`React.*HTMLAttributes`": true,
+  "`React.Attributes.key`": true,
   "`React.Context`": true,
   "`React.createContext`": true,
   "`React.ElementType`": true,

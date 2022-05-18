@@ -1,9 +1,11 @@
+import findAttributes from "../navigations/findAttributes";
 import findObjectBindingPatterns from "../navigations/findObjectBindingPatterns";
 import findObjectLiteralExpressions from "../navigations/findObjectLiteralExpressions";
 import findReactObjects from "../navigations/findReactObjects";
 import groupImports from "./groupImports";
 import removePropTypes from "./removePropTypes";
 import removeReactImports from "./removeReactImports";
+import removeKeyAttr from "./removeReactKeyAttr";
 import renameMuiImports from "./renameMuiImports";
 import replaceObjectBinding from "./replaceObjectBinding";
 import replaceReactContext from "./replaceReactContext";
@@ -25,7 +27,7 @@ import replaceReactUseLayoutEffect from "./replaceReactUseLayoutEffect";
 import replaceReactUseMemo from "./replaceReactUseMemo";
 import replaceReactUseState from "./replaceReactUseState";
 import replaceSpreadAsignment from "./replaceSpreadAsignment";
-import { Identifier, SourceFile } from "ts-morph";
+import { Identifier, JsxAttribute, SourceFile } from "ts-morph";
 
 const reactObjectTransformers: Record<string, (node: Identifier) => void> = {
   Fragment: replaceReactFragment,
@@ -43,6 +45,10 @@ const reactObjectTransformers: Record<string, (node: Identifier) => void> = {
   useMemo: replaceReactUseMemo,
   useEffect: replaceReactUseEffect,
   useLayoutEffect: replaceReactUseLayoutEffect,
+};
+
+const attrTransforms: Record<string, (node: JsxAttribute) => void> = {
+  key: removeKeyAttr,
 };
 
 export default function transformReactSource(source: SourceFile) {
@@ -70,5 +76,9 @@ export default function transformReactSource(source: SourceFile) {
   findObjectLiteralExpressions(source).forEach((node) =>
     replaceSpreadAsignment(node)
   );
+  findAttributes(source).forEach((node) => {
+    const name = node.getName();
+    attrTransforms[name]?.(node);
+  });
   groupImports(source);
 }
