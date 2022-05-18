@@ -5,7 +5,7 @@ import findReactObjects from "../navigations/findReactObjects";
 import groupImports from "./groupImports";
 import removePropTypes from "./removePropTypes";
 import removeReactImports from "./removeReactImports";
-import removeKeyAttr from "./removeReactKeyAttr";
+import removeReactKeyAttr from "./removeReactKeyAttr";
 import renameMuiImports from "./renameMuiImports";
 import replaceObjectBinding from "./replaceObjectBinding";
 import replaceReactClassNameAttr from "./replaceReactClassNameAttr";
@@ -50,7 +50,7 @@ const reactObjectTransformers: Record<string, (node: Identifier) => void> = {
 
 const attrTransforms: Record<string, (node: JsxAttribute) => void> = {
   className: replaceReactClassNameAttr,
-  key: removeKeyAttr,
+  key: removeReactKeyAttr,
 };
 
 export default function transformReactSource(source: SourceFile) {
