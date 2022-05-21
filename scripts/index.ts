@@ -14,6 +14,7 @@ import postbuild from "~/actions/postbuild";
 import postinstall from "~/actions/postinstall";
 import prebuild from "~/actions/prebuild";
 import syncIconsMaterial from "~/actions/syncIconsMaterial";
+import syncMaterialSource from "~/actions/syncMaterialSource";
 
 export function snakeCase(value: string) {
   return value.replace(/[A-Z]/g, (letter) => `-${letter.toLowerCase()}`);
@@ -77,5 +78,10 @@ program
   .command(snakeCase(syncIconsMaterial.name))
   .option("--version [value]", "Material UI version", version)
   .action((options: { version: string }) => syncIconsMaterial(options));
+
+program
+  .command(snakeCase(syncMaterialSource.name))
+  .option("--version [value]", "Material UI version", version)
+  .action((options: { version: string }) => syncMaterialSource(options));
 
 program.parse();
