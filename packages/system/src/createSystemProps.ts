@@ -1,5 +1,6 @@
 import { Theme } from "./createTheme";
 import getThemeValue from "./getThemeValue";
+import { createUnaryUnit } from "./spacing";
 import { StyledPropsBase } from "./styledProps";
 
 const dirMap = {
@@ -54,12 +55,67 @@ function mProp<V>(name: string, suffix: string[], onValue?: OnValue) {
 
 function createSystemProps() {
   return {
+    ...createSystemDisplayProps(),
+    ...createSystemFlexboxProps(),
+    ...createSystemGridProps(),
     ...createSystemPositionProps(),
     ...createSystemPaletteProps(),
     ...createSystemSizingProps(),
     ...createSystemBorderProps(),
     ...createSystemSpacingProps(),
     ...createSystemTypographyProps(),
+  };
+}
+
+export function createSystemDisplayProps() {
+  return {
+    displayPrint: customProp<string>("displayPrint", (name, display) => ({
+      "@media print": {
+        display,
+      },
+    })),
+    displayRaw: prop("display"),
+    overflow: prop("overflow"),
+    textOverflow: prop("textOverflow"),
+    visibility: prop("visibility"),
+    whiteSpace: prop("whiteSpace"),
+  };
+}
+
+export function createSystemFlexboxProps() {
+  return {
+    flexBasis: prop("flexBasis"),
+    flexDirection: prop("flexDirection"),
+    flexWrap: prop("flexWrap"),
+    justifyContent: prop("justifyContent"),
+    alignItems: prop("alignItems"),
+    alignContent: prop("alignContent"),
+    order: prop("order"),
+    flex: prop("flex"),
+    flexGrow: prop("flexGrow"),
+    flexShrink: prop("flexShrink"),
+    alignSelf: prop("alignSelf"),
+    justifyItems: prop("justifyItems"),
+    justifySelf: prop("justifySelf"),
+  };
+}
+
+export function createSystemGridProps() {
+  const spacing: OnValue = (name, value, theme) =>
+    createUnaryUnit(theme, "spacing", 8, name)(value);
+  return {
+    gap: prop("gap", spacing),
+    columnGap: prop("columnGap", spacing),
+    rowGap: prop("rowGap", spacing),
+    gridColumn: prop("gridColumn"),
+    gridRow: prop("gridRow"),
+    gridAutoFlow: prop("gridAutoFlow"),
+    gridAutoColumns: prop("gridAutoColumns"),
+    gridAutoRows: prop("gridAutoRows"),
+    gridTemplateColumns: prop("gridTemplateColumns"),
+    gridTemplateRows: prop("gridTemplateRows"),
+    gridTemplateAreas: prop("gridTemplateAreas"),
+    gridArea: prop("gridArea"),
   };
 }
 
