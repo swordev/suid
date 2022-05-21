@@ -19,7 +19,7 @@ import {
   handleBreakpoints,
   resolveBreakpointValues,
 } from "@suid/system";
-import { SxPropsObject } from "@suid/system/sxProps";
+import StyledProps from "@suid/system/styledProps";
 import { InPropsOf } from "@suid/types";
 import clsx from "clsx";
 import { JSXElement, useContext } from "solid-js";
@@ -97,7 +97,7 @@ export function generateGrid(input: {
   const { theme, ownerState } = input;
   let size: number | boolean | "auto";
 
-  return theme.breakpoints.keys.reduce<SxPropsObject>(
+  return theme.breakpoints.keys.reduce<StyledProps>(
     (globalStyles, breakpoint) => {
       // Use side effect over immutability for better performance.
       let styles = {};
@@ -195,7 +195,7 @@ export function generateDirection(input: {
   });
 
   return handleBreakpoints({ theme }, directionValues, (propValue) => {
-    let output: SxPropsObject = {
+    let output: StyledProps = {
       flexDirection: propValue,
     };
 
@@ -235,7 +235,7 @@ export function generateRowGap(input: {
           [`& > .${gridClasses.item}`]: {
             paddingTop: getOffset(themeSpacing),
           },
-        } as SxPropsObject;
+        } as StyledProps;
       }
 
       return {};
@@ -268,7 +268,7 @@ export function generateColumnGap(input: {
           [`& > .${gridClasses.item}`]: {
             paddingLeft: getOffset(themeSpacing),
           },
-        } as SxPropsObject;
+        } as StyledProps;
       }
 
       return {};

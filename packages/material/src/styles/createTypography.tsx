@@ -1,4 +1,4 @@
-import { NativeStyleProps, CSSProps } from "@suid/system/sxProps";
+import StyledProps from "@suid/system/styledProps";
 import { DeepPartial } from "@suid/types";
 import merge from "@suid/utils/merge";
 
@@ -7,19 +7,19 @@ export type ThemeTypographyType = TypographyOptions & {
 };
 
 export type TypographyVariants = {
-  h1: CSSProps;
-  h2: CSSProps;
-  h3: CSSProps;
-  h4: CSSProps;
-  h5: CSSProps;
-  h6: CSSProps;
-  subtitle1: CSSProps;
-  subtitle2: CSSProps;
-  body1: CSSProps;
-  body2: CSSProps;
-  button: CSSProps;
-  caption: CSSProps;
-  overline: CSSProps;
+  h1: StyledProps;
+  h2: StyledProps;
+  h3: StyledProps;
+  h4: StyledProps;
+  h5: StyledProps;
+  h6: StyledProps;
+  subtitle1: StyledProps;
+  subtitle2: StyledProps;
+  body1: StyledProps;
+  body2: StyledProps;
+  button: StyledProps;
+  caption: StyledProps;
+  overline: StyledProps;
 };
 
 export type Variant = keyof TypographyVariants;
@@ -86,7 +86,7 @@ export function makeVariant(
     lineHeight: `${lineHeight}`,
     letterSpacing: `${round(letterSpacing / size)}em`,
     ...(casing ? { textTransform: "uppercase" } : {}),
-  } as NativeStyleProps;
+  } as StyledProps;
 }
 
 export function createTypography(

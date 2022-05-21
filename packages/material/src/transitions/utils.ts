@@ -1,4 +1,4 @@
-import { NativeStyleProps } from "@suid/system/sxProps";
+import StyleProps from "@suid/system/styleProps";
 
 export const reflow = (node: Element) => node.scrollTop;
 
@@ -6,7 +6,7 @@ interface ComponentProps {
   easing: string | { enter?: string; exit?: string } | undefined;
   style:
     | Pick<
-        NativeStyleProps,
+        StyleProps,
         "transitionDuration" | "transitionTimingFunction" | "transitionDelay"
       >
     | undefined;

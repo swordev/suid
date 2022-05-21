@@ -2,7 +2,7 @@ import {
   TransitionProps as _TransitionProps,
   TransitionActions,
 } from "@suid/base/Transition";
-import { NativeStyleProps } from "@suid/system/sxProps";
+import StyleProps from "@suid/system/styleProps";
 
 export type TransitionHandlerKeys =
   | "onEnter"
@@ -32,5 +32,5 @@ export type TransitionKeys =
 export interface TransitionProps
   extends TransitionActions,
     Partial<Pick<_TransitionProps & EasingProps, TransitionKeys>> {
-  style?: NativeStyleProps;
+  style?: StyleProps;
 }

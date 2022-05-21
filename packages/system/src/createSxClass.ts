@@ -9,6 +9,8 @@ import {
 } from "@suid/css/style-element";
 import { createRenderEffect, createSignal, onCleanup } from "solid-js";
 
+export const resolvedPropKey = "__resolved";
+
 function createSxClass(value: () => SxProps | undefined) {
   const [name, setName] = createSignal("");
   let styleElement: HTMLStyleElement | undefined;
@@ -30,6 +32,7 @@ function createSxClass(value: () => SxProps | undefined) {
       }, {});
 
       delete css.name;
+      delete css[resolvedPropKey];
 
       result = createStyle({
         name: "css",

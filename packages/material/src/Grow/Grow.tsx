@@ -3,7 +3,7 @@ import useTheme from "../styles/useTheme";
 import { reflow, getTransitionProps } from "../transitions/utils";
 import Transition, { TransitionStatus } from "@suid/base/Transition";
 import createComponentFactory from "@suid/base/createComponentFactory";
-import { NativeStyleProps } from "@suid/system/sxProps";
+import StyleProps from "@suid/system/styleProps";
 import { children, onCleanup } from "solid-js";
 
 const $ = createComponentFactory<GrowTypeMap>()({
@@ -20,7 +20,7 @@ function getScale(value: number) {
   return `scale(${value}, ${value ** 2})`;
 }
 
-const styles: { [name in TransitionStatus]?: NativeStyleProps } = {
+const styles: { [name in TransitionStatus]?: StyleProps } = {
   entering: {
     opacity: 1,
     transform: getScale(1),
@@ -153,13 +153,13 @@ const Grow = $.component(function Grow({ props, otherProps }) {
           element.style.removeProperty("visibility");
         }
 
-        const style: NativeStyleProps = {
+        const style: StyleProps = {
           ...(styles[state] || {}),
           ...(otherProps.style || {}),
         };
 
         for (const name in style) {
-          const value = style[name as keyof NativeStyleProps] as any;
+          const value = style[name as keyof StyleProps] as any;
           if (value === undefined) {
             element.style.removeProperty(name);
           } else {

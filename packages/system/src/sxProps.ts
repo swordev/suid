@@ -1,24 +1,16 @@
-import { StyleProps } from "./createStylePropsFactory";
 import { Theme } from "./createTheme";
-import {
-  StandardProperties,
-  SvgProperties,
-  VendorLonghandProperties,
-} from "csstype";
+import { StyleCascade } from "./styleProps";
+import { StyledPropsBase } from "./styledProps";
+import { SystemProps } from "./systemProps";
 
-export type NativeStyleProps = StandardProperties &
-  SvgProperties &
-  VendorLonghandProperties;
-export type CSSProps = Omit<NativeStyleProps, keyof StyleProps> & StyleProps;
-export type SxPropsObject =
-  | {
-      [K in keyof CSSProps]?: CSSProps[K];
-    }
-  | {
-      [K: string]: SxPropsObject;
-    };
+export type SxPropsBase<T = Theme> = Omit<
+  StyledPropsBase,
+  keyof SystemProps<T>
+> &
+  StyledPropsBase &
+  SystemProps<Theme>;
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export type SxProps<T = Theme> = SxPropsObject[] | SxPropsObject;
+export type SxPropsObject<T = Theme> = StyleCascade<SxPropsBase<T>>;
+export type SxProps<T = Theme> = SxPropsObject<T>[] | SxPropsObject<T>;
 
 export default SxProps;

@@ -9,7 +9,7 @@ import {
 import { Breakpoint } from "@suid/system/createTheme/createBreakpoints";
 import mergeSxObjects from "@suid/system/mergeSxObjects";
 import { createUnarySpacing } from "@suid/system/spacing";
-import { SxPropsObject } from "@suid/system/sxProps";
+import StyledProps from "@suid/system/styledProps";
 import { JSXElement, Show } from "solid-js";
 
 const $ = createComponentFactory<StackTypeMap>()({
@@ -105,7 +105,7 @@ const StackRoot = styled("div", {
             breakpoint ? directionValues[breakpoint] : ownerState.direction
           )}` as any]: transformer(propValue),
         },
-      } as SxPropsObject;
+      } as StyledProps;
     };
     styles = mergeSxObjects(
       styles,

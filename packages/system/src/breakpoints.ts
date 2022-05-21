@@ -1,6 +1,6 @@
 import { Theme } from "./createTheme";
 import { Breakpoint } from "./createTheme/createBreakpoints";
-import { CSSProps, SxPropsObject } from "./sxProps";
+import StyledProps from "./styledProps";
 
 export type BreakpointValueType<T extends string> = {
   [K in T]?: number | boolean | "auto";
@@ -32,7 +32,7 @@ export function handleBreakpoints(
     theme: Theme;
   },
   propValue: any[],
-  styleFromPropValue: (value: any, breakpoint?: Breakpoint) => SxPropsObject
+  styleFromPropValue: (value: any, breakpoint?: Breakpoint) => StyledProps
 ) {
   const theme = props.theme || ({} as Theme);
 
@@ -43,7 +43,7 @@ export function handleBreakpoints(
         ...acc,
         ...themeBreakpoints.up(
           themeBreakpoints.keys[index],
-          styleFromPropValue(propValue[index]) as SxPropsObject
+          styleFromPropValue(propValue[index])
         ),
       };
       return acc;
@@ -53,7 +53,7 @@ export function handleBreakpoints(
   if (typeof propValue === "object") {
     const themeBreakpoints = theme.breakpoints;
     const keys = Object.keys(propValue) as Breakpoint[];
-    return keys.reduce<SxPropsObject>((acc, breakpoint) => {
+    return keys.reduce<StyledProps>((acc, breakpoint) => {
       // key is breakpoint
       if (
         Object.keys(themeBreakpoints.values || values).indexOf(breakpoint) !==
@@ -63,10 +63,7 @@ export function handleBreakpoints(
           ...acc,
           ...themeBreakpoints.up(
             breakpoint,
-            styleFromPropValue(
-              propValue[breakpoint],
-              breakpoint
-            ) as SxPropsObject
+            styleFromPropValue(propValue[breakpoint], breakpoint)
           ),
         };
       } else {

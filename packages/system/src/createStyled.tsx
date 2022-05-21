@@ -1,9 +1,8 @@
-import { SxProps } from ".";
 import Box, { BoxTypeMap } from "./Box";
-import createSxMemo from "./createSxMemo";
 import type { Theme } from "./createTheme/createTheme";
-import resolveStyleProps from "./resolveStyleProps";
-import { SxPropsObject } from "./sxProps";
+import resolveStyledProps from "./resolveStyledProps";
+import { StyledProps } from "./styledProps";
+import { SxProps } from "./sxProps";
 import useTheme from "./useTheme";
 import {
   ElementType,
@@ -12,7 +11,7 @@ import {
   PropsOf,
 } from "@suid/types";
 import clsx from "clsx";
-import { createMemo, Accessor } from "solid-js";
+import { createMemo } from "solid-js";
 import {
   ComponentProps as _ComponentProps,
   JSX,
@@ -20,7 +19,7 @@ import {
   Show,
 } from "solid-js";
 
-export interface StyledProps<T, O> {
+export interface ComponentProps<T, O> {
   ownerState: O;
   theme: T;
   sx?: SxProps<T>;
@@ -28,9 +27,9 @@ export interface StyledProps<T, O> {
 }
 
 type Style<T extends Theme<any>, P, O> =
-  | ((props: StyledProps<T, O> & { props: P }) => false | SxPropsObject)
+  | ((props: ComponentProps<T, O> & { props: P }) => false | StyledProps)
   | false
-  | SxPropsObject;
+  | StyledProps;
 
 type StyledOptions<N extends string> = {
   name?: N;
@@ -43,12 +42,42 @@ type StyledOptions<N extends string> = {
   ) => (string | false)[];
 };
 
-export const skipProps: (keyof StyledProps<any, any>)[] = [
+export const skipProps: (keyof ComponentProps<any, any>)[] = [
   "ownerState",
   "theme",
   "sx",
   "as",
 ];
+
+function resolveStyles<T extends Theme<any>, P, O>(
+  theme: T,
+  className: string,
+  styles: Style<T, P, O>[],
+  inProps: ComponentProps<T, O>
+) {
+  return createMemo(() =>
+    styles.reduce((result, style) => {
+      let styledProps: StyledProps | false | undefined;
+      if (typeof style === "function") {
+        styledProps = style({
+          ownerState: inProps.ownerState,
+          theme,
+          sx: inProps.sx,
+          as: inProps.as,
+          props: inProps as never as P,
+        });
+      } else if (style) {
+        styledProps = style;
+      }
+      if (styledProps)
+        result.push({
+          ["name" as never]: className,
+          ...resolveStyledProps(styledProps),
+        });
+      return result;
+    }, [] as StyledProps[])
+  );
+}
 
 function createStyled<
   T extends Theme<any>,
@@ -86,35 +115,22 @@ function createStyled<
         O
       >[]
     ) {
-      return function (inProps: _ComponentProps<C> & StyledProps<T, O>) {
+      return function (inProps: _ComponentProps<C> & ComponentProps<T, O>) {
         const theme = config?.onUseTheme
           ? config.onUseTheme()
           : (useTheme() as T);
+
         const [, otherProps] = splitProps(
           inProps,
           options.skipProps ?? skipProps
         );
-        const inStyles = createSxMemo(
-          className ?? "css",
-          () =>
-            styles
-              .map((v) => {
-                let object: SxPropsObject | false | undefined;
-                if (typeof v === "function") {
-                  object = v({
-                    ownerState: inProps["ownerState"],
-                    theme,
-                    sx: inProps.sx,
-                    as: inProps.as,
-                    props: inProps as any,
-                  });
-                } else if (v) {
-                  object = v;
-                }
-                if (object) return resolveStyleProps(object, theme);
-              })
-              .filter((v) => !!v) as SxPropsObject[]
-        ) as Accessor<SxPropsObject[]>;
+
+        const inStyles = resolveStyles(
+          theme,
+          className || "css",
+          styles,
+          inProps
+        );
 
         const inSx = createMemo(() =>
           !options.skipSx && inProps.sx
