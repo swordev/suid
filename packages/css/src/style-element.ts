@@ -1,3 +1,11 @@
+// This allows user to optionally specify a nonce value to be set on all <style> elements,
+// in order to conform to a CSP policy and avoid some CSS injection vulnerabilities.
+// https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/style-src#unsafe_inline_styles
+let nonce: string;
+export function setNonce(value: string) {
+  nonce = value;
+}
+
 export function appendStyle(
   css: string | string[],
   id?: string | false
@@ -53,6 +61,7 @@ export function setStyleElementText(element: HTMLStyleElement, text: string) {
 export function createStyleElement(css: string, id?: string | false) {
   const element = document.createElement("style");
   if (id) element.setAttribute("id", id);
+  if (nonce) element.setAttribute("nonce", nonce);
   element.type = "text/css";
   setStyleElementText(element, css);
   return element;
