@@ -58,9 +58,8 @@ const FilledInputRoot = styled(InputBaseRoot, {
   return {
     position: "relative",
     backgroundColor,
-    // [review] unitless
-    borderTopLeftRadius: `${theme.shape.borderRadius}px`,
-    borderTopRightRadius: `${theme.shape.borderRadius}px`,
+    borderTopLeftRadius: theme.shape.borderRadius,
+    borderTopRightRadius: theme.shape.borderRadius,
     transition: theme.transitions.create("background-color", {
       duration: theme.transitions.duration.shorter,
       easing: theme.transitions.easing.easeOut,

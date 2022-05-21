@@ -61,8 +61,7 @@ const OutlinedInputRoot = styled(InputBaseRoot, {
       {
         // [review] ownerState.color is not required by MUI
         borderColor: theme.palette[ownerState.color as PaletteColorName].main,
-        // [review] unitless
-        borderWidth: "2px",
+        borderWidth: 2,
       },
     [`&.${outlinedInputClasses.error} .${outlinedInputClasses.notchedOutline}`]:
       {

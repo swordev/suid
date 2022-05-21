@@ -25,8 +25,7 @@ const NotchedOutlineRoot = styled("fieldset")({
   pointerEvents: "none",
   borderRadius: "inherit",
   borderStyle: "solid",
-  // [review]
-  borderWidth: "1px",
+  borderWidth: 1,
   overflow: "hidden",
   minWidth: "0%",
 });
@@ -49,8 +48,7 @@ const NotchedOutlineLegend = styled("legend")<OwnerState>(
       height: 11, // sync with `lineHeight` in `legend` styles
       fontSize: "0.75em",
       visibility: "hidden",
-      // [review] css unit
-      maxWidth: "0.01px",
+      maxWidth: 0.01,
       transition: theme.transitions.create("max-width", {
         duration: 50,
         easing: theme.transitions.easing.easeOut,
