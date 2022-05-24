@@ -113,7 +113,7 @@ export const navConfig: Config[] = [
     type: "section",
     text: "System",
     icon: HandymanIcon,
-    items: ["The sx prop", "styled"].map((text) => ({
+    items: ["The sx prop", "Properties", "styled"].map((text) => ({
       type: "link",
       href: `/system/${toFolder(text)}`,
       text,
