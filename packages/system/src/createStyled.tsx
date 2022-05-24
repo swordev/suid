@@ -12,12 +12,7 @@ import {
 } from "@suid/types";
 import clsx from "clsx";
 import { createMemo } from "solid-js";
-import {
-  ComponentProps as _ComponentProps,
-  JSX,
-  splitProps,
-  Show,
-} from "solid-js";
+import { ComponentProps as _ComponentProps, JSX, splitProps } from "solid-js";
 
 export interface ComponentProps<T, O> {
   ownerState: O;
@@ -141,26 +136,28 @@ function createStyled<
         );
 
         const sx = () => [...inStyles(), ...inSx()];
-        return (
-          <Show
-            when={typeof Component === "string"}
-            fallback={
-              <Component
-                {...otherProps}
-                component={inProps.as}
-                sx={sx()}
-                className={clsx([inProps.className, className])}
-                ownerState={inProps.ownerState}
-              />
-            }
-          >
+
+        if (typeof Component === "string") {
+          return (
             <Box
-              component={inProps.as || Component}
               {...otherProps}
+              component={inProps.as || inProps.component || Component}
               sx={sx()}
+              theme={theme}
               className={clsx([inProps.className, className])}
             />
-          </Show>
+          );
+        }
+
+        return (
+          <Component
+            {...otherProps}
+            component={inProps.as}
+            sx={sx()}
+            theme={theme}
+            className={clsx([inProps.className, className])}
+            ownerState={inProps.ownerState}
+          />
         );
       } as C extends OverridableComponent<infer M>
         ? OverridableComponent<{
