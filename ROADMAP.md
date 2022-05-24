@@ -6,9 +6,9 @@
 | ------------------------------ | :---: |
 | `styled`                       |  ✅   |
 | `sx` property                  |  ✅   |
+| System properties              |  ✅   |
 | Theme context                  |  ✅   |
 | Slot classes                   |  ✅   |
-| Design tokens as props         |  ⏳   |
 | Breakpoints as an object/array |  ⏳   |
 | `styleOverrides`               |       |
 

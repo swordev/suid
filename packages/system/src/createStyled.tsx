@@ -1,4 +1,4 @@
-import Box, { BoxTypeMap } from "./Box";
+import Box, { BoxTypeMap, disableSystemPropsKey } from "./Box";
 import type { Theme } from "./createTheme/createTheme";
 import resolveStyledProps from "./resolveStyledProps";
 import { StyledProps } from "./styledProps";
@@ -145,6 +145,9 @@ function createStyled<
               sx={sx()}
               theme={theme}
               className={clsx([inProps.className, className])}
+              {...{
+                [disableSystemPropsKey]: true,
+              }}
             />
           );
         }

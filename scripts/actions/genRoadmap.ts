@@ -9,9 +9,9 @@ import { rootPath } from "~/util/workspace";
 const systemFeatures: Record<string, boolean | "pending"> = {
   "`styled`": true,
   "`sx` property": true,
+  "System properties": true,
   "Theme context": true,
   "Slot classes": true,
-  "Design tokens as props": "pending",
   "Breakpoints as an object/array": "pending",
   "`styleOverrides`": false,
 };
