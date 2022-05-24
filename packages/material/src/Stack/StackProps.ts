@@ -1,6 +1,6 @@
 import { OverrideProps } from "../OverridableComponent";
 import { Theme } from "../styles/createTheme";
-import { ResponsiveStyleValue, SxProps } from "@suid/system";
+import { ResponsiveStyleValue, SxProps, SystemProps } from "@suid/system";
 import { ElementType } from "@suid/types";
 import { JSXElement } from "solid-js";
 
@@ -34,7 +34,7 @@ export interface StackTypeMap<P = {}, D extends ElementType = "div"> {
      */
     sx?: SxProps<Theme>;
   };
-  props: P & StackTypeMap["selfProps"];
+  props: P & SystemProps<Theme> & StackTypeMap["selfProps"];
   defaultComponent: D;
 }
 

@@ -4,8 +4,9 @@ import styled from "../styles/styled";
 import capitalize from "../utils/capitalize";
 import { getTypographyUtilityClass } from "./typographyClasses";
 import createComponentFactory from "@suid/base/createComponentFactory";
-import getThemeValue from "@suid/system/getThemeValue";
+import extendSxProp from "@suid/system/styleFunctionSx/extendSxProp";
 import clsx from "clsx";
+import { mergeProps } from "solid-js";
 
 const $ = createComponentFactory<TypographyTypeMap>()({
   name: "MuiTypography",
@@ -57,34 +58,25 @@ export const TypographyRoot = styled("span", {
       ownerState.paragraph && styles.paragraph,
     ];
   },
-})(({ theme, ownerState }) => {
-  const color =
-    getThemeValue(
-      theme,
-      "palette",
-      transformDeprecatedColors(ownerState.color as any)
-    ) || ownerState.color;
-
-  return {
-    margin: 0,
-    color,
-    ...(ownerState.variant && theme.typography[ownerState.variant as Variant]),
-    ...(ownerState.align !== "inherit" && {
-      textAlign: ownerState.align,
-    }),
-    ...(ownerState.noWrap && {
-      overflow: "hidden",
-      textOverflow: "ellipsis",
-      whiteSpace: "nowrap",
-    }),
-    ...(ownerState.gutterBottom && {
-      marginBottom: "0.35em",
-    }),
-    ...(ownerState.paragraph && {
-      marginBottom: 16,
-    }),
-  };
-});
+})(({ theme, ownerState }) => ({
+  margin: 0,
+  color: ownerState.color,
+  ...(ownerState.variant && theme.typography[ownerState.variant as Variant]),
+  ...(ownerState.align !== "inherit" && {
+    textAlign: ownerState.align,
+  }),
+  ...(ownerState.noWrap && {
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
+  }),
+  ...(ownerState.gutterBottom && {
+    marginBottom: "0.35em",
+  }),
+  ...(ownerState.paragraph && {
+    marginBottom: 16,
+  }),
+}));
 
 const defaultVariantMapping: Record<Variant | "inherit", string> = {
   h1: "h1",
@@ -140,11 +132,19 @@ const Typography = $.component(function Typography({
         defaultVariantMapping[props.variant]) ||
     "span";
 
+  const colorProps = mergeProps(() => {
+    const color = transformDeprecatedColors(allProps.color as any);
+    return color ? { color } : {};
+  });
+
+  const ownerState = mergeProps(allProps, colorProps);
+  otherProps = extendSxProp(mergeProps(otherProps, colorProps));
+
   return (
     <TypographyRoot
       {...otherProps}
       component={Component()}
-      ownerState={allProps}
+      ownerState={ownerState}
       className={clsx(classes.root, otherProps.className)}
     >
       {props.children}

@@ -19,6 +19,7 @@ import {
   handleBreakpoints,
   resolveBreakpointValues,
 } from "@suid/system";
+import extendSxProp from "@suid/system/styleFunctionSx/extendSxProp";
 import StyledProps from "@suid/system/styledProps";
 import { InPropsOf } from "@suid/types";
 import clsx from "clsx";
@@ -400,6 +401,7 @@ const Grid = $.component(function Grid({
   otherProps,
   classes,
 }) {
+  otherProps = extendSxProp(otherProps);
   const columnsContext = useContext(GridContext);
 
   // setting prop before context to accomodate nesting

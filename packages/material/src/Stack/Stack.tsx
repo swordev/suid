@@ -9,6 +9,7 @@ import {
 import { Breakpoint } from "@suid/system/createTheme/createBreakpoints";
 import mergeSxObjects from "@suid/system/mergeSxObjects";
 import { createUnarySpacing } from "@suid/system/spacing";
+import extendSxProp from "@suid/system/styleFunctionSx/extendSxProp";
 import StyledProps from "@suid/system/styledProps";
 import { JSXElement, Show } from "solid-js";
 
@@ -127,6 +128,7 @@ const StackRoot = styled("div", {
  * - [Stack API](https://mui.com/api/stack/)
  */
 const Stack = $.component(function Stack({ allProps, otherProps, props }) {
+  otherProps = extendSxProp(otherProps);
   return (
     <StackRoot as={otherProps.component} ownerState={allProps} {...otherProps}>
       <Show when={!!props.divider} fallback={props.children}>
