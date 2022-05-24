@@ -1,5 +1,23 @@
 # @suid/system
 
+## 0.4.0
+
+### Minor Changes
+
+- [`acfbf033`](https://github.com/swordev/suid/commit/acfbf033b8a30f507e6655a8de73eb8d5f36f62d) Thanks [@juanrgm](https://github.com/juanrgm)! - Add system properties
+
+* [`a278ca8f`](https://github.com/swordev/suid/commit/a278ca8f3a2195bca6602202fdfe649e1996eb35) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `display`, `flexbox` and `grid` system props
+
+- [`a7f65c40`](https://github.com/swordev/suid/commit/a7f65c401ac5ab8893e56459f5f9d254ebd1c70d) Thanks [@juanrgm](https://github.com/juanrgm)! - Global refactoring for separating style properties into `StyleProps`, `StyledProps`, `SxProps` and `SystemProps`
+
+### Patch Changes
+
+- [`1aced166`](https://github.com/swordev/suid/commit/1aced166dea7fb9b5d3636048610284c79d6fc7f) Thanks [@juanrgm](https://github.com/juanrgm)! - Add px unit suffix when necessary
+
+- Updated dependencies [[`a13f2f0d`](https://github.com/swordev/suid/commit/a13f2f0d201fbe30c74611200cb5582106910a27)]:
+  - @suid/utils@0.3.0
+  - @suid/css@0.1.3
+
 ## 0.3.0
 
 ### Minor Changes
