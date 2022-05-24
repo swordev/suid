@@ -26,7 +26,7 @@ function createSxClass(value: () => SxProps | undefined) {
         .filter((v) => !!v) as Record<string, any>[];
 
       const css = styles.reduce<Record<string, any>>((result, style) => {
-        if ("name" in style) result[`--${style.name}`] = "";
+        if ("name" in style) result[`--${style.name}`] = "0";
         mergeSxObjects(result, style);
         return result;
       }, {});
