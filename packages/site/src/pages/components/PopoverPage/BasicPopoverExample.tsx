@@ -13,7 +13,6 @@ export default function BasicPopover() {
   };
 
   const handleClose = () => {
-    console.log("entro onclose");
     setAnchorEl(null);
   };
 
