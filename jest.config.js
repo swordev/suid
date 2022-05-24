@@ -1,5 +1,16 @@
+const { readdirSync } = require("fs");
+
 const repoRootPath = `<rootDir>`;
 const solidjsPath = `${repoRootPath}/node_modules/solid-js`;
+
+const suidModuleMapper = readdirSync(`${__dirname}/packages`).reduce(
+  (result, name) => {
+    result[`^@suid/${name}/(.*)$`] = `<rootDir>/packages/${name}/src/$1`;
+    result[`^@suid/${name}$`] = `<rootDir>/packages/${name}/src`;
+    return result;
+  },
+  {}
+);
 
 /** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
 module.exports = {
@@ -22,7 +33,6 @@ module.exports = {
     "solid-js/web": `${solidjsPath}/web/dist/web.cjs`,
     "solid-js/store": `${solidjsPath}/store/dist/store.cjs`,
     "solid-js": `${solidjsPath}/dist/solid.cjs`,
-    "@suid/(.*)/(.*)": "<rootDir>/packages/$1/src/$2",
-    "@suid/(.*)": "<rootDir>/packages/$1/src/index.ts",
+    ...suidModuleMapper,
   },
 };
