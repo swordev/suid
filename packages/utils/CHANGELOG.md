@@ -1,5 +1,11 @@
 # @suid/utils
 
+## 0.3.0
+
+### Minor Changes
+
+- [`a13f2f0d`](https://github.com/swordev/suid/commit/a13f2f0d201fbe30c74611200cb5582106910a27) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `toArray` function
+
 ## 0.2.1
 
 ### Patch Changes

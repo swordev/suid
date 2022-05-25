@@ -1,5 +1,23 @@
 # @suid/site
 
+## 0.4.0
+
+### Minor Changes
+
+- [`a894d205`](https://github.com/swordev/suid/commit/a894d20539b1b7c50d5fa27ac80aca0c37d3b8d7) Thanks [@juanrgm](https://github.com/juanrgm)! - Add system props page
+
+### Patch Changes
+
+- [`5648d993`](https://github.com/swordev/suid/commit/5648d993bae12f9b002f0830d31e2b577d779667) Thanks [@juanrgm](https://github.com/juanrgm)! - Set `solid-js` version in `Stackblitz` projects
+
+- Updated dependencies [[`acfbf033`](https://github.com/swordev/suid/commit/acfbf033b8a30f507e6655a8de73eb8d5f36f62d), [`a538e2cb`](https://github.com/swordev/suid/commit/a538e2cb88ed876afbf9e1842117af20975eb5dd), [`4188b9b4`](https://github.com/swordev/suid/commit/4188b9b4254b2ae143267832197db86915fa597e), [`a278ca8f`](https://github.com/swordev/suid/commit/a278ca8f3a2195bca6602202fdfe649e1996eb35), [`a7f65c40`](https://github.com/swordev/suid/commit/a7f65c401ac5ab8893e56459f5f9d254ebd1c70d), [`9df210f8`](https://github.com/swordev/suid/commit/9df210f891d2cc390a9616054134ad15bfd08fbd), [`a13f2f0d`](https://github.com/swordev/suid/commit/a13f2f0d201fbe30c74611200cb5582106910a27), [`1aced166`](https://github.com/swordev/suid/commit/1aced166dea7fb9b5d3636048610284c79d6fc7f)]:
+  - @suid/system@0.4.0
+  - @suid/codemod@0.4.0
+  - @suid/material@0.4.0
+  - @suid/utils@0.3.0
+  - @suid/base@0.2.3
+  - @suid/icons-material@0.2.2
+
 ## 0.3.1
 
 ### Patch Changes
