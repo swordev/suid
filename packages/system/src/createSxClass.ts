@@ -1,5 +1,6 @@
 import mergeSxObjects from "./mergeSxObjects";
 import SxProps from "./sxProps";
+import StyledEngineContext from "./StyledEngineContext";
 import createStyle from "@suid/css/createStyle";
 import {
   appendStyle,
@@ -7,7 +8,7 @@ import {
   subscribeStyle,
   unsubscribeStyle,
 } from "@suid/css/style-element";
-import { createRenderEffect, createSignal, onCleanup } from "solid-js";
+import { createRenderEffect, createSignal, onCleanup, useContext } from "solid-js";
 
 function createSxClass(value: () => SxProps | undefined) {
   const [name, setName] = createSignal("");
@@ -41,7 +42,8 @@ function createSxClass(value: () => SxProps | undefined) {
       if (styleElement) {
         subscribeStyle(styleElement);
       } else {
-        styleElement = appendStyle(result.rules, result.cacheId).element;
+        const { nonce } = useContext(StyledEngineContext);
+        styleElement = appendStyle(result.rules, { id: result.cacheId, nonce }).element;
       }
     }
 
