@@ -1,15 +1,15 @@
 import mergeSxObjects from "./mergeSxObjects";
 import SxProps from "./sxProps";
-import createStyle from "@suid/css/createStyle";
-import {
-  appendStyle,
-  findStyle,
-  subscribeStyle,
-  unsubscribeStyle,
-} from "@suid/css/style-element";
+import createStyleObject, { StyleObject } from "@suid/css/createStyleObject";
+import appendStyleElement from "@suid/css/dom/appendStyleElement";
+import findStyleElement from "@suid/css/dom/findStyleElement";
+import registerStyleElementUsage from "@suid/css/dom/registerStyleElementUsage";
+import unregisterStyleElementUsage from "@suid/css/dom/unregisterStyleElementUsage";
 import { createRenderEffect, createSignal, onCleanup } from "solid-js";
 
 export const resolvedPropKey = "__resolved";
+
+const cache = new Map<string, StyleObject>();
 
 function createSxClass(value: () => SxProps | undefined) {
   const [name, setName] = createSignal("");
@@ -18,7 +18,7 @@ function createSxClass(value: () => SxProps | undefined) {
     { className?: string; styleElement?: HTMLStyleElement } | undefined
   >((prevResult) => {
     const v = value();
-    let result: ReturnType<typeof createStyle> | undefined;
+    let styleObject: StyleObject | undefined;
     if (v) {
       const styles = (Array.isArray(v) ? v : [v])
         // https://github.com/microsoft/TypeScript/issues/44408
@@ -32,39 +32,42 @@ function createSxClass(value: () => SxProps | undefined) {
       }, {});
 
       delete css.name;
-      delete css[resolvedPropKey];
 
-      result = createStyle({
+      styleObject = createStyleObject({
         name: "css",
         props: css,
+        cache,
       });
 
-      styleElement = findStyle(result.cacheId);
+      styleElement = findStyleElement(styleObject.id);
 
       if (styleElement) {
-        subscribeStyle(styleElement);
+        registerStyleElementUsage(styleElement);
       } else {
-        styleElement = appendStyle(result.rules, result.cacheId).element;
+        styleElement = appendStyleElement(
+          styleObject.rules,
+          styleObject.id
+        ).element;
       }
     }
 
     if (prevResult?.styleElement) {
-      unsubscribeStyle(prevResult.styleElement);
+      unregisterStyleElementUsage(prevResult.styleElement);
     }
 
-    if (typeof result?.className === "string") {
-      setName(result.className);
+    if (typeof styleObject?.className === "string") {
+      setName(styleObject.className);
     } else {
       setName("");
     }
 
     return {
-      className: result?.className,
+      className: styleObject?.className,
       styleElement,
     };
   }, undefined);
   onCleanup(() => {
-    if (styleElement) unsubscribeStyle(styleElement);
+    if (styleElement) unregisterStyleElementUsage(styleElement);
   });
   return name;
 }

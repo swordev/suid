@@ -2,6 +2,10 @@ export function isVar(value: string) {
   return value.startsWith("--");
 }
 
+export function isPrivateVar(value: string) {
+  return value.startsWith("__");
+}
+
 export function isSelector(value: string) {
   return /[^a-z-]/i.test(value) && !isVar(value);
 }

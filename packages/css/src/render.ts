@@ -4,6 +4,7 @@ import {
   isMediaQuery,
   isSelector,
   isVar,
+  isPrivateVar,
 } from "./assert";
 import snakeCase from "@suid/utils/snakeCase";
 
@@ -44,7 +45,9 @@ function render(
   const rules: string[] = [];
   for (let propKey in css) {
     const propValue = css[propKey];
-    if (isGlobalSelector(propKey)) {
+    if (isPrivateVar(propKey)) {
+      continue;
+    } else if (isGlobalSelector(propKey)) {
       for (const selector in propValue) {
         rules.push(
           ...renderSelector(selector, propValue[selector], [], options)
