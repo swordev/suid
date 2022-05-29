@@ -1,6 +1,6 @@
 {
   "name": "@suid/css",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "CSS render in JS.",
   "scripts": {
     "build": "tsc --build",

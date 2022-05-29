@@ -1,6 +1,6 @@
 {
   "name": "@suid/styled-engine",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Styled engine used by @suid/system.",
   "scripts": {
     "build": "tsc --build",
