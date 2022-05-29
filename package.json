@@ -35,18 +35,6 @@
       "url": "https://github.com/juanrgm"
     }
   ],
-  "workspaces": [
-    "scripts",
-    "packages/types",
-    "packages/utils",
-    "packages/codemod",
-    "packages/css",
-    "packages/system",
-    "packages/base",
-    "packages/material",
-    "packages/icons-material",
-    "packages/site"
-  ],
   "scripts": {
     "build": "pnpm scripts prebuild && pnpm build:ts && pnpm build:site && pnpm scripts postbuild",
     "build:site": "pnpm --filter @suid/site build",

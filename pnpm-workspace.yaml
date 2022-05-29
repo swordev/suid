@@ -1,11 +1,3 @@
 packages:
   - scripts
-  - packages/types
-  - packages/utils
-  - packages/codemod
-  - packages/css
-  - packages/system
-  - packages/base
-  - packages/material
-  - packages/icons-material
-  - packages/site
+  - packages/*
