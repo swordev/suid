@@ -75,6 +75,7 @@ export default defineConfig({
       "@suid/codemod": resolve(__dirname, "../codemod/src"),
       "@suid/css": resolve(__dirname, "../css/src"),
       "@suid/utils": resolve(__dirname, "../utils/src"),
+      "@suid/styled-engine": resolve(__dirname, "../styled-engine/src"),
       "@suid/base": resolve(__dirname, "../base/src"),
       "@suid/system": resolve(__dirname, "../system/src"),
       "@suid/material": resolve(__dirname, "../material/src"),
