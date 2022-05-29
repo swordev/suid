@@ -1,6 +1,10 @@
 import { createContext } from "solid-js";
 
-export type StyledEngineContextValue = {};
+export type StyledEngineContextValue = {
+  cache?: {
+    nonce?: string;
+  };
+};
 
 const StyledEngineContext = createContext<StyledEngineContextValue>({});
 
