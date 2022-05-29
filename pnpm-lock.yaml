@@ -177,15 +177,25 @@ importers:
       vite: 2.9.9_sass@1.51.0
       vite-plugin-solid: 2.2.6_sass@1.51.0
 
+  packages/styled-engine:
+    specifiers:
+      '@suid/css': workspace:*
+      '@suid/utils': workspace:*
+    dependencies:
+      '@suid/css': link:../css
+      '@suid/utils': link:../utils
+
   packages/system:
     specifiers:
       '@suid/css': workspace:*
+      '@suid/styled-engine': workspace:*
       '@suid/types': workspace:*
       '@suid/utils': workspace:*
       clsx: ^1.1.1
       csstype: ^3.0.11
     dependencies:
       '@suid/css': link:../css
+      '@suid/styled-engine': link:../styled-engine
       '@suid/types': link:../types
       '@suid/utils': link:../utils
       clsx: 1.1.1

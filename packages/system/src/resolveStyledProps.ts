@@ -1,4 +1,4 @@
-import { resolvedPropKey } from "./createSxClass";
+import { resolvedPropKey } from "./createStyle";
 import { StyledProps } from "./styledProps";
 import resolve from "@suid/css/resolve";
 

@@ -17,6 +17,9 @@
       "path": "packages/material"
     },
     {
+      "path": "packages/styled-engine"
+    },
+    {
       "path": "packages/system"
     },
     {

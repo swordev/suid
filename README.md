@@ -22,6 +22,7 @@ With this smart target in mind, the project avoids becoming another library that
 | [@suid/material](/packages/material)             |    ![material-npm]    | A port of Material-UI (MUI) built with Solid.js.   |
 | [@suid/icons-material](/packages/icons-material) | ![icons-material-npm] | Material Design icons as SVG Solid.js components.  |
 | [@suid/codemod](/packages/codemod)               |    ![codemod-npm]     | Tool for migrating MUI React code to SUID SolidJS. |
+| [@suid/styled-engine](/packages/styled-engine)   | ![styled-engine-npm]  | Styled engine used by @suid/system.                |
 | [@suid/system](/packages/system)                 |     ![system-npm]     | Styles system used by suid packages.               |
 | [@suid/base](/packages/base)                     |      ![base-npm]      | Unstyled base components used by @suid/material.   |
 | [@suid/css](/packages/css)                       |      ![css-npm]       | CSS render in JS.                                  |
@@ -31,6 +32,7 @@ With this smart target in mind, the project avoids becoming another library that
 [material-npm]: https://img.shields.io/npm/v/@suid/material
 [icons-material-npm]: https://img.shields.io/npm/v/@suid/icons-material
 [codemod-npm]: https://img.shields.io/npm/v/@suid/codemod
+[styled-engine-npm]: https://img.shields.io/npm/v/@suid/styled-engine
 [site-npm]: https://img.shields.io/npm/v/@suid/site
 [css-npm]: https://img.shields.io/npm/v/@suid/css
 [system-npm]: https://img.shields.io/npm/v/@suid/system

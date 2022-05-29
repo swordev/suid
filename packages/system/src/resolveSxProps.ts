@@ -1,4 +1,4 @@
-import { resolvedPropKey } from "./createSxClass";
+import { resolvedPropKey } from "./createStyle";
 import { Theme } from "./createTheme";
 import { resolveStyledPropsValue } from "./resolveStyledProps";
 import { SxPropsObject } from "./sxProps";

@@ -1,6 +1,6 @@
 import { BoxSelfProps } from ".";
 import Dynamic from "../Dynamic/Dynamic";
-import createSxClass, { resolvedPropKey } from "../createSxClass";
+import createStyle, { resolvedPropKey } from "../createStyle";
 import defineComponent from "../defineComponent";
 import resolveSxProps from "../resolveSxProps";
 import extendSxProp from "../styleFunctionSx/extendSxProp";
@@ -35,7 +35,7 @@ export const Box = defineComponent<BoxTypeMap>(function Box(inProps) {
     },
   });
 
-  const sxClass = createSxClass(() => {
+  const style = createStyle(() => {
     const theme = useInTheme();
     const haveStyles = !disableSystemProps || !!props.sx;
     if (!haveStyles || forwardSx()) return [];
@@ -48,9 +48,9 @@ export const Box = defineComponent<BoxTypeMap>(function Box(inProps) {
 
   const className = () => {
     const className = otherProps.className;
-    const sxClassValue = sxClass();
-    if (sxClassValue?.length) {
-      return className ? `${className} ${sxClassValue}` : sxClassValue;
+    const styleValue = style();
+    if (styleValue?.length) {
+      return className ? `${className} ${styleValue}` : styleValue;
     } else {
       return className;
     }

@@ -3,3 +3,4 @@ export { default as useThemeProps } from "./useThemeProps";
 export { createTheme } from "./createTheme";
 export { default as ThemeProvider } from "./ThemeProvider";
 export type { Theme } from "./createTheme";
+export { default as StyledEngineProvider } from "@suid/system/StyledEngineProvider";

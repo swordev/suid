@@ -1,42 +1,50 @@
-import mergeSxObjects from "./mergeSxObjects";
-import SxProps from "./sxProps";
+import StyledEngineContext from "./StyledEngineProvider/StyledEngineContext";
+import mergeStyleProps from "./mergeStyleProps";
 import createStyleObject, { StyleObject } from "@suid/css/createStyleObject";
 import appendStyleElement from "@suid/css/dom/appendStyleElement";
 import findStyleElement from "@suid/css/dom/findStyleElement";
 import registerStyleElementUsage from "@suid/css/dom/registerStyleElementUsage";
 import unregisterStyleElementUsage from "@suid/css/dom/unregisterStyleElementUsage";
-import { createRenderEffect, createSignal, onCleanup } from "solid-js";
+import {
+  createRenderEffect,
+  createSignal,
+  onCleanup,
+  useContext,
+} from "solid-js";
 
-export const resolvedPropKey = "__resolved";
+const styleObjectCache = new Map<string, StyleObject>();
 
-const cache = new Map<string, StyleObject>();
+type StyleProps =
+  | undefined
+  | Record<string, any>
+  | (Record<string, any> | undefined)[];
 
-function createSxClass(value: () => SxProps | undefined) {
+function normalizeStyleProps(props: StyleProps) {
+  if (!props) return [];
+  return (
+    (Array.isArray(props) ? props : [props])
+      // https://github.com/microsoft/TypeScript/issues/44408
+      .flat(Infinity as 1)
+      .filter((v) => !!v) as Record<string, any>[]
+  );
+}
+
+function createStyle(value: () => StyleProps | undefined) {
+  const context = useContext(StyledEngineContext);
   const [name, setName] = createSignal("");
   let styleElement: HTMLStyleElement | undefined;
+
   createRenderEffect<
     { className?: string; styleElement?: HTMLStyleElement } | undefined
   >((prevResult) => {
-    const v = value();
+    const propsValue = value();
     let styleObject: StyleObject | undefined;
-    if (v) {
-      const styles = (Array.isArray(v) ? v : [v])
-        // https://github.com/microsoft/TypeScript/issues/44408
-        .flat(Infinity as 1)
-        .filter((v) => !!v) as Record<string, any>[];
 
-      const css = styles.reduce<Record<string, any>>((result, style) => {
-        if ("name" in style) result[`--${style.name}`] = "0";
-        mergeSxObjects(result, style);
-        return result;
-      }, {});
-
-      delete css.name;
-
+    if (propsValue) {
       styleObject = createStyleObject({
         name: "css",
-        props: css,
-        cache,
+        props: mergeStyleProps(normalizeStyleProps(propsValue)),
+        cache: styleObjectCache,
       });
 
       styleElement = findStyleElement(styleObject.id);
@@ -44,10 +52,9 @@ function createSxClass(value: () => SxProps | undefined) {
       if (styleElement) {
         registerStyleElementUsage(styleElement);
       } else {
-        styleElement = appendStyleElement(
-          styleObject.rules,
-          styleObject.id
-        ).element;
+        styleElement = appendStyleElement(styleObject.rules, {
+          id: styleObject.id,
+        });
       }
     }
 
@@ -66,10 +73,12 @@ function createSxClass(value: () => SxProps | undefined) {
       styleElement,
     };
   }, undefined);
+
   onCleanup(() => {
     if (styleElement) unregisterStyleElementUsage(styleElement);
   });
+
   return name;
 }
 
-export default createSxClass;
+export default createStyle;

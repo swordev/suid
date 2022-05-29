@@ -5,10 +5,6 @@
     "paths": {
       "@suid/css": ["./../css/src"],
       "@suid/css/*": ["./../css/src/*"],
-      "@suid/styled-engine": ["./../styled-engine/src"],
-      "@suid/styled-engine/*": ["./../styled-engine/src/*"],
-      "@suid/types": ["./../types/src"],
-      "@suid/types/*": ["./../types/src/*"],
       "@suid/utils": ["./../utils/src"],
       "@suid/utils/*": ["./../utils/src/*"]
     }
@@ -19,12 +15,6 @@
   "references": [
     {
       "path": "./../css"
-    },
-    {
-      "path": "./../styled-engine"
-    },
-    {
-      "path": "./../types"
     },
     {
       "path": "./../utils"
