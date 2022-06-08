@@ -54,7 +54,7 @@ function createStyle(value: () => StyleProps | undefined) {
       } else {
         styleElement = appendStyleElement(styleObject.rules, {
           id: styleObject.id,
-          once: context.cache?.nonce,
+          nonce: context.cache?.nonce,
         });
       }
     }
