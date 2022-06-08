@@ -20,7 +20,7 @@ module.exports = {
     "<rootDir>/packages/*/src/**/*.test.{ts,tsx}",
     "<rootDir>/packages/*/test/**/*.test.{ts,tsx}",
   ],
-  modulePathIgnorePatterns: ["lib", "temp"],
+  modulePathIgnorePatterns: ["lib", "dist", "temp"],
   globals: {
     "ts-jest": {
       tsconfig: "<rootDir>/tsconfig.jest.json",
