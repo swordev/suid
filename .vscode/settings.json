@@ -17,5 +17,6 @@
   "search.exclude": {
     ".history": true,
     "packages/icons-material/lib": true
-  }
+  },
+  "typescript.tsdk": "node_modules\\typescript\\lib"
 }
