@@ -12,10 +12,10 @@
   "dependencies": {
     "@suid/utils": "workspace:*",
     "@types/micromatch": "^4.0.2",
-    "commander": "^9.2.0",
+    "commander": "^9.3.0",
     "fast-glob": "^3.2.11",
     "micromatch": "^4.0.5",
-    "ts-morph": "^14.0.0"
+    "ts-morph": "^15.1.0"
   },
   "devDependencies": {
     "prettier": "^2.6.2"
