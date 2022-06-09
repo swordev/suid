@@ -1,12 +1,12 @@
 import { safeStat } from "./../util/fs";
 import { parsePackageFile } from "./../util/package";
-import { join } from "path";
 import {
   parseTsConfigFile,
   TsConfig,
   writeTsConfigFile,
-} from "~/util/tsconfig";
-import { getPackageNames, packagesPath, rootPath } from "~/util/workspace";
+} from "./../util/tsconfig";
+import { getPackageNames, packagesPath, rootPath } from "./../util/workspace";
+import { join } from "path";
 
 const scope = "suid";
 const scopePrefix = `@${scope}/`;

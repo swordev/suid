@@ -1,7 +1,7 @@
+import { safeStat } from "./../util/fs";
+import { muiSourcePath } from "./../util/material-ui";
 import { spawn } from "child_process";
 import { dirname } from "path";
-import { safeStat } from "~/util/fs";
-import { muiSourcePath } from "~/util/material-ui";
 
 async function extractMaterialSource(options: { version: string }) {
   const { name } = extractMaterialSource;

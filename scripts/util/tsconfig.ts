@@ -1,7 +1,7 @@
+import { readOptions } from "./prettier";
 import { readFile, writeFile } from "fs/promises";
-import { parse } from "json5";
+import * as json5 from "json5";
 import { format } from "prettier";
-import { options } from "~/util/prettier";
 
 type CompilerOptions = { paths: Record<string, string[]> };
 type Reference = { path: string };
@@ -14,14 +14,14 @@ export type TsConfig = {
 
 export async function parseTsConfigFile(path: string) {
   const contents = await readFile(path);
-  return parse(contents.toString()) as TsConfig;
+  return json5.parse(contents.toString()) as TsConfig;
 }
 
 export async function writeTsConfigFile(path: string, config: TsConfig) {
   await writeFile(
     path,
     format(JSON.stringify(config), {
-      ...options,
+      ...(await readOptions()),
       parser: "json",
     })
   );

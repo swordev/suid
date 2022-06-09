@@ -3,7 +3,6 @@
   "version": "0.4.0",
   "description": "Tool for migrating MUI React code to SUID SolidJS.",
   "type": "module",
-  "bin": "bin.js",
   "scripts": {
     "build": "tsc --build",
     "clean": "tsc --build --clean",
@@ -22,5 +21,10 @@
   },
   "publishConfig": {
     "directory": "lib"
+  },
+  "x-wspa": {
+    "pkgManifest": {
+      "bin": "bin.js"
+    }
   }
 }

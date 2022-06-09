@@ -1,6 +1,6 @@
+import { readOptions } from "./prettier";
 import { readFile, writeFile } from "fs/promises";
 import { format } from "prettier";
-import { options } from "~/util/prettier";
 
 type Package = {
   private?: boolean;
@@ -27,7 +27,7 @@ export async function writePackageFile(path: string, config: Package) {
   await writeFile(
     path,
     format(JSON.stringify(config), {
-      ...options,
+      ...(await readOptions()),
       filepath: "package.json",
       parser: "json-stringify",
     })

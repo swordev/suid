@@ -1,19 +1,19 @@
+import { createProgressLog } from "./../util/cli";
+import { normalizeFileName } from "./../util/icons-material";
+import { muiSourcePath } from "./../util/material-ui";
+import { readOptions } from "./../util/prettier";
+import { packagesPath } from "./../util/workspace";
 import { readdir, readFile, writeFile } from "fs/promises";
-import parse from "node-html-parser";
+import * as htmlParser from "node-html-parser";
 import { join } from "path";
 import { format } from "prettier";
-import { createProgressLog } from "~/util/cli";
-import { normalizeFileName } from "~/util/icons-material";
-import { muiSourcePath } from "~/util/material-ui";
-import { options } from "~/util/prettier";
-import { packagesPath } from "~/util/workspace";
 
 const outPath = join(packagesPath, "icons-material/lib");
 
-function renderComponentContents(name: string, children: string[]) {
+async function renderComponentContents(name: string, children: string[]) {
   return format(
     `
-      import $ from "./utils/createSvgIcon";
+      import $ from "./utils/createSvgIcon";\n
       export default $(
         () => ${
           children.length > 1 ? `<>${children.join("\n")}</>` : children[0]
@@ -22,7 +22,7 @@ function renderComponentContents(name: string, children: string[]) {
       );
     `,
     {
-      ...options,
+      ...(await readOptions()),
       parser: "typescript",
     }
   );
@@ -46,7 +46,7 @@ async function genIconsMaterialSource(options: { version: string }) {
     const [name] = normalizeFileName(fileName).split(".");
     const filePath = join(svgPath, fileName);
     const fileContents = (await readFile(filePath)).toString();
-    const $svg = parse(fileContents);
+    const $svg = htmlParser.parse(fileContents);
     const svgChildren = $svg.childNodes[0].childNodes
       .map((v) =>
         v.toString().replace(/><\/(path|rect|polygon|circle)>/g, " />")
@@ -59,7 +59,7 @@ async function genIconsMaterialSource(options: { version: string }) {
           )
       );
     const componentPath = join(outPath, `${name}.jsx`);
-    const componentSource = renderComponentContents(name, svgChildren);
+    const componentSource = await renderComponentContents(name, svgChildren);
     await writeFile(componentPath, componentSource);
   }
   progressLog.stop();

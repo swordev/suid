@@ -1,4 +1,7 @@
+import { dirname } from "path";
 import { Options } from "prettier";
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-export const options: Options = require(`${__dirname}/../../.prettierrc`);
+const __dirname = new URL(dirname(import.meta.url)).pathname;
+
+export const readOptions: () => Promise<Options> = () =>
+  import(`${__dirname}/../../.prettierrc`);

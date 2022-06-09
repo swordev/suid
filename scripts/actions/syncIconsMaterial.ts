@@ -1,12 +1,12 @@
-import clean from "~/actions/clean";
-import genIconsMaterialSource from "~/actions/genIconsMaterialSource";
-import generateLibTyping from "~/actions/genIconsMaterialTyping";
-import syncMaterialSource from "~/actions/syncMaterialSource";
+import genIconsMaterialSource from "./genIconsMaterialSource";
+import generateLibTyping from "./genIconsMaterialTyping";
+import syncMaterialSource from "./syncMaterialSource";
+import clean from "@wspa/cli/actions/clean";
 
 async function syncIconsMaterial(options: { version: string }) {
   const { version } = options;
+  await clean({ packageNames: ["@suid/icons-material"], log: false });
   await syncMaterialSource({ version });
-  await clean({ packageNames: ["icons-material"] });
   await genIconsMaterialSource({ version });
   await generateLibTyping();
 }

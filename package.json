@@ -36,20 +36,21 @@
     }
   ],
   "scripts": {
-    "build": "pnpm scripts prebuild && pnpm build:ts && pnpm build:site && pnpm scripts postbuild",
+    "build": "pnpm scripts prebuild && pnpm build:ts && pnpm build:site",
     "build:site": "pnpm --filter @suid/site build",
     "build:ts": "tsc --build tsconfig.build.json",
     "changeset": "changeset",
     "check": "pnpm format:check && pnpm lint",
-    "clean:ts": "tsc --build tsconfig.build.json --clean",
+    "clean": "wspa clean",
     "codemod": "node --no-warnings --experimental-specifier-resolution=node --loader ts-node/esm packages/codemod/src/bin.ts",
     "format": "prettier -w .",
     "format:check": "prettier -c .",
-    "postinstall": "pnpm scripts postinstall",
+    "postinstall": "pnpm patch && pnpm scripts prebuild",
     "lint": "eslint --ignore-path .gitignore .",
+    "patch": "wspa patch",
     "prepare": "husky install",
     "release": "changeset publish",
-    "scripts": "ts-node --project ./scripts/tsconfig.json -r ./scripts/node_modules/tsconfig-paths/register scripts",
+    "scripts": "node --no-warnings --experimental-specifier-resolution=node --loader ts-node/esm scripts/index.ts",
     "start": "pnpm --filter @suid/site start",
     "test": "jest",
     "update": "ncu",
@@ -64,6 +65,8 @@
     "@types/node": "^17.0.41",
     "@typescript-eslint/eslint-plugin": "^5.27.1",
     "@typescript-eslint/parser": "^5.27.1",
+    "@wspa/cli": "^0.3.0",
+    "@wspa/config": "^0.1.2",
     "babel-jest": "^28.1.1",
     "babel-preset-solid": "^1.4.2",
     "eslint": "^8.17.0",
@@ -90,6 +93,49 @@
   "pnpm": {
     "overrides": {
       "@trivago/prettier-plugin-sort-imports>@babel/parser": "7.17.9"
+    }
+  },
+  "x-wspa": {
+    "extends": "@wspa/config/auto",
+    "pkgManifest": {
+      "bugs": {
+        "url": "https://github.com/swordev/suid/issues"
+      },
+      "contributors": [
+        {
+          "name": "Juanra GM",
+          "email": "juanrgm724@gmail.com",
+          "url": "https://github.com/juanrgm"
+        }
+      ],
+      "files": [
+        "**/*.js",
+        "**/*.jsx",
+        "**/*.d.ts"
+      ],
+      "homepage": "https://suid.io",
+      "keywords": [
+        "best_ecosystem",
+        "components",
+        "material-design",
+        "material-ui",
+        "material",
+        "mui",
+        "solid-js",
+        "solid.js",
+        "solid",
+        "solidhack",
+        "solidjs",
+        "styled-component",
+        "ui",
+        "ux"
+      ],
+      "license": "MIT",
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/swordev/suid",
+        "directory": "<directory>"
+      }
     }
   }
 }

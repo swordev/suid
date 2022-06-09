@@ -1,4 +1,4 @@
-import genIconsMaterialTyping from "~/actions/genIconsMaterialTyping";
+import genIconsMaterialTyping from "./genIconsMaterialTyping";
 
 async function prebuild() {
   await genIconsMaterialTyping();

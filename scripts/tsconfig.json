@@ -1,9 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "~/*": ["./*"]
-    }
-  },
-  "extends": "@tsconfig/node16/tsconfig.json"
+    "module": "ESNext",
+    "moduleResolution": "node"
+  }
 }

@@ -1,5 +1,5 @@
-import downloadMaterialSource from "~/actions/downloadMaterialSource";
-import extractMaterialSource from "~/actions/extractMaterialSource";
+import downloadMaterialSource from "./downloadMaterialSource";
+import extractMaterialSource from "./extractMaterialSource";
 
 async function syncMaterialSource(options: { version: string }) {
   const { version } = options;

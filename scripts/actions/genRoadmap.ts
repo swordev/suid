@@ -1,10 +1,10 @@
+import { markdownTable } from "./../util/markdown";
+import { muiSourcePath } from "./../util/material-ui";
+import { readOptions as prettierOptions } from "./../util/prettier";
+import { rootPath } from "./../util/workspace";
 import { readdir, writeFile } from "fs/promises";
 import { join } from "path";
 import { format } from "prettier";
-import { markdownTable } from "~/util/markdown";
-import { muiSourcePath } from "~/util/material-ui";
-import { options as prettierOptions } from "~/util/prettier";
-import { rootPath } from "~/util/workspace";
 
 const systemFeatures: Record<string, boolean | "pending"> = {
   "`styled`": true,
@@ -138,7 +138,7 @@ async function genRoadmap(options: { version: string }) {
       componentsTable,
     ].join("\n"),
     {
-      ...prettierOptions,
+      ...(await prettierOptions()),
       parser: "markdown",
     }
   );

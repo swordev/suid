@@ -2,6 +2,7 @@
   "name": "@suid/scripts",
   "version": "0.0.0",
   "private": true,
+  "type": "module",
   "dependencies": {
     "commander": "^9.0.0"
   },
@@ -12,7 +13,6 @@
     "json5": "^2.2.0",
     "node-html-parser": "^5.2.0",
     "prettier": "^2.5.1",
-    "tsconfig-paths": "^3.14.0",
     "typescript": "^4.5.5"
   }
 }
