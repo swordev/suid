@@ -15,5 +15,10 @@
   },
   "publishConfig": {
     "directory": "lib"
+  },
+  "x-wspa": {
+    "outFiles": [
+      "lib/*.d.ts"
+    ]
   }
 }

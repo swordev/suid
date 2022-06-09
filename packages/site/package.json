@@ -2,10 +2,6 @@
   "name": "@suid/site",
   "version": "0.4.1",
   "description": "SUID website.",
-  "files": [
-    "assets/**/*",
-    "index.html"
-  ],
   "scripts": {
     "build": "vite build",
     "clean": "rimraf ./dist",
@@ -38,5 +34,13 @@
   },
   "publishConfig": {
     "directory": "dist"
+  },
+  "x-wspa": {
+    "pkgManifest": {
+      "files": [
+        "assets/**/*",
+        "index.html"
+      ]
+    }
   }
 }
