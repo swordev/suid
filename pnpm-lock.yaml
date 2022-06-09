@@ -136,7 +136,7 @@ importers:
 
   packages/site:
     specifiers:
-      '@stackblitz/sdk': ^1.6.0
+      '@stackblitz/sdk': ^1.7.0
       '@suid/base': workspace:*
       '@suid/codemod': workspace:*
       '@suid/icons-material': workspace:*
@@ -151,14 +151,14 @@ importers:
       prism-themes: ^1.9.0
       prismjs: ^1.28.0
       rimraf: ^3.0.2
-      sass: ^1.52.2
+      sass: ^1.52.3
       semver: ^7.3.7
       solid-app-router: ^0.3.3
       solid-js: ^1.3.17
       vite: ^2.9.10
       vite-plugin-solid: ^2.2.6
     dependencies:
-      '@stackblitz/sdk': 1.6.0
+      '@stackblitz/sdk': 1.7.0
       '@suid/base': link:../base
       '@suid/codemod': link:../codemod
       '@suid/icons-material': link:../icons-material
@@ -177,9 +177,9 @@ importers:
       '@types/semver': 7.3.9
       fast-glob: 3.2.11
       rimraf: 3.0.2
-      sass: 1.52.2
-      vite: 2.9.10_sass@1.52.2
-      vite-plugin-solid: 2.2.6_sass@1.52.2
+      sass: 1.52.3
+      vite: 2.9.10_sass@1.52.3
+      vite-plugin-solid: 2.2.6_sass@1.52.3
 
   packages/styled-engine:
     specifiers:
@@ -217,25 +217,23 @@ importers:
   scripts:
     specifiers:
       '@tsconfig/node16': ^1.0.2
-      '@types/node': ^16.11.22
-      '@types/prettier': ^2.4.4
-      commander: ^9.0.0
-      json5: ^2.2.0
-      node-html-parser: ^5.2.0
-      prettier: ^2.5.1
-      tsconfig-paths: ^3.14.0
-      typescript: ^4.5.5
+      '@types/node': ^17.0.41
+      '@types/prettier': ^2.6.3
+      commander: ^9.3.0
+      json5: ^2.2.1
+      node-html-parser: ^5.3.3
+      prettier: ^2.6.2
+      typescript: ^4.7.3
     dependencies:
-      commander: 9.1.0
+      commander: 9.3.0
     devDependencies:
       '@tsconfig/node16': 1.0.2
-      '@types/node': 16.11.26
-      '@types/prettier': 2.4.4
+      '@types/node': 17.0.41
+      '@types/prettier': 2.6.3
       json5: 2.2.1
       node-html-parser: 5.3.3
-      prettier: 2.6.0
-      tsconfig-paths: 3.14.0
-      typescript: 4.6.2
+      prettier: 2.6.2
+      typescript: 4.7.3
 
 packages:
 
@@ -2729,8 +2727,8 @@ packages:
       '@sinonjs/commons': 1.8.3
     dev: true
 
-  /@stackblitz/sdk/1.6.0:
-    resolution: {integrity: sha512-PPB9m1zywojv6sOGSiHv+tvnb4Zc00Jce9yjUG0BzTymUdFf9AP+gKJRlc0iq9vbEEEXfYv1bgKa5KTn4gAzbQ==}
+  /@stackblitz/sdk/1.7.0:
+    resolution: {integrity: sha512-LIwNSaEAMAh8p2Aq0ft2GOCenrRHzuyg5UYWSdh/Jj5gAWP4d9vYFGsMv6GqMcTQT4kcIjo5NQWq3widrabvCg==}
     dev: false
 
   /@szmarczak/http-timer/1.1.2:
@@ -2920,10 +2918,6 @@ packages:
     resolution: {integrity: sha512-BzcaRsnFuznzOItW1WpQrDHM7plAa7GIDMZ6b5pnMbkqEtM/6WCOhvZar39oeMQP79gwvFUWjjptE7/KGcNqFg==}
     dev: true
 
-  /@types/node/16.11.26:
-    resolution: {integrity: sha512-GZ7bu5A6+4DtG7q9GsoHXy3ALcgeIHP4NnL0Vv2wu0uUB/yQex26v0tf6/na1mm0+bS9Uw+0DFex7aaKr2qawQ==}
-    dev: true
-
   /@types/node/17.0.41:
     resolution: {integrity: sha512-xA6drNNeqb5YyV5fO3OAEsnXLfO7uF0whiOfPTz5AeDo8KeZFmODKnvwPymMNO8qE/an8pVY/O50tig2SQCrGw==}
     dev: true
@@ -2938,6 +2932,10 @@ packages:
 
   /@types/prettier/2.4.4:
     resolution: {integrity: sha512-ReVR2rLTV1kvtlWFyuot+d1pkpG2Fw/XKE3PDAdj57rbM97ttSp9JZ2UsP+2EHTylra9cUf6JA7tGwW1INzUrA==}
+    dev: true
+
+  /@types/prettier/2.6.3:
+    resolution: {integrity: sha512-ymZk3LEC/fsut+/Q5qejp6R9O1rMxz3XaRHDV6kX8MrGAhOSPqVARbDi+EZvInBpw+BnCX3TD240byVkOfQsHg==}
     dev: true
 
   /@types/prismjs/1.26.0:
@@ -3647,7 +3645,7 @@ packages:
     dev: true
 
   /boolbase/1.0.0:
-    resolution: {integrity: sha1-aN/1++YMUes3cl6p4+0xDcwed24=}
+    resolution: {integrity: sha512-JZOSA7Mo9sNGB8+UjSgzdLtokWAky1zbztM3WRLCbZ70/3cTANmQmOdR7y2g+J0e2WXywy1yS468tY+IruqEww==}
     dev: true
 
   /boxen/5.1.2:
@@ -4008,11 +4006,6 @@ packages:
     dependencies:
       delayed-stream: 1.0.0
     dev: true
-
-  /commander/9.1.0:
-    resolution: {integrity: sha512-i0/MaqBtdbnJ4XQs4Pmyb+oFQl+q0lsAmokVUH92SlSw4fkeAcG3bVon+Qt7hmtF+u3Het6o4VgrcY3qAoEB6w==}
-    engines: {node: ^12.20.0 || >=14}
-    dev: false
 
   /commander/9.3.0:
     resolution: {integrity: sha512-hv95iU5uXPbK83mjrJKuZyFM/LBAoCV/XhVGkS5Je6tl7sxr6A0ITMw5WoRV46/UaJ46Nllm3Xt7IaJhXTIkzw==}
@@ -5742,7 +5735,7 @@ packages:
     dev: true
 
   /is-extglob/2.1.1:
-    resolution: {integrity: sha1-qIwCU1eR8C7TfHahueqXc8gz+MI=}
+    resolution: {integrity: sha512-SbKbANkN603Vi4jEZv49LeVJMn4yGwsbzZworEoyEiutsN3nJYdbO36zfhGJ6QEDpOZIFkDtnq5JRxmvl3jsoQ==}
     engines: {node: '>=0.10.0'}
 
   /is-fullwidth-code-point/3.0.0:
@@ -5892,7 +5885,7 @@ packages:
     dev: true
 
   /isexe/2.0.0:
-    resolution: {integrity: sha1-6PvzdNxVb/iUehDcsFctYz8s+hA=}
+    resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
     dev: true
 
   /istanbul-lib-coverage/3.2.0:
@@ -6925,10 +6918,6 @@ packages:
       kind-of: 6.0.3
     dev: true
 
-  /minimist/1.2.5:
-    resolution: {integrity: sha512-FM9nNUYrRBAELZQT3xeZQ7fmMOBg6nWNmJKTcgsJeaLstP/UODVpGsr5OhXhhXg6f+qtJ8uiZ+PUxkDWcgIXLw==}
-    dev: true
-
   /minimist/1.2.6:
     resolution: {integrity: sha512-Jsjnk4bw3YJqYzbdyBiNsPWHPfO++UGG749Cxs6peCu5Xg4nrena6OVxOYxrQTqww0Jmwt+Ref8rggumkTLz9Q==}
     dev: true
@@ -7664,12 +7653,6 @@ packages:
     hasBin: true
     dev: true
 
-  /prettier/2.6.0:
-    resolution: {integrity: sha512-m2FgJibYrBGGgQXNzfd0PuDGShJgRavjUoRCw1mZERIWVSXF0iLzLm+aOqTAbLnC3n6JzUhAA8uZnFVghHJ86A==}
-    engines: {node: '>=10.13.0'}
-    hasBin: true
-    dev: true
-
   /prettier/2.6.2:
     resolution: {integrity: sha512-PkUpF+qoXTqhOeWL9fu7As8LXsIUZ1WYaJiY/a7McAQzxjk82OF0tibkFXVCDImZtWxbvojFjerkiLb0/q8mew==}
     engines: {node: '>=10.13.0'}
@@ -8121,8 +8104,8 @@ packages:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
     dev: true
 
-  /sass/1.52.2:
-    resolution: {integrity: sha512-mfHB2VSeFS7sZlPv9YohB9GB7yWIgQNTGniQwfQ04EoQN0wsQEv7SwpCwy/x48Af+Z3vDeFXz+iuXM3HK/phZQ==}
+  /sass/1.52.3:
+    resolution: {integrity: sha512-LNNPJ9lafx+j1ArtA7GyEJm9eawXN8KlA1+5dF6IZyoONg1Tyo/g+muOsENWJH/2Q1FHbbV4UwliU0cXMa/VIA==}
     engines: {node: '>=12.0.0'}
     hasBin: true
     dependencies:
@@ -8741,15 +8724,6 @@ packages:
     resolution: {integrity: sha512-nsZd8ZeNUzukXPlJmTBwUAuABDe/9qtVDelJeT/qW0ow3ZS3BsQJtNkan1802aM9Uf68/Y8ljw86Hu0h5IUW3w==}
     dev: true
 
-  /tsconfig-paths/3.14.0:
-    resolution: {integrity: sha512-cg/1jAZoL57R39+wiw4u/SCC6Ic9Q5NqjBOb+9xISedOYurfog9ZNmKJSxAnb2m/5Bq4lE9lhUcau33Ml8DM0g==}
-    dependencies:
-      '@types/json5': 0.0.29
-      json5: 1.0.1
-      minimist: 1.2.5
-      strip-bom: 3.0.0
-    dev: true
-
   /tsconfig-paths/3.14.1:
     resolution: {integrity: sha512-fxDhWnFSLt3VuTwtvJt5fpwxBHg5AdKWMsgcPOOIilyjymcYVZoCQF8fvFRezCNfblEXmi+PcM1eYHeOAgXCOQ==}
     dependencies:
@@ -8846,12 +8820,6 @@ packages:
     resolution: {integrity: sha512-zdu8XMNEDepKKR+XYOXAVPtWui0ly0NtohUscw+UmaHiAWT8hrV1rr//H6V+0DvJ3OQ19S979M0laLfX8rm82Q==}
     dependencies:
       is-typedarray: 1.0.0
-    dev: true
-
-  /typescript/4.6.2:
-    resolution: {integrity: sha512-HM/hFigTBHZhLXshn9sN37H085+hQGeJHJ/X7LpBWLID/fbc2acUMfU+lGD98X81sKP+pFa9f0DZmCwB9GnbAg==}
-    engines: {node: '>=4.2.0'}
-    hasBin: true
     dev: true
 
   /typescript/4.7.3:
@@ -8983,7 +8951,7 @@ packages:
       builtins: 1.0.3
     dev: true
 
-  /vite-plugin-solid/2.2.6_sass@1.52.2:
+  /vite-plugin-solid/2.2.6_sass@1.52.3:
     resolution: {integrity: sha512-J1RnmqkZZJSNYDW7vZj0giKKHLWGr9tS/gxR70WDSTYfhyXrgukbZdIfSEFbtrsg8ZiQ2t2zXcvkWoeefenqKw==}
     dependencies:
       '@babel/core': 7.17.8
@@ -8992,7 +8960,7 @@ packages:
       merge-anything: 5.0.2
       solid-js: 1.3.17
       solid-refresh: 0.4.0_solid-js@1.3.17
-      vite: 2.9.10_sass@1.52.2
+      vite: 2.9.10_sass@1.52.3
     transitivePeerDependencies:
       - less
       - sass
@@ -9000,7 +8968,7 @@ packages:
       - supports-color
     dev: true
 
-  /vite/2.9.10_sass@1.52.2:
+  /vite/2.9.10_sass@1.52.3:
     resolution: {integrity: sha512-TwZRuSMYjpTurLqXspct+HZE7ONiW9d+wSWgvADGxhDPPyoIcNywY+RX4ng+QpK30DCa1l/oZgi2PLZDibhzbQ==}
     engines: {node: '>=12.2.0'}
     hasBin: true
@@ -9020,7 +8988,7 @@ packages:
       postcss: 8.4.13
       resolve: 1.22.0
       rollup: 2.70.1
-      sass: 1.52.2
+      sass: 1.52.3
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
