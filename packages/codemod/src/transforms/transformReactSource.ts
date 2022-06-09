@@ -6,6 +6,7 @@ import groupImports from "./groupImports";
 import removePropTypes from "./removePropTypes";
 import removeReactImports from "./removeReactImports";
 import removeReactKeyAttr from "./removeReactKeyAttr";
+import removeUnusedImports from "./removeUnusedImports";
 import renameMuiImports from "./renameMuiImports";
 import replaceObjectBinding from "./replaceObjectBinding";
 import replaceReactClassNameAttr from "./replaceReactClassNameAttr";
@@ -83,4 +84,5 @@ export default function transformReactSource(source: SourceFile) {
     attrTransforms[name]?.(node);
   });
   groupImports(source);
+  removeUnusedImports(source);
 }
