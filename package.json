@@ -1,46 +1,9 @@
 {
   "name": "@suid/site",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "SUID website.",
-  "keywords": [
-    "best_ecosystem",
-    "components",
-    "material",
-    "material-design",
-    "material-ui",
-    "mui",
-    "solid",
-    "solid-js",
-    "solid.js",
-    "solidhack",
-    "solidjs",
-    "styled-component",
-    "ui",
-    "ux"
-  ],
-  "homepage": "https://suid.io",
-  "bugs": {
-    "url": "https://github.com/swordev/suid.git/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/swordev/suid.git",
-    "directory": "packages/site"
-  },
-  "license": "MIT",
-  "contributors": [
-    {
-      "name": "Juanra GM",
-      "email": "juanrgm724@gmail.com",
-      "url": "https://github.com/juanrgm"
-    }
-  ],
-  "files": [
-    "assets/**/*",
-    "index.html"
-  ],
   "dependencies": {
-    "@stackblitz/sdk": "^1.6.0",
+    "@stackblitz/sdk": "^1.7.0",
     "@suid/base": "workspace:*",
     "@suid/codemod": "workspace:*",
     "@suid/icons-material": "workspace:*",
@@ -52,16 +15,44 @@
     "prism-themes": "^1.9.0",
     "prismjs": "^1.28.0",
     "semver": "^7.3.7",
-    "solid-app-router": "^0.3.2",
+    "solid-app-router": "^0.3.3",
     "solid-js": "^1.3.17"
   },
-  "devDependencies": {
-    "@types/prismjs": "^1.26.0",
-    "@types/semver": "^7.3.9",
-    "fast-glob": "^3.2.11",
-    "rimraf": "^3.0.2",
-    "sass": "^1.51.0",
-    "vite": "^2.9.9",
-    "vite-plugin-solid": "^2.2.6"
+  "bugs": {
+    "url": "https://github.com/swordev/suid/issues"
+  },
+  "contributors": [
+    {
+      "name": "Juanra GM",
+      "email": "juanrgm724@gmail.com",
+      "url": "https://github.com/juanrgm"
+    }
+  ],
+  "files": [
+    "assets/**/*",
+    "index.html"
+  ],
+  "homepage": "https://suid.io",
+  "keywords": [
+    "best_ecosystem",
+    "components",
+    "material-design",
+    "material-ui",
+    "material",
+    "mui",
+    "solid-js",
+    "solid.js",
+    "solid",
+    "solidhack",
+    "solidjs",
+    "styled-component",
+    "ui",
+    "ux"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/swordev/suid",
+    "directory": "packages/site"
   }
 }
