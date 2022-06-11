@@ -1,5 +1,14 @@
 # @suid/system
 
+## 0.4.2
+
+### Patch Changes
+
+- [`c09275c1`](https://github.com/swordev/suid/commit/c09275c1440f13139a78a000063e2979981e40f1) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
+- Updated dependencies [[`a00adadf`](https://github.com/swordev/suid/commit/a00adadf6c4e6f0aebdee7be8a250dcc19c04a03)]:
+  - @suid/styled-engine@0.1.1
+
 ## 0.4.1
 
 ### Patch Changes

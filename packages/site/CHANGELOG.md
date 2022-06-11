@@ -1,5 +1,20 @@
 # @suid/site
 
+## 0.4.2
+
+### Patch Changes
+
+- [`c09275c1`](https://github.com/swordev/suid/commit/c09275c1440f13139a78a000063e2979981e40f1) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
+* [`ac2fcbff`](https://github.com/swordev/suid/commit/ac2fcbff6522d1506ac4957b656811a234e157b0) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
+* Updated dependencies [[`c09275c1`](https://github.com/swordev/suid/commit/c09275c1440f13139a78a000063e2979981e40f1), [`3813da8e`](https://github.com/swordev/suid/commit/3813da8e9f33a0c0a0f2ce89f8c9095cd49e7f57), [`00e9fdbf`](https://github.com/swordev/suid/commit/00e9fdbf81204a3546cf06f77ccee979f0867397), [`640c2a4c`](https://github.com/swordev/suid/commit/640c2a4cf720613f1d9d2e5f06241a76c75d181b)]:
+  - @suid/codemod@0.5.0
+  - @suid/system@0.4.2
+  - @suid/material@0.4.2
+  - @suid/base@0.2.5
+  - @suid/icons-material@0.2.4
+
 ## 0.4.1
 
 ### Patch Changes

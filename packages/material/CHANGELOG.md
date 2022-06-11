@@ -1,5 +1,15 @@
 # @suid/material
 
+## 0.4.2
+
+### Patch Changes
+
+- [`3813da8e`](https://github.com/swordev/suid/commit/3813da8e9f33a0c0a0f2ce89f8c9095cd49e7f57) Thanks [@juanrgm](https://github.com/juanrgm)! - Render link element when `href` attribute is provided in `Fab` component
+
+- Updated dependencies [[`c09275c1`](https://github.com/swordev/suid/commit/c09275c1440f13139a78a000063e2979981e40f1), [`640c2a4c`](https://github.com/swordev/suid/commit/640c2a4cf720613f1d9d2e5f06241a76c75d181b)]:
+  - @suid/system@0.4.2
+  - @suid/base@0.2.5
+
 ## 0.4.1
 
 ### Patch Changes

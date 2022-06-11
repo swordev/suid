@@ -1,6 +1,6 @@
 {
   "name": "@suid/base",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Base components unstyled used by @suid/material.",
   "scripts": {
     "build": "tsc --build",
