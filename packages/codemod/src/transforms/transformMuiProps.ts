@@ -147,6 +147,12 @@ function removeNoTypes(source: SourceFile, componentName: string) {
 }
 
 function transformMuiProps(source: SourceFile, componentName: string) {
+  const haveReactImport = !!source.getImportDeclaration("react");
+  if (!haveReactImport)
+    source.addImportDeclaration({
+      moduleSpecifier: "react",
+      namespaceImport: "React",
+    });
   transformReactSource(source);
   const defaultComponent = findDefaultComponent(source, componentName);
   const { props, propsWrapper, propsExtends } = findConfigTypeProps(
