@@ -1,30 +1,22 @@
+import { FabTypeMap } from ".";
 import ButtonBase from "../ButtonBase";
 import styled from "../styles/styled";
-import capitalize from "../utils/capitalize";
-import { FabTypeMap } from "./FabProps";
-import fabClasses, { getFabUtilityClass } from "./fabClasses";
+import { getFabUtilityClass } from "./fabClasses";
+import fabClasses from "./fabClasses";
 import createComponentFactory from "@suid/base/createComponentFactory";
-import { InPropsOf } from "@suid/types";
+import capitalize from "@suid/utils/capitalize";
 import clsx from "clsx";
+import { splitProps, mergeProps } from "solid-js";
 
 const $ = createComponentFactory<FabTypeMap>()({
   name: "MuiFab",
-  propDefaults: ({ set }) =>
-    set({
-      color: "default",
-      component: "button",
-      disabled: false,
-      disableFocusRipple: false,
-      size: "large",
-      variant: "circular",
-    }),
   selfPropNames: [
     "children",
     "classes",
     "color",
+    "disabled",
     "disableFocusRipple",
     "disableRipple",
-    "disabled",
     "href",
     "size",
     "variant",
@@ -55,7 +47,7 @@ const FabRoot = styled(ButtonBase, {
       styles[ownerState.color],
     ];
   },
-})<InPropsOf<FabTypeMap>>(
+})(
   ({ theme, ownerState }) => ({
     ...theme.typography.button,
     minHeight: 36,
@@ -156,18 +148,64 @@ const FabRoot = styled(ButtonBase, {
  * - [Fab API](https://mui.com/api/fab/)
  * - inherits [ButtonBase API](https://mui.com/api/button-base/)
  */
-const Fab = $.component(function Fab({ allProps, classes, otherProps, props }) {
+const Fab = $.defineComponent(function Fab(inProps) {
+  const props = $.useThemeProps({ props: inProps });
+  const [, other] = splitProps(props, [
+    "children",
+    "className",
+    "color",
+    "component",
+    "disabled",
+    "disableFocusRipple",
+    "focusVisibleClassName",
+    "size",
+    "variant",
+  ]);
+
+  const baseProps = mergeProps(
+    {
+      color: "default",
+      component: "button",
+      disabled: false,
+      disableFocusRipple: false,
+      size: "large",
+      variant: "circular",
+    },
+    props
+  );
+
+  const ownerState = mergeProps(props, {
+    get color() {
+      return baseProps.color;
+    },
+    get component() {
+      return baseProps.component;
+    },
+    get disabled() {
+      return baseProps.disabled;
+    },
+    get disableFocusRipple() {
+      return baseProps.disableFocusRipple;
+    },
+    get size() {
+      return baseProps.size;
+    },
+    get variant() {
+      return baseProps.variant;
+    },
+  });
+
+  const classes = $.useClasses(ownerState);
+
   return (
     <FabRoot
-      className={clsx(classes.root, otherProps.className)}
-      disabled={props.disabled}
-      focusRipple={!props.disableFocusRipple}
-      focusVisibleClassName={clsx(
-        props.classes?.focusVisible,
-        otherProps.focusVisibleClassName
-      )}
-      ownerState={allProps}
-      {...otherProps}
+      class={clsx(classes.root, props.className)}
+      component={baseProps.component}
+      disabled={baseProps.disabled}
+      focusRipple={!baseProps.disableFocusRipple}
+      focusVisibleClassName={clsx(props.focusVisibleClassName)}
+      ownerState={ownerState}
+      {...other}
     >
       {props.children}
     </FabRoot>

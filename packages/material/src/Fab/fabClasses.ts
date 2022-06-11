@@ -1,4 +1,5 @@
-import { generateUtilityClass, generateUtilityClasses } from "@suid/base";
+import generateUtilityClass from "@suid/base/generateUtilityClass";
+import generateUtilityClasses from "@suid/base/generateUtilityClasses";
 
 export interface FabClasses {
   /** Styles applied to the root element. */
