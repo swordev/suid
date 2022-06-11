@@ -55,6 +55,7 @@ const $ = createComponentFactory<
       centerRipple: false,
       tabIndex: 0,
     }),
+  autoCallUseClasses: false,
   utilityClass: getButtonBaseUtilityClass,
   slotClasses: (ownerState) => ({
     root: [
@@ -120,7 +121,6 @@ const ButtonBase = $.component(function ButtonBase({
   allProps,
   props,
   otherProps,
-  classes,
 }) {
   const button = createRef<HTMLButtonElement>(otherProps);
   const ripple = createRef<TouchRippleActions>(() => props.touchRippleRef);
@@ -133,6 +133,7 @@ const ButtonBase = $.component(function ButtonBase({
       return focusVisible();
     },
   });
+  const classes = $.useClasses(ownerState);
 
   onMount(() => {
     setMountedState(true);
