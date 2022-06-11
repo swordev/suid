@@ -37,7 +37,7 @@
   ],
   "scripts": {
     "build": "pnpm scripts prebuild && pnpm build:ts && pnpm build:site",
-    "build:site": "pnpm --filter @suid/site build",
+    "build:site": "pnpm --filter @suid/site build && wspa patch -p @suid/site",
     "build:ts": "tsc --build tsconfig.build.json",
     "changeset": "changeset",
     "check": "pnpm format:check && pnpm lint",
