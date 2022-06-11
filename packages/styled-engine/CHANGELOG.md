@@ -1,5 +1,11 @@
 # @suid/styled-engine
 
+## 0.1.1
+
+### Patch Changes
+
+- [`a00adadf`](https://github.com/swordev/suid/commit/a00adadf6c4e6f0aebdee7be8a250dcc19c04a03) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix `nonce` attribute
+
 ## 0.1.0
 
 ### Minor Changes

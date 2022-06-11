@@ -1,5 +1,14 @@
 # @suid/base
 
+## 0.2.5
+
+### Patch Changes
+
+- [`640c2a4c`](https://github.com/swordev/suid/commit/640c2a4cf720613f1d9d2e5f06241a76c75d181b) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `focusVisible` class when `ButtonBase` is focused
+
+- Updated dependencies [[`c09275c1`](https://github.com/swordev/suid/commit/c09275c1440f13139a78a000063e2979981e40f1)]:
+  - @suid/system@0.4.2
+
 ## 0.2.4
 
 ### Patch Changes

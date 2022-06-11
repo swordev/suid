@@ -1,5 +1,15 @@
 # @suid/codemod
 
+## 0.5.0
+
+### Minor Changes
+
+- [`00e9fdbf`](https://github.com/swordev/suid/commit/00e9fdbf81204a3546cf06f77ccee979f0867397) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `mui2suid` action
+
+### Patch Changes
+
+- [`c09275c1`](https://github.com/swordev/suid/commit/c09275c1440f13139a78a000063e2979981e40f1) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
 ## 0.4.0
 
 ### Minor Changes
