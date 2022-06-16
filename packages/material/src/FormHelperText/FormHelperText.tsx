@@ -44,6 +44,7 @@ const $ = createComponentFactory<FormHelperTextTypeMap, OwnerState>()({
     "variant",
   ],
   utilityClass: getFormHelperTextUtilityClasses,
+  autoCallUseClasses: false,
   slotClasses: (ownerState) => ({
     root: [
       "root",
@@ -96,7 +97,6 @@ const FormHelperTextRoot = styled("p", {
 
 const FormHelperText = $.component(function FormHelperText({
   allProps,
-  classes,
   otherProps,
   props,
 }) {
@@ -142,6 +142,7 @@ const FormHelperText = $.component(function FormHelperText({
     },
   });
 
+  const classes = $.useClasses(ownerState);
   const resolved = children(() => props.children);
 
   return (
