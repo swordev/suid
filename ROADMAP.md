@@ -28,6 +28,7 @@
 | `React.Context`               |  ✅   |
 | `React.createContext`         |  ✅   |
 | `React.ElementType`           |  ✅   |
+| `React.forwardRef`            |  ✅   |
 | `React.Fragment`              |  ✅   |
 | `React.JSXElementConstructor` |  ✅   |
 | `React.memo`                  |  ✅   |
