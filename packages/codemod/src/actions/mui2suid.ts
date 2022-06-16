@@ -63,6 +63,7 @@ function colorize(text: string) {
 
 export default async function mui2suid(options: {
   version: string;
+  packageName: string;
   name: string;
   print?: boolean;
   out?: string | true;
@@ -72,10 +73,10 @@ export default async function mui2suid(options: {
 
   const componentName = capitalize(name);
   const src = muiSourcePath(options.version);
-  const componentDir = `${src}/packages/mui-material/src/${componentName}`;
+  const componentDir = `${src}/packages/mui-${options.packageName}/src/${componentName}`;
   const contents: Record<string, string> = {};
   const sourcePaths: Record<string, string> = {};
-  const outBasePath = `${rootPath}/packages/material/src/`;
+  const outBasePath = `${rootPath}/packages/${options.packageName}/src/`;
   const defaultsOutPath = join(outBasePath, options.name);
   const outPath =
     options.out === true

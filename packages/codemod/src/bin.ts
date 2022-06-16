@@ -36,6 +36,7 @@ program
 program
   .command("mui2suid")
   .description("Transform a MUI React component into SUID SolidJS component.")
+  .option("--package-name [name]", "Package name", "material")
   .requiredOption("-n,--name [path]", "Input directory path")
   .option("-o,--out [path]", "Output directory path")
   .option("-v,--version [value]", "MUI version", muiVersion)
@@ -46,8 +47,15 @@ program
     [] as string[]
   )
   .option("-p,--print")
-  .action((options: { version: string; name: string; filters: string[] }) => {
-    mui2suid(options);
-  });
+  .action(
+    (options: {
+      version: string;
+      packageName: string;
+      name: string;
+      filters: string[];
+    }) => {
+      mui2suid(options);
+    }
+  );
 
 program.parse(process.argv);
