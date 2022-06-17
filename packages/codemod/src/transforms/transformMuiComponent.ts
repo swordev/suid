@@ -1,4 +1,6 @@
-import findReactObjects from "../navigations/findReactObjects";
+import replaceMuiUseForkRef, {
+  findUseForkRefIdentifiers,
+} from "./replaceMuiUseForkRef";
 import replaceObjectBinding from "./replaceObjectBinding";
 import transformReactSource from "./transformReactSource";
 import { Block, SourceFile, ts } from "ts-morph";
@@ -112,42 +114,6 @@ function transformUseThemeProps(block: Block) {
   }
 }
 
-function transformUseForkRef(block: Block) {
-  const callExprs = block
-    .getDescendantsOfKind(ts.SyntaxKind.CallExpression)
-    .filter(
-      (expr) =>
-        expr.getFirstChildByKind(ts.SyntaxKind.Identifier)?.getText() ===
-        "useForkRef"
-    );
-
-  for (const expr of callExprs) {
-    const [ref, refProp] = expr.getArguments();
-    const varStm = expr.getFirstAncestorByKind(ts.SyntaxKind.VariableStatement);
-    const [refDeclaration] = ref.getSymbol()?.getDeclarations() || [];
-    const refVarStm = refDeclaration.getFirstAncestorByKind(
-      ts.SyntaxKind.VariableStatement
-    );
-    const refCall = refVarStm?.getFirstDescendantByKind(
-      ts.SyntaxKind.CallExpression
-    );
-
-    if (refCall) {
-      refCall.addArguments([`() => ${refProp.getText()}`]);
-    }
-
-    if (varStm) {
-      const varIdentifier = varStm
-        ?.getFirstDescendantByKind(ts.SyntaxKind.VariableDeclaration)
-        ?.getFirstChildByKind(ts.SyntaxKind.Identifier);
-      if (varIdentifier) {
-        varIdentifier.rename(ref.getText());
-      }
-      varStm.remove();
-    }
-  }
-}
-
 function transformMuiImports(source: SourceFile) {
   const imports = source.getDescendantsOfKind(ts.SyntaxKind.ImportDeclaration);
   const modPrefix = "../utils/";
@@ -168,16 +134,17 @@ function transformMuiComponent(
     selfPropNames?: string[];
   }
 ) {
-  const [forwardRef] = findReactObjects(source, ["forwardRef"]);
-
-  const callExpr = forwardRef.node.getFirstAncestorByKindOrThrow(
-    ts.SyntaxKind.CallExpression
+  const varStm = source.getVariableDeclarationOrThrow(data.componentName);
+  const componentBlock = varStm
+    .getFirstDescendantByKindOrThrow(ts.SyntaxKind.FunctionExpression)
+    .getFirstDescendantByKindOrThrow(ts.SyntaxKind.Block);
+  const useUtilityClasses = transformUseUtilityClasses(componentBlock);
+  const propsVar = transformPropsVar(componentBlock);
+  transformUseThemeProps(componentBlock);
+  findUseForkRefIdentifiers(componentBlock).forEach((node) =>
+    replaceMuiUseForkRef(node)
   );
-  const block = callExpr.getFirstDescendantByKindOrThrow(ts.SyntaxKind.Block);
-  const useUtilityClasses = transformUseUtilityClasses(block);
-  const propsVar = transformPropsVar(block);
-  transformUseThemeProps(block);
-  transformUseForkRef(block);
+
   transformMuiImports(source);
   const lastImport = source.getLastChildByKind(ts.SyntaxKind.ImportDeclaration);
 
@@ -202,14 +169,14 @@ function transformMuiComponent(
     componentStatement,
   ]);
 
-  const blockText = block.getText();
+  const varStmInitializer = varStm.getInitializerOrThrow();
 
-  callExpr.replaceWithText(
-    `$.defineComponent(function ${data.componentName}(inProps) ${blockText})\n\n`
+  varStmInitializer.replaceWithText(
+    `$.defineComponent(${varStmInitializer.getText()})\n\n`
   );
 
   if (data.docblock) {
-    callExpr
+    varStm
       .getFirstAncestorByKindOrThrow(ts.SyntaxKind.VariableStatement)
       .addJsDoc(data.docblock);
   }
