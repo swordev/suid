@@ -1,5 +1,17 @@
 # @suid/codemod
 
+## 0.6.0
+
+### Minor Changes
+
+- [`02d312ee`](https://github.com/swordev/suid/commit/02d312ee8cae6b10391b2a0e00f91bbdce09c5f9) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `React.forwardRef` transform
+
+* [`d3f5567e`](https://github.com/swordev/suid/commit/d3f5567efb15e52b13f19bcd4e13a79f1346a70a) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `--package-name` option to the `mui2suid` action
+
+### Patch Changes
+
+- [`4d721a61`](https://github.com/swordev/suid/commit/4d721a61308dc4e16f63410903fee118260c6b04) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix `useForkRef` transform
+
 ## 0.5.0
 
 ### Minor Changes
