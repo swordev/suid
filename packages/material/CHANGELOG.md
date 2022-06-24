@@ -1,5 +1,11 @@
 # @suid/material
 
+## 0.4.3
+
+### Patch Changes
+
+- [`3365de5f`](https://github.com/swordev/suid/commit/3365de5ff2d5d3e57f26bcd082daa4a59a08d232) Thanks [@juanrgm](https://github.com/juanrgm)! - Use form control state in `FromHelperText` component
+
 ## 0.4.2
 
 ### Patch Changes
