@@ -45,7 +45,7 @@
     "codemod": "node --no-warnings --experimental-specifier-resolution=node --loader ts-node/esm packages/codemod/src/bin.ts",
     "format": "prettier -w .",
     "format:check": "prettier -c .",
-    "postinstall": "pnpm patch && pnpm scripts prebuild",
+    "postinstall": "wspa patch && pnpm scripts prebuild",
     "lint": "eslint --ignore-path .gitignore .",
     "patch": "wspa patch",
     "prepare": "husky install",
