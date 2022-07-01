@@ -161,7 +161,7 @@
 | TableBody               |  ✅   |
 | TableCell               |  ✅   |
 | TableContainer          |  ✅   |
-| TableFooter             |       |
+| TableFooter             |  ✅   |
 | TableHead               |  ✅   |
 | TablePagination         |       |
 | TableRow                |  ✅   |

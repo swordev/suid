@@ -64,6 +64,7 @@ export { default as MuiTable } from "../Table";
 export { default as MuiTableBody } from "../TableBody";
 export { default as MuiTableCell } from "../TableCell";
 export { default as MuiTableContainer } from "../TableContainer";
+export { default as MuiTableFooter } from "../TableFooter";
 export { default as MuiTableHead } from "../TableHead";
 export { default as MuiTableRow } from "../TableRow";
 export { default as MuiTextField } from "../TextField";
