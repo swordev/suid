@@ -49,6 +49,7 @@ export { default as MuiListItemSecondaryAction } from "../ListItemSecondaryActio
 export { default as MuiListItemText } from "../ListItemText";
 export { default as MuiListSubheader } from "../ListSubheader";
 export { default as MuiModal } from "../Modal";
+export { default as MuiNativeSelect } from "../NativeSelect";
 export { default as MuiOutlinedInput } from "../OutlinedInput";
 export { default as MuiPaper } from "../Paper";
 export { default as MuiPopover } from "../Popover";

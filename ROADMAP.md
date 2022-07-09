@@ -122,7 +122,7 @@
 | MenuList                |       |
 | MobileStepper           |       |
 | Modal                   |  ✅   |
-| NativeSelect            |       |
+| NativeSelect            |  ✅   |
 | NoSsr                   |       |
 | OutlinedInput           |  ✅   |
 | Pagination              |       |
