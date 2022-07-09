@@ -1,6 +1,6 @@
 {
   "name": "@suid/site",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "SUID website.",
   "scripts": {
     "build": "vite build",
