@@ -1,5 +1,18 @@
 import { Node, ts } from "ts-morph";
 
+function isReactComponentNode(node: Node) {
+  if (Node.isCallExpression(node)) {
+    const callText = node
+      .getFirstDescendantByKind(ts.SyntaxKind.PropertyAccessExpression)
+      ?.getText();
+    return (
+      callText === "React.cloneElement" || callText === "React.createElement"
+    );
+  } else {
+    return false;
+  }
+}
+
 export default function getAncestorComponent(node: Node) {
   let result: Node | undefined;
   node.getParentWhile((node) => {
@@ -16,7 +29,8 @@ export default function getAncestorComponent(node: Node) {
         if (
           Node.isJsxFragment(value) ||
           Node.isJsxElement(value) ||
-          Node.isJsxSelfClosingElement(value)
+          Node.isJsxSelfClosingElement(value) ||
+          isReactComponentNode(value)
         ) {
           result = node;
           return false;

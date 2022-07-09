@@ -8,6 +8,16 @@ describe("getAncestorComponent", () => {
     expect(f(`function Component() { $; return <div/>; }`)?.getKindName()).toBe(
       "FunctionDeclaration"
     );
+    expect(
+      f(
+        `function Component() { $; return React.cloneElement(Input); }`
+      )?.getKindName()
+    ).toBe("FunctionDeclaration");
+    expect(
+      f(
+        `function Component() { $; return React.createElement(Input); }`
+      )?.getKindName()
+    ).toBe("FunctionDeclaration");
   });
 
   it("returns undefined", () => {
