@@ -1,5 +1,16 @@
 # @suid/site
 
+## 0.4.4
+
+### Patch Changes
+
+- [`ecdc32f7`](https://github.com/swordev/suid/commit/ecdc32f7baef88b292bc862f499b07a55b459227) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix `React2Solid` page
+
+- Updated dependencies [[`79336bc9`](https://github.com/swordev/suid/commit/79336bc950cc1d60d1b9f9bf26b650f3233f3384), [`5855779d`](https://github.com/swordev/suid/commit/5855779dde989c44378b3f105f513f29fe37e1cd), [`560aa7fd`](https://github.com/swordev/suid/commit/560aa7fdc5c5801f9ef9bc48e6870986f04fa52c)]:
+  - @suid/codemod@0.6.1
+  - @suid/material@0.5.0
+  - @suid/icons-material@0.2.6
+
 ## 0.4.3
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @suid/codemod
 
+## 0.6.1
+
+### Patch Changes
+
+- [`79336bc9`](https://github.com/swordev/suid/commit/79336bc950cc1d60d1b9f9bf26b650f3233f3384) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix `component-top-level` scope detection
+
 ## 0.6.0
 
 ### Minor Changes
