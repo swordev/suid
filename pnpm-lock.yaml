@@ -86,6 +86,7 @@ importers:
       '@suid/types': link:../types
       '@suid/utils': link:../utils
       clsx: 1.1.1
+    publishDirectory: lib
 
   packages/codemod:
     specifiers:
@@ -105,18 +106,21 @@ importers:
       ts-morph: 15.1.0
     devDependencies:
       prettier: 2.6.2
+    publishDirectory: lib
 
   packages/css:
     specifiers:
       '@suid/utils': workspace:*
     dependencies:
       '@suid/utils': link:../utils
+    publishDirectory: lib
 
   packages/icons-material:
     specifiers:
       '@suid/material': workspace:*
     dependencies:
       '@suid/material': link:../material
+    publishDirectory: lib
 
   packages/material:
     specifiers:
@@ -133,6 +137,7 @@ importers:
       '@suid/types': link:../types
       '@suid/utils': link:../utils
       clsx: 1.1.1
+    publishDirectory: lib
 
   packages/site:
     specifiers:
@@ -180,6 +185,7 @@ importers:
       sass: 1.52.3
       vite: 2.9.10_sass@1.52.3
       vite-plugin-solid: 2.2.6_sass@1.52.3
+    publishDirectory: dist
 
   packages/styled-engine:
     specifiers:
@@ -188,6 +194,7 @@ importers:
     dependencies:
       '@suid/css': link:../css
       '@suid/utils': link:../utils
+    publishDirectory: lib
 
   packages/system:
     specifiers:
@@ -204,15 +211,18 @@ importers:
       '@suid/utils': link:../utils
       clsx: 1.1.1
       csstype: 3.1.0
+    publishDirectory: lib
 
   packages/types:
     specifiers: {}
+    publishDirectory: lib
 
   packages/utils:
     specifiers:
       '@suid/types': workspace:*
     dependencies:
       '@suid/types': link:../types
+    publishDirectory: lib
 
   scripts:
     specifiers:
