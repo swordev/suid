@@ -1,5 +1,13 @@
 # @suid/material
 
+## 0.5.0
+
+### Minor Changes
+
+- [`5855779d`](https://github.com/swordev/suid/commit/5855779dde989c44378b3f105f513f29fe37e1cd) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `NativeSelect` component
+
+* [`560aa7fd`](https://github.com/swordev/suid/commit/560aa7fdc5c5801f9ef9bc48e6870986f04fa52c) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `TableFooter` component
+
 ## 0.4.3
 
 ### Patch Changes
