@@ -1,5 +1,13 @@
 # @suid/material
 
+## 0.5.1
+
+### Patch Changes
+
+- [`4de919ba`](https://github.com/swordev/suid/commit/4de919ba14e5e8eaf26421decc0140dd4a165970) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix `useMediaQuery` in Safari < 14
+
+* [`a6bf139c`](https://github.com/swordev/suid/commit/a6bf139cb0ccbdab550f18adf70c2154c07bc31b) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix `columns` prop in `Grid` component
+
 ## 0.5.0
 
 ### Minor Changes
