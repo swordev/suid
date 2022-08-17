@@ -23,7 +23,7 @@ import extendSxProp from "@suid/system/styleFunctionSx/extendSxProp";
 import StyledProps from "@suid/system/styledProps";
 import { InPropsOf } from "@suid/types";
 import clsx from "clsx";
-import { JSXElement, useContext } from "solid-js";
+import { Show, useContext } from "solid-js";
 
 const $ = createComponentFactory<GridTypeMap>()({
   name: "MuiGrid",
@@ -47,7 +47,10 @@ const $ = createComponentFactory<GridTypeMap>()({
   ],
   propDefaults: ({ set, inProps }) =>
     set({
-      columns: 12,
+      get columns() {
+        const columnsContext = useContext(GridContext);
+        return inProps.columns || columnsContext || 12;
+      },
       component: "div",
       container: false,
       direction: "row",
@@ -402,20 +405,8 @@ const Grid = $.component(function Grid({
   classes,
 }) {
   otherProps = extendSxProp(otherProps);
-  const columnsContext = useContext(GridContext);
 
-  // setting prop before context to accomodate nesting
-  // colums set with default breakpoint unit of 12
-  const columns = props.columns || columnsContext || 12;
-
-  const wrapChild = (element: JSXElement) =>
-    columns !== 12 ? (
-      <GridContext.Provider value={columns}>{element}</GridContext.Provider>
-    ) : (
-      element
-    );
-
-  return wrapChild(
+  const rootElement = () => (
     <GridRoot
       ownerState={allProps}
       className={clsx(classes.root, otherProps.className)}
@@ -423,6 +414,14 @@ const Grid = $.component(function Grid({
     >
       {props.children}
     </GridRoot>
+  );
+
+  return (
+    <Show when={props.columns !== 12} fallback={rootElement}>
+      <GridContext.Provider value={props.columns}>
+        {rootElement}
+      </GridContext.Provider>
+    </Show>
   );
 });
 
