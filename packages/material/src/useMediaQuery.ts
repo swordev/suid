@@ -13,7 +13,12 @@ export default function useMediaQuery(
   const query = window.matchMedia(queryInputString);
   const [matches, setMatches] = createSignal(query.matches);
   const listener = (e: MediaQueryListEvent) => setMatches(e.matches);
-  query.addEventListener("change", listener);
+  if (query.addEventListener) {
+    query.addEventListener("change", listener);
+  } else {
+    // [support] Safari < 14
+    query.addListener(listener);
+  }
   onCleanup(() => query.removeEventListener("change", listener));
   return matches;
 }
