@@ -50,7 +50,7 @@ export default function deepmerge<T>(
     });
 
     if (options.sortKeys)
-      sortKeys(output, Object.keys(source) as (keyof typeof output)[]);
+      sortKeys(output as Record<string, any>, Object.keys(source) as string[]);
   }
 
   return output;
