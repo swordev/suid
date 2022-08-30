@@ -90,7 +90,7 @@ const NotchedOutline = $.component(function NotchedOutline({
     <NotchedOutlineRoot
       {...otherProps}
       aria-hidden
-      className={otherProps.className}
+      class={otherProps.class}
       ownerState={ownerState}
     >
       <NotchedOutlineLegend ownerState={ownerState}>
@@ -99,7 +99,7 @@ const NotchedOutline = $.component(function NotchedOutline({
           when={withLabel()}
           fallback={
             // notranslate needed while Google Translate will not fix zero-width space issue
-            <span className="notranslate">&#8203;</span>
+            <span class="notranslate">&#8203;</span>
           }
         >
           <span>{props.label}</span>

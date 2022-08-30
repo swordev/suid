@@ -179,7 +179,7 @@ const TableCell = $.component(function TableCell({
       scope={scope()}
       aria-sort={ariaSort()}
       {...otherProps}
-      className={clsx(classes.root, otherProps.className)}
+      class={clsx(classes.root, otherProps.class)}
       ownerState={ownerState}
     >
       {props.children}

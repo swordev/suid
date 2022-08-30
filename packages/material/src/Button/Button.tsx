@@ -342,11 +342,7 @@ const Button = $.component(function Button({
   return (
     <ButtonRoot
       ownerState={allProps}
-      className={clsx(
-        classes.root,
-        otherProps.className,
-        contextProps.className
-      )}
+      class={clsx(classes.root, otherProps.class, contextProps.class)}
       disabled={props.disabled}
       focusRipple={!props.disableFocusRipple}
       focusVisibleClassName={clsx(
@@ -359,13 +355,13 @@ const Button = $.component(function Button({
       classes={props.classes}
     >
       <Show when={!!props.startIcon}>
-        <ButtonStartIcon className={classes.startIcon} ownerState={allProps}>
+        <ButtonStartIcon class={classes.startIcon} ownerState={allProps}>
           {props.startIcon}
         </ButtonStartIcon>
       </Show>
       {props.children}
       <Show when={!!props.endIcon}>
-        <ButtonEndIcon className={classes.endIcon} ownerState={allProps}>
+        <ButtonEndIcon class={classes.endIcon} ownerState={allProps}>
           {props.endIcon}
         </ButtonEndIcon>
       </Show>

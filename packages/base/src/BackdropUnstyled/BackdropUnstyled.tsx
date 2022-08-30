@@ -58,11 +58,7 @@ const BackdropUnstyled = $.component(function BackdropUnstyled({
         ownerState: allProps,
       })}
       component={Root()}
-      className={clsx(
-        classes.root,
-        rootProps().className,
-        otherProps.className
-      )}
+      class={clsx(classes.root, rootProps().class, otherProps.class)}
     />
   );
 });

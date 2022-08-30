@@ -227,7 +227,7 @@ const ButtonGroup = $.component(function ButtonGroup({
   props,
 }) {
   const context = () => ({
-    className: classes.grouped,
+    class: classes.grouped,
     color: props.color,
     disabled: props.disabled,
     disableElevation: props.disableElevation,
@@ -242,7 +242,7 @@ const ButtonGroup = $.component(function ButtonGroup({
     <ButtonGroupRoot
       as={otherProps.component}
       role="group"
-      className={clsx(classes.root, otherProps.className)}
+      class={clsx(classes.root, otherProps.class)}
       ownerState={allProps}
       {...otherProps}
     >

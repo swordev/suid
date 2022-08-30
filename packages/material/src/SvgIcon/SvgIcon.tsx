@@ -109,7 +109,7 @@ const SvgIcon = $.component(function SvgIcon({
       }}
       color={props.htmlColor}
       {...otherProps}
-      className={clsx(classes.root, otherProps.className)}
+      class={clsx(classes.root, otherProps.class)}
       ownerState={allProps}
     >
       {props.children}

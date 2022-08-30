@@ -219,11 +219,7 @@ const ModalUnstyled = $.component(function ModalUnstyled({
               ownerState: allProps,
             })}
             onKeyDown={handleKeyDown}
-            className={clsx(
-              classes.root,
-              rootProps().className,
-              otherProps.className
-            )}
+            class={clsx(classes.root, rootProps().class, otherProps.class)}
             ref={element}
           >
             <Show when={!props.hideBackdrop && !!props.BackdropComponent}>

@@ -104,7 +104,7 @@ const CardHeader = $.component(function CardHeader({
       return (
         <Typography
           variant={props.avatar ? "body2" : "h5"}
-          className={classes.title}
+          class={classes.title}
           component="span"
           sx={{ display: "block" }}
           {...(props.titleTypographyProps ?? {})}
@@ -125,7 +125,7 @@ const CardHeader = $.component(function CardHeader({
       return (
         <Typography
           variant={props.avatar ? "body2" : "body1"}
-          className={classes.subheader}
+          class={classes.subheader}
           component="span"
           sx={{ display: "block", color: "text.secondary" }}
           {...(props.subheaderTypographyProps ?? {})}
@@ -139,22 +139,22 @@ const CardHeader = $.component(function CardHeader({
   return (
     <CardHeaderRoot
       {...otherProps}
-      className={clsx(classes.root, otherProps.className)}
+      class={clsx(classes.root, otherProps.class)}
       ownerState={allProps}
     >
       <Show when={!!props.avatar}>
-        <CardHeaderAvatar className={classes.avatar} ownerState={allProps}>
+        <CardHeaderAvatar class={classes.avatar} ownerState={allProps}>
           {props.avatar}
         </CardHeaderAvatar>
       </Show>
 
-      <CardHeaderContent className={classes.content} ownerState={allProps}>
+      <CardHeaderContent class={classes.content} ownerState={allProps}>
         {Title()}
         {Subheader()}
       </CardHeaderContent>
 
       <Show when={!!props.action}>
-        <CardHeaderAction className={classes.action} ownerState={allProps}>
+        <CardHeaderAction class={classes.action} ownerState={allProps}>
           {props.action}
         </CardHeaderAction>
       </Show>

@@ -87,13 +87,13 @@ const Icon = $.component(function Icon({
 }) {
   return (
     <IconRoot
-      className={clsx(
+      class={clsx(
         props.baseClassName,
         // Prevent the translation of the text content.
         // The font relies on the exact text content to render the icon.
         "notranslate",
         classes.root,
-        otherProps.className
+        otherProps.class
       )}
       ownerState={allProps}
       aria-hidden

@@ -48,7 +48,7 @@ export default function Code(props: CodeProps) {
       <Box
         component="code"
         innerHTML={code()}
-        className={themeClassName()}
+        class={themeClassName()}
         sx={{ ...(props.sx || {}) }}
       />
     </Box>

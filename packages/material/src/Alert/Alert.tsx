@@ -173,24 +173,24 @@ const Alert = $.component(function Alert({
       role={props.role}
       elevation={0}
       ownerState={allProps}
-      className={clsx(classes.root, otherProps.className)}
+      class={clsx(classes.root, otherProps.class)}
       {...otherProps}
     >
       <Show when={props.icon !== false}>
-        <AlertIcon ownerState={allProps} className={classes.icon}>
+        <AlertIcon ownerState={allProps} class={classes.icon}>
           {props.icon ||
             props.iconMapping?.[props.severity] ||
             defaultIconMapping[props.severity]}
         </AlertIcon>
       </Show>
-      <AlertMessage ownerState={allProps} className={classes.message}>
+      <AlertMessage ownerState={allProps} class={classes.message}>
         {otherProps.children}
       </AlertMessage>
       <Show when={!!props.action}>
-        <AlertAction className={classes.action}>{props.action}</AlertAction>
+        <AlertAction class={classes.action}>{props.action}</AlertAction>
       </Show>
       <Show when={!props.action && props.onClose}>
-        <AlertAction ownerState={allProps} className={classes.action}>
+        <AlertAction ownerState={allProps} class={classes.action}>
           <IconButton
             size="small"
             aria-label={props.closeText}

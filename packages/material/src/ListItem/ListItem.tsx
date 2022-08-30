@@ -183,12 +183,8 @@ const ListItem = $.component(function ListItem({
   const [, componentProps] = splitProps(
     mergeProps(
       {
-        get className() {
-          return clsx(
-            classes.root,
-            rootProps().className,
-            otherProps.className
-          );
+        get class() {
+          return clsx(classes.root, rootProps().class, otherProps.class);
         },
       },
       otherProps

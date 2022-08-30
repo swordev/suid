@@ -70,7 +70,7 @@ const ListItemSecondaryAction = $.component(function ListItemSecondaryAction({
   return (
     <ListItemSecondaryActionRoot
       {...otherProps}
-      className={clsx(classes.root, otherProps.className)}
+      class={clsx(classes.root, otherProps.class)}
       ownerState={ownerState}
     >
       {props.children}

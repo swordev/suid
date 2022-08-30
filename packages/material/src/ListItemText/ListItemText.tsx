@@ -113,7 +113,7 @@ const ListItemText = $.component(function ListItemText({
       return (
         <Typography
           variant={context.dense ? "body2" : "body1"}
-          className={classes.primary}
+          class={classes.primary}
           component="span"
           display="block"
           {...(props.primaryTypographyProps || {})}
@@ -136,7 +136,7 @@ const ListItemText = $.component(function ListItemText({
       return (
         <Typography<"p">
           variant="body2"
-          className={classes.secondary}
+          class={classes.secondary}
           sx={{ display: "block", color: "text.secondary" }}
           {...(props.secondaryTypographyProps || {})}
           component={(props.secondaryTypographyProps?.component ?? "p") as "p"}
@@ -152,7 +152,7 @@ const ListItemText = $.component(function ListItemText({
   return (
     <ListItemTextRoot
       {...otherProps}
-      className={clsx(classes.root, otherProps.className)}
+      class={clsx(classes.root, otherProps.class)}
       ownerState={ownerState}
     >
       {primary()}

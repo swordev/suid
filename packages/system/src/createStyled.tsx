@@ -144,7 +144,7 @@ function createStyled<
               component={inProps.as || inProps.component || Component}
               sx={sx()}
               theme={theme}
-              className={clsx([inProps.className, className])}
+              class={clsx([inProps.class, className])}
               {...{
                 [disableSystemPropsKey]: true,
               }}
@@ -158,7 +158,7 @@ function createStyled<
             component={inProps.as}
             sx={sx()}
             theme={theme}
-            className={clsx([inProps.className, className])}
+            class={clsx([inProps.class, className])}
             ownerState={inProps.ownerState}
           />
         );

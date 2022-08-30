@@ -44,7 +44,7 @@ const Fade = $.component(function Fade({ props, otherProps }) {
   const theme = useTheme();
   const element = createElementRef(props);
   const timeout = createMemo(() => resolveTransitionTimeout(props.timeout));
-  const c = children(() => props.children) as () => HTMLElement;
+  const c = children(() => props.children) as unknown as () => HTMLElement;
   const context = useContext(TransitionContext);
 
   return (

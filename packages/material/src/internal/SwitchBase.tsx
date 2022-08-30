@@ -145,7 +145,7 @@ const SwitchBase = $.component(function SwitchBase({
     <SwitchBaseRoot<"div">
       {...otherProps}
       component={"span" as "div"}
-      className={clsx(classes.root, otherProps.className)}
+      class={clsx(classes.root, otherProps.class)}
       centerRipple
       focusRipple={!props.disableFocusRipple}
       disabled={disabled()}
@@ -168,7 +168,7 @@ const SwitchBase = $.component(function SwitchBase({
       <SwitchBaseInput<"input">
         component="input"
         autofocus={props.autoFocus}
-        className={classes.input}
+        class={classes.input}
         disabled={disabled()}
         id={hasLabelFor() ? props.id : undefined}
         name={props.name ?? formControlLabel?.name}

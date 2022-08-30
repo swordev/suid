@@ -114,7 +114,7 @@ export default function ReactToSolidPage() {
               sx={{ p: 2, minWidth: 150 }}
               fullWidth
               size="large"
-              className={loading() ? buttonBaseClasses.disabled : ""}
+              class={loading() ? buttonBaseClasses.disabled : ""}
               onMouseEnter={() => {
                 import("@suid/codemod/utils/applyTransforms");
                 import("@suid/codemod/transforms/transformReactSource");

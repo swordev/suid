@@ -79,7 +79,7 @@ const CardActionArea = $.component(function CardActionArea({
   return (
     <CardActionAreaRoot
       {...otherProps}
-      className={clsx(classes.root, otherProps.className)}
+      class={clsx(classes.root, otherProps.class)}
       focusVisibleClassName={clsx(
         props.focusVisibleClassName,
         classes.focusVisible
@@ -88,7 +88,7 @@ const CardActionArea = $.component(function CardActionArea({
     >
       {otherProps.children}
       <CardActionAreaFocusHighlight
-        className={classes.focusHighlight}
+        class={classes.focusHighlight}
         ownerState={allProps}
       />
     </CardActionAreaRoot>

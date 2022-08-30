@@ -133,12 +133,12 @@ const AppBar = $.component(function AppBar({
       square
       ownerState={allProps}
       elevation={4}
-      className={clsx(
+      class={clsx(
         classes.root,
         {
           "mui-fixed": props.position === "fixed", // Useful for the Dialog
         },
-        otherProps.className
+        otherProps.class
       )}
       {...otherProps}
     />

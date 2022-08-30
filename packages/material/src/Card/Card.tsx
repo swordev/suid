@@ -45,7 +45,7 @@ const Card = $.component(function Card({ props, otherProps, classes }) {
   return (
     <CardRoot
       elevation={props.raised ? 8 : undefined}
-      className={clsx(classes.root, otherProps.className)}
+      class={clsx(classes.root, otherProps.class)}
       {...otherProps}
     />
   );

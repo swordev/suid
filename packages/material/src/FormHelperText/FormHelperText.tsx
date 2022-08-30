@@ -150,11 +150,11 @@ const FormHelperText = $.component(function FormHelperText({
       {...otherProps}
       as={otherProps.component}
       ownerState={ownerState}
-      className={clsx(classes.root, otherProps.className)}
+      class={clsx(classes.root, otherProps.class)}
     >
       {resolved() === " " ? (
         // notranslate needed while Google Translate will not fix zero-width space issue
-        <span className="notranslate">&#8203;</span>
+        <span class="notranslate">&#8203;</span>
       ) : (
         resolved()
       )}

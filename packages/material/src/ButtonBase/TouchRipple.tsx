@@ -326,10 +326,10 @@ const TouchRipple = $.component(function TouchRipple({ props, otherProps }) {
 
   return (
     <TouchRippleRoot
-      className={clsx(
+      class={clsx(
         props.classes.root,
         touchRippleClasses.root,
-        otherProps.className
+        otherProps.class
       )}
       ref={container}
       {...otherProps}

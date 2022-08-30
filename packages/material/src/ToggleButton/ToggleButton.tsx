@@ -163,7 +163,7 @@ const ToggleButton = $.component(function ToggleButton({
 
   return (
     <ToggleButtonRoot<"button">
-      className={clsx(context.className, classes.root, otherProps.className)}
+      class={clsx(context.class, classes.root, otherProps.class)}
       disabled={allProps.disabled}
       focusRipple={!props.disableFocusRipple}
       onClick={(event) => {

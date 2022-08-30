@@ -71,7 +71,7 @@ const ListItemAvatar = $.component(function ListItemAvatar({
     <ListItemAvatarRoot
       {...otherProps}
       ownerState={ownerState}
-      className={clsx(classes.root, otherProps.className)}
+      class={clsx(classes.root, otherProps.class)}
     />
   );
 });

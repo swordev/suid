@@ -162,14 +162,14 @@ const NativeSelectInput = function NativeSelectInput(
   const ref = createRef(props);
 
   const [, other] = splitProps(props, [
-    "className",
+    "class",
     "disabled",
     "IconComponent",
     "inputRef",
     "variant",
   ]);
 
-  const baseProps = mergeProps({ variant: "standard" }, props);
+  const baseProps = mergeProps({ variant: "standard" as const }, props);
 
   const ownerState = mergeProps(props, {
     get disabled() {
@@ -185,7 +185,7 @@ const NativeSelectInput = function NativeSelectInput(
     <>
       <NativeSelectSelect
         ownerState={ownerState}
-        class={clsx(classes.select, props.className)}
+        class={clsx(classes.select, props.class)}
         disabled={props.disabled}
         ref={props.inputRef || ref}
         {...other}

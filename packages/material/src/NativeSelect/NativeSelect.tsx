@@ -42,7 +42,7 @@ const defaultInput = () => <Input />;
 const NativeSelect = $.defineComponent(function NativeSelect(inProps) {
   const props = $.useThemeProps({ props: inProps });
   const [, other] = splitProps(props, [
-    "className",
+    "class",
     "children",
     "classes",
     "IconComponent",
@@ -102,10 +102,10 @@ const NativeSelect = $.defineComponent(function NativeSelect(inProps) {
       inputComponent={NativeSelectInput as JSXElement}
       inputProps={inputProps as InputProps["inputProps"]}
       {...(other as InputProps)}
-      className={clsx(
+      class={clsx(
         classes.root,
         //baseProps.input.props.className,
-        props.className
+        props.class
       )}
     />
   );

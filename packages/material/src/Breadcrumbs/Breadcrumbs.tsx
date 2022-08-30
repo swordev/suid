@@ -91,7 +91,7 @@ function insertSeparators(
         <BreadcrumbsSeparator
           component={"div"}
           aria-hidden
-          className={className}
+          class={className}
           ownerState={ownerState}
         >
           {separator}
@@ -179,18 +179,18 @@ const Breadcrumbs = $.component(function Breadcrumbs({
   const allItems = createMemo(() => {
     const value = resolved();
     const array = Array.isArray(value) ? value : [value];
-    return array.map((item) => <li className={classes.li}>{item}</li>);
+    return array.map((item) => <li class={classes.li}>{item}</li>);
   });
 
   return (
     <BreadcrumbsRoot
       color="text.secondary"
       {...otherProps}
-      className={clsx(classes.root, otherProps.className)}
+      class={clsx(classes.root, otherProps.class)}
       ownerState={ownerState}
     >
       <BreadcrumbsOl
-        className={classes.ol}
+        class={classes.ol}
         ownerState={ownerState}
         ref={listElement}
       >

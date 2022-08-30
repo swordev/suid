@@ -2,7 +2,7 @@ import { ButtonGroupProps } from ".";
 import { createContext } from "solid-js";
 
 interface IButtonGroupContext {
-  className?: string;
+  class?: string;
   color?: ButtonGroupProps["color"];
   disabled?: boolean;
   disableElevation?: boolean;

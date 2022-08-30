@@ -161,7 +161,7 @@ const FormControlLabel = $.component(function FormControlLabel({
     return (
       <Typography
         component="span"
-        className={classes.label}
+        class={classes.label}
         {...(props.componentsProps.typography || {})}
       >
         {props.label}
@@ -173,7 +173,7 @@ const FormControlLabel = $.component(function FormControlLabel({
     <FormControlLabelContext.Provider value={contextProps}>
       <FormControlLabelRoot
         {...otherProps}
-        className={clsx(classes.root, otherProps.className)}
+        class={clsx(classes.root, otherProps.class)}
         ownerState={ownerState}
       >
         {props.control}

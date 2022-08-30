@@ -5,7 +5,7 @@ interface ToggleButtonGroupContext
   extends Readonly<
     Pick<
       ToggleButtonGroupProps,
-      | "className"
+      | "class"
       | "onChange"
       | "size"
       | "fullWidth"

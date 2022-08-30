@@ -76,11 +76,7 @@ const ButtonUnstyled = $.component(function ButtonUnstyled({
       component={ButtonRoot()}
       {...button.getRootProps()}
       {...buttonRootProps}
-      className={clsx(
-        classes.root,
-        otherProps.className,
-        buttonRootProps.className
-      )}
+      class={clsx(classes.root, otherProps.class, buttonRootProps.class)}
     >
       {otherProps.children}
     </Dynamic>

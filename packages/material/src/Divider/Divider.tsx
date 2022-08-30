@@ -213,10 +213,10 @@ const Divider = $.component(function Divider({
       role={allProps.role}
       {...otherProps}
       ownerState={allProps}
-      className={clsx(classes.root, allProps.className)}
+      class={clsx(classes.root, allProps.class)}
     >
       <Show when={allProps.children}>
-        <DividerWrapper className={classes.wrapper} ownerState={allProps}>
+        <DividerWrapper class={classes.wrapper} ownerState={allProps}>
           {allProps.children}
         </DividerWrapper>
       </Show>

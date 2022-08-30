@@ -88,7 +88,7 @@ export type DefaultComponentProps<M> = M extends OverridableTypeMap
  */
 export type BaseProps<M extends SuidComponentType> = M["props"] & CommonProps;
 export interface CommonProps {
-  className?: string;
+  class?: string;
 }
 
 export interface OverridableTypeMap extends SuidComponentType {

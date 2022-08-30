@@ -144,7 +144,7 @@ const Link = $.component(function Link({ allProps, otherProps, props }) {
 
   return (
     <LinkRoot<"a">
-      className={clsx(classes.root, otherProps.className)}
+      class={clsx(classes.root, otherProps.class)}
       classes={props.TypographyClasses}
       color={props.color}
       onBlur={(event) => {

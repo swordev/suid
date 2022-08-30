@@ -44,24 +44,24 @@ function RadioButtonIcon(props: {
   const ownerState = mergeProps(
     {
       checked: false,
-      classes: {},
+      classes: {} as typeof props["classes"] & {},
     },
     props
   );
 
   return (
     <RadioButtonIconRoot
-      className={ownerState.classes.root}
+      class={ownerState.classes.root}
       ownerState={ownerState}
     >
       <RadioButtonIconBackground
         fontSize={props.fontSize}
-        className={ownerState.classes.background}
+        class={ownerState.classes.background}
         ownerState={ownerState}
       />
       <RadioButtonIconDot
         fontSize={props.fontSize}
-        className={ownerState.classes.dot}
+        class={ownerState.classes.dot}
         ownerState={ownerState}
       />
     </RadioButtonIconRoot>

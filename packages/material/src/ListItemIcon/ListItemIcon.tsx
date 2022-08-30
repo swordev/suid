@@ -72,7 +72,7 @@ const ListItemIcon = $.component(function ListItemIcon({
   return (
     <ListItemIconRoot
       {...otherProps}
-      className={clsx(classes.root, otherProps.className)}
+      class={clsx(classes.root, otherProps.class)}
       ownerState={ownerState}
     >
       {props.children}

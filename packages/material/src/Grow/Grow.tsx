@@ -39,7 +39,9 @@ const styles: { [name in TransitionStatus]?: StyleProps } = {
 const Grow = $.component(function Grow({ props, otherProps }) {
   const autoTimeout = { current: undefined as undefined | number };
   const theme = useTheme();
-  const resolved = children(() => props.children) as () => HTMLElement;
+  const resolved = children(
+    () => props.children
+  ) as unknown as () => HTMLElement;
 
   let timer: ReturnType<typeof globalThis.setTimeout> | undefined;
   onCleanup(() => timer && clearTimeout(timer));

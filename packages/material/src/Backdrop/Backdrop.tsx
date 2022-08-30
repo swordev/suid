@@ -58,7 +58,7 @@ const Backdrop = $.component(function Backdrop({ props, otherProps }) {
     <Fade in={props.open} timeout={props.transitionDuration} {...fadeProps}>
       <BackdropUnstyled
         {...backdropProps}
-        className={otherProps.className}
+        class={otherProps.class}
         invisible={otherProps.invisible}
         components={{
           Root: BackdropRoot,

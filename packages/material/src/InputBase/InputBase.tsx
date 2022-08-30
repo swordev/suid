@@ -14,12 +14,7 @@ import createComponentFactory from "@suid/base/createComponentFactory";
 import isHostComponent from "@suid/base/utils/isHostComponent";
 import Dynamic from "@suid/system/Dynamic";
 import createRef from "@suid/system/createRef";
-import {
-  AnimationEventHandler,
-  InPropsOf,
-  FocusEventHandler,
-  InputEventHandler,
-} from "@suid/types";
+import { InPropsOf, FocusEventHandler, InputEventHandler } from "@suid/types";
 import clsx from "clsx";
 import {
   createEffect,
@@ -549,17 +544,13 @@ const InputBase = $.component(function InputBase({
             otherProps.onClick(event);
           }
         }}
-        className={clsx(
-          classes.root,
-          rootProps().className,
-          otherProps.className
-        )}
+        class={clsx(classes.root, rootProps().class, otherProps.class)}
       >
         {props.startAdornment}
 
         <FormControlContext.Provider value={undefined}>
-          <Dynamic<"input" | "textarea">
-            component={Input() as "input" | "textarea"}
+          <Dynamic<"input">
+            component={Input() as "input"}
             ownerState={ownerState}
             aria-invalid={fcs.error}
             aria-describedby={props["aria-describedby"]}
@@ -568,24 +559,24 @@ const InputBase = $.component(function InputBase({
             disabled={fcs.disabled}
             id={props.id}
             onAnimationStart={
-              ((event) => {
+              ((event: AnimationEvent) => {
                 // Provide a fake value as Chrome might not let you access it for security reasons.
                 checkDirty(
                   event.animationName === "mui-auto-fill-cancel"
                     ? inputRef.ref
                     : { value: "x" }
                 );
-              }) as AnimationEventHandler<
-                HTMLInputElement | HTMLTextAreaElement
-              >
+              }) as any
             }
             name={props.name}
             placeholder={props.placeholder}
             readOnly={props.readOnly}
             required={fcs.required}
-            rows={props.rows}
-            onKeyDown={props.onKeyDown}
-            onKeyUp={props.onKeyUp}
+            {...({
+              rows: props.rows,
+            } as any)}
+            onKeyDown={props.onKeyDown as any}
+            onKeyUp={props.onKeyUp as any}
             type={props.type}
             {...inputProps()}
             {...(!isHostComponent(Input()) && {
@@ -593,7 +584,7 @@ const InputBase = $.component(function InputBase({
               ownerState: inputOwnerState,
             })}
             ref={inputRef}
-            className={clsx(classes.input, inputProps().className)}
+            class={clsx(classes.input, inputProps().class)}
             onBlur={
               ((event) => {
                 props.onBlur?.(event);

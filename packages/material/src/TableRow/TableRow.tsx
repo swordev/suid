@@ -105,7 +105,7 @@ const TableRow = $.component(function TableRow({
     <TableRowRoot
       role={otherProps.component === defaultComponent ? null : "row"}
       {...otherProps}
-      className={clsx(classes.root, otherProps.className)}
+      class={clsx(classes.root, otherProps.class)}
       ownerState={ownerState}
     >
       {props.children}

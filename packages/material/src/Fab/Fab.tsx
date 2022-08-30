@@ -152,7 +152,7 @@ const Fab = $.defineComponent(function Fab(inProps) {
   const props = $.useThemeProps({ props: inProps });
   const [, other] = splitProps(props, [
     "children",
-    "className",
+    "class",
     "color",
     "component",
     "disabled",
@@ -199,7 +199,7 @@ const Fab = $.defineComponent(function Fab(inProps) {
 
   return (
     <FabRoot
-      class={clsx(classes.root, props.className)}
+      class={clsx(classes.root, props.class)}
       component={baseProps.component}
       disabled={baseProps.disabled}
       focusRipple={!baseProps.disableFocusRipple}

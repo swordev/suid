@@ -183,7 +183,7 @@ const CircularProgress = $.component(function CircularProgress({
 
   return (
     <CircularProgressRoot
-      className={clsx(classes.root, otherProps.className)}
+      class={clsx(classes.root, otherProps.class)}
       sx={{
         width: props.size,
         height: props.size,
@@ -195,12 +195,12 @@ const CircularProgress = $.component(function CircularProgress({
       {...otherProps}
     >
       <CircularProgressSVG
-        className={classes.svg}
+        class={classes.svg}
         ownerState={allProps}
         viewBox={`${SIZE / 2} ${SIZE / 2} ${SIZE} ${SIZE}`}
       >
         <CircularProgressCircle
-          className={classes.circle}
+          class={classes.circle}
           sx={circleStyle()}
           ownerState={allProps}
           cx={SIZE}

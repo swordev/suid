@@ -94,7 +94,7 @@ const FormControlRoot = styled("div", {
  *
  * ```jsx
  * <FormControl>
- *   <InputLabel htmlFor="my-input">Email address</InputLabel>
+ *   <InputLabel for="my-input">Email address</InputLabel>
  *   <Input id="my-input" aria-describedby="my-helper-text" />
  *   <FormHelperText id="my-helper-text">We'll never share your email.</FormHelperText>
  * </FormControl>
@@ -252,7 +252,7 @@ const FormControl = $.component(function FormControl({
       <FormControlRoot
         {...otherProps}
         ownerState={allProps}
-        className={clsx(classes.root, otherProps.className)}
+        class={clsx(classes.root, otherProps.class)}
       >
         {props.children}
       </FormControlRoot>

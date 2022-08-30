@@ -72,7 +72,7 @@ const Toolbar = $.component(function Toolbar({
     <ToolbarRoot
       {...otherProps}
       as={otherProps.component}
-      className={clsx(classes.root, otherProps.className)}
+      class={clsx(classes.root, otherProps.class)}
       ownerState={allProps}
     >
       {props.children}

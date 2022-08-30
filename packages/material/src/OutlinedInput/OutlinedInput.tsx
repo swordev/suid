@@ -157,7 +157,7 @@ const OutlinedInput = $.component(function OutlinedInput({
     <InputBase
       renderSuffix={(state) => (
         <NotchedOutlineRoot
-          className={classes.notchedOutline}
+          class={classes.notchedOutline}
           label={label()}
           notched={
             typeof props.notched !== "undefined"

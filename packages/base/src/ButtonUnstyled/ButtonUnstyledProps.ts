@@ -14,7 +14,7 @@ export interface ButtonUnstyledOwnProps extends Omit<UseButtonProps, "ref"> {
    */
   // action?: React.Ref<ButtonUnstyledActions>;
   children?: JSXElement;
-  className?: string;
+  class?: string;
   componentsProps?: {
     root?: JSX.IntrinsicElements["button"] &
       ButtonUnstyledComponentsPropsOverrides;

@@ -167,7 +167,7 @@ const Avatar = $.defineComponent(function Avatar(inProps) {
   const [, other] = splitProps(props, [
     "alt",
     "children",
-    "className",
+    "class",
     "component",
     "imgProps",
     "sizes",
@@ -221,7 +221,7 @@ const Avatar = $.defineComponent(function Avatar(inProps) {
           srcSet={props.srcSet}
           sizes={props.sizes}
           ownerState={ownerState}
-          className={classes.img}
+          class={classes.img}
           {...(props.imgProps || {})}
         />
       );
@@ -234,7 +234,7 @@ const Avatar = $.defineComponent(function Avatar(inProps) {
     } else if (hasImg() && props.alt) {
       return props.alt[0];
     } else {
-      return <AvatarFallback className={classes.fallback} />;
+      return <AvatarFallback class={classes.fallback} />;
     }
   };
 
@@ -242,7 +242,7 @@ const Avatar = $.defineComponent(function Avatar(inProps) {
     <AvatarRoot
       component={baseProps.component}
       ownerState={ownerState}
-      className={clsx(classes.root, props.className)}
+      class={clsx(classes.root, props.class)}
       {...other}
     >
       {children}

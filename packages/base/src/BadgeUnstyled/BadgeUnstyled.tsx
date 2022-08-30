@@ -91,13 +91,13 @@ const BadgeUnstyled = $.component(function BadgeUnstyled({
       {...rootProps}
       {...otherProps}
       component={Root()}
-      className={clsx(classes.root, rootProps.className, otherProps.className)}
+      class={clsx(classes.root, rootProps.class, otherProps.class)}
     >
       {props.children}
       <Dynamic
         {...badgeProps}
         component={Badge()}
-        className={clsx(classes.badge, badgeProps.className)}
+        class={clsx(classes.badge, badgeProps.class)}
       >
         {badge.displayValue}
       </Dynamic>

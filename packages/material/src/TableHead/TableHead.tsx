@@ -53,7 +53,7 @@ const TableHead = $.component(function TableHead({
       <TableHeadRoot
         role={otherProps.component === defaultComponent ? null : "rowgroup"}
         {...otherProps}
-        className={clsx(classes.root, otherProps.className)}
+        class={clsx(classes.root, otherProps.class)}
         ownerState={allProps}
       >
         {props.children}

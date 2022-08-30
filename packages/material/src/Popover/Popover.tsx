@@ -120,7 +120,7 @@ const Popover = $.defineComponent(function Popover(inProps) {
     "anchorPosition",
     "anchorReference",
     "children",
-    "className",
+    "class",
     "container",
     "elevation",
     "marginThreshold",
@@ -405,7 +405,9 @@ const Popover = $.defineComponent(function Popover(inProps) {
     ) {
       transitionDuration = undefined;
     }
-    return transitionDuration;
+    return transitionDuration as
+      | undefined
+      | Exclude<typeof props.transitionDuration, "auto">;
   };
 
   // If the container prop is provided, use that
@@ -420,7 +422,7 @@ const Popover = $.defineComponent(function Popover(inProps) {
   return (
     <PopoverRoot
       BackdropProps={{ invisible: true }}
-      className={clsx(classes.root, props.className)}
+      class={clsx(classes.root, props.class)}
       container={container()}
       open={props.open}
       ownerState={ownerState}
@@ -437,7 +439,7 @@ const Popover = $.defineComponent(function Popover(inProps) {
           elevation={baseProps.elevation}
           {...baseProps.PaperProps}
           ref={paperRef}
-          className={clsx(classes.paper, baseProps.PaperProps.className)}
+          class={clsx(classes.paper, baseProps.PaperProps.class)}
         >
           {props.children}
         </PopoverPaper>

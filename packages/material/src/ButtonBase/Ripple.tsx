@@ -7,7 +7,7 @@ import { createEffect, createMemo, createSignal, onCleanup } from "solid-js";
 const $ = createComponentFactory<RipplePropsTypeMap>()({
   name: "MuiRipple",
   selfPropNames: [
-    "className",
+    "class",
     "classes",
     "pulsate",
     "rippleX",
@@ -32,7 +32,7 @@ const Ripple = $.component(function Ripple({ props, otherProps }) {
 
   const rippleClassName = createMemo(() =>
     clsx(
-      props.className,
+      props.class,
       props.classes.ripple,
       props.classes.rippleVisible,
       props.classes.ripplePulsate && {
@@ -79,11 +79,11 @@ const Ripple = $.component(function Ripple({ props, otherProps }) {
   return (
     <Box
       component="span"
-      className={rippleClassName()}
+      class={rippleClassName()}
       style={rippleStyles()}
       sx={otherProps.sx}
     >
-      <span className={childClassName()} />
+      <span class={childClassName()} />
     </Box>
   );
 });

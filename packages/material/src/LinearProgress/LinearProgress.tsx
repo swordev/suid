@@ -337,23 +337,20 @@ const LinearProgress = $.component(function LinearProgress({
       role="progressbar"
       {...otherProps}
       ref={element}
-      className={clsx(classes.root, otherProps.className)}
+      class={clsx(classes.root, otherProps.class)}
       ownerState={allProps}
     >
       <Show when={props.variant === "buffer"}>
-        <LinearProgressDashed
-          className={classes.dashed}
-          ownerState={allProps}
-        />
+        <LinearProgressDashed class={classes.dashed} ownerState={allProps} />
       </Show>
       <LinearProgressBar1
-        className={classes.bar1}
+        class={classes.bar1}
         ownerState={allProps}
         style={bar1Style()}
       />
       <Show when={props.variant !== "determinate"}>
         <LinearProgressBar2
-          className={classes.bar2}
+          class={classes.bar2}
           ownerState={allProps}
           style={bar2Style()}
         />

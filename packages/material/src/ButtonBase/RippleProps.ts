@@ -3,7 +3,7 @@ import SxProps from "@suid/system/sxProps";
 export interface RipplePropsTypeMap {
   defaultPropNames: "pulsate" | "classes";
   selfProps: {
-    className?: string;
+    class?: string;
     classes?: {
       ripple?: string;
       rippleVisible?: string;

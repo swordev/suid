@@ -129,14 +129,14 @@ const FormLabel = $.component(function FormLabel({
       {...otherProps}
       as={otherProps.component}
       ownerState={ownerState}
-      className={clsx(classes.root, otherProps.className)}
+      class={clsx(classes.root, otherProps.class)}
     >
       {props.children}
       <Show when={fcs.required}>
         <AsteriskComponent
           ownerState={ownerState}
           aria-hidden
-          className={classes.asterisk}
+          class={classes.asterisk}
         >
           &thinsp;{"*"}
         </AsteriskComponent>

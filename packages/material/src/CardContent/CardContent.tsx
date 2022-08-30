@@ -49,7 +49,7 @@ const CardContent = $.component(function CardContent({
     <CardContentRoot
       {...otherProps}
       ownerState={allProps}
-      className={clsx(classes.root, otherProps.className)}
+      class={clsx(classes.root, otherProps.class)}
     >
       {props.children}
     </CardContentRoot>

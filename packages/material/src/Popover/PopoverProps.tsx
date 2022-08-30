@@ -143,9 +143,7 @@ export type PopoverTypeMap<P = {}, D extends ST.ElementType = "div"> = {
      * [Follow this guide](/components/transitions/#transitioncomponent-prop) to learn more about the requirements for this component.
      * @default Grow
      */
-    TransitionComponent?: Component<
-      TransitionProps & { children: ST.ElementType }
-    >;
+    TransitionComponent?: Component<TransitionProps & { children: JSXElement }>;
 
     /**
      * Set to 'auto' to automatically calculate transition time based on height.

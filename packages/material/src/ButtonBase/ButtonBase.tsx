@@ -354,7 +354,7 @@ const ButtonBase = $.component(function ButtonBase({
     <ButtonBaseRoot
       {...buttonProps()}
       {...otherProps}
-      className={clsx(classes.root, otherProps.className)}
+      class={clsx(classes.root, otherProps.class)}
       ownerState={ownerState}
       onFocusOut={handleBlur}
       onClick={otherProps.onClick}

@@ -141,7 +141,7 @@ const IconButton = $.component(function IconButton({
 }) {
   return (
     <IconButtonRoot
-      className={clsx(classes.root, otherProps.className)}
+      class={clsx(classes.root, otherProps.class)}
       centerRipple
       focusRipple={!props.disableFocusRipple}
       disabled={props.disabled}

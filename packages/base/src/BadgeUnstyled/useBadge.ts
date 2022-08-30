@@ -36,7 +36,7 @@ export default function useBadge(inProps: UseBadgeProps) {
       max: 99,
       showZero: false,
       variant: "standard",
-    },
+    } as const,
     inProps
   );
 

@@ -50,7 +50,7 @@ const AlertTitle = $.component(function AlertTitle({
       gutterBottom
       {...otherProps}
       ownerState={allProps}
-      className={clsx(classes.root, otherProps.className)}
+      class={clsx(classes.root, otherProps.class)}
     >
       {props.children}
     </AlertTitleRoot>

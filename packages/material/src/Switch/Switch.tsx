@@ -225,7 +225,7 @@ const Switch = $.component(function Switch({
   otherProps,
 }) {
   const icon = () => (
-    <SwitchThumb className={classes.thumb} ownerState={allProps} />
+    <SwitchThumb class={classes.thumb} ownerState={allProps} />
   );
   const allClasses = mergeProps(classes, {
     get root() {
@@ -252,7 +252,7 @@ const Switch = $.component(function Switch({
 
   return (
     <SwitchRoot
-      className={clsx(classes.root, otherProps.className)}
+      class={clsx(classes.root, otherProps.class)}
       sx={otherProps.sx}
       ownerState={allProps}
     >
@@ -262,7 +262,7 @@ const Switch = $.component(function Switch({
         {...baseProps}
         classes={allClasses}
       />
-      <SwitchTrack className={classes.track} ownerState={allProps} />
+      <SwitchTrack class={classes.track} ownerState={allProps} />
     </SwitchRoot>
   );
 });

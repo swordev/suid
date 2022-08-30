@@ -45,7 +45,7 @@ const TableContainer = $.component(function TableContainer({
   return (
     <TableContainerRoot
       {...otherProps}
-      className={clsx(classes.root, otherProps.className)}
+      class={clsx(classes.root, otherProps.class)}
       ownerState={allProps}
     >
       {props.children}

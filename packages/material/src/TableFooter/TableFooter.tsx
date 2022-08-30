@@ -41,7 +41,7 @@ const defaultComponent = "tfoot";
  */
 const TableFooter = $.defineComponent(function TableFooter(inProps) {
   const props = $.useThemeProps({ props: inProps });
-  const [, other] = splitProps(props, ["className", "component"]);
+  const [, other] = splitProps(props, ["class", "component"]);
 
   const baseProps = mergeProps({ component: defaultComponent }, props);
 
@@ -57,7 +57,7 @@ const TableFooter = $.defineComponent(function TableFooter(inProps) {
     <Tablelvl2Context.Provider value={tablelvl2}>
       <TableFooterRoot
         component={baseProps.component}
-        class={clsx(classes.root, props.className)}
+        class={clsx(classes.root, props.class)}
         role={baseProps.component === defaultComponent ? null : "rowgroup"}
         ownerState={ownerState}
         {...other}

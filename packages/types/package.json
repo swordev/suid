@@ -8,7 +8,7 @@
     "watch": "tsc --build -w"
   },
   "peerDependencies": {
-    "solid-js": "^1.3.0"
+    "solid-js": "^1.4.0"
   },
   "publishConfig": {
     "directory": "lib"

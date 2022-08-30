@@ -85,7 +85,7 @@ const List = $.component(function List({
     >
       <ListRoot
         {...otherProps}
-        className={clsx(classes.root, otherProps.className)}
+        class={clsx(classes.root, otherProps.class)}
         ownerState={allProps}
       >
         {props.subheader}

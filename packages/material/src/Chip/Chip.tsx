@@ -421,7 +421,7 @@ const Chip = $.component(function Chip({
     } else {
       return (
         <CancelIcon
-          className={classes.deleteIcon}
+          class={classes.deleteIcon}
           onClick={handleDeleteIconClick}
         />
       );
@@ -462,7 +462,7 @@ const Chip = $.component(function Chip({
   return (
     <ChipRoot
       as={component()}
-      className={clsx(classes.root, otherProps.className)}
+      class={clsx(classes.root, otherProps.class)}
       disabled={clickable() && props.disabled ? true : undefined}
       onClick={otherProps.onClick}
       onKeyDown={handleKeyDown}
@@ -473,7 +473,7 @@ const Chip = $.component(function Chip({
       {...otherProps}
     >
       {avatar() || icon()}
-      <ChipLabel className={clsx(classes.label)} ownerState={allProps}>
+      <ChipLabel class={clsx(classes.label)} ownerState={allProps}>
         {props.label}
       </ChipLabel>
       {deleteIcon}

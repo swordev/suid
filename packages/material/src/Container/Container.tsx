@@ -108,7 +108,7 @@ const Container = $.component(function Container({
       {...otherProps}
       as={otherProps.component}
       ownerState={allProps}
-      className={clsx(classes.root, otherProps.className)}
+      class={clsx(classes.root, otherProps.class)}
     >
       {props.children}
     </ContainerRoot>

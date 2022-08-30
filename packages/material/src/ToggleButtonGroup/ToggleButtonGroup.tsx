@@ -130,7 +130,7 @@ const ToggleButtonGroup = $.component(function ToggleButtonGroup({
   return (
     <ToggleButtonGroupContext.Provider
       value={{
-        get className() {
+        get class() {
           return classes.grouped;
         },
         get value() {
@@ -176,7 +176,7 @@ const ToggleButtonGroup = $.component(function ToggleButtonGroup({
     >
       <ToggleButtonGroupRoot
         role="group"
-        className={clsx(classes.root, otherProps.className)}
+        class={clsx(classes.root, otherProps.class)}
         ownerState={allProps}
         {...otherProps}
       >

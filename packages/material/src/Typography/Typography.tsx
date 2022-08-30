@@ -145,7 +145,7 @@ const Typography = $.component(function Typography({
       {...otherProps}
       component={Component()}
       ownerState={ownerState}
-      className={clsx(classes.root, otherProps.className)}
+      class={clsx(classes.root, otherProps.class)}
     >
       {props.children}
     </TypographyRoot>

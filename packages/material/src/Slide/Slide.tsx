@@ -140,7 +140,9 @@ export function setTranslateValue(
 
 const Slide = $.component(function Slide({ props, otherProps }) {
   const theme = useTheme();
-  const resolved = children(() => props.children) as () => HTMLElement;
+  const resolved = children(
+    () => props.children
+  ) as unknown as () => HTMLElement;
   const context = useContext(TransitionContext);
   let destructors: (() => any)[] = [];
 

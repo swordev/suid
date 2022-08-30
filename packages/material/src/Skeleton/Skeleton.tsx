@@ -182,7 +182,7 @@ const Skeleton = $.component(function Skeleton({
   return (
     <SkeletonRoot
       {...otherProps}
-      className={clsx(classes.root, otherProps.className)}
+      class={clsx(classes.root, otherProps.class)}
       ownerState={ownerState}
       sx={{
         width: props.width,

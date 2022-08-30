@@ -199,7 +199,7 @@ const TextField = $.component(function TextField({
       label != null &&
       label !== "" && (
         <InputLabel
-          htmlFor={id()}
+          for={id()}
           id={inputLabelId()}
           {...(props.InputLabelProps || {})}
         >
@@ -224,7 +224,7 @@ const TextField = $.component(function TextField({
 
   return (
     <TextFieldRoot
-      className={clsx(classes.root, otherProps.className)}
+      class={clsx(classes.root, otherProps.class)}
       disabled={props.disabled}
       error={props.error}
       fullWidth={props.fullWidth}

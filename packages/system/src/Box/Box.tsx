@@ -47,7 +47,7 @@ export const Box = defineComponent<BoxTypeMap>(function Box(inProps) {
   });
 
   const className = () => {
-    const className = otherProps.className;
+    const className = otherProps.class;
     const styleValue = style();
     if (styleValue?.length) {
       return className ? `${className} ${styleValue}` : styleValue;
@@ -56,7 +56,7 @@ export const Box = defineComponent<BoxTypeMap>(function Box(inProps) {
     }
   };
 
-  return <Dynamic {...dynamicProps} className={className()} />;
+  return <Dynamic {...dynamicProps} class={className()} />;
 });
 
 export default Box;

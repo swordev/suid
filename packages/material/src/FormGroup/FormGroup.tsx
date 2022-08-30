@@ -78,7 +78,7 @@ const FormGroup = $.component(function FormGroup({
   return (
     <FormGroupRoot
       {...otherProps}
-      className={clsx(classes.root, otherProps.className)}
+      class={clsx(classes.root, otherProps.class)}
       ownerState={ownerState}
     >
       {props.children}

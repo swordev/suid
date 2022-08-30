@@ -19,7 +19,7 @@ export const Box = $.component(function Box({ otherProps, classes }) {
     <SystemBox
       theme={theme}
       {...otherProps}
-      className={clsx(classes.root, otherProps.className)}
+      class={clsx(classes.root, otherProps.class)}
     />
   );
 });

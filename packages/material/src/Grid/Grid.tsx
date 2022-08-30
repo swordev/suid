@@ -409,7 +409,7 @@ const Grid = $.component(function Grid({
   const rootElement = () => (
     <GridRoot
       ownerState={allProps}
-      className={clsx(classes.root, otherProps.className)}
+      class={clsx(classes.root, otherProps.class)}
       {...otherProps}
     >
       {props.children}

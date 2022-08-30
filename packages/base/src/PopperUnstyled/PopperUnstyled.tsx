@@ -276,7 +276,7 @@ const PopperUnstyled = $.component(function PopperUnstyled({
                 props.keepMounted &&
                 (!props.transition || exited())
                   ? "none"
-                  : null,
+                  : (null as any),
               ...(otherProps.style && typeof otherProps.style !== "string"
                 ? otherProps.style
                 : {}),

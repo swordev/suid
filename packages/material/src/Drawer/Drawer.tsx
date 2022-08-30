@@ -208,7 +208,7 @@ const Drawer = $.component(function Drawer({
       elevation={props.variant === "temporary" ? props.elevation : 0}
       square
       {...props.PaperProps}
-      className={clsx(classes.paper, props.PaperProps.className)}
+      class={clsx(classes.paper, props.PaperProps.class)}
       ownerState={allProps as any}
     >
       {resolved}
@@ -236,7 +236,7 @@ const Drawer = $.component(function Drawer({
       <Match when={props.variant === "permanent"}>
         <DrawerDockedRoot
           {...otherProps}
-          className={clsx(classes.root, classes.docked, otherProps.className)}
+          class={clsx(classes.root, classes.docked, otherProps.class)}
           ownerState={allProps}
           ref={element}
         >
@@ -246,7 +246,7 @@ const Drawer = $.component(function Drawer({
       <Match when={props.variant === "persistent"}>
         <DrawerDockedRoot
           {...otherProps}
-          className={clsx(classes.root, classes.docked, otherProps.className)}
+          class={clsx(classes.root, classes.docked, otherProps.class)}
           ownerState={allProps}
           ref={element}
         >
@@ -261,7 +261,7 @@ const Drawer = $.component(function Drawer({
               ...(props.ModalProps.BackdropProps ?? {}),
               transitionDuration: props.transitionDuration,
             }}
-            className={clsx(classes.root, classes.modal, otherProps.className)}
+            class={clsx(classes.root, classes.modal, otherProps.class)}
             open={props.open}
             ownerState={allProps as any}
             onClose={props.onClose}
