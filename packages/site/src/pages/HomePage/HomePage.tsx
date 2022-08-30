@@ -175,7 +175,7 @@ function HeroText() {
             variant="body1"
             sx={{ mt: 2, fontSize: is720() ? 16 : 18 }}
           >
-            Power your MUI app by replacing React with Solid.js.
+            Power your MUI app by replacing React with SolidJS.
           </Typography>
         </Box>
       </Container>
@@ -244,7 +244,7 @@ export default function HomePage() {
                   WebkitTextFillColor: "transparent",
                 }}
               >
-                Solid.js
+                SolidJS
               </Box>{" "}
               UI <br />
               library <MainText onFinished={() => setFinished(true)} />
@@ -259,7 +259,7 @@ export default function HomePage() {
               </Link>
               ) built with{" "}
               <Link href="https://solidjs.com" target="_blank">
-                Solid.js
+                SolidJS
               </Link>
               .
             </Typography>{" "}
