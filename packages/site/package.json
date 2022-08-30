@@ -21,7 +21,7 @@
     "prismjs": "^1.29.0",
     "semver": "^7.3.7",
     "solid-app-router": "^0.4.2",
-    "solid-js": "^1.4.7"
+    "solid-js": "^1.5.2"
   },
   "devDependencies": {
     "@types/prismjs": "^1.26.0",
