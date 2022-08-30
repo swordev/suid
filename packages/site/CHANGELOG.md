@@ -1,5 +1,24 @@
 # @suid/site
 
+## 0.4.6
+
+### Patch Changes
+
+- [`912a1740`](https://github.com/swordev/suid/commit/912a17405ca411411033aab0f39da732d28fb7e9) Thanks [@juanrgm](https://github.com/juanrgm)! - Update SolidJS to 1.5
+
+- [`b7da6ee8`](https://github.com/swordev/suid/commit/b7da6ee86524cd4870aa098734661d40f021dadd) Thanks [@juanrgm](https://github.com/juanrgm)! - Update SolidJS to 1.4
+
+- [`c827289b`](https://github.com/swordev/suid/commit/c827289b533a974d04296edb002dc3836aec7309) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
+- Updated dependencies [[`912a1740`](https://github.com/swordev/suid/commit/912a17405ca411411033aab0f39da732d28fb7e9), [`b7da6ee8`](https://github.com/swordev/suid/commit/b7da6ee86524cd4870aa098734661d40f021dadd), [`c827289b`](https://github.com/swordev/suid/commit/c827289b533a974d04296edb002dc3836aec7309)]:
+  - @suid/base@0.3.0
+  - @suid/icons-material@0.3.0
+  - @suid/material@0.6.0
+  - @suid/system@0.5.0
+  - @suid/types@0.2.0
+  - @suid/utils@0.4.0
+  - @suid/codemod@0.6.2
+
 ## 0.4.5
 
 ### Patch Changes
