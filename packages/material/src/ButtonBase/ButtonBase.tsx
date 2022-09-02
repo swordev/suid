@@ -337,19 +337,6 @@ const ButtonBase = $.component(function ButtonBase({
   const enableTouchRipple = () =>
     mountedState() && !props.disableRipple && !props.disabled;
 
-  if (process.env.NODE_ENV !== "production") {
-    createEffect(() => {
-      if (enableTouchRipple() && !ripple.ref) {
-        console.error(
-          [
-            "MUI: The `component` prop provided to ButtonBase is invalid.",
-            "Please make sure the children prop is rendered in this custom component.",
-          ].join("\n")
-        );
-      }
-    });
-  }
-
   return (
     <ButtonBaseRoot
       {...buttonProps()}
@@ -377,7 +364,19 @@ const ButtonBase = $.component(function ButtonBase({
       {props.children}
       <Show when={enableTouchRipple()}>
         <TouchRipple
-          ref={ripple}
+          ref={(ref) => {
+            ripple(ref);
+            if (process.env.NODE_ENV !== "production") {
+              if (!ref) {
+                console.error(
+                  [
+                    "MUI: The `component` prop provided to ButtonBase is invalid.",
+                    "Please make sure the children prop is rendered in this custom component.",
+                  ].join("\n")
+                );
+              }
+            }
+          }}
           center={props.centerRipple}
           {...(props.TouchRippleProps || {})}
         />
