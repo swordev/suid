@@ -69,7 +69,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      "ts-morph": `https://esm.sh/ts-morph@${SUID_VERSIONS["ts-morph"]}?deps=code-block-writer@11.0.3`,
+      "ts-morph": `https://esm.sh/ts-morph@${SUID_VERSIONS["ts-morph"]}`,
       "~": resolve(__dirname, "src"),
       "@suid/types": resolve(__dirname, "../types/src"),
       "@suid/codemod": resolve(__dirname, "../codemod/src"),
