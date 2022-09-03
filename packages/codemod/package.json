@@ -14,7 +14,7 @@
     "commander": "^9.4.0",
     "fast-glob": "^3.2.11",
     "micromatch": "^4.0.5",
-    "ts-morph": "^15.1.0"
+    "ts-morph": "^16.0.0"
   },
   "devDependencies": {
     "prettier": "^2.7.1"

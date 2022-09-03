@@ -21,14 +21,14 @@
     "prismjs": "^1.29.0",
     "semver": "^7.3.7",
     "solid-app-router": "^0.4.2",
-    "solid-js": "^1.5.2"
+    "solid-js": "^1.5.4"
   },
   "devDependencies": {
     "@types/prismjs": "^1.26.0",
     "@types/semver": "^7.3.12",
     "fast-glob": "^3.2.11",
     "rimraf": "^3.0.2",
-    "sass": "^1.54.6",
+    "sass": "^1.54.8",
     "vite": "^3.0.9",
     "vite-plugin-solid": "^2.3.0"
   },
