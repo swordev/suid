@@ -34,7 +34,7 @@ const useUtilityClasses = (
     ],
     icon: [
       "icon",
-      `icon${capitalize(ownerState.variant!)}`,
+      ownerState.variant && `icon${capitalize(ownerState.variant)}`,
       ownerState.open && "iconOpen",
       ownerState.disabled && "disabled",
     ],
