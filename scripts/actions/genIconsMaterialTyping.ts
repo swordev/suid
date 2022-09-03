@@ -2,6 +2,7 @@ import { createProgressLog } from "./../util/cli";
 import { readOptions } from "./../util/prettier";
 import { packagesPath } from "./../util/workspace";
 import { readdir, writeFile } from "fs/promises";
+import pLimit from "p-limit";
 import { join } from "path";
 import { format } from "prettier";
 
@@ -19,11 +20,20 @@ async function genIconsMaterialTyping() {
     ...(await readOptions()),
     parser: "typescript",
   });
-  for (const fileName of fileNames) {
-    progressLog.add();
-    const componentTypePath = join(outPath, fileName.replace(/.jsx$/, ".d.ts"));
-    await writeFile(componentTypePath, contents);
-  }
+
+  const limit = pLimit(10);
+  const paths = fileNames.map((f) =>
+    join(outPath, f.replace(/.jsx$/, ".d.ts"))
+  );
+
+  const promises = paths.map((path) =>
+    limit(() => {
+      progressLog.add();
+      return writeFile(path, contents);
+    })
+  );
+
+  await Promise.all(promises);
   progressLog.stop();
 }
 

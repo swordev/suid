@@ -4,7 +4,8 @@
   "private": true,
   "type": "module",
   "dependencies": {
-    "commander": "^9.4.0"
+    "commander": "^9.4.0",
+    "p-limit": "^4.0.0"
   },
   "devDependencies": {
     "@tsconfig/node16": "^1.0.3",
