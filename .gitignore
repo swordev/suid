@@ -1,5 +1,6 @@
 .history
 .pnpm-store
+.eslintcache
 bk
 dist
 lib
