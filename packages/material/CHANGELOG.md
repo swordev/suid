@@ -1,5 +1,11 @@
 # @suid/material
 
+## 0.6.1
+
+### Patch Changes
+
+- [`b26b7e4e`](https://github.com/swordev/suid/commit/b26b7e4eea4834cc3dee519d8e67e81a4727911f) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix console error in `ButtonBase`
+
 ## 0.6.0
 
 ### Minor Changes
