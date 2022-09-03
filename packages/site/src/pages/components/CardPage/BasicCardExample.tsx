@@ -5,7 +5,7 @@ import CardActions from "@suid/material/CardActions";
 import CardContent from "@suid/material/CardContent";
 import Typography from "@suid/material/Typography";
 
-const bull = (
+const bull = () => (
   <Box
     component="span"
     sx={{ display: "inline-block", mx: "2px", transform: "scale(0.8)" }}
