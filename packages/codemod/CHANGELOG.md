@@ -1,5 +1,11 @@
 # @suid/codemod
 
+## 0.6.3
+
+### Patch Changes
+
+- [`3ab11bc3`](https://github.com/swordev/suid/commit/3ab11bc38e6387d714f92a016ef38bcbd6fcf7e1) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
 ## 0.6.2
 
 ### Patch Changes
