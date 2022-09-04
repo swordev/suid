@@ -1,6 +1,14 @@
 {
   "compilerOptions": {
+    "strict": true,
+    "target": "ESNext",
     "module": "ESNext",
-    "moduleResolution": "node"
-  }
+    "moduleResolution": "node",
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "composite": true,
+    "isolatedModules": false
+  },
+  "exclude": ["**/temp/", "**/.*/", "**/lib", "**/node_modules"]
 }

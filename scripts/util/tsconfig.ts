@@ -1,6 +1,6 @@
 import { readOptions } from "./prettier";
 import { readFile, writeFile } from "fs/promises";
-import * as json5 from "json5";
+import json5 from "json5";
 import { format } from "prettier";
 
 type CompilerOptions = { paths: Record<string, string[]> };
