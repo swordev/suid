@@ -3,16 +3,21 @@ import mui2suid from "./actions/mui2suid";
 import react2solid from "./actions/react2solid";
 import muiVersion from "./utils/muiVersion";
 import { program } from "commander";
+import { readFileSync } from "fs";
 import { dirname } from "path";
+import { fileURLToPath } from "url";
 
-const rootPath = import.meta.url.endsWith(".ts")
-  ? dirname(dirname(import.meta.url))
-  : dirname(import.meta.url);
+const rootPath = fileURLToPath(
+  import.meta.url.endsWith(".ts")
+    ? dirname(dirname(import.meta.url))
+    : dirname(import.meta.url)
+);
 
-const {
-  default: { name, version },
-} = (await import(`${rootPath}/package.json`)) as {
-  default: { name: string; version: string };
+const pkgJson = readFileSync(`${rootPath}/package.json`).toString();
+
+const { name, version } = JSON.parse(pkgJson) as {
+  name: string;
+  version: string;
 };
 
 program.name(name);
