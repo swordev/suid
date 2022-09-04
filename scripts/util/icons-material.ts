@@ -53,10 +53,10 @@ export function normalizeFileName(fileName: string) {
     return `${singleDigitNumbers[Number(fileName[0])]}M${fileName.slice(2)}`;
   }
   if (/^1\dmp/.test(fileName)) {
-    return `${twoDigitNumbers1[Number(fileName[0])]}M${fileName.slice(3)}`;
+    return `${twoDigitNumbers1[Number(fileName[1])]}M${fileName.slice(3)}`;
   }
   if (/^2\dmp/.test(fileName)) {
-    return `Twenty${singleDigitNumbers[Number(fileName[0])]}M${fileName.slice(
+    return `Twenty${singleDigitNumbers[Number(fileName[1])]}M${fileName.slice(
       3
     )}`;
   }
@@ -73,6 +73,11 @@ export function normalizeFileName(fileName: string) {
   }
   if (fileName.startsWith("5g")) {
     return `FiveG${fileName.slice(2)}`;
+  }
+
+  // All other names starting with a number between 10 and 19
+  if (/^1\d/.test(fileName)) {
+    return `${twoDigitNumbers1[Number(fileName[1])]}${fileName.slice(2)}`;
   }
 
   return fileName;

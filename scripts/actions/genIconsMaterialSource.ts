@@ -41,9 +41,13 @@ async function genIconsMaterialSource(options: { version: string }) {
     total: fileNames.length,
   });
 
+  const iconNames = new Set<string>();
+
   for (const fileName of fileNames) {
     progressLog.add();
     const [name] = normalizeFileName(fileName).split(".");
+    if (iconNames.has(name)) throw new Error(`Duplicated icon name: ${name}`);
+    iconNames.add(name);
     const filePath = join(svgPath, fileName);
     const fileContents = (await readFile(filePath)).toString();
     const $svg = htmlParser.parse(fileContents);
