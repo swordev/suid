@@ -1,6 +1,6 @@
 {
   "name": "@suid/site",
-  "version": "0.4.6",
+  "version": "0.4.7",
   "description": "SUID website.",
   "dependencies": {
     "@stackblitz/sdk": "^1.8.0",
@@ -16,7 +16,7 @@
     "prismjs": "^1.29.0",
     "semver": "^7.3.7",
     "solid-app-router": "^0.4.2",
-    "solid-js": "^1.5.2"
+    "solid-js": "^1.5.4"
   },
   "bugs": {
     "url": "https://github.com/swordev/suid/issues"
