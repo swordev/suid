@@ -2,6 +2,13 @@
   "name": "@suid/types",
   "version": "0.2.0",
   "description": "Types used by suid packages.",
+  "keywords": [
+    "solid",
+    "solidjs",
+    "components",
+    "mui",
+    "types"
+  ],
   "scripts": {
     "build": "tsc --build",
     "clean": "tsc --build --clean",

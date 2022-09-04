@@ -2,6 +2,14 @@
   "name": "@suid/base",
   "version": "0.3.0",
   "description": "Base components unstyled used by @suid/material.",
+  "keywords": [
+    "solid",
+    "solidjs",
+    "components",
+    "mui",
+    "unstyled",
+    "ui"
+  ],
   "scripts": {
     "build": "tsc --build",
     "clean": "tsc --build --clean",

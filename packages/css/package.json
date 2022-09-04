@@ -2,6 +2,11 @@
   "name": "@suid/css",
   "version": "0.1.5",
   "description": "CSS render in JS.",
+  "keywords": [
+    "styles",
+    "css",
+    "css-in-js"
+  ],
   "scripts": {
     "build": "tsc --build",
     "clean": "tsc --build --clean",

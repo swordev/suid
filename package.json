@@ -114,22 +114,6 @@
         "**/*.d.ts"
       ],
       "homepage": "https://suid.io",
-      "keywords": [
-        "best_ecosystem",
-        "components",
-        "material-design",
-        "material-ui",
-        "material",
-        "mui",
-        "solid-js",
-        "solid.js",
-        "solid",
-        "solidhack",
-        "solidjs",
-        "styled-component",
-        "ui",
-        "ux"
-      ],
       "license": "MIT",
       "repository": {
         "type": "git",

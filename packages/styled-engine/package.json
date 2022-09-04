@@ -2,6 +2,15 @@
   "name": "@suid/styled-engine",
   "version": "0.2.0",
   "description": "Styled engine used by @suid/system.",
+  "keywords": [
+    "solid",
+    "solidjs",
+    "components",
+    "mui",
+    "styles",
+    "css",
+    "css-in-js"
+  ],
   "scripts": {
     "build": "tsc --build",
     "clean": "tsc --build --clean",

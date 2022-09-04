@@ -2,6 +2,15 @@
   "name": "@suid/icons-material",
   "version": "0.3.1",
   "description": "Material Design icons as SVG SolidJS components.",
+  "keywords": [
+    "solid",
+    "solidjs",
+    "components",
+    "mui",
+    "material-ui",
+    "material design",
+    "icons"
+  ],
   "scripts": {
     "build": "tsc --build",
     "clean": "tsc --build --clean",

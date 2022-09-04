@@ -2,6 +2,13 @@
   "name": "@suid/system",
   "version": "0.5.0",
   "description": "Styles system used by suid packages.",
+  "keywords": [
+    "solid",
+    "solidjs",
+    "components",
+    "mui",
+    "system"
+  ],
   "main": "index.jsx",
   "scripts": {
     "build": "tsc --build",
