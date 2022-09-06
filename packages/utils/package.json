@@ -5,7 +5,6 @@
   "keywords": [
     "utils"
   ],
-  "type": "module",
   "scripts": {
     "build": "tsc --build",
     "clean": "tsc --build --clean",
