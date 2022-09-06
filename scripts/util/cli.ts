@@ -1,3 +1,8 @@
+export type ProgressLog = {
+  stop: () => void;
+  add: () => void;
+};
+
 export function createProgressLog(data: { name: string; total: number }) {
   let current = 0;
   console.time(data.name);

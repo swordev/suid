@@ -10,6 +10,13 @@ import { format } from "prettier";
 
 const outPath = join(packagesPath, "icons-material/lib");
 
+export async function writeIndexFile(iconNames: string[]) {
+  const contents = iconNames
+    .map((v) => `export { default as ${v} } from "./${v}";`)
+    .join("\n");
+  await writeFile(join(outPath, "index.jsx"), contents);
+}
+
 async function renderComponentContents(name: string, children: string[]) {
   return format(
     `
@@ -44,6 +51,7 @@ async function genIconsMaterialSource(options: { version: string }) {
   const iconNames = new Set<string>();
 
   for (const fileName of fileNames) {
+    if (fileName === "index.jsx") continue;
     progressLog.add();
     const [name] = normalizeFileName(fileName).split(".");
     if (iconNames.has(name)) throw new Error(`Duplicated icon name: ${name}`);
@@ -66,6 +74,7 @@ async function genIconsMaterialSource(options: { version: string }) {
     const componentSource = await renderComponentContents(name, svgChildren);
     await writeFile(componentPath, componentSource);
   }
+  await writeIndexFile(Array.from(iconNames));
   progressLog.stop();
 }
 

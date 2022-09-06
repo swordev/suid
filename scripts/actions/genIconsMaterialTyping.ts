@@ -1,6 +1,7 @@
-import { createProgressLog } from "./../util/cli";
+import { createProgressLog, ProgressLog } from "./../util/cli";
 import { readOptions } from "./../util/prettier";
 import { packagesPath } from "./../util/workspace";
+import { writeIndexFile } from "./genIconsMaterialSource";
 import { readdir, writeFile } from "fs/promises";
 import pLimit from "p-limit";
 import { join } from "path";
@@ -8,32 +9,55 @@ import { format } from "prettier";
 
 const outPath = join(packagesPath, "icons-material/lib");
 
-async function genIconsMaterialTyping() {
-  const { name } = genIconsMaterialTyping;
+async function writeIndexTypingFile(
+  iconNames: string[],
+  progressLog: ProgressLog
+) {
+  const contents = [
+    `import SvgIcon from "@suid/material/SvgIcon";`,
+    `type C = typeof SvgIcon;`,
+    ...iconNames.map((v) => `export const ${v}: C;`),
+  ].join("\n");
+  progressLog.add();
+  await writeFile(join(outPath, "index.d.ts"), contents);
+}
 
-  const fileNames = (await readdir(outPath)).filter((v) => v.endsWith(".jsx"));
-  const progressLog = createProgressLog({
-    name,
-    total: fileNames.length,
-  });
+async function writeComponentTypingFiles(
+  iconNames: string[],
+  progressLog: ProgressLog
+) {
   const contents = format(`export { default } from "@suid/material/SvgIcon"`, {
     ...(await readOptions()),
     parser: "typescript",
   });
 
   const limit = pLimit(10);
-  const paths = fileNames.map((f) =>
-    join(outPath, f.replace(/.jsx$/, ".d.ts"))
-  );
+  const paths = iconNames.map((v) => join(outPath, `${v}.d.ts`));
 
-  const promises = paths.map((path) =>
+  return paths.map((path) =>
     limit(() => {
-      progressLog.add();
+      progressLog?.add();
       return writeFile(path, contents);
     })
   );
+}
+async function genIconsMaterialTyping() {
+  const { name } = genIconsMaterialTyping;
 
-  await Promise.all(promises);
+  const iconNames = (await readdir(outPath))
+    .filter((v) => v !== "index.jsx" && v.endsWith(".jsx"))
+    .map((v) => v.replace(/.jsx$/, ""));
+
+  const progressLog = createProgressLog({
+    name,
+    total: iconNames.length + 1,
+  });
+
+  await Promise.all([
+    ...(await writeComponentTypingFiles(iconNames, progressLog)),
+    writeIndexTypingFile(iconNames, progressLog),
+    writeIndexFile(iconNames),
+  ]);
   progressLog.stop();
 }
 

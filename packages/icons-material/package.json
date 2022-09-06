@@ -11,6 +11,7 @@
     "material design",
     "icons"
   ],
+  "main": "index.jsx",
   "scripts": {
     "build": "tsc --build",
     "clean": "tsc --build --clean",
