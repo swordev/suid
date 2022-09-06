@@ -57,7 +57,7 @@ async function patchTsConfigs() {
   const tsconfigBuild = await parseTsConfigFile(tsconfigBuildPath);
 
   tsconfigBuild.references = packageNames
-    .filter((name) => name !== "site")
+    .filter((name) => name !== "site" && name !== "vite-plugin")
     .map((v) => ({ path: `packages/${v}` }));
 
   await writeTsConfigFile(tsconfigBuildPath, tsconfigBuild);
@@ -66,7 +66,7 @@ async function patchTsConfigs() {
   const tsconfigJest = await parseTsConfigFile(tsconfigJestPath);
 
   tsconfigJest.compilerOptions.paths = packageNames
-    .filter((name) => name !== "site")
+    .filter((name) => name !== "site" && name !== "vite-plugin")
     .reduce((result, name) => {
       const path = `./packages/${customPath[name] || `${name}/src`}`;
       result[`@${scope}/${name}`] = [path];

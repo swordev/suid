@@ -1,0 +1,45 @@
+{
+  "name": "@suid/vite-plugin",
+  "version": "0.0.1",
+  "description": "SUID integration plugin for Vite.",
+  "keywords": [
+    "vite",
+    "plugin",
+    "suid",
+    "solidjs"
+  ],
+  "type": "module",
+  "main": "index.cjs",
+  "module": "index.mjs",
+  "types": "index.d.ts",
+  "scripts": {
+    "build": "pnpm build:types && pnpm build:cjs && pnpm build:esm",
+    "build:cjs": "esbuild --format=cjs --outfile=dist/index.cjs src/index.ts",
+    "build:esm": "esbuild --format=esm --outfile=dist/index.mjs src/index.ts",
+    "build:types": "tsc --emitDeclarationOnly --declarationMap false --outdir dist --declaration"
+  },
+  "dependencies": {
+    "@babel/generator": "^7.19.0",
+    "@babel/parser": "^7.19.0",
+    "@babel/traverse": "^7.19.0",
+    "@babel/types": "^7.19.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.15.7"
+  },
+  "peerDependencies": {
+    "vite": "^3.0.0"
+  },
+  "publishConfig": {
+    "directory": "dist"
+  },
+  "x-wspa": {
+    "pkgManifest": {
+      "files": [
+        "**/*.cjs",
+        "**/*.mjs",
+        "**/*.d.ts"
+      ]
+    }
+  }
+}
