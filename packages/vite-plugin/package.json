@@ -22,7 +22,9 @@
     "@babel/generator": "^7.19.0",
     "@babel/parser": "^7.19.0",
     "@babel/traverse": "^7.19.0",
-    "@babel/types": "^7.19.0"
+    "@babel/types": "^7.19.0",
+    "@types/babel__generator": "^7.6.4",
+    "@types/babel__traverse": "^7.18.1"
   },
   "devDependencies": {
     "esbuild": "^0.15.7"

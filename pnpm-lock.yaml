@@ -243,6 +243,8 @@ importers:
       '@babel/parser': ^7.19.0
       '@babel/traverse': ^7.19.0
       '@babel/types': ^7.19.0
+      '@types/babel__generator': ^7.6.4
+      '@types/babel__traverse': ^7.18.1
       esbuild: ^0.15.7
       vite: ^3.0.0
     dependencies:
@@ -250,6 +252,8 @@ importers:
       '@babel/parser': 7.19.0
       '@babel/traverse': 7.19.0
       '@babel/types': 7.19.0
+      '@types/babel__generator': 7.6.4
+      '@types/babel__traverse': 7.18.1
       vite: 3.0.9
     devDependencies:
       esbuild: 0.15.7
@@ -2654,14 +2658,13 @@ packages:
       '@babel/types': 7.19.0
       '@types/babel__generator': 7.6.4
       '@types/babel__template': 7.4.1
-      '@types/babel__traverse': 7.14.2
+      '@types/babel__traverse': 7.18.1
     dev: true
 
   /@types/babel__generator/7.6.4:
     resolution: {integrity: sha512-tFkciB9j2K755yrTALxD44McOrk+gfpIpvC3sxHjRawj6PfnQxrse4Clq5y/Rq+G3mrBurMax/lG8Qn2t9mSsg==}
     dependencies:
       '@babel/types': 7.19.0
-    dev: true
 
   /@types/babel__template/7.4.1:
     resolution: {integrity: sha512-azBFKemX6kMg5Io+/rdGT0dkGreboUVR0Cdm3fz9QJWpaQGJRQXl7C+6hOTCZcMll7KFyEQpgbYI2lHdsS4U7g==}
@@ -2670,11 +2673,10 @@ packages:
       '@babel/types': 7.19.0
     dev: true
 
-  /@types/babel__traverse/7.14.2:
-    resolution: {integrity: sha512-K2waXdXBi2302XUdcHcR1jCeU0LL4TD9HRs/gk0N2Xvrht+G/BfJa4QObBQZfhMdxiCpV3COl5Nfq4uKTeTnJA==}
+  /@types/babel__traverse/7.18.1:
+    resolution: {integrity: sha512-FSdLaZh2UxaMuLp9lixWaHq/golWTRWOnRsAXzDTDSDOQLuZb1nsdCt6pJSPWSEQt2eFZ2YVk3oYhn+1kLMeMA==}
     dependencies:
       '@babel/types': 7.19.0
-    dev: true
 
   /@types/braces/3.0.1:
     resolution: {integrity: sha512-+euflG6ygo4bn0JHtn4pYqcXwRtLvElQ7/nnjDu7iYG56H0+OhCd7d6Ug0IE3WcFpZozBKW2+80FUbv5QGk5AQ==}
@@ -3368,7 +3370,7 @@ packages:
       '@babel/template': 7.18.10
       '@babel/types': 7.19.0
       '@types/babel__core': 7.1.19
-      '@types/babel__traverse': 7.14.2
+      '@types/babel__traverse': 7.18.1
     dev: true
 
   /babel-plugin-jest-hoist/29.0.0:
@@ -3378,7 +3380,7 @@ packages:
       '@babel/template': 7.18.10
       '@babel/types': 7.19.0
       '@types/babel__core': 7.1.19
-      '@types/babel__traverse': 7.14.2
+      '@types/babel__traverse': 7.18.1
     dev: true
 
   /babel-plugin-jsx-dom-expressions/0.34.0_@babel+core@7.18.13:
@@ -6383,7 +6385,7 @@ packages:
       '@jest/expect-utils': 29.0.1
       '@jest/transform': 29.0.1
       '@jest/types': 29.0.1
-      '@types/babel__traverse': 7.14.2
+      '@types/babel__traverse': 7.18.1
       '@types/prettier': 2.7.0
       babel-preset-current-node-syntax: 1.0.1_@babel+core@7.18.13
       chalk: 4.1.2
