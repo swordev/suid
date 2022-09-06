@@ -19,7 +19,6 @@
     "watch": "tsc --build -w"
   },
   "dependencies": {
-    "@suid/utils": "workspace:*",
     "@types/micromatch": "^4.0.2",
     "commander": "^9.4.0",
     "fast-glob": "^3.2.11",

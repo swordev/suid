@@ -92,7 +92,6 @@ importers:
 
   packages/codemod:
     specifiers:
-      '@suid/utils': workspace:*
       '@types/micromatch': ^4.0.2
       commander: ^9.4.0
       fast-glob: ^3.2.11
@@ -100,7 +99,6 @@ importers:
       prettier: ^2.7.1
       ts-morph: ^16.0.0
     dependencies:
-      '@suid/utils': link:../utils
       '@types/micromatch': 4.0.2
       commander: 9.4.0
       fast-glob: 3.2.11

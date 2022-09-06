@@ -1,7 +1,7 @@
+import capitalize from "../utils/capitalize";
 import checkNodeScope, { NodeScope } from "../utils/checkNodeScope";
 import isStaticValue from "../utils/isStaticValue";
 import renameIdentifiers from "../utils/renameIdentifiers";
-import capitalize from "@suid/utils/capitalize";
 import { Identifier, Node, ObjectBindingPattern, ts } from "ts-morph";
 
 export type ReplaceObjectBindingOptions = {

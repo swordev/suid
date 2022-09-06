@@ -1,5 +1,5 @@
 import getParentExpr from "../utils/getParentExpr";
-import uncapitalize from "@suid/utils/uncapitalize";
+import uncapitalize from "../utils/uncapitalize";
 import { Identifier, ts } from "ts-morph";
 
 const { factory } = ts;
