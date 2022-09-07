@@ -62,7 +62,6 @@ export default defineConfig({
   ],
   build: {
     target: "esnext",
-    polyfillDynamicImport: false,
   },
   esbuild: {
     keepNames: true,
