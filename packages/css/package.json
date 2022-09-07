@@ -1,6 +1,6 @@
 {
   "name": "@suid/css",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "CSS render in JS.",
   "keywords": [
     "styles",

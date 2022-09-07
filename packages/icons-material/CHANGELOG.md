@@ -1,5 +1,20 @@
 # @suid/icons-material
 
+## 0.4.0
+
+### Minor Changes
+
+- [`a0fa4dd9`](https://github.com/swordev/suid/commit/a0fa4dd9e76e5df718208a7bd2eabfdd1cf6b22d) Thanks [@juanrgm](https://github.com/juanrgm)! - Export all icons in the index file
+
+  Use `@suid/vite-plugin` for optimizing the imports.
+
+### Patch Changes
+
+- [`842bcb1a`](https://github.com/swordev/suid/commit/842bcb1a6d14505f31122e0885d3a8e8e064ce68) Thanks [@juanrgm](https://github.com/juanrgm)! - Add missing icons
+
+- Updated dependencies []:
+  - @suid/material@0.6.2
+
 ## 0.3.1
 
 ### Patch Changes
