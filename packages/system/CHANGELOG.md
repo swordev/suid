@@ -1,5 +1,16 @@
 # @suid/system
 
+## 0.5.1
+
+### Patch Changes
+
+- [`c5f7ab08`](https://github.com/swordev/suid/commit/c5f7ab08bfa4e2e274a0d8e191116f9172868082) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix `ThemeContext` reference in development mode
+
+- Updated dependencies [[`817b1aaf`](https://github.com/swordev/suid/commit/817b1aaf5e9c3b64b2b40f3985d0016d2d204c27)]:
+  - @suid/utils@0.5.0
+  - @suid/css@0.1.6
+  - @suid/styled-engine@0.2.1
+
 ## 0.5.0
 
 ### Minor Changes

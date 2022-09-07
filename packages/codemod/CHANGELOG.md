@@ -1,5 +1,13 @@
 # @suid/codemod
 
+## 0.6.4
+
+### Patch Changes
+
+- [`c87208c4`](https://github.com/swordev/suid/commit/c87208c457ae5d4d0e008939af8ae43b9d9de749) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix file reading
+
+- [`90371c46`](https://github.com/swordev/suid/commit/90371c46f976711f615e6ca85c3f79e69d544542) Thanks [@juanrgm](https://github.com/juanrgm)! - Remove `@suid/utils` dependency
+
 ## 0.6.3
 
 ### Patch Changes

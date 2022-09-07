@@ -1,5 +1,11 @@
 # @suid/utils
 
+## 0.5.0
+
+### Minor Changes
+
+- [`817b1aaf`](https://github.com/swordev/suid/commit/817b1aaf5e9c3b64b2b40f3985d0016d2d204c27) Thanks [@juanrgm](https://github.com/juanrgm)! - Convert the package into CommonJS
+
 ## 0.4.0
 
 ### Minor Changes
