@@ -1,5 +1,11 @@
 # @suid/site
 
+## 0.4.9
+
+### Patch Changes
+
+- [`e45ca539`](https://github.com/swordev/suid/commit/e45ca539e5c28520fe4dab1ac5caec87bc7e1f57) Thanks [@juanrgm](https://github.com/juanrgm)! - Update vite config
+
 ## 0.4.8
 
 ### Patch Changes
