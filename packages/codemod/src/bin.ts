@@ -1,4 +1,5 @@
 #!/usr/bin/env -S node --no-warnings --experimental-specifier-resolution=node
+import fixEsm from "./actions/fixEsm";
 import mui2suid from "./actions/mui2suid";
 import react2solid from "./actions/react2solid";
 import muiVersion from "./utils/muiVersion";
@@ -63,4 +64,18 @@ program
     }
   );
 
+program
+  .command("fix-esm")
+  .description("Fix ESM code (imports).")
+  .option("-i,--in [path]", "Input directory path", process.cwd())
+  .option("-w,--write", "Overwrites the files with the fixed code")
+  .option(
+    "-f,--filters [patterns]",
+    "Filters by wildcard patterns",
+    (value, previous) => previous.concat([value]),
+    [] as string[]
+  )
+  .action((options: { in: string; filters: string[]; write: boolean }) =>
+    fixEsm(options)
+  );
 program.parse(process.argv);

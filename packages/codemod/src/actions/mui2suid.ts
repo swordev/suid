@@ -3,6 +3,7 @@ import transformMuiProps from "../transforms/transformMuiProps";
 import transformReactSource from "../transforms/transformReactSource";
 import applyTransforms from "../utils/applyTransforms";
 import capitalize from "../utils/capitalize";
+import colorize from "../utils/colorize";
 import uncapitalize from "../utils/uncapitalize";
 import FastGlob from "fast-glob";
 import { mkdir, readFile, rm, stat, writeFile } from "fs/promises";
@@ -55,10 +56,6 @@ async function transformComponentFile(
 async function transformFile(path: string) {
   const contents = (await readFile(path)).toString();
   return applyTransforms(contents, [transformReactSource]);
-}
-
-function colorize(text: string) {
-  return `\x1b[36m${text}\x1b[0m`;
 }
 
 export default async function mui2suid(options: {
