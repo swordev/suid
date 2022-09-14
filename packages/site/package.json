@@ -36,7 +36,9 @@
     "directory": "dist"
   },
   "x-wspa": {
+    "devPkgManifestFields": true,
     "pkgManifest": {
+      "scripts": null,
       "files": [
         "assets/**/*",
         "index.html"
