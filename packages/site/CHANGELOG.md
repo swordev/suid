@@ -1,5 +1,14 @@
 # @suid/site
 
+## 0.4.10
+
+### Patch Changes
+
+- [`2e4c73f1`](https://github.com/swordev/suid/commit/2e4c73f1158e1f0e66937b526c5ccf25da7a9d1f) Thanks [@juanrgm](https://github.com/juanrgm)! - Publish dev dependencies
+
+- Updated dependencies [[`76243011`](https://github.com/swordev/suid/commit/76243011a37772ebd32ba17b6b35fbd6860af9b2)]:
+  - @suid/codemod@0.7.0
+
 ## 0.4.9
 
 ### Patch Changes
