@@ -1,5 +1,11 @@
 # @suid/codemod
 
+## 0.7.0
+
+### Minor Changes
+
+- [`76243011`](https://github.com/swordev/suid/commit/76243011a37772ebd32ba17b6b35fbd6860af9b2) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `fix-esm` action for fix the ESM code (ex: import extensions)
+
 ## 0.6.4
 
 ### Patch Changes
