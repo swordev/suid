@@ -6,7 +6,7 @@ import copyText from "~/utils/copyText";
 
 function InstallButton(props: ButtonProps) {
   const [copied, setCopied] = createSignal(false);
-  const code = "npm i @suid/material";
+  const code = "npm init suid";
   let timeout: number | undefined;
   createEffect(() => {
     if (!copied()) return;

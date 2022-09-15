@@ -4,7 +4,7 @@ import htmlFile from "./template/index.html?raw";
 import appFile from "./template/src/App.tsx?raw";
 import indexFile from "./template/src/index.tsx?raw";
 import tsConfigFile from "./template/tsconfig.json.source?raw";
-import viteConfigFile from "./template/vite.config.ts?raw";
+import viteConfigFile from "./template/vite.config.ts.source?raw";
 
 export default function buildProjectOptions(
   options: Partial<Project> & {

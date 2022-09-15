@@ -12,7 +12,7 @@ const parseJsonFile = (path) => JSON.parse(readFileSync(path).toString());
 const SUID_PKG_NAMES = readdirSync(packageDir);
 const SUID_VERSIONS = SUID_PKG_NAMES.reduce((result, name) => {
   const pkg = parseJsonFile(`${packageDir}/${name}/package.json`);
-  result[`@suid/${name}`] = pkg.version;
+  result[pkg.name] = pkg.version;
   if (name === "site") {
     result["solid-js"] = pkg.dependencies["solid-js"];
     result["vite"] = pkg.devDependencies["vite"];

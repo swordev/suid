@@ -165,6 +165,7 @@ importers:
       '@suid/system': workspace:*
       '@suid/types': workspace:*
       '@suid/utils': workspace:*
+      '@suid/vite-plugin': workspace:*
       '@types/prismjs': ^1.26.0
       '@types/semver': ^7.3.12
       fast-glob: ^3.2.11
@@ -194,6 +195,7 @@ importers:
       solid-app-router: 0.4.2_solid-js@1.5.4
       solid-js: 1.5.4
     devDependencies:
+      '@suid/vite-plugin': link:../vite-plugin
       '@types/prismjs': 1.26.0
       '@types/semver': 7.3.12
       fast-glob: 3.2.11
