@@ -29,6 +29,7 @@ With this smart target in mind, the project avoids becoming another library that
 | [@suid/css](/packages/css)                       |      ![css-npm]       | CSS render in JS.                                  |
 | [@suid/types](/packages/types)                   |     ![types-npm]      | Types used by suid packages.                       |
 | [@suid/site](/packages/site)                     |      ![site-npm]      | SUID website.                                      |
+| [create-suid](/packages/create-suid)             |  ![create-suid-npm]   | CLI tool for creating a SUID project easily.       |
 
 [material-npm]: https://img.shields.io/npm/v/@suid/material
 [icons-material-npm]: https://img.shields.io/npm/v/@suid/icons-material
@@ -40,11 +41,12 @@ With this smart target in mind, the project avoids becoming another library that
 [system-npm]: https://img.shields.io/npm/v/@suid/system
 [base-npm]: https://img.shields.io/npm/v/@suid/base
 [types-npm]: https://img.shields.io/npm/v/@suid/types
+[create-suid-npm]: https://img.shields.io/npm/v/create-suid
 
 ## Installation
 
 ```sh
-npm install @suid/material
+npm init suid
 ```
 
 ## Resources
