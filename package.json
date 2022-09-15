@@ -1,6 +1,6 @@
 {
   "name": "@suid/site",
-  "version": "0.4.10",
+  "version": "0.5.0",
   "description": "SUID website.",
   "dependencies": {
     "@stackblitz/sdk": "^1.8.0",
@@ -19,6 +19,7 @@
     "solid-js": "^1.5.4"
   },
   "devDependencies": {
+    "@suid/vite-plugin": "workspace:*",
     "@types/prismjs": "^1.26.0",
     "@types/semver": "^7.3.12",
     "fast-glob": "^3.2.11",

@@ -1,5 +1,11 @@
 # @suid/site
 
+## 0.5.0
+
+### Minor Changes
+
+- [`0f91a154`](https://github.com/swordev/suid/commit/0f91a154f6aba1083d1164e7b345c7b3b21adc5b) Thanks [@juanrgm](https://github.com/juanrgm)! - Update the installation page with the starter kit and a detailed guide
+
 ## 0.4.10
 
 ### Patch Changes
