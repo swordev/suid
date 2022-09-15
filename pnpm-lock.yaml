@@ -118,7 +118,7 @@ importers:
       inquirer: 9.1.1
     devDependencies:
       '@types/inquirer': 9.0.1
-    publishDirectory: dist
+    publishDirectory: lib
 
   packages/css:
     specifiers:

@@ -21,7 +21,7 @@
     "@types/inquirer": "^9.0.1"
   },
   "publishConfig": {
-    "directory": "dist"
+    "directory": "lib"
   },
   "x-wspa": {
     "pkgManifest": {
