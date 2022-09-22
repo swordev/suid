@@ -1,5 +1,11 @@
 # @suid/site
 
+## 0.5.1
+
+### Patch Changes
+
+- [`7a8513e3`](https://github.com/swordev/suid/commit/7a8513e32072434767a49916b9bcfffc25095bb2) Thanks [@juanrgm](https://github.com/juanrgm)! - Downgrade `vite-plugin-solid` dependency version
+
 ## 0.5.0
 
 ### Minor Changes
