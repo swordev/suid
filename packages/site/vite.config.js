@@ -68,7 +68,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      "ts-morph": `https://esm.sh/ts-morph@${SUID_VERSIONS["ts-morph"]}`,
+      "ts-morph": `https://esm.sh/ts-morph@${SUID_VERSIONS["ts-morph"]}?pin=v94`,
       "~": resolve(__dirname, "src"),
       "@suid/types": resolve(__dirname, "../types/src"),
       "@suid/codemod": resolve(__dirname, "../codemod/src"),
