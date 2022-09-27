@@ -1,5 +1,11 @@
 # @suid/site
 
+## 0.5.2
+
+### Patch Changes
+
+- [`c5cf9fd7`](https://github.com/swordev/suid/commit/c5cf9fd7c186e3669b8973299d766f16d2dc7cb6) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix React to SolidJS transformer
+
 ## 0.5.1
 
 ### Patch Changes
