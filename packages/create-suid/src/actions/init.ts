@@ -82,7 +82,7 @@ export default async function init(defaultOutputDir?: string) {
   await createFiles(
     {
       "src/index.tsx": entryFile(),
-      "src/app.tsx": appFile(),
+      "src/App.tsx": appFile(),
       "index.html": htmlFile({
         title: projectName.value,
       }),
