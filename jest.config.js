@@ -25,6 +25,7 @@ module.exports = {
     "^.+\\.tsx?$": [
       "ts-jest",
       {
+        tsconfig: "<rootDir>/tsconfig.jest.json",
         babelConfig: {
           presets: ["babel-preset-solid", "@babel/preset-env"],
         },
