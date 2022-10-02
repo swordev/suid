@@ -267,7 +267,7 @@ const PopperUnstyled = $.component(function PopperUnstyled({
             {...otherProps}
             style={{
               // Prevents scroll issue, waiting for Popper.js to add this style once initiated.
-              position: "fixed",
+              //position: "fixed", // [review] Don't required in SolidJS
               // Fix Popper.js display issue
               top: 0,
               left: 0,
