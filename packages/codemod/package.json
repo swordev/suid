@@ -20,8 +20,8 @@
   },
   "dependencies": {
     "@types/micromatch": "^4.0.2",
-    "commander": "^9.4.0",
-    "fast-glob": "^3.2.11",
+    "commander": "^9.4.1",
+    "fast-glob": "^3.2.12",
     "micromatch": "^4.0.5",
     "ts-morph": "^16.0.0"
   },
