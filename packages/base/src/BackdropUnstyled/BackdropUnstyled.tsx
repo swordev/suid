@@ -59,7 +59,9 @@ const BackdropUnstyled = $.component(function BackdropUnstyled({
       })}
       component={Root()}
       class={clsx(classes.root, rootProps().class, otherProps.class)}
-    />
+    >
+      {props.children}
+    </Dynamic>
   );
 });
 
