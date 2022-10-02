@@ -16,7 +16,7 @@
     "build": "pnpm build:types && pnpm build:cjs && pnpm build:esm",
     "build:cjs": "esbuild --format=cjs --outfile=dist/index.cjs src/index.ts",
     "build:esm": "esbuild --format=esm --outfile=dist/index.mjs src/index.ts",
-    "build:types": "tsc --emitDeclarationOnly --declarationMap false --outdir dist --declaration"
+    "build:types": "tsc -p tsconfig.build.json --emitDeclarationOnly --declarationMap false --outdir dist --declaration"
   },
   "dependencies": {
     "@babel/generator": "^7.19.0",

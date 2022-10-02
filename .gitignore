@@ -6,4 +6,4 @@ dist
 lib
 node_modules
 temp
-tsconfig.tsbuildinfo
+*.tsbuildinfo

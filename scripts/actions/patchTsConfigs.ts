@@ -17,6 +17,8 @@ const extraPaths: Record<string, TsConfig["compilerOptions"]["paths"]> = {
   },
 };
 
+const withoutReferences = ["site", "vite-plugin", "icons-material"];
+
 const customPath: Record<string, string> = {
   "icons-material": "icons-material/lib",
 };
@@ -29,26 +31,53 @@ async function patchTsConfigs() {
     console.log(`[${name}] ${packageName}`);
     const packagePath = join(packagesPath, packageName);
     const tsconfigPath = join(packagePath, "tsconfig.json");
+    const tsconfigBuildPath = join(packagePath, "tsconfig.build.json");
     if (!(await safeStat(tsconfigPath))) continue;
     const pkgPath = join(packagePath, "package.json");
     const tsconfig = await parseTsConfigFile(tsconfigPath);
     const pkg = await parsePackageFile(pkgPath);
-
+    const publishDirectory = pkg.publishConfig?.["directory"];
     const wsDependencies = Object.keys(pkg.dependencies || {})
       .filter((v) => v.startsWith(scopePrefix))
       .map((v) => v.slice(scopePrefix.length));
 
-    tsconfig.include = ["src/**/*"];
-    tsconfig.exclude = ["src/**/*.test.*"];
-    tsconfig.references = wsDependencies.map((v) => ({ path: `./../${v}` }));
+    tsconfig.include = ["src", "test"];
+    delete tsconfig.exclude;
+    delete tsconfig.compilerOptions.outDir;
+    delete tsconfig.compilerOptions.rootDir;
+    tsconfig.references = wsDependencies
+      .filter((v) => !withoutReferences.includes(v))
+      .map((v) => ({
+        path: `./../${v}/tsconfig.build.json`,
+      }));
+
+    if (!tsconfig.references.length) delete tsconfig.references;
+
     tsconfig.compilerOptions.paths = wsDependencies.reduce((result, name) => {
       const path = `./../` + (customPath[name] || `${name}/src`);
       result[`@${scope}/${name}`] = [path];
       result[`@${scope}/${name}/*`] = [`${path}/*`];
       return result;
-    }, {} as TsConfig["compilerOptions"]["paths"]);
+    }, {} as Record<string, string[]>);
+
     if (extraPaths[packageName])
       Object.assign(tsconfig.compilerOptions.paths, extraPaths[packageName]);
+
+    if (!Object.keys(tsconfig.compilerOptions.paths).length)
+      delete tsconfig.compilerOptions.paths;
+
+    const tsconfigBuild: TsConfig = JSON.parse(JSON.stringify(tsconfig));
+
+    tsconfigBuild.extends = "./tsconfig.json";
+    tsconfigBuild.exclude = ["src/**/*.test.*"];
+    tsconfigBuild.include = ["src"];
+    tsconfigBuild.compilerOptions = {
+      outDir: publishDirectory,
+      rootDir: "src",
+      paths: tsconfig.compilerOptions.paths,
+    };
+
+    await writeTsConfigFile(tsconfigBuildPath, tsconfigBuild);
 
     await writeTsConfigFile(tsconfigPath, tsconfig);
   }
@@ -57,8 +86,8 @@ async function patchTsConfigs() {
   const tsconfigBuild = await parseTsConfigFile(tsconfigBuildPath);
 
   tsconfigBuild.references = packageNames
-    .filter((name) => name !== "site" && name !== "vite-plugin")
-    .map((v) => ({ path: `packages/${v}` }));
+    .filter((name) => !withoutReferences.includes(name))
+    .map((v) => ({ path: `packages/${v}/tsconfig.build.json` }));
 
   await writeTsConfigFile(tsconfigBuildPath, tsconfigBuild);
 
@@ -66,13 +95,13 @@ async function patchTsConfigs() {
   const tsconfigJest = await parseTsConfigFile(tsconfigJestPath);
 
   tsconfigJest.compilerOptions.paths = packageNames
-    .filter((name) => name !== "site" && name !== "vite-plugin")
+    .filter((name) => !["site", "vite-plugin"].includes(name))
     .reduce((result, name) => {
       const path = `./packages/${customPath[name] || `${name}/src`}`;
       result[`@${scope}/${name}`] = [path];
       result[`@${scope}/${name}/*`] = [`${path}/*`];
       return result;
-    }, {} as TsConfig["compilerOptions"]["paths"]);
+    }, {} as Record<string, string[]>);
 
   await writeTsConfigFile(tsconfigJestPath, tsconfigJest);
 }

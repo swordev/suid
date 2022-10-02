@@ -3,10 +3,15 @@ import { readFile, writeFile } from "fs/promises";
 import json5 from "json5";
 import { format } from "prettier";
 
-type CompilerOptions = { paths: Record<string, string[]> };
+type CompilerOptions = {
+  outDir?: string;
+  rootDir?: string;
+  paths?: Record<string, string[]>;
+};
 type Reference = { path: string };
 export type TsConfig = {
-  references: Reference[];
+  extends?: string;
+  references?: Reference[];
   compilerOptions: CompilerOptions;
   include?: string[];
   exclude?: string[];

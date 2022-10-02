@@ -1,19 +1,5 @@
 {
-  "compilerOptions": {
-    "outDir": "lib",
-    "rootDir": "src",
-    "module": "ESNext",
-    "paths": {
-      "@suid/utils": ["./../utils/src"],
-      "@suid/utils/*": ["./../utils/src/*"]
-    }
-  },
-  "exclude": ["src/**/*.test.*"],
+  "compilerOptions": { "module": "ESNext" },
   "extends": "./../../tsconfig.json",
-  "include": ["src/**/*"],
-  "references": [
-    {
-      "path": "./../utils"
-    }
-  ]
+  "include": ["src", "test"]
 }

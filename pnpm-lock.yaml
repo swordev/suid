@@ -16,7 +16,7 @@ importers:
       '@typescript-eslint/eslint-plugin': ^5.36.1
       '@typescript-eslint/parser': ^5.36.1
       '@wspa/cli': ^0.6.0
-      '@wspa/config': ^0.2.3
+      '@wspa/config': ^0.3.1
       babel-jest: ^29.0.1
       babel-preset-solid: ^1.5.4
       eslint: ^8.23.0
@@ -48,7 +48,7 @@ importers:
       '@typescript-eslint/eslint-plugin': 5.36.1_lbwfnm54o3pmr3ypeqp3btnera
       '@typescript-eslint/parser': 5.36.1_yqf6kl63nyoq5megxukfnom5rm
       '@wspa/cli': 0.6.0_bszcgcyn4zpue7v7fbhl63k6ke
-      '@wspa/config': 0.2.3_bszcgcyn4zpue7v7fbhl63k6ke
+      '@wspa/config': 0.3.1_bszcgcyn4zpue7v7fbhl63k6ke
       babel-jest: 29.0.1_@babel+core@7.18.13
       babel-preset-solid: 1.5.4_@babel+core@7.18.13
       eslint: 8.23.0
@@ -3857,8 +3857,8 @@ packages:
       - typanion
     dev: true
 
-  /@wspa/config/0.2.3_bszcgcyn4zpue7v7fbhl63k6ke:
-    resolution: {integrity: sha512-c2L+WmtqDSzHLlCi8yoy1rOG7tmAJBkEBHRgFmr1Aj4m8sVsQKonCNYw0/IKnAdyikerEcj9XNwmWwn6WNEB4g==}
+  /@wspa/config/0.3.1_bszcgcyn4zpue7v7fbhl63k6ke:
+    resolution: {integrity: sha512-i3EF1r1eFDqydfOquaxVReKbadHOBfjdQPBR+j7KO+qNLiYeqJoIvS9VDsnhfk7M8OkukDMMOv48FeaZzWUK3Q==}
     dependencies:
       '@wspa/cli': 0.6.0_bszcgcyn4zpue7v7fbhl63k6ke
     transitivePeerDependencies:

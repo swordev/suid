@@ -5,6 +5,8 @@
       "@suid/base/*": ["./packages/base/src/*"],
       "@suid/codemod": ["./packages/codemod/src"],
       "@suid/codemod/*": ["./packages/codemod/src/*"],
+      "@suid/create-suid": ["./packages/create-suid/src"],
+      "@suid/create-suid/*": ["./packages/create-suid/src/*"],
       "@suid/css": ["./packages/css/src"],
       "@suid/css/*": ["./packages/css/src/*"],
       "@suid/icons-material": ["./packages/icons-material/lib"],

@@ -1,24 +1,24 @@
 {
   "compilerOptions": {
+    "outDir": "lib",
+    "rootDir": "src",
     "paths": {
-      "@suid/base": ["./../base/src"],
-      "@suid/base/*": ["./../base/src/*"],
       "@suid/css": ["./../css/src"],
       "@suid/css/*": ["./../css/src/*"],
-      "@suid/system": ["./../system/src"],
-      "@suid/system/*": ["./../system/src/*"],
+      "@suid/styled-engine": ["./../styled-engine/src"],
+      "@suid/styled-engine/*": ["./../styled-engine/src/*"],
       "@suid/types": ["./../types/src"],
       "@suid/types/*": ["./../types/src/*"],
       "@suid/utils": ["./../utils/src"],
       "@suid/utils/*": ["./../utils/src/*"]
     }
   },
-  "extends": "./../../tsconfig.json",
-  "include": ["src", "test"],
+  "exclude": ["src/**/*.test.*"],
+  "extends": "./tsconfig.json",
+  "include": ["src"],
   "references": [
-    { "path": "./../base/tsconfig.build.json" },
     { "path": "./../css/tsconfig.build.json" },
-    { "path": "./../system/tsconfig.build.json" },
+    { "path": "./../styled-engine/tsconfig.build.json" },
     { "path": "./../types/tsconfig.build.json" },
     { "path": "./../utils/tsconfig.build.json" }
   ]

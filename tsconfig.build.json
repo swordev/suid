@@ -1,32 +1,14 @@
 {
   "files": [],
   "references": [
-    {
-      "path": "packages/base"
-    },
-    {
-      "path": "packages/codemod"
-    },
-    {
-      "path": "packages/create-suid"
-    },
-    {
-      "path": "packages/css"
-    },
-    {
-      "path": "packages/material"
-    },
-    {
-      "path": "packages/styled-engine"
-    },
-    {
-      "path": "packages/system"
-    },
-    {
-      "path": "packages/types"
-    },
-    {
-      "path": "packages/utils"
-    }
+    { "path": "packages/base/tsconfig.build.json" },
+    { "path": "packages/codemod/tsconfig.build.json" },
+    { "path": "packages/create-suid/tsconfig.build.json" },
+    { "path": "packages/css/tsconfig.build.json" },
+    { "path": "packages/material/tsconfig.build.json" },
+    { "path": "packages/styled-engine/tsconfig.build.json" },
+    { "path": "packages/system/tsconfig.build.json" },
+    { "path": "packages/types/tsconfig.build.json" },
+    { "path": "packages/utils/tsconfig.build.json" }
   ]
 }
