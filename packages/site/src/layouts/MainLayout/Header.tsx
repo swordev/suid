@@ -134,6 +134,7 @@ export default function Header() {
 
         <IconButton
           color="inherit"
+          title="Toggle light/dark mode"
           onClick={() => {
             layoutContext.darkMode = !layoutContext.darkMode;
             saveDarkMode(layoutContext.darkMode);
@@ -151,6 +152,7 @@ export default function Header() {
           component="a"
           href="https://github.com/swordev/suid"
           target="_blank"
+          title="GitHub repository"
         >
           <GitHubIcon />
         </IconButton>
