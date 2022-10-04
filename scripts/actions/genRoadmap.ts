@@ -45,7 +45,7 @@ const codemodTransformers: Record<string, boolean | "pending"> = {
   "`React.useState`": true,
 };
 
-const pendingComponents = ["Select"];
+const pendingComponents = ["Select", "Menu", "MenuItem", "MenuList"];
 
 function stateIcon(state: boolean | "pending") {
   if (state === true) return "✅";
