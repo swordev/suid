@@ -1,6 +1,6 @@
 {
   "name": "@suid/vite-plugin",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "SUID integration plugin for Vite.",
   "keywords": [
     "vite",
