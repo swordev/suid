@@ -82,8 +82,8 @@ function transformUseUtilityClasses(block: Block) {
       ts.SyntaxKind.Block
     );
 
-    const slotsVar = block.getVariableDeclarationOrThrow("slots");
-    slots = slotsVar.getInitializer()?.getText();
+    const slotsVar = block.getVariableDeclaration("slots");
+    slots = slotsVar?.getInitializer()?.getText();
     useUtilityClassesVar.remove();
   }
 
