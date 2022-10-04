@@ -17,6 +17,11 @@ type ObjectBindingJson = {
   rest?: boolean;
 };
 
+function renameObjectBinding(object: ObjectBindingJson, varName: string) {
+  const nameNode = object.rename || object.identifier;
+  renameIdentifiers(nameNode, `${varName}.${object.identifier.getText()}`);
+}
+
 function toJson(node: ObjectBindingPattern) {
   const result: ObjectBindingJson[] = [];
   for (const element of node.getChildrenOfKind(ts.SyntaxKind.BindingElement)) {
@@ -96,7 +101,8 @@ function generateSentences(name: string, objects: ObjectBindingJson[]) {
         "withMergeProps"
       )}, ${propNames});`
     );
-    renameIdentifiers(restObject.identifier, varName);
+    if (Node.isIdentifier(restObject.identifier))
+      renameIdentifiers(restObject.identifier, varName);
   }
 
   const defaultsObjects = objects.filter((o) => o.defaults && !o.destruct);
@@ -123,10 +129,7 @@ function generateSentences(name: string, objects: ObjectBindingJson[]) {
       )});\n`
     );
     for (const object of defaultsObjects) {
-      renameIdentifiers(
-        object.rename || object.identifier,
-        `${varName}.${object.identifier.getText()}`
-      );
+      renameObjectBinding(object, varName);
     }
   }
 
@@ -153,10 +156,7 @@ function generateSentences(name: string, objects: ObjectBindingJson[]) {
     (o) => !o.rest && !o.destruct && !o.defaults
   );
   for (const object of otherObjects) {
-    renameIdentifiers(
-      object.rename || object.identifier,
-      `${name}.${object.identifier.getText()}`
-    );
+    renameObjectBinding(object, name);
   }
   return {
     sentences,
@@ -201,10 +201,7 @@ function replaceObjectBinding(
   // Partial support
   if (parent.getKind() === ts.SyntaxKind.Parameter) {
     for (const object of objects) {
-      renameIdentifiers(
-        object.rename || object.identifier,
-        `${name}.${object.identifier.getText()}`
-      );
+      renameObjectBinding(object, name);
     }
     parent.replaceWithText(name);
   } else if (parent.getKind() === ts.SyntaxKind.VariableDeclaration) {
