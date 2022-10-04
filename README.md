@@ -75,18 +75,9 @@ pnpm install
 pnpm start
 ```
 
-## Contributing
+### Contributing
 
-To contribute to the project, follow these steps:
-
-1. Fork this repository and clone it.
-2. Install the dependencies: `pnpm install`.
-3. Create a branch: `git checkout -b <branch_name>`.
-4. Make your changes and create the changeset file: `pnpm changeset`.
-5. Add your changes: `git add .`
-6. Commit your changes: `git commit -m '<commit_message>'`.
-7. Push to the original branch: `git push origin <branch_name>`.
-8. Create the pull request.
+Go [here](https://github.com/swordev/suid/blob/main/CONTRIBUTING.md).
 
 ## License
 
