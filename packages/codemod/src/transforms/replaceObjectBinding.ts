@@ -2,7 +2,13 @@ import capitalize from "../utils/capitalize";
 import checkNodeScope, { NodeScope } from "../utils/checkNodeScope";
 import isStaticValue from "../utils/isStaticValue";
 import renameIdentifiers from "../utils/renameIdentifiers";
-import { Identifier, Node, ObjectBindingPattern, ts } from "ts-morph";
+import {
+  Identifier,
+  Node,
+  ObjectBindingPattern,
+  StringLiteral,
+  ts,
+} from "ts-morph";
 
 export type ReplaceObjectBindingOptions = {
   scopes?: NodeScope[];
@@ -10,7 +16,7 @@ export type ReplaceObjectBindingOptions = {
 
 type ObjectBindingJson = {
   name: string;
-  identifier: Identifier;
+  nameNode: Identifier | StringLiteral;
   rename?: Identifier;
   defaults?: Node;
   destruct?: ObjectBindingJson[];
@@ -18,8 +24,14 @@ type ObjectBindingJson = {
 };
 
 function renameObjectBinding(object: ObjectBindingJson, varName: string) {
-  const nameNode = object.rename || object.identifier;
-  renameIdentifiers(nameNode, `${varName}.${object.identifier.getText()}`);
+  const nameNode = object.rename || object.nameNode;
+  if (Node.isIdentifier(nameNode))
+    renameIdentifiers(
+      nameNode,
+      Node.isStringLiteral(object.nameNode)
+        ? `${varName}[${object.nameNode.getText()}]`
+        : `${varName}.${object.nameNode.getText()}`
+    );
 }
 
 function toJson(node: ObjectBindingPattern) {
@@ -29,15 +41,18 @@ function toJson(node: ObjectBindingPattern) {
       0,
       ts.SyntaxKind.DotDotDotToken
     );
-    const name = element.getChildAtIndexIfKindOrThrow(
-      rest ? 1 : 0,
-      ts.SyntaxKind.Identifier
-    );
+
+    const nameNode = element.getChildAtIndex(rest ? 1 : 0);
+
+    if (!Node.isIdentifier(nameNode) && !Node.isStringLiteral(nameNode))
+      throw new Error(`Invalid name node`);
+
     const item: ObjectBindingJson = {
-      name: name.getText(),
+      name: nameNode.getText(),
+      nameNode,
       rest,
-      identifier: name,
     };
+
     result.push(item);
     const defaultsToken = element.getFirstChildByKind(
       ts.SyntaxKind.EqualsToken
@@ -101,8 +116,8 @@ function generateSentences(name: string, objects: ObjectBindingJson[]) {
         "withMergeProps"
       )}, ${propNames});`
     );
-    if (Node.isIdentifier(restObject.identifier))
-      renameIdentifiers(restObject.identifier, varName);
+    if (Node.isIdentifier(restObject.nameNode))
+      renameIdentifiers(restObject.nameNode, varName);
   }
 
   const defaultsObjects = objects.filter((o) => o.defaults && !o.destruct);

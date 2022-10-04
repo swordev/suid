@@ -22,6 +22,9 @@ describe("replaceObjectBinding", () => {
     expect(t("const { a: b } = props; console.log(b)")).toBe(
       format(`console.log(props.a)`)
     );
+    expect(t("const { 'data-a': b } = props; console.log(b)")).toBe(
+      format(`console.log(props["data-a"])`)
+    );
   });
   it("uses mergeProps", () => {
     expect(t("const { a = 1 } = props; console.log(a)")).toBe(
