@@ -1,5 +1,13 @@
 # @suid/codemod
 
+## 0.7.1
+
+### Patch Changes
+
+- [`705b1523`](https://github.com/swordev/suid/commit/705b1523437f2b32ec8892f02a7bbef4e58c17ac) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
+- [`ce674eb6`](https://github.com/swordev/suid/commit/ce674eb6e9d2b3ee8a88d87cf4974283166d97d6) Thanks [@juanrgm](https://github.com/juanrgm)! - Parse string literal keys in the `ObjectBinding` transformer
+
 ## 0.7.0
 
 ### Minor Changes

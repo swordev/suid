@@ -1,5 +1,20 @@
 # @suid/site
 
+## 0.5.3
+
+### Patch Changes
+
+- [`705b1523`](https://github.com/swordev/suid/commit/705b1523437f2b32ec8892f02a7bbef4e58c17ac) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
+- [`ff1f76bf`](https://github.com/swordev/suid/commit/ff1f76bf3bf0d28f43aeadbecf5b56ae19b9d845) Thanks [@juanrgm](https://github.com/juanrgm)! - Add titles to icon buttons
+
+- Updated dependencies [[`bc2e40b4`](https://github.com/swordev/suid/commit/bc2e40b4aceba3dee24e8c5d268bb112a767459d), [`705b1523`](https://github.com/swordev/suid/commit/705b1523437f2b32ec8892f02a7bbef4e58c17ac), [`3ac3b979`](https://github.com/swordev/suid/commit/3ac3b97975f337be393c91b627dc2e37b68cfb36), [`ce674eb6`](https://github.com/swordev/suid/commit/ce674eb6e9d2b3ee8a88d87cf4974283166d97d6)]:
+  - @suid/base@0.3.2
+  - @suid/codemod@0.7.1
+  - @suid/system@0.5.2
+  - @suid/material@0.6.3
+  - @suid/icons-material@0.4.1
+
 ## 0.5.2
 
 ### Patch Changes

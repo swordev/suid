@@ -1,5 +1,16 @@
 # @suid/base
 
+## 0.3.2
+
+### Patch Changes
+
+- [`bc2e40b4`](https://github.com/swordev/suid/commit/bc2e40b4aceba3dee24e8c5d268bb112a767459d) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix transition effect in `Popper` component
+
+- [`3ac3b979`](https://github.com/swordev/suid/commit/3ac3b97975f337be393c91b627dc2e37b68cfb36) Thanks [@juanrgm](https://github.com/juanrgm)! - Show children in the `Backdrop` component
+
+- Updated dependencies [[`705b1523`](https://github.com/swordev/suid/commit/705b1523437f2b32ec8892f02a7bbef4e58c17ac)]:
+  - @suid/system@0.5.2
+
 ## 0.3.1
 
 ### Patch Changes

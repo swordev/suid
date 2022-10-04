@@ -1,5 +1,11 @@
 # @suid/system
 
+## 0.5.2
+
+### Patch Changes
+
+- [`705b1523`](https://github.com/swordev/suid/commit/705b1523437f2b32ec8892f02a7bbef4e58c17ac) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
 ## 0.5.1
 
 ### Patch Changes
