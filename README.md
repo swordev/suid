@@ -1,6 +1,6 @@
 # SolidJS User Interface Design (SUID)
 
-![workflow-badge] ![license-badge]
+[![workflow-badge]](https://github.com/swordev/suid/actions/workflows/ci.yaml) [![license-badge]](https://github.com/swordev/suid#license)
 
 [workflow-badge]: https://img.shields.io/github/workflow/status/swordev/suid/CI
 [license-badge]: https://img.shields.io/github/license/swordev/suid
@@ -17,19 +17,19 @@ With this smart target in mind, the project avoids becoming another library that
 
 ## Packages
 
-| Name                                             |        Version        | Description                                        |
-| ------------------------------------------------ | :-------------------: | -------------------------------------------------- |
-| [@suid/material](/packages/material)             |    ![material-npm]    | A port of Material-UI (MUI) built with SolidJS.    |
-| [@suid/icons-material](/packages/icons-material) | ![icons-material-npm] | Material Design icons as SVG SolidJS components.   |
-| [@suid/codemod](/packages/codemod)               |    ![codemod-npm]     | Tool for migrating MUI React code to SUID SolidJS. |
-| [@suid/vite-plugin](/packages/vite-plugin)       |  ![vite-plugin-npm]   | SUID integration plugin for Vite.                  |
-| [@suid/styled-engine](/packages/styled-engine)   | ![styled-engine-npm]  | Styled engine used by @suid/system.                |
-| [@suid/system](/packages/system)                 |     ![system-npm]     | Styles system used by suid packages.               |
-| [@suid/base](/packages/base)                     |      ![base-npm]      | Unstyled base components used by @suid/material.   |
-| [@suid/css](/packages/css)                       |      ![css-npm]       | CSS render in JS.                                  |
-| [@suid/types](/packages/types)                   |     ![types-npm]      | Types used by suid packages.                       |
-| [@suid/site](/packages/site)                     |      ![site-npm]      | SUID website.                                      |
-| [create-suid](/packages/create-suid)             |  ![create-suid-npm]   | CLI tool for creating a SUID project easily.       |
+| Name                                             |                                   Version                                   | Description                                        |
+| ------------------------------------------------ | :-------------------------------------------------------------------------: | -------------------------------------------------- |
+| [@suid/material](/packages/material)             |       [![material-npm]](https://www.npmjs.com/package/@suid/material)       | A port of Material-UI (MUI) built with SolidJS.    |
+| [@suid/icons-material](/packages/icons-material) | [![icons-material-npm]](https://www.npmjs.com/package/@suid/icons-material) | Material Design icons as SVG SolidJS components.   |
+| [@suid/codemod](/packages/codemod)               |        [![codemod-npm]](https://www.npmjs.com/package/@suid/codemod)        | Tool for migrating MUI React code to SUID SolidJS. |
+| [@suid/vite-plugin](/packages/vite-plugin)       |    [![vite-plugin-npm]](https://www.npmjs.com/package/@suid/vite-plugin)    | SUID integration plugin for Vite.                  |
+| [@suid/styled-engine](/packages/styled-engine)   |  [![styled-engine-npm]](https://www.npmjs.com/package/@suid/styled-engine)  | Styled engine used by @suid/system.                |
+| [@suid/system](/packages/system)                 |         [![system-npm]](https://www.npmjs.com/package/@suid/system)         | Styles system used by suid packages.               |
+| [@suid/base](/packages/base)                     |           [![base-npm]](https://www.npmjs.com/package/@suid/base)           | Unstyled base components used by @suid/material.   |
+| [@suid/css](/packages/css)                       |            [![css-npm]](https://www.npmjs.com/package/@suid/css)            | CSS render in JS.                                  |
+| [@suid/types](/packages/types)                   |          [![types-npm]](https://www.npmjs.com/package/@suid/types)          | Types used by suid packages.                       |
+| [@suid/site](/packages/site)                     |           [![site-npm]](https://www.npmjs.com/package/@suid/site)           | SUID website.                                      |
+| [create-suid](/packages/create-suid)             |       [![create-suid-npm]](https://www.npmjs.com/package/create-suid)       | CLI tool for creating a SUID project easily.       |
 
 [material-npm]: https://img.shields.io/npm/v/@suid/material
 [icons-material-npm]: https://img.shields.io/npm/v/@suid/icons-material
