@@ -1,8 +1,12 @@
-import { createRequire } from "module";
+import { builtinModules, createRequire } from "module";
 import { basename, dirname, relative } from "path";
 import { SourceFile } from "ts-morph";
 
 type Module =
+  | {
+      type: "node";
+      name: string;
+    }
   | {
       type: "module";
       name: string;
@@ -25,7 +29,12 @@ function parseModule(module: string): Module {
   let scope!: string;
   let name!: string;
   let parts!: string[];
-  if (module.startsWith("@")) {
+  if (module.startsWith("node:") || builtinModules.includes(module)) {
+    return {
+      type: "node",
+      name: module,
+    };
+  } else if (module.startsWith("@")) {
     [scope, name, ...parts] = module.split("/");
   } else if (!module.startsWith(".")) {
     [name, ...parts] = module.split("/");
