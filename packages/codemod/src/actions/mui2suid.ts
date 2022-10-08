@@ -16,7 +16,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const rootPath = normalize(`${__dirname}/../../../../`);
 
 export function muiSourcePath(version: string) {
-  return join(rootPath, "temp", `material-ui-${version}`);
+  return join(rootPath, `node_modules/.mui-source/material-ui-${version}`);
 }
 
 export async function safeStat(path: string) {
