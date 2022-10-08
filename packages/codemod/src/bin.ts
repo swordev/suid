@@ -67,15 +67,15 @@ program
 program
   .command("fix-esm")
   .description("Fix ESM code (imports).")
-  .option("-i,--in [path]", "Input directory path", process.cwd())
-  .option("-w,--write", "Overwrites the files with the fixed code")
+  .option("--cwd [path]", "Current working directory path", process.cwd())
   .option(
-    "-f,--filters [patterns]",
-    "Filters by wildcard patterns",
+    "-f,--filters [glob patterns]",
+    "Filters by glob patterns",
     (value, previous) => previous.concat([value]),
-    [] as string[]
+    ["packages/*/{src,test}/**/*.{ts,tsx}"] as string[]
   )
-  .action((options: { in: string; filters: string[]; write: boolean }) =>
+  .option("-w,--write", "Overwrites the files with the fixed code")
+  .action((options: { cwd: string; filters: string[]; write: boolean }) =>
     fixEsm(options)
   );
 program.parse(process.argv);

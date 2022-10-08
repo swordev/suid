@@ -7,11 +7,11 @@ import micromatch from "micromatch";
 import { normalize, relative } from "path";
 
 export default async function fixEsm(options: {
-  in: string;
+  cwd: string;
   filters: string[];
   write: boolean;
 }) {
-  const inputPath = normalize(options.in);
+  const inputPath = normalize(options.cwd);
   const inPattern = inputPath.replaceAll("\\", "/") + "/**/*";
   const entries = fg.stream(inPattern, { dot: true });
 
