@@ -9,6 +9,7 @@ import { normalize, relative } from "path";
 export default async function fixEsm(options: {
   cwd: string;
   filters: string[];
+  importFilters: string[];
   write: boolean;
 }) {
   const inputPath = normalize(options.cwd);
@@ -36,6 +37,12 @@ export default async function fixEsm(options: {
         return await fixEsmImports(source, {
           sourcePath: path,
           onImport(old, next) {
+            const matches =
+              !options.importFilters.length ||
+              !!micromatch([old], options.importFilters).length;
+
+            if (!matches) return false;
+
             console.log(
               `# ${colorize(old, "yellow")} » ${colorize(next ?? "", "yellow")}`
             );

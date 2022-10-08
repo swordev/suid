@@ -74,8 +74,19 @@ program
     (value, previous) => previous.concat([value]),
     ["packages/*/{src,test}/**/*.{ts,tsx}"] as string[]
   )
+  .option(
+    "-if, --import-filters [patterns]",
+    "Filters by import patterns",
+    (value, previous) => previous.concat([value]),
+    ["!solid-js/*"] as string[]
+  )
   .option("-w,--write", "Overwrites the files with the fixed code")
-  .action((options: { cwd: string; filters: string[]; write: boolean }) =>
-    fixEsm(options)
+  .action(
+    (options: {
+      cwd: string;
+      filters: string[];
+      importFilters: string[];
+      write: boolean;
+    }) => fixEsm(options)
   );
 program.parse(process.argv);
