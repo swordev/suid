@@ -64,6 +64,13 @@ program
     }
   );
 
+const fixEsmFlags = {
+  firstTime: {
+    filters: true,
+    importFilters: true,
+  },
+};
+
 program
   .command("fix-esm")
   .description("Fix ESM code (imports).")
@@ -71,13 +78,27 @@ program
   .option(
     "-f,--filters [glob patterns]",
     "Filters by glob patterns",
-    (value, previous) => previous.concat([value]),
+    (value, previous) => {
+      if (fixEsmFlags.firstTime.filters) {
+        fixEsmFlags.firstTime.filters = false;
+        return [value];
+      } else {
+        return previous.concat([value]);
+      }
+    },
     ["packages/*/{src,test}/**/*.{ts,tsx}"] as string[]
   )
   .option(
     "-if, --import-filters [patterns]",
     "Filters by import patterns",
-    (value, previous) => previous.concat([value]),
+    (value, previous) => {
+      if (fixEsmFlags.firstTime.importFilters) {
+        fixEsmFlags.firstTime.importFilters = false;
+        return [value];
+      } else {
+        return previous.concat([value]);
+      }
+    },
     ["!solid-js/*"] as string[]
   )
   .option("-w,--write", "Overwrites the files with the fixed code")
