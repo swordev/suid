@@ -117,7 +117,7 @@ export default async function fixEsmImports(
         continue;
       }
     }
-    if (newModuleText && !options.dryRun)
+    if (newModuleText && newModuleText !== moduleText && !options.dryRun)
       node.setModuleSpecifier(newModuleText);
   }
 }

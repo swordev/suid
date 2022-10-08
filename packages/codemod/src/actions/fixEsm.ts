@@ -32,6 +32,7 @@ export default async function fixEsm(options: {
     files++;
 
     const contents = (await readFile(path)).toString();
+    let imports = 0;
     const newContents = applyTransforms(contents, [
       async (source) => {
         return await fixEsmImports(source, {
@@ -41,8 +42,8 @@ export default async function fixEsm(options: {
               !options.importFilters.length ||
               !!micromatch([old], options.importFilters).length;
 
-            if (!matches) return false;
-
+            if (!matches || old === next) return false;
+            imports++;
             console.log(
               `# ${colorize(old, "yellow")} » ${colorize(next ?? "", "yellow")}`
             );
@@ -50,7 +51,7 @@ export default async function fixEsm(options: {
         });
       },
     ]);
-    if (options.write) await writeFile(path, newContents);
+    if (options.write && imports) await writeFile(path, newContents);
   }
   if (!files) throw new Error(`No files found`);
 }
