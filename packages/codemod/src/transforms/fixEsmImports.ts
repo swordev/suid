@@ -86,11 +86,16 @@ export default async function fixEsmImports(
     const { resolve } = createRequire(sourcePath);
     let resolvedPath: string | undefined;
     let newModuleText: string | undefined;
+    const suffixes = ["", ".jsx", ".js", "/index.jsx", "/index.js"];
 
-    try {
-      resolvedPath = resolve(moduleText);
-      // eslint-disable-next-line no-empty
-    } catch (error) {}
+    for (const ext of suffixes) {
+      try {
+        newModuleText = `${moduleText}${ext}`;
+        resolvedPath = resolve(newModuleText);
+        break;
+        // eslint-disable-next-line no-empty
+      } catch (error) {}
+    }
 
     if (!resolvedPath) continue;
 
@@ -101,12 +106,6 @@ export default async function fixEsmImports(
       );
       if (!newModuleText.startsWith(".")) newModuleText = `./${newModuleText}`;
       newModuleText = newModuleText.replace(/\.ts(x)?$/, ".js$1");
-    } else if (module.type === "module") {
-      const baseDir = dirname(resolve(module.name));
-      newModuleText = `${module.name}/${relative(
-        baseDir,
-        resolvedPath
-      ).replaceAll("\\", "/")}`;
     }
 
     if (options.onImport) {
