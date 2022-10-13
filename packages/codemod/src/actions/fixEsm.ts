@@ -14,7 +14,10 @@ export default async function fixEsm(options: {
 }) {
   const inputPath = normalize(options.cwd);
   const inPattern = inputPath.replaceAll("\\", "/") + "/**/*";
-  const entries = fg.stream(inPattern, { dot: true });
+  const entries = fg.stream(inPattern, {
+    dot: true,
+    ignore: ["**/node_modules/**"],
+  });
 
   let files = 0;
   for await (const entry of entries) {
