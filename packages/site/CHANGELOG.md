@@ -1,5 +1,12 @@
 # @suid/site
 
+## 0.5.4
+
+### Patch Changes
+
+- Updated dependencies [[`ad3b1891`](https://github.com/swordev/suid/commit/ad3b18915ee484fb2222361c4b1009211eb70bf2), [`3fc991be`](https://github.com/swordev/suid/commit/3fc991be5506f637a9b42a09cf59af89a21d24ae), [`37474108`](https://github.com/swordev/suid/commit/374741087b13ee244f47b8e9e6e12bfb75725904), [`b2cdb2b1`](https://github.com/swordev/suid/commit/b2cdb2b13a23290650bee988aff3aa16297584f2), [`641c40ca`](https://github.com/swordev/suid/commit/641c40ca2086b952087cbc72d0f12b4e5705dd86)]:
+  - @suid/codemod@0.8.0
+
 ## 0.5.3
 
 ### Patch Changes
