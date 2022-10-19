@@ -1,6 +1,6 @@
 {
   "name": "@suid/site",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "description": "SUID website.",
   "dependencies": {
     "@stackblitz/sdk": "^1.8.0",
