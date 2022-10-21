@@ -1,7 +1,8 @@
 import resolve from "../src/resolve";
+import { describe, expect, it } from "vitest";
 
 describe("resolve", () => {
-  test("returns same object", () => {
+  it("returns same object", () => {
     expect(
       resolve(
         {
@@ -16,7 +17,7 @@ describe("resolve", () => {
     });
   });
 
-  test("returns new props", () => {
+  it("returns new props", () => {
     expect(
       resolve(
         {
@@ -29,7 +30,7 @@ describe("resolve", () => {
     });
   });
 
-  test("returns sub props", () => {
+  it("returns sub props", () => {
     expect(
       resolve(
         {

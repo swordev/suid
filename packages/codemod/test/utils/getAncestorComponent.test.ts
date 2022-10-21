@@ -1,5 +1,6 @@
 import getAncestorComponent from "../../src/utils/getAncestorComponent";
 import find from "../find";
+import { describe, expect, it } from "vitest";
 
 const f = (code: string) => find(code, getAncestorComponent);
 

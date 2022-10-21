@@ -1,6 +1,7 @@
 import groupImports from "../../src/transforms/groupImports";
 import format from "../format";
 import transform from "../transform";
+import { describe, expect, it } from "vitest";
 
 const t = (code: string) => transform(code, [groupImports]);
 

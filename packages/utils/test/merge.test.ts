@@ -1,4 +1,5 @@
 import merge from "../src/merge";
+import { describe, expect, it } from "vitest";
 
 describe("merge", () => {
   it("shoulds alter the first object", () => {

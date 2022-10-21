@@ -4,6 +4,7 @@ import replaceReactUseEffect, {
 } from "../../src/transforms/replaceReactUseEffect";
 import format from "../format";
 import transform from "../transform";
+import { describe, expect, it } from "vitest";
 
 const t = (code: string, options?: ReplaceReactUseEffectOptions) =>
   transform(code, [

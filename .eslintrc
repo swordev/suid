@@ -5,8 +5,7 @@
       "files": [
         "./**/vite.config.{js,ts}",
         "./**/vite/*.{js,ts}",
-        "./**/scripts/**/*.js",
-        "jest.config.js"
+        "./**/scripts/**/*.js"
       ],
       "rules": {
         "@typescript-eslint/no-var-requires": 0

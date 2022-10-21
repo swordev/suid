@@ -90,20 +90,6 @@ async function patchTsConfigs() {
     .map((v) => ({ path: `packages/${v}/tsconfig.build.json` }));
 
   await writeTsConfigFile(tsconfigBuildPath, tsconfigBuild);
-
-  const tsconfigJestPath = join(rootPath, "tsconfig.jest.json");
-  const tsconfigJest = await parseTsConfigFile(tsconfigJestPath);
-
-  tsconfigJest.compilerOptions.paths = packageNames
-    .filter((name) => !["site", "vite-plugin"].includes(name))
-    .reduce((result, name) => {
-      const path = `./packages/${customPath[name] || `${name}/src`}`;
-      result[`@${scope}/${name}`] = [path];
-      result[`@${scope}/${name}/*`] = [`${path}/*`];
-      return result;
-    }, {} as Record<string, string[]>);
-
-  await writeTsConfigFile(tsconfigJestPath, tsconfigJest);
 }
 
 export default patchTsConfigs;

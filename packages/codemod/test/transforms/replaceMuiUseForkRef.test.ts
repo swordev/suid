@@ -3,6 +3,7 @@ import replaceMuiUseForkRef, {
 } from "../../src/transforms/replaceMuiUseForkRef";
 import f from "../format";
 import transform from "../transform";
+import { describe, expect, it } from "vitest";
 
 const t = (code: string) =>
   transform(code, [

@@ -10,7 +10,6 @@
   "scripts": {
     "build": "tsc --build",
     "clean": "tsc --build --clean",
-    "test": "jest",
     "watch": "tsc --build -w"
   },
   "dependencies": {

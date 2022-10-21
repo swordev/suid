@@ -2,6 +2,7 @@ import findObjectLiteralExpressions from "../../src/navigations/findObjectLitera
 import replaceSpreadAsignment from "../../src/transforms/replaceSpreadAsignment";
 import f from "../format";
 import transform from "../transform";
+import { describe, expect, it } from "vitest";
 
 const t = (code: string) =>
   transform(code, [

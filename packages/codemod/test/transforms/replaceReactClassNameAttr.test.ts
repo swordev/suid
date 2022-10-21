@@ -2,6 +2,7 @@ import findAttributes from "../../src/navigations/findAttributes";
 import replaceReactClassNameAttr from "../../src/transforms/replaceReactClassNameAttr";
 import format from "../format";
 import transform from "../transform";
+import { describe, expect, it } from "vitest";
 
 const t = (code: string) =>
   transform(code, [

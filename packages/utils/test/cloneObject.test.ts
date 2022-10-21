@@ -1,4 +1,5 @@
 import cloneObject from "../src/cloneObject";
+import { describe, expect, it } from "vitest";
 
 const json = (v: any) => JSON.stringify(v);
 

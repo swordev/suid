@@ -13,7 +13,6 @@
     "**/temp": true,
     "**/node_modules": true
   },
-  "jest.autoRun": "off",
   "search.exclude": {
     ".history": true,
     "packages/icons-material/lib": true

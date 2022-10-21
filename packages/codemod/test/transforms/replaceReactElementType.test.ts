@@ -2,6 +2,7 @@ import findReactObjects from "../../src/navigations/findReactObjects";
 import replaceReactElementType from "../../src/transforms/replaceReactElementType";
 import format from "../format";
 import transform from "../transform";
+import { describe, expect, it } from "vitest";
 
 const t = (code: string) =>
   transform(code, [
