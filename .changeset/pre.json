@@ -1,0 +1,20 @@
+{
+  "mode": "pre",
+  "tag": "next",
+  "initialVersions": {
+    "@suid/base": "0.3.2",
+    "@suid/codemod": "0.8.0",
+    "create-suid": "0.1.2",
+    "@suid/css": "0.1.6",
+    "@suid/icons-material": "0.4.1",
+    "@suid/material": "0.6.3",
+    "@suid/site": "0.5.4",
+    "@suid/styled-engine": "0.2.1",
+    "@suid/system": "0.5.2",
+    "@suid/types": "0.2.0",
+    "@suid/utils": "0.5.0",
+    "@suid/vite-plugin": "0.0.3",
+    "@suid/scripts": "0.0.0"
+  },
+  "changesets": []
+}
