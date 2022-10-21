@@ -1,6 +1,6 @@
-import { Theme } from "..";
 import { ButtonBaseTypeMap } from "../ButtonBase";
 import { OverrideProps } from "../OverridableComponent";
+import { Theme } from "../styles";
 import { ToggleButtonClasses } from "./toggleButtonClasses";
 import { SxProps } from "@suid/system";
 import { ElementType, EventParam, OverridableStringUnion } from "@suid/types";

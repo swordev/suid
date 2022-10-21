@@ -1,4 +1,4 @@
-import { useTheme } from "..";
+import { useTheme } from "../styles";
 import { PopperTypeMap } from "./PopperProps";
 import PopperUnstyled, { PopperUnstyledProps } from "@suid/base/PopperUnstyled";
 import createComponentFactory from "@suid/base/createComponentFactory";

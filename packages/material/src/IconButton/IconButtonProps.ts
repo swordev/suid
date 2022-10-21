@@ -1,6 +1,6 @@
-import { Theme } from "..";
 import { ButtonBaseTypeMap } from "../ButtonBase";
 import { OverrideProps } from "../OverridableComponent";
+import { Theme } from "../styles";
 import { IconButtonClasses } from "./iconButtonClasses";
 import { SxProps } from "@suid/system";
 import { ElementType, OverridableStringUnion } from "@suid/types";

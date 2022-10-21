@@ -1,5 +1,6 @@
-import { PropTypes, Theme } from "..";
+import type { PropTypes } from "..";
 import { ExtendButtonBaseTypeMap } from "../ButtonBase";
+import { Theme } from "../styles";
 import { FabClasses } from "./fabClasses";
 import { SxProps } from "@suid/system";
 import { OverridableStringUnion } from "@suid/types";

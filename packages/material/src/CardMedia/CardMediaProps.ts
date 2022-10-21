@@ -1,5 +1,5 @@
-import { Theme } from "..";
 import { OverrideProps } from "../OverridableComponent";
+import { Theme } from "../styles";
 import { CardMediaClasses } from "./cardMediaClasses";
 import { SxProps } from "@suid/system";
 import { ElementType } from "@suid/types";

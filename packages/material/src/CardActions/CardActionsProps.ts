@@ -1,4 +1,4 @@
-import { Theme } from "..";
+import { Theme } from "../styles";
 import { CardActionsClasses } from "./cardActionsClasses";
 import { SxProps } from "@suid/system";
 import { ElementType, OverrideProps } from "@suid/types";

@@ -1,5 +1,5 @@
-import { Theme } from "..";
 import { TypographyProps } from "../Typography";
+import { Theme } from "../styles";
 import { FormControlLabelClasses } from "./formControlLabelClasses";
 import { SxProps } from "@suid/system";
 import { RefProp } from "@suid/system/createRef";

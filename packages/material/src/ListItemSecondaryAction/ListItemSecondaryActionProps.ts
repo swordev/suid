@@ -1,4 +1,4 @@
-import { Theme } from "..";
+import { Theme } from "../styles";
 import { ListItemSecondaryActionClasses } from "./listItemSecondaryActionClasses";
 import { SxProps } from "@suid/system";
 import { ElementType, OverrideProps } from "@suid/types";

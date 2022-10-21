@@ -1,4 +1,4 @@
-import { Theme } from "..";
+import { Theme } from "../styles";
 import { CircularProgressClasses } from "./circularProgressClasses";
 import { SxProps } from "@suid/system";
 import { ElementType, OverridableStringUnion } from "@suid/types";

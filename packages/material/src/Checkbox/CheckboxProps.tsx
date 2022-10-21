@@ -1,5 +1,5 @@
-import { Theme } from "..";
 import { SwitchBaseProps } from "../internal/SwitchBaseProps";
+import { Theme } from "../styles";
 import { CheckboxClasses } from "./checkboxClasses";
 import { SxProps } from "@suid/system";
 import { RefProp } from "@suid/system/createRef";

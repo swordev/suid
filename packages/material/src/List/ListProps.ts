@@ -1,5 +1,5 @@
-import { Theme } from "..";
 import { OverridableComponent, OverrideProps } from "../OverridableComponent";
+import { Theme } from "../styles";
 import { ListClasses } from "./listClasses";
 import { SxProps } from "@suid/system";
 import { ElementType, OverridableTypeMap } from "@suid/types";

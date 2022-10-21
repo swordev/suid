@@ -1,4 +1,4 @@
-import { Theme } from "..";
+import { Theme } from "../styles";
 import { LinearProgressClasses } from "./linearProgressClasses";
 import { SxProps } from "@suid/system";
 import {

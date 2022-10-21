@@ -1,6 +1,6 @@
-import { Theme } from "..";
 import { ButtonBaseTypeMap } from "../ButtonBase";
 import { OverrideProps } from "../OverridableComponent";
+import { Theme } from "../styles";
 import { CardActionAreaClasses } from "./cardActionAreaClasses";
 import { SxProps } from "@suid/system";
 import { ElementType } from "@suid/types";

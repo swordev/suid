@@ -1,5 +1,5 @@
-import { Theme } from "..";
 import { OverrideProps } from "../OverridableComponent";
+import { Theme } from "../styles";
 import { TableClasses } from "./tableClasses";
 import { SxProps } from "@suid/system";
 import { OverridableStringUnion } from "@suid/types";

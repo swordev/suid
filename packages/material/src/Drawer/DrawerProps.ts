@@ -1,7 +1,7 @@
-import { Theme } from "..";
 import { ModalProps } from "../Modal";
 import { PaperProps } from "../Paper";
 import { SlideProps } from "../Slide";
+import { Theme } from "../styles";
 import { TransitionProps } from "../transitions/transition";
 import { DrawerClasses } from "./drawerClasses";
 import SxProps from "@suid/system/sxProps";

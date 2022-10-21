@@ -1,5 +1,6 @@
-import { PropTypes, Theme } from "..";
+import type { PropTypes } from "..";
 import { PaperProps } from "../Paper";
+import { Theme } from "../styles";
 import { OverrideProps } from "./../OverridableComponent";
 import { AppBarClasses } from "./appBarClasses";
 import SxProps from "@suid/system/sxProps";

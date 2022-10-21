@@ -1,5 +1,5 @@
-import { Theme } from "..";
 import { TypographyProps } from "../Typography";
+import { Theme } from "../styles";
 import { ListItemTextClasses } from "./listItemTextClasses";
 import { SxProps } from "@suid/system";
 import { ElementType, OverrideProps } from "@suid/types";

@@ -1,5 +1,5 @@
-import { Theme } from "..";
 import { PaperTypeMap } from "../Paper";
+import { Theme } from "../styles";
 import { AlertClasses } from "./alertClasses";
 import { SxProps } from "@suid/system";
 import {

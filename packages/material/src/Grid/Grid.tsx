@@ -9,7 +9,7 @@
 // Follow this flexbox Guide to better understand the underlying model:
 // - https://css-tricks.com/snippets/css/a-guide-to-flexbox/
 import { GridProps, GridTypeMap } from ".";
-import { Theme } from "..";
+import { Theme } from "../styles";
 import styled from "../styles/styled";
 import GridContext from "./GridContext";
 import gridClasses, { getGridUtilityClass } from "./gridClasses";

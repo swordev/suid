@@ -1,4 +1,4 @@
-import { Theme, useTheme } from ".";
+import { Theme, useTheme } from "./styles";
 import { Accessor, createSignal, onCleanup } from "solid-js";
 
 const mediaPrefix = "@media ";

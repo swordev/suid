@@ -1,4 +1,4 @@
-import { useTheme } from "..";
+import { useTheme } from "../styles";
 import { BoxTypeMap } from "./BoxProps";
 import createComponentFactory from "@suid/base/createComponentFactory";
 import SystemBox from "@suid/system/Box";

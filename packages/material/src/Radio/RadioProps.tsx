@@ -1,5 +1,5 @@
-import { Theme } from "..";
 import SwitchBaseProps from "../internal/SwitchBaseProps";
+import { Theme } from "../styles";
 import { RadioClasses } from "./radioClasses";
 import { SxProps } from "@suid/system";
 import { OverridableStringUnion, OverrideProps } from "@suid/types";

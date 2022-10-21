@@ -1,5 +1,5 @@
-import { Theme } from "..";
 import { InputProps } from "../Input";
+import { Theme } from "../styles";
 import { NativeSelectInputProps } from "./NativeSelectInput";
 import { NativeSelectClasses } from "./nativeSelectClasses";
 import { SxProps } from "@suid/system";

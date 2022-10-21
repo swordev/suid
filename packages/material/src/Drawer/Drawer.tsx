@@ -1,7 +1,7 @@
-import { Theme } from "..";
 import Modal from "../Modal";
 import Paper from "../Paper";
 import Slide from "../Slide";
+import { Theme } from "../styles";
 import styled, { skipRootProps } from "../styles/styled";
 import useTheme from "../styles/useTheme";
 import capitalize from "../utils/capitalize";

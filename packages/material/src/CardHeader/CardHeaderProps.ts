@@ -1,6 +1,6 @@
-import { Theme } from "..";
 import { OverridableComponent, OverrideProps } from "../OverridableComponent";
 import { TypographyProps } from "../Typography";
+import { Theme } from "../styles";
 import { CardHeaderClasses } from "./cardHeaderClasses";
 import { SxProps } from "@suid/system";
 import { ElementType } from "@suid/types";

@@ -1,6 +1,6 @@
-import { Theme } from "..";
 import { OverrideProps } from "../OverridableComponent";
 import SwitchBaseProps from "../internal/SwitchBaseProps";
+import { Theme } from "../styles";
 import { SwitchClasses } from "./switchClasses";
 import { SxProps } from "@suid/system";
 import { ElementType, OverridableStringUnion } from "@suid/types";

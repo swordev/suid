@@ -1,5 +1,5 @@
-import { Theme } from "..";
 import { PaperProps } from "../Paper";
+import { Theme } from "../styles";
 import { OverrideProps } from "./../OverridableComponent";
 import { CardClasses } from "./cardClasses";
 import SxProps from "@suid/system/sxProps";

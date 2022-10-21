@@ -1,4 +1,4 @@
-import { Theme } from "..";
+import { Theme } from "../styles";
 import { FormGroupClasses } from "./formGroupClasses";
 import { SxProps } from "@suid/system";
 import { ElementType, OverrideProps } from "@suid/types";

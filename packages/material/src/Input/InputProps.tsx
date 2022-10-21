@@ -1,5 +1,5 @@
-import { Theme } from "..";
 import { InputBaseProps } from "../InputBase";
+import { Theme } from "../styles";
 import { InputClasses } from "./inputClasses";
 import SxProps from "@suid/system/sxProps";
 import { ElementType } from "@suid/types";

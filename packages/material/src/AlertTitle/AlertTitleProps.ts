@@ -1,4 +1,4 @@
-import { Theme } from "..";
+import { Theme } from "../styles";
 import { AlertTitleClasses } from "./alertTitleClasses";
 import { SxProps } from "@suid/system";
 import { ElementType } from "@suid/types";

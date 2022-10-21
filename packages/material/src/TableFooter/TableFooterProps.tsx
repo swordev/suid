@@ -1,4 +1,4 @@
-import { Theme } from "..";
+import { Theme } from "../styles";
 import { TableFooterClasses } from "./tableFooterClasses";
 import { SxProps } from "@suid/system";
 import * as ST from "@suid/types";
