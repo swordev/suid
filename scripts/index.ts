@@ -5,6 +5,7 @@ import extractMaterialSource from "./actions/extractMaterialSource";
 import genIconsMaterialSource from "./actions/genIconsMaterialSource";
 import genIconsMaterialTyping from "./actions/genIconsMaterialTyping";
 import genRoadmap from "./actions/genRoadmap";
+import pack from "./actions/pack";
 import patchTsConfigs from "./actions/patchTsConfigs";
 import prebuild from "./actions/prebuild";
 import syncIconsMaterial from "./actions/syncIconsMaterial";
@@ -42,6 +43,14 @@ program
   .command(snakeCase(genRoadmap.name))
   .option("--version [value]", "Material UI version", muiVersion)
   .action((options: { version: string }) => genRoadmap(options));
+
+program
+  .command(snakeCase(pack.name))
+  .option(
+    "--patch [packagePath]",
+    "Patches the package file with the npm override config"
+  )
+  .action((options: { patch?: string }) => pack(options));
 
 program
   .command(snakeCase(syncIconsMaterial.name))

@@ -2,7 +2,9 @@ import { readOptions } from "./prettier";
 import { readFile, writeFile } from "fs/promises";
 import { format } from "prettier";
 
-type Package = {
+export type Package = {
+  name: string;
+  version: string;
   private?: boolean;
   files?: string[];
   scripts?: Record<string, string>;
@@ -15,6 +17,9 @@ type Package = {
     type?: string;
     url?: string;
     directory?: string;
+  };
+  pnpm?: {
+    overrides?: Record<string, string>;
   };
 };
 
