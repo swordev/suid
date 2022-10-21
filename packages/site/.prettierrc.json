@@ -1,0 +1,13 @@
+{
+  "importOrder": [
+    "^prismjs",
+    "^prismjs/components/prism-typescript$",
+    "^prismjs/components/prism-tsx$",
+    "^[./]"
+  ],
+  "plugins": [
+    "@trivago/prettier-plugin-sort-imports",
+    "prettier-plugin-sort-json",
+    "prettier-plugin-packagejson"
+  ]
+}

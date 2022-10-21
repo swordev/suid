@@ -1,0 +1,7 @@
+{
+  "plugins": [
+    "@trivago/prettier-plugin-sort-imports",
+    "prettier-plugin-sort-json",
+    "prettier-plugin-packagejson"
+  ]
+}
