@@ -74,23 +74,23 @@ export default async function fixEsmImports(
 
   for (const node of [...allImports, ...allExports]) {
     const moduleText = node.getModuleSpecifier()?.getLiteralText();
+    const moduleTextWithoutExt = moduleText?.replace(/(\.[jt]sx?)$/, "");
     const module = !!moduleText && parseModule(moduleText);
     const sourcePath = options.sourcePath ?? source.getFilePath().toString();
     const matches =
       module &&
-      ((module.type === "relative" && !module.pathExt) ||
-        (module.type === "module" && module.path && !module.pathExt));
+      (module.type === "relative" || (module.type === "module" && module.path));
 
     if (!matches) continue;
 
     const { resolve } = createRequire(sourcePath);
     let resolvedPath: string | undefined;
     let newModuleText: string | undefined;
-    const suffixes = ["", ".jsx", ".js", "/index.jsx", "/index.js"];
+    const suffixes = [".jsx", ".js", "/index.jsx", "/index.js", ""];
 
     for (const ext of suffixes) {
       try {
-        newModuleText = `${moduleText}${ext}`;
+        newModuleText = `${moduleTextWithoutExt}${ext}`;
         resolvedPath = resolve(newModuleText);
         break;
         // eslint-disable-next-line no-empty
