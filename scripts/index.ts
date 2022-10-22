@@ -1,5 +1,4 @@
 #!/usr/bin/env -S node --no-warnings --experimental-specifier-resolution=node
-import muiVersion from "./../packages/codemod/src/utils/muiVersion";
 import downloadMaterialSource from "./actions/downloadMaterialSource";
 import extractMaterialSource from "./actions/extractMaterialSource";
 import genIconsMaterialSource from "./actions/genIconsMaterialSource";
@@ -11,6 +10,8 @@ import prebuild from "./actions/prebuild";
 import syncIconsMaterial from "./actions/syncIconsMaterial";
 import syncMaterialSource from "./actions/syncMaterialSource";
 import { program } from "commander";
+
+const muiVersion = "5.5.0";
 
 export function snakeCase(value: string) {
   return value.replace(/[A-Z]/g, (letter) => `-${letter.toLowerCase()}`);
