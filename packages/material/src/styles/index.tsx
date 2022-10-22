@@ -1,6 +1,20 @@
+export {
+  hexToRgb,
+  rgbToHex,
+  hslToRgb,
+  decomposeColor,
+  recomposeColor,
+  getContrastRatio,
+  getLuminance,
+  emphasize,
+  alpha,
+  darken,
+  lighten,
+  StyledEngineProvider,
+} from "@suid/system";
+export type { Breakpoint } from "@suid/system";
 export { default as useTheme } from "./useTheme";
 export { default as useThemeProps } from "./useThemeProps";
-export { createTheme } from "./createTheme";
 export { default as ThemeProvider } from "./ThemeProvider";
+export { createTheme } from "./createTheme";
 export type { Theme } from "./createTheme";
-export { default as StyledEngineProvider } from "@suid/system/StyledEngineProvider";
