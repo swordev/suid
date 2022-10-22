@@ -9,6 +9,10 @@ const traverse: typeof $traverse = ($traverse as any).default;
 const generate: typeof $generate = ($generate as any).default;
 
 type SuidPluginOptions = {
+  /**
+   * @default ["@suid/base", "@suid/codemod", "@suid/css", "@suid/icons-material", "@suid/material", "@suid/styled-engine", "@suid/system", "@suid/types", "@suid/utils"]
+   */
+  disableOptimizeDeps?: string[];
   optimizeImports?: {
     /**
      * @default true
@@ -23,6 +27,17 @@ type SuidPluginOptions = {
 };
 
 const defaultOptions: SuidPluginOptions = {
+  disableOptimizeDeps: [
+    "@suid/base",
+    "@suid/codemod",
+    "@suid/css",
+    "@suid/icons-material",
+    "@suid/material",
+    "@suid/styled-engine",
+    "@suid/system",
+    "@suid/types",
+    "@suid/utils",
+  ],
   optimizeImports: {
     enabled: true,
     paths: ["@suid/icons-material"],
@@ -48,6 +63,24 @@ export default function suidPlugin(inOptions: SuidPluginOptions = {}): Plugin {
   };
   return {
     name: "suid",
+    config: (config) => {
+      const solidDeps = options.disableOptimizeDeps || [];
+      return {
+        optimizeDeps: {
+          exclude: [...(config.optimizeDeps?.exclude || []), ...solidDeps],
+        },
+        ssr: {
+          ...config.ssr,
+          noExternal: [
+            ...(Array.isArray(config.ssr?.noExternal)
+              ? // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+                config.ssr!.noExternal
+              : []),
+            ...solidDeps,
+          ],
+        },
+      };
+    },
     transform(code) {
       const transformIconImportsOptions = options.optimizeImports || {};
       if (

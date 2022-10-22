@@ -9,6 +9,7 @@
   import { Wifi } from "@suid/material-icons"; // input
   import Wifi from "@suid/material-icons/Wifi"; // output
   ```
+- Sets the vite config required by `solid-start/vite` and `vite-plugin-solid`.
 
 ## Installation
 
