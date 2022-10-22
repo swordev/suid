@@ -29,7 +29,7 @@ export default function ComponentInfo(props: {
   /**
    * @default true
    */
-  importInfo?: boolean;
+  importInfo?: boolean | string[];
   docsName?: string;
   docsApiName?: string;
   moreExamples?: boolean;
@@ -77,9 +77,11 @@ export default function ComponentInfo(props: {
           sx={{
             mb: 3,
           }}
-          value={`import ${props.name} from "@suid/${
-            props.scope ?? "material"
-          }/${props.name}"`}
+          value={`import { ${
+            Array.isArray(props.importInfo)
+              ? `\n${props.importInfo.map((v) => `  ${v},`).join("\n")}\n`
+              : `${props.name} `
+          }} from "@suid/${props.scope ?? "material"}"`}
         />
       </Show>
 
