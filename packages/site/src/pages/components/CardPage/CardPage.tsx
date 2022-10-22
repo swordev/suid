@@ -8,6 +8,14 @@ export default function CardPage() {
     <ComponentInfo
       name={Card.name}
       docsName={"cards"}
+      importInfo={[
+        "Card",
+        "CardActionArea",
+        "CardActions",
+        "CardContent",
+        "CardHeader",
+        "CardMedia",
+      ]}
       examples={[
         { component: BasicCardExample, bgcolor: "contrasted" },
         { component: MediaControlCardExample, bgcolor: "contrasted" },

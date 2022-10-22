@@ -7,6 +7,16 @@ export default function ListPage() {
     <ComponentInfo
       name={List.name}
       docsName="lists"
+      importInfo={[
+        "List",
+        "ListItem",
+        "ListItemAvatar",
+        "ListItemButton",
+        "ListItemIcon",
+        "ListItemSecondaryAction",
+        "ListItemText",
+        "ListSubheader",
+      ]}
       examples={[BasicListExample]}
     />
   );
