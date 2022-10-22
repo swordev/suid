@@ -17,12 +17,12 @@
     "@suid/system": "workspace:*",
     "@suid/types": "workspace:*",
     "@suid/utils": "workspace:*",
-    "monaco-editor": "^0.34.0",
+    "monaco-editor": "^0.34.1",
     "prism-themes": "^1.9.0",
     "prismjs": "^1.29.0",
-    "semver": "^7.3.7",
+    "semver": "^7.3.8",
     "solid-app-router": "^0.4.2",
-    "solid-js": "^1.5.7"
+    "solid-js": "^1.5.9"
   },
   "devDependencies": {
     "@suid/vite-plugin": "workspace:*",
@@ -31,8 +31,8 @@
     "fast-glob": "^3.2.12",
     "rimraf": "^3.0.2",
     "sass": "^1.55.0",
-    "vite": "^3.1.4",
-    "vite-plugin-solid": "2.3.9"
+    "vite": "^3.1.8",
+    "vite-plugin-solid": "2.3.10"
   },
   "publishConfig": {
     "directory": "dist"
