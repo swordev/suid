@@ -1,9 +1,13 @@
 import { readdirSync, readFileSync } from "fs";
+import { createRequire } from "module";
 import { dirname, resolve } from "path";
+import { fileURLToPath } from "url";
 import { defineConfig } from "vite";
 import solidPlugin from "vite-plugin-solid";
 import readTypings from "./vite/readTypings";
 
+const require = createRequire(import.meta.url);
+const __dirname = dirname(fileURLToPath(import.meta.url));
 const solidJsPath = dirname(dirname(require.resolve("solid-js")));
 const SOLID_TYPINGS = readTypings(solidJsPath);
 const packageDir = `${__dirname}/../`;
