@@ -4,6 +4,7 @@ import { dirname, resolve } from "path";
 import { fileURLToPath } from "url";
 import { defineConfig } from "vite";
 import solidPlugin from "vite-plugin-solid";
+import suidPlugin from "./../vite-plugin/src";
 import readTypings from "./vite/readTypings";
 
 const require = createRequire(import.meta.url);
@@ -62,6 +63,7 @@ export default defineConfig({
         }
       },
     },
+    suidPlugin(),
     solidPlugin(),
   ],
   build: {

@@ -99,9 +99,11 @@ function isCapitalized(value: string) {
 
 function isMaterialStylesImport(value: string) {
   return (
-    ["StyledEngineProvider", "Breakpoint", "ThemeProvider", "Theme"].includes(
+    !["useMediaQuery"].includes(value) &&
+    (["StyledEngineProvider", "Breakpoint", "ThemeProvider", "Theme"].includes(
       value
-    ) || !isCapitalized(value)
+    ) ||
+      !isCapitalized(value))
   );
 }
 
