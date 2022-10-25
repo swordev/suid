@@ -19,7 +19,7 @@ type SuidPluginOptions = {
      */
     enabled?: boolean;
     /**
-     * @default ["@suid/icons-material"]
+     * @default ["@suid/icons-material", "@suid/material"]
      */
     paths?: string[];
   };
@@ -40,7 +40,7 @@ const defaultOptions: SuidPluginOptions = {
   ],
   optimizeImports: {
     enabled: true,
-    paths: ["@suid/icons-material"],
+    paths: ["@suid/icons-material", "@suid/material"],
   },
   parserOptions: {
     sourceType: "module",
@@ -93,6 +93,44 @@ export default function suidPlugin(inOptions: SuidPluginOptions = {}): Plugin {
   };
 }
 
+function isCapitalized(value: string) {
+  return value[0].toUpperCase() === value[0];
+}
+
+function isMaterialStylesImport(value: string) {
+  return (
+    ["StyledEngineProvider", "Breakpoint", "ThemeProvider", "Theme"].includes(
+      value
+    ) || !isCapitalized(value)
+  );
+}
+
+type ImportData = {
+  specifier: string | Record<string, string>;
+  path: string;
+};
+
+function getOptimizedImportPath(
+  source: string,
+  name: string,
+  alias: string
+): ImportData {
+  if (source === "@suid/material") {
+    if (isMaterialStylesImport(name)) {
+      return {
+        specifier: {
+          [name]: alias,
+        },
+        path: `${source}/styles`,
+      };
+    }
+  }
+  return {
+    specifier: alias,
+    path: `${source}/${name}`,
+  };
+}
+
 export function transformIconImports(
   code: string,
   options: SuidPluginOptions
@@ -110,33 +148,36 @@ export function transformIconImports(
 
       if (!optimize) return;
 
-      const declarations = node.specifiers
+      const imports = node.specifiers
         .map((spec) => {
           if (
             types.isImportSpecifier(spec) &&
             types.isIdentifier(spec.imported) &&
             types.isIdentifier(spec.local)
           ) {
-            return {
-              importDefaultSpecifier: spec.local.name,
-              importPath: `${node.source.value}/${spec.imported.name}`,
-            };
+            return getOptimizedImportPath(
+              node.source.value,
+              spec.imported.name,
+              spec.local.name
+            );
           }
         })
-        .filter((v) => !!v) as {
-        importDefaultSpecifier: string;
-        importPath: string;
-      }[];
+        .filter((v) => !!v) as ImportData[];
 
       path.replaceWithMultiple(
-        declarations.map((spec) =>
+        imports.map((item) =>
           types.importDeclaration(
-            [
-              types.importDefaultSpecifier(
-                types.identifier(spec.importDefaultSpecifier)
-              ),
-            ],
-            types.stringLiteral(spec.importPath)
+            typeof item.specifier === "string"
+              ? [types.importDefaultSpecifier(types.identifier(item.specifier))]
+              : [
+                  ...Object.entries(item.specifier).map(([alias, specifier]) =>
+                    types.importSpecifier(
+                      types.identifier(specifier),
+                      types.identifier(alias)
+                    )
+                  ),
+                ],
+            types.stringLiteral(item.path)
           )
         )
       );

@@ -4,10 +4,14 @@
 
 ## Features
 
-- Optimizes the material icon imports:
+- Optimizes the SUID imports:
   ```ts
-  import { Wifi } from "@suid/material-icons"; // input
-  import Wifi from "@suid/material-icons/Wifi"; // output
+  // Input
+  import { Wifi } from "@suid/material-icons";
+  import { Button } from "@suid/material";
+  // Output
+  import Wifi from "@suid/material-icons/Wifi";
+  import Button from "@suid/material/Button";
   ```
 - Sets the vite config required by `solid-start/vite` and `vite-plugin-solid`.
 
