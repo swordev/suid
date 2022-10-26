@@ -2,6 +2,7 @@
 import fixEsm from "./actions/fixEsm";
 import mui2suid from "./actions/mui2suid";
 import react2solid from "./actions/react2solid";
+import suidImports from "./actions/suidImports";
 import muiVersion from "./utils/muiVersion";
 import { program } from "commander";
 import { readFileSync } from "fs";
@@ -109,5 +110,16 @@ program
       importFilters: string[];
       write: boolean;
     }) => fixEsm(options)
+  );
+
+program
+  .command("suid-imports")
+  .description("Transforms the SUID imports.")
+  .requiredOption("-f,--filters [glob patterns]", "Filters by glob patterns")
+  .option("--format [value]", "Output import format (values: named)", "named")
+  .option("--cwd [path]", "Current working directory path", process.cwd())
+  .option("-w,--write", "Overwrites the files with the transformed code")
+  .action((options: { cwd: string; filters: string[]; write: boolean }) =>
+    suidImports(options)
   );
 program.parse(process.argv);
