@@ -1,7 +1,5 @@
-import Box from "@suid/material/Box";
-import Container from "@suid/material/Container";
+import { Box, Container, useMediaQuery } from "@suid/material";
 import { useTheme } from "@suid/material/styles";
-import useMediaQuery from "@suid/material/useMediaQuery";
 import { SxPropsObject } from "@suid/system/sxProps";
 import { EventParam } from "@suid/types";
 import snakeCase from "@suid/utils/snakeCase";

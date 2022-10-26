@@ -1,4 +1,4 @@
-import Checkbox from "@suid/material/Checkbox";
+import { Checkbox } from "@suid/material";
 import { createSignal } from "solid-js";
 
 export default function ControlledCheckbox() {

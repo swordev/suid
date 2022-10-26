@@ -1,7 +1,5 @@
 import PhotoCamera from "@suid/icons-material/PhotoCamera";
-import Button from "@suid/material/Button";
-import IconButton from "@suid/material/IconButton";
-import Stack from "@suid/material/Stack";
+import { Button, IconButton, Stack } from "@suid/material";
 import styled from "@suid/material/styles/styled";
 
 const Input = styled("input")({

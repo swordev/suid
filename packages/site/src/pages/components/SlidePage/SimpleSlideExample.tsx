@@ -1,9 +1,5 @@
 import { useTheme } from "@suid/material";
-import Box from "@suid/material/Box";
-import FormControlLabel from "@suid/material/FormControlLabel";
-import Paper from "@suid/material/Paper";
-import Slide from "@suid/material/Slide";
-import Switch from "@suid/material/Switch";
+import { Box, FormControlLabel, Paper, Slide, Switch } from "@suid/material";
 import createElementRef from "@suid/system/createElementRef";
 import { createSignal } from "solid-js";
 

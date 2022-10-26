@@ -1,4 +1,4 @@
-import CircularProgress from "@suid/material/CircularProgress";
+import { CircularProgress } from "@suid/material";
 import ComponentInfo from "~/components/ComponentInfo";
 import CircularColorExample from "./CircularColorExample";
 

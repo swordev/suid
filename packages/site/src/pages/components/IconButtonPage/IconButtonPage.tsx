@@ -1,4 +1,4 @@
-import IconButton from "@suid/material/IconButton";
+import { IconButton } from "@suid/material";
 import ComponentInfo from "~/components/ComponentInfo";
 import Example from "./Example";
 

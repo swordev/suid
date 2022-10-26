@@ -1,6 +1,4 @@
-import Box from "@suid/material/Box";
-import Container from "@suid/material/Container";
-import CssBaseline from "@suid/material/CssBaseline";
+import { Box, Container, CssBaseline } from "@suid/material";
 
 export default function SimpleContainer() {
   return (

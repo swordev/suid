@@ -1,4 +1,4 @@
-import Box from "@suid/material/Box";
+import { Box } from "@suid/material";
 import useControlled from "@suid/material/utils/useControlled";
 import createElementRef from "@suid/system/createElementRef";
 import { SxPropsObject } from "@suid/system/sxProps";

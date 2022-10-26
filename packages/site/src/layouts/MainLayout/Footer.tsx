@@ -1,8 +1,5 @@
 import { useTheme } from "@suid/material";
-import Box from "@suid/material/Box";
-import Container from "@suid/material/Container";
-import Paper from "@suid/material/Paper";
-import Typography from "@suid/material/Typography";
+import { Box, Container, Paper, Typography } from "@suid/material";
 import { useLayoutContext } from "~/layouts/MainLayout/LayoutContext";
 
 export default function Footer() {

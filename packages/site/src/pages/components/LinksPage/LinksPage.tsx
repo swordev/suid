@@ -1,4 +1,4 @@
-import Link from "@suid/material/Link";
+import { Link } from "@suid/material";
 import ComponentInfo from "~/components/ComponentInfo";
 import BasicLinksExample from "./BasicLinksExample";
 

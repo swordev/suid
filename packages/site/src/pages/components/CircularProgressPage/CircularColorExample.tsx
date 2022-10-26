@@ -1,5 +1,4 @@
-import CircularProgress from "@suid/material/CircularProgress";
-import Stack from "@suid/material/Stack";
+import { CircularProgress, Stack } from "@suid/material";
 
 export default function CircularColor() {
   return (

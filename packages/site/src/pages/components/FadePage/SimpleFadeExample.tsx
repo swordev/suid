@@ -1,8 +1,4 @@
-import Box from "@suid/material/Box";
-import Fade from "@suid/material/Fade";
-import FormControlLabel from "@suid/material/FormControlLabel";
-import Paper from "@suid/material/Paper";
-import Switch from "@suid/material/Switch";
+import { Box, Fade, FormControlLabel, Paper, Switch } from "@suid/material";
 import useTheme from "@suid/material/styles/useTheme";
 import { createSignal } from "solid-js";
 

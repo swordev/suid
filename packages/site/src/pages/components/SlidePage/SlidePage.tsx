@@ -1,4 +1,4 @@
-import Slide from "@suid/material/Slide";
+import { Slide } from "@suid/material";
 import ComponentInfo from "~/components/ComponentInfo";
 import SimpleSlideExample from "./SimpleSlideExample";
 

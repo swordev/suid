@@ -1,4 +1,4 @@
-import useMediaQuery from "@suid/material/useMediaQuery";
+import { useMediaQuery } from "@suid/material";
 
 export default function SimpleMediaQuery() {
   const matches = useMediaQuery("(min-width:600px)");

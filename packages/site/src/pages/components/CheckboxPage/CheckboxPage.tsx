@@ -1,4 +1,4 @@
-import Checkbox from "@suid/material/Checkbox";
+import { Checkbox } from "@suid/material";
 import ComponentInfo from "~/components/ComponentInfo";
 import BasicCheckboxesExample from "./BasicCheckboxesExample";
 import ControlledCheckboxExample from "./ControlledCheckboxExample";

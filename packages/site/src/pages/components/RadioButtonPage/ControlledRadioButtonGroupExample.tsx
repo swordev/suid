@@ -1,8 +1,10 @@
-import FormControl from "@suid/material/FormControl";
-import FormControlLabel from "@suid/material/FormControlLabel";
-import FormLabel from "@suid/material/FormLabel";
-import Radio from "@suid/material/Radio";
-import RadioGroup from "@suid/material/RadioGroup";
+import {
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  Radio,
+  RadioGroup,
+} from "@suid/material";
 import * as ST from "@suid/types";
 import { createSignal } from "solid-js";
 

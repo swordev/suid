@@ -1,4 +1,4 @@
-import Typography from "@suid/material/Typography";
+import { Typography } from "@suid/material";
 import ComponentInfo from "~/components/ComponentInfo";
 import TypesExample from "./TypesExample";
 

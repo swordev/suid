@@ -1,4 +1,4 @@
-import LinearProgress from "@suid/material/LinearProgress";
+import { LinearProgress } from "@suid/material";
 import ComponentInfo from "~/components/ComponentInfo";
 import DeterminateExample from "./DeterminateExample";
 import IndeterminateExample from "./IndeterminateExample";

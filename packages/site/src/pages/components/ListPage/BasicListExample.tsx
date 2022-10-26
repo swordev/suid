@@ -1,12 +1,14 @@
 import DraftsIcon from "@suid/icons-material/Drafts";
 import InboxIcon from "@suid/icons-material/Inbox";
-import Box from "@suid/material/Box";
-import Divider from "@suid/material/Divider";
-import List from "@suid/material/List";
-import ListItem from "@suid/material/ListItem";
-import ListItemButton from "@suid/material/ListItemButton";
-import ListItemIcon from "@suid/material/ListItemIcon";
-import ListItemText from "@suid/material/ListItemText";
+import {
+  Box,
+  Divider,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+} from "@suid/material";
 import useTheme from "@suid/material/styles/useTheme";
 
 export default function BasicList() {

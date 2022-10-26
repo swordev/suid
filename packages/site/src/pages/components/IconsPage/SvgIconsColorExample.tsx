@@ -1,5 +1,5 @@
-import Box from "@suid/material/Box";
-import SvgIcon, { SvgIconProps } from "@suid/material/SvgIcon";
+import { Box, SvgIcon } from "@suid/material";
+import { SvgIconProps } from "@suid/material/SvgIcon";
 import { pink } from "@suid/material/colors";
 
 function HomeIcon(props: SvgIconProps) {

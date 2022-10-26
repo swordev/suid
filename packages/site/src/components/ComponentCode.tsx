@@ -1,10 +1,7 @@
 import CodeRoundedIcon from "@suid/icons-material/CodeRounded";
 import ContentCopyRoundedIcon from "@suid/icons-material/ContentCopyRounded";
 import { useTheme } from "@suid/material";
-import IconButton from "@suid/material/IconButton";
-import Paper from "@suid/material/Paper";
-import Stack from "@suid/material/Stack";
-import useMediaQuery from "@suid/material/useMediaQuery";
+import { IconButton, Paper, Stack, useMediaQuery } from "@suid/material";
 import createSvgIcon from "@suid/material/utils/createSvgIcon";
 import { SxPropsObject } from "@suid/system/sxProps";
 import { Component, createMemo, createSignal, Show } from "solid-js";

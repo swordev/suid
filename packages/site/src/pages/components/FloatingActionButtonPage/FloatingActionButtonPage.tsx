@@ -1,4 +1,4 @@
-import Fab from "@suid/material/Fab";
+import { Fab } from "@suid/material";
 import ComponentInfo from "~/components/ComponentInfo";
 import FloatingActionButtonSizeExample from "./FloatingActionButtonSizeExample";
 import FloatingActionButtonsExample from "./FloatingActionButtonsExample";

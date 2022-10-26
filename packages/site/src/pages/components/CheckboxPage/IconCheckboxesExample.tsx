@@ -2,7 +2,7 @@ import BookmarkIcon from "@suid/icons-material/Bookmark";
 import BookmarkBorderIcon from "@suid/icons-material/BookmarkBorder";
 import Favorite from "@suid/icons-material/Favorite";
 import FavoriteBorder from "@suid/icons-material/FavoriteBorder";
-import Checkbox from "@suid/material/Checkbox";
+import { Checkbox } from "@suid/material";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 

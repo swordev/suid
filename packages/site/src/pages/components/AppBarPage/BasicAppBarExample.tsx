@@ -1,10 +1,12 @@
 import MenuIcon from "@suid/icons-material/Menu";
-import AppBar from "@suid/material/AppBar";
-import Box from "@suid/material/Box";
-import Button from "@suid/material/Button";
-import IconButton from "@suid/material/IconButton";
-import Toolbar from "@suid/material/Toolbar";
-import Typography from "@suid/material/Typography";
+import {
+  AppBar,
+  Box,
+  Button,
+  IconButton,
+  Toolbar,
+  Typography,
+} from "@suid/material";
 
 export default function BasicAppBar() {
   return (

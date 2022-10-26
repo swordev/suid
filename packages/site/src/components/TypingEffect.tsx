@@ -1,4 +1,4 @@
-import Box from "@suid/material/Box";
+import { Box } from "@suid/material";
 import createElementRef from "@suid/system/createElementRef";
 import { RefProp } from "@suid/system/createRef";
 import { createSignal, onCleanup, onMount, Show } from "solid-js";

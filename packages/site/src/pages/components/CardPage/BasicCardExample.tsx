@@ -1,9 +1,11 @@
-import Box from "@suid/material/Box";
-import Button from "@suid/material/Button";
-import Card from "@suid/material/Card";
-import CardActions from "@suid/material/CardActions";
-import CardContent from "@suid/material/CardContent";
-import Typography from "@suid/material/Typography";
+import {
+  Box,
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  Typography,
+} from "@suid/material";
 
 const bull = () => (
   <Box

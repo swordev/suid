@@ -1,4 +1,4 @@
-import List from "@suid/material/List";
+import { List } from "@suid/material";
 import ComponentInfo from "~/components/ComponentInfo";
 import BasicListExample from "~/pages/components/ListPage/BasicListExample";
 

@@ -1,6 +1,4 @@
-import Box from "@suid/material/Box";
-import Button from "@suid/material/Button";
-import ButtonGroup from "@suid/material/ButtonGroup";
+import { Box, Button, ButtonGroup } from "@suid/material";
 
 export default function VariantButtonGroup() {
   return (

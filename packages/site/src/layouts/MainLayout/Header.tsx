@@ -2,13 +2,15 @@ import DarkModeOutlinedIcon from "@suid/icons-material/DarkModeOutlined";
 import LightModeOutlinedIcon from "@suid/icons-material/LightModeOutlined";
 import MenuIcon from "@suid/icons-material/Menu";
 import { useTheme } from "@suid/material";
-import AppBar from "@suid/material/AppBar";
-import Box from "@suid/material/Box";
-import Button from "@suid/material/Button";
-import IconButton from "@suid/material/IconButton";
-import Toolbar from "@suid/material/Toolbar";
-import Typography from "@suid/material/Typography";
-import useMediaQuery from "@suid/material/useMediaQuery";
+import {
+  AppBar,
+  Box,
+  Button,
+  IconButton,
+  Toolbar,
+  Typography,
+  useMediaQuery,
+} from "@suid/material";
 import createSvgIcon from "@suid/material/utils/createSvgIcon";
 import gt from "semver/functions/gt";
 import { useLocation } from "solid-app-router";

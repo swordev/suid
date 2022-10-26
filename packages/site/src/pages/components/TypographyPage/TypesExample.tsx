@@ -1,5 +1,4 @@
-import Box from "@suid/material/Box";
-import Typography from "@suid/material/Typography";
+import { Box, Typography } from "@suid/material";
 
 export default function Types() {
   return (

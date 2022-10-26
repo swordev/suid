@@ -1,4 +1,4 @@
-import Checkbox from "@suid/material/Checkbox";
+import { Checkbox } from "@suid/material";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 

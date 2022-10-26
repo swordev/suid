@@ -1,4 +1,4 @@
-import Table from "@suid/material/Table";
+import { Table } from "@suid/material";
 import ComponentInfo from "~/components/ComponentInfo";
 import BasicTableExample from "./BasicTableExample";
 

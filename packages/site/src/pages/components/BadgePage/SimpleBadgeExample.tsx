@@ -1,5 +1,5 @@
 import MailIcon from "@suid/icons-material/Mail";
-import Badge from "@suid/material/Badge";
+import { Badge } from "@suid/material";
 
 export default function SimpleBadge() {
   return (

@@ -1,10 +1,12 @@
-import Box from "@suid/material/Box";
-import Button from "@suid/material/Button";
-import Chip from "@suid/material/Chip";
-import Divider from "@suid/material/Divider";
-import Grid from "@suid/material/Grid";
-import Stack from "@suid/material/Stack";
-import Typography from "@suid/material/Typography";
+import {
+  Box,
+  Button,
+  Chip,
+  Divider,
+  Grid,
+  Stack,
+  Typography,
+} from "@suid/material";
 
 export default function MiddleDividers() {
   return (

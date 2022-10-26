@@ -1,4 +1,4 @@
-import ButtonGroup from "@suid/material/ButtonGroup";
+import { ButtonGroup } from "@suid/material";
 import ComponentInfo from "~/components/ComponentInfo";
 import BasicButtonGroupExample from "./BasicButtonGroupExample";
 import GroupSizesColorsExample from "./GroupSizesColorsExample";

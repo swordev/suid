@@ -1,4 +1,4 @@
-import Box from "@suid/material/Box";
+import { Box } from "@suid/material";
 import ComponentInfo from "~/components/ComponentInfo";
 import BoxSxExample from "./BoxSxExample";
 

@@ -1,4 +1,4 @@
-import Grow from "@suid/material/Grow";
+import { Grow } from "@suid/material";
 import ComponentInfo from "~/components/ComponentInfo";
 import SimpleGrowExample from "./SimpleGrowExample";
 

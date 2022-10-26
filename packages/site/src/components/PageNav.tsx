@@ -2,11 +2,7 @@
 import NavigateBeforeIcon from "@suid/icons-material/NavigateBefore";
 import NavigateNextIcon from "@suid/icons-material/NavigateNext";
 import { useTheme } from "@suid/material";
-import Box from "@suid/material/Box";
-import Button from "@suid/material/Button";
-import Divider from "@suid/material/Divider";
-import Grid from "@suid/material/Grid";
-import useMediaQuery from "@suid/material/useMediaQuery";
+import { Box, Button, Divider, Grid, useMediaQuery } from "@suid/material";
 import SxProps from "@suid/system/sxProps";
 import { useLocation } from "solid-app-router";
 import { createMemo, mergeProps, Show } from "solid-js";

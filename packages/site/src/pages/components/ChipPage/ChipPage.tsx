@@ -1,4 +1,4 @@
-import Chip from "@suid/material/Chip";
+import { Chip } from "@suid/material";
 import ComponentInfo from "~/components/ComponentInfo";
 import BasicChipsExample from "./BasicChipsExample";
 import DeletableChipsExample from "./DeletableChipsExample";

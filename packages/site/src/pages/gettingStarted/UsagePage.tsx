@@ -1,5 +1,4 @@
-import Link from "@suid/material/Link";
-import Typography from "@suid/material/Typography";
+import { Link, Typography } from "@suid/material";
 import PageNav from "~/components/PageNav";
 import PaperCode from "~/components/PaperCode";
 import example from "./UsagePage/Example?raw";

@@ -1,6 +1,7 @@
 import CheckIcon from "@suid/icons-material/Check";
 import ContentCopyRoundedIcon from "@suid/icons-material/ContentCopyRounded";
-import Button, { buttonClasses, ButtonProps } from "@suid/material/Button";
+import { Button } from "@suid/material";
+import { buttonClasses, ButtonProps } from "@suid/material/Button";
 import { createEffect, createSignal, onCleanup, Show } from "solid-js";
 import copyText from "~/utils/copyText";
 

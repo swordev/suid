@@ -1,4 +1,4 @@
-import Alert from "@suid/material/Alert";
+import { Alert } from "@suid/material";
 import ComponentInfo from "~/components/ComponentInfo";
 import BasicAlertsExample from "./BasicAlertsExample";
 

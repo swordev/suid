@@ -1,8 +1,10 @@
-import Divider from "@suid/material/Divider";
-import List from "@suid/material/List";
-import ListItem from "@suid/material/ListItem";
-import ListItemButton from "@suid/material/ListItemButton";
-import ListItemText from "@suid/material/ListItemText";
+import {
+  Divider,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
+} from "@suid/material";
 import useTheme from "@suid/material/styles/useTheme";
 
 export default function ListDividers() {

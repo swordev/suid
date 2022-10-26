@@ -1,4 +1,4 @@
-import Badge from "@suid/material/Badge";
+import { Badge } from "@suid/material";
 import ComponentInfo from "~/components/ComponentInfo";
 import BadgeVisibilityExample from "./BadgeVisibilityExample";
 import SimpleBadgeExample from "./SimpleBadgeExample";

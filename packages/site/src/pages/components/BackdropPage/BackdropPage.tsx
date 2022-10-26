@@ -1,4 +1,4 @@
-import Backdrop from "@suid/material/Backdrop";
+import { Backdrop } from "@suid/material";
 import ComponentInfo from "~/components/ComponentInfo";
 import SimpleBackdropExample from "./SimpleBackdropExample";
 

@@ -1,8 +1,6 @@
 import ContentCopyRoundedIcon from "@suid/icons-material/ContentCopyRounded";
 import { useTheme } from "@suid/material";
-import IconButton from "@suid/material/IconButton";
-import Paper from "@suid/material/Paper";
-import Stack from "@suid/material/Stack";
+import { IconButton, Paper, Stack } from "@suid/material";
 import { Show } from "solid-js";
 import Code, { CodeProps } from "~/components/Code/Code";
 import copyText from "~/utils/copyText";

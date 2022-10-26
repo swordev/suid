@@ -2,8 +2,7 @@ import FormatAlignCenterIcon from "@suid/icons-material/FormatAlignCenter";
 import FormatAlignJustifyIcon from "@suid/icons-material/FormatAlignJustify";
 import FormatAlignLeftIcon from "@suid/icons-material/FormatAlignLeft";
 import FormatAlignRightIcon from "@suid/icons-material/FormatAlignRight";
-import ToggleButton from "@suid/material/ToggleButton";
-import ToggleButtonGroup from "@suid/material/ToggleButtonGroup";
+import { ToggleButton, ToggleButtonGroup } from "@suid/material";
 import { createSignal } from "solid-js";
 
 export default function ExclusiveSelection() {

@@ -1,4 +1,4 @@
-import Modal from "@suid/material/Modal";
+import { Modal } from "@suid/material";
 import ComponentInfo from "~/components/ComponentInfo";
 import BasicModalExample from "./BasicModalExample";
 

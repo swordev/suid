@@ -1,4 +1,4 @@
-import Icon from "@suid/material/Icon";
+import { Icon } from "@suid/material";
 import ComponentInfo from "~/components/ComponentInfo";
 import SvgIconSizeExample from "./SvgIconSizeExample";
 import SvgIconsColorExample from "./SvgIconsColorExample";

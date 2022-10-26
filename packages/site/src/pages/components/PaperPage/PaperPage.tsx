@@ -1,4 +1,4 @@
-import Paper from "@suid/material/Paper";
+import { Paper } from "@suid/material";
 import ComponentInfo from "~/components/ComponentInfo";
 import BasicPaperExample from "./BasicPaperExample";
 

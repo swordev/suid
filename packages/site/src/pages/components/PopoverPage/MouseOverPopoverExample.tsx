@@ -1,5 +1,4 @@
-import Popover from "@suid/material/Popover";
-import Typography from "@suid/material/Typography";
+import { Popover, Typography } from "@suid/material";
 import { createSignal } from "solid-js";
 
 export default function MouseOverPopover() {

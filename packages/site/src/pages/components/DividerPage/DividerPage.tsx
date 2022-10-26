@@ -1,4 +1,4 @@
-import Divider from "@suid/material/Divider";
+import { Divider } from "@suid/material";
 import ComponentInfo from "~/components/ComponentInfo";
 import ListDividersExample from "./ListDividersExample";
 import MiddleDividersExample from "./MiddleDividersExample";

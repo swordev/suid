@@ -1,7 +1,7 @@
 import AddShoppingCartIcon from "@suid/icons-material/AddShoppingCart";
 import AlarmIcon from "@suid/icons-material/Alarm";
 import DeleteIcon from "@suid/icons-material/Delete";
-import IconButton from "@suid/material/IconButton";
+import { IconButton } from "@suid/material";
 
 export default function Example() {
   return (

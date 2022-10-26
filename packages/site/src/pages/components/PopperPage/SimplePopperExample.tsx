@@ -1,5 +1,4 @@
-import Box from "@suid/material/Box";
-import Popper from "@suid/material/Popper";
+import { Box, Popper } from "@suid/material";
 import { createSignal } from "solid-js";
 
 export default function SimplePopperExample() {

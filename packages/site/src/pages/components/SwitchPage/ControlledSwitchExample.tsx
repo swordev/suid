@@ -1,4 +1,4 @@
-import Switch from "@suid/material/Switch";
+import { Switch } from "@suid/material";
 import { createSignal } from "solid-js";
 
 export default function ControlledSwitch() {

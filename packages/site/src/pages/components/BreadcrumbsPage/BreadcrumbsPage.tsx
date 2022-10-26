@@ -1,4 +1,4 @@
-import Breadcrumbs from "@suid/material/Breadcrumbs";
+import { Breadcrumbs } from "@suid/material";
 import ComponentInfo from "~/components/ComponentInfo";
 import BasicBreadcrumbsExample from "./BasicBreadcrumbsExample";
 import CollapsedBreadcrumbsExample from "./CollapsedBreadcrumbsExample";

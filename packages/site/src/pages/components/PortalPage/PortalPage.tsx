@@ -1,4 +1,4 @@
-import Portal from "@suid/material/Portal";
+import { Portal } from "@suid/material";
 import ComponentInfo from "~/components/ComponentInfo";
 import SimplePortal from "./SimplePortalExample";
 

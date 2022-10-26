@@ -1,5 +1,4 @@
-import Box from "@suid/material/Box";
-import Link from "@suid/material/Link";
+import { Box, Link } from "@suid/material";
 
 export default function BasicLinks() {
   return (

@@ -1,9 +1,5 @@
 import { useTheme } from "@suid/material";
-import Box from "@suid/material/Box";
-import FormControlLabel from "@suid/material/FormControlLabel";
-import Grow from "@suid/material/Grow";
-import Paper from "@suid/material/Paper";
-import Switch from "@suid/material/Switch";
+import { Box, FormControlLabel, Grow, Paper, Switch } from "@suid/material";
 import { createSignal } from "solid-js";
 
 function Icon() {

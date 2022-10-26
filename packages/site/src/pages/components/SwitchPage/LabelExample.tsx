@@ -1,5 +1,4 @@
-import FormControlLabel from "@suid/material/FormControlLabel";
-import Switch from "@suid/material/Switch";
+import { FormControlLabel, Switch } from "@suid/material";
 
 export default function Label() {
   return (

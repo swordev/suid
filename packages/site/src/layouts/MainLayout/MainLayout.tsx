@@ -1,10 +1,13 @@
 import { createTheme, ThemeProvider } from "@suid/material";
-import Box from "@suid/material/Box";
-import CssBaseline from "@suid/material/CssBaseline";
-import Drawer, { drawerClasses } from "@suid/material/Drawer";
-import Toolbar from "@suid/material/Toolbar";
+import {
+  Box,
+  CssBaseline,
+  Drawer,
+  Toolbar,
+  useMediaQuery,
+} from "@suid/material";
+import { drawerClasses } from "@suid/material/Drawer";
 import { createPalette } from "@suid/material/styles/createPalette";
-import useMediaQuery from "@suid/material/useMediaQuery";
 import { useLocation } from "solid-app-router";
 import {
   createEffect,

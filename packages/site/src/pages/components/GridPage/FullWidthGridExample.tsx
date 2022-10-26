@@ -1,6 +1,4 @@
-import Box from "@suid/material/Box";
-import Grid from "@suid/material/Grid";
-import Paper from "@suid/material/Paper";
+import { Box, Grid, Paper } from "@suid/material";
 import styled from "@suid/material/styles/styled";
 
 const Item = styled(Paper)(({ theme }) => ({

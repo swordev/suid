@@ -1,5 +1,4 @@
-import Paper from "@suid/material/Paper";
-import Stack from "@suid/material/Stack";
+import { Paper, Stack } from "@suid/material";
 import styled from "@suid/material/styles/styled";
 
 const Item = styled(Paper)(({ theme }) => ({

@@ -1,4 +1,4 @@
-import Switch from "@suid/material/Switch";
+import { Switch } from "@suid/material";
 
 const label = { inputProps: { "aria-label": "Switch demo" } };
 

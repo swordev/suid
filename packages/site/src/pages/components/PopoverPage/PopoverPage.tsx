@@ -1,4 +1,4 @@
-import Popover from "@suid/material/Popover";
+import { Popover } from "@suid/material";
 import ComponentInfo from "~/components/ComponentInfo";
 import BasicPopoverExample from "./BasicPopoverExample";
 import MouseOverPopoverExample from "./MouseOverPopoverExample";

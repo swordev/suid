@@ -1,6 +1,4 @@
-import Box from "@suid/material/Box";
-import Link from "@suid/material/Link";
-import Typography from "@suid/material/Typography";
+import { Box, Link, Typography } from "@suid/material";
 import useTheme from "@suid/material/styles/useTheme";
 import capitalize from "@suid/utils/capitalize";
 import snakeCase from "@suid/utils/snakeCase";

@@ -1,8 +1,5 @@
-import Box from "@suid/material/Box";
-import Skeleton from "@suid/material/Skeleton";
-import Typography from "@suid/material/Typography";
+import { Box, Skeleton, Typography, useMediaQuery } from "@suid/material";
 import { useTheme } from "@suid/material/styles";
-import useMediaQuery from "@suid/material/useMediaQuery";
 import createElementRef from "@suid/system/createElementRef";
 import { createEffect, createSignal, Show } from "solid-js";
 import PageNav from "~/components/PageNav";

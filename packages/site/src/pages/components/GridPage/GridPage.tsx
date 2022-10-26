@@ -1,4 +1,4 @@
-import Grid from "@suid/material/Grid";
+import { Grid } from "@suid/material";
 import ComponentInfo from "~/components/ComponentInfo";
 import FullWidthGridExample from "./FullWidthGridExample";
 

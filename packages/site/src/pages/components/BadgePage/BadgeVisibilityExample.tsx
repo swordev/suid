@@ -1,11 +1,7 @@
 import AddIcon from "@suid/icons-material/Add";
 import MailIcon from "@suid/icons-material/Mail";
 import RemoveIcon from "@suid/icons-material/Remove";
-import Badge from "@suid/material/Badge";
-import Box from "@suid/material/Box";
-import Button from "@suid/material/Button";
-import FormControlLabel from "@suid/material/FormControlLabel";
-import Switch from "@suid/material/Switch";
+import { Badge, Box, Button, FormControlLabel, Switch } from "@suid/material";
 import { createSignal } from "solid-js";
 
 export default function BadgeVisibility() {

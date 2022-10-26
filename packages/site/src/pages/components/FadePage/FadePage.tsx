@@ -1,4 +1,4 @@
-import Fade from "@suid/material/Fade";
+import { Fade } from "@suid/material";
 import ComponentInfo from "~/components/ComponentInfo";
 import SimpleFadeExample from "./SimpleFadeExample";
 

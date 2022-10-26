@@ -1,4 +1,4 @@
-import Card from "@suid/material/Card";
+import { Card } from "@suid/material";
 import ComponentInfo from "~/components/ComponentInfo";
 import BasicCardExample from "./BasicCardExample";
 import MediaControlCardExample from "./MediaControlCardExample";

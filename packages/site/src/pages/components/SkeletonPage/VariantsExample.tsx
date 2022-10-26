@@ -1,5 +1,4 @@
-import Skeleton from "@suid/material/Skeleton";
-import Stack from "@suid/material/Stack";
+import { Skeleton, Stack } from "@suid/material";
 
 export default function Variants() {
   return (

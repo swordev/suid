@@ -2,8 +2,7 @@ import AddIcon from "@suid/icons-material/Add";
 import EditIcon from "@suid/icons-material/Edit";
 import FavoriteIcon from "@suid/icons-material/Favorite";
 import NavigationIcon from "@suid/icons-material/Navigation";
-import Box from "@suid/material/Box";
-import Fab from "@suid/material/Fab";
+import { Box, Fab } from "@suid/material";
 
 export default function FloatingActionButtons() {
   return (

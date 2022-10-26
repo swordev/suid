@@ -1,4 +1,4 @@
-import Drawer from "@suid/material/Drawer";
+import { Drawer } from "@suid/material";
 import ComponentInfo from "~/components/ComponentInfo";
 import TemporaryDrawerExample from "./TemporaryDrawerExample";
 

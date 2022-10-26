@@ -1,5 +1,4 @@
-import Box from "@suid/material/Box";
-import LinearProgress from "@suid/material/LinearProgress";
+import { Box, LinearProgress } from "@suid/material";
 
 export default function IndeterminateExample() {
   return (

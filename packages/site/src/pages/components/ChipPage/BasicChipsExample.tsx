@@ -1,5 +1,4 @@
-import Chip from "@suid/material/Chip";
-import Stack from "@suid/material/Stack";
+import { Chip, Stack } from "@suid/material";
 
 export default function BasicChips() {
   return (

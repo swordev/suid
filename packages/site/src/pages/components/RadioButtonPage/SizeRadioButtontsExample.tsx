@@ -1,4 +1,4 @@
-import Radio from "@suid/material/Radio";
+import { Radio } from "@suid/material";
 import * as ST from "@suid/types";
 import { createSignal } from "solid-js";
 

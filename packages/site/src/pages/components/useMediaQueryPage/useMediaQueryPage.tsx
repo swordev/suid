@@ -1,4 +1,4 @@
-import useMediaQuery from "@suid/material/useMediaQuery";
+import { useMediaQuery } from "@suid/material";
 import ComponentInfo from "~/components/ComponentInfo";
 import SimpleMediaQueryExample from "./SimpleMediaQueryExample";
 

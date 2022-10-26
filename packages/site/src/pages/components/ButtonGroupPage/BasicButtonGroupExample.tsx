@@ -1,5 +1,4 @@
-import Button from "@suid/material/Button";
-import ButtonGroup from "@suid/material/ButtonGroup";
+import { Button, ButtonGroup } from "@suid/material";
 
 export default function BasicButtonGroup() {
   return (

@@ -1,7 +1,4 @@
-import Box from "@suid/material/Box";
-import Button from "@suid/material/Button";
-import Modal from "@suid/material/Modal";
-import Typography from "@suid/material/Typography";
+import { Box, Button, Modal, Typography } from "@suid/material";
 import useTheme from "@suid/material/styles/useTheme";
 import { createSignal } from "solid-js";
 

@@ -1,4 +1,4 @@
-import Radio from "@suid/material/Radio";
+import { Radio } from "@suid/material";
 import ComponentInfo from "~/components/ComponentInfo";
 import ColorRadioButtonsExample from "./ColorRadioButtonsExample";
 import ControlledRadioButtonGroupExample from "./ControlledRadioButtonGroupExample";

@@ -1,5 +1,4 @@
-import Box from "@suid/material/Box";
-import Portal from "@suid/material/Portal";
+import { Box, Portal } from "@suid/material";
 import createElementRef from "@suid/system/createElementRef";
 import { createSignal } from "solid-js";
 

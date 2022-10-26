@@ -1,6 +1,5 @@
 import AddIcon from "@suid/icons-material/Add";
-import Box from "@suid/material/Box";
-import Fab from "@suid/material/Fab";
+import { Box, Fab } from "@suid/material";
 
 export default function FloatingActionButtonSize() {
   return (

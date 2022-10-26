@@ -4,13 +4,15 @@ import HandymanIcon from "@suid/icons-material/Handyman";
 import RocketLaunchIcon from "@suid/icons-material/RocketLaunch";
 import WebIcon from "@suid/icons-material/Web";
 import { useTheme } from "@suid/material";
-import Divider from "@suid/material/Divider";
-import List from "@suid/material/List";
-import ListItem from "@suid/material/ListItem";
-import ListItemButton from "@suid/material/ListItemButton";
-import ListItemIcon from "@suid/material/ListItemIcon";
-import ListItemText from "@suid/material/ListItemText";
-import SvgIcon from "@suid/material/SvgIcon";
+import {
+  Divider,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  SvgIcon,
+} from "@suid/material";
 import snakeCase from "@suid/utils/snakeCase";
 import uncapitalize from "@suid/utils/uncapitalize";
 import { useLocation } from "solid-app-router";

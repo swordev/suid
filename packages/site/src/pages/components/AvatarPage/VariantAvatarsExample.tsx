@@ -1,6 +1,5 @@
 import AssignmentIcon from "@suid/icons-material/Assignment";
-import Avatar from "@suid/material/Avatar";
-import Stack from "@suid/material/Stack";
+import { Avatar, Stack } from "@suid/material";
 import { deepOrange, green } from "@suid/material/colors";
 
 export default function VariantAvatars() {

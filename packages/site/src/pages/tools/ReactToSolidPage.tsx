@@ -1,11 +1,13 @@
-import Alert from "@suid/material/Alert";
-import Box from "@suid/material/Box";
-import Button from "@suid/material/Button";
+import {
+  Alert,
+  Box,
+  Button,
+  CircularProgress,
+  Grid,
+  Skeleton,
+  Typography,
+} from "@suid/material";
 import { buttonBaseClasses } from "@suid/material/ButtonBase";
-import CircularProgress from "@suid/material/CircularProgress";
-import Grid from "@suid/material/Grid";
-import Skeleton from "@suid/material/Skeleton";
-import Typography from "@suid/material/Typography";
 import { createSignal, lazy, onMount, Show } from "solid-js";
 import PageNav from "~/components/PageNav";
 import { getDependencyName } from "~/utils/getDependencyName";

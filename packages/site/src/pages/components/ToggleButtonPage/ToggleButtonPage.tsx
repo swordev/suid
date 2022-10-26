@@ -1,4 +1,4 @@
-import ToggleButton from "@suid/material/ToggleButton";
+import { ToggleButton } from "@suid/material";
 import ComponentInfo from "~/components/ComponentInfo";
 import ColorToggleButtonExample from "./ColorToggleButtonExample";
 import ExclusiveSelectionExample from "./ExclusiveSelectionExample";

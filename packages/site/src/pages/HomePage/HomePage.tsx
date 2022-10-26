@@ -1,20 +1,22 @@
 import CheckBoxIcon from "@suid/icons-material/CheckBox";
 import { useTheme } from "@suid/material";
-import Box from "@suid/material/Box";
-import Button from "@suid/material/Button";
-import Container from "@suid/material/Container";
-import Divider from "@suid/material/Divider";
-import Fade from "@suid/material/Fade";
-import Grid from "@suid/material/Grid";
-import Link from "@suid/material/Link";
-import List from "@suid/material/List";
-import ListItem from "@suid/material/ListItem";
-import ListItemIcon from "@suid/material/ListItemIcon";
-import ListItemText from "@suid/material/ListItemText";
-import Paper from "@suid/material/Paper";
-import Stack from "@suid/material/Stack";
-import Typography from "@suid/material/Typography";
-import useMediaQuery from "@suid/material/useMediaQuery";
+import {
+  Box,
+  Button,
+  Container,
+  Divider,
+  Fade,
+  Grid,
+  Link,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Paper,
+  Stack,
+  Typography,
+  useMediaQuery,
+} from "@suid/material";
 import { createEffect, createSignal, onCleanup, Show } from "solid-js";
 import { tryPreload } from "~/Routing";
 import TypingEffect from "~/components/TypingEffect";

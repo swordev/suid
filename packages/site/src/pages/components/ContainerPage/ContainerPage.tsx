@@ -1,4 +1,4 @@
-import Container from "@suid/material/Container";
+import { Container } from "@suid/material";
 import ComponentInfo from "~/components/ComponentInfo";
 import SimpleContainerExample from "./SimpleContainerExample";
 

@@ -1,5 +1,4 @@
-import Avatar from "@suid/material/Avatar";
-import Stack from "@suid/material/Stack";
+import { Avatar, Stack } from "@suid/material";
 
 export default function SizeImageAvatars() {
   return (

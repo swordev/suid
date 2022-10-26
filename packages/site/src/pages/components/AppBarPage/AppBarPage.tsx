@@ -1,4 +1,4 @@
-import AppBar from "@suid/material/AppBar";
+import { AppBar } from "@suid/material";
 import ComponentInfo from "~/components/ComponentInfo";
 import BasicAppBarExample from "./BasicAppBarExample";
 

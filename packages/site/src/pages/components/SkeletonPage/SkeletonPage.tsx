@@ -1,4 +1,4 @@
-import Skeleton from "@suid/material/Skeleton";
+import { Skeleton } from "@suid/material";
 import ComponentInfo from "~/components/ComponentInfo";
 import VariantsExample from "./VariantsExample";
 

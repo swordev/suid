@@ -1,10 +1,12 @@
-import Paper from "@suid/material/Paper";
-import Table from "@suid/material/Table";
-import TableBody from "@suid/material/TableBody";
-import TableCell from "@suid/material/TableCell";
-import TableContainer from "@suid/material/TableContainer";
-import TableHead from "@suid/material/TableHead";
-import TableRow from "@suid/material/TableRow";
+import {
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+} from "@suid/material";
 import { mapArray } from "solid-js";
 
 function createData(

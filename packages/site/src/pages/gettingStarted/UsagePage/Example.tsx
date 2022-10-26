@@ -1,5 +1,5 @@
 // @refresh
-import Button from "@suid/material/Button";
+import { Button } from "@suid/material";
 import { render } from "solid-js/web";
 
 function App() {

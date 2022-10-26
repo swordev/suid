@@ -1,4 +1,4 @@
-import TextField from "@suid/material/TextField";
+import { TextField } from "@suid/material";
 import ComponentInfo from "~/components/ComponentInfo";
 import BasicTextFieldsExample from "./BasicTextFieldsExample";
 import FormPropsTextFieldsExample from "./FormPropsTextFieldsExample";

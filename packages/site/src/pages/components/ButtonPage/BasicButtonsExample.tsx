@@ -1,5 +1,4 @@
-import Button from "@suid/material/Button";
-import Stack from "@suid/material/Stack";
+import { Button, Stack } from "@suid/material";
 
 export default function BasicButtons() {
   return (

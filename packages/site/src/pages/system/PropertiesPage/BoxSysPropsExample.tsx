@@ -1,5 +1,4 @@
-import Box from "@suid/material/Box";
-import Stack from "@suid/material/Stack";
+import { Box, Stack } from "@suid/material";
 import useTheme from "@suid/material/styles/useTheme";
 
 export default function BoxSysProps() {

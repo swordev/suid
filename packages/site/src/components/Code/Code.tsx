@@ -1,5 +1,5 @@
 import { useTheme } from "@suid/material";
-import Box from "@suid/material/Box";
+import { Box } from "@suid/material";
 import { SxPropsObject } from "@suid/system/sxProps";
 import { createMemo } from "solid-js";
 import { useLayoutContext } from "~/layouts/MainLayout/LayoutContext";

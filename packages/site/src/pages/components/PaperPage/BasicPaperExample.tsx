@@ -1,5 +1,4 @@
-import Box from "@suid/material/Box";
-import Paper from "@suid/material/Paper";
+import { Box, Paper } from "@suid/material";
 
 export default function BasicPaper() {
   return (

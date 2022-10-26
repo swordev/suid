@@ -1,6 +1,4 @@
-import Box from "@suid/material/Box";
-import Fade from "@suid/material/Fade";
-import Popper from "@suid/material/Popper";
+import { Box, Fade, Popper } from "@suid/material";
 import { createSignal } from "solid-js";
 
 export default function TransitionsPopperExample() {

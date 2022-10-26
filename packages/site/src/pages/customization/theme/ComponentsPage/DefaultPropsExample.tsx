@@ -1,4 +1,4 @@
-import Button from "@suid/material/Button";
+import { Button } from "@suid/material";
 import { createTheme, ThemeProvider } from "@suid/material/styles";
 
 const theme = createTheme({

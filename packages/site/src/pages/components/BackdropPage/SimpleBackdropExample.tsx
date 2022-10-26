@@ -1,5 +1,4 @@
-import Backdrop from "@suid/material/Backdrop";
-import Button from "@suid/material/Button";
+import { Backdrop, Button } from "@suid/material";
 import useTheme from "@suid/material/styles/useTheme";
 import { createSignal } from "solid-js";
 

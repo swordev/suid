@@ -1,4 +1,4 @@
-import Avatar from "@suid/material/Avatar";
+import { Avatar } from "@suid/material";
 import ComponentInfo from "~/components/ComponentInfo";
 import ImageAvatarsExample from "./ImageAvatarsExample";
 import LetterAvatarsExample from "./LetterAvatarsExample";

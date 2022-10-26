@@ -1,14 +1,17 @@
 import MailIcon from "@suid/icons-material/Mail";
 import InboxIcon from "@suid/icons-material/MoveToInbox";
-import Box from "@suid/material/Box";
-import Button from "@suid/material/Button";
-import Divider from "@suid/material/Divider";
-import Drawer, { DrawerProps } from "@suid/material/Drawer";
-import List from "@suid/material/List";
-import ListItem from "@suid/material/ListItem";
-import ListItemButton from "@suid/material/ListItemButton";
-import ListItemIcon from "@suid/material/ListItemIcon";
-import ListItemText from "@suid/material/ListItemText";
+import {
+  Box,
+  Button,
+  Divider,
+  Drawer,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+} from "@suid/material";
+import { DrawerProps } from "@suid/material/Drawer";
 import { mapArray } from "solid-js";
 import { createMutable } from "solid-js/store";
 

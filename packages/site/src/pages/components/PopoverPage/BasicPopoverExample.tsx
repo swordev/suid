@@ -1,6 +1,4 @@
-import Button from "@suid/material/Button";
-import Popover from "@suid/material/Popover";
-import Typography from "@suid/material/Typography";
+import { Button, Popover, Typography } from "@suid/material";
 import { createSignal } from "solid-js";
 
 export default function BasicPopover() {

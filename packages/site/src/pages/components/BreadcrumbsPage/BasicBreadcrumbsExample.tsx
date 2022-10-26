@@ -1,6 +1,4 @@
-import Breadcrumbs from "@suid/material/Breadcrumbs";
-import Link from "@suid/material/Link";
-import Typography from "@suid/material/Typography";
+import { Breadcrumbs, Link, Typography } from "@suid/material";
 
 export default function BasicBreadcrumbs() {
   return (

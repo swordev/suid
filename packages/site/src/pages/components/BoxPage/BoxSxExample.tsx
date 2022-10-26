@@ -1,4 +1,4 @@
-import Box from "@suid/material/Box";
+import { Box } from "@suid/material";
 import useTheme from "@suid/material/styles/useTheme";
 
 export default function BoxSx() {

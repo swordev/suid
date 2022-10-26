@@ -1,4 +1,4 @@
-import Button from "@suid/material/Button";
+import { Button } from "@suid/material";
 import ComponentInfo from "~/components/ComponentInfo";
 import BasicButtonsExample from "./BasicButtonsExample";
 import ButtonSizesExample from "./ButtonSizesExample";

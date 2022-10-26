@@ -1,5 +1,4 @@
-import Box from "@suid/material/Box";
-import TextField from "@suid/material/TextField";
+import { Box, TextField } from "@suid/material";
 import { createSignal } from "solid-js";
 
 function capitalizeWords(value: string) {

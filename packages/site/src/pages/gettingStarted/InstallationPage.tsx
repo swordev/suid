@@ -1,9 +1,11 @@
 import { useTheme } from "@suid/material";
-import Chip from "@suid/material/Chip";
-import ToggleButton from "@suid/material/ToggleButton";
-import ToggleButtonGroup from "@suid/material/ToggleButtonGroup";
-import Typography from "@suid/material/Typography";
-import useMediaQuery from "@suid/material/useMediaQuery";
+import {
+  Chip,
+  ToggleButton,
+  ToggleButtonGroup,
+  Typography,
+  useMediaQuery,
+} from "@suid/material";
 import { createSignal } from "solid-js";
 import PageNav from "~/components/PageNav";
 import PaperCode from "~/components/PaperCode";

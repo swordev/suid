@@ -1,4 +1,4 @@
-import Switch from "@suid/material/Switch";
+import { Switch } from "@suid/material";
 import ComponentInfo from "~/components/ComponentInfo";
 import LabelExample from "~/pages/components/SwitchPage/LabelExample";
 import BasicSwitchesExample from "./BasicSwitchesExample";

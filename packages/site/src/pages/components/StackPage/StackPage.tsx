@@ -1,4 +1,4 @@
-import Stack from "@suid/material/Stack";
+import { Stack } from "@suid/material";
 import ComponentInfo from "~/components/ComponentInfo";
 import BasicStackExample from "./BasicStackExample";
 

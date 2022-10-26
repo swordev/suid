@@ -1,5 +1,4 @@
-import Alert from "@suid/material/Alert";
-import Stack from "@suid/material/Stack";
+import { Alert, Stack } from "@suid/material";
 
 export default function BasicAlerts() {
   return (

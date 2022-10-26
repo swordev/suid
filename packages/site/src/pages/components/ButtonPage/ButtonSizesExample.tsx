@@ -1,5 +1,4 @@
-import Box from "@suid/material/Box";
-import Button from "@suid/material/Button";
+import { Box, Button } from "@suid/material";
 
 export default function ButtonSizes() {
   return (

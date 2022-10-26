@@ -1,6 +1,4 @@
-import Container from "@suid/material/Container";
-import Grid from "@suid/material/Grid";
-import Typography from "@suid/material/Typography";
+import { Container, Grid, Typography } from "@suid/material";
 
 export default function ErrorPage(props: { title: string; code?: string }) {
   return (
