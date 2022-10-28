@@ -1,5 +1,21 @@
 # @suid/material
 
+## 0.7.0-next.0
+
+### Minor Changes
+
+- [`6440e2d2`](https://github.com/swordev/suid/commit/6440e2d2e8952bed1fc1f8eaf417786d843b307d) Thanks [@juanrgm](https://github.com/juanrgm)! - Export some system functions
+
+- [`15be1ab4`](https://github.com/swordev/suid/commit/15be1ab4d64342d74d3b43151b09a89597107049) Thanks [@juanrgm](https://github.com/juanrgm)! - Export all components in the index file
+
+### Patch Changes
+
+- Updated dependencies [[`f0cd735e`](https://github.com/swordev/suid/commit/f0cd735ecb125683fb2334b2426b8c51ce54028b), [`6440e2d2`](https://github.com/swordev/suid/commit/6440e2d2e8952bed1fc1f8eaf417786d843b307d)]:
+  - @suid/utils@0.6.0-next.0
+  - @suid/system@0.6.0-next.0
+  - @suid/base@0.3.3-next.0
+  - @suid/css@0.1.7-next.0
+
 ## 0.6.3
 
 ### Patch Changes

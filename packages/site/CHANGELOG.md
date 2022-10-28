@@ -1,5 +1,27 @@
 # @suid/site
 
+## 0.6.0-next.0
+
+### Minor Changes
+
+- [`3e5eb790`](https://github.com/swordev/suid/commit/3e5eb790c3977764a8d65d8e7bd920fd05802e4f) Thanks [@juanrgm](https://github.com/juanrgm)! - Use named imports in the main example
+
+- [`cdce309e`](https://github.com/swordev/suid/commit/cdce309e4c6400c83dcc79afd1bf0ab0527ba645) Thanks [@juanrgm](https://github.com/juanrgm)! - Transform all the SUID component default imports to named imports
+
+- [`2cf3a841`](https://github.com/swordev/suid/commit/2cf3a8415fbe7bcefba8d2608b36507f19c0174e) Thanks [@juanrgm](https://github.com/juanrgm)! - Add more named imports in the component info section
+
+### Patch Changes
+
+- [`c1b5dd74`](https://github.com/swordev/suid/commit/c1b5dd744fb05d6526968012ed4675e16b6f90cb) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
+- Updated dependencies [[`f0cd735e`](https://github.com/swordev/suid/commit/f0cd735ecb125683fb2334b2426b8c51ce54028b), [`6440e2d2`](https://github.com/swordev/suid/commit/6440e2d2e8952bed1fc1f8eaf417786d843b307d), [`76278e2b`](https://github.com/swordev/suid/commit/76278e2b7cc81bbc58b626741cd3d144ade657be), [`15be1ab4`](https://github.com/swordev/suid/commit/15be1ab4d64342d74d3b43151b09a89597107049), [`e407f28b`](https://github.com/swordev/suid/commit/e407f28bc45474c8756ee1111ff81837277a4ddd)]:
+  - @suid/utils@0.6.0-next.0
+  - @suid/material@0.7.0-next.0
+  - @suid/system@0.6.0-next.0
+  - @suid/codemod@0.9.0-next.0
+  - @suid/base@0.3.3-next.0
+  - @suid/icons-material@0.4.2-next.0
+
 ## 0.5.4
 
 ### Patch Changes
