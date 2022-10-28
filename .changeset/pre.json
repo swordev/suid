@@ -16,5 +16,17 @@
     "@suid/vite-plugin": "0.0.3",
     "@suid/scripts": "0.0.0"
   },
-  "changesets": []
+  "changesets": [
+    "chilled-planets-yell",
+    "chilly-cougars-smoke",
+    "cyan-needles-double",
+    "gentle-foxes-grow",
+    "gold-singers-agree",
+    "healthy-trains-push",
+    "healthy-waves-compare",
+    "large-hornets-chew",
+    "light-apes-buy",
+    "moody-beds-invent",
+    "twenty-lemons-change"
+  ]
 }

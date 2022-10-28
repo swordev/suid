@@ -1,5 +1,11 @@
 # @suid/utils
 
+## 0.6.0-next.0
+
+### Minor Changes
+
+- [#126](https://github.com/swordev/suid/pull/126) [`f0cd735e`](https://github.com/swordev/suid/commit/f0cd735ecb125683fb2334b2426b8c51ce54028b) Thanks [@github-actions](https://github.com/apps/github-actions)! - Export all the functions
+
 ## 0.5.0
 
 ### Minor Changes
