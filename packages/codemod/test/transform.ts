@@ -5,5 +5,14 @@ export default function transform(
   code: string,
   transforms: Parameters<typeof applyTransforms>[1]
 ) {
-  return format(applyTransforms(code, transforms));
+  const rawResult = applyTransforms(code, transforms)
+  try {
+    return format(rawResult);
+  }
+  catch (error) {
+    console.log(`transform: rawResult:`, error);
+    // return the raw result
+    // so we can update the snapshot in toMatchInlineSnapshot
+    return rawResult;
+  }
 }
