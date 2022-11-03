@@ -13,7 +13,10 @@ export default function findReactObjects(source: SourceFile, names?: string[]) {
       });
   };
   if (reactImport) {
-    const ns = reactImport.getNamespaceImport();
+    const ns = (
+      reactImport.getNamespaceImport() || // import * as React from "react"
+      reactImport.getDefaultImport() // import React from "react"
+    );
     const named = reactImport.getNamedImports();
     for (const name of named) {
       const identifier = name.getFirstChildByKind(ts.SyntaxKind.Identifier);
