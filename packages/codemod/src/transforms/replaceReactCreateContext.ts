@@ -1,8 +1,8 @@
-import renameExpr from "./renameExpr";
+import renameParentExpr from "./renameParentExpr";
 import { Identifier } from "ts-morph";
 
 export default function replaceReactCreateContext(node: Identifier) {
-  renameExpr(node, "createContext", {
+  renameParentExpr(node, "createContext", {
     moduleSpecifier: "solid-js",
     namedImport: "createContext",
   });

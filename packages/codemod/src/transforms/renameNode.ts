@@ -1,7 +1,7 @@
 import getParentExpr from "../utils/getParentExpr";
 import { Identifier } from "ts-morph";
 
-export default function renameExpr(
+export default function renameNode(
   node: Identifier,
   text: string,
   importDeclaration?: {
@@ -16,9 +16,13 @@ export default function renameExpr(
     | {
         namedImport: string;
       }
-  )
+  ),
+  parentExpr?: boolean,
 ) {
-  const expr = getParentExpr(node);
+  const expr = (
+    parentExpr ? getParentExpr(node) :
+    node
+  );
 
   if (importDeclaration) {
     if ("namespaceImport" in importDeclaration) {
@@ -28,6 +32,7 @@ export default function renameExpr(
     } else if ("namedImport" in importDeclaration) {
       expr.replaceWithText(`${text}`);
     }
+
     node.getSourceFile().addImportDeclaration({
       moduleSpecifier: importDeclaration.moduleSpecifier,
       ...("namespaceImport" in importDeclaration && {

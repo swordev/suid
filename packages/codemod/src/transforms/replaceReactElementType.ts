@@ -1,18 +1,28 @@
-import getParentExpr from "../utils/getParentExpr";
-import renameExpr from "./renameExpr";
+import renameParentExpr from "./renameParentExpr";
+import renameNode from "./renameNode";
 import { Identifier, ts } from "ts-morph";
 
 export default function replaceReactElementType(node: Identifier) {
-  const typeRef = getParentExpr(node).getParentIfKind(
+  const typeRef = node.getFirstAncestorByKindOrThrow(
     ts.SyntaxKind.TypeReference
   );
-  if (typeRef && typeRef.getChildren().length > 1) {
-    renameExpr(node, "Component", {
+  const typeName = typeRef.getTypeName()
+  const rename = (
+    // type a = React.ElementType
+    typeName.isKind(ts.SyntaxKind.QualifiedName) ? renameParentExpr :
+    // type a = ElementType
+    typeName.isKind(ts.SyntaxKind.Identifier) ? renameNode :
+    // error
+    null
+  )
+  if (rename == null) return
+  if (typeRef.getTypeArguments().length > 0) {
+    rename(node, "Component", {
       moduleSpecifier: "solid-js",
       namedImport: "Component",
     });
   } else {
-    renameExpr(node, "ElementType", {
+    rename(node, "ElementType", {
       moduleSpecifier: "@suid/types",
       namespaceImport: "ST",
     });

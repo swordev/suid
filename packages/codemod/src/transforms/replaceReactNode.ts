@@ -1,8 +1,8 @@
-import renameExpr from "./renameExpr";
+import renameParentExpr from "./renameParentExpr";
 import { Identifier } from "ts-morph";
 
 export default function replaceReactNode(node: Identifier) {
-  renameExpr(node, "JSXElement", {
+  renameParentExpr(node, "JSXElement", {
     moduleSpecifier: "solid-js",
     namedImport: "JSXElement",
   });
