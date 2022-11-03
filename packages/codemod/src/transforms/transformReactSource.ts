@@ -28,6 +28,7 @@ import replaceReactUseContext from "./replaceReactUseContext";
 import replaceReactUseEffect from "./replaceReactUseEffect";
 import replaceReactUseLayoutEffect from "./replaceReactUseLayoutEffect";
 import replaceReactUseMemo from "./replaceReactUseMemo";
+import replaceReactUseRef from "./replaceReactUseRef";
 import replaceReactUseState from "./replaceReactUseState";
 import replaceSpreadAsignment from "./replaceSpreadAsignment";
 import { Identifier, JsxAttribute, SourceFile } from "ts-morph";
@@ -46,6 +47,7 @@ const reactObjectTransformers: Record<string, (node: Identifier) => void> = {
   useState: replaceReactUseState,
   JSXElementConstructor: replaceReactJSXElementConstructor,
   useMemo: replaceReactUseMemo,
+  useRef: replaceReactUseRef,
   forwardRef: replaceReactForwardRef,
   useEffect: replaceReactUseEffect,
   useLayoutEffect: replaceReactUseLayoutEffect,
