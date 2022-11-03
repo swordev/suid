@@ -13,6 +13,7 @@ import replaceReactClassNameAttr from "./replaceReactClassNameAttr";
 import replaceReactComponentPropsWithoutRefType from "./replaceReactComponentPropsWithoutRefType";
 import replaceReactContext from "./replaceReactContext";
 import replaceReactCreateContext from "./replaceReactCreateContext";
+import replaceReactCSSPropertiesType from "./replaceReactCSSPropertiesType";
 import replaceReactElementType from "./replaceReactElementType";
 import replaceReactEventHandlers from "./replaceReactEventHandlers";
 import replaceReactEvents from "./replaceReactEvents";
@@ -43,6 +44,7 @@ const reactObjectTransformers: Record<string, (node: Identifier) => void> = {
   // replace types
   ElementType: replaceReactElementType,
   ComponentPropsWithoutRef: replaceReactComponentPropsWithoutRefType,
+  CSSProperties: replaceReactCSSPropertiesType,
 
   memo: replaceReactMemo,
   ReactNode: replaceReactNode,
