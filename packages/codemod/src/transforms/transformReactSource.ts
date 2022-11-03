@@ -10,6 +10,7 @@ import removeUnusedImports from "./removeUnusedImports";
 import renameMuiImports from "./renameMuiImports";
 import replaceObjectBinding from "./replaceObjectBinding";
 import replaceReactClassNameAttr from "./replaceReactClassNameAttr";
+import replaceReactComponentPropsWithoutRefType from "./replaceReactComponentPropsWithoutRefType";
 import replaceReactContext from "./replaceReactContext";
 import replaceReactCreateContext from "./replaceReactCreateContext";
 import replaceReactElementType from "./replaceReactElementType";
@@ -38,7 +39,11 @@ const reactObjectTransformers: Record<string, (node: Identifier) => void> = {
   Context: replaceReactContext,
   createContext: replaceReactCreateContext,
   ReactElement: replaceReactReactElement,
+
+  // replace types
   ElementType: replaceReactElementType,
+  ComponentPropsWithoutRef: replaceReactComponentPropsWithoutRefType,
+
   memo: replaceReactMemo,
   ReactNode: replaceReactNode,
   Ref: replaceReactRef,
