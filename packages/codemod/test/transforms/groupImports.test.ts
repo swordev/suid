@@ -43,6 +43,30 @@ describe("groupImports", () => {
       `)
     );
   });
+  it("groups different default imports and keep outer type import", () => {
+    expect(
+      t(`
+        import { a } from "a";
+        import type { b } from "a";
+      `)
+    ).toBe(
+      format(`
+        import { a, type b } from "a";
+      `)
+    );
+  });
+  it("groups different default imports and keep inner type import", () => {
+    expect(
+      t(`
+        import { a } from "a";
+        import { type b } from "a";
+      `)
+    ).toBe(
+      format(`
+        import { a, type b } from "a";
+      `)
+    );
+  });
   it("groups named imports and separates default import", () => {
     expect(
       t(`
@@ -53,6 +77,19 @@ describe("groupImports", () => {
       format(`
         import { x, z } from "a";
         import a from "a";
+      `)
+    );
+  });
+  it("keeps default type import", () => {
+    expect(
+      t(`
+        import { z } from "a";
+        import type a from "a";
+      `)
+    ).toBe(
+      format(`
+        import { z } from "a";
+        import type a from "a";
       `)
     );
   });

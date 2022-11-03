@@ -33,13 +33,28 @@ export default function groupImports(source: SourceFile) {
 
     for (const named of node.getNamedImports()) {
       grouped[name].withoutFrom = false;
-      add(grouped[name].named, named.getText());
+      if (node.isTypeOnly()) {
+        // import type { x } from "y"
+        add(grouped[name].named, "type " + named.getText());
+      }
+      else {
+        // import { x } from "y"
+        // import { type x } from "y"
+        add(grouped[name].named, named.getText());
+      }
     }
 
     const defaultImport = node.getDefaultImport();
     if (defaultImport) {
       grouped[name].withoutFrom = false;
-      add(grouped[name].defaults, defaultImport.getText());
+      if (node.isTypeOnly()) {
+        // import type x from "y"
+        add(grouped[name].defaults, "type " + defaultImport.getText());
+      }
+      else {
+        // import x from "y"
+        add(grouped[name].defaults, defaultImport.getText());
+      }
     }
 
     const namespaceImport = node.getNamespaceImport();
