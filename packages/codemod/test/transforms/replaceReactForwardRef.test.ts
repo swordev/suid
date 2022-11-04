@@ -58,9 +58,49 @@ describe("replaceReactForwardRef", () => {
       "import * as React from "react";
       import createRef from "@suid/system/createRef";
       type ComponentOptions = { name: string };
-      const Component = function Component(props) {
+      const Component = function Component(
+        props: ComponentOptions & { ref: HTMLDivElement }
+      ) {
         const ref = createRef(props);
       };
+      "
+    `);
+  });
+  it("sets type on identifier argument", () => {
+    expect(
+      t(`
+        import * as React from "react";
+        const ComponentInner = function Component(props, ref) {}
+        const Component = React.forwardRef<HTMLDivElement, ComponentOptions>(ComponentInner)
+      `)
+    ).toMatchInlineSnapshot(`
+      "import * as React from "react";
+      import type { JSX } from "solid-js";
+      const ComponentInner = function Component(props, ref) {};
+      const Component = ((fn) =>
+        fn as (props: ComponentOptions & { ref: HTMLDivElement }) => JSX.Element)(
+        ComponentInner
+      );
+      "
+    `);
+  });
+  it("sets type on identifier argument with type arguments", () => {
+    expect(
+      t(`
+        import * as React from "react";
+        type ComponentOptions = { name: string }
+        const ComponentInner = function Component(props, ref) {}
+        const Component = React.forwardRef<HTMLDivElement, ComponentOptions>(ComponentInner)
+      `)
+    ).toMatchInlineSnapshot(`
+      "import * as React from "react";
+      import type { JSX } from "solid-js";
+      type ComponentOptions = { name: string };
+      const ComponentInner = function Component(props, ref) {};
+      const Component = ((fn) =>
+        fn as (props: ComponentOptions & { ref: HTMLDivElement }) => JSX.Element)(
+        ComponentInner
+      );
       "
     `);
   });
