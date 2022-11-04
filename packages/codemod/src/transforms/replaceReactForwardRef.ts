@@ -36,5 +36,7 @@ export default function replaceReactForwardRef(node: Identifier) {
 
     addReplacePattern(node.getSourceFile(), emptyMagicKey, "");
     expr.replaceWithText(emptyMagicKey);
+
+    call.getTypeArguments().map(arg => call.removeTypeArgument(arg))
   }
 }
