@@ -289,7 +289,14 @@ function replaceObjectBinding(
     for (const object of objects) {
       renameObjectBinding(object, name);
     }
-    parent.replaceWithText(name);
+    const compilerNode = parent.compilerNode as any;
+    if (compilerNode.type) {
+      // keep type
+      parent.replaceWithText(`${name}: ${parent.getType().getText()}`);
+    }
+    else {
+      parent.replaceWithText(name);
+    }
   } else if (parent.getKind() === ts.SyntaxKind.VariableDeclaration) {
     const { sentences, solidNamedImports } = generateSentences(name, objects);
     if (solidNamedImports.length)

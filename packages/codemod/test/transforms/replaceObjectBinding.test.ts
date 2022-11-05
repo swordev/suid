@@ -161,7 +161,7 @@ describe("replaceObjectBinding", () => {
       `)
     ).toMatchInlineSnapshot(`
       "import * as React from "react";
-      function Expander(params) {
+      function Expander(params: { expanded: boolean }) {
         return <div>{params.expanded}</div>;
       }
       export const DefaultRenderer: Renderer = (params) => {
@@ -208,7 +208,7 @@ describe("replaceObjectBinding", () => {
         expanded: boolean;
       };
       type Renderer = (props: RendererProps) => JSX.Element;
-      function Expander(params) {
+      function Expander(params: { expanded: boolean }) {
         return <div>{params.expanded}</div>;
       }
       export const DefaultRenderer: Renderer = (params) => {
@@ -218,13 +218,30 @@ describe("replaceObjectBinding", () => {
         renderer?: Renderer;
         defaultExpanded?: true | Record<string, boolean>;
       };
-      export default function Explorer(params) {
+      export default function Explorer(params: ExplorerProps) {
         const [expanded, setExpanded] = React.useState(
           Boolean(params.defaultExpanded)
         );
         return params.renderer({
           expanded,
         });
+      }
+      "
+    `);
+  });
+  it("keeps type of params", () => {
+    expect(
+      t(`
+        function Component({ name }: { name: string }) {
+          return (
+            <Button name={name}/>
+          )
+        }
+      `)
+    // TODO(milahu): rename params to props
+    ).toMatchInlineSnapshot(`
+      "function Component(params: { name: string }) {
+        return <Button name={params.name} />;
       }
       "
     `);
