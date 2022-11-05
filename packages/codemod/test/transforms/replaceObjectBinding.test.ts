@@ -8,7 +8,10 @@ const t = (code: string) =>
   transform(code, [
     (source) => {
       findObjectBindingPatterns(source).forEach((node) =>
-        replaceObjectBinding(node, {})
+        replaceObjectBinding(
+          node
+          //{}
+        )
       );
     },
   ]);
@@ -95,11 +98,11 @@ describe("replaceObjectBinding", () => {
         }
       `)
     ).toMatchInlineSnapshot(`
-      "function Component(params_0) {
-        var x = f(params_0);
-        var x = f(params_0);
+      "function Component(params) {
+        var x = f(params);
+        var x = f(params);
         // TODO(milahu): sort names
-        var x = f({ name2: params_0.name2, name1: params_0.name1, ...params_0.rest });
+        var x = f({ name2: params.name2, name1: params.name1, ...params.rest });
       }
       "
     `);
@@ -164,6 +167,65 @@ describe("replaceObjectBinding", () => {
       export const DefaultRenderer: Renderer = (params) => {
         return <Expander expanded={params.expanded} />;
       };
+      "
+    `);
+  });
+  it("keeps object prop names in complex code", () => {
+    expect(
+      t(`
+        import * as React from 'react'
+        type RendererProps = {
+          expanded: boolean
+        }
+        type Renderer = (props: RendererProps) => JSX.Element
+        function Expander({ expanded }: { expanded: boolean }) {
+          return <div>{expanded}</div>
+        }
+        export const DefaultRenderer: Renderer = ({
+          expanded = false,
+        }) => {
+          return (
+            <Expander expanded={expanded} />
+          )
+        }
+        type ExplorerProps = Partial<RendererProps> & {
+          renderer?: Renderer
+          defaultExpanded?: true | Record<string, boolean>
+        }
+        export default function Explorer({
+          defaultExpanded,
+          renderer = DefaultRenderer,
+        }: ExplorerProps) {
+          const [expanded, setExpanded] = React.useState(Boolean(defaultExpanded))
+          return renderer({
+            expanded,
+          })
+        }
+      `)
+    ).toMatchInlineSnapshot(`
+      "import * as React from "react";
+      type RendererProps = {
+        expanded: boolean;
+      };
+      type Renderer = (props: RendererProps) => JSX.Element;
+      function Expander(params) {
+        return <div>{params.expanded}</div>;
+      }
+      export const DefaultRenderer: Renderer = (params) => {
+        return <Expander expanded={params.expanded} />;
+      };
+      type ExplorerProps = Partial<RendererProps> & {
+        renderer?: Renderer;
+        defaultExpanded?: true | Record<string, boolean>;
+      };
+      export default function Explorer(params) {
+        const [expanded, setExpanded] = React.useState(
+          Boolean(params.defaultExpanded)
+        );
+        return params.renderer({
+          expanded,
+        });
+      }
       "
     `);
   });

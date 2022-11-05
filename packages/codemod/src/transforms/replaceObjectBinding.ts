@@ -1,9 +1,9 @@
 import capitalize from "../utils/capitalize";
-//import checkNodeScope, { NodeScope } from "../utils/checkNodeScope";
-import { NodeScope } from "../utils/checkNodeScope";
+import checkNodeScope, { NodeScope } from "../utils/checkNodeScope";
 import isStaticValue from "../utils/isStaticValue";
 import renameIdentifiers from "../utils/renameIdentifiers";
 import hasAncestorType from "../utils/hasAncestorType";
+import forEachLocalReference from "../utils/forEachLocalReference";
 
 import {
   Identifier,
@@ -37,23 +37,24 @@ function renameObjectBinding(object: ObjectBindingJson, varName: string) {
       ? `${varName}[${object.nameNode.getText()}]`
       : `${varName}.${object.nameNode.getText()}`;
     const excludeSelf = true;
-
-    for (const ref of node.findReferencesAsNodes()) {
-      if (excludeSelf && node === ref) continue;
-      if (hasAncestorType(ref)) continue;
+    forEachLocalReference(node, ref => {
+      if (excludeSelf && node === ref) return;
+      if (hasAncestorType(ref)) return;
       const parent = ref.getParent();
-      // keep JSX attribute names
       if (
         parent &&
-        parent.isKind(ts.SyntaxKind.JsxAttribute) &&
+        (
+          parent.isKind(ts.SyntaxKind.PropertyAssignment) ||
+          parent.isKind(ts.SyntaxKind.JsxAttribute)
+        ) &&
         parent.getNameNode() == ref
-      ) continue;
+      ) return;
       if (Node.isShorthandPropertyAssignment(parent)) {
         parent.replaceWithText(`${node.getText()}: ${name}`);
       } else if (Node.isIdentifier(ref)) {
         ref.replaceWithText(name);
       }
-    }
+    });
   }
 }
 
@@ -247,7 +248,8 @@ function generateSentences(name: string, objects: ObjectBindingJson[]) {
 function replaceObjectBinding(
   node: ObjectBindingPattern,
   options: ReplaceObjectBindingOptions = {
-    scopes: ["component-top-level", "jsx"],
+    //scopes: ["component-top-level", "jsx"],
+    scopes: [],
   }
 ) {
   if (node.wasForgotten()) return;
