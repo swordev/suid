@@ -13,6 +13,7 @@ import replaceReactClassNameAttr from "./replaceReactClassNameAttr";
 import replaceReactComponentPropsWithoutRefType from "./replaceReactComponentPropsWithoutRefType";
 import replaceReactContext from "./replaceReactContext";
 import replaceReactCreateContext from "./replaceReactCreateContext";
+import replaceReactCreateElement from "./replaceReactCreateElement";
 import replaceReactCSSPropertiesType from "./replaceReactCSSPropertiesType";
 import replaceReactElementType from "./replaceReactElementType";
 import replaceReactEventHandlers from "./replaceReactEventHandlers";
@@ -39,6 +40,7 @@ const reactObjectTransformers: Record<string, (node: Identifier) => void> = {
   Fragment: replaceReactFragment,
   Context: replaceReactContext,
   createContext: replaceReactCreateContext,
+  createElement: replaceReactCreateElement,
   ReactElement: replaceReactReactElement,
 
   // replace types
