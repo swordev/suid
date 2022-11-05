@@ -16,6 +16,10 @@ export default function renameNode(
     | {
         namedImport: string;
       }
+    |
+      {
+        defaultImport: string;
+      }
   ),
   parentExpr?: boolean,
 ) {
@@ -31,6 +35,8 @@ export default function renameNode(
       expr.replaceWithText(`${importDeclaration.namespaceNamedImport}.${text}`);
     } else if ("namedImport" in importDeclaration) {
       expr.replaceWithText(`${text}`);
+    } else if ("defaultImport" in importDeclaration) {
+      expr.replaceWithText(`${text}`);
     }
 
     node.getSourceFile().addImportDeclaration({
@@ -43,6 +49,9 @@ export default function renameNode(
       }),
       ...("namedImport" in importDeclaration && {
         namedImports: [importDeclaration.namedImport],
+      }),
+      ...("defaultImport" in importDeclaration && {
+        defaultImport: importDeclaration.defaultImport,
       }),
     });
   } else {

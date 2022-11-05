@@ -16,6 +16,10 @@ export default function renameParentExpr(
     | {
         namedImport: string;
       }
+    |
+      {
+        defaultImport: string;
+      }
   )
 ) {
   renameNode(
