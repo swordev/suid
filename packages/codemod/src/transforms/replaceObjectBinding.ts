@@ -289,13 +289,62 @@ function replaceObjectBinding(
     for (const object of objects) {
       renameObjectBinding(object, name);
     }
+
+    // keep default values of props
+    // https://www.solidjs.com/tutorial/props_defaults
+    // TODO(milahu): refactor with generateSentences
+    const defaultsObjects = objects.filter((o) => o.defaults && !o.destruct);
+    const hasDefaults = defaultsObjects.length > 0;
+    const newPropsName = (
+      hasDefaults ? (
+        createSafeVarName(`raw${capitalize(name)}`)
+        .replaceAll(".", "_")
+        .replaceAll("?", "")
+      ) :
+      name
+    )
+    if (hasDefaults) {
+      const defaultsObject = defaultsObjects.reduce((result, o) => {
+        if (o.defaults && isStaticValue(o.defaults)) {
+          result += `${o.name}: ${o.defaults?.getText()},\n`;
+        } else {
+          result += `get ${o.name}() { return ${o.defaults?.getText()}; }\n`;
+        }
+        return result;
+      }, "");
+      const defaultsObjectJson = `{\n${defaultsObject}}`;
+      const solidNamedImports = [];
+      solidNamedImports.push("mergeProps");
+      parent.getSourceFile().addImportDeclaration({
+        moduleSpecifier: "solid-js",
+        namedImports: solidNamedImports,
+      });
+      const sentences = [];
+      sentences.push(
+        `const ${name} = mergeProps(${defaultsObjectJson}, ${newPropsName});\n`
+      );
+      // parent: Parameter
+      const func = parent.getParent();
+      if (
+        func.isKind(ts.SyntaxKind.FunctionDeclaration)
+        // TODO(milahu): more
+      ) {
+        const body = func.getBody();
+        if (body?.isKind(ts.SyntaxKind.Block)) {
+          //body.addStatements()
+          body.insertStatements(0, sentences.join("\n\n"))
+        }
+        // TODO(milahu): else
+      }
+    }
+
     const compilerNode = parent.compilerNode as any;
     if (compilerNode.type) {
       // keep type
-      parent.replaceWithText(`${name}: ${parent.getType().getText()}`);
+      parent.replaceWithText(`${newPropsName}: ${parent.getType().getText()}`);
     }
     else {
-      parent.replaceWithText(name);
+      parent.replaceWithText(newPropsName);
     }
   } else if (parent.getKind() === ts.SyntaxKind.VariableDeclaration) {
     const { sentences, solidNamedImports } = generateSentences(name, objects);
