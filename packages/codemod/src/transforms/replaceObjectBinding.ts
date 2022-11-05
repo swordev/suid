@@ -1,11 +1,15 @@
 import capitalize from "../utils/capitalize";
-import checkNodeScope, { NodeScope } from "../utils/checkNodeScope";
+//import checkNodeScope, { NodeScope } from "../utils/checkNodeScope";
+import { NodeScope } from "../utils/checkNodeScope";
 import isStaticValue from "../utils/isStaticValue";
 import renameIdentifiers from "../utils/renameIdentifiers";
+import hasAncestorType from "../utils/hasAncestorType";
+
 import {
   Identifier,
   Node,
   ObjectBindingPattern,
+  ObjectLiteralExpression,
   StringLiteral,
   ts,
 } from "ts-morph";
@@ -32,6 +36,48 @@ function renameObjectBinding(object: ObjectBindingJson, varName: string) {
         ? `${varName}[${object.nameNode.getText()}]`
         : `${varName}.${object.nameNode.getText()}`
     );
+}
+
+/**
+ * replace semantically identical parent2: ObjectLiteralExpression
+ * based on renameObjectBinding, renameIdentifiers
+ */
+function replaceObjectLiterals(object: ObjectBindingJson, name: string, nodeTextNormal: string) {
+  if (object.nameNode.isKind(ts.SyntaxKind.Identifier)) {
+    for (const ref of object.nameNode.findReferencesAsNodes()) {
+      //if (excludeSelf && object.nameNode === ref) continue;
+      if (hasAncestorType(ref))
+        continue;
+      const parent = ref.getParent();
+      if (parent) {
+        const parent2 = parent.getParent();
+        if (parent2) {
+          if (parent2.isKind(ts.SyntaxKind.ObjectLiteralExpression)) {
+            // check semantic identity with node: ObjectBindingPattern
+            const parent2TextNormal = normalizeObjectLiteral(parent2);
+            if (parent2TextNormal == nodeTextNormal) {
+              parent2.replaceWithText(name);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// TODO(milahu): sort names
+function normalizeObjectBinding(node: ObjectBindingPattern) {
+  return node.getText().replace(/\s+/g, " ");
+}
+
+// TODO(milahu): sort names
+// note: when we replace an ObjectLiteral with an object-Identifier
+// and the object has a different order of names than the ObjectLiteral,
+// then this is a destructive/lossy transformation,
+// because in javascript, object keys are sorted,
+// so Object.keys(object) would give a different result.
+function normalizeObjectLiteral(node: ObjectLiteralExpression) {
+  return node.getText().replace(/\s+/g, " ");
 }
 
 function toJson(node: ObjectBindingPattern) {
@@ -185,9 +231,10 @@ function replaceObjectBinding(
     scopes: ["component-top-level", "jsx"],
   }
 ) {
-  if (node.wasForgotten() || !checkNodeScope(node, options.scopes)) return;
+  if (node.wasForgotten()) return;
+  //if (!checkNodeScope(node, options.scopes)) return;
   const parent = node.getParent();
-
+  const nodeTextNormal = normalizeObjectBinding(node)
   let name!: string;
   const objects = toJson(node);
 
@@ -215,6 +262,9 @@ function replaceObjectBinding(
 
   // Partial support
   if (parent.getKind() === ts.SyntaxKind.Parameter) {
+    for (const object of objects) {
+      replaceObjectLiterals(object, name, nodeTextNormal);
+    }
     for (const object of objects) {
       renameObjectBinding(object, name);
     }

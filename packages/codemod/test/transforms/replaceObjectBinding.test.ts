@@ -80,4 +80,28 @@ describe("replaceObjectBinding", () => {
       `)
     );
   });
+  it("replaces semantically identical references to params", () => {
+    expect(
+      t(`
+        function Component({ name1, name2, ...rest }) {
+          var x = f({ name1, name2, ...rest });
+          var x = f({
+            name1,
+            name2,
+            ...rest
+          });
+          // TODO(milahu): sort names
+          var x = f({ name2, name1, ...rest });
+        }
+      `)
+    ).toMatchInlineSnapshot(`
+      "function Component(params_0) {
+        var x = f(params_0);
+        var x = f(params_0);
+        // TODO(milahu): sort names
+        var x = f({ name2: params_0.name2, name1: params_0.name1, ...params_0.rest });
+      }
+      "
+    `);
+  });
 });
