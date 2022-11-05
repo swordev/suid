@@ -104,4 +104,67 @@ describe("replaceObjectBinding", () => {
       "
     `);
   });
+  it("keeps JSX attribute names", () => {
+    expect(
+      t(`
+        function Component({ name, ...rest }) {
+          return (
+            <Button name={name} rest={rest}/>
+          )
+        }
+      `)
+    ).toMatchInlineSnapshot(`
+      "function Component(params) {
+        return <Button name={params.name} rest={params.rest} />;
+      }
+      "
+    `);
+  });
+  it("keeps JSX attribute names with default value", () => {
+    expect(
+      t(`
+        function Component({
+          name = "default",
+          name2,
+        }) {
+          return (
+            <Button name={name} name2={name2}/>
+          )
+        }
+      `)
+    ).toMatchInlineSnapshot(`
+      "function Component(params) {
+        return <Button name={params.name} name2={params.name2} />;
+      }
+      "
+    `);
+  });
+  it("keeps JSX attribute names in complex code", () => {
+    expect(
+      t(`
+        import * as React from 'react'
+
+        function Expander({ expanded }: { expanded: boolean }) {
+          return <div>{expanded}</div>
+        }
+
+        export const DefaultRenderer: Renderer = ({
+          expanded = false,
+        }) => {
+          return (
+            <Expander expanded={expanded} />
+          )
+        }
+      `)
+    ).toMatchInlineSnapshot(`
+      "import * as React from "react";
+      function Expander(params) {
+        return <div>{params.expanded}</div>;
+      }
+      export const DefaultRenderer: Renderer = (params) => {
+        return <Expander expanded={params.expanded} />;
+      };
+      "
+    `);
+  });
 });

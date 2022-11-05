@@ -30,12 +30,31 @@ type ObjectBindingJson = {
 function renameObjectBinding(object: ObjectBindingJson, varName: string) {
   const nameNode = object.rename || object.nameNode;
   if (Node.isIdentifier(nameNode))
-    renameIdentifiers(
-      nameNode,
-      Node.isStringLiteral(object.nameNode)
-        ? `${varName}[${object.nameNode.getText()}]`
-        : `${varName}.${object.nameNode.getText()}`
-    );
+  {
+    // based on renameIdentifiers
+    const node = nameNode;
+    const name = Node.isStringLiteral(object.nameNode)
+      ? `${varName}[${object.nameNode.getText()}]`
+      : `${varName}.${object.nameNode.getText()}`;
+    const excludeSelf = true;
+
+    for (const ref of node.findReferencesAsNodes()) {
+      if (excludeSelf && node === ref) continue;
+      if (hasAncestorType(ref)) continue;
+      const parent = ref.getParent();
+      // keep JSX attribute names
+      if (
+        parent &&
+        parent.isKind(ts.SyntaxKind.JsxAttribute) &&
+        parent.getNameNode() == ref
+      ) continue;
+      if (Node.isShorthandPropertyAssignment(parent)) {
+        parent.replaceWithText(`${node.getText()}: ${name}`);
+      } else if (Node.isIdentifier(ref)) {
+        ref.replaceWithText(name);
+      }
+    }
+  }
 }
 
 /**
