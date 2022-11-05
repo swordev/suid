@@ -19,7 +19,13 @@ export default function replaceReactForwardRef(node: Identifier) {
         if (paramIndex === 0) {
           propsName = param.getText();
           if (typeArgs[1]) {
-            param.setType(`${typeArgs[1].getText()} & { ref: ${typeArgs[0].getText()} }`)
+            // FIXME workaround for bug in ts-morph
+            // dont set type on ObjectBindingPattern
+            // https://github.com/dsherret/ts-morph/issues/1350
+            // InvalidOperationError: A child of the kind Identifier was expected.
+            if (!param.getNameNode().isKind(ts.SyntaxKind.ObjectBindingPattern)) {
+              param.setType(`${typeArgs[1].getText()} & { ref: ${typeArgs[0].getText()} }`)
+            }
           }
         } else if (paramIndex === 1) {
           refName = param.getText();

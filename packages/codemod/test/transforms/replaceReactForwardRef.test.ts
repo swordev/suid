@@ -104,4 +104,28 @@ describe("replaceReactForwardRef", () => {
       "
     `);
   });
+  it("sets type on non-identifier parameter", () => {
+    expect(
+      t(`
+        import * as React from "react";
+        type ComponentOptions = { name: string }
+        const ComponentInner = 
+        const Component = React.forwardRef<HTMLDivElement, ComponentOptions>(
+          function Component({ style, ...rest }, ref) {}
+        )
+      `)
+    ).toMatchInlineSnapshot(`
+      "import * as React from "react";
+      import createRef from "@suid/system/createRef";
+
+      type ComponentOptions = { name: string }
+      const ComponentInner = 
+              const Component = (
+          function Component({ style, ...rest }) {
+              const ref = createRef({ style, ...rest });
+          }
+      )
+      "
+    `);
+  });
 });
