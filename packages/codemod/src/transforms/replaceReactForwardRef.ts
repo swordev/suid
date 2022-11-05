@@ -7,7 +7,13 @@ export default function replaceReactForwardRef(node: Identifier) {
   const call = node.getFirstAncestorByKindOrThrow(ts.SyntaxKind.CallExpression);
   if (call) {
     const expr = call.getExpression();
-    const [func] = call.getArguments();
+    const callArgs = call.getArguments();
+    const [func] = callArgs;
+    // remove dangling comma after func argument
+    if (callArgs.length == 1) {
+      const danglingComma = func.getNextSiblingIfKind(ts.SyntaxKind.CommaToken);
+      danglingComma?.replaceWithText("");
+    }
     const typeArgs = call.getTypeArguments();
     let removeExpr = true;
     if (Node.isFunctionExpression(func) || Node.isArrowFunction(func)) {

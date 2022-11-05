@@ -109,7 +109,6 @@ describe("replaceReactForwardRef", () => {
       t(`
         import * as React from "react";
         type ComponentOptions = { name: string }
-        const ComponentInner = 
         const Component = React.forwardRef<HTMLDivElement, ComponentOptions>(
           function Component({ style, ...rest }, ref) {}
         )
@@ -117,14 +116,33 @@ describe("replaceReactForwardRef", () => {
     ).toMatchInlineSnapshot(`
       "import * as React from "react";
       import createRef from "@suid/system/createRef";
-
-      type ComponentOptions = { name: string }
-      const ComponentInner = 
-              const Component = (
-          function Component({ style, ...rest }) {
-              const ref = createRef({ style, ...rest });
-          }
-      )
+      type ComponentOptions = { name: string };
+      const Component = function Component({ style, ...rest }) {
+        const ref = createRef({ style, ...rest });
+      };
+      "
+    `);
+  });
+  it("remove dangling comma after func argument", () => {
+    expect(
+      t(`
+        import * as React from "react";
+        function getComponent() {
+          return (
+            React.forwardRef(
+              function Component({ style, ...rest }, ref) {},
+            )
+          )
+        }
+      `)
+    ).toMatchInlineSnapshot(`
+      "import * as React from "react";
+      import createRef from "@suid/system/createRef";
+      function getComponent() {
+        return function Component({ style, ...rest }) {
+          const ref = createRef({ style, ...rest });
+        };
+      }
       "
     `);
   });
