@@ -137,7 +137,7 @@ const SkeletonRoot = styled("span", {
       "&::after": {
         animation: "wave-animation-$id 1.6s linear 0.5s infinite",
         background: `linear-gradient(90deg, transparent, ${theme.palette.action.hover}, transparent)`,
-        content: "",
+        content: '""',
         position: "absolute",
         // Avoid flash during server-side hydration
         transform: "translateX(-100%)",
