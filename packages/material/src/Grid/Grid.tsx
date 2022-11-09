@@ -406,7 +406,7 @@ const Grid = $.component(function Grid({
 }) {
   otherProps = extendSxProp(otherProps);
 
-  const rootElement = () => (
+  const RootElement = () => (
     <GridRoot
       ownerState={allProps}
       class={clsx(classes.root, otherProps.class)}
@@ -417,9 +417,9 @@ const Grid = $.component(function Grid({
   );
 
   return (
-    <Show when={props.columns !== 12} fallback={rootElement}>
+    <Show when={props.columns !== 12} fallback={<RootElement />}>
       <GridContext.Provider value={props.columns}>
-        {rootElement}
+        <RootElement />
       </GridContext.Provider>
     </Show>
   );
