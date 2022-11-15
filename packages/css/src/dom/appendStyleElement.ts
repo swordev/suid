@@ -1,6 +1,6 @@
-import createStyleElement from "./createStyleElement";
-import registerStyleElementUsage from "./registerStyleElementUsage";
-import setStyleElementText from "./setStyleElementText";
+import createStyleElement from './createStyleElement'
+import registerStyleElementUsage from './registerStyleElementUsage'
+import setStyleElementText from './setStyleElementText'
 
 function appendStyleElement(
   css: string | string[],
@@ -18,7 +18,8 @@ function appendStyleElement(
     if (prevElement) prevElement.remove();
     const element = createStyleElement(css, attributes);
     registerStyleElementUsage(element);
-    head.appendChild(element);
+    const firstStyleElement = head.querySelector('style')
+    head.insertBefore(element, firstStyleElement)
     return element;
   }
 }
