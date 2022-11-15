@@ -156,8 +156,8 @@ const Modal = $.defineComponent(function Modal(inProps) {
           return mergeProps(
             () => baseProps.componentsProps.root || {},
             () =>
-              !baseProps.components.Root ||
-              (!isHostComponent(baseProps.components.Root) && {
+              ((!baseProps.components.Root ||
+                !isHostComponent(baseProps.components.Root)) && {
                 get ownerState() {
                   return (
                     (baseProps.componentsProps.root as any)?.ownerState || {}
