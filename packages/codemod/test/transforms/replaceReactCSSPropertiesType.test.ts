@@ -1,6 +1,7 @@
 import findReactObjects from "../../src/navigations/findReactObjects";
 import replaceReactCSSPropertiesType from "../../src/transforms/replaceReactCSSPropertiesType";
 import transform from "../transform";
+import { describe, expect, it } from "../vitest";
 
 const t = (code: string) =>
   transform(code, [
@@ -18,10 +19,9 @@ describe("replaceReactCSSPropertiesType", () => {
         type a = React.CSSProperties
       `)
     ).toMatchInlineSnapshot(`
-      "import React from "react";
+      import React from "react";
       import type * as CSS from "csstype";
       type a = CSS.Properties;
-      "
     `);
   });
 });

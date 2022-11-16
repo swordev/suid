@@ -2,7 +2,7 @@ import findObjectBindingPatterns from "../../src/navigations/findObjectBindingPa
 import replaceObjectBinding from "../../src/transforms/replaceObjectBinding";
 import format from "../format";
 import transform from "../transform";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it } from "../vitest";
 
 const t = (code: string) =>
   transform(code, [
@@ -98,13 +98,12 @@ describe("replaceObjectBinding", () => {
         }
       `)
     ).toMatchInlineSnapshot(`
-      "function Component(params) {
+      function Component(params) {
         var x = f(params);
         var x = f(params);
         // TODO(milahu): sort names
         var x = f({ name2: params.name2, name1: params.name1, ...params.rest });
       }
-      "
     `);
   });
   it("keeps JSX attribute names", () => {
@@ -117,10 +116,9 @@ describe("replaceObjectBinding", () => {
         }
       `)
     ).toMatchInlineSnapshot(`
-      "function Component(params) {
+      function Component(params) {
         return <Button name={params.name} rest={params.rest} />;
       }
-      "
     `);
   });
   it("keeps JSX attribute names with default value", () => {
@@ -136,7 +134,7 @@ describe("replaceObjectBinding", () => {
         }
       `)
     ).toMatchInlineSnapshot(`
-      "import { mergeProps } from "solid-js";
+      import { mergeProps } from "solid-js";
       function Component(rawParams) {
         const params = mergeProps(
           {
@@ -146,7 +144,6 @@ describe("replaceObjectBinding", () => {
         );
         return <Button name={params.name} name2={params.name2} />;
       }
-      "
     `);
   });
   it("keeps JSX attribute names in complex code", () => {
@@ -167,7 +164,7 @@ describe("replaceObjectBinding", () => {
         }
       `)
     ).toMatchInlineSnapshot(`
-      "import * as React from "react";
+      import * as React from "react";
       import { mergeProps } from "solid-js";
       function Expander(params: { expanded: boolean }) {
         return <div>{params.expanded}</div>;
@@ -175,7 +172,6 @@ describe("replaceObjectBinding", () => {
       export const DefaultRenderer: Renderer = (rawParams) => {
         return <Expander expanded={params.expanded} />;
       };
-      "
     `);
   });
   it("keeps object prop names in complex code", () => {
@@ -211,7 +207,7 @@ describe("replaceObjectBinding", () => {
         }
       `)
     ).toMatchInlineSnapshot(`
-      "import * as React from "react";
+      import * as React from "react";
       import { mergeProps } from "solid-js";
       import { mergeProps } from "solid-js";
       type RendererProps = {
@@ -242,7 +238,6 @@ describe("replaceObjectBinding", () => {
           expanded,
         });
       }
-      "
     `);
   });
   it("keeps type of params", () => {
@@ -256,10 +251,9 @@ describe("replaceObjectBinding", () => {
       `)
       // TODO(milahu): rename params to props
     ).toMatchInlineSnapshot(`
-      "function Component(params: { name: string }) {
+      function Component(params: { name: string }) {
         return <Button name={params.name} />;
       }
-      "
     `);
   });
   it("keep default values of props", () => {
@@ -282,7 +276,7 @@ describe("replaceObjectBinding", () => {
         }
       `)
     ).toMatchInlineSnapshot(`
-      "import { mergeProps } from "solid-js";
+      import { mergeProps } from "solid-js";
       function Component(rawParams: ComponentOptions): React.ReactElement | null {
         const params = mergeProps(
           {
@@ -301,7 +295,6 @@ describe("replaceObjectBinding", () => {
           </div>
         );
       }
-      "
     `);
   });
   /* FIXME(milahu): insertStatements
@@ -317,11 +310,10 @@ describe("replaceObjectBinding", () => {
         }
       `)
     ).toMatchInlineSnapshot(`
-      "import { mergeProps } from "solid-js";
+      import { mergeProps } from "solid-js";
       const Component = function Component(rawParams) {
         return <div>{params.name}</div>;
       };
-      "
     `);
   });
   it("keep default values of props in ArrowFunction with Expression body", () => {
@@ -334,9 +326,8 @@ describe("replaceObjectBinding", () => {
         )
       `)
     ).toMatchInlineSnapshot(`
-      "import { mergeProps } from "solid-js";
+      import { mergeProps } from "solid-js";
       const Component = (rawParams) => <div>{params.name}</div>;
-      "
     `);
   });
   it("keep default values of props in ArrowFunction with Block body", () => {
@@ -349,11 +340,10 @@ describe("replaceObjectBinding", () => {
         }
       `)
     ).toMatchInlineSnapshot(`
-      "import { mergeProps } from "solid-js";
+      import { mergeProps } from "solid-js";
       const Component = (rawParams) => {
         return <div>{params.name}</div>;
       };
-      "
     `);
   });
   */

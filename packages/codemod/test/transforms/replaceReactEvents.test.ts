@@ -3,6 +3,7 @@ import replaceReactEvents, {
   nativeEvents,
 } from "../../src/transforms/replaceReactEvents";
 import transform from "../transform";
+import { describe, expect, it } from "../vitest";
 
 const t = (code: string) =>
   transform(code, [
@@ -21,13 +22,12 @@ describe("replaceReactEvents", () => {
         type b = React.MouseEvent<HTMLParagraphElement, MouseEvent>
       `)
     ).toMatchInlineSnapshot(`
-      "import React from "react";
+      import React from "react";
       type a = MouseEventOn<HTMLDivElement>;
       type b = MouseEventOn<HTMLParagraphElement>;
       interface MouseEventOn<T extends EventTarget> extends MouseEvent {
         readonly target: T;
       }
-      "
     `);
   });
   it("replaces React.TouchEvent<T, E>", () => {
@@ -38,13 +38,12 @@ describe("replaceReactEvents", () => {
         type b = React.TouchEvent<HTMLParagraphElement, TouchEvent>
       `)
     ).toMatchInlineSnapshot(`
-      "import React from "react";
+      import React from "react";
       type a = TouchEventOn<HTMLDivElement>;
       type b = TouchEventOn<HTMLParagraphElement>;
       interface TouchEventOn<T extends EventTarget> extends TouchEvent {
         readonly target: T;
       }
-      "
     `);
   });
   it("replaces React.KeyboardEvent<T, E>", () => {
@@ -55,13 +54,12 @@ describe("replaceReactEvents", () => {
         type b = React.KeyboardEvent<HTMLParagraphElement, KeyboardEvent>
       `)
     ).toMatchInlineSnapshot(`
-      "import React from "react";
+      import React from "react";
       type a = KeyboardEventOn<HTMLDivElement>;
       type b = KeyboardEventOn<HTMLParagraphElement>;
       interface KeyboardEventOn<T extends EventTarget> extends KeyboardEvent {
         readonly target: T;
       }
-      "
     `);
   });
 });

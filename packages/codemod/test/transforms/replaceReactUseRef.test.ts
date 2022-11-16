@@ -3,6 +3,7 @@ import findReactObjects from "../../src/navigations/findReactObjects";
 import replaceReactUseRef from "../../src/transforms/replaceReactUseRef";
 import format from "../format";
 import transform from "../transform";
+import { describe, expect, it } from "../vitest";
 
 const t = (code: string) =>
   transform(code, [
@@ -56,7 +57,7 @@ describe("replaceReactUseRef", () => {
         }
       `)
     ).toMatchInlineSnapshot(`
-      "import React from "react";
+      import React from "react";
       var topLevelRef = 0;
       var topLevelNoRef1 = 1;
       var topLevelRef2 = "2";
@@ -89,7 +90,6 @@ describe("replaceReactUseRef", () => {
           </div>
         );
       }
-      "
     `);
   });
 });

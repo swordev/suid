@@ -1,6 +1,7 @@
 import findReactObjects from "../../src/navigations/findReactObjects";
 import replaceReactComponentPropsWithoutRefType from "../../src/transforms/replaceReactComponentPropsWithoutRefType";
 import transform from "../transform";
+import { describe, expect, it } from "../vitest";
 
 const t = (code: string) =>
   transform(code, [
@@ -19,12 +20,11 @@ describe("replaceReactComponentPropsWithoutRefType", () => {
         type b = React.ComponentPropsWithoutRef<"input">
       `)
     ).toMatchInlineSnapshot(`
-      "import React from "react";
+      import React from "react";
       import type { JSX } from "solid-js";
       import type { JSX } from "solid-js";
       type a = JSX.IntrinsicElements["div"];
       type b = JSX.IntrinsicElements["input"];
-      "
     `);
   });
   it("works with import type React", () => {
@@ -35,12 +35,11 @@ describe("replaceReactComponentPropsWithoutRefType", () => {
         type b = React.ComponentPropsWithoutRef<"input">
       `)
     ).toMatchInlineSnapshot(`
-      "import type React from "react";
+      import type React from "react";
       import type { JSX } from "solid-js";
       import type { JSX } from "solid-js";
       type a = JSX.IntrinsicElements["div"];
       type b = JSX.IntrinsicElements["input"];
-      "
     `);
   });
   it("works with import type ComponentPropsWithoutRef", () => {
@@ -51,12 +50,11 @@ describe("replaceReactComponentPropsWithoutRefType", () => {
         type b = ComponentPropsWithoutRef<"input">
       `)
     ).toMatchInlineSnapshot(`
-      "import type { ComponentPropsWithoutRef } from "react";
+      import type { ComponentPropsWithoutRef } from "react";
       import type { JSX } from "solid-js";
       import type { JSX } from "solid-js";
       type a = JSX.IntrinsicElements["div"];
       type b = JSX.IntrinsicElements["input"];
-      "
     `);
   });
 });
