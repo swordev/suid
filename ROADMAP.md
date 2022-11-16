@@ -118,7 +118,7 @@
 | ListItemText            |  ✅   |
 | ListSubheader           |  ✅   |
 | Menu                    |  ⏳   |
-| MenuItem                |  ⏳   |
+| MenuItem                |  ✅   |
 | MenuList                |  ⏳   |
 | MobileStepper           |       |
 | Modal                   |  ✅   |
