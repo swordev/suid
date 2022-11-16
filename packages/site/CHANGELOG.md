@@ -1,5 +1,21 @@
 # @suid/site
 
+## 0.6.0-next.1
+
+### Minor Changes
+
+- [`fe655f75`](https://github.com/swordev/suid/commit/fe655f75d97ee8d9ab2ed77440d483489d64f915) Thanks [@juanrgm](https://github.com/juanrgm)! - Update to SolidJS v1.6
+
+### Patch Changes
+
+- Updated dependencies [[`687898ac`](https://github.com/swordev/suid/commit/687898ac4b81c60b4b07c169a2ec090dc68e09e5), [`a8edd3da`](https://github.com/swordev/suid/commit/a8edd3da5a5632b8213834c5f8a6c3baaf7418fd), [`96cd89cb`](https://github.com/swordev/suid/commit/96cd89cb401aa2148d08a82f03ba8ece7b757b0b), [`fe655f75`](https://github.com/swordev/suid/commit/fe655f75d97ee8d9ab2ed77440d483489d64f915), [`cf4d1e4c`](https://github.com/swordev/suid/commit/cf4d1e4c168c0c8fd96bbfc71cacbd5f6777b5fb), [`8e895d7a`](https://github.com/swordev/suid/commit/8e895d7a6fb0240036bae078269de923e2fc975e)]:
+  - @suid/material@0.7.0-next.1
+  - @suid/base@0.4.0-next.1
+  - @suid/icons-material@0.5.0-next.1
+  - @suid/system@0.6.0-next.1
+  - @suid/types@0.3.0-next.0
+  - @suid/utils@0.6.0-next.1
+
 ## 0.6.0-next.0
 
 ### Minor Changes

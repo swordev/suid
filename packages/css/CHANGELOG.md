@@ -1,5 +1,12 @@
 # @suid/css
 
+## 0.1.7-next.1
+
+### Patch Changes
+
+- Updated dependencies [[`fe655f75`](https://github.com/swordev/suid/commit/fe655f75d97ee8d9ab2ed77440d483489d64f915)]:
+  - @suid/utils@0.6.0-next.1
+
 ## 0.1.7-next.0
 
 ### Patch Changes
