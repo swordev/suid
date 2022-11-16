@@ -1,5 +1,16 @@
 # @suid/utils
 
+## 0.6.0-next.1
+
+### Minor Changes
+
+- [`fe655f75`](https://github.com/swordev/suid/commit/fe655f75d97ee8d9ab2ed77440d483489d64f915) Thanks [@juanrgm](https://github.com/juanrgm)! - Update to SolidJS v1.6
+
+### Patch Changes
+
+- Updated dependencies [[`fe655f75`](https://github.com/swordev/suid/commit/fe655f75d97ee8d9ab2ed77440d483489d64f915)]:
+  - @suid/types@0.3.0-next.0
+
 ## 0.6.0-next.0
 
 ### Minor Changes

@@ -17,16 +17,22 @@
     "@suid/scripts": "0.0.0"
   },
   "changesets": [
+    "bright-stingrays-watch",
     "chilled-planets-yell",
     "chilly-cougars-smoke",
     "cyan-needles-double",
+    "flat-flies-relax",
+    "flat-forks-build",
     "gentle-foxes-grow",
     "gold-singers-agree",
     "healthy-trains-push",
     "healthy-waves-compare",
     "large-hornets-chew",
+    "late-rice-flash",
     "light-apes-buy",
     "moody-beds-invent",
+    "sixty-needles-yell",
+    "strange-gorillas-taste",
     "twenty-lemons-change"
   ]
 }
