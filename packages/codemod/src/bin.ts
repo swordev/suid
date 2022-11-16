@@ -10,9 +10,9 @@ import { dirname } from "path";
 import { fileURLToPath } from "url";
 
 const rootPath = fileURLToPath(
-  import.meta.url.endsWith(".ts")
-    ? dirname(dirname(import.meta.url))
-    : dirname(import.meta.url)
+  import.meta.url.endsWith("src/bin.ts") ? dirname(dirname(import.meta.url)) :
+  import.meta.url.endsWith("src/bin.js") ? dirname(dirname(import.meta.url)) :
+  dirname(import.meta.url) // bin.js
 );
 
 const pkgJson = readFileSync(`${rootPath}/package.json`).toString();
