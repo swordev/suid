@@ -396,18 +396,18 @@ const Popover = $.defineComponent(function Popover(inProps) {
   );
 
   const transitionDuration = () => {
-    let transitionDuration: undefined | typeof props.transitionDuration =
-      props.transitionDuration;
+    let transitionDuration: undefined | typeof baseProps.transitionDuration =
+      baseProps.transitionDuration;
 
     if (
-      props.transitionDuration === "auto" &&
-      !(props.TransitionComponent as any).muiSupportAuto
+      baseProps.transitionDuration === "auto" &&
+      !(baseProps.TransitionComponent as any).muiSupportAuto
     ) {
       transitionDuration = undefined;
     }
     return transitionDuration as
       | undefined
-      | Exclude<typeof props.transitionDuration, "auto">;
+      | Exclude<typeof baseProps.transitionDuration, "auto">;
   };
 
   // If the container prop is provided, use that
