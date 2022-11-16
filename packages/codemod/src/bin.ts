@@ -1,4 +1,4 @@
-#!/usr/bin/env -S node --no-warnings --experimental-specifier-resolution=node
+#!/usr/bin/env node
 import fixEsm from "./actions/fixEsm";
 import mui2suid from "./actions/mui2suid";
 import react2solid from "./actions/react2solid";
