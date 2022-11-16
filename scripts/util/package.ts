@@ -1,4 +1,4 @@
-import { readOptions } from "./prettier";
+import { readOptions } from "./prettier.js";
 import { readFile, writeFile } from "fs/promises";
 import { format } from "prettier";
 

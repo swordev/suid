@@ -1,5 +1,5 @@
-import { safeStat } from "./../util/fs";
-import { muiSourcePath } from "./../util/material-ui";
+import { safeStat } from "./../util/fs.js";
+import { muiSourcePath } from "./../util/material-ui.js";
 import { spawn } from "child_process";
 import { dirname } from "path";
 

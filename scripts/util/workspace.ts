@@ -1,4 +1,4 @@
-import { getDirname } from "./fs";
+import { getDirname } from "./fs.js";
 import { readdir } from "fs/promises";
 import { join } from "path";
 

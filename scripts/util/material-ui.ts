@@ -1,4 +1,4 @@
-import { rootPath } from "./workspace";
+import { rootPath } from "./workspace.js";
 import { join } from "path";
 
 export function muiSourcePath(version: string) {

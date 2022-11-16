@@ -1,7 +1,7 @@
-import { markdownTable } from "./../util/markdown";
-import { muiSourcePath } from "./../util/material-ui";
-import { readOptions as prettierOptions } from "./../util/prettier";
-import { rootPath } from "./../util/workspace";
+import { markdownTable } from "./../util/markdown.js";
+import { muiSourcePath } from "./../util/material-ui.js";
+import { readOptions as prettierOptions } from "./../util/prettier.js";
+import { rootPath } from "./../util/workspace.js";
 import { readdir, writeFile } from "fs/promises";
 import { join } from "path";
 import { format } from "prettier";

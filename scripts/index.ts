@@ -1,14 +1,14 @@
-#!/usr/bin/env -S node --no-warnings --experimental-specifier-resolution=node
-import downloadMaterialSource from "./actions/downloadMaterialSource";
-import extractMaterialSource from "./actions/extractMaterialSource";
-import genIconsMaterialSource from "./actions/genIconsMaterialSource";
-import genIconsMaterialTyping from "./actions/genIconsMaterialTyping";
-import genRoadmap from "./actions/genRoadmap";
-import pack from "./actions/pack";
-import patchTsConfigs from "./actions/patchTsConfigs";
-import prebuild from "./actions/prebuild";
-import syncIconsMaterial from "./actions/syncIconsMaterial";
-import syncMaterialSource from "./actions/syncMaterialSource";
+#!/usr/bin/env node
+import downloadMaterialSource from "./actions/downloadMaterialSource.js";
+import extractMaterialSource from "./actions/extractMaterialSource.js";
+import genIconsMaterialSource from "./actions/genIconsMaterialSource.js";
+import genIconsMaterialTyping from "./actions/genIconsMaterialTyping.js";
+import genRoadmap from "./actions/genRoadmap.js";
+import pack from "./actions/pack.js";
+import patchTsConfigs from "./actions/patchTsConfigs.js";
+import prebuild from "./actions/prebuild.js";
+import syncIconsMaterial from "./actions/syncIconsMaterial.js";
+import syncMaterialSource from "./actions/syncMaterialSource.js";
 import { program } from "commander";
 
 const muiVersion = "5.5.0";

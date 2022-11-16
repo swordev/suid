@@ -1,7 +1,7 @@
-import { createProgressLog, ProgressLog } from "./../util/cli";
-import { readOptions } from "./../util/prettier";
-import { packagesPath } from "./../util/workspace";
-import { writeIndexFile } from "./genIconsMaterialSource";
+import { createProgressLog, ProgressLog } from "./../util/cli.js";
+import { readOptions } from "./../util/prettier.js";
+import { packagesPath } from "./../util/workspace.js";
+import { writeIndexFile } from "./genIconsMaterialSource.js";
 import { readdir, writeFile } from "fs/promises";
 import pLimit from "p-limit";
 import { join } from "path";

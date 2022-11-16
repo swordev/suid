@@ -1,8 +1,8 @@
-import { createProgressLog } from "./../util/cli";
-import { normalizeFileName } from "./../util/icons-material";
-import { muiSourcePath } from "./../util/material-ui";
-import { readOptions } from "./../util/prettier";
-import { packagesPath } from "./../util/workspace";
+import { createProgressLog } from "./../util/cli.js";
+import { normalizeFileName } from "./../util/icons-material.js";
+import { muiSourcePath } from "./../util/material-ui.js";
+import { readOptions } from "./../util/prettier.js";
+import { packagesPath } from "./../util/workspace.js";
 import { readdir, readFile, writeFile } from "fs/promises";
 import * as htmlParser from "node-html-parser";
 import { join } from "path";

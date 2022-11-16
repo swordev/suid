@@ -1,11 +1,11 @@
-import { safeStat } from "./../util/fs";
-import { parsePackageFile } from "./../util/package";
+import { safeStat } from "./../util/fs.js";
+import { parsePackageFile } from "./../util/package.js";
 import {
   parseTsConfigFile,
   TsConfig,
   writeTsConfigFile,
-} from "./../util/tsconfig";
-import { getPackageNames, packagesPath, rootPath } from "./../util/workspace";
+} from "./../util/tsconfig.js";
+import { getPackageNames, packagesPath, rootPath } from "./../util/workspace.js";
 import { join } from "path";
 
 const scope = "suid";

@@ -1,5 +1,5 @@
-import { Package, parsePackageFile, writePackageFile } from "../util/package";
-import { getPackageNames, packagesPath, rootPath } from "../util/workspace";
+import { Package, parsePackageFile, writePackageFile } from "../util/package.js";
+import { getPackageNames, packagesPath, rootPath } from "../util/workspace.js";
 import { spawnSync } from "child_process";
 import { copyFile, mkdir, rm } from "fs/promises";
 import { join } from "path";
