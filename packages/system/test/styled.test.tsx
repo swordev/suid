@@ -63,14 +63,14 @@ describe("styled", () => {
       />
     ));
     const e = screen.getByTestId("e");
-    expect(e.getAttributeNames().join(",")).toBe("data-testid,class");
+    expect(e.getAttributeNames().sort().join(",")).toBe("class,data-testid");
     unmount();
   });
   it("passes system properties", () => {
     const Div = styled("div")();
     const { unmount } = render(() => <Div data-testid="e" mt={1} />);
     const e = screen.getByTestId("e");
-    expect(e.getAttributeNames().join(",")).toBe("data-testid,mt,class");
+    expect(e.getAttributeNames().sort().join(",")).toBe("class,data-testid,mt");
     unmount();
   });
 });
