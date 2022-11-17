@@ -1,6 +1,6 @@
 {
   "name": "create-suid",
-  "version": "0.1.3-next.0",
+  "version": "0.1.3",
   "description": "CLI tool for creating a SUID project easily.",
   "keywords": [
     "cli",
