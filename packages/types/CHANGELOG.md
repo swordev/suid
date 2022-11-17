@@ -1,5 +1,11 @@
 # @suid/types
 
+## 0.3.0
+
+### Minor Changes
+
+- [`fe655f75`](https://github.com/swordev/suid/commit/fe655f75d97ee8d9ab2ed77440d483489d64f915) Thanks [@juanrgm](https://github.com/juanrgm)! - Update to SolidJS v1.6
+
 ## 0.3.0-next.0
 
 ### Minor Changes

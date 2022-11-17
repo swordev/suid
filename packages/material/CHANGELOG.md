@@ -1,5 +1,34 @@
 # @suid/material
 
+## 0.7.0
+
+### Minor Changes
+
+- [`6440e2d2`](https://github.com/swordev/suid/commit/6440e2d2e8952bed1fc1f8eaf417786d843b307d) Thanks [@juanrgm](https://github.com/juanrgm)! - Export some system functions
+
+- [`96cd89cb`](https://github.com/swordev/suid/commit/96cd89cb401aa2148d08a82f03ba8ece7b757b0b) Thanks [@juanrgm](https://github.com/juanrgm)! - Add the `MenuItem` component
+
+- [`15be1ab4`](https://github.com/swordev/suid/commit/15be1ab4d64342d74d3b43151b09a89597107049) Thanks [@juanrgm](https://github.com/juanrgm)! - Export all components in the index file
+
+- [`fe655f75`](https://github.com/swordev/suid/commit/fe655f75d97ee8d9ab2ed77440d483489d64f915) Thanks [@juanrgm](https://github.com/juanrgm)! - Update to SolidJS v1.6
+
+### Patch Changes
+
+- [`687898ac`](https://github.com/swordev/suid/commit/687898ac4b81c60b4b07c169a2ec090dc68e09e5) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix the `Modal` component in SolidJS v1.6
+
+- [`a8edd3da`](https://github.com/swordev/suid/commit/a8edd3da5a5632b8213834c5f8a6c3baaf7418fd) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix wave animation in `Skeleton` component
+
+- [`cf4d1e4c`](https://github.com/swordev/suid/commit/cf4d1e4c168c0c8fd96bbfc71cacbd5f6777b5fb) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix default props in the `Popover` component
+
+- [`8e895d7a`](https://github.com/swordev/suid/commit/8e895d7a6fb0240036bae078269de923e2fc975e) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix re-render in the `Grid` component
+
+- Updated dependencies [[`f0cd735e`](https://github.com/swordev/suid/commit/f0cd735ecb125683fb2334b2426b8c51ce54028b), [`6440e2d2`](https://github.com/swordev/suid/commit/6440e2d2e8952bed1fc1f8eaf417786d843b307d), [`fe655f75`](https://github.com/swordev/suid/commit/fe655f75d97ee8d9ab2ed77440d483489d64f915)]:
+  - @suid/utils@0.6.0
+  - @suid/system@0.6.0
+  - @suid/base@0.4.0
+  - @suid/types@0.3.0
+  - @suid/css@0.1.7
+
 ## 0.7.0-next.1
 
 ### Minor Changes
