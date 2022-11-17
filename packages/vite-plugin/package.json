@@ -23,16 +23,16 @@
     "build:types": "tsc -p tsconfig.build.json --emitDeclarationOnly --declarationMap false --outdir dist --declaration"
   },
   "dependencies": {
-    "@babel/generator": "^7.19.6",
-    "@babel/parser": "^7.19.6",
-    "@babel/traverse": "^7.19.6",
-    "@babel/types": "^7.19.4",
+    "@babel/generator": "^7.20.4",
+    "@babel/parser": "^7.20.3",
+    "@babel/traverse": "^7.20.1",
+    "@babel/types": "^7.20.2",
     "@types/babel__generator": "^7.6.4",
     "@types/babel__traverse": "^7.18.2"
   },
   "devDependencies": {
-    "esbuild": "^0.15.12",
-    "vite": "^3.1.8"
+    "esbuild": "^0.15.14",
+    "vite": "^3.2.4"
   },
   "peerDependencies": {
     "vite": "^3.0.0"

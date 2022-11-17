@@ -29,6 +29,8 @@ export function hexToRgb(color: string) {
   let colors = color.match(re);
 
   if (colors && colors[0].length === 1) {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     colors = colors.map((n) => n + n);
   }
 

@@ -18,7 +18,7 @@
     "inquirer": "^9.1.4"
   },
   "devDependencies": {
-    "@types/inquirer": "^9.0.2"
+    "@types/inquirer": "^9.0.3"
   },
   "publishConfig": {
     "directory": "lib"
