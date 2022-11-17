@@ -1,4 +1,4 @@
-import renameParentExpr from "./renameParentExpr";
+import renameParentExpr from "./renameParentExpr.js";
 import { Identifier, ts } from "ts-morph";
 
 export const nativeEvents = [

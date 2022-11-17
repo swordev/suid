@@ -1,5 +1,5 @@
-import renameParentExpr from "./renameParentExpr";
-import renameNode from "./renameNode";
+import renameParentExpr from "./renameParentExpr.js";
+import renameNode from "./renameNode.js";
 import { Identifier, ts } from "ts-morph";
 
 export default function replaceReactElementType(node: Identifier) {

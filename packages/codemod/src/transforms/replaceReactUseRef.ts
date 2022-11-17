@@ -1,10 +1,10 @@
 // based on replaceReactUseState.ts
 
-import getParentExpr from "../utils/getParentExpr";
+import getParentExpr from "../utils/getParentExpr.js";
 //import renameGetterVarToCall from "./renameGetterVarToCall";
 import { Identifier, ts } from "ts-morph";
 
-import hasAncestorType from "../utils/hasAncestorType";
+import hasAncestorType from "../utils/hasAncestorType.js";
 import { Node } from "ts-morph";
 
 // based on renameIdentifiers

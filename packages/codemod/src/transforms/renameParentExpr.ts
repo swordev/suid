@@ -1,4 +1,4 @@
-import renameNode from "./renameNode";
+import renameNode from "./renameNode.js";
 import { Identifier } from "ts-morph";
 
 export default function renameParentExpr(

@@ -1,6 +1,6 @@
-import groupImports from "./groupImports";
-import removeUnusedImports from "./removeUnusedImports";
-import transformReactSource from "./transformReactSource";
+import groupImports from "./groupImports.js";
+import removeUnusedImports from "./removeUnusedImports.js";
+import transformReactSource from "./transformReactSource.js";
 import { Node, PropertySignature, SourceFile, ts } from "ts-morph";
 
 function getDocBlock(source: SourceFile, componentName: string) {

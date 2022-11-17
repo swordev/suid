@@ -1,4 +1,4 @@
-import hasAncestorType from "./hasAncestorType";
+import hasAncestorType from "./hasAncestorType.js";
 import { Identifier, Node } from "ts-morph";
 
 export default function renameIdentifiers(

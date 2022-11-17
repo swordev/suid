@@ -1,8 +1,8 @@
 import replaceMuiUseForkRef, {
   findUseForkRefIdentifiers,
-} from "./replaceMuiUseForkRef";
-import replaceObjectBinding from "./replaceObjectBinding";
-import transformReactSource from "./transformReactSource";
+} from "./replaceMuiUseForkRef.js";
+import replaceObjectBinding from "./replaceObjectBinding.js";
+import transformReactSource from "./transformReactSource.js";
 import { Block, SourceFile, ts } from "ts-morph";
 
 function createComponentStatement(data: {

@@ -1,4 +1,4 @@
-import addReplacePattern from "../utils/addReplacePattern";
+import addReplacePattern from "../utils/addReplacePattern.js";
 import { Identifier, Node, ts } from "ts-morph";
 
 const emptyMagicKey = `__EMPTY__${Date.now()}`;

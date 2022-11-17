@@ -1,5 +1,5 @@
-import getParentExpr from "../utils/getParentExpr";
-import renameGetterVarToCall from "./renameGetterVarToCall";
+import getParentExpr from "../utils/getParentExpr.js";
+import renameGetterVarToCall from "./renameGetterVarToCall.js";
 import { Identifier, ts } from "ts-morph";
 
 export default function replaceReactUseState(node: Identifier) {

@@ -1,4 +1,4 @@
-import replaceReactUseEffect from "./replaceReactUseEffect";
+import replaceReactUseEffect from "./replaceReactUseEffect.js";
 import { Identifier } from "ts-morph";
 
 export type ReplaceReactUseLayoutEffectOptions = {

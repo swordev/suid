@@ -1,10 +1,10 @@
-import transformMuiComponent from "../transforms/transformMuiComponent";
-import transformMuiProps from "../transforms/transformMuiProps";
-import transformReactSource from "../transforms/transformReactSource";
-import applyTransforms from "../utils/applyTransforms";
-import capitalize from "../utils/capitalize";
-import colorize from "../utils/colorize";
-import uncapitalize from "../utils/uncapitalize";
+import transformMuiComponent from "../transforms/transformMuiComponent.js";
+import transformMuiProps from "../transforms/transformMuiProps.js";
+import transformReactSource from "../transforms/transformReactSource.js";
+import applyTransforms from "../utils/applyTransforms.js";
+import capitalize from "../utils/capitalize.js";
+import colorize from "../utils/colorize.js";
+import uncapitalize from "../utils/uncapitalize.js";
 import FastGlob from "fast-glob";
 import { mkdir, readFile, rm, stat, writeFile } from "fs/promises";
 import micromatch from "micromatch";

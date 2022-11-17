@@ -1,9 +1,9 @@
 #!/usr/bin/env node
-import fixEsm from "./actions/fixEsm";
-import mui2suid from "./actions/mui2suid";
-import react2solid from "./actions/react2solid";
-import suidImports from "./actions/suidImports";
-import muiVersion from "./utils/muiVersion";
+import fixEsm from "./actions/fixEsm.js";
+import mui2suid from "./actions/mui2suid.js";
+import react2solid from "./actions/react2solid.js";
+import suidImports from "./actions/suidImports.js";
+import muiVersion from "./utils/muiVersion.js";
 import { program } from "commander";
 import { readFileSync } from "fs";
 import { dirname } from "path";

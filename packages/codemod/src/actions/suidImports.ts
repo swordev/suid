@@ -1,4 +1,4 @@
-import transformSuidImports from "../transforms/transformSuidImports";
+import transformSuidImports from "../transforms/transformSuidImports.js";
 import applyTransforms from "../utils/applyTransforms.js";
 import colorize from "../utils/colorize.js";
 import fg from "fast-glob";

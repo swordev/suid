@@ -1,9 +1,9 @@
-import capitalize from "../utils/capitalize";
-import checkNodeScope, { NodeScope } from "../utils/checkNodeScope";
-import isStaticValue from "../utils/isStaticValue";
-import renameIdentifiers from "../utils/renameIdentifiers";
-import hasAncestorType from "../utils/hasAncestorType";
-import forEachLocalReference from "../utils/forEachLocalReference";
+import capitalize from "../utils/capitalize.js";
+import checkNodeScope, { NodeScope } from "../utils/checkNodeScope.js";
+import isStaticValue from "../utils/isStaticValue.js";
+import renameIdentifiers from "../utils/renameIdentifiers.js";
+import hasAncestorType from "../utils/hasAncestorType.js";
+import forEachLocalReference from "../utils/forEachLocalReference.js";
 
 import {
   Identifier,

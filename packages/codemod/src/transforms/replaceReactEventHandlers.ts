@@ -1,4 +1,4 @@
-import renameParentExpr from "./renameParentExpr";
+import renameParentExpr from "./renameParentExpr.js";
 import { Identifier } from "ts-morph";
 
 export default function replaceReactEventHandlers(node: Identifier) {
