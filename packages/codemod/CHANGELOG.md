@@ -1,5 +1,15 @@
 # @suid/codemod
 
+## 0.9.0
+
+### Minor Changes
+
+- [`76278e2b`](https://github.com/swordev/suid/commit/76278e2b7cc81bbc58b626741cd3d144ade657be) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `suid-imports` action
+
+### Patch Changes
+
+- [`e407f28b`](https://github.com/swordev/suid/commit/e407f28bc45474c8756ee1111ff81837277a4ddd) Thanks [@juanrgm](https://github.com/juanrgm)! - Add the correct extension in the `fix-esm` action
+
 ## 0.9.0-next.0
 
 ### Minor Changes

@@ -1,6 +1,6 @@
 {
   "name": "@suid/types",
-  "version": "0.3.0-next.0",
+  "version": "0.3.0",
   "description": "Types used by suid packages.",
   "keywords": [
     "solid",
