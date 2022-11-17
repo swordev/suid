@@ -170,6 +170,12 @@ describe("replaceObjectBinding", () => {
         return <div>{params.expanded}</div>;
       }
       export const DefaultRenderer: Renderer = (rawParams) => {
+        const params = mergeProps(
+          {
+            expanded: false,
+          },
+          rawParams
+        );
         return <Expander expanded={params.expanded} />;
       };
     `);
@@ -218,6 +224,12 @@ describe("replaceObjectBinding", () => {
         return <div>{params.expanded}</div>;
       }
       export const DefaultRenderer: Renderer = (rawParams) => {
+        const params = mergeProps(
+          {
+            expanded: false,
+          },
+          rawParams
+        );
         return <Expander expanded={params.expanded} />;
       };
       type ExplorerProps = Partial<RendererProps> & {
@@ -297,7 +309,6 @@ describe("replaceObjectBinding", () => {
       }
     `);
   });
-  /* FIXME(milahu): insertStatements
   it("keep default values of props in FunctionExpression", () => {
     expect(
       t(`
@@ -312,6 +323,34 @@ describe("replaceObjectBinding", () => {
     ).toMatchInlineSnapshot(`
       import { mergeProps } from "solid-js";
       const Component = function Component(rawParams) {
+        const params = mergeProps(
+          {
+            name: "asdf",
+          },
+          rawParams
+        );
+        return <div>{params.name}</div>;
+      };
+    `);
+  });
+  it("keep default values of props in ArrowFunction with Block body", () => {
+    expect(
+      t(`
+        const Component = ({
+          name = "asdf"
+        }) => {
+          return <div>{name}</div>
+        }
+      `)
+    ).toMatchInlineSnapshot(`
+      import { mergeProps } from "solid-js";
+      const Component = (rawParams) => {
+        const params = mergeProps(
+          {
+            name: "asdf",
+          },
+          rawParams
+        );
         return <div>{params.name}</div>;
       };
     `);
@@ -327,26 +366,17 @@ describe("replaceObjectBinding", () => {
       `)
     ).toMatchInlineSnapshot(`
       import { mergeProps } from "solid-js";
-      const Component = (rawParams) => <div>{params.name}</div>;
-    `);
-  });
-  it("keep default values of props in ArrowFunction with Block body", () => {
-    expect(
-      t(`
-        const Component = ({
-          name = "asdf"
-        }) => {
-          return <div>{name}</div>
-        }
-      `)
-    ).toMatchInlineSnapshot(`
-      import { mergeProps } from "solid-js";
       const Component = (rawParams) => {
+        const params = mergeProps(
+          {
+            name: "asdf",
+          },
+          rawParams
+        );
         return <div>{params.name}</div>;
       };
     `);
   });
-  */
   // FIXME(milahu):
   // actual: function ReactQueryDevtools(params: import("/file").DevtoolsOptions)
   // expected: function ReactQueryDevtools(params: DevtoolsOptions)

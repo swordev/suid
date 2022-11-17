@@ -326,15 +326,22 @@ function replaceObjectBinding(
       // parent: Parameter
       const func = parent.getParent();
       if (
-        func.isKind(ts.SyntaxKind.FunctionDeclaration)
-        // TODO(milahu): more
+        func.isKind(ts.SyntaxKind.FunctionDeclaration) ||
+        func.isKind(ts.SyntaxKind.FunctionExpression) ||
+        func.isKind(ts.SyntaxKind.ArrowFunction)
       ) {
         const body = func.getBody();
-        if (body?.isKind(ts.SyntaxKind.Block)) {
-          //body.addStatements()
-          body.insertStatements(0, sentences.join("\n\n"))
+        if (body) {
+          if (body.isKind(ts.SyntaxKind.Block)) {
+            body.insertStatements(0, sentences.join("\n\n"))
+          }
+          else {
+            // wrap expression in block
+            // a: () => x
+            // b: () => { return x; }
+            body.replaceWithText(`{\n${sentences.join("\n\n")}\nreturn ${body.getText()};\n}`)
+          }
         }
-        // TODO(milahu): else
       }
     }
 
