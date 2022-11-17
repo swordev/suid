@@ -14,9 +14,9 @@
   ],
   "type": "module",
   "scripts": {
-    "build": "tsc --build",
-    "clean": "tsc --build --clean",
-    "watch": "tsc --build -w"
+    "build": "tsc --build tsconfig.build.json",
+    "clean": "tsc --build --clean tsconfig.build.json",
+    "watch": "tsc --build -w tsconfig.build.json"
   },
   "dependencies": {
     "@types/micromatch": "^4.0.2",
@@ -27,6 +27,7 @@
     "ts-morph": "^16.0.0"
   },
   "devDependencies": {
+    "tsc-esm": "^1.0.4",
     "typescript": "^4.8.4"
   },
   "publishConfig": {
