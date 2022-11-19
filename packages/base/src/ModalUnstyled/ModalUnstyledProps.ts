@@ -12,6 +12,10 @@ import { JSX } from "solid-js/jsx-runtime";
 
 export interface ModalUnstyledComponentsPropsOverrides {}
 
+export type ModalUnstyledOnClose<R> = {
+  bivarianceHack(event: {}, reason: R): void;
+}["bivarianceHack"];
+
 export interface ModalUnstyledTypeMap<P = {}, D extends ElementType = "div"> {
   name: "ModalUnstyled";
   defaultPropNames:
@@ -133,12 +137,7 @@ export interface ModalUnstyledTypeMap<P = {}, D extends ElementType = "div"> {
      * @param {object} event The event source of the callback.
      * @param {string} reason Can be: `"escapeKeyDown"`, `"backdropClick"`.
      */
-    onClose?: {
-      bivarianceHack(
-        event: {},
-        reason: "backdropClick" | "escapeKeyDown"
-      ): void;
-    }["bivarianceHack"];
+    onClose?: ModalUnstyledOnClose<"backdropClick" | "escapeKeyDown">;
     /**
      * If `true`, the component is shown.
      */
