@@ -45,7 +45,16 @@ const codemodTransformers: Record<string, boolean | "pending"> = {
   "`React.useState`": true,
 };
 
-const pendingComponents = ["Select", "Menu", "MenuList"];
+const pendingComponents: Record<
+  string,
+  {
+    props?: string[];
+  }
+> = {
+  Select: {},
+  Menu: {},
+  MenuList: {},
+};
 
 function stateIcon(state: boolean | "pending") {
   if (state === true) return "✅";
@@ -113,16 +122,28 @@ async function genRoadmap(options: { version: string }) {
         value: "State",
         align: "center",
       },
+      {
+        value: "Pending props",
+        align: "center",
+      },
     ],
     [
-      ...sourceComponentNames.map((name) => [
-        name,
-        stateIcon(
-          pendingComponents.includes(name)
-            ? "pending"
-            : targetComponentNames.includes(name)
-        ),
-      ]),
+      ...sourceComponentNames.map((name) => {
+        let state: boolean | "pending";
+        let pendingProps: string[] | undefined;
+
+        if (name in pendingComponents) {
+          pendingProps = pendingComponents[name].props;
+          state = pendingProps ? true : "pending";
+        } else {
+          state = targetComponentNames.includes(name);
+        }
+        return [
+          name,
+          stateIcon(state),
+          pendingProps?.map((v) => `\`${v}\``).join(" ") ?? "",
+        ];
+      }),
     ]
   );
 
