@@ -16,7 +16,8 @@ import {
   useContext,
   splitProps,
   mergeProps,
-  createRenderEffect,
+  createEffect,
+  untrack,
 } from "solid-js";
 
 const $ = createComponentFactory<MenuItemTypeMap>()({
@@ -202,17 +203,17 @@ const MenuItem = $.defineComponent(function MenuItem(inProps) {
     },
   };
 
-  createRenderEffect(() => {
+  createEffect(() => {
     if (baseProps.autoFocus) {
       if (menuItemRef.current) {
-        menuItemRef.current.focus();
+        untrack(() => menuItemRef.current.focus());
       } else if (process.env.NODE_ENV !== "production") {
         console.error(
           "MUI: Unable to set focus to a MenuItem whose component has not been rendered."
         );
       }
     }
-  }, [baseProps.autoFocus]);
+  });
 
   const ownerState = mergeProps(props, {
     get dense() {
