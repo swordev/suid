@@ -3,6 +3,7 @@ import useBaseThemeProps, {
   PropDefaultsCb,
   ThemePropOptions,
 } from "./useThemeProps";
+import { componentTrap } from "@suid/system/inspect";
 import {
   InPropsOf,
   PropsOf,
@@ -84,7 +85,7 @@ function createComponentFactory<
       cb: (props: Props) => JSXElement
     ): C extends OverridableTypeMap ? OverridableComponent<C> : SuidElement<C> {
       cb.toString = () => `${options.name}-root`;
-      return cb as any;
+      return componentTrap(cb) as any;
     }
 
     function component(
