@@ -117,7 +117,7 @@
 | ListItemSecondaryAction |  ✅   |               |
 | ListItemText            |  ✅   |               |
 | ListSubheader           |  ✅   |               |
-| Menu                    |  ⏳   |               |
+| Menu                    |  ✅   |               |
 | MenuItem                |  ✅   |               |
 | MenuList                |  ✅   |               |
 | MobileStepper           |       |               |

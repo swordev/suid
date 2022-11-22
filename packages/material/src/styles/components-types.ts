@@ -48,6 +48,7 @@ import type MuiListItemIcon from "../ListItemIcon";
 import type MuiListItemSecondaryAction from "../ListItemSecondaryAction";
 import type MuiListItemText from "../ListItemText";
 import type MuiListSubheader from "../ListSubheader";
+import type MuiMenu from "../Menu";
 import type MuiMenuItem from "../MenuItem";
 import type MuiMenuList from "../MenuList";
 import type MuiModal from "../Modal";
@@ -127,6 +128,7 @@ export type ComponentsTypes = {
   MuiListItemSecondaryAction: typeof MuiListItemSecondaryAction;
   MuiListItemText: typeof MuiListItemText;
   MuiListSubheader: typeof MuiListSubheader;
+  MuiMenu: typeof MuiMenu;
   MuiMenuItem: typeof MuiMenuItem;
   MuiMenuList: typeof MuiMenuList;
   MuiModal: typeof MuiModal;

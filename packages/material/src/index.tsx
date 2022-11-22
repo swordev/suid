@@ -55,6 +55,7 @@ export { default as ListItemIcon } from "./ListItemIcon";
 export { default as ListItemSecondaryAction } from "./ListItemSecondaryAction";
 export { default as ListItemText } from "./ListItemText";
 export { default as ListSubheader } from "./ListSubheader";
+export { default as Menu } from "./Menu";
 export { default as MenuItem } from "./MenuItem";
 export { default as MenuList } from "./MenuList";
 export { default as Modal } from "./Modal";
