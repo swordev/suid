@@ -49,6 +49,7 @@ import type MuiListItemSecondaryAction from "../ListItemSecondaryAction";
 import type MuiListItemText from "../ListItemText";
 import type MuiListSubheader from "../ListSubheader";
 import type MuiMenuItem from "../MenuItem";
+import type MuiMenuList from "../MenuList";
 import type MuiModal from "../Modal";
 import type MuiNativeSelect from "../NativeSelect";
 import type MuiOutlinedInput from "../OutlinedInput";
@@ -127,6 +128,7 @@ export type ComponentsTypes = {
   MuiListItemText: typeof MuiListItemText;
   MuiListSubheader: typeof MuiListSubheader;
   MuiMenuItem: typeof MuiMenuItem;
+  MuiMenuList: typeof MuiMenuList;
   MuiModal: typeof MuiModal;
   MuiNativeSelect: typeof MuiNativeSelect;
   MuiOutlinedInput: typeof MuiOutlinedInput;

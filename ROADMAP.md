@@ -119,7 +119,7 @@
 | ListSubheader           |  ✅   |               |
 | Menu                    |  ⏳   |               |
 | MenuItem                |  ✅   |               |
-| MenuList                |  ⏳   |               |
+| MenuList                |  ✅   |               |
 | MobileStepper           |       |               |
 | Modal                   |  ✅   |               |
 | NativeSelect            |  ✅   |               |

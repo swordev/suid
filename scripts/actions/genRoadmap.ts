@@ -53,7 +53,6 @@ const pendingComponents: Record<
 > = {
   Select: {},
   Menu: {},
-  MenuList: {},
 };
 
 function stateIcon(state: boolean | "pending") {
