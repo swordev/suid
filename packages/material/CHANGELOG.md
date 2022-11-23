@@ -1,5 +1,25 @@
 # @suid/material
 
+## 0.8.0
+
+### Minor Changes
+
+- [`ad781149`](https://github.com/swordev/suid/commit/ad7811492d8ba379239bb3d76599f311123466c6) Thanks [@juanrgm](https://github.com/juanrgm)! - Add the `Dialog`, `DialogActions`, `DialogContent`, `DialogContentText`, `DialogTitle` components
+
+- [`6d41d5dc`](https://github.com/swordev/suid/commit/6d41d5dc75d0433218043f58e20786b53d9fa162) Thanks [@juanrgm](https://github.com/juanrgm)! - Add the `Menu` component
+
+- [`3c9d6d8a`](https://github.com/swordev/suid/commit/3c9d6d8ac1cac03d96901319c4d1ad7d3509ec81) Thanks [@juanrgm](https://github.com/juanrgm)! - Add the `MenuList` component
+
+### Patch Changes
+
+- [`1c8b0043`](https://github.com/swordev/suid/commit/1c8b00438347b477a49201c5784e5d64bc4d4204) Thanks [@juanrgm](https://github.com/juanrgm)! - Render the children property in `ListItemAvatar` component
+
+- [`c4a5197f`](https://github.com/swordev/suid/commit/c4a5197f19cd7e414e4d29e7624fb3ec2a7832cf) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix `autoFocus` property in `MenuItem` component
+
+- Updated dependencies [[`64eae194`](https://github.com/swordev/suid/commit/64eae194686fd0d3a28394a3cac4d55737bbf2ac)]:
+  - @suid/base@0.5.0
+  - @suid/system@0.7.0
+
 ## 0.7.0
 
 ### Minor Changes

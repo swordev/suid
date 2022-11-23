@@ -1,5 +1,11 @@
 # @suid/system
 
+## 0.7.0
+
+### Minor Changes
+
+- [`64eae194`](https://github.com/swordev/suid/commit/64eae194686fd0d3a28394a3cac4d55737bbf2ac) Thanks [@juanrgm](https://github.com/juanrgm)! - Add internal hook for inspecting all suid components
+
 ## 0.6.0
 
 ### Minor Changes

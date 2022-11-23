@@ -1,5 +1,11 @@
 # @suid/codemod
 
+## 0.9.1
+
+### Patch Changes
+
+- [`374f8aa3`](https://github.com/swordev/suid/commit/374f8aa3984b388af7e79f790d7430beffdcb7cd) Thanks [@juanrgm](https://github.com/juanrgm)! - Add missing dependency
+
 ## 0.9.0
 
 ### Minor Changes
