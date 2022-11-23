@@ -209,7 +209,7 @@ export const navConfig: Config[] = [
         items: [
           "Alert",
           "Backdrop",
-          "Dialogs",
+          "Dialog",
           //"Progress",
           "Circular Progress",
           "Linear Progress",
