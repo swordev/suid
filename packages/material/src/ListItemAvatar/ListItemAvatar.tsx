@@ -72,7 +72,9 @@ const ListItemAvatar = $.component(function ListItemAvatar({
       {...otherProps}
       ownerState={ownerState}
       class={clsx(classes.root, otherProps.class)}
-    />
+    >
+      {allProps.children}
+    </ListItemAvatarRoot>
   );
 });
 
