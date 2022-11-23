@@ -79,11 +79,11 @@
 | Collapse                |       |               |
 | Container               |  ✅   |               |
 | CssBaseline             |  ✅   |               |
-| Dialog                  |       |               |
-| DialogActions           |       |               |
-| DialogContent           |       |               |
-| DialogContentText       |       |               |
-| DialogTitle             |       |               |
+| Dialog                  |  ✅   |               |
+| DialogActions           |  ✅   |               |
+| DialogContent           |  ✅   |               |
+| DialogContentText       |  ✅   |               |
+| DialogTitle             |  ✅   |               |
 | Divider                 |  ✅   |               |
 | Drawer                  |  ✅   |               |
 | Fab                     |  ✅   |               |
