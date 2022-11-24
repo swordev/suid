@@ -1,5 +1,24 @@
 # @suid/site
 
+## 0.7.0
+
+### Minor Changes
+
+- [`a0f64c0f`](https://github.com/swordev/suid/commit/a0f64c0f80a2ebd4dd66766dc54dc4a98fd5d9ce) Thanks [@juanrgm](https://github.com/juanrgm)! - Add the `Dialog` component page
+
+- [`4070c2b0`](https://github.com/swordev/suid/commit/4070c2b04e7ea8a33dd68f43ebc97a489e6a6eb4) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `Menu` component page
+
+### Patch Changes
+
+- [`d479abf7`](https://github.com/swordev/suid/commit/d479abf718b4e6314729f6d85dbc524239710af8) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
+- Updated dependencies [[`1c8b0043`](https://github.com/swordev/suid/commit/1c8b00438347b477a49201c5784e5d64bc4d4204), [`374f8aa3`](https://github.com/swordev/suid/commit/374f8aa3984b388af7e79f790d7430beffdcb7cd), [`c4a5197f`](https://github.com/swordev/suid/commit/c4a5197f19cd7e414e4d29e7624fb3ec2a7832cf), [`ad781149`](https://github.com/swordev/suid/commit/ad7811492d8ba379239bb3d76599f311123466c6), [`64eae194`](https://github.com/swordev/suid/commit/64eae194686fd0d3a28394a3cac4d55737bbf2ac), [`6d41d5dc`](https://github.com/swordev/suid/commit/6d41d5dc75d0433218043f58e20786b53d9fa162), [`3c9d6d8a`](https://github.com/swordev/suid/commit/3c9d6d8ac1cac03d96901319c4d1ad7d3509ec81)]:
+  - @suid/material@0.8.0
+  - @suid/codemod@0.9.1
+  - @suid/base@0.5.0
+  - @suid/system@0.7.0
+  - @suid/icons-material@0.5.1
+
 ## 0.6.0
 
 ### Minor Changes
