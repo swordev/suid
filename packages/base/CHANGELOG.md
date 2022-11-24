@@ -1,5 +1,16 @@
 # @suid/base
 
+## 0.5.0
+
+### Minor Changes
+
+- [`64eae194`](https://github.com/swordev/suid/commit/64eae194686fd0d3a28394a3cac4d55737bbf2ac) Thanks [@juanrgm](https://github.com/juanrgm)! - Add internal hook for inspecting all suid components
+
+### Patch Changes
+
+- Updated dependencies [[`64eae194`](https://github.com/swordev/suid/commit/64eae194686fd0d3a28394a3cac4d55737bbf2ac)]:
+  - @suid/system@0.7.0
+
 ## 0.4.0
 
 ### Minor Changes
