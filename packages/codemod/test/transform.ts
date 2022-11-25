@@ -1,5 +1,5 @@
-import applyTransforms from "../src/utils/applyTransforms";
-import format from "./format";
+import applyTransforms from "../src/utils/applyTransforms.js";
+import format from "./format.js";
 
 export default function transform(
   code: string,

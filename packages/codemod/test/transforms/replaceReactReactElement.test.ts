@@ -1,7 +1,7 @@
-import findReactObjects from "../../src/navigations/findReactObjects";
-import replaceReactReactElement from "../../src/transforms/replaceReactReactElement";
-import format from "../format";
-import transform from "../transform";
+import findReactObjects from "../../src/navigations/findReactObjects.js";
+import replaceReactReactElement from "../../src/transforms/replaceReactReactElement.js";
+import format from "../format.js";
+import transform from "../transform.js";
 import { describe, expect, it } from "vitest";
 
 const t = (code: string) =>

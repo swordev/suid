@@ -1,9 +1,9 @@
-import findReactObjects from "../../src/navigations/findReactObjects";
+import findReactObjects from "../../src/navigations/findReactObjects.js";
 import replaceReactUseEffect, {
   ReplaceReactUseEffectOptions,
-} from "../../src/transforms/replaceReactUseEffect";
-import format from "../format";
-import transform from "../transform";
+} from "../../src/transforms/replaceReactUseEffect.js";
+import format from "../format.js";
+import transform from "../transform.js";
 import { describe, expect, it } from "vitest";
 
 const t = (code: string, options?: ReplaceReactUseEffectOptions) =>

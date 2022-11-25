@@ -1,5 +1,5 @@
-import getParentExpr from "../utils/getParentExpr";
-import uncapitalize from "../utils/uncapitalize";
+import getParentExpr from "../utils/getParentExpr.js";
+import uncapitalize from "../utils/uncapitalize.js";
 import { Identifier, ts } from "ts-morph";
 
 const { factory } = ts;

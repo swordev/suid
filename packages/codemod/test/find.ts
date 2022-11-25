@@ -1,4 +1,4 @@
-import createProject from "../src/utils/createProject";
+import createProject from "../src/utils/createProject.js";
 import { Identifier, ts } from "ts-morph";
 
 export default function find<T>(code: string, cb: (source: Identifier) => T) {

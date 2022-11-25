@@ -1,7 +1,7 @@
-import findAttributes from "../../src/navigations/findAttributes";
-import replaceReactClassNameAttr from "../../src/transforms/replaceReactClassNameAttr";
-import format from "../format";
-import transform from "../transform";
+import findAttributes from "../../src/navigations/findAttributes.js";
+import replaceReactClassNameAttr from "../../src/transforms/replaceReactClassNameAttr.js";
+import format from "../format.js";
+import transform from "../transform.js";
 import { describe, expect, it } from "vitest";
 
 const t = (code: string) =>

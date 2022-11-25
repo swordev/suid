@@ -1,5 +1,5 @@
 {
-  "compilerOptions": { "module": "ESNext" },
+  "compilerOptions": { "module": "Node16", "moduleResolution": "Node16" },
   "extends": "./../../tsconfig.json",
   "include": ["src", "test"]
 }

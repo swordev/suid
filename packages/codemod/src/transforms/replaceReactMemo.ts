@@ -1,5 +1,5 @@
-import addReplacePattern from "../utils/addReplacePattern";
-import getParentExpr from "../utils/getParentExpr";
+import addReplacePattern from "../utils/addReplacePattern.js";
+import getParentExpr from "../utils/getParentExpr.js";
 import { Identifier, ts } from "ts-morph";
 
 const magicKey = `__REMOVE__${Date.now()}`;

@@ -1,7 +1,7 @@
-import findObjectLiteralExpressions from "../../src/navigations/findObjectLiteralExpressions";
-import replaceSpreadAsignment from "../../src/transforms/replaceSpreadAsignment";
-import f from "../format";
-import transform from "../transform";
+import findObjectLiteralExpressions from "../../src/navigations/findObjectLiteralExpressions.js";
+import replaceSpreadAsignment from "../../src/transforms/replaceSpreadAsignment.js";
+import f from "../format.js";
+import transform from "../transform.js";
 import { describe, expect, it } from "vitest";
 
 const t = (code: string) =>

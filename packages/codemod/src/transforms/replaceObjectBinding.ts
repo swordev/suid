@@ -1,7 +1,7 @@
-import capitalize from "../utils/capitalize";
-import checkNodeScope, { NodeScope } from "../utils/checkNodeScope";
-import isStaticValue from "../utils/isStaticValue";
-import renameIdentifiers from "../utils/renameIdentifiers";
+import capitalize from "../utils/capitalize.js";
+import checkNodeScope, { NodeScope } from "../utils/checkNodeScope.js";
+import isStaticValue from "../utils/isStaticValue.js";
+import renameIdentifiers from "../utils/renameIdentifiers.js";
 import {
   Identifier,
   Node,

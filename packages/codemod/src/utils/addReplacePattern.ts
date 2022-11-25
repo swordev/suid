@@ -1,4 +1,4 @@
-import { NewSourceFile } from "./getReplacePatterns";
+import { NewSourceFile } from "./getReplacePatterns.js";
 import { SourceFile } from "ts-morph";
 
 export default function addReplacePattern(

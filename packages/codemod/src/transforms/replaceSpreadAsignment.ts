@@ -1,5 +1,5 @@
-import checkNodeScope, { NodeScope } from "../utils/checkNodeScope";
-import isStaticValue from "../utils/isStaticValue";
+import checkNodeScope, { NodeScope } from "../utils/checkNodeScope.js";
+import isStaticValue from "../utils/isStaticValue.js";
 import { Node, ObjectLiteralExpression } from "ts-morph";
 
 export type ReplaceSpreadAsignmentOptions = {

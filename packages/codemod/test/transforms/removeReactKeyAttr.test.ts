@@ -1,7 +1,7 @@
-import findAttributes from "../../src/navigations/findAttributes";
-import removeReactKeyAttr from "../../src/transforms/removeReactKeyAttr";
-import format from "../format";
-import transform from "../transform";
+import findAttributes from "../../src/navigations/findAttributes.js";
+import removeReactKeyAttr from "../../src/transforms/removeReactKeyAttr.js";
+import format from "../format.js";
+import transform from "../transform.js";
 import { describe, expect, it } from "vitest";
 
 const t = (code: string) =>

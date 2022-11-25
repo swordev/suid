@@ -1,4 +1,4 @@
-import renameExpr from "./renameExpr";
+import renameExpr from "./renameExpr.js";
 import { Identifier } from "ts-morph";
 
 export default function replaceReactJSXElementConstructor(node: Identifier) {

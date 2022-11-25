@@ -1,5 +1,5 @@
-import getAncestorComponent from "./getAncestorComponent";
-import hasAncestorJSX from "./hasAncestorJSX";
+import getAncestorComponent from "./getAncestorComponent.js";
+import hasAncestorJSX from "./hasAncestorJSX.js";
 import { Node } from "ts-morph";
 
 export type NodeScope = "jsx" | "component" | "component-top-level";

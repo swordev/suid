@@ -1,6 +1,6 @@
-import removeUnusedImports from "../../src/transforms/removeUnusedImports";
-import format from "../format";
-import transform from "../transform";
+import removeUnusedImports from "../../src/transforms/removeUnusedImports.js";
+import format from "../format.js";
+import transform from "../transform.js";
 import { describe, expect, it } from "vitest";
 
 const t = (code: string) => transform(code, [removeUnusedImports]);

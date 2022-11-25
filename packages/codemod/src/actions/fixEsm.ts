@@ -1,6 +1,6 @@
-import fixEsmImports from "../transforms/fixEsmImports";
-import applyTransforms from "../utils/applyTransforms";
-import colorize from "../utils/colorize";
+import fixEsmImports from "../transforms/fixEsmImports.js";
+import applyTransforms from "../utils/applyTransforms.js";
+import colorize from "../utils/colorize.js";
 import fg from "fast-glob";
 import { readFile, writeFile } from "fs/promises";
 import micromatch from "micromatch";

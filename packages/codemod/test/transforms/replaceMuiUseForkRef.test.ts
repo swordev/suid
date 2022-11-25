@@ -1,8 +1,8 @@
 import replaceMuiUseForkRef, {
   findUseForkRefIdentifiers,
-} from "../../src/transforms/replaceMuiUseForkRef";
-import f from "../format";
-import transform from "../transform";
+} from "../../src/transforms/replaceMuiUseForkRef.js";
+import f from "../format.js";
+import transform from "../transform.js";
 import { describe, expect, it } from "vitest";
 
 const t = (code: string) =>

@@ -1,6 +1,6 @@
-import transformReactSource from "../transforms/transformReactSource";
-import applyTransforms from "../utils/applyTransforms";
-import safeStat from "../utils/safeStat";
+import transformReactSource from "../transforms/transformReactSource.js";
+import applyTransforms from "../utils/applyTransforms.js";
+import safeStat from "../utils/safeStat.js";
 import fg from "fast-glob";
 import { mkdir, readFile, writeFile } from "fs/promises";
 import micromatch from "micromatch";

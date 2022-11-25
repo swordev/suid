@@ -1,4 +1,4 @@
-import renameIdentifiers from "../utils/renameIdentifiers";
+import renameIdentifiers from "../utils/renameIdentifiers.js";
 import { Identifier } from "ts-morph";
 
 export default function renameGetterVarToCall(

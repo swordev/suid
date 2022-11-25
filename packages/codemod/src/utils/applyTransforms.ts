@@ -1,5 +1,5 @@
-import createProject from "./createProject";
-import getReplacePatterns from "./getReplacePatterns";
+import createProject from "./createProject.js";
+import getReplacePatterns from "./getReplacePatterns.js";
 import { Project, SourceFile } from "ts-morph";
 
 type Transform = (sourceFile: SourceFile) => any;

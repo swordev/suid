@@ -1,7 +1,7 @@
-import findObjectBindingPatterns from "../../src/navigations/findObjectBindingPatterns";
-import replaceObjectBinding from "../../src/transforms/replaceObjectBinding";
-import format from "../format";
-import transform from "../transform";
+import findObjectBindingPatterns from "../../src/navigations/findObjectBindingPatterns.js";
+import replaceObjectBinding from "../../src/transforms/replaceObjectBinding.js";
+import format from "../format.js";
+import transform from "../transform.js";
 import { describe, expect, it } from "vitest";
 
 const t = (code: string) =>

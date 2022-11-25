@@ -1,5 +1,5 @@
-import getParentExpr from "../utils/getParentExpr";
-import renameExpr from "./renameExpr";
+import getParentExpr from "../utils/getParentExpr.js";
+import renameExpr from "./renameExpr.js";
 import { Identifier, ts } from "ts-morph";
 
 export default function replaceReactElementType(node: Identifier) {
