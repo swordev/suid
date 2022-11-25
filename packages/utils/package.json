@@ -6,9 +6,9 @@
     "utils"
   ],
   "scripts": {
-    "build": "tsc --build",
-    "clean": "tsc --build --clean",
-    "watch": "tsc --build -w"
+    "build": "tsc --build tsconfig.build.json",
+    "clean": "tsc --build --clean tsconfig.build.json",
+    "watch": "tsc --build -w tsconfig.build.json"
   },
   "dependencies": {
     "@suid/types": "workspace:*"
