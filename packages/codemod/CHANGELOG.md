@@ -1,5 +1,11 @@
 # @suid/codemod
 
+## 0.9.2
+
+### Patch Changes
+
+- [`4b7228ac`](https://github.com/swordev/suid/commit/4b7228ac5cde9537b6acc832c2c1f33237e01a4a) Thanks [@juanrgm](https://github.com/juanrgm)! - Use `Node16` as module resolution
+
 ## 0.9.1
 
 ### Patch Changes
