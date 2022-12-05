@@ -81,5 +81,5 @@ export function inspectChildren(fn: () => any) {
     const c = memo();
     return Array.isArray(c) ? c : c != null ? [c] : [];
   };
-  return children;
+  return memo;
 }
