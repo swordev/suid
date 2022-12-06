@@ -1,5 +1,11 @@
 # @suid/system
 
+## 0.7.1
+
+### Patch Changes
+
+- [`003c7864`](https://github.com/swordev/suid/commit/003c7864287e1785587550e2f7c3c5fb4d833738) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix `inspectChildren` function
+
 ## 0.7.0
 
 ### Minor Changes
