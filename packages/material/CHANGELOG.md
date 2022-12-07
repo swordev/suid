@@ -1,5 +1,11 @@
 # @suid/material
 
+## 0.8.2
+
+### Patch Changes
+
+- [`8ac6a050`](https://github.com/swordev/suid/commit/8ac6a05052a786678e67ec3c01e2c83dd5027957) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix the `permanent` variant of `Drawer` component
+
 ## 0.8.1
 
 ### Patch Changes

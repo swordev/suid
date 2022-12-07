@@ -1,5 +1,13 @@
 # @suid/site
 
+## 0.7.2
+
+### Patch Changes
+
+- Updated dependencies [[`8ac6a050`](https://github.com/swordev/suid/commit/8ac6a05052a786678e67ec3c01e2c83dd5027957)]:
+  - @suid/material@0.8.2
+  - @suid/icons-material@0.5.3
+
 ## 0.7.1
 
 ### Patch Changes
