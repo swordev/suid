@@ -10,14 +10,7 @@ import { getDrawerUtilityClass } from "./drawerClasses";
 import createComponentFactory from "@suid/base/createComponentFactory";
 import createElementRef from "@suid/system/createElementRef";
 import clsx from "clsx";
-import {
-  children,
-  createMemo,
-  createSignal,
-  Match,
-  onMount,
-  Switch,
-} from "solid-js";
+import { children, createSignal, Match, onMount, Switch } from "solid-js";
 
 const $ = createComponentFactory<DrawerTypeMap>()({
   name: "MuiDrawer",
@@ -203,19 +196,21 @@ const Drawer = $.component(function Drawer({
   const resolved = children(() => props.children);
   onMount(() => setMounted(true));
 
-  const drawer = createMemo(() => (
-    <DrawerPaper
-      elevation={props.variant === "temporary" ? props.elevation : 0}
-      square
-      {...props.PaperProps}
-      class={clsx(classes.paper, props.PaperProps.class)}
-      ownerState={allProps as any}
-    >
-      {resolved}
-    </DrawerPaper>
-  ));
+  function InternalDrawer() {
+    return (
+      <DrawerPaper
+        elevation={props.variant === "temporary" ? props.elevation : 0}
+        square
+        {...props.PaperProps}
+        class={clsx(classes.paper, props.PaperProps.class)}
+        ownerState={allProps as any}
+      >
+        {resolved}
+      </DrawerPaper>
+    );
+  }
 
-  const slidingDrawer = createMemo(() => {
+  function SlidingDrawer() {
     const anchorInvariant = getAnchor(theme, props.anchor) as Anchor;
 
     return (
@@ -226,10 +221,10 @@ const Drawer = $.component(function Drawer({
         appear={mounted()}
         {...(props.SlideProps ?? {})}
       >
-        {drawer}
+        <InternalDrawer />
       </Slide>
     );
-  });
+  }
 
   return (
     <Switch>
@@ -240,7 +235,7 @@ const Drawer = $.component(function Drawer({
           ownerState={allProps}
           ref={element}
         >
-          {drawer}
+          <InternalDrawer />
         </DrawerDockedRoot>
       </Match>
       <Match when={props.variant === "persistent"}>
@@ -250,7 +245,7 @@ const Drawer = $.component(function Drawer({
           ownerState={allProps}
           ref={element}
         >
-          {slidingDrawer}
+          <SlidingDrawer />
         </DrawerDockedRoot>
       </Match>
       {
@@ -271,7 +266,7 @@ const Drawer = $.component(function Drawer({
             {...(props.ModalProps ?? {})}
             transition
           >
-            {slidingDrawer}
+            <SlidingDrawer />
           </DrawerRoot>
         </Match>
       }
