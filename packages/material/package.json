@@ -27,7 +27,7 @@
     "clsx": "^1.2.1"
   },
   "peerDependencies": {
-    "solid-js": "^1.6.2"
+    "solid-js": "^1.6.5"
   },
   "publishConfig": {
     "directory": "lib"
