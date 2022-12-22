@@ -2,7 +2,7 @@
 
 [![workflow-badge]](https://github.com/swordev/suid/actions/workflows/ci.yaml) [![license-badge]](https://github.com/swordev/suid#license)
 
-[workflow-badge]: https://img.shields.io/github/workflow/status/swordev/suid/CI
+[workflow-badge]: https://img.shields.io/github/actions/workflow/status/swordev/suid/ci.yaml?branch=main
 [license-badge]: https://img.shields.io/github/license/swordev/suid
 
 > A port of Material-UI ([MUI](https://mui.com/core)) built with [SolidJS](https://solidjs.com)
