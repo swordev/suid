@@ -187,6 +187,7 @@ const TextField = $.component(function TextField({
       onFocus={props.onFocus}
       placeholder={props.placeholder}
       inputProps={props.inputProps}
+      size={props.size}
       {...InputMore()}
       {...(props.InputProps || {})}
     />
