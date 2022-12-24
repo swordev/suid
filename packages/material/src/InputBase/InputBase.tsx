@@ -282,6 +282,8 @@ const inputGlobalStyles = () => (
   </>
 );
 
+const selectionTypes = new Set(["text", "search", "password", "tel", "url"]);
+
 /**
  * `InputBase` contains as few styles as possible.
  * It aims to be a simple building block for creating an input.
@@ -362,13 +364,18 @@ const InputBase = $.component(function InputBase({
       const v = value();
 
       if (typeof v === "string") {
+        const inputElement = inputRef.ref as HTMLInputElement;
+        const type = inputElement.type ?? "text";
+        const isSelectionType = selectionTypes.has(type);
         const selectionStart = lastSelectionStart ?? v.length;
         if (v !== inputRef.ref.value) {
           inputRef.ref.value = v;
         }
+        if (!isSelectionType) inputElement.type = "text";
         if (inputRef.ref.selectionStart !== selectionStart) {
           inputRef.ref.setSelectionRange(selectionStart, selectionStart);
         }
+        if (!isSelectionType) inputElement.type = type;
       }
     }
     return false;
