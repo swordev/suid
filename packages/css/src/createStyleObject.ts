@@ -22,14 +22,14 @@ export type StyleObjectOptions = {
   name: string;
   props: StyleProps;
   extraProperties?: Record<string, (value: any) => any>;
+  createId?: () => string;
   cache?: StyleObjectCache;
 };
 
-function create(name: string, rules: string) {
-  const id = randomString().slice(0, 6);
+function create(name: string, rules: string, id: string) {
   return {
     id,
-    name: name,
+    name,
     className: `${name}-${id}`,
     rules: rules.replaceAll(`$id`, `${id}`),
   };
@@ -48,7 +48,13 @@ function createStyleObject(options: StyleObjectOptions) {
     )
     .join("\n");
 
-  const styleObject = options.cache?.get(rules) || create(options.name, rules);
+  const styleObject =
+    options.cache?.get(rules) ||
+    create(
+      options.name,
+      rules,
+      options.createId ? options.createId() : randomString().slice(0, 6)
+    );
 
   if (options.cache) options.cache.set(rules, styleObject);
 
