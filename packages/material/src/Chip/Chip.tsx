@@ -7,6 +7,7 @@ import chipClasses, { getChipUtilityClass } from "./chipClasses";
 import createComponentFactory from "@suid/base/createComponentFactory";
 import { alpha } from "@suid/system";
 import createElementRef from "@suid/system/createElementRef";
+import { redefine } from "@suid/system/createStyled";
 import { EventParam } from "@suid/types";
 import clsx from "clsx";
 import { children, createMemo } from "solid-js";
@@ -459,8 +460,10 @@ const Chip = $.component(function Chip({
     }
   }
 
+  const $ChipRoot = redefine(ChipRoot, "input", "div");
+
   return (
-    <ChipRoot
+    <$ChipRoot
       as={component()}
       class={clsx(classes.root, otherProps.class)}
       disabled={clickable() && props.disabled ? true : undefined}
@@ -477,7 +480,7 @@ const Chip = $.component(function Chip({
         {props.label}
       </ChipLabel>
       {deleteIcon}
-    </ChipRoot>
+    </$ChipRoot>
   );
 });
 

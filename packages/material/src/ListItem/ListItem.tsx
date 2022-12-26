@@ -195,7 +195,7 @@ const ListItem = $.component(function ListItem({
   return (
     <ListContext.Provider value={childContext}>
       <Dynamic
-        component={Root()}
+        $component={Root()}
         as={otherProps.component}
         ref={element}
         ownerState={ownerState}

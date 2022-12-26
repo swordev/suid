@@ -57,7 +57,7 @@ const BackdropUnstyled = $.component(function BackdropUnstyled({
       {...(!isHostComponent(Root()) && {
         ownerState: allProps,
       })}
-      component={Root()}
+      $component={Root()}
       class={clsx(classes.root, rootProps().class, otherProps.class)}
     >
       {props.children}

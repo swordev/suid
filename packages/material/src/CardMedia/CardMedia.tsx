@@ -2,6 +2,7 @@ import { CardMediaTypeMap } from ".";
 import styled from "../styles/styled";
 import { getCardMediaUtilityClass } from "./cardMediaClasses";
 import createComponentFactory from "@suid/base/createComponentFactory";
+import { redefine } from "@suid/system/createStyled";
 import { InPropsOf } from "@suid/types";
 import clsx from "clsx";
 import { createMemo, mergeProps } from "solid-js";
@@ -78,12 +79,17 @@ const CardMedia = $.component(function CardMedia({
     () => MEDIA_COMPONENTS.indexOf(otherProps.component as any) !== -1
   );
 
-  const sx = createMemo(() =>
+  const style = createMemo(() =>
     !isMediaComponent() && props.image
-      ? {
-          backgroundImage: `url("${props.image}")`,
-        }
-      : {}
+      ? mergeProps(
+          {
+            backgroundImage: `url("${props.image}")`,
+          },
+          typeof otherProps.style === "object" && otherProps.style
+            ? otherProps.style
+            : {}
+        )
+      : otherProps.style
   );
 
   const ownerState = mergeProps(allProps, {
@@ -95,18 +101,20 @@ const CardMedia = $.component(function CardMedia({
     },
   });
 
+  const $CardMediaRoot = redefine(CardMediaRoot, "div", "img");
+
   return (
-    <CardMediaRoot
+    <$CardMediaRoot
       role={!isMediaComponent() && props.image ? "img" : undefined}
       {...otherProps}
       class={clsx(classes.root, otherProps.class)}
-      style={[sx(), otherProps.sx]}
+      style={style()}
       ownerState={ownerState}
       src={isMediaComponent() ? props.image || props.src : undefined}
     >
       {props.children}
-    </CardMediaRoot>
-  );
+    </$CardMediaRoot>
+  ) as any;
 });
 
 export default CardMedia;

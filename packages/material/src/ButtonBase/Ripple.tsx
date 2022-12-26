@@ -78,7 +78,7 @@ const Ripple = $.component(function Ripple({ props, otherProps }) {
 
   return (
     <Box
-      component="span"
+      as="span"
       class={rippleClassName()}
       style={rippleStyles()}
       sx={otherProps.sx}

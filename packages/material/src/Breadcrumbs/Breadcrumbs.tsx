@@ -89,7 +89,7 @@ function insertSeparators(
       acc = acc.concat(
         current,
         <BreadcrumbsSeparator
-          component={"div"}
+          as="div"
           aria-hidden
           class={className}
           ownerState={ownerState}

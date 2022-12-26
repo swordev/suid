@@ -167,7 +167,7 @@ const TextField = $.component(function TextField({
   const InputComponent = () => variantComponent[props.variant];
   const InputElement = () => (
     <Dynamic
-      component={InputComponent()}
+      $component={InputComponent()}
       aria-describedby={helperTextId()}
       autoComplete={props.autoComplete}
       autoFocus={props.autoFocus}

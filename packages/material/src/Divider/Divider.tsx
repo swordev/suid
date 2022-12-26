@@ -3,6 +3,7 @@ import { DividerTypeMap } from "./DividerProps";
 import { getDividerUtilityClass } from "./dividerClasses";
 import createComponentFactory from "@suid/base/createComponentFactory";
 import { alpha } from "@suid/system";
+import { redefine } from "@suid/system/createStyled";
 import clsx from "clsx";
 import { Show } from "solid-js";
 
@@ -208,8 +209,9 @@ const Divider = $.component(function Divider({
   otherProps,
   classes,
 }) {
+  const $DividerRoot = redefine(DividerRoot, "div", "hr");
   return (
-    <DividerRoot
+    <$DividerRoot
       role={allProps.role}
       {...otherProps}
       ownerState={allProps}
@@ -220,7 +222,7 @@ const Divider = $.component(function Divider({
           {allProps.children}
         </DividerWrapper>
       </Show>
-    </DividerRoot>
+    </$DividerRoot>
   );
 });
 

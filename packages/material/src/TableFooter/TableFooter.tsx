@@ -56,9 +56,11 @@ const TableFooter = $.defineComponent(function TableFooter(inProps) {
   return (
     <Tablelvl2Context.Provider value={tablelvl2}>
       <TableFooterRoot
-        component={baseProps.component}
+        as={baseProps.component}
         class={clsx(classes.root, props.class)}
-        role={baseProps.component === defaultComponent ? null : "rowgroup"}
+        role={
+          baseProps.component === defaultComponent ? (null as any) : "rowgroup"
+        }
         ownerState={ownerState}
         {...other}
       />

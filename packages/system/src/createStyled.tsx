@@ -1,8 +1,10 @@
-import Box, { BoxTypeMap, disableSystemPropsKey } from "./Box";
+import Dynamic from "./Dynamic";
+import createStyle from "./createStyle";
 import type { Theme } from "./createTheme/createTheme";
 import resolveStyledProps from "./resolveStyledProps";
+import resolveSxProps from "./resolveSxProps";
 import { StyledProps } from "./styledProps";
-import { SxProps } from "./sxProps";
+import { SxProps, SxPropsObject } from "./sxProps";
 import useTheme from "./useTheme";
 import {
   ElementType,
@@ -11,7 +13,7 @@ import {
   PropsOf,
 } from "@suid/types";
 import clsx from "clsx";
-import { createMemo } from "solid-js";
+import { Component, createMemo } from "solid-js";
 import { ComponentProps as _ComponentProps, JSX, splitProps } from "solid-js";
 
 export interface ComponentProps<T, O> {
@@ -37,6 +39,18 @@ type StyledOptions<N extends string> = {
   ) => (string | false)[];
 };
 
+export type StyledComponent<C, O = unknown> = (
+  props: PropsOf<C> & Partial<ComponentProps<Theme, O>>
+) => JSX.Element;
+
+export function redefine<C, O, T extends ElementType>(
+  component: StyledComponent<C, O>,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  ..._types: T[]
+): StyledComponent<T, O> {
+  return component as any;
+}
+
 export const skipProps: (keyof ComponentProps<any, any>)[] = [
   "ownerState",
   "theme",
@@ -45,13 +59,14 @@ export const skipProps: (keyof ComponentProps<any, any>)[] = [
 ];
 
 function resolveStyles<T extends Theme<any>, P, O>(
-  theme: T,
+  useTheme: () => T,
   className: string,
   styles: Style<T, P, O>[],
   inProps: ComponentProps<T, O>
 ) {
-  return createMemo(() =>
-    styles.reduce((result, style) => {
+  return createMemo(() => {
+    const theme = useTheme();
+    return styles.reduce((result, style) => {
       let styledProps: StyledProps | false | undefined;
       if (typeof style === "function") {
         styledProps = style({
@@ -70,8 +85,12 @@ function resolveStyles<T extends Theme<any>, P, O>(
           ...resolveStyledProps(styledProps),
         });
       return result;
-    }, [] as StyledProps[])
-  );
+    }, [] as StyledProps[]);
+  });
+}
+
+function isStyledComponent(input: unknown): input is Component {
+  return typeof input === "function" && "__styled" in input && !!input.__styled;
 }
 
 function createStyled<
@@ -109,11 +128,18 @@ function createStyled<
           : PropsOf<C>,
         O
       >[]
-    ) {
-      return function (inProps: _ComponentProps<C> & ComponentProps<T, O>) {
-        const theme = config?.onUseTheme
-          ? config.onUseTheme()
-          : (useTheme() as T);
+    ): C extends OverridableComponent<infer M>
+      ? OverridableComponent<{
+          defaultComponent: M["defaultComponent"];
+          props: M["props"] & { ownerState?: O };
+        }>
+      : StyledComponent<C, O> {
+      function StyledComponent(
+        inProps: _ComponentProps<C> & ComponentProps<T, O>
+      ) {
+        const $useTheme = () =>
+          inProps.theme ??
+          (config?.onUseTheme ? config.onUseTheme() : (useTheme() as T));
 
         const [, otherProps] = splitProps(
           inProps,
@@ -121,13 +147,13 @@ function createStyled<
         );
 
         const inStyles = resolveStyles(
-          theme,
+          $useTheme,
           className || "css",
           styles,
           inProps
         );
 
-        const inSx = createMemo(() =>
+        const inSx: () => SxPropsObject[] = createMemo(() =>
           !options.skipSx && inProps.sx
             ? Array.isArray(inProps.sx)
               ? inProps.sx
@@ -135,42 +161,61 @@ function createStyled<
             : []
         );
 
-        const sx = () => [...inStyles(), ...inSx()];
+        const sx = () => {
+          const theme = $useTheme();
+          return [
+            ...inStyles().map((v) => ({ ...v, __resolved: true })),
+            ...inSx().map((sx) =>
+              (sx as any).__resolved ? sx : resolveSxProps(sx, theme)
+            ),
+          ];
+        };
 
-        if (typeof Component === "string") {
-          return (
-            <Box
-              {...otherProps}
-              component={inProps.as || inProps.component || Component}
-              sx={sx()}
-              theme={theme}
-              class={clsx([inProps.class, className])}
-              {...{
-                [disableSystemPropsKey]: true,
-              }}
-            />
-          );
-        }
+        const styledComponent = createMemo(() => isStyledComponent(Component));
+
+        const $component = () =>
+          inProps.as && !styledComponent() ? inProps.as : Component;
+
+        const styled$Component = createMemo(() =>
+          isStyledComponent($component())
+        );
+
+        const as = () =>
+          inProps.as && styledComponent() ? inProps.as : undefined;
+
+        const styledProps = () =>
+          styled$Component() && {
+            ownerState: inProps.ownerState,
+            sx: sx(),
+          };
+
+        const styleClassName = createStyle(() =>
+          styled$Component() ? undefined : sx()
+        );
+
+        // [review] This property must be omitted on each component individually.
+        const component = () =>
+          styled$Component() ? (otherProps as any).component : null;
 
         return (
-          <Component
+          <Dynamic
             {...otherProps}
-            component={inProps.as}
-            sx={sx()}
-            theme={theme}
-            class={clsx([inProps.class, className])}
-            ownerState={inProps.ownerState}
+            $component={$component()}
+            component={component()}
+            as={as()}
+            {...styledProps()}
+            class={clsx([
+              ...new Set([inProps.class, className, styleClassName()]),
+            ])}
           />
         );
-      } as C extends OverridableComponent<infer M>
-        ? OverridableComponent<{
-            defaultComponent: M["defaultComponent"];
-            props: M["props"] & { ownerState?: O };
-          }>
-        : C extends keyof JSX.IntrinsicElements
-        ? OverridableComponent<BoxTypeMap<{ ownerState?: O }, C>>
-        : (props: PropsOf<C> & { ownerState?: O }) => JSX.Element;
+      }
+
+      (StyledComponent as any)["__styled"] = true;
+
+      return StyledComponent as any;
     };
   };
 }
+
 export default createStyled;

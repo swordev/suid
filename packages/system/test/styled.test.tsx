@@ -1,4 +1,6 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import Box from "../src/Box";
+import createTheme from "../src/createTheme";
 import styled from "../src/styled";
 import useTheme from "../src/useTheme";
 import { screen, render } from "solid-testing-library";
@@ -14,7 +16,7 @@ describe("styled", () => {
   });
   it("creates customized host component", () => {
     const Div = styled("div")();
-    const { unmount } = render(() => <Div data-testid="e" component="span" />);
+    const { unmount } = render(() => <Div data-testid="e" as="span" />);
     const e = screen.getByTestId("e");
     expect(e.nodeName).toBe("SPAN");
     unmount();
@@ -33,6 +35,7 @@ describe("styled", () => {
     });
     const MyComponent2 = styled(MyComponent1)({
       color: "blue",
+      marginTop: 1,
     });
 
     const { unmount } = render(() => <MyComponent2 data-testid="e" />);
@@ -40,6 +43,7 @@ describe("styled", () => {
     const styles = window.getComputedStyle(e);
     expect(styles.backgroundColor).toBe("red");
     expect(styles.color).toBe("blue");
+    expect(styles.marginTop).toBe("1px");
     unmount();
   });
   it("creates styled function component", () => {
@@ -66,11 +70,79 @@ describe("styled", () => {
     expect(e.getAttributeNames().sort().join(",")).toBe("class,data-testid");
     unmount();
   });
+  it("uses custom theme", () => {
+    const Div = styled("div")(({ theme }) => ({
+      color: theme.palette.primary.main,
+    }));
+    const theme = createTheme({
+      palette: {
+        primary: {
+          main: "red",
+        },
+      },
+    });
+    const { unmount } = render(() => <Div data-testid="e" theme={theme} />);
+    const e = screen.getByTestId("e");
+    expect(window.getComputedStyle(e).color).toBe("red");
+    unmount();
+  });
   it("passes system properties", () => {
     const Div = styled("div")();
+    // @ts-ignore
     const { unmount } = render(() => <Div data-testid="e" mt={1} />);
     const e = screen.getByTestId("e");
     expect(e.getAttributeNames().sort().join(",")).toBe("class,data-testid,mt");
+    unmount();
+  });
+  it("ignores theme values", () => {
+    const Div = styled("div")({
+      color: "primary.main",
+    });
+    const theme = createTheme({
+      palette: {
+        primary: {
+          main: "red",
+        },
+      },
+    });
+    const { unmount } = render(() => <Div data-testid="e" theme={theme} />);
+    const e = screen.getByTestId("e");
+    expect(window.getComputedStyle(e).color).toBe("");
+    unmount();
+  });
+  it("parses theme values", () => {
+    const Div = styled("div")({});
+    const theme = createTheme({
+      palette: {
+        primary: {
+          main: "red",
+        },
+      },
+    });
+    const { unmount } = render(() => (
+      <Div data-testid="e" theme={theme} sx={{ color: "primary.main" }} />
+    ));
+    const e = screen.getByTestId("e");
+    expect(window.getComputedStyle(e).color).toBe("red");
+    unmount();
+  });
+
+  it("merges styles", () => {
+    const Div = styled("div")({
+      marginLeft: 1,
+    });
+    const { unmount } = render(() => (
+      <Div
+        data-testid="e"
+        sx={{
+          marginRight: 1,
+        }}
+      />
+    ));
+    const e = screen.getByTestId("e");
+    const css = window.getComputedStyle(e);
+    expect(css.marginLeft).toBe("1px");
+    expect(css.marginRight).toBe("8px");
     unmount();
   });
 });

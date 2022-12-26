@@ -51,7 +51,9 @@ const TableHead = $.component(function TableHead({
   return (
     <Tablelvl2Context.Provider value={tablelvl2}>
       <TableHeadRoot
-        role={otherProps.component === defaultComponent ? null : "rowgroup"}
+        role={
+          otherProps.component === defaultComponent ? (null as any) : "rowgroup"
+        }
         {...otherProps}
         class={clsx(classes.root, otherProps.class)}
         ownerState={allProps}

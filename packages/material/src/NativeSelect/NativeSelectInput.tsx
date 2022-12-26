@@ -192,7 +192,7 @@ const NativeSelectInput = function NativeSelectInput(
       />
       <Show when={!props.multiple}>
         <NativeSelectIcon
-          component={props.IconComponent}
+          as={props.IconComponent}
           ownerState={ownerState}
           class={classes.icon}
         />

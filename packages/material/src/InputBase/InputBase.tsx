@@ -538,7 +538,7 @@ const InputBase = $.component(function InputBase({
       <Dynamic
         {...rootProps()}
         {...otherProps}
-        component={Root() as "input"}
+        $component={Root()}
         {...(!isHostComponent(Root()) && {
           ownerState: rootOwnerState,
         })}
@@ -556,8 +556,8 @@ const InputBase = $.component(function InputBase({
         {props.startAdornment}
 
         <FormControlContext.Provider value={undefined}>
-          <Dynamic<"input">
-            component={Input() as "input"}
+          <Dynamic
+            $component={Input() as "input"}
             ownerState={ownerState}
             aria-invalid={fcs.error}
             aria-describedby={props["aria-describedby"]}

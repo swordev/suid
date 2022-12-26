@@ -359,7 +359,7 @@ const ButtonBase = $.component(function ButtonBase({
       ref={button}
       tabIndex={props.disabled ? -1 : props.tabIndex}
       type={otherProps.type}
-      component={ComponentProp() as "button"}
+      as={ComponentProp()}
     >
       {props.children}
       <Show when={enableTouchRipple()}>

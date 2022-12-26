@@ -8,6 +8,7 @@ import { getLinearProgressUtilityClass } from "./linearProgressClasses";
 import createComponentFactory from "@suid/base/createComponentFactory";
 import { darken, lighten } from "@suid/system/colorManipulator";
 import createElementRef from "@suid/system/createElementRef";
+import { redefine } from "@suid/system/createStyled";
 import { InPropsOf } from "@suid/types";
 import randomString from "@suid/utils/randomString";
 import clsx from "clsx";
@@ -332,8 +333,10 @@ const LinearProgress = $.component(function LinearProgress({
     }
   });
 
+  const $LinearProgressRoot = redefine(LinearProgressRoot, "span", "div");
+
   return (
-    <LinearProgressRoot
+    <$LinearProgressRoot
       role="progressbar"
       {...otherProps}
       ref={element}
@@ -355,7 +358,7 @@ const LinearProgress = $.component(function LinearProgress({
           style={bar2Style()}
         />
       </Show>
-    </LinearProgressRoot>
+    </$LinearProgressRoot>
   );
 });
 

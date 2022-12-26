@@ -240,7 +240,7 @@ const Avatar = $.defineComponent(function Avatar(inProps) {
 
   return (
     <AvatarRoot
-      component={baseProps.component}
+      as={baseProps.component}
       ownerState={ownerState}
       class={clsx(classes.root, props.class)}
       {...other}

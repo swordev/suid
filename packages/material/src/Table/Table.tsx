@@ -77,7 +77,7 @@ const Table = $.component(function Table({
       }}
     >
       <TableRoot
-        role={allProps.component === defaultComponent ? null : "table"}
+        role={allProps.component === defaultComponent ? (null as any) : "table"}
         {...otherProps}
         class={clsx(classes.root, otherProps.class)}
         ownerState={allProps}

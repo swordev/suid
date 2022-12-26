@@ -88,7 +88,7 @@ const NotchedOutline = $.component(function NotchedOutline({
   });
   return (
     <NotchedOutlineRoot
-      {...otherProps}
+      {...(otherProps as any)}
       aria-hidden
       class={otherProps.class}
       ownerState={ownerState}

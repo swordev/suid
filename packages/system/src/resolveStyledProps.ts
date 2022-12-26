@@ -1,4 +1,3 @@
-import { resolvedPropKey } from "./createStyle";
 import { StyledProps } from "./styledProps";
 import resolve from "@suid/css/resolve";
 
@@ -60,7 +59,7 @@ export function resolveStyledPropsValue(name: string, value: unknown) {
 }
 
 function resolveStyledProps(v: StyledProps): StyledProps {
-  return resolve(v, resolveStyledPropsValue, { [resolvedPropKey]: true });
+  return resolve(v, resolveStyledPropsValue);
 }
 
 export default resolveStyledProps;

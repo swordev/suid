@@ -1,4 +1,3 @@
-import { resolvedPropKey } from "./createStyle";
 import { Theme } from "./createTheme";
 import { resolveStyledPropsValue } from "./resolveStyledProps";
 import { SxPropsObject } from "./sxProps";
@@ -20,9 +19,7 @@ export function reslveSxPropsValue(name: string, value: unknown, theme: Theme) {
 }
 
 function resolveSxProps(v: SxPropsObject, theme: Theme): SxPropsObject {
-  return resolve(v, (name, value) => reslveSxPropsValue(name, value, theme), {
-    [resolvedPropKey]: true,
-  });
+  return resolve(v, (name, value) => reslveSxPropsValue(name, value, theme));
 }
 
 export default resolveSxProps;

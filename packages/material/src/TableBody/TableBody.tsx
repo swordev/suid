@@ -51,7 +51,9 @@ const TableBody = $.component(function TableBody({
       }}
     >
       <TableBodyRoot
-        role={otherProps.component === defaultComponent ? null : "rowgroup"}
+        role={
+          otherProps.component === defaultComponent ? (null as any) : "rowgroup"
+        }
         {...otherProps}
         class={clsx(classes.root, otherProps.class)}
         ownerState={allProps}

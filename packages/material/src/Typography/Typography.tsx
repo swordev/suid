@@ -143,7 +143,7 @@ const Typography = $.component(function Typography({
   return (
     <TypographyRoot
       {...otherProps}
-      component={Component()}
+      as={Component()}
       ownerState={ownerState}
       class={clsx(classes.root, otherProps.class)}
     >

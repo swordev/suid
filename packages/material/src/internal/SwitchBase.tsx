@@ -142,22 +142,22 @@ const SwitchBase = $.component(function SwitchBase({
   });
 
   return (
-    <SwitchBaseRoot<"div">
+    <SwitchBaseRoot<"div" | "span">
       {...otherProps}
-      component={"span" as "div"}
+      component="span"
       class={clsx(classes.root, otherProps.class)}
       centerRipple
       focusRipple={!props.disableFocusRipple}
       disabled={disabled()}
       tabIndex={null as any}
       role={undefined}
-      onFocus={(event) => {
+      onFocus={(event: any) => {
         if (typeof otherProps.onFocus === "function") {
           otherProps.onFocus(event);
         }
         muiFormControl?.onFocus?.();
       }}
-      onBlur={(event) => {
+      onBlur={(event: any) => {
         if (typeof otherProps.onBlur === "function") {
           otherProps.onBlur(event);
         }
@@ -165,8 +165,8 @@ const SwitchBase = $.component(function SwitchBase({
       }}
       ownerState={ownerState}
     >
-      <SwitchBaseInput<"input">
-        component="input"
+      <SwitchBaseInput
+        as="input"
         autofocus={props.autoFocus}
         class={classes.input}
         disabled={disabled()}

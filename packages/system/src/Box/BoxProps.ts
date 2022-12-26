@@ -1,4 +1,3 @@
-import type { DynamicSelfProps } from "../Dynamic";
 import { Theme } from "../createTheme";
 import SxProps from "../sxProps";
 import { SystemProps } from "../systemProps";
@@ -10,7 +9,7 @@ export interface BoxSelfProps {
 }
 
 export interface BoxTypeMap<P = {}, D extends ElementType = "div"> {
-  props: P & DynamicSelfProps & SystemProps<Theme> & BoxSelfProps;
+  props: P & SystemProps<Theme> & BoxSelfProps;
   defaultComponent: D;
 }
 
