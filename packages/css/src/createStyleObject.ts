@@ -1,7 +1,7 @@
 import render from "./render";
-import randomString from "@suid/utils/randomString";
-import resolveFunction from "@suid/utils/resolveFunction";
-import toArray from "@suid/utils/toArray";
+import { toArray } from "./utils/array";
+import { resolveFunction } from "./utils/function";
+import { randomString } from "./utils/string";
 
 export type StyleObject = {
   id: string;

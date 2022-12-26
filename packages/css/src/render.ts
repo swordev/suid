@@ -6,7 +6,7 @@ import {
   isVar,
   isPrivateVar,
 } from "./assert";
-import snakeCase from "@suid/utils/snakeCase";
+import { snakeCase } from "./utils/string";
 
 type RenderOptions = {
   sublevel?: boolean;

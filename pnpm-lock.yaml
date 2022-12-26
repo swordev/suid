@@ -121,10 +121,7 @@ importers:
     publishDirectory: lib
 
   packages/css:
-    specifiers:
-      '@suid/utils': workspace:*
-    dependencies:
-      '@suid/utils': link:../utils
+    specifiers: {}
     publishDirectory: lib
 
   packages/icons-material:

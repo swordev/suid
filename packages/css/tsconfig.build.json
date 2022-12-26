@@ -2,13 +2,10 @@
   "compilerOptions": {
     "outDir": "lib",
     "rootDir": "src",
-    "paths": {
-      "@suid/utils": ["./../utils/src"],
-      "@suid/utils/*": ["./../utils/src/*"]
-    }
+    "paths": {}
   },
   "exclude": ["src/**/*.test.*"],
   "extends": "./tsconfig.json",
   "include": ["src"],
-  "references": [{ "path": "./../utils/tsconfig.build.json" }]
+  "references": []
 }

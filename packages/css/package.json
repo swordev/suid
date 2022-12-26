@@ -12,9 +12,6 @@
     "clean": "tsc --build --clean tsconfig.build.json",
     "watch": "tsc --build -w tsconfig.build.json"
   },
-  "dependencies": {
-    "@suid/utils": "workspace:*"
-  },
   "publishConfig": {
     "directory": "lib"
   }
