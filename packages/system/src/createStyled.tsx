@@ -212,6 +212,7 @@ function createStyled<
       }
 
       (StyledComponent as any)["__styled"] = true;
+      if (className) StyledComponent.toString = () => `.${className}`;
 
       return StyledComponent as any;
     };

@@ -126,7 +126,6 @@ describe("styled", () => {
     expect(window.getComputedStyle(e).color).toBe("red");
     unmount();
   });
-
   it("merges styles", () => {
     const Div = styled("div")({
       marginLeft: 1,
@@ -143,6 +142,36 @@ describe("styled", () => {
     const css = window.getComputedStyle(e);
     expect(css.marginLeft).toBe("1px");
     expect(css.marginRight).toBe("8px");
+    unmount();
+  });
+  it("uses component selectors", () => {
+    const Div1 = styled("div", { name: "Div1" })({});
+    const Div2 = styled("div", { name: "Div2" })({});
+
+    const Div = styled("div")({
+      [`${Div1}`]: {
+        color: "red",
+      },
+      [`${Div2}`]: {
+        color: "blue",
+      },
+    });
+    const { unmount } = render(() => (
+      <Div>
+        <Div1 data-testid="div1">a</Div1>
+        <Div2 data-testid="div2">b</Div2>
+      </Div>
+    ));
+
+    const div1 = screen.getByTestId("div1");
+    const div2 = screen.getByTestId("div2");
+    const css1 = window.getComputedStyle(div1);
+    const css2 = window.getComputedStyle(div2);
+
+    expect(`${Div1}`).toBe(".Div1-root");
+    expect(`${Div2}`).toBe(".Div2-root");
+    expect(css1.color).toBe("red");
+    expect(css2.color).toBe("blue");
     unmount();
   });
 });

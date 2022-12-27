@@ -15,4 +15,6 @@ export const Box = defineComponent<BoxTypeMap>(function Box(inProps) {
   return <BoxRoot {...inProps} as={inProps.as ?? inProps.component} />;
 });
 
+Box.toString = BoxRoot.toString;
+
 export default Box;

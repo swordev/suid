@@ -87,6 +87,9 @@ describe("Box", () => {
     expect(e.nodeName).toBe("A");
     unmount();
   });
+  it("returns class selector", () => {
+    expect(`${Box}`).toBe(".MuiBox-root");
+  });
 });
 
 export {};
