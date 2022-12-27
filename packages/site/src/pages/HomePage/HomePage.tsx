@@ -316,7 +316,7 @@ export default function HomePage() {
               dense
               sx={{
                 pl: 3,
-                [`& .${Typography}`]: {
+                [`& ${Typography}`]: {
                   fontSize: 21,
                   fontWeight: 200,
                 },

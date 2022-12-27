@@ -6,7 +6,7 @@ export default function FormPropsTextFields() {
       component="form"
       sx={{
         maxWidth: 764,
-        [`& .${TextField}`]: { m: 1, width: "25ch" },
+        [`& ${TextField}`]: { m: 1, width: "25ch" },
         textAlign: "center",
       }}
       noValidate

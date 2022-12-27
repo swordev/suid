@@ -7,7 +7,7 @@ export default function BoxSysProps() {
     <Stack
       direction="row"
       sx={{
-        [`.${Box}`]: {
+        [`${Box}`]: {
           bgcolor: theme.palette.background.paper,
           boxShadow: theme.shadows[1],
           width: 50,

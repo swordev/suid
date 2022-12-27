@@ -303,7 +303,7 @@ function NavSection(props: {
         <ListItemIcon
           sx={{
             minWidth: 28,
-            [`& .${SvgIcon}`]: {
+            [`& ${SvgIcon}`]: {
               fontSize: 15,
             },
           }}

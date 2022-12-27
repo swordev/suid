@@ -93,7 +93,7 @@ export default function Header() {
         <Box
           sx={{
             flexGrow: 1,
-            [`.${Button}`]: {
+            [`${Button}`]: {
               mx: 0.5,
             },
           }}
