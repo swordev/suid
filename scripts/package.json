@@ -9,11 +9,11 @@
   },
   "devDependencies": {
     "@tsconfig/node18": "^1.0.1",
-    "@types/node": "^18.11.9",
-    "@types/prettier": "^2.7.1",
-    "json5": "^2.2.1",
+    "@types/node": "^18.11.18",
+    "@types/prettier": "^2.7.2",
+    "json5": "^2.2.3",
     "node-html-parser": "^6.1.4",
-    "prettier": "^2.7.1",
-    "typescript": "^4.9.3"
+    "prettier": "^2.8.1",
+    "typescript": "^4.9.4"
   }
 }

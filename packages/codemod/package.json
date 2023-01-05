@@ -23,11 +23,11 @@
     "commander": "^9.4.1",
     "fast-glob": "^3.2.12",
     "micromatch": "^4.0.5",
-    "prettier": "^2.7.1",
-    "ts-morph": "^16.0.0"
+    "prettier": "^2.8.1",
+    "ts-morph": "^17.0.1"
   },
   "devDependencies": {
-    "typescript": "^4.9.3"
+    "typescript": "^4.9.4"
   },
   "publishConfig": {
     "directory": "lib"
