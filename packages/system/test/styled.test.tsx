@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import Box from "../src/Box";
+import { redefine } from "../src/createStyled";
 import createTheme from "../src/createTheme";
 import styled from "../src/styled";
 import useTheme from "../src/useTheme";
@@ -173,6 +174,38 @@ describe("styled", () => {
     expect(css1.color).toBe("red");
     expect(css2.color).toBe("blue");
     unmount();
+  });
+
+  it("creates typed component", () => {
+    const Div = styled("div")({});
+    const Img = styled("img")({});
+
+    const t = (_cb: () => any) => _cb;
+
+    t(() => [
+      Div({
+        // @ts-expect-error
+        dummy: "",
+      }),
+      Div({
+        // @ts-expect-error
+        href: "/",
+      }),
+      Div({
+        as: "a",
+        // @ts-expect-error
+        href: "/",
+      }),
+      redefine(
+        Div,
+        "a"
+      )({
+        href: "/",
+      }),
+      Img({
+        src: "/",
+      }),
+    ]);
   });
 });
 

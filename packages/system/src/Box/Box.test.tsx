@@ -90,6 +90,31 @@ describe("Box", () => {
   it("returns class selector", () => {
     expect(`${Box}`).toBe(".MuiBox-root");
   });
+  it("creates typed component", () => {
+    const Link = styled("a")({});
+
+    const t = (_cb: () => any) => _cb;
+
+    t(() => [
+      Box({}),
+      // @ts-expect-error
+      Box({
+        href: "/",
+      }),
+      Box({
+        component: "a",
+        href: "/",
+      }),
+      Box({
+        component: Link,
+        href: "/",
+      }),
+      Box<"a">({
+        component: "a",
+        href: "/",
+      }),
+    ]);
+  });
 });
 
 export {};

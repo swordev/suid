@@ -54,7 +54,7 @@
     "release": "changeset publish",
     "scripts": "node --no-warnings --experimental-specifier-resolution=node --loader ts-node/esm scripts/index.ts",
     "start": "pnpm --filter @suid/site start",
-    "test": "vitest run",
+    "test": "vitest run && vitest typecheck --run",
     "update:deps": "pnpm update -r -i --latest",
     "watch": "tsc --build tsconfig.build.json -w"
   },

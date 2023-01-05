@@ -9,6 +9,13 @@ export default defineConfig({
   },
   test: {
     environment: "jsdom",
+    typecheck: {
+      ignoreSourceErrors: true,
+      include: [
+        "./packages/system/test/styled.test.tsx",
+        "./packages/system/src/Box/Box.test.tsx",
+      ],
+    },
     transformMode: {
       web: [/\.[jt]sx?$/],
     },
