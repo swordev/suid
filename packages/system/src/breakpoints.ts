@@ -1,6 +1,6 @@
-import { Theme } from "./createTheme";
-import { Breakpoint } from "./createTheme/createBreakpoints";
-import StyledProps from "./styledProps";
+import type { Theme } from "./createTheme";
+import type { Breakpoint } from "./createTheme/createBreakpoints";
+import type StyledProps from "./styledProps";
 
 export type BreakpointValueType<T extends string> = {
   [K in T]?: number | boolean | "auto";

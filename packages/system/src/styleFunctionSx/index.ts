@@ -1,4 +1,4 @@
-import { Breakpoint } from "../createTheme/createBreakpoints";
+import type { Breakpoint } from "../createTheme/createBreakpoints";
 
 export type ResponsiveStyleValue<T> =
   | T
