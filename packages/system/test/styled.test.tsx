@@ -176,6 +176,37 @@ describe("styled", () => {
     unmount();
   });
 
+  it("uses component selectors without names", () => {
+    const Div1 = styled("div")();
+    const Div2 = styled("div")();
+
+    const Div = styled("div")({
+      [`${Div1}`]: {
+        color: "red",
+      },
+      [`${Div2}`]: {
+        color: "blue",
+      },
+    });
+    const { unmount } = render(() => (
+      <Div>
+        <Div1 data-testid="div1">a</Div1>
+        <Div2 data-testid="div2">b</Div2>
+      </Div>
+    ));
+
+    const div1 = screen.getByTestId("div1");
+    const div2 = screen.getByTestId("div2");
+    const css1 = window.getComputedStyle(div1);
+    const css2 = window.getComputedStyle(div2);
+
+    expect(`${Div1}`.startsWith(".styled-")).toBeTruthy();
+    expect(`${Div2}`.startsWith(".styled-")).toBeTruthy();
+    expect(css1.color).toBe("red");
+    expect(css2.color).toBe("blue");
+    unmount();
+  });
+
   it("creates typed component", () => {
     const Div = styled("div")({});
     const Img = styled("img")({});

@@ -12,6 +12,7 @@ import {
   OverridableInProps,
   PropsOf,
 } from "@suid/types";
+import { randomString } from "@suid/utils";
 import clsx from "clsx";
 import { Component, createMemo } from "solid-js";
 import { ComponentProps as _ComponentProps, JSX, splitProps } from "solid-js";
@@ -108,6 +109,8 @@ function createStyled<
       className = `${options.name}-${
         slot.slice(0, 1).toLowerCase() + slot.slice(1)
       }`;
+    } else {
+      className = `styled-${randomString()}`;
     }
 
     return function <
@@ -148,7 +151,8 @@ function createStyled<
 
         const inStyles = resolveStyles(
           $useTheme,
-          className || "css",
+          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+          options.name ? className! : "css",
           styles,
           inProps
         );
