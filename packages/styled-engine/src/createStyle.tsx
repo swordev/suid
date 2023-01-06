@@ -14,7 +14,7 @@ import {
   sharedConfig,
   useContext,
 } from "solid-js";
-import { isServer, style, useAssets } from "solid-js/web";
+import { isServer, useAssets } from "solid-js/web";
 
 const styleObjectCache = new Map<string, StyleObject>();
 
@@ -68,12 +68,17 @@ function createStyle(value: () => StyleProps | undefined) {
       });
 
       if (isServer) {
+        if (process.env.NODE_ENV !== "production") {
+          if (context.injectFirst)
+            console.warn(`SUID: 'injectFirst' is not supported in SSR mode.`);
+        }
         useAssets(() => (
           <style
             // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
             id={styleObject!.id}
             // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
             innerHTML={styleObject!.rules}
+            nonce={context.cache?.nonce}
           />
         ));
       } else {
@@ -82,10 +87,14 @@ function createStyle(value: () => StyleProps | undefined) {
         if (styleElement) {
           registerStyleElementUsage(styleElement);
         } else {
-          styleElement = appendStyleElement(styleObject.rules, {
-            id: styleObject.id,
-            nonce: context.cache?.nonce,
-          });
+          styleElement = appendStyleElement(
+            styleObject.rules,
+            {
+              id: styleObject.id,
+              nonce: context.cache?.nonce,
+            },
+            context.injectFirst
+          );
         }
 
         if (prevResult?.styleElement) {
