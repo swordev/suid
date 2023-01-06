@@ -1,5 +1,27 @@
 # @suid/styled-engine
 
+## 0.4.0
+
+### Minor Changes
+
+- [`9a1685e9`](https://github.com/swordev/suid/commit/9a1685e9040b0a9b82b4ccbd89f434cea18e54b6) Thanks [@juanrgm](https://github.com/juanrgm)! - Add partial support for SSR
+
+- [`3319c8f1`](https://github.com/swordev/suid/commit/3319c8f181d437cddba60df55783acbdd85915cb) Thanks [@juanrgm](https://github.com/juanrgm)! - Export `createStyle` and `StyledEngineProvider` in the index file
+
+- [`d4cede7e`](https://github.com/swordev/suid/commit/d4cede7e1d932acc9137dbbdb19608bc3df45159) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `injectFirst` property to `StyledEngineContext`
+
+### Patch Changes
+
+- [`c14f8639`](https://github.com/swordev/suid/commit/c14f863995a749b13d76e3e3e459e2b6f4b069f2) Thanks [@juanrgm](https://github.com/juanrgm)! - Update to SolidJS v1.6.7
+
+- [`401f1735`](https://github.com/swordev/suid/commit/401f17358421fcf37a2c150097dd888b3e93f229) Thanks [@juanrgm](https://github.com/juanrgm)! - Update readme
+
+- [`c5273760`](https://github.com/swordev/suid/commit/c5273760f96d58c7de41caa7c71b87249d17595d) Thanks [@juanrgm](https://github.com/juanrgm)! - Update to SolidJS v1.6.5
+
+- Updated dependencies [[`1dd2bebe`](https://github.com/swordev/suid/commit/1dd2bebea8da94e24eb86503ada330f880430553), [`696eeac5`](https://github.com/swordev/suid/commit/696eeac54b141db7637ff6f38701ddb77b8944f5), [`c14f8639`](https://github.com/swordev/suid/commit/c14f863995a749b13d76e3e3e459e2b6f4b069f2), [`97781a66`](https://github.com/swordev/suid/commit/97781a66cc87e620b9ba2a7c7c5b02b68fcbc0ea), [`401f1735`](https://github.com/swordev/suid/commit/401f17358421fcf37a2c150097dd888b3e93f229), [`c5273760`](https://github.com/swordev/suid/commit/c5273760f96d58c7de41caa7c71b87249d17595d)]:
+  - @suid/css@0.2.0
+  - @suid/utils@0.6.1
+
 ## 0.3.0
 
 ### Minor Changes
