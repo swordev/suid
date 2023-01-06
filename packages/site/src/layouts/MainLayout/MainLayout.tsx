@@ -1,3 +1,4 @@
+import { useLocation } from "@solidjs/router";
 import { createTheme, ThemeProvider } from "@suid/material";
 import {
   Box,
@@ -8,7 +9,6 @@ import {
 } from "@suid/material";
 import { drawerClasses } from "@suid/material/Drawer";
 import { createPalette } from "@suid/material/styles/createPalette";
-import { useLocation } from "solid-app-router";
 import {
   createEffect,
   createMemo,

@@ -152,6 +152,7 @@ importers:
 
   packages/site:
     specifiers:
+      '@solidjs/router': ^0.6.0
       '@stackblitz/sdk': ^1.8.1
       '@suid/base': workspace:*
       '@suid/codemod': workspace:*
@@ -170,11 +171,11 @@ importers:
       rimraf: ^3.0.2
       sass: ^1.57.1
       semver: ^7.3.8
-      solid-app-router: ^0.4.2
       solid-js: ^1.6.7
       vite: ^4.0.4
       vite-plugin-solid: 2.5.0
     dependencies:
+      '@solidjs/router': 0.6.0_solid-js@1.6.7
       '@stackblitz/sdk': 1.8.1
       '@suid/base': link:../base
       '@suid/codemod': link:../codemod
@@ -187,7 +188,6 @@ importers:
       prism-themes: 1.9.0
       prismjs: 1.29.0
       semver: 7.3.8
-      solid-app-router: 0.4.2_solid-js@1.6.7
       solid-js: 1.6.7
     devDependencies:
       '@suid/vite-plugin': link:../vite-plugin
@@ -3196,6 +3196,14 @@ packages:
     resolution: {integrity: sha512-CX6t4SYQ37lzxicAqsBtxA3OseeoVrh9cSJ5PFYam0GksYlupRfy1A+Q4aYD3zvcfECLc0zO2u+ZnR2UYKvCrw==}
     engines: {node: '>=14.16'}
     dev: true
+
+  /@solidjs/router/0.6.0_solid-js@1.6.7:
+    resolution: {integrity: sha512-7ug2fzXXhvvDBL4CQyMvMM9o3dgBE6PoRh38T8UTmMnYz4rcCfROqSZc9yq+YEC96qWt5OvJgZ1Uj/4EAQXlfA==}
+    peerDependencies:
+      solid-js: ^1.5.3
+    dependencies:
+      solid-js: 1.6.7
+    dev: false
 
   /@stackblitz/sdk/1.8.1:
     resolution: {integrity: sha512-hjYfjOLQBNDzqPD5AkGJOD7j+uvFwGocDTmwNqmLCWR5EY7BDtcOtDY2M+91v/twYWWNvI7N8UNIgojCPNgzMA==}
@@ -8871,14 +8879,6 @@ packages:
       ip: 1.1.5
       smart-buffer: 4.2.0
     dev: true
-
-  /solid-app-router/0.4.2_solid-js@1.6.7:
-    resolution: {integrity: sha512-+NrLcmqYssx8DcbpcLBaYPqfTRtS+rkfbxMhLH8MHfTcTkdZfrkWQK7lsUvuPCebGEzfaPZJvHqBwhPrCXAmxg==}
-    peerDependencies:
-      solid-js: ^1.3.5
-    dependencies:
-      solid-js: 1.6.7
-    dev: false
 
   /solid-js/1.6.7:
     resolution: {integrity: sha512-yLLw9mtTqPEEPxmZfAHZi3DyP25XnQZ42+mDYuzhAdeqa+8EDuNKyxOXKY7PEFddCqp1G2UQI5O3JiJtE7yxBQ==}

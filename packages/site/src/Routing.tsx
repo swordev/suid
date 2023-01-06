@@ -1,10 +1,10 @@
+import { Route, Routes } from "@solidjs/router";
 import { Box, Container, useMediaQuery } from "@suid/material";
 import { useTheme } from "@suid/material/styles";
 import { SxPropsObject } from "@suid/system/sxProps";
 import { EventParam } from "@suid/types";
 import snakeCase from "@suid/utils/snakeCase";
 import uncapitalize from "@suid/utils/uncapitalize";
-import { Route, Routes } from "solid-app-router";
 import {
   Component,
   createMemo,

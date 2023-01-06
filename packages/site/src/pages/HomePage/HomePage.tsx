@@ -1,3 +1,4 @@
+import { Link as RouterLink } from "@solidjs/router";
 import CheckBoxIcon from "@suid/icons-material/CheckBox";
 import { useTheme } from "@suid/material";
 import {
@@ -273,6 +274,7 @@ export default function HomePage() {
               }}
             >
               <Button
+                component={RouterLink}
                 variant="contained"
                 size="large"
                 href="/getting-started/installation"

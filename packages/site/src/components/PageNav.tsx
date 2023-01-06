@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
+import { useLocation, Link as RouterLink } from "@solidjs/router";
 import NavigateBeforeIcon from "@suid/icons-material/NavigateBefore";
 import NavigateNextIcon from "@suid/icons-material/NavigateNext";
 import { useTheme } from "@suid/material";
 import { Box, Button, Divider, Grid, useMediaQuery } from "@suid/material";
 import SxProps from "@suid/system/sxProps";
-import { useLocation } from "solid-app-router";
 import { createMemo, mergeProps, Show } from "solid-js";
 import { tryPreload } from "~/Routing";
 import { findNavConfigs } from "~/layouts/MainLayout/Nav";
@@ -28,7 +28,7 @@ function NavButton(props: {
   if (props.preload && isTouchDevice()) tryPreload(props.href);
   return (
     <Button
-      component="a"
+      component={RouterLink}
       size="large"
       fullWidth={xs()}
       onMouseEnter={tryPreload}

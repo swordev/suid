@@ -1,3 +1,4 @@
+import { useLocation, Link as RouterLink } from "@solidjs/router";
 import CodeIcon from "@suid/icons-material/Code";
 import EditRoundedIcon from "@suid/icons-material/EditRounded";
 import HandymanIcon from "@suid/icons-material/Handyman";
@@ -15,7 +16,6 @@ import {
 } from "@suid/material";
 import snakeCase from "@suid/utils/snakeCase";
 import uncapitalize from "@suid/utils/uncapitalize";
-import { useLocation } from "solid-app-router";
 import { Component, JSXElement, mapArray } from "solid-js";
 import { Pages, tryPreload } from "~/Routing";
 import { useLayoutContext } from "./LayoutContext";
@@ -346,8 +346,8 @@ function NavLink(props: { text: string; href: string }) {
 
   return (
     <ListItemButton
+      component={RouterLink}
       selected={selected()}
-      component="a"
       sx={{ pl: "45px" }}
       href={props.href}
       onMouseEnter={tryPreload}

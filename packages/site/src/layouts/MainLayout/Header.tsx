@@ -1,3 +1,4 @@
+import { useLocation, Link as RouterLink } from "@solidjs/router";
 import DarkModeOutlinedIcon from "@suid/icons-material/DarkModeOutlined";
 import LightModeOutlinedIcon from "@suid/icons-material/LightModeOutlined";
 import MenuIcon from "@suid/icons-material/Menu";
@@ -13,7 +14,6 @@ import {
 } from "@suid/material";
 import createSvgIcon from "@suid/material/utils/createSvgIcon";
 import gt from "semver/functions/gt";
-import { useLocation } from "solid-app-router";
 import { createSignal, Show } from "solid-js";
 import { tryPreload } from "~/Routing";
 import { saveDarkMode, useLayoutContext } from "./LayoutContext";
@@ -82,7 +82,7 @@ export default function Header() {
           </IconButton>
         </Box>
         <Typography
-          component="a"
+          component={RouterLink}
           variant="h6"
           noWrap
           sx={{ mr: 3, textDecoration: "none", color: "inherit" }}
@@ -100,6 +100,7 @@ export default function Header() {
         >
           <Show when={!hideButtons()}>
             <Button
+              component={RouterLink}
               color="inherit"
               href="/getting-started/installation"
               onMouseEnter={tryPreload}
@@ -107,6 +108,7 @@ export default function Header() {
               Docs
             </Button>
             <Button
+              component={RouterLink}
               color="inherit"
               href="/tools/playground"
               onMouseEnter={tryPreload}
@@ -114,6 +116,7 @@ export default function Header() {
               Playground
             </Button>
             <Button
+              component={RouterLink}
               color="inherit"
               href="/tools/react-to-solid"
               onMouseEnter={tryPreload}
