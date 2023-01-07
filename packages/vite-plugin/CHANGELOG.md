@@ -1,5 +1,11 @@
 # @suid/vite-plugin
 
+## 0.1.2
+
+### Patch Changes
+
+- [`126e2ca9`](https://github.com/swordev/suid/commit/126e2ca9aad8b72132e873eac85c967c0be07371) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix `vite` version
+
 ## 0.1.1
 
 ### Patch Changes
