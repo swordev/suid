@@ -1,5 +1,15 @@
 # @suid/site
 
+## 0.7.4
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @suid/system@0.8.1
+  - @suid/base@0.6.1
+  - @suid/material@0.9.1
+  - @suid/icons-material@0.5.5
+
 ## 0.7.3
 
 ### Patch Changes

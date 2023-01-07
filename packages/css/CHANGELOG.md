@@ -1,5 +1,11 @@
 # @suid/css
 
+## 0.2.1
+
+### Patch Changes
+
+- [`16fc5591`](https://github.com/swordev/suid/commit/16fc5591116ea1d5cf4ec0ce16fd01f743f9c0a9) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix the style class name generator when there are effects over the `sx` property
+
 ## 0.2.0
 
 ### Minor Changes
