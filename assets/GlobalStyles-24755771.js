@@ -1,0 +1,1 @@
+var l=Object.defineProperty;var o=(t,e)=>l(t,"name",{value:e,configurable:!0});import{G as s,a1 as a}from"./ErrorPage-ac5239e5.js";const n=s()({name:"MuiGlobalStyles",selfPropNames:["styles"]}),y=n.component(o(function({props:e}){return a(()=>({"@global":e.styles||{}})),[]},"GlobalStyles"));export{y as G};

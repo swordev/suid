@@ -1,8 +1,9 @@
 {
   "name": "@suid/site",
-  "version": "0.7.2",
+  "version": "0.7.3",
   "description": "SUID website.",
   "dependencies": {
+    "@solidjs/router": "^0.6.0",
     "@stackblitz/sdk": "^1.8.1",
     "@suid/base": "workspace:*",
     "@suid/codemod": "workspace:*",
@@ -15,8 +16,7 @@
     "prism-themes": "^1.9.0",
     "prismjs": "^1.29.0",
     "semver": "^7.3.8",
-    "solid-app-router": "^0.4.2",
-    "solid-js": "^1.6.2"
+    "solid-js": "^1.6.7"
   },
   "devDependencies": {
     "@suid/vite-plugin": "workspace:*",
@@ -24,9 +24,9 @@
     "@types/semver": "^7.3.13",
     "fast-glob": "^3.2.12",
     "rimraf": "^3.0.2",
-    "sass": "^1.56.1",
-    "vite": "^3.2.4",
-    "vite-plugin-solid": "2.4.0"
+    "sass": "^1.57.1",
+    "vite": "^4.0.4",
+    "vite-plugin-solid": "2.5.0"
   },
   "bugs": {
     "url": "https://github.com/swordev/suid/issues"
