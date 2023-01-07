@@ -1,5 +1,19 @@
 # @suid/css
 
+## 0.2.0
+
+### Minor Changes
+
+- [`1dd2bebe`](https://github.com/swordev/suid/commit/1dd2bebea8da94e24eb86503ada330f880430553) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `injectFirst` option
+
+- [`696eeac5`](https://github.com/swordev/suid/commit/696eeac54b141db7637ff6f38701ddb77b8944f5) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `createId` option
+
+### Patch Changes
+
+- [`97781a66`](https://github.com/swordev/suid/commit/97781a66cc87e620b9ba2a7c7c5b02b68fcbc0ea) Thanks [@juanrgm](https://github.com/juanrgm)! - Drop `@suid/utils` dependency
+
+- [`401f1735`](https://github.com/swordev/suid/commit/401f17358421fcf37a2c150097dd888b3e93f229) Thanks [@juanrgm](https://github.com/juanrgm)! - Update readme
+
 ## 0.1.7
 
 ### Patch Changes

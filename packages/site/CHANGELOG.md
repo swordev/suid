@@ -1,5 +1,28 @@
 # @suid/site
 
+## 0.7.3
+
+### Patch Changes
+
+- [`c14f8639`](https://github.com/swordev/suid/commit/c14f863995a749b13d76e3e3e459e2b6f4b069f2) Thanks [@juanrgm](https://github.com/juanrgm)! - Update to SolidJS v1.6.7
+
+- [`15e88c74`](https://github.com/swordev/suid/commit/15e88c7449bf258f5858036119e03aeeeb768bbc) Thanks [@juanrgm](https://github.com/juanrgm)! - Use the `@solidjs/router` dependency
+
+- [`401f1735`](https://github.com/swordev/suid/commit/401f17358421fcf37a2c150097dd888b3e93f229) Thanks [@juanrgm](https://github.com/juanrgm)! - Update readme
+
+- [`c5273760`](https://github.com/swordev/suid/commit/c5273760f96d58c7de41caa7c71b87249d17595d) Thanks [@juanrgm](https://github.com/juanrgm)! - Update to SolidJS v1.6.5
+
+- [`b52cbc94`](https://github.com/swordev/suid/commit/b52cbc94d89835735852fd8db5a90be72c0d4ee4) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
+- Updated dependencies [[`7d2a1ebb`](https://github.com/swordev/suid/commit/7d2a1ebb2dd9135551e0f24487844bc5ece3bb14), [`651d3c86`](https://github.com/swordev/suid/commit/651d3c86f89c7d88e797ca6d373eaebbc4e7fb9f), [`b36ed9b9`](https://github.com/swordev/suid/commit/b36ed9b90ee0087e04c0866bd7f5bab8e9ef66a4), [`c14f8639`](https://github.com/swordev/suid/commit/c14f863995a749b13d76e3e3e459e2b6f4b069f2), [`7c1cec6f`](https://github.com/swordev/suid/commit/7c1cec6f50d6dfbadf11cc96a28f01c15732240f), [`401f1735`](https://github.com/swordev/suid/commit/401f17358421fcf37a2c150097dd888b3e93f229), [`e9827edb`](https://github.com/swordev/suid/commit/e9827edb6fb037679ee44fb4e8a323f5e05c9147), [`9d5860d1`](https://github.com/swordev/suid/commit/9d5860d16549e21ac8b326ab61091ed4ff3c3f6e), [`c5273760`](https://github.com/swordev/suid/commit/c5273760f96d58c7de41caa7c71b87249d17595d), [`b52cbc94`](https://github.com/swordev/suid/commit/b52cbc94d89835735852fd8db5a90be72c0d4ee4)]:
+  - @suid/system@0.8.0
+  - @suid/base@0.6.0
+  - @suid/material@0.9.0
+  - @suid/icons-material@0.5.4
+  - @suid/types@0.4.0
+  - @suid/utils@0.6.1
+  - @suid/codemod@0.9.3
+
 ## 0.7.2
 
 ### Patch Changes

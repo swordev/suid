@@ -1,5 +1,13 @@
 # create-suid
 
+## 0.1.5
+
+### Patch Changes
+
+- [`401f1735`](https://github.com/swordev/suid/commit/401f17358421fcf37a2c150097dd888b3e93f229) Thanks [@juanrgm](https://github.com/juanrgm)! - Update readme
+
+- [`b52cbc94`](https://github.com/swordev/suid/commit/b52cbc94d89835735852fd8db5a90be72c0d4ee4) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
 ## 0.1.4
 
 ### Patch Changes

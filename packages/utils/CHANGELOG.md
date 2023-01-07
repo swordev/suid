@@ -1,5 +1,18 @@
 # @suid/utils
 
+## 0.6.1
+
+### Patch Changes
+
+- [`c14f8639`](https://github.com/swordev/suid/commit/c14f863995a749b13d76e3e3e459e2b6f4b069f2) Thanks [@juanrgm](https://github.com/juanrgm)! - Update to SolidJS v1.6.7
+
+- [`401f1735`](https://github.com/swordev/suid/commit/401f17358421fcf37a2c150097dd888b3e93f229) Thanks [@juanrgm](https://github.com/juanrgm)! - Update readme
+
+- [`c5273760`](https://github.com/swordev/suid/commit/c5273760f96d58c7de41caa7c71b87249d17595d) Thanks [@juanrgm](https://github.com/juanrgm)! - Update to SolidJS v1.6.5
+
+- Updated dependencies [[`c14f8639`](https://github.com/swordev/suid/commit/c14f863995a749b13d76e3e3e459e2b6f4b069f2), [`7c1cec6f`](https://github.com/swordev/suid/commit/7c1cec6f50d6dfbadf11cc96a28f01c15732240f), [`401f1735`](https://github.com/swordev/suid/commit/401f17358421fcf37a2c150097dd888b3e93f229), [`c5273760`](https://github.com/swordev/suid/commit/c5273760f96d58c7de41caa7c71b87249d17595d)]:
+  - @suid/types@0.4.0
+
 ## 0.6.0
 
 ### Minor Changes
