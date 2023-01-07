@@ -238,6 +238,27 @@ describe("styled", () => {
       }),
     ]);
   });
+
+  it("uses the same class name", () => {
+    const Div1 = styled("div")({ color: "red" });
+    const Div2 = styled("div")({ color: "red" });
+    const { unmount } = render(() => (
+      <>
+        <Div1 data-testid="div1">a</Div1>
+        <Div2 data-testid="div2">b</Div2>
+      </>
+    ));
+    const div1 = screen.getByTestId("div1");
+    const div2 = screen.getByTestId("div2");
+    const class1 = [...div1.classList.values()].filter((v) =>
+      v.startsWith("css-")
+    );
+    const class2 = [...div2.classList.values()].filter((v) =>
+      v.startsWith("css-")
+    );
+    expect(class1.join()).toBe(class2.join());
+    unmount();
+  });
 });
 
 export {};

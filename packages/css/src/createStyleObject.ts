@@ -1,7 +1,6 @@
 import render from "./render";
 import { toArray } from "./utils/array";
 import { resolveFunction } from "./utils/function";
-import { randomString } from "./utils/string";
 
 export type StyleObject = {
   id: string;
@@ -10,7 +9,32 @@ export type StyleObject = {
   rules: string;
 };
 
-export type StyleObjectCache = Map<string, StyleObject>;
+export class StyleCache {
+  ids = new Map<string /* id */, number>();
+  rules = new Map<string /* rule */, StyleObject>();
+  create(name: string, rules: string, componentId: string) {
+    let styleObject = this.rules.get(rules);
+    if (styleObject) return styleObject;
+    let componentIndex = this.ids.get(componentId);
+    // Same component (createUniqueId) but different rules
+    if (typeof componentIndex === "number") {
+      // Use a new id for the new rule
+      this.ids.set(componentId, ++componentIndex);
+      componentId += `_${componentIndex}`;
+    }
+    styleObject = create(name, rules, componentId);
+    this.save(styleObject, rules);
+    return styleObject;
+  }
+  save(style: StyleObject, rules: string) {
+    this.ids.set(style.id, 0);
+    this.rules.set(rules, style);
+  }
+  delete(style: StyleObject) {
+    this.ids.delete(style.id);
+    this.rules.delete(style.rules);
+  }
+}
 
 export type StyleProps =
   | Record<string, any>
@@ -22,8 +46,8 @@ export type StyleObjectOptions = {
   name: string;
   props: StyleProps;
   extraProperties?: Record<string, (value: any) => any>;
-  createId?: () => string;
-  cache?: StyleObjectCache;
+  componentId: string;
+  cache?: StyleCache;
 };
 
 function create(name: string, rules: string, id: string) {
@@ -48,17 +72,10 @@ function createStyleObject(options: StyleObjectOptions) {
     )
     .join("\n");
 
-  const styleObject =
-    options.cache?.get(rules) ||
-    create(
-      options.name,
-      rules,
-      options.createId ? options.createId() : randomString().slice(0, 6)
-    );
-
-  if (options.cache) options.cache.set(rules, styleObject);
-
-  return styleObject;
+  return (
+    options.cache?.create(options.name, rules, options.componentId) ||
+    create(options.name, rules, options.componentId)
+  );
 }
 
 export default createStyleObject;

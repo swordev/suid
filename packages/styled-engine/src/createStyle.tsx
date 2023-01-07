@@ -1,6 +1,9 @@
 import StyledEngineContext from "./StyledEngineProvider/StyledEngineContext";
 import mergeStyleProps from "./mergeStyleProps";
-import createStyleObject, { StyleObject } from "@suid/css/createStyleObject";
+import createStyleObject, {
+  StyleObject,
+  StyleCache,
+} from "@suid/css/createStyleObject";
 import appendStyleElement from "@suid/css/dom/appendStyleElement";
 import findStyleElement from "@suid/css/dom/findStyleElement";
 import registerStyleElementUsage from "@suid/css/dom/registerStyleElementUsage";
@@ -16,7 +19,7 @@ import {
 } from "solid-js";
 import { isServer, useAssets } from "solid-js/web";
 
-const styleObjectCache = new Map<string, StyleObject>();
+const styleCache = isServer ? undefined : new StyleCache();
 
 type StyleProps =
   | undefined
@@ -50,7 +53,7 @@ function createStyleId() {
 function createStyle(value: () => StyleProps | undefined) {
   const context = useContext(StyledEngineContext);
   const [name, setName] = createSignal("");
-  const id = createStyleId();
+  const componentId = createStyleId();
   let styleElement: HTMLStyleElement | undefined;
 
   createRenderEffect<
@@ -63,8 +66,8 @@ function createStyle(value: () => StyleProps | undefined) {
       styleObject = createStyleObject({
         name: "css",
         props: mergeStyleProps(normalizeStyleProps(propsValue)),
-        cache: styleObjectCache,
-        createId: () => id,
+        cache: styleCache,
+        componentId,
       });
 
       if (isServer) {
