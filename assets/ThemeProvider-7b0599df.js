@@ -1,1 +1,0 @@
-var n=Object.defineProperty;var r=(e,t)=>n(e,"name",{value:t,configurable:!0});import{c as o,_ as i}from"./ErrorPage-ac5239e5.js";function c(e){return o(i.Provider,{get value(){return e.theme},get children(){return e.children}})}r(c,"ThemeProvider");export{c as T};
