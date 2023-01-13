@@ -1,11 +1,12 @@
 import { readdirSync, readFileSync } from "fs";
 import { createRequire } from "module";
 import { dirname, resolve } from "path";
+import solidPlugin from "solid-start/vite";
 import { fileURLToPath } from "url";
 import { defineConfig } from "vite";
-import solidPlugin from "vite-plugin-solid";
 import suidPlugin from "./../vite-plugin/src";
 import readTypings from "./vite/readTypings";
+import startAdapter from "./vite/startAdapter";
 
 const require = createRequire(import.meta.url);
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -64,7 +65,10 @@ export default defineConfig({
       },
     },
     suidPlugin(),
-    solidPlugin(),
+    solidPlugin({
+      ssr: process.env.SSR === "1" || process.env.SSR === "true",
+      adapter: startAdapter(),
+    }),
   ],
   build: {
     target: "esnext",
@@ -74,7 +78,6 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      "ts-morph": `https://esm.sh/ts-morph@${SUID_VERSIONS["ts-morph"]}?pin=v94`,
       "~": resolve(__dirname, "src"),
       "@suid/types": resolve(__dirname, "../types/src"),
       "@suid/codemod": resolve(__dirname, "../codemod/src"),

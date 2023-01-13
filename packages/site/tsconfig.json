@@ -2,6 +2,7 @@
   "compilerOptions": {
     "types": ["vite/client"],
     "baseUrl": ".",
+    "jsxImportSource": "solid-js",
     "paths": {
       "@suid/base": ["./../base/src"],
       "@suid/base/*": ["./../base/src/*"],

@@ -2,6 +2,7 @@ import { DeepPartial } from "@suid/types";
 import merge from "@suid/utils/merge";
 import { createContext, useContext } from "solid-js";
 import { createMutable } from "solid-js/store";
+import { isServer } from "solid-js/web";
 
 type Options = {
   darkMode: boolean;
@@ -19,7 +20,7 @@ function isSysThemeDark() {
 }
 
 export const defaultOptions: Options = {
-  darkMode: getSavedDarkMode() ?? isSysThemeDark(),
+  darkMode: isServer ? false : getSavedDarkMode() ?? isSysThemeDark(),
   drawer: {
     visible: true,
     openState: false,
