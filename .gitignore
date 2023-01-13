@@ -1,12 +1,12 @@
+.eslintcache
 .history
 .pnpm-store
-.eslintcache
 .registry
+.solid
+*.tsbuildinfo
 bk
 dist
 lib
 node_modules
 temp
-*.tsbuildinfo
-.solid
 vite.config.js.timestamp*

@@ -1,5 +1,8 @@
+.changeset/pre.json
 .history
+.pnpm-store
 .registry
+.solid
 bk
 dist
 lib
@@ -7,5 +10,4 @@ node_modules
 pnpm-lock.yaml
 temp
 tsconfig.tsbuildinfo
-.changeset/pre.json
-.solid
+vite.config.js.timestamp*
