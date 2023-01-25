@@ -190,7 +190,9 @@ function createStyled<
         const styledProps = () =>
           styled$Component() && {
             ownerState: inProps.ownerState,
-            sx: sx(),
+            get sx() {
+              return sx();
+            },
           };
 
         const styleClassName = createStyle(() =>
