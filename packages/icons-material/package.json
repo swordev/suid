@@ -1,6 +1,6 @@
 {
   "name": "@suid/icons-material",
-  "version": "0.5.5",
+  "version": "0.5.6",
   "description": "Material Design icons as SVG SolidJS components.",
   "keywords": [
     "solid",
