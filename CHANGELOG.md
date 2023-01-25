@@ -1,5 +1,17 @@
 # @suid/site
 
+## 0.7.5
+
+### Patch Changes
+
+- [`48f7110a`](https://github.com/swordev/suid/commit/48f7110a2da015247612be447beee3e2793f7753) Thanks [@juanrgm](https://github.com/juanrgm)! - Replace `vite-plugin-solid` with `solid-start`
+
+- Updated dependencies [[`b462103b`](https://github.com/swordev/suid/commit/b462103baa996e6934421401e341bc6e32c28f0b)]:
+  - @suid/system@0.8.2
+  - @suid/base@0.6.2
+  - @suid/material@0.9.2
+  - @suid/icons-material@0.5.6
+
 ## 0.7.4
 
 ### Patch Changes

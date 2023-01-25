@@ -1,8 +1,10 @@
 {
   "name": "@suid/site",
-  "version": "0.7.4",
+  "version": "0.7.5",
   "description": "SUID website.",
+  "type": "module",
   "dependencies": {
+    "@solidjs/meta": "^0.28.2",
     "@solidjs/router": "^0.6.0",
     "@stackblitz/sdk": "^1.8.1",
     "@suid/base": "workspace:*",
@@ -16,15 +18,19 @@
     "prism-themes": "^1.9.0",
     "prismjs": "^1.29.0",
     "semver": "^7.3.8",
-    "solid-js": "^1.6.7"
+    "solid-js": "^1.6.7",
+    "solid-start": "^0.2.12"
   },
   "devDependencies": {
     "@suid/vite-plugin": "workspace:*",
     "@types/prismjs": "^1.26.0",
     "@types/semver": "^7.3.13",
+    "esbuild": "^0.16.17",
     "fast-glob": "^3.2.12",
     "rimraf": "^3.0.2",
     "sass": "^1.57.1",
+    "solid-start-node": "^0.2.12",
+    "undici": "^5.14.0",
     "vite": "^4.0.4",
     "vite-plugin-solid": "2.5.0"
   },
