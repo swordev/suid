@@ -1,0 +1,1 @@
+var r=Object.defineProperty;var e=(o,n)=>r(o,"name",{value:n,configurable:!0});import{o as t}from"./ownerDocument-5bb7a871.js";function d(o){return t(o).defaultView||window}e(d,"ownerWindow");export{d as o};

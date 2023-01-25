@@ -1,5 +1,101 @@
 # @suid/site
 
+## 0.7.4
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @suid/system@0.8.1
+  - @suid/base@0.6.1
+  - @suid/material@0.9.1
+  - @suid/icons-material@0.5.5
+
+## 0.7.3
+
+### Patch Changes
+
+- [`c14f8639`](https://github.com/swordev/suid/commit/c14f863995a749b13d76e3e3e459e2b6f4b069f2) Thanks [@juanrgm](https://github.com/juanrgm)! - Update to SolidJS v1.6.7
+
+- [`15e88c74`](https://github.com/swordev/suid/commit/15e88c7449bf258f5858036119e03aeeeb768bbc) Thanks [@juanrgm](https://github.com/juanrgm)! - Use the `@solidjs/router` dependency
+
+- [`401f1735`](https://github.com/swordev/suid/commit/401f17358421fcf37a2c150097dd888b3e93f229) Thanks [@juanrgm](https://github.com/juanrgm)! - Update readme
+
+- [`c5273760`](https://github.com/swordev/suid/commit/c5273760f96d58c7de41caa7c71b87249d17595d) Thanks [@juanrgm](https://github.com/juanrgm)! - Update to SolidJS v1.6.5
+
+- [`b52cbc94`](https://github.com/swordev/suid/commit/b52cbc94d89835735852fd8db5a90be72c0d4ee4) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
+- Updated dependencies [[`7d2a1ebb`](https://github.com/swordev/suid/commit/7d2a1ebb2dd9135551e0f24487844bc5ece3bb14), [`651d3c86`](https://github.com/swordev/suid/commit/651d3c86f89c7d88e797ca6d373eaebbc4e7fb9f), [`b36ed9b9`](https://github.com/swordev/suid/commit/b36ed9b90ee0087e04c0866bd7f5bab8e9ef66a4), [`c14f8639`](https://github.com/swordev/suid/commit/c14f863995a749b13d76e3e3e459e2b6f4b069f2), [`7c1cec6f`](https://github.com/swordev/suid/commit/7c1cec6f50d6dfbadf11cc96a28f01c15732240f), [`401f1735`](https://github.com/swordev/suid/commit/401f17358421fcf37a2c150097dd888b3e93f229), [`e9827edb`](https://github.com/swordev/suid/commit/e9827edb6fb037679ee44fb4e8a323f5e05c9147), [`9d5860d1`](https://github.com/swordev/suid/commit/9d5860d16549e21ac8b326ab61091ed4ff3c3f6e), [`c5273760`](https://github.com/swordev/suid/commit/c5273760f96d58c7de41caa7c71b87249d17595d), [`b52cbc94`](https://github.com/swordev/suid/commit/b52cbc94d89835735852fd8db5a90be72c0d4ee4)]:
+  - @suid/system@0.8.0
+  - @suid/base@0.6.0
+  - @suid/material@0.9.0
+  - @suid/icons-material@0.5.4
+  - @suid/types@0.4.0
+  - @suid/utils@0.6.1
+  - @suid/codemod@0.9.3
+
+## 0.7.2
+
+### Patch Changes
+
+- Updated dependencies [[`8ac6a050`](https://github.com/swordev/suid/commit/8ac6a05052a786678e67ec3c01e2c83dd5027957)]:
+  - @suid/material@0.8.2
+  - @suid/icons-material@0.5.3
+
+## 0.7.1
+
+### Patch Changes
+
+- Updated dependencies [[`003c7864`](https://github.com/swordev/suid/commit/003c7864287e1785587550e2f7c3c5fb4d833738), [`4b7228ac`](https://github.com/swordev/suid/commit/4b7228ac5cde9537b6acc832c2c1f33237e01a4a)]:
+  - @suid/system@0.7.1
+  - @suid/codemod@0.9.2
+  - @suid/base@0.5.1
+  - @suid/material@0.8.1
+  - @suid/icons-material@0.5.2
+
+## 0.7.0
+
+### Minor Changes
+
+- [`a0f64c0f`](https://github.com/swordev/suid/commit/a0f64c0f80a2ebd4dd66766dc54dc4a98fd5d9ce) Thanks [@juanrgm](https://github.com/juanrgm)! - Add the `Dialog` component page
+
+- [`4070c2b0`](https://github.com/swordev/suid/commit/4070c2b04e7ea8a33dd68f43ebc97a489e6a6eb4) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `Menu` component page
+
+### Patch Changes
+
+- [`d479abf7`](https://github.com/swordev/suid/commit/d479abf718b4e6314729f6d85dbc524239710af8) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
+- Updated dependencies [[`1c8b0043`](https://github.com/swordev/suid/commit/1c8b00438347b477a49201c5784e5d64bc4d4204), [`374f8aa3`](https://github.com/swordev/suid/commit/374f8aa3984b388af7e79f790d7430beffdcb7cd), [`c4a5197f`](https://github.com/swordev/suid/commit/c4a5197f19cd7e414e4d29e7624fb3ec2a7832cf), [`ad781149`](https://github.com/swordev/suid/commit/ad7811492d8ba379239bb3d76599f311123466c6), [`64eae194`](https://github.com/swordev/suid/commit/64eae194686fd0d3a28394a3cac4d55737bbf2ac), [`6d41d5dc`](https://github.com/swordev/suid/commit/6d41d5dc75d0433218043f58e20786b53d9fa162), [`3c9d6d8a`](https://github.com/swordev/suid/commit/3c9d6d8ac1cac03d96901319c4d1ad7d3509ec81)]:
+  - @suid/material@0.8.0
+  - @suid/codemod@0.9.1
+  - @suid/base@0.5.0
+  - @suid/system@0.7.0
+  - @suid/icons-material@0.5.1
+
+## 0.6.0
+
+### Minor Changes
+
+- [`3e5eb790`](https://github.com/swordev/suid/commit/3e5eb790c3977764a8d65d8e7bd920fd05802e4f) Thanks [@juanrgm](https://github.com/juanrgm)! - Use named imports in the main example
+
+- [`fe655f75`](https://github.com/swordev/suid/commit/fe655f75d97ee8d9ab2ed77440d483489d64f915) Thanks [@juanrgm](https://github.com/juanrgm)! - Update to SolidJS v1.6
+
+- [`cdce309e`](https://github.com/swordev/suid/commit/cdce309e4c6400c83dcc79afd1bf0ab0527ba645) Thanks [@juanrgm](https://github.com/juanrgm)! - Transform all the SUID component default imports to named imports
+
+- [`2cf3a841`](https://github.com/swordev/suid/commit/2cf3a8415fbe7bcefba8d2608b36507f19c0174e) Thanks [@juanrgm](https://github.com/juanrgm)! - Add more named imports in the component info section
+
+### Patch Changes
+
+- [`c1b5dd74`](https://github.com/swordev/suid/commit/c1b5dd744fb05d6526968012ed4675e16b6f90cb) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
+- Updated dependencies [[`687898ac`](https://github.com/swordev/suid/commit/687898ac4b81c60b4b07c169a2ec090dc68e09e5), [`f0cd735e`](https://github.com/swordev/suid/commit/f0cd735ecb125683fb2334b2426b8c51ce54028b), [`6440e2d2`](https://github.com/swordev/suid/commit/6440e2d2e8952bed1fc1f8eaf417786d843b307d), [`76278e2b`](https://github.com/swordev/suid/commit/76278e2b7cc81bbc58b626741cd3d144ade657be), [`a8edd3da`](https://github.com/swordev/suid/commit/a8edd3da5a5632b8213834c5f8a6c3baaf7418fd), [`96cd89cb`](https://github.com/swordev/suid/commit/96cd89cb401aa2148d08a82f03ba8ece7b757b0b), [`15be1ab4`](https://github.com/swordev/suid/commit/15be1ab4d64342d74d3b43151b09a89597107049), [`e407f28b`](https://github.com/swordev/suid/commit/e407f28bc45474c8756ee1111ff81837277a4ddd), [`fe655f75`](https://github.com/swordev/suid/commit/fe655f75d97ee8d9ab2ed77440d483489d64f915), [`cf4d1e4c`](https://github.com/swordev/suid/commit/cf4d1e4c168c0c8fd96bbfc71cacbd5f6777b5fb), [`8e895d7a`](https://github.com/swordev/suid/commit/8e895d7a6fb0240036bae078269de923e2fc975e)]:
+  - @suid/material@0.7.0
+  - @suid/utils@0.6.0
+  - @suid/system@0.6.0
+  - @suid/codemod@0.9.0
+  - @suid/base@0.4.0
+  - @suid/icons-material@0.5.0
+  - @suid/types@0.3.0
+
 ## 0.6.0-next.1
 
 ### Minor Changes

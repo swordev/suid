@@ -1,0 +1,19 @@
+var S=Object.defineProperty;var c=(o,s)=>S(o,"name",{value:s,configurable:!0});import{_ as r,B as T,d as w,H as b}from"./ListItemText-7ae6925f.js";import{A as P}from"./Alert-4f3624b0.js";import{C as V}from"./CircularProgress-77e6ebf9.js";import{h as a,Y as A,c as t,K as O,T as n,j as B,a3 as i,S as d}from"./ErrorPage-e9c3e4c4.js";import{S as f}from"./Skeleton-de73b0c4.js";import{P as D}from"./PageNav-9f8205bc.js";import{g as k}from"./getDependencyName-4fd31988.js";import"./IconButton-ff730f99.js";import"./Paper-154b1d70.js";const L=`import * as React from "react"
+import Button from "@mui/material/Button"
+
+export default function Counter(props: any) {
+  const [value, setValue] = React.useState(0);
+  const { label = 'Increment', ...otherProps } = props;
+  const propsAndValue = { ...props, value };
+  const onClick = () => setValue(value + 1);
+
+  React.useEffect(() => {
+    console.log("Value: " + propsAndValue.value);
+  }, [value]);
+
+  return <div {...otherProps}>
+    Value: {value}
+    <Button onClick={onClick}>{label}</Button>
+  </div>
+}
+`,_="react2solid-input-code";function M(){if(location.hash.length>1)try{return window.atob(location.hash.slice(1))}catch(o){console.error(o)}}c(M,"decodeHash");function q(){const o=localStorage.getItem(_),[s,v]=a(!1),[y,x]=a(!1),[m,p]=a(!1),l=M()??(o?.length?o:L),[h,C]=a(l),[E,I]=a(""),g=O(()=>r(()=>import("./CodeEditor-0a26eced.js").then(e=>e.C),["assets/CodeEditor-0a26eced.js","assets/ListItemText-7ae6925f.js","assets/ErrorPage-e9c3e4c4.js","assets/useControlled-986171af.js","assets/PageNav-9f8205bc.js","assets/CodeEditor-94a4e33a.css"]));return A(()=>{setTimeout(()=>{location.hash=window.btoa(l)})}),[t(n,{component:"h1",variant:"h4",sx:{mt:1},children:"React to Solid"}),t(n,{variant:"body1",sx:{mt:2},children:"Transform your MUI React code to SUID SolidJS."}),t(P,{severity:"info",sx:{mt:2},get children(){return["You can also transform your code from the console: npx"," ",B(()=>k("@suid/codemod"))]}}),t(i,{container:!0,spacing:2,get children(){return[t(i,{item:!0,xs:12,xl:6,get children(){return[t(n,{component:"h3",variant:"h6",sx:{mt:2,mb:1},children:"Input React code"}),t(d,{get when(){return!s()},get children(){return t(f,{variant:"rectangular",height:400})}}),t(g,{fileName:"react.tsx",defaultValue:l,onReady:()=>v(!0),onChange:e=>{location.hash=window.btoa(e),localStorage.setItem(_,e),C(e)}})]}}),t(i,{item:!0,xs:12,xl:6,get children(){return[t(n,{component:"h3",variant:"h6",sx:{mt:2,mb:1},children:"Output SolidJS code"}),t(d,{get when(){return!y()},get children(){return t(f,{variant:"rectangular",height:400})}}),t(g,{fileName:"solid.tsx",get value(){return E()},onReady:()=>x(!0)})]}}),t(i,{item:!0,xs:12,get children(){return t(T,{sx:{textAlign:"center",my:2},get children(){return t(w,{variant:"outlined",sx:{p:2,minWidth:150},fullWidth:!0,size:"large",get class(){return m()?b.disabled:""},onMouseEnter:()=>{r(()=>import("./applyTransforms-6577c6ac.js"),["assets/applyTransforms-6577c6ac.js","assets/ts-morph-34b89812.js","assets/_commonjsHelpers-0119a68f.js"]),r(()=>import("./transformReactSource-a1d8931c.js"),["assets/transformReactSource-a1d8931c.js","assets/ts-morph-34b89812.js","assets/_commonjsHelpers-0119a68f.js"])},onClick:async()=>{let e=h();p(!0);try{const u=await r(()=>import("./applyTransforms-6577c6ac.js"),["assets/applyTransforms-6577c6ac.js","assets/ts-morph-34b89812.js","assets/_commonjsHelpers-0119a68f.js"]),R=await r(()=>import("./transformReactSource-a1d8931c.js"),["assets/transformReactSource-a1d8931c.js","assets/ts-morph-34b89812.js","assets/_commonjsHelpers-0119a68f.js"]);e=u.default(h(),[R.default])}catch(u){console.error(u)}finally{setTimeout(()=>{I(e),p(!1)},500)}},get children(){return t(d,{get when(){return m()},fallback:"Transform",get children(){return["Transforming",t(V,{sx:{width:40,opacity:.8,position:"absolute"}})]}})}})}})}})]}}),t(D,{sx:{mt:2}})]}c(q,"ReactToSolidPage");export{q as default};
