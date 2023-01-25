@@ -1,5 +1,11 @@
 # @suid/system
 
+## 0.8.2
+
+### Patch Changes
+
+- [`b462103b`](https://github.com/swordev/suid/commit/b462103baa996e6934421401e341bc6e32c28f0b) Thanks [@juanrgm](https://github.com/juanrgm)! - Avoid re-rendering on theme changes
+
 ## 0.8.1
 
 ### Patch Changes

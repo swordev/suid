@@ -1,5 +1,13 @@
 # @suid/material
 
+## 0.9.2
+
+### Patch Changes
+
+- Updated dependencies [[`b462103b`](https://github.com/swordev/suid/commit/b462103baa996e6934421401e341bc6e32c28f0b)]:
+  - @suid/system@0.8.2
+  - @suid/base@0.6.2
+
 ## 0.9.1
 
 ### Patch Changes
