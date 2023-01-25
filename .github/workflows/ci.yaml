@@ -5,30 +5,27 @@ on:
       - main
       - develop
 env:
-  PNPM_CACHE_FOLDER: .pnpm-store
+  NODE_VERSION: 16
+  PNPM_VERSION: 7
 jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          fetch-depth: 0
-      - name: Use Node.js 18.x
-        uses: actions/setup-node@v2
+          node-version: ${{ env.NODE_VERSION }}
+      - uses: pnpm/action-setup@v2
         with:
-          node-version: 18
-      - uses: actions/cache@v2
+          version: ${{ env.PNPM_VERSION }}
+      - id: pnpm-cache
+        shell: bash
+        run: echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+      - uses: actions/cache@v3
         with:
-          path: ${{ env.PNPM_CACHE_FOLDER }}
-          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-
-      - name: Use pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 7
-      - name: Setup pnpm config
-        run: pnpm config set store-dir $PNPM_CACHE_FOLDER
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: ${{ runner.os }}-pnpm-store-
       - name: Install dependencies
         run: pnpm install
         env:
@@ -49,7 +46,7 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Build metadata
         id: metadata
-        uses: actions/github-script@v5
+        uses: actions/github-script@v6
         env:
           PUBLISHED_PACKAGES: ${{ steps.changesets.outputs.publishedPackages }}
         with:
@@ -63,7 +60,7 @@ jobs:
           echo "/* /index.html 200" > packages/site/dist/_redirects
       - name: Deploy gh-pages
         if: steps.metadata.outputs['@suid/site:published'] == 'true'
-        uses: JamesIves/github-pages-deploy-action@v4.2.5
+        uses: JamesIves/github-pages-deploy-action@v4.4.1
         with:
           branch: ${{ steps.metadata.outputs['@suid/site:gh-pages-branch'] }}
           folder: packages/site/dist
