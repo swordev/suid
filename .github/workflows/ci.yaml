@@ -53,14 +53,17 @@ jobs:
           script: |
             const metadata = require('./.github/workflows/metadata.js')
             await metadata({ github, context, core })
-      - name: Prepare gh-pages
-        if: steps.metadata.outputs['@suid/site:published'] == 'true'
+      - name: Prepare deploy
         run: |-
           rm packages/site/dist/node_modules
-          echo "/* /index.html 200" > packages/site/dist/_redirects
-      - name: Deploy gh-pages
+      - name: Deploy suid.io site
         if: steps.metadata.outputs['@suid/site:published'] == 'true'
         uses: JamesIves/github-pages-deploy-action@v4.4.1
         with:
-          branch: ${{ steps.metadata.outputs['@suid/site:gh-pages-branch'] }}
+          branch: gh-pages
+          folder: packages/site/dist
+      - name: Deploy next.suid.io site
+        uses: JamesIves/github-pages-deploy-action@v4.4.1
+        with:
+          branch: gh-pages-next
           folder: packages/site/dist

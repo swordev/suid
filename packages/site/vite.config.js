@@ -1,6 +1,7 @@
 import { readdirSync, readFileSync } from "fs";
+import { writeFile } from "fs/promises";
 import { createRequire } from "module";
-import { dirname, resolve } from "path";
+import { dirname, join, resolve } from "path";
 import solidPlugin from "solid-start/vite";
 import { fileURLToPath } from "url";
 import { defineConfig } from "vite";
@@ -69,6 +70,13 @@ export default defineConfig({
       ssr: process.env.SSR === "1" || process.env.SSR === "true",
       adapter: startAdapter(),
     }),
+    {
+      name: "prepare-deploy",
+      async closeBundle() {
+        const distPath = join(__dirname, "dist");
+        await writeFile(join(distPath, "_redirects"), "/* /index.html 200");
+      },
+    },
   ],
   build: {
     target: "esnext",

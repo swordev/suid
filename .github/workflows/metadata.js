@@ -4,11 +4,10 @@ module.exports = async ({ core }) => {
 
   for (const { name, version } of published) {
     output[`${name}:version`] = version;
-    output[`${name}:published`] = true;
     if (name === "@suid/site") {
-      output[`${name}:gh-pages-branch`] = version.includes("next")
-        ? "gh-pages-next"
-        : "gh-pages";
+      output[`${name}:published`] = !version.includes("next");
+    } else {
+      output[`${name}:published`] = true;
     }
   }
 

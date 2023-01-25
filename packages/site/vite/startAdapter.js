@@ -1,5 +1,6 @@
 // @ts-check
 import { spawn } from "child_process";
+import { rm } from "fs/promises";
 import { join } from "path";
 import nodeAdapter from "solid-start-node";
 
@@ -29,7 +30,26 @@ export default function () {
       if (config.solidOptions.ssr) {
         await node.build(config, builder);
       } else {
-        await builder.spaClient(join(config.root, "dist"));
+        const path = join(config.root, "dist");
+        await builder.spaClient(path);
+
+        const removeFiles = [
+          ".solid",
+          "manifest.json",
+          "route-manifest.json",
+          "ssr-manifest.json",
+        ];
+
+        for (const file of removeFiles) {
+          const filePath = join(path, file);
+          try {
+            await rm(filePath, {
+              recursive: true,
+            });
+          } catch (error) {
+            if (error.code !== "ENOENT") throw error;
+          }
+        }
       }
     },
   };
