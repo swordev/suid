@@ -29,7 +29,7 @@ type Style<T extends Theme<any>, P, O> =
   | false
   | StyledProps;
 
-type StyledOptions<N extends string> = {
+export type StyledOptions<N extends string> = {
   name?: N;
   slot?: string;
   skipSx?: boolean;
@@ -37,7 +37,7 @@ type StyledOptions<N extends string> = {
   overridesResolver?: (
     props: Record<string, any>,
     styles: Record<string, any>
-  ) => (string | false)[];
+  ) => (string | false | Record<string, any>)[];
 };
 
 export type StyledComponent<C, O = unknown> = (
