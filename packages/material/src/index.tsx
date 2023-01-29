@@ -6,9 +6,9 @@ export namespace PropTypes {
   export type Color = "inherit" | "primary" | "secondary" | "default";
 }
 export { default as Alert } from "./Alert";
-export { default as Avatar } from "./Avatar";
 export { default as AlertTitle } from "./AlertTitle";
 export { default as AppBar } from "./AppBar";
+export { default as Avatar } from "./Avatar";
 export { default as Backdrop } from "./Backdrop";
 export { default as Badge } from "./Badge";
 export { default as Box } from "./Box";

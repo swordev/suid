@@ -153,6 +153,7 @@ export type ComponentsTypes = {
   MuiStack: typeof MuiStack;
   MuiSvgIcon: typeof MuiSvgIcon;
   MuiSwitch: typeof MuiSwitch;
+  MuiSwitchBase: typeof MuiSwitchBase;
   MuiTable: typeof MuiTable;
   MuiTableBody: typeof MuiTableBody;
   MuiTableCell: typeof MuiTableCell;
@@ -165,6 +166,5 @@ export type ComponentsTypes = {
   MuiToggleButtonGroup: typeof MuiToggleButtonGroup;
   MuiToolbar: typeof MuiToolbar;
   MuiTypography: typeof MuiTypography;
-  MuiSwitchBase: typeof MuiSwitchBase;
 };
 export {};
