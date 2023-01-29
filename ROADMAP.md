@@ -135,7 +135,7 @@
 | RadioGroup              |  ✅   |               |
 | Rating                  |       |               |
 | ScopedCssBaseline       |       |               |
-| Select                  |  ⏳   |               |
+| Select                  |  ✅   |               |
 | Skeleton                |  ✅   |               |
 | Slide                   |  ✅   |               |
 | Slider                  |       |               |

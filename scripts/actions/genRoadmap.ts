@@ -50,9 +50,7 @@ const pendingComponents: Record<
   {
     props?: string[];
   }
-> = {
-  Select: {},
-};
+> = {};
 
 function stateIcon(state: boolean | "pending") {
   if (state === true) return "✅";

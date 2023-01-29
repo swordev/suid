@@ -336,11 +336,13 @@ const InputBase = $.component(function InputBase({
   let controlledValueUpdated = false;
 
   onMount(() => {
+    const isElement = inputRef.ref instanceof HTMLElement;
     inputRef.ref.addEventListener("input", (event) => {
       const nodeValue = inputRef.ref.value;
-      const start = inputRef.ref.selectionStart ?? nodeValue.length;
-
-      lastSelectionStart = start;
+      if (isElement) {
+        const start = inputRef.ref.selectionStart ?? nodeValue.length;
+        lastSelectionStart = start;
+      }
       controlledValueUpdated = false;
 
       if (typeof props.inputProps.onChange === "function") {
@@ -353,8 +355,10 @@ const InputBase = $.component(function InputBase({
         props.onChange(event as any, nodeValue);
       }
 
-      if (isControlled && !controlledValueUpdated)
-        inputRef.ref.value = value() ?? "";
+      if (isControlled && !controlledValueUpdated) {
+        const v = value();
+        inputRef.ref.value = (isElement ? v ?? "" : v) as any;
+      }
     });
   });
 
@@ -362,8 +366,12 @@ const InputBase = $.component(function InputBase({
     if (isControlled || loadDefaultValue) {
       controlledValueUpdated = true;
       const v = value();
-
-      if (typeof v === "string") {
+      const isElement = inputRef.ref instanceof HTMLElement;
+      if (!isElement) {
+        if (v !== inputRef.ref.value) {
+          inputRef.ref.value = v as any;
+        }
+      } else if (typeof v === "string") {
         const inputElement = inputRef.ref as HTMLInputElement;
         const type = inputElement.type ?? "text";
         const isSelectionType = selectionTypes.has(type);
@@ -582,6 +590,7 @@ const InputBase = $.component(function InputBase({
             {...({
               rows: props.rows,
             } as any)}
+            value={value()}
             onKeyDown={props.onKeyDown as any}
             onKeyUp={props.onKeyUp as any}
             type={props.type}
