@@ -1,5 +1,12 @@
 # @suid/base
 
+## 0.6.3
+
+### Patch Changes
+
+- Updated dependencies [[`93354e5b`](https://github.com/swordev/suid/commit/93354e5b673d745dafdcadc4c7b5d92622043b08)]:
+  - @suid/system@0.8.3
+
 ## 0.6.2
 
 ### Patch Changes
