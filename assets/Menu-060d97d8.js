@@ -1,1 +1,0 @@
-import{t}from"./ErrorPage-5efa7331.js";import{c as e}from"./ListItemText-ac9718cf.js";const o=t('<svg><path d="M0 0h24v24H0z" fill="none"></path></svg>',4,!0),v=t('<svg><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path></svg>',4,!0),r=e(()=>[o.cloneNode(!0),v.cloneNode(!0)],"Menu");export{r as M};
