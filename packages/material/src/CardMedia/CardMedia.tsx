@@ -107,6 +107,7 @@ const CardMedia = $.component(function CardMedia({
     <$CardMediaRoot
       role={!isMediaComponent() && props.image ? "img" : undefined}
       {...otherProps}
+      as={otherProps.component || otherProps.as}
       class={clsx(classes.root, otherProps.class)}
       style={style()}
       ownerState={ownerState}
