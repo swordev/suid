@@ -1,5 +1,19 @@
 # @suid/material
 
+## 0.10.0
+
+### Minor Changes
+
+- [`87660200`](https://github.com/swordev/suid/commit/87660200c511cc90e31eb6c2d9f95d686d809dfc) Thanks [@juanrgm](https://github.com/juanrgm)! - Add the `Select` component
+
+### Patch Changes
+
+- [`bec04406`](https://github.com/swordev/suid/commit/bec044066053ca8f7deef2ddadd663c013bc7f80) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix `component` property in the `CardMedia` component
+
+- Updated dependencies [[`93354e5b`](https://github.com/swordev/suid/commit/93354e5b673d745dafdcadc4c7b5d92622043b08)]:
+  - @suid/system@0.8.3
+  - @suid/base@0.6.3
+
 ## 0.9.2
 
 ### Patch Changes

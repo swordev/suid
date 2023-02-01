@@ -1,5 +1,11 @@
 # @suid/system
 
+## 0.8.3
+
+### Patch Changes
+
+- [`93354e5b`](https://github.com/swordev/suid/commit/93354e5b673d745dafdcadc4c7b5d92622043b08) Thanks [@juanrgm](https://github.com/juanrgm)! - Export `StyledOptions` type
+
 ## 0.8.2
 
 ### Patch Changes

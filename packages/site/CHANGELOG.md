@@ -1,5 +1,19 @@
 # @suid/site
 
+## 0.8.0
+
+### Minor Changes
+
+- [`0b00366e`](https://github.com/swordev/suid/commit/0b00366e2c074640b78b587370125cd6feeed460) Thanks [@juanrgm](https://github.com/juanrgm)! - Add the `Select` component page
+
+### Patch Changes
+
+- Updated dependencies [[`bec04406`](https://github.com/swordev/suid/commit/bec044066053ca8f7deef2ddadd663c013bc7f80), [`93354e5b`](https://github.com/swordev/suid/commit/93354e5b673d745dafdcadc4c7b5d92622043b08), [`87660200`](https://github.com/swordev/suid/commit/87660200c511cc90e31eb6c2d9f95d686d809dfc)]:
+  - @suid/material@0.10.0
+  - @suid/system@0.8.3
+  - @suid/icons-material@0.5.7
+  - @suid/base@0.6.3
+
 ## 0.7.5
 
 ### Patch Changes
