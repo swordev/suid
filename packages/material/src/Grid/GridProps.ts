@@ -1,7 +1,7 @@
 import { OverrideProps } from "../OverridableComponent";
 import { Theme } from "../styles";
 import { GridClasses } from "./gridClasses";
-import { ResponsiveStyleValue, SystemProps } from "@suid/system";
+import { Breakpoint, ResponsiveStyleValue, SystemProps } from "@suid/system";
 import SxProps from "@suid/system/sxProps";
 import { ElementType } from "@suid/types";
 import { JSXElement } from "solid-js";
@@ -13,6 +13,19 @@ export type GridSpacing = number | string;
 export type GridWrap = "nowrap" | "wrap" | "wrap-reverse";
 
 export type GridSize = "auto" | number;
+
+type BreakpoitProps = {
+  /**
+   * If a number, it sets the number of columns the grid item uses.
+   * It can't be greater than the total number of columns of the container (12 by default).
+   * If 'auto', the grid item's width matches its content.
+   * If false, the prop is ignored.
+   * If true, the grid item's width grows to use the space available in the grid container.
+   * The value is applied for all the screen sizes with the lowest priority.
+   * @default false
+   */
+  [K in Breakpoint]?: boolean | GridSize;
+};
 
 export interface GridTypeMap<P = {}, D extends ElementType = "div"> {
   name: "MuiGrid";
@@ -69,40 +82,10 @@ export interface GridTypeMap<P = {}, D extends ElementType = "div"> {
      */
     item?: boolean;
     /**
-     * If a number, it sets the number of columns the grid item uses.
-     * It can't be greater than the total number of columns of the container (12 by default).
-     * If 'auto', the grid item's width matches its content.
-     * If false, the prop is ignored.
-     * If true, the grid item's width grows to use the space available in the grid container.
-     * The value is applied for the `lg` breakpoint and wider screens if not overridden.
-     * @default false
-     */
-    lg?: boolean | GridSize;
-    /**
-     * If a number, it sets the number of columns the grid item uses.
-     * It can't be greater than the total number of columns of the container (12 by default).
-     * If 'auto', the grid item's width matches its content.
-     * If false, the prop is ignored.
-     * If true, the grid item's width grows to use the space available in the grid container.
-     * The value is applied for the `md` breakpoint and wider screens if not overridden.
-     * @default false
-     */
-    md?: boolean | GridSize;
-    /**
      * Defines the vertical space between the type `item` components.
      * It overrides the value of the `spacing` prop.
      */
     rowSpacing?: ResponsiveStyleValue<GridSpacing>;
-    /**
-     * If a number, it sets the number of columns the grid item uses.
-     * It can't be greater than the total number of columns of the container (12 by default).
-     * If 'auto', the grid item's width matches its content.
-     * If false, the prop is ignored.
-     * If true, the grid item's width grows to use the space available in the grid container.
-     * The value is applied for the `sm` breakpoint and wider screens if not overridden.
-     * @default false
-     */
-    sm?: boolean | GridSize;
     /**
      * Defines the space between the type `item` components.
      * It can only be used on a type `container` component.
@@ -120,32 +103,12 @@ export interface GridTypeMap<P = {}, D extends ElementType = "div"> {
      */
     wrap?: GridWrap;
     /**
-     * If a number, it sets the number of columns the grid item uses.
-     * It can't be greater than the total number of columns of the container (12 by default).
-     * If 'auto', the grid item's width matches its content.
-     * If false, the prop is ignored.
-     * If true, the grid item's width grows to use the space available in the grid container.
-     * The value is applied for the `xl` breakpoint and wider screens if not overridden.
-     * @default false
-     */
-    xl?: boolean | GridSize;
-    /**
-     * If a number, it sets the number of columns the grid item uses.
-     * It can't be greater than the total number of columns of the container (12 by default).
-     * If 'auto', the grid item's width matches its content.
-     * If false, the prop is ignored.
-     * If true, the grid item's width grows to use the space available in the grid container.
-     * The value is applied for all the screen sizes with the lowest priority.
-     * @default false
-     */
-    xs?: boolean | GridSize;
-    /**
      * If `true`, it sets `min-width: 0` on the item.
      * Refer to the limitations section of the documentation to better understand the use case.
      * @default false
      */
     zeroMinWidth?: boolean;
-  };
+  } & BreakpoitProps;
   props: P & SystemProps<Theme> & GridTypeMap["selfProps"];
   defaultComponent: D;
 }
