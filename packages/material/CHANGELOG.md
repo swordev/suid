@@ -1,5 +1,19 @@
 # @suid/material
 
+## 0.10.1
+
+### Patch Changes
+
+- [`42f755ea`](https://github.com/swordev/suid/commit/42f755eac2c4064ff4cc28faec94554c906f38e5) Thanks [@juanrgm](https://github.com/juanrgm)! - Export the `BreakpointOverrides` interface in `@suid/material/styles`
+
+- [`0f7daa61`](https://github.com/swordev/suid/commit/0f7daa6121aeba5c872f5abe830cdbe524db2853) Thanks [@juanrgm](https://github.com/juanrgm)! - Use `BreakpointOverrides` in the `Grid` component
+
+- [`28f1bda4`](https://github.com/swordev/suid/commit/28f1bda4502591fe6da237e3215cb4fdb846daa6) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix the `image` property in the `CardMedia` component
+
+- [`8d14d0d4`](https://github.com/swordev/suid/commit/8d14d0d44709342867377d8b5f078530fd70a62b) Thanks [@juanrgm](https://github.com/juanrgm)! - Avoid double effects over `autoFocus` when really there is not changes.
+
+  This error causes the loss of the scroll bar position in the `Select` component.
+
 ## 0.10.0
 
 ### Minor Changes
