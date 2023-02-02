@@ -13,6 +13,7 @@ export {
   StyledEngineProvider,
 } from "@suid/system";
 export type { Breakpoint } from "@suid/system";
+export type { BreakpointOverrides } from "@suid/system/createTheme/createBreakpoints";
 export { default as useTheme } from "./useTheme";
 export { default as useThemeProps } from "./useThemeProps";
 export { default as ThemeProvider } from "./ThemeProvider";
