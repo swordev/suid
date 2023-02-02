@@ -4,7 +4,13 @@ import createComponentFactory from "@suid/base/createComponentFactory";
 import createRef from "@suid/system/createRef";
 import { inspectChildren, isComponentObject } from "@suid/system/inspect";
 import ownerDocument from "@suid/utils/ownerDocument";
-import { splitProps, mergeProps, createEffect, mapArray } from "solid-js";
+import {
+  splitProps,
+  mergeProps,
+  createEffect,
+  mapArray,
+  createMemo,
+} from "solid-js";
 import { createComponent } from "solid-js/web";
 
 const $ = createComponentFactory<MenuListTypeMap>()({
@@ -284,7 +290,7 @@ const MenuList = $.defineComponent(function MenuList(props) {
    * in a `variant="selectedMenu"` it's the first `selected` item
    * otherwise it's the very first item.
    */
-  const activeItemIndex = () => {
+  const activeItemIndex = createMemo(() => {
     let result = -1;
     let index = 0;
     // since we inject focus related props into children we have to do a lookahead
@@ -303,7 +309,7 @@ const MenuList = $.defineComponent(function MenuList(props) {
       index++;
     }
     return result;
-  };
+  });
 
   const items = mapArray(children, (child, index) => {
     if (isComponentObject(child)) {
