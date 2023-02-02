@@ -83,7 +83,9 @@ const CardMedia = $.component(function CardMedia({
     !isMediaComponent() && props.image
       ? mergeProps(
           {
-            backgroundImage: `url("${props.image}")`,
+            get "background-image"() {
+              return `url("${props.image}")`;
+            },
           },
           typeof otherProps.style === "object" && otherProps.style
             ? otherProps.style
