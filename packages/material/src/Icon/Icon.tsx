@@ -97,6 +97,7 @@ const Icon = $.component(function Icon({
       )}
       ownerState={allProps}
       aria-hidden
+      children={props.children}
       {...otherProps}
     />
   );
