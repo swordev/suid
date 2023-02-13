@@ -9,6 +9,20 @@ describe("Grid", () => {
     expect(window.getComputedStyle(e).marginTop).toBe("24px");
     unmount();
   });
+  it("allows custom classes", () => {
+    const { unmount } = render(() => (
+      <Grid item data-testid="e" xs={12} class="custom" />
+    ));
+    const e = screen.getByTestId("e");
+    const classes = [...e.classList.values()];
+    expect(classes.length).toBe(5);
+    expect(classes).includes("MuiGrid-root");
+    expect(classes).includes("MuiGrid-item");
+    expect(classes).includes("MuiGrid-grid-xs-12");
+    expect(classes).includes("custom");
+    expect(classes.some((v) => v.startsWith("css-"))).toBeTruthy();
+    unmount();
+  });
 });
 
 export {};
