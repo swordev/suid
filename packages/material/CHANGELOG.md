@@ -1,5 +1,13 @@
 # @suid/material
 
+## 0.10.2
+
+### Patch Changes
+
+- [`e9362a1c`](https://github.com/swordev/suid/commit/e9362a1c49c9a48dbb5cf75e4483c7d27dc484de) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix the children property in the `Icon` component
+
+- [`ba8e0beb`](https://github.com/swordev/suid/commit/ba8e0beb78f1fafca6c7fdce7c90fdb219e3b241) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix the class property in the `Grid` component
+
 ## 0.10.1
 
 ### Patch Changes
