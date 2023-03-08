@@ -2,6 +2,7 @@ import { TextField } from "@suid/material";
 import ComponentInfo from "~/components/ComponentInfo";
 import BasicTextFieldsExample from "./BasicTextFieldsExample";
 import FormPropsTextFieldsExample from "./FormPropsTextFieldsExample";
+import MultilineTextFieldsExample from "./MultilineTextFieldsExample";
 import StateTextFieldsExample from "./StateTextFieldsExample";
 
 export default function TextFieldPage() {
@@ -18,6 +19,10 @@ export default function TextFieldPage() {
         {
           title: "Uncontrolled vs. Controlled",
           component: StateTextFieldsExample,
+        },
+        {
+          title: "Multiline",
+          component: MultilineTextFieldsExample,
         },
       ]}
     />
