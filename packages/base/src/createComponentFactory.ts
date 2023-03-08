@@ -82,11 +82,12 @@ function createComponentFactory<
     }
 
     function defineComponent(
-      cb: (props: Props) => JSXElement
+      cb: (props: Props) => JSXElement,
+      styled = true
     ): C extends OverridableTypeMap ? OverridableComponent<C> : SuidElement<C> {
       cb = componentTrap(cb) as any;
       cb.toString = () => `.${options.name}-root`;
-      (cb as any).__styled = true;
+      if (styled) (cb as any).__styled = true;
       return cb as any;
     }
 

@@ -10,6 +10,7 @@ import useControlled from "../utils/useControlled";
 import { InputBaseTypeMap } from "./InputBaseProps";
 import inputBaseClasses, { getInputBaseUtilityClass } from "./inputBaseClasses";
 import { isFilled } from "./utils";
+import TextareaAutosize from "@suid/base/TextareaAutosize";
 import createComponentFactory from "@suid/base/createComponentFactory";
 import isHostComponent from "@suid/base/utils/isHostComponent";
 import Dynamic from "@suid/system/Dynamic";
@@ -374,7 +375,8 @@ const InputBase = $.component(function InputBase({
       } else if (typeof v === "string") {
         const inputElement = inputRef.ref as HTMLInputElement;
         const type = inputElement.type ?? "text";
-        const isSelectionType = selectionTypes.has(type);
+        const isSelectionType =
+          inputElement.nodeName === "TEXTAREA" || selectionTypes.has(type);
         const selectionStart = lastSelectionStart ?? v.length;
         if (v !== inputRef.ref.value) {
           inputRef.ref.value = v;
@@ -452,14 +454,8 @@ const InputBase = $.component(function InputBase({
 
   const isMultilineInput = () =>
     props.multiline && props.inputComponent === "input";
-  const InputComponent = () => {
-    const InputComponent = props.inputComponent;
-    if (isMultilineInput()) {
-      // [review]
-      //InputComponent = TextareaAutosize;
-    }
-    return InputComponent;
-  };
+  const InputComponent = () =>
+    isMultilineInput() ? TextareaAutosize : props.inputComponent;
 
   const inputProps = createMemo(() => {
     let inputProps = props.inputProps;
