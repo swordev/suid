@@ -168,7 +168,6 @@
 | TableSortLabel          |       |               |
 | Tabs                    |       |               |
 | TabScrollButton         |       |               |
-| TextareaAutosize        |       |               |
 | TextField               |  ✅   |               |
 | ToggleButton            |  ✅   |               |
 | ToggleButtonGroup       |  ✅   |               |
