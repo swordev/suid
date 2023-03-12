@@ -1,5 +1,17 @@
 # @suid/base
 
+## 0.7.0
+
+### Minor Changes
+
+- [`5a017a08`](https://github.com/swordev/suid/commit/5a017a08d80e3638fff3fab41cf7f524543b067c) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `TextareaAutosize` component and `multiline` support for `InputBase`
+
+### Patch Changes
+
+- Updated dependencies [[`51c5ade3`](https://github.com/swordev/suid/commit/51c5ade396c53144c20bd3a8bf9af9045559cf52), [`ba6f7a4c`](https://github.com/swordev/suid/commit/ba6f7a4ccc9d9cfa80654b1d09a61ab2766cf8e0)]:
+  - @suid/css@0.2.2
+  - @suid/system@0.9.0
+
 ## 0.6.3
 
 ### Patch Changes
