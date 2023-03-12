@@ -6,7 +6,7 @@ import nativeSelectClasses from "./nativeSelectClasses";
 import composeClasses from "@suid/base/composeClasses";
 import { SxProps } from "@suid/system";
 import createRef from "@suid/system/createRef";
-import { SxPropsObject } from "@suid/system/sxProps";
+import StyledProps from "@suid/system/styledProps";
 import * as ST from "@suid/types";
 import clsx from "clsx";
 import { splitProps, mergeProps, Show } from "solid-js";
@@ -50,7 +50,7 @@ const useUtilityClasses = (
 export const nativeSelectSelectStyles: (data: {
   ownerState: any;
   theme: Theme;
-}) => SxPropsObject<Theme> = ({ ownerState, theme }) => ({
+}) => StyledProps = ({ ownerState, theme }) => ({
   MozAppearance: "none", // Reset
   WebkitAppearance: "none", // Reset
   // When interacting quickly, the text can end up selected.
@@ -118,7 +118,7 @@ const NativeSelectSelect = styled("select", {
 export const nativeSelectIconStyles: (data: {
   ownerState: any;
   theme: Theme;
-}) => SxPropsObject<Theme> = ({ ownerState, theme }) => ({
+}) => StyledProps = ({ ownerState, theme }) => ({
   // We use a position absolute over a flexbox in order to forward the pointer events
   // to the input and to support wrapping tags..
   position: "absolute",

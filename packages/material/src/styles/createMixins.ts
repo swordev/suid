@@ -1,15 +1,15 @@
 import { Breakpoints } from "@suid/system/createTheme/createBreakpoints";
-import { SxPropsObject } from "@suid/system/sxProps";
+import StyledProps from "@suid/system/styledProps";
 
 export interface Mixins {
-  toolbar: SxPropsObject;
+  toolbar: StyledProps;
 }
 
 export default function createMixins(
   breakpoints: Breakpoints<any>,
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   spacing: any = undefined,
-  mixins: Record<string, SxPropsObject> = {}
+  mixins: Record<string, StyledProps> = {}
 ) {
   return {
     toolbar: {

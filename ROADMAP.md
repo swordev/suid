@@ -9,7 +9,7 @@
 | System properties              |  ✅   |
 | Theme context                  |  ✅   |
 | Slot classes                   |  ✅   |
-| Breakpoints as an object/array |  ⏳   |
+| Breakpoints as an object/array |  ✅   |
 | `styleOverrides`               |       |
 
 ## @suid/codemod
