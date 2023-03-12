@@ -26,7 +26,11 @@ function resolve(
     } else {
       const result = onProp(name, value);
       if (result) {
-        Object.assign(cssTarget, result);
+        for (const key in result) {
+          cssTarget[key] = isMediaQuery(key)
+            ? { ...cssTarget[key], ...result[key] }
+            : result[key];
+        }
       } else {
         cssTarget[name] = value;
       }
