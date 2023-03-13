@@ -1,5 +1,31 @@
 # @suid/system
 
+## 0.9.0
+
+### Minor Changes
+
+- [`ba6f7a4c`](https://github.com/swordev/suid/commit/ba6f7a4ccc9d9cfa80654b1d09a61ab2766cf8e0) Thanks [@juanrgm](https://github.com/juanrgm)! - Allow breakpoints as object/array in the `sx` property
+
+  ```ts
+  <Box
+    sx={{
+      width: {
+        xs: 100,
+        sm: 200,
+      },
+      color: ["red", "blue"],
+    }}
+  >
+    This box has a responsive width.
+  </Box>
+  ```
+
+### Patch Changes
+
+- Updated dependencies [[`51c5ade3`](https://github.com/swordev/suid/commit/51c5ade396c53144c20bd3a8bf9af9045559cf52)]:
+  - @suid/css@0.2.2
+  - @suid/styled-engine@0.4.2
+
 ## 0.8.3
 
 ### Patch Changes

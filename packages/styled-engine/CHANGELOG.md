@@ -1,5 +1,12 @@
 # @suid/styled-engine
 
+## 0.4.2
+
+### Patch Changes
+
+- Updated dependencies [[`51c5ade3`](https://github.com/swordev/suid/commit/51c5ade396c53144c20bd3a8bf9af9045559cf52)]:
+  - @suid/css@0.2.2
+
 ## 0.4.1
 
 ### Patch Changes
