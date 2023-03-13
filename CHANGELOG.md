@@ -1,5 +1,21 @@
 # @suid/site
 
+## 0.10.0
+
+### Minor Changes
+
+- [`f0aac7a4`](https://github.com/swordev/suid/commit/f0aac7a4c28aa62a0b32d8b25eb212aa35dea4f9) Thanks [@juanrgm](https://github.com/juanrgm)! - Add example using `multiline` in the `TextField` component
+
+- [`c9702576`](https://github.com/swordev/suid/commit/c9702576e9ea2f9a0b8be4eb380572e76fa5d1ea) Thanks [@juanrgm](https://github.com/juanrgm)! - Add examples using breakpoints/functions in the `sx` property
+
+### Patch Changes
+
+- Updated dependencies [[`ba6f7a4c`](https://github.com/swordev/suid/commit/ba6f7a4ccc9d9cfa80654b1d09a61ab2766cf8e0), [`5a017a08`](https://github.com/swordev/suid/commit/5a017a08d80e3638fff3fab41cf7f524543b067c)]:
+  - @suid/system@0.9.0
+  - @suid/material@0.11.0
+  - @suid/base@0.7.0
+  - @suid/icons-material@0.5.10
+
 ## 0.9.0
 
 ### Minor Changes
