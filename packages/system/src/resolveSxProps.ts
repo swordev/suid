@@ -31,10 +31,18 @@ function resolveSxProps(object: SxPropsObject, theme: Theme): SxPropsObject {
     if (value === null || value === undefined) {
       return value;
     } else if (typeof value === "object") {
-      return handleBreakpoints({ theme }, value, (x) => {
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        return resolveSxPropsValue(name, x, theme)!;
-      });
+      const sortedCss: Record<string, any> = {};
+      for (const key of theme.breakpoints.keys) {
+        sortedCss[theme.breakpoints.up(key)] = {};
+      }
+      return Object.assign(
+        sortedCss,
+        handleBreakpoints(
+          { theme },
+          value,
+          (v) => resolveSxPropsValue(name, v, theme) ?? { [name]: v }
+        )
+      );
     } else {
       return resolveSxPropsValue(name, value, theme);
     }
