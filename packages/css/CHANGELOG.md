@@ -1,5 +1,11 @@
 # @suid/css
 
+## 0.3.0
+
+### Minor Changes
+
+- [`fa8d6eb7`](https://github.com/swordev/suid/commit/fa8d6eb7fb84507f52067c8224b991125f4d02d7) Thanks [@juanrgm](https://github.com/juanrgm)! - Allow find the style element from the host element
+
 ## 0.2.2
 
 ### Patch Changes
