@@ -288,7 +288,7 @@ export function resolveSpacingClasses(
   styles: Record<string, any> = {}
 ) {
   // in case of grid item or undefined/null or `spacing` <= 0
-  if (!container || !spacing || spacing <= 0) {
+  if (!container || !spacing || (spacing as number) <= 0) {
     return [];
   }
   // in case of string/number `spacing`
