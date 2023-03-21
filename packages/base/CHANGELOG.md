@@ -1,5 +1,13 @@
 # @suid/base
 
+## 0.7.1
+
+### Patch Changes
+
+- Updated dependencies [[`fa8d6eb7`](https://github.com/swordev/suid/commit/fa8d6eb7fb84507f52067c8224b991125f4d02d7), [`af9e1427`](https://github.com/swordev/suid/commit/af9e1427697a5aec4313611d7f1fcf1c853e74d1)]:
+  - @suid/css@0.3.0
+  - @suid/system@0.9.1
+
 ## 0.7.0
 
 ### Minor Changes
