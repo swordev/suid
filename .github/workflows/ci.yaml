@@ -33,6 +33,8 @@ jobs:
       - name: Test
         run: pnpm run test
       - name: Build
+        env:
+          NODE_OPTIONS: "--max_old_space_size=4096"
         run: pnpm run build
       - name: Create release pull request or publish to npm
         id: changesets
