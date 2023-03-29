@@ -344,7 +344,7 @@ const MenuList = $.defineComponent(function MenuList(props) {
       tabIndex={baseProps.autoFocus ? 0 : -1}
       {...other}
     >
-      {items}
+      {items()}
     </List>
   );
 });

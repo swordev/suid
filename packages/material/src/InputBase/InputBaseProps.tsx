@@ -11,7 +11,7 @@ import {
   ChangeEventHandler,
   KeyboardEventHandler,
 } from "@suid/types";
-import { JSX, JSXElement } from "solid-js";
+import { Component, JSX, JSXElement } from "solid-js";
 
 export interface InputBasePropsSizeOverrides {}
 
@@ -111,7 +111,7 @@ export interface InputBaseTypeMap<P = {}, D extends ElementType = "div"> {
      * Either a string to use a HTML element or a component.
      * @default 'input'
      */
-    inputComponent?: JSXElement;
+    inputComponent?: string | Component<any>;
     /**
      * [Attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Attributes) applied to the `input` element.
      * @default {}

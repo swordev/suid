@@ -99,7 +99,7 @@ const NativeSelect = $.defineComponent(function NativeSelect(inProps) {
 
   return (
     <Input
-      inputComponent={NativeSelectInput as JSXElement}
+      inputComponent={NativeSelectInput}
       inputProps={inputProps as InputProps["inputProps"]}
       {...(other as InputProps)}
       class={clsx(

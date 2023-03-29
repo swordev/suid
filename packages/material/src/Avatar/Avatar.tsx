@@ -245,7 +245,7 @@ const Avatar = $.defineComponent(function Avatar(inProps) {
       class={clsx(classes.root, props.class)}
       {...other}
     >
-      {children}
+      {children()}
     </AvatarRoot>
   );
 });

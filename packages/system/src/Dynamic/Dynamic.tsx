@@ -48,7 +48,7 @@ function ServerDynamic<T>(
 }
 
 // https://github.com/solidjs/solid/blob/12c0dbbbf9f9fdf798c6682e57aee8ea763cf1ba/packages/solid/web/src/index.ts#L114
-export function Dynamic(props: any): Accessor<JSX.Element> {
+export function Dynamic(props: any): JSX.Element {
   if (isServer) return ServerDynamic(props);
   const [p, others] = splitProps(props, ["$component"]);
   const cached = createMemo<Function | string>(() => p.$component);
@@ -70,7 +70,7 @@ export function Dynamic(props: any): Accessor<JSX.Element> {
       default:
         break;
     }
-  });
+  }) as unknown as JSX.Element;
 }
 
 export default Dynamic;

@@ -179,8 +179,8 @@ const Alert = $.component(function Alert({
       <Show when={props.icon !== false}>
         <AlertIcon ownerState={allProps} class={classes.icon}>
           {props.icon ||
-            props.iconMapping?.[props.severity] ||
-            defaultIconMapping[props.severity]}
+            props.iconMapping?.[props.severity]?.() ||
+            defaultIconMapping[props.severity]?.()}
         </AlertIcon>
       </Show>
       <AlertMessage ownerState={allProps} class={classes.message}>

@@ -4,7 +4,7 @@ import { RadioClasses } from "./radioClasses";
 import { SxProps } from "@suid/system";
 import { OverridableStringUnion, OverrideProps } from "@suid/types";
 import * as ST from "@suid/types";
-import * as JSX from "solid-js";
+import { JSXElement } from "solid-js";
 
 export interface RadioPropsSizeOverrides {}
 
@@ -17,7 +17,7 @@ export type RadioTypeMap<P = {}, D extends ST.ElementType = "div"> = {
      * The icon to display when the component is checked.
      * @default <RadioButtonIcon checked />
      */
-    checkedIcon?: JSX.JSXElement;
+    checkedIcon?: JSXElement | (() => JSXElement);
 
     /**
      * Override or extend the styles applied to the component.
@@ -48,7 +48,7 @@ export type RadioTypeMap<P = {}, D extends ST.ElementType = "div"> = {
      * The icon to display when the component is unchecked.
      * @default <RadioButtonIcon />
      */
-    icon?: JSX.JSXElement;
+    icon?: JSXElement | (() => JSXElement);
 
     /**
      * The size of the component.

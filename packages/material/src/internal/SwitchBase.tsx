@@ -10,7 +10,7 @@ import createComponentFactory from "@suid/base/createComponentFactory";
 import createRef from "@suid/system/createRef";
 import { InPropsOf } from "@suid/types";
 import clsx from "clsx";
-import { createEffect, mergeProps } from "solid-js";
+import { createEffect, mergeProps, JSXElement } from "solid-js";
 
 type OwnerState = InPropsOf<SwitchBaseTypeMap> & {
   size?: string;
@@ -206,7 +206,7 @@ const SwitchBase = $.component(function SwitchBase({
         value={inputValue()}
         {...(props.inputProps || {})}
       />
-      {checked() ? props.checkedIcon : props.icon}
+      {(checked() ? props.checkedIcon : props.icon) as JSXElement}
       {otherProps.children}
     </SwitchBaseRoot>
   );

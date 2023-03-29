@@ -16,7 +16,7 @@ import {
 } from "@suid/material";
 import snakeCase from "@suid/utils/snakeCase";
 import uncapitalize from "@suid/utils/uncapitalize";
-import { Component, JSXElement, mapArray } from "solid-js";
+import { Component, JSXElement, For } from "solid-js";
 import { Pages, tryPreload } from "~/Routing";
 import { useLayoutContext } from "./LayoutContext";
 
@@ -372,9 +372,8 @@ function NavLink(props: { text: string; href: string }) {
 export function Nav() {
   return (
     <List dense>
-      {mapArray(
-        () => navConfig,
-        (item) => {
+      <For each={navConfig}>
+        {(item) => {
           if (item.type === "section") {
             return (
               <>
@@ -382,16 +381,14 @@ export function Nav() {
                   icon={item.icon ? <item.icon /> : undefined}
                   text={item.text}
                 >
-                  {mapArray(
-                    () => item.items,
-                    (item) => {
+                  <For each={item.items}>
+                    {(item) => {
                       if (item.type === "section") {
                         return (
                           <>
                             <NavSubSection text={item.text} />
-                            {mapArray(
-                              () => item.items,
-                              (item) => {
+                            <For each={item.items}>
+                              {(item) => {
                                 if (item.type === "link")
                                   return (
                                     <NavLink
@@ -399,15 +396,15 @@ export function Nav() {
                                       href={item.href}
                                     />
                                   );
-                              }
-                            )}
+                              }}
+                            </For>
                           </>
                         );
                       } else if (item.type === "link") {
                         return <NavLink text={item.text} href={item.href} />;
                       }
-                    }
-                  )}
+                    }}
+                  </For>
                 </NavSection>
                 <Divider sx={{ my: 1 }} />
               </>
@@ -415,8 +412,8 @@ export function Nav() {
           } else if (item.type === "link") {
             return <NavLink text={item.text} href={item.href} />;
           }
-        }
-      )}
+        }}
+      </For>
     </List>
   );
 }

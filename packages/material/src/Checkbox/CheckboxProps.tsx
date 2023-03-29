@@ -28,7 +28,7 @@ export interface CheckboxTypeMap<P = {}, D extends ElementType = "div"> {
      * The icon to display when the component is checked.
      * @default <CheckBoxIcon />
      */
-    checkedIcon?: JSXElement;
+    checkedIcon?: JSXElement | (() => JSXElement);
     /**
      * Override or extend the styles applied to the component.
      */
@@ -59,7 +59,7 @@ export interface CheckboxTypeMap<P = {}, D extends ElementType = "div"> {
      * The icon to display when the component is unchecked.
      * @default <CheckBoxOutlineBlankIcon />
      */
-    icon?: JSXElement;
+    icon?: JSXElement | (() => JSXElement);
     /**
      * The id of the `input` element.
      */
@@ -76,7 +76,7 @@ export interface CheckboxTypeMap<P = {}, D extends ElementType = "div"> {
      * The icon to display when the component is indeterminate.
      * @default <IndeterminateCheckBoxIcon />
      */
-    indeterminateIcon?: JSXElement;
+    indeterminateIcon?: JSXElement | (() => JSXElement);
     /**
      * [Attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#Attributes) applied to the `input` element.
      */
