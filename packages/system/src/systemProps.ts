@@ -11,7 +11,7 @@ type SystemStyledPropName = Extract<SystemPropName, keyof StyledPropsBase>;
 export type SystemExtraPropName = Exclude<SystemPropName, SystemStyledPropName>;
 
 export type SystemExtraPropsBase = Partial<{
-  [K in SystemExtraPropName]: Parameters<typeof systemProps[K]>[0];
+  [K in SystemExtraPropName]: Parameters<(typeof systemProps)[K]>[0];
 }>;
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars

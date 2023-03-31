@@ -96,8 +96,8 @@ const Modal = $.defineComponent(function Modal(inProps) {
     {
       BackdropComponent: ModalBackdrop,
       closeAfterTransition: false,
-      components: {} as typeof props["components"] & {},
-      componentsProps: {} as typeof props["componentsProps"] & {},
+      components: {} as (typeof props)["components"] & {},
+      componentsProps: {} as (typeof props)["componentsProps"] & {},
       disableAutoFocus: false,
       disableEnforceFocus: false,
       disableEscapeKeyDown: false,

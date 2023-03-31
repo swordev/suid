@@ -44,7 +44,7 @@ function RadioButtonIcon(props: {
   const ownerState = mergeProps(
     {
       checked: false,
-      classes: {} as typeof props["classes"] & {},
+      classes: {} as (typeof props)["classes"] & {},
     },
     props
   );
