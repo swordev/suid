@@ -3,7 +3,6 @@
 /* eslint-disable no-case-declarations */
 import {
   $DEVCOMP,
-  Accessor,
   Component,
   createMemo,
   JSX,

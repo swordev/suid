@@ -6,7 +6,7 @@ import ArrowDropDownIcon from "../internal/svg-icons/ArrowDropDown";
 import NativeSelectInput from "./NativeSelectInput";
 import createComponentFactory from "@suid/base/createComponentFactory";
 import clsx from "clsx";
-import { JSXElement, mergeProps, splitProps } from "solid-js";
+import { mergeProps, splitProps } from "solid-js";
 
 const $ = createComponentFactory<NativeSelectTypeMap>()({
   name: "MuiNativeSelect",
