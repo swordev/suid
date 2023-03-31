@@ -3,6 +3,7 @@ import ComponentInfo from "~/components/ComponentInfo";
 import BasicTextFieldsExample from "./BasicTextFieldsExample";
 import FormPropsTextFieldsExample from "./FormPropsTextFieldsExample";
 import MultilineTextFieldsExample from "./MultilineTextFieldsExample";
+import SizesTextFieldsExample from "./SizesTextFieldsExample";
 import StateTextFieldsExample from "./StateTextFieldsExample";
 
 export default function TextFieldPage() {
@@ -12,6 +13,10 @@ export default function TextFieldPage() {
       docsName={"text-fields"}
       examples={[
         BasicTextFieldsExample,
+        {
+          title: "Sizes",
+          component: SizesTextFieldsExample,
+        },
         {
           title: "Form props",
           component: FormPropsTextFieldsExample,

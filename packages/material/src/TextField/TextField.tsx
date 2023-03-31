@@ -232,6 +232,7 @@ const TextField = $.component(function TextField({
       required={props.required}
       color={props.color}
       variant={props.variant}
+      size={props.size}
       ownerState={allProps}
       {...otherProps}
     >
