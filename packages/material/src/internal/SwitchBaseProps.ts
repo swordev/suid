@@ -14,7 +14,7 @@ export interface SwitchBaseTypeMap<P = {}, D extends ElementType = "div"> {
      * If `true`, the component is checked.
      */
     checked?: boolean;
-    checkedIcon: JSXElement;
+    checkedIcon: JSXElement | (() => JSXElement);
     /**
      * Override or extend the styles applied to the component.
      */
@@ -41,7 +41,7 @@ export interface SwitchBaseTypeMap<P = {}, D extends ElementType = "div"> {
      * @default false
      */
     edge?: "start" | "end" | false;
-    icon: JSXElement;
+    icon: JSXElement | (() => JSXElement);
     /**
      * The id of the `input` element.
      */

@@ -479,7 +479,7 @@ const Chip = $.component(function Chip({
       <ChipLabel class={clsx(classes.label)} ownerState={allProps}>
         {props.label}
       </ChipLabel>
-      {deleteIcon}
+      {deleteIcon()}
     </$ChipRoot>
   );
 });

@@ -8,7 +8,7 @@ import clsx from "clsx";
 import {
   createEffect,
   createSignal,
-  mapArray,
+  For,
   mergeProps,
   onCleanup,
 } from "solid-js";
@@ -334,42 +334,44 @@ const TouchRipple = $.component(function TouchRipple({ props, otherProps }) {
       ref={container}
       {...otherProps}
     >
-      {mapArray(ripples, (data) => (
-        <TouchRippleRipple
-          in={inProps[data.id]}
-          onExited={() => {
-            setRipples((oldRipples) =>
-              oldRipples.filter((v) => v.id !== data.id)
-            );
-            delete inProps[data.id];
-          }}
-          classes={{
-            ripple: clsx(props.classes.ripple, touchRippleClasses.ripple),
-            rippleVisible: clsx(
-              props.classes.rippleVisible,
-              touchRippleClasses.rippleVisible
-            ),
-            ripplePulsate: clsx(
-              props.classes.ripplePulsate,
-              touchRippleClasses.ripplePulsate
-            ),
-            child: clsx(props.classes.child, touchRippleClasses.child),
-            childLeaving: clsx(
-              props.classes.childLeaving,
-              touchRippleClasses.childLeaving
-            ),
-            childPulsate: clsx(
-              props.classes.childPulsate,
-              touchRippleClasses.childPulsate
-            ),
-          }}
-          timeout={DURATION}
-          pulsate={data.params.pulsate}
-          rippleX={data.params.rippleX}
-          rippleY={data.params.rippleY}
-          rippleSize={data.params.rippleSize}
-        />
-      ))}
+      <For each={ripples()}>
+        {(data) => (
+          <TouchRippleRipple
+            in={inProps[data.id]}
+            onExited={() => {
+              setRipples((oldRipples) =>
+                oldRipples.filter((v) => v.id !== data.id)
+              );
+              delete inProps[data.id];
+            }}
+            classes={{
+              ripple: clsx(props.classes.ripple, touchRippleClasses.ripple),
+              rippleVisible: clsx(
+                props.classes.rippleVisible,
+                touchRippleClasses.rippleVisible
+              ),
+              ripplePulsate: clsx(
+                props.classes.ripplePulsate,
+                touchRippleClasses.ripplePulsate
+              ),
+              child: clsx(props.classes.child, touchRippleClasses.child),
+              childLeaving: clsx(
+                props.classes.childLeaving,
+                touchRippleClasses.childLeaving
+              ),
+              childPulsate: clsx(
+                props.classes.childPulsate,
+                touchRippleClasses.childPulsate
+              ),
+            }}
+            timeout={DURATION}
+            pulsate={data.params.pulsate}
+            rippleX={data.params.rippleX}
+            rippleY={data.params.rippleY}
+            rippleSize={data.params.rippleSize}
+          />
+        )}
+      </For>
     </TouchRippleRoot>
   );
 });

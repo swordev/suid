@@ -205,7 +205,7 @@ const Drawer = $.component(function Drawer({
         class={clsx(classes.paper, props.PaperProps.class)}
         ownerState={allProps as any}
       >
-        {resolved}
+        {resolved()}
       </DrawerPaper>
     );
   }

@@ -12,7 +12,6 @@ import {
   ListItemText,
 } from "@suid/material";
 import { DrawerProps } from "@suid/material/Drawer";
-import { mapArray } from "solid-js";
 import { createMutable } from "solid-js/store";
 
 type Anchor = NonNullable<DrawerProps["anchor"]>;
@@ -45,57 +44,48 @@ export default function TemporaryDrawer() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {mapArray(
-          () => ["Inbox", "Starred", "Send email", "Drafts"],
-          (text, index) => (
-            <ListItem disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index() % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          )
-        )}
+        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItemButton>
+          </ListItem>
+        ))}
       </List>
       <Divider />
       <List>
-        {mapArray(
-          () => ["All mail", "Trash", "Spam"],
-          (text, index) => (
-            <ListItem disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index() % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          )
-        )}
+        {["All mail", "Trash", "Spam"].map((text, index) => (
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItemButton>
+          </ListItem>
+        ))}
       </List>
     </Box>
   );
 
   return (
     <div>
-      {mapArray(
-        () => ["left", "right", "top", "bottom"] as Anchor[],
-        (anchor) => (
-          <>
-            <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
-            <Drawer
-              anchor={anchor}
-              open={state[anchor]}
-              sx={{ zIndex: 9999 }}
-              onClose={toggleDrawer(anchor, false)}
-            >
-              {list(anchor)}
-            </Drawer>
-          </>
-        )
-      )}
+      {(["left", "right", "top", "bottom"] as Anchor[]).map((anchor) => (
+        <>
+          <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
+          <Drawer
+            anchor={anchor}
+            open={state[anchor]}
+            sx={{ zIndex: 9999 }}
+            onClose={toggleDrawer(anchor, false)}
+          >
+            {list(anchor)}
+          </Drawer>
+        </>
+      ))}
     </div>
   );
 }

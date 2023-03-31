@@ -7,7 +7,7 @@ import {
   Component,
   createMemo,
   JSXElement,
-  mapArray,
+  For,
   Match,
   Show,
   Switch,
@@ -87,12 +87,12 @@ export default function ComponentInfo(props: {
         <Typography component="h2" variant="h5" sx={{ my: 2 }}>
           {props.examples?.length === 1 ? "Example" : "Examples"}
         </Typography>
-        {mapArray(
-          () =>
-            props.examples?.map((v) =>
-              typeof v === "function" ? { component: v } : v
-            ),
-          (example) => (
+        <For
+          each={props.examples?.map((v) =>
+            typeof v === "function" ? { component: v } : v
+          )}
+        >
+          {(example) => (
             <Box sx={{ mb: 2 }}>
               <Switch>
                 <Match when={typeof example.title === "string"}>
@@ -134,8 +134,8 @@ export default function ComponentInfo(props: {
                 }}
               />
             </Box>
-          )
-        )}
+          )}
+        </For>
       </Show>
 
       <Show when={moreExamples()}>
