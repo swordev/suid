@@ -24,7 +24,7 @@ export type TypographyVariants = {
 
 export type Variant = keyof TypographyVariants;
 
-export type TypographyOptions = {
+export interface TypographyOptions extends TypographyVariants {
   fontFamily: string;
   fontSize: number;
   htmlFontSize: number;
@@ -32,7 +32,7 @@ export type TypographyOptions = {
   fontWeightRegular: number;
   fontWeightMedium: number;
   fontWeightBold: number;
-} & TypographyVariants;
+}
 
 const fontWeight = {
   light: 300,
