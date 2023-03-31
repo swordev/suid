@@ -75,6 +75,10 @@ export default defineConfig({
       async closeBundle() {
         const distPath = join(__dirname, "dist");
         await writeFile(join(distPath, "_redirects"), "/* /index.html 200");
+        await writeFile(
+          join(distPath, "netlify.toml"),
+          ["[build]", `command = "node -v"`].join("\n")
+        );
       },
     },
   ],
