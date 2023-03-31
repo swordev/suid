@@ -87,7 +87,7 @@ export default function suidPlugin(inOptions: SuidPluginOptions = {}): Plugin {
         transformIconImportsOptions.enabled &&
         transformIconImportsOptions.paths?.some((p) => code.includes(p))
       ) {
-        return transformIconImports(code, options);
+        return transform(code, options);
       }
     },
   };
@@ -133,10 +133,7 @@ function getOptimizedImportPath(
   };
 }
 
-export function transformIconImports(
-  code: string,
-  options: SuidPluginOptions
-): string {
+export function transform(code: string, options: SuidPluginOptions) {
   const ast = parse(code, options.parserOptions);
 
   traverse(ast, {
@@ -185,5 +182,6 @@ export function transformIconImports(
       );
     },
   });
-  return generate(ast).code;
+
+  return generate(ast);
 }
