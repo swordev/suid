@@ -74,10 +74,6 @@ export default defineConfig({
       name: "prepare-deploy",
       async closeBundle() {
         const distPath = join(__dirname, "dist");
-        const pkgPath = join(distPath, "package.json");
-        const pkg = JSON.parse((await readFile(pkgPath)).toString());
-        pkg.dependencies = pkg.devDependencies = {};
-        await writeFile(pkgPath, JSON.stringify(pkg, null, 2));
         const redirectsPath = join(distPath, "_redirects");
         await writeFile(redirectsPath, "/* /index.html 200");
       },

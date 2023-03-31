@@ -47,6 +47,8 @@
     "devPkgManifestFields": true,
     "pkgManifest": {
       "scripts": null,
+      "dependencies": null,
+      "devDependencies": null,
       "files": [
         "assets/**/*",
         "index.html"
