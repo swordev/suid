@@ -1,0 +1,1 @@
+var t=Object.defineProperty;var r=(e,a)=>t(e,"name",{value:a,configurable:!0});import{p as c,aA as i}from"./index-308e1143.js";function u(e){return c(()=>e?.()??`mui-${i()}`)}r(u,"createUniqueId");export{u as c};
