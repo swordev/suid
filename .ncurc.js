@@ -1,8 +1,5 @@
 module.exports = {
-  packageFile: [
-    "./package.json",
-    "./scripts/package.json",
-    "./packages/*/package.json",
-  ],
+  workspaces: true,
+  root: true,
   dep: "dev,optional,prod,bundle",
 };

@@ -4,16 +4,16 @@
   "private": true,
   "type": "module",
   "dependencies": {
-    "commander": "^9.4.1",
+    "commander": "^9.5.0",
     "p-limit": "^4.0.0"
   },
   "devDependencies": {
     "@tsconfig/node18": "^1.0.1",
-    "@types/node": "^18.11.18",
+    "@types/node": "^18.15.11",
     "@types/prettier": "^2.7.2",
     "json5": "^2.2.3",
-    "node-html-parser": "^6.1.4",
-    "prettier": "^2.8.1",
+    "node-html-parser": "^6.1.5",
+    "prettier": "^2.8.7",
     "typescript": "^5.0.3"
   }
 }

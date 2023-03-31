@@ -17,7 +17,7 @@
     "watch": "tsc --build -w tsconfig.build.json"
   },
   "dependencies": {
-    "@popperjs/core": "^2.11.6",
+    "@popperjs/core": "^2.11.7",
     "@suid/css": "workspace:*",
     "@suid/system": "workspace:*",
     "@suid/types": "workspace:*",
