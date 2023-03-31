@@ -1,5 +1,5 @@
 import { readdirSync, readFileSync } from "fs";
-import { writeFile } from "fs/promises";
+import { readFile, writeFile } from "fs/promises";
 import { createRequire } from "module";
 import { dirname, join, resolve } from "path";
 import solidPlugin from "solid-start/vite";
@@ -74,11 +74,12 @@ export default defineConfig({
       name: "prepare-deploy",
       async closeBundle() {
         const distPath = join(__dirname, "dist");
-        await writeFile(join(distPath, "_redirects"), "/* /index.html 200");
-        await writeFile(
-          join(distPath, "netlify.toml"),
-          ["[build]", `command = "node -v"`].join("\n")
-        );
+        const pkgPath = join(distPath, "package.json");
+        const pkg = JSON.parse((await readFile(pkgPath)).toString());
+        pkg.dependencies = pkg.devDependencies = {};
+        await writeFile(pkgPath, JSON.stringify(pkg, null, 2));
+        const redirectsPath = join(distPath, "_redirects");
+        await writeFile(redirectsPath, "/* /index.html 200");
       },
     },
   ],
