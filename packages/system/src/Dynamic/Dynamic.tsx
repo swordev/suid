@@ -10,13 +10,8 @@ import {
   splitProps,
   untrack,
 } from "solid-js";
-import {
-  getNextElement,
-  isServer,
-  spread,
-  ssrElement,
-  SVGElements,
-} from "solid-js/web";
+import { isServer, spread, ssrElement } from "solid-js/web";
+import * as web from "solid-js/web";
 
 function createElement(
   tagName: string,
@@ -59,9 +54,9 @@ export function Dynamic(props: any): JSX.Element {
         return untrack(() => component(others));
 
       case "string":
-        const isSvg = SVGElements.has(component);
+        const isSvg = web.SVGElements.has(component);
         const el = sharedConfig.context
-          ? getNextElement()
+          ? web.getNextElement()
           : createElement(component, isSvg);
         spread(el, others, isSvg);
         return el;
