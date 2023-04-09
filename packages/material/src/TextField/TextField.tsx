@@ -3,7 +3,7 @@ import FormControl from "../FormControl";
 import FormHelperText from "../FormHelperText";
 import Input from "../Input";
 import InputLabel from "../InputLabel";
-import OutlinedInput, { OutlinedInputProps } from "../OutlinedInput";
+import OutlinedInput from "../OutlinedInput";
 import styled from "../styles/styled";
 import { TextFieldTypeMap } from "./TextFieldProps";
 // import Select from "../Select";
@@ -12,7 +12,7 @@ import createComponentFactory from "@suid/base/createComponentFactory";
 import Dynamic from "@suid/system/Dynamic";
 import createUniqueId from "@suid/utils/createUniqueId";
 import clsx from "clsx";
-import { createEffect, createMemo } from "solid-js";
+import { createEffect } from "solid-js";
 
 const $ = createComponentFactory<TextFieldTypeMap>()({
   name: "MuiTextField",
@@ -137,28 +137,6 @@ const TextField = $.component(function TextField({
     });
   }
 
-  const InputMore = createMemo(() => {
-    const InputMore: OutlinedInputProps = {};
-
-    if (props.variant === "outlined") {
-      if (
-        props.InputLabelProps &&
-        typeof props.InputLabelProps.shrink !== "undefined"
-      ) {
-        InputMore.notched = props.InputLabelProps.shrink;
-      }
-      InputMore.label = props.label;
-    }
-    /*if (props.select) {
-    // unset defaults from textbox inputs
-    if (!props.SelectProps || !props.SelectProps.native) {
-      InputMore.id = undefined;
-    }
-    InputMore["aria-describedby"] = undefined;
-  }*/
-    return InputMore;
-  });
-
   const id = createUniqueId(() => props.id);
   const helperTextId = () =>
     props.helperText && id() ? `${id()}-helper-text` : undefined;
@@ -188,7 +166,14 @@ const TextField = $.component(function TextField({
       placeholder={props.placeholder}
       inputProps={props.inputProps}
       size={props.size}
-      {...InputMore()}
+      notched={
+        props.variant === "outlined" &&
+        props.InputLabelProps &&
+        typeof props.InputLabelProps.shrink !== "undefined"
+          ? props.InputLabelProps.shrink
+          : undefined
+      }
+      label={props.variant === "outlined" ? props.label : undefined}
       {...(props.InputProps || {})}
     />
   );
