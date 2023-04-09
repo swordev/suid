@@ -1,0 +1,1 @@
+var n=Object.defineProperty;var r=(e,t)=>n(e,"name",{value:t,configurable:!0});import{U as o,bl as i}from"./index-4edd6e97.js";function h(e){return o(i.Provider,{get value(){return e.theme},get children(){return e.children}})}r(h,"ThemeProvider");export{h as T};
