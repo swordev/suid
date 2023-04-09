@@ -1,0 +1,1 @@
+var e=Object.defineProperty;var o=(t,r)=>e(t,"name",{value:r,configurable:!0});import{a9 as n,ad as a}from"./index-d23866de.js";const s=n();function m(){return a(s)}o(m,"useFormControl");export{s as F,m as u};

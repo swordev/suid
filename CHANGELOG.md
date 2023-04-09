@@ -1,5 +1,30 @@
 # @suid/site
 
+## 0.11.0
+
+### Minor Changes
+
+- [`1b0fe836`](https://github.com/swordev/suid/commit/1b0fe8367a2b23a446f397ef5fa0663f385230b6) Thanks [@juanrgm](https://github.com/juanrgm)! - Update to SolidJS v1.7.0.
+
+  Thanks to @ryansolid for https://github.com/swordev/suid/pull/199.
+
+- [`5b2cb083`](https://github.com/swordev/suid/commit/5b2cb0835d5e56e4afb67907cdbbe60df3deac6e) Thanks [@juanrgm](https://github.com/juanrgm)! - Add example of custom typography variant
+
+### Patch Changes
+
+- [#198](https://github.com/swordev/suid/pull/198) [`d3472fc3`](https://github.com/swordev/suid/commit/d3472fc39427553277c9e5bd5f6064ad8e4d1320) Thanks [@martinpengellyphillips](https://github.com/martinpengellyphillips)! - Fix label positioning for small TextField size.
+
+- [`02960745`](https://github.com/swordev/suid/commit/02960745657844f5432fe7969eb60ec4d7eb37a3) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
+- Updated dependencies [[`9cd59167`](https://github.com/swordev/suid/commit/9cd59167f1249b452ec523d488535bd5a2fd629a), [`d3472fc3`](https://github.com/swordev/suid/commit/d3472fc39427553277c9e5bd5f6064ad8e4d1320), [`f9361c06`](https://github.com/swordev/suid/commit/f9361c06a589872e02fdd11bdd0ab8eaf725b5a0), [`1b0fe836`](https://github.com/swordev/suid/commit/1b0fe8367a2b23a446f397ef5fa0663f385230b6), [`02960745`](https://github.com/swordev/suid/commit/02960745657844f5432fe7969eb60ec4d7eb37a3), [`d0af4f22`](https://github.com/swordev/suid/commit/d0af4f22b4ff242dff814d78b951a20cbaff50dd)]:
+  - @suid/material@0.12.0
+  - @suid/system@0.10.0
+  - @suid/icons-material@0.6.0
+  - @suid/types@0.5.0
+  - @suid/utils@0.7.0
+  - @suid/base@0.8.0
+  - @suid/codemod@0.9.4
+
 ## 0.10.1
 
 ### Patch Changes
