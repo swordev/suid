@@ -1,5 +1,22 @@
 # @suid/system
 
+## 0.10.0
+
+### Minor Changes
+
+- [`1b0fe836`](https://github.com/swordev/suid/commit/1b0fe8367a2b23a446f397ef5fa0663f385230b6) Thanks [@juanrgm](https://github.com/juanrgm)! - Update to SolidJS v1.7.0.
+
+  Thanks to @ryansolid for https://github.com/swordev/suid/pull/199.
+
+### Patch Changes
+
+- [`f9361c06`](https://github.com/swordev/suid/commit/f9361c06a589872e02fdd11bdd0ab8eaf725b5a0) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix SSR build
+
+- Updated dependencies [[`1b0fe836`](https://github.com/swordev/suid/commit/1b0fe8367a2b23a446f397ef5fa0663f385230b6)]:
+  - @suid/styled-engine@0.5.0
+  - @suid/types@0.5.0
+  - @suid/utils@0.7.0
+
 ## 0.9.1
 
 ### Patch Changes
