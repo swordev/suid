@@ -10,9 +10,9 @@
     "start": "solid-start dev"
   },
   "dependencies": {
-    "@solidjs/meta": "^0.28.2",
+    "@solidjs/meta": "^0.28.4",
     "@solidjs/router": "^0.8.2",
-    "@stackblitz/sdk": "^1.8.2",
+    "@stackblitz/sdk": "^1.9.0",
     "@suid/base": "workspace:*",
     "@suid/codemod": "workspace:*",
     "@suid/icons-material": "workspace:*",
@@ -20,25 +20,25 @@
     "@suid/system": "workspace:*",
     "@suid/types": "workspace:*",
     "@suid/utils": "workspace:*",
-    "monaco-editor": "^0.36.1",
+    "monaco-editor": "^0.37.1",
     "prism-themes": "^1.9.0",
     "prismjs": "^1.29.0",
     "semver": "^7.3.8",
-    "solid-js": "^1.7.0",
-    "solid-start": "^0.2.24"
+    "solid-js": "^1.7.3",
+    "solid-start": "^0.2.26"
   },
   "devDependencies": {
     "@suid/vite-plugin": "workspace:*",
     "@types/prismjs": "^1.26.0",
     "@types/semver": "^7.3.13",
-    "esbuild": "^0.17.14",
+    "esbuild": "^0.17.15",
     "fast-glob": "^3.2.12",
     "rimraf": "^4.4.1",
-    "sass": "^1.60.0",
-    "solid-start-node": "^0.2.24",
-    "undici": "^5.21.0",
+    "sass": "^1.61.0",
+    "solid-start-node": "^0.2.26",
+    "undici": "^5.21.2",
     "vite": "^4.2.1",
-    "vite-plugin-solid": "^2.6.1"
+    "vite-plugin-solid": "^2.7.0"
   },
   "publishConfig": {
     "directory": "dist"
