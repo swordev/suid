@@ -125,8 +125,8 @@ importers:
         specifier: ^1.2.1
         version: 1.2.1
       solid-js:
-        specifier: ^1.7.0
-        version: 1.7.0
+        specifier: ^1.7.3
+        version: 1.7.3
     publishDirectory: lib
 
   packages/codemod:
@@ -178,8 +178,8 @@ importers:
         specifier: workspace:*
         version: link:../material/lib
       solid-js:
-        specifier: ^1.7.0
-        version: 1.7.0
+        specifier: ^1.7.3
+        version: 1.7.3
     publishDirectory: lib
 
   packages/material:
@@ -203,8 +203,8 @@ importers:
         specifier: ^1.2.1
         version: 1.2.1
       solid-js:
-        specifier: ^1.7.0
-        version: 1.7.0
+        specifier: ^1.7.3
+        version: 1.7.3
     publishDirectory: lib
 
   packages/site:
@@ -302,8 +302,8 @@ importers:
         specifier: workspace:*
         version: link:../utils/lib
       solid-js:
-        specifier: ^1.7.0
-        version: 1.7.0
+        specifier: ^1.7.3
+        version: 1.7.3
     publishDirectory: lib
 
   packages/system:
@@ -327,15 +327,15 @@ importers:
         specifier: ^3.1.2
         version: 3.1.2
       solid-js:
-        specifier: ^1.7.0
-        version: 1.7.0
+        specifier: ^1.7.3
+        version: 1.7.3
     publishDirectory: lib
 
   packages/types:
     dependencies:
       solid-js:
-        specifier: ^1.7.0
-        version: 1.7.0
+        specifier: ^1.7.3
+        version: 1.7.3
     publishDirectory: lib
 
   packages/utils:
@@ -344,8 +344,8 @@ importers:
         specifier: workspace:*
         version: link:../types/lib
       solid-js:
-        specifier: ^1.7.0
-        version: 1.7.0
+        specifier: ^1.7.3
+        version: 1.7.3
     publishDirectory: lib
 
   packages/vite-plugin:
@@ -5326,10 +5326,6 @@ packages:
       rrweb-cssom: 0.6.0
     dev: true
 
-  /csstype@3.1.1:
-    resolution: {integrity: sha512-DJR/VvkAvSZW9bTouZue2sSxDwdTN92uHjqeKVm+0dAqdfNykRzQ95tay8aXMBAAPpUiq4Qcug2L7neoRh2Egw==}
-    dev: false
-
   /csstype@3.1.2:
     resolution: {integrity: sha512-I7K1Uu0MBPzaFKg4nI5Q7Vs2t+3gWWW648spaF+Rg7pI9ds18Ugn+lvg4SHczUdKlHI5LWBXyqfS8+DufyBsgQ==}
 
@@ -9707,13 +9703,6 @@ packages:
       ip: 1.1.5
       smart-buffer: 4.2.0
     dev: true
-
-  /solid-js@1.7.0:
-    resolution: {integrity: sha512-tLG68KWlVRgzYeAW003G3E70emZqTcqCKJR9QoGr0rcuiLIuKrlUoezT8jLME1YSl3Wfu35jzgeY10iLEY4YQQ==}
-    dependencies:
-      csstype: 3.1.1
-      seroval: 0.5.1
-    dev: false
 
   /solid-js@1.7.3:
     resolution: {integrity: sha512-4hwaF/zV/xbNeBBIYDyu3dcReOZBECbO//mrra6GqOrKy4Soyo+fnKjpZSa0nODm6j1aL0iQRh/7ofYowH+jzw==}
