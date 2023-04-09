@@ -1,5 +1,11 @@
 # @suid/site
 
+## 0.11.1
+
+### Patch Changes
+
+- [`cf17cbd4`](https://github.com/swordev/suid/commit/cf17cbd4c59c00ff316a956396ace39224720cf0) Thanks [@juanrgm](https://github.com/juanrgm)! - Update to SolidJS v1.7.3
+
 ## 0.11.0
 
 ### Minor Changes
