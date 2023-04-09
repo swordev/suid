@@ -1,5 +1,13 @@
 # @suid/vite-plugin
 
+## 0.1.3
+
+### Patch Changes
+
+- [`31310a8b`](https://github.com/swordev/suid/commit/31310a8b8bc3ff4cd982fd81efb08612a50443c4) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix source maps
+
+- [`02960745`](https://github.com/swordev/suid/commit/02960745657844f5432fe7969eb60ec4d7eb37a3) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
 ## 0.1.2
 
 ### Patch Changes
