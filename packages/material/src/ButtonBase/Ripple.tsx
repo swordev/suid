@@ -30,7 +30,7 @@ const $ = createComponentFactory<RipplePropsTypeMap>()({
 const Ripple = $.component(function Ripple({ props, otherProps }) {
   const [leaving, setLeaving] = createSignal(false);
 
-  const rippleClassName = createMemo(() =>
+  const rippleClassName = () =>
     clsx(
       props.class,
       props.classes.ripple,
@@ -38,16 +38,15 @@ const Ripple = $.component(function Ripple({ props, otherProps }) {
       props.classes.ripplePulsate && {
         [props.classes.ripplePulsate]: props.pulsate,
       }
-    )
-  );
-  const rippleStyles = createMemo(() => ({
+    );
+  const rippleStyles = () => ({
     width: `${props.rippleSize}px`,
     height: `${props.rippleSize}px`,
     top: `${-(props.rippleSize / 2) + props.rippleY}px`,
     left: `${-(props.rippleSize / 2) + props.rippleX}px`,
-  }));
+  });
 
-  const childClassName = createMemo(() =>
+  const childClassName = () =>
     clsx(
       props.classes.child,
       props.classes.childLeaving && {
@@ -56,8 +55,7 @@ const Ripple = $.component(function Ripple({ props, otherProps }) {
       props.classes.childPulsate && {
         [props.classes.childPulsate]: props.pulsate,
       }
-    )
-  );
+    );
 
   createEffect(() => {
     if (!props.in && !leaving()) {

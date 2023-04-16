@@ -9,7 +9,7 @@ import { CheckboxTypeMap } from "./CheckboxProps";
 import checkboxClasses, { getCheckboxUtilityClass } from "./checkboxClasses";
 import createComponentFactory from "@suid/base/createComponentFactory";
 import { alpha } from "@suid/system";
-import { createMemo, mergeProps, splitProps } from "solid-js";
+import { mergeProps, splitProps } from "solid-js";
 
 const $ = createComponentFactory<CheckboxTypeMap>()({
   name: "MuiCheckbox",
@@ -103,13 +103,10 @@ const CheckboxRoot = styled(SwitchBase, {
  * - inherits [ButtonBase API](https://mui.com/api/button-base/)
  */
 const Checkbox = $.component(function Checkbox({ allProps, classes, props }) {
-  const icon = createMemo(() =>
-    props.indeterminate ? props.indeterminateIcon : props.icon
-  );
-  const indeterminateIcon = createMemo(() =>
-    props.indeterminate ? props.indeterminateIcon : props.checkedIcon
-  );
-
+  const icon = () =>
+    props.indeterminate ? props.indeterminateIcon : props.icon;
+  const indeterminateIcon = () =>
+    props.indeterminate ? props.indeterminateIcon : props.checkedIcon;
   const [, baseProps] = splitProps(allProps, [
     "checkedIcon",
     "color",

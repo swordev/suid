@@ -48,13 +48,13 @@ export default function useBadge(inProps: UseBadgeProps) {
   ]);
   const invisible = useBadgeInvisibleMemo(props);
   const badge = mergeProps(() => (invisible() ? prevProps : props));
-  const displayValue = createMemo(() => {
+  const displayValue = () => {
     if (badge.variant !== "dot") {
       return badge.badgeContent && Number(badge.badgeContent) > badge.max
         ? `${badge.max}+`
         : badge.badgeContent;
     }
-  });
+  };
 
   return mergeProps(badge, {
     get invisible() {

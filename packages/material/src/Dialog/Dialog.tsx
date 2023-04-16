@@ -15,7 +15,7 @@ import { EventParam, PropsOf } from "@suid/types";
 import { createUniqueId } from "@suid/utils";
 import capitalize from "@suid/utils/capitalize";
 import clsx from "clsx";
-import { createMemo, splitProps, mergeProps } from "solid-js";
+import { splitProps, mergeProps } from "solid-js";
 
 type OwnerState = PropsOf<DialogTypeMap>;
 
@@ -275,9 +275,11 @@ const Dialog = $.defineComponent(function Dialog(inProps) {
   };
 
   const ariaLabelledby = createUniqueId(() => props["aria-labelledby"]);
-  const dialogContextValue = createMemo(() => {
-    return { titleId: ariaLabelledby() };
-  });
+  const dialogContextValue = {
+    get titleId() {
+      return ariaLabelledby();
+    },
+  };
 
   return (
     <DialogRoot
@@ -328,7 +330,7 @@ const Dialog = $.defineComponent(function Dialog(inProps) {
             class={clsx(classes.paper, baseProps.PaperProps.class)}
             ownerState={ownerState}
           >
-            <DialogContext.Provider value={dialogContextValue()}>
+            <DialogContext.Provider value={dialogContextValue}>
               {props.children}
             </DialogContext.Provider>
           </DialogPaper>

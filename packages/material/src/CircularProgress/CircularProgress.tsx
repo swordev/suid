@@ -7,7 +7,6 @@ import SxProps from "@suid/system/sxProps";
 import { PropsOf } from "@suid/types";
 import randomString from "@suid/utils/randomString";
 import clsx from "clsx";
-import { createMemo } from "solid-js";
 
 const $ = createComponentFactory<CircularProgressTypeMap>()({
   name: "MuiCircularProgress",
@@ -157,7 +156,7 @@ const CircularProgress = $.component(function CircularProgress({
   otherProps,
   props,
 }) {
-  const circleStyle = createMemo(() => {
+  const circleStyle = () => {
     if (props.variant !== "determinate") return {};
     const circumference = 2 * Math.PI * ((SIZE - props.thickness) / 2);
     return {
@@ -167,7 +166,7 @@ const CircularProgress = $.component(function CircularProgress({
         circumference
       ).toFixed(3)}px`,
     } as SxProps;
-  });
+  };
   const rootStyle = () => {
     if (props.variant !== "determinate") return {};
     return {

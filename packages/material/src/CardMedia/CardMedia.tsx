@@ -79,7 +79,7 @@ const CardMedia = $.component(function CardMedia({
     () => MEDIA_COMPONENTS.indexOf(otherProps.component as any) !== -1
   );
 
-  const style = createMemo(() =>
+  const style = () =>
     !isMediaComponent() && props.image
       ? mergeProps(
           {
@@ -91,8 +91,7 @@ const CardMedia = $.component(function CardMedia({
             ? otherProps.style
             : {}
         )
-      : otherProps.style
-  );
+      : otherProps.style;
 
   const ownerState = mergeProps(allProps, {
     get isMediaComponent() {
