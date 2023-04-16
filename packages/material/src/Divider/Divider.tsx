@@ -213,6 +213,7 @@ const Divider = $.component(function Divider({
   return (
     <$DividerRoot
       role={allProps.role}
+      as={otherProps.component}
       {...otherProps}
       ownerState={allProps}
       class={clsx(classes.root, allProps.class)}
