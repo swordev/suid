@@ -6,7 +6,7 @@ import cardHeaderClasses, {
 } from "./cardHeaderClasses";
 import createComponentFactory from "@suid/base/createComponentFactory";
 import clsx from "clsx";
-import { children, createMemo, Show } from "solid-js";
+import { children, Show } from "solid-js";
 
 const $ = createComponentFactory<CardHeaderTypeMap>()({
   name: "MuiCardHeader",
@@ -98,43 +98,77 @@ const CardHeader = $.component(function CardHeader({
 }) {
   const isTypography = (v: unknown) =>
     v instanceof HTMLElement && v.classList.contains(Typography.toString());
-  const Title = createMemo(() => {
-    const title = children(() => props.title)();
-    if (title !== undefined && !isTypography(title) && !props.disableTypography)
-      return (
+
+  const avatar = children(() => props.avatar);
+
+  const Avatar = () => {
+    return (
+      <Show when={!!avatar()}>
+        <CardHeaderAvatar class={classes.avatar} ownerState={allProps}>
+          {avatar()}
+        </CardHeaderAvatar>
+      </Show>
+    );
+  };
+
+  const Title = () => {
+    const title = children(() => props.title);
+    return (
+      <Show
+        when={
+          title() !== undefined &&
+          !isTypography(title()) &&
+          !props.disableTypography
+        }
+        fallback={title()}
+      >
         <Typography
-          variant={props.avatar ? "body2" : "h5"}
+          variant={avatar() ? "body2" : "h5"}
           class={classes.title}
           component="span"
           sx={{ display: "block" }}
-          {...(props.titleTypographyProps ?? {})}
+          {...props.titleTypographyProps}
         >
-          {title}
+          {title()}
         </Typography>
-      );
-    return title;
-  });
+      </Show>
+    );
+  };
 
-  const Subheader = createMemo(() => {
-    const subheader = children(() => props.subheader)();
-    if (
-      subheader !== undefined &&
-      !isTypography(subheader) &&
-      !props.disableTypography
-    )
-      return (
+  const Subheader = () => {
+    const subheader = children(() => props.subheader);
+    return (
+      <Show
+        when={
+          subheader() !== undefined &&
+          !isTypography(subheader()) &&
+          !props.disableTypography
+        }
+        fallback={subheader()}
+      >
         <Typography
-          variant={props.avatar ? "body2" : "body1"}
+          variant={avatar() ? "body2" : "body1"}
           class={classes.subheader}
           component="span"
           sx={{ display: "block", color: "text.secondary" }}
-          {...(props.subheaderTypographyProps ?? {})}
+          {...props.subheaderTypographyProps}
         >
-          {subheader}
+          {subheader()}
         </Typography>
-      );
-    return subheader;
-  });
+      </Show>
+    );
+  };
+
+  const Action = () => {
+    const action = children(() => props.action);
+    return (
+      <Show when={!!action()}>
+        <CardHeaderAction class={classes.action} ownerState={allProps}>
+          {action()}
+        </CardHeaderAction>
+      </Show>
+    );
+  };
 
   return (
     <CardHeaderRoot
@@ -142,22 +176,14 @@ const CardHeader = $.component(function CardHeader({
       class={clsx(classes.root, otherProps.class)}
       ownerState={allProps}
     >
-      <Show when={!!props.avatar}>
-        <CardHeaderAvatar class={classes.avatar} ownerState={allProps}>
-          {props.avatar}
-        </CardHeaderAvatar>
-      </Show>
+      <Avatar />
 
       <CardHeaderContent class={classes.content} ownerState={allProps}>
-        {Title()}
-        {Subheader()}
+        <Title />
+        <Subheader />
       </CardHeaderContent>
 
-      <Show when={!!props.action}>
-        <CardHeaderAction class={classes.action} ownerState={allProps}>
-          {props.action}
-        </CardHeaderAction>
-      </Show>
+      <Action />
     </CardHeaderRoot>
   );
 });
