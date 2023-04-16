@@ -8,7 +8,7 @@ import listItemTextClasses, {
 import createComponentFactory from "@suid/base/createComponentFactory";
 import { InPropsOf } from "@suid/types";
 import clsx from "clsx";
-import { children, createMemo, mergeProps } from "solid-js";
+import { Show, children, mergeProps } from "solid-js";
 
 type OwnerState = InPropsOf<ListItemTextTypeMap> & {
   dense: boolean;
@@ -99,55 +99,59 @@ const ListItemText = $.component(function ListItemText({
     },
   });
 
-  const isDefined = (v: unknown) => v !== "undefined" && v !== null;
+  const isDefined = (v: unknown) => v !== undefined && v !== null;
   const isTypography = (v: unknown) =>
     v instanceof HTMLElement && v.classList.contains(Typography.toString());
 
-  const primary = createMemo(() => {
-    const primary = children(() => props.primary ?? props.children)();
-    if (
-      isDefined(primary) &&
-      !isTypography(primary) &&
-      !props.disableTypography
-    ) {
-      return (
+  const Primary = () => {
+    const primary = children(() => props.primary ?? props.children);
+
+    return (
+      <Show
+        when={
+          isDefined(primary()) &&
+          !isTypography(primary()) &&
+          !props.disableTypography
+        }
+        fallback={primary()}
+      >
         <Typography
           variant={context.dense ? "body2" : "body1"}
           class={classes.primary}
           component="span"
           display="block"
-          {...(props.primaryTypographyProps || {})}
+          {...props.primaryTypographyProps}
         >
-          {primary}
+          {primary()}
         </Typography>
-      );
-    } else {
-      return primary;
-    }
-  });
+      </Show>
+    );
+  };
 
-  const secondary = createMemo(() => {
-    const secondary = children(() => props.secondary)();
-    if (
-      isDefined(secondary) &&
-      !isTypography(secondary) &&
-      !props.disableTypography
-    ) {
-      return (
+  const Secondary = () => {
+    const secondary = children(() => props.secondary);
+
+    return (
+      <Show
+        when={
+          isDefined(secondary()) &&
+          !isTypography(secondary()) &&
+          !props.disableTypography
+        }
+        fallback={secondary()}
+      >
         <Typography<"p">
           variant="body2"
           class={classes.secondary}
           sx={{ display: "block", color: "text.secondary" }}
-          {...(props.secondaryTypographyProps || {})}
+          {...props.secondaryTypographyProps}
           component={(props.secondaryTypographyProps?.component ?? "p") as "p"}
         >
-          {secondary}
+          {secondary()}
         </Typography>
-      );
-    } else {
-      return secondary;
-    }
-  });
+      </Show>
+    );
+  };
 
   return (
     <ListItemTextRoot
@@ -155,8 +159,8 @@ const ListItemText = $.component(function ListItemText({
       class={clsx(classes.root, otherProps.class)}
       ownerState={ownerState}
     >
-      {primary()}
-      {secondary()}
+      <Primary />
+      <Secondary />
     </ListItemTextRoot>
   );
 });
