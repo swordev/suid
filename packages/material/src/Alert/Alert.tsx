@@ -12,7 +12,7 @@ import alertClasses, { getAlertUtilityClass } from "./alertClasses";
 import createComponentFactory from "@suid/base/createComponentFactory";
 import { darken, lighten } from "@suid/system";
 import clsx from "clsx";
-import { Show } from "solid-js";
+import { Show, createMemo } from "solid-js";
 
 const $ = createComponentFactory<AlertTypeMap>()({
   name: "MuiAlert",
@@ -168,6 +168,8 @@ const Alert = $.component(function Alert({
   otherProps,
   props,
 }) {
+  const icon = createMemo(() => props.icon);
+  const action = createMemo(() => props.action);
   return (
     <AlertRoot
       role={props.role}
@@ -176,9 +178,9 @@ const Alert = $.component(function Alert({
       class={clsx(classes.root, otherProps.class)}
       {...otherProps}
     >
-      <Show when={props.icon !== false}>
+      <Show when={icon() !== false}>
         <AlertIcon ownerState={allProps} class={classes.icon}>
-          {props.icon ||
+          {icon() ||
             props.iconMapping?.[props.severity]?.() ||
             defaultIconMapping[props.severity]?.()}
         </AlertIcon>
@@ -186,10 +188,10 @@ const Alert = $.component(function Alert({
       <AlertMessage ownerState={allProps} class={classes.message}>
         {otherProps.children}
       </AlertMessage>
-      <Show when={!!props.action}>
-        <AlertAction class={classes.action}>{props.action}</AlertAction>
+      <Show when={action()}>
+        <AlertAction class={classes.action}>{action()}</AlertAction>
       </Show>
-      <Show when={!props.action && props.onClose}>
+      <Show when={!action() && props.onClose}>
         <AlertAction ownerState={allProps} class={classes.action}>
           <IconButton
             size="small"

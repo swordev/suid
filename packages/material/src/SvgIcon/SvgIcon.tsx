@@ -113,8 +113,8 @@ const SvgIcon = $.component(function SvgIcon({
       ownerState={allProps}
     >
       {props.children}
-      <Show when={!!props.titleAccess}>
-        <title>{props.titleAccess}</title>
+      <Show when={props.titleAccess}>
+        {(titleAccess) => <title>{titleAccess()}</title>}
       </Show>
     </SvgIconRoot>
   );

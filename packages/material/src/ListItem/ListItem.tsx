@@ -208,10 +208,12 @@ const ListItem = $.component(function ListItem({
         {...componentProps}
       >
         {props.children}
-        <Show when={!!props.secondaryAction}>
-          <ListItemSecondaryAction>
-            {props.secondaryAction}
-          </ListItemSecondaryAction>
+        <Show when={props.secondaryAction}>
+          {(secondaryAction) => (
+            <ListItemSecondaryAction>
+              {secondaryAction()}
+            </ListItemSecondaryAction>
+          )}
         </Show>
       </Dynamic>
     </ListContext.Provider>

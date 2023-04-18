@@ -354,16 +354,20 @@ const Button = $.component(function Button({
       {...otherProps}
       classes={props.classes}
     >
-      <Show when={!!props.startIcon}>
-        <ButtonStartIcon class={classes.startIcon} ownerState={allProps}>
-          {props.startIcon}
-        </ButtonStartIcon>
+      <Show when={props.startIcon}>
+        {(startIcon) => (
+          <ButtonStartIcon class={classes.startIcon} ownerState={allProps}>
+            {startIcon()}
+          </ButtonStartIcon>
+        )}
       </Show>
       {props.children}
-      <Show when={!!props.endIcon}>
-        <ButtonEndIcon class={classes.endIcon} ownerState={allProps}>
-          {props.endIcon}
-        </ButtonEndIcon>
+      <Show when={props.endIcon}>
+        {(endIcon) => (
+          <ButtonEndIcon class={classes.endIcon} ownerState={allProps}>
+            {endIcon()}
+          </ButtonEndIcon>
+        )}
       </Show>
     </ButtonRoot>
   );

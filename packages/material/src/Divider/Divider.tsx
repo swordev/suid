@@ -219,9 +219,11 @@ const Divider = $.component(function Divider({
       class={clsx(classes.root, allProps.class)}
     >
       <Show when={allProps.children}>
-        <DividerWrapper class={classes.wrapper} ownerState={allProps}>
-          {allProps.children}
-        </DividerWrapper>
+        {(children) => (
+          <DividerWrapper class={classes.wrapper} ownerState={allProps}>
+            {children()}
+          </DividerWrapper>
+        )}
       </Show>
     </$DividerRoot>
   );
