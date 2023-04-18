@@ -114,9 +114,7 @@ const BadgeBadge = styled("span", {
     backgroundColor: theme.palette[ownerState.color].main,
     color: theme.palette[ownerState.color].contrastText,
   }),
-  aaaaaaaaaaaaaa: "a",
   ...(ownerState.variant === "dot" && {
-    xxxxxxxxxxxxxx: "b",
     borderRadius: RADIUS_DOT,
     height: RADIUS_DOT * 2,
     minWidth: RADIUS_DOT * 2,
