@@ -26,7 +26,7 @@ const $ = createComponentFactory<StackTypeMap>()({
 
 function joinChildren(
   children: JSXElement | JSXElement[],
-  separator: JSXElement
+  separator: () => JSXElement
 ) {
   const childrenArray = (
     Array.isArray(children) ? children : [children]
@@ -36,7 +36,7 @@ function joinChildren(
     output.push(child);
 
     if (index < childrenArray.length - 1) {
-      output.push(separator);
+      output.push(separator());
     }
 
     return output;
@@ -131,8 +131,8 @@ const Stack = $.component(function Stack({ allProps, otherProps, props }) {
   otherProps = extendSxProp(otherProps);
   return (
     <StackRoot as={otherProps.component} ownerState={allProps} {...otherProps}>
-      <Show when={!!props.divider} fallback={props.children}>
-        {joinChildren(props.children, props.divider)}
+      <Show when={props.divider} fallback={props.children}>
+        {joinChildren(props.children, () => props.divider)}
       </Show>
     </StackRoot>
   );
