@@ -1,6 +1,7 @@
 import { Stack } from "@suid/material";
 import ComponentInfo from "~/components/ComponentInfo";
 import BasicStackExample from "./BasicStackExample";
+import DividerStackExample from "./DividerStackExample";
 
 export default function StackPage() {
   return (
@@ -10,6 +11,11 @@ export default function StackPage() {
         {
           bgcolor: "contrasted",
           component: BasicStackExample,
+        },
+        {
+          bgcolor: "contrasted",
+          title: "Dividers",
+          component: DividerStackExample,
         },
       ]}
     />
