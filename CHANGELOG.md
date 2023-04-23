@@ -1,5 +1,23 @@
 # @suid/site
 
+## 0.12.0
+
+### Minor Changes
+
+- [`0b7e66af`](https://github.com/swordev/suid/commit/0b7e66afa78ba678928cb804f35ec777a2b2c914) Thanks [@juanrgm](https://github.com/juanrgm)! - Add new example using the `divider` property in `Stack` component page
+
+### Patch Changes
+
+- [`d8fe959a`](https://github.com/swordev/suid/commit/d8fe959a1fa406921dd65d68aa52b7201ad56402) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
+- Updated dependencies [[`27467bba`](https://github.com/swordev/suid/commit/27467bba6adfa57549e239f69b2501c56d8598c6), [`df599f27`](https://github.com/swordev/suid/commit/df599f27f4346b5cf60b5a595ebbca64bb2f1780), [`e54f6722`](https://github.com/swordev/suid/commit/e54f672237b9d06e422ae360e19600af7fefbf22), [`6ff2f9df`](https://github.com/swordev/suid/commit/6ff2f9df147a570fbc49740eda86a3a560269827), [`f7dc98e9`](https://github.com/swordev/suid/commit/f7dc98e94c393e8f184d361d4040827ca7ebb02b), [`d8fe959a`](https://github.com/swordev/suid/commit/d8fe959a1fa406921dd65d68aa52b7201ad56402), [`7710878e`](https://github.com/swordev/suid/commit/7710878e719559889fd6ea209cdd83e811ffa6d3), [`99a2ff18`](https://github.com/swordev/suid/commit/99a2ff181159af94d94785a0793b2a2fad5b9bc0)]:
+  - @suid/material@0.12.1
+  - @suid/system@0.10.1
+  - @suid/utils@0.7.1
+  - @suid/codemod@0.9.5
+  - @suid/icons-material@0.6.1
+  - @suid/base@0.8.1
+
 ## 0.11.1
 
 ### Patch Changes
