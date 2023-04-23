@@ -26,14 +26,14 @@ type StyleProps =
   | Record<string, any>
   | (Record<string, any> | undefined)[];
 
-function normalizeStyleProps(props: StyleProps) {
-  if (!props) return [];
-  return (
-    (Array.isArray(props) ? props : [props])
-      // https://github.com/microsoft/TypeScript/issues/44408
-      .flat(Infinity as 1)
-      .filter((v) => !!v) as Record<string, any>[]
-  );
+function normalizeStyleProps(props: StyleProps): Record<string, any>[] {
+  if (!props) {
+    return [];
+  } else if (Array.isArray(props)) {
+    return props.flat(Infinity as 1).filter((v) => !!v);
+  } else {
+    return [props];
+  }
 }
 
 function createStyleId() {

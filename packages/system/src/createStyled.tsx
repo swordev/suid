@@ -1,4 +1,4 @@
-import Dynamic from "./Dynamic";
+import { createDynamicComponent } from "./Dynamic";
 import createStyle from "./createStyle";
 import type { Theme } from "./createTheme/createTheme";
 import resolveStyledProps from "./resolveStyledProps";
@@ -14,7 +14,7 @@ import {
 } from "@suid/types";
 import { randomString } from "@suid/utils";
 import clsx from "clsx";
-import { Component, createMemo } from "solid-js";
+import { Component, createMemo, mergeProps } from "solid-js";
 import { ComponentProps as _ComponentProps, JSX, splitProps } from "solid-js";
 
 export interface ComponentProps<T, O> {
@@ -67,14 +67,19 @@ function resolveStyles<T extends Theme<any>, P, O>(
 ) {
   return createMemo(() => {
     const theme = useTheme();
+    const ownerState = inProps.ownerState;
     return styles.reduce((result, style) => {
       let styledProps: StyledProps | false | undefined;
       if (typeof style === "function") {
         styledProps = style({
-          ownerState: inProps.ownerState,
+          ownerState,
           theme,
-          sx: inProps.sx,
-          as: inProps.as,
+          get sx() {
+            return inProps.sx;
+          },
+          get as() {
+            return inProps.as;
+          },
           props: inProps as never as P,
         });
       } else if (style) {
@@ -112,6 +117,7 @@ function createStyled<
     } else {
       className = `styled-${randomString()}`;
     }
+    const isComponentStyled = isStyledComponent(Component);
 
     return function <
       O = N extends keyof CM
@@ -157,63 +163,64 @@ function createStyled<
           inProps
         );
 
-        const inSx: () => SxPropsObject[] = createMemo(() =>
-          !options.skipSx && inProps.sx
-            ? Array.isArray(inProps.sx)
-              ? inProps.sx
-              : [inProps.sx]
-            : []
-        );
+        const inSx = () => {
+          const sx = inProps.sx;
+          return (sx ? (Array.isArray(sx) ? sx : [sx]) : []) as SxPropsObject[];
+        };
+
+        const $component = () => {
+          if (isComponentStyled) return Component;
+          const as = inProps.as;
+          return as ? as : Component;
+        };
+
+        const is$ComponentStyled = isComponentStyled
+          ? () => true
+          : createMemo(() => isStyledComponent($component()));
 
         const sx = () => {
           const theme = $useTheme();
           return [
             ...inStyles().map((v) => ({ ...v, __resolved: true })),
-            ...inSx().map((sx) =>
-              (sx as any).__resolved ? sx : resolveSxProps(sx, theme)
-            ),
+            ...(options.skipSx
+              ? []
+              : inSx().map((sx) =>
+                  (sx as any).__resolved ? sx : resolveSxProps(sx, theme)
+                )),
           ];
         };
 
-        const styledComponent = createMemo(() => isStyledComponent(Component));
-
-        const $component = () =>
-          inProps.as && !styledComponent() ? inProps.as : Component;
-
-        const styled$Component = createMemo(() =>
-          isStyledComponent($component())
-        );
-
-        const as = () =>
-          inProps.as && styledComponent() ? inProps.as : undefined;
-
-        const styledProps = () =>
-          styled$Component() && {
-            ownerState: inProps.ownerState,
-            get sx() {
-              return sx();
-            },
-          };
-
         const styleClassName = createStyle(() =>
-          styled$Component() ? undefined : sx()
+          is$ComponentStyled() ? undefined : sx()
         );
 
-        // [review] This property must be omitted on each component individually.
-        const component = () =>
-          styled$Component() ? (otherProps as any).component : null;
-
-        return (
-          <Dynamic
-            {...otherProps}
-            $component={$component()}
-            component={component()}
-            as={as()}
-            {...styledProps()}
-            class={clsx([
-              ...new Set([inProps.class, className, styleClassName()]),
-            ])}
-          />
+        return createDynamicComponent(
+          $component,
+          mergeProps(otherProps, {
+            get children() {
+              return (otherProps as any).children;
+            },
+            // [review] This property must be omitted on each component individually.
+            get component() {
+              return is$ComponentStyled()
+                ? (otherProps as any).component
+                : null;
+            },
+            get as() {
+              return isComponentStyled ? inProps.as : undefined;
+            },
+            get sx() {
+              return is$ComponentStyled() ? sx() : undefined;
+            },
+            get ownerState() {
+              return is$ComponentStyled() ? inProps.ownerState : undefined;
+            },
+            get class() {
+              return clsx([
+                ...new Set([inProps.class, className, styleClassName()]),
+              ]);
+            },
+          })
         );
       }
 

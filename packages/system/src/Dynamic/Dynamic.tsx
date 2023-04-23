@@ -23,48 +23,55 @@ function createElement(
 }
 
 // https://github.com/solidjs/solid/blob/cafc51f6fc2e3ddf24b40cae00b77cf879051c9e/packages/solid/web/server/index.ts#L25
-function ServerDynamic<T>(
+function createServerDynamicComponent<T>(
+  component: () => Function | string,
   props: T & {
     children?: any;
-    $component?: Component<T> | string | keyof JSX.IntrinsicElements;
   }
 ) {
-  const [p, others] = splitProps(props, ["$component"]);
-  const comp = p.$component,
+  const comp = component(),
     t = typeof comp;
 
   if (comp) {
-    if (t === "function") return (comp as Function)(others);
+    if (t === "function") return (comp as Function)(props);
     else if (t === "string") {
-      return ssrElement(comp as string, others, undefined, true);
+      return ssrElement(comp as string, props, undefined, true);
     }
   }
 }
 
-// https://github.com/solidjs/solid/blob/12c0dbbbf9f9fdf798c6682e57aee8ea763cf1ba/packages/solid/web/src/index.ts#L114
-export function Dynamic(props: any): JSX.Element {
-  if (isServer) return ServerDynamic(props);
-  const [p, others] = splitProps(props, ["$component"]);
-  const cached = createMemo<Function | string>(() => p.$component);
+export function createDynamicComponent(
+  component: () => Function | string,
+  props: any
+): JSX.Element {
+  if (isServer) return createServerDynamicComponent(component, props);
+  const cached = createMemo<Function | string>(component);
   return createMemo(() => {
     const component = cached();
     switch (typeof component) {
       case "function":
         if ("_DX_DEV_") Object.assign(component, { [$DEVCOMP]: true });
-        return untrack(() => component(others));
+        return untrack(() => component(props));
 
       case "string":
         const isSvg = web.SVGElements.has(component);
         const el = sharedConfig.context
           ? web.getNextElement()
           : createElement(component, isSvg);
-        spread(el, others, isSvg);
+        spread(el, props, isSvg);
         return el;
 
       default:
         break;
     }
   }) as unknown as JSX.Element;
+}
+
+// https://github.com/solidjs/solid/blob/12c0dbbbf9f9fdf798c6682e57aee8ea763cf1ba/packages/solid/web/src/index.ts#L114
+export function Dynamic(props: any): JSX.Element {
+  const [p, others] = splitProps(props, ["$component"]);
+  if (isServer) return createServerDynamicComponent(() => p.$component, others);
+  return createDynamicComponent(() => p.$component, others);
 }
 
 export default Dynamic;

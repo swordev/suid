@@ -23,7 +23,7 @@ describe("Box", () => {
       <Box data-testid="e" sx={{ color: "red" }} component="a" as="p" />
     ));
     const e = screen.getByTestId("e");
-    expect(e.getAttributeNames().join(",")).toBe("data-testid,class");
+    expect(e.getAttributeNames().join(",")).toBe("class,data-testid");
     unmount();
   });
   it("uses host component", () => {
@@ -45,7 +45,7 @@ describe("Box", () => {
     ));
     const e = screen.getByTestId("e");
     expect(e.nodeName).toBe("A");
-    expect(e.getAttributeNames().join(",")).toBe("data-testid,href,class");
+    expect(e.getAttributeNames().join(",")).toBe("class,data-testid,href");
     expect(e.getAttribute("href")).toBe("/");
     expect(window.getComputedStyle(e).color).toBe("red");
     unmount();
@@ -73,7 +73,7 @@ describe("Box", () => {
       <Box data-testid="e" sx={{ color: "red" }} as="a" href="/" />
     ));
     const e = screen.getByTestId("e");
-    expect(e.getAttributeNames().join(",")).toBe("data-testid,href,class");
+    expect(e.getAttributeNames().join(",")).toBe("class,data-testid,href");
     expect(e.nodeName).toBe("A");
     expect(e.getAttribute("href")).toBe("/");
     expect(window.getComputedStyle(e).color).toBe("red");

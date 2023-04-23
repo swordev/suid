@@ -25,6 +25,7 @@ export default function deepmerge<T>(
   options: DeepmergeOptions = { clone: true }
 ): T {
   const output = options.clone ? { ...target } : target;
+  const sourceKeys: string[] | undefined = options.sortKeys ? [] : undefined;
 
   if (isPlainObject(target) && isPlainObject(source)) {
     Object.keys(source).forEach((key) => {
@@ -33,24 +34,28 @@ export default function deepmerge<T>(
         return;
       }
 
+      if (sourceKeys) sourceKeys.push(key);
+
+      let sourceValue: any;
+      let targetValue: any;
+
       if (
-        isPlainObject(source[key]) &&
+        isPlainObject((sourceValue = source[key])) &&
         key in target &&
-        isPlainObject(target[key])
+        isPlainObject((targetValue = target[key]))
       ) {
         // Since `output` is a clone of `target` and we have narrowed `target` in this block we can cast to the same type.
         (output as Record<keyof any, unknown>)[key] = deepmerge(
-          target[key],
-          source[key],
+          targetValue,
+          sourceValue,
           options
         );
       } else {
-        (output as Record<keyof any, unknown>)[key] = source[key];
+        (output as Record<keyof any, unknown>)[key] = sourceValue;
       }
     });
 
-    if (options.sortKeys)
-      sortKeys(output as Record<string, any>, Object.keys(source) as string[]);
+    if (sourceKeys) sortKeys(output as Record<string, any>, sourceKeys);
   }
 
   return output;
