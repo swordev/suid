@@ -1,5 +1,13 @@
 # @suid/base
 
+## 0.8.1
+
+### Patch Changes
+
+- Updated dependencies [[`f7dc98e9`](https://github.com/swordev/suid/commit/f7dc98e94c393e8f184d361d4040827ca7ebb02b)]:
+  - @suid/system@0.10.1
+  - @suid/utils@0.7.1
+
 ## 0.8.0
 
 ### Minor Changes

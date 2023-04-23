@@ -1,5 +1,26 @@
 # @suid/material
 
+## 0.12.1
+
+### Patch Changes
+
+- [`27467bba`](https://github.com/swordev/suid/commit/27467bba6adfa57549e239f69b2501c56d8598c6) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix reactivity in the `ListItemText` component
+
+- [`df599f27`](https://github.com/swordev/suid/commit/df599f27f4346b5cf60b5a595ebbca64bb2f1780) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix default element in `Divider`
+
+- [`e54f6722`](https://github.com/swordev/suid/commit/e54f672237b9d06e422ae360e19600af7fefbf22) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix reactivity in the `FormControlLabel` component
+
+- [`6ff2f9df`](https://github.com/swordev/suid/commit/6ff2f9df147a570fbc49740eda86a3a560269827) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix reactivity in the `CardHeader` component
+
+- [`7710878e`](https://github.com/swordev/suid/commit/7710878e719559889fd6ea209cdd83e811ffa6d3) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix `divider` property in the `Stack` component
+
+- [`99a2ff18`](https://github.com/swordev/suid/commit/99a2ff181159af94d94785a0793b2a2fad5b9bc0) Thanks [@juanrgm](https://github.com/juanrgm)! - Improves performance by avoiding double renderings (`Avatar`, `Alert`, `Button`, `Divider`, `ListItem`, `SvgIcon`)
+
+- Updated dependencies [[`f7dc98e9`](https://github.com/swordev/suid/commit/f7dc98e94c393e8f184d361d4040827ca7ebb02b)]:
+  - @suid/system@0.10.1
+  - @suid/utils@0.7.1
+  - @suid/base@0.8.1
+
 ## 0.12.0
 
 ### Minor Changes
