@@ -1,5 +1,11 @@
 # @suid/utils
 
+## 0.7.1
+
+### Patch Changes
+
+- [`f7dc98e9`](https://github.com/swordev/suid/commit/f7dc98e94c393e8f184d361d4040827ca7ebb02b) Thanks [@juanrgm](https://github.com/juanrgm)! - Improve performance in styled components
+
 ## 0.7.0
 
 ### Minor Changes

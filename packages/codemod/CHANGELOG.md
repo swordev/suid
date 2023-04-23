@@ -1,5 +1,11 @@
 # @suid/codemod
 
+## 0.9.5
+
+### Patch Changes
+
+- [`d8fe959a`](https://github.com/swordev/suid/commit/d8fe959a1fa406921dd65d68aa52b7201ad56402) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
 ## 0.9.4
 
 ### Patch Changes
