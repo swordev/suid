@@ -88,6 +88,7 @@ function resolveStyles<T extends Theme<any>, P, O>(
       if (styledProps)
         result.push({
           ["name" as never]: className,
+          ["__resolved" as never]: true,
           ...resolveStyledProps(styledProps),
         });
       return result;
@@ -146,13 +147,25 @@ function createStyled<
       function StyledComponent(
         inProps: _ComponentProps<C> & ComponentProps<T, O>
       ) {
-        const $useTheme = () =>
-          inProps.theme ??
-          (config?.onUseTheme ? config.onUseTheme() : (useTheme() as T));
+        let theme: T | undefined;
+
+        const $useTheme = () => {
+          const inTheme = inProps.theme;
+          if (inTheme) {
+            return inTheme;
+          } else if (theme) {
+            return theme;
+          } else {
+            return (theme =
+              config && config.onUseTheme
+                ? config.onUseTheme()
+                : (useTheme() as T));
+          }
+        };
 
         const [, otherProps] = splitProps(
           inProps,
-          options.skipProps ?? skipProps
+          options.skipProps || skipProps
         );
 
         const inStyles = resolveStyles(
@@ -179,15 +192,17 @@ function createStyled<
           : createMemo(() => isStyledComponent($component()));
 
         const sx = () => {
-          const theme = $useTheme();
-          return [
-            ...inStyles().map((v) => ({ ...v, __resolved: true })),
-            ...(options.skipSx
-              ? []
-              : inSx().map((sx) =>
-                  (sx as any).__resolved ? sx : resolveSxProps(sx, theme)
-                )),
-          ];
+          if (options.skipSx) {
+            return inStyles();
+          } else {
+            const theme = $useTheme();
+            return [
+              ...inStyles(),
+              ...inSx().map((sx) =>
+                (sx as any).__resolved ? sx : resolveSxProps(sx, theme)
+              ),
+            ];
+          }
         };
 
         const styleClassName = createStyle(() =>
