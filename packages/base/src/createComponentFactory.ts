@@ -70,8 +70,8 @@ function createComponentFactory<
 
     function useThemeProps(input: Omit<ThemePropOptions<C>, "name">) {
       return useBaseThemeProps({
-        propDefaults: options.propDefaults,
-        ...input,
+        propDefaults: input.propDefaults || options.propDefaults,
+        props: input.props,
         name: options.name,
       });
     }
