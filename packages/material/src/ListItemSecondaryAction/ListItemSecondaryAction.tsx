@@ -14,7 +14,6 @@ type OwnerState = InPropsOf<ListItemSecondaryActionTypeMap> & {
 const $ = createComponentFactory<ListItemSecondaryActionTypeMap, OwnerState>()({
   name: "MuiListItemSecondaryAction",
   selfPropNames: ["alignItems", "children", "classes"],
-  propDefaults: ({ set }) => set({}),
   autoCallUseClasses: false,
   utilityClass: getListItemSecondaryActionClassesUtilityClass,
   slotClasses: (ownerState) => ({

@@ -8,7 +8,6 @@ import createUniqueId from "@suid/utils/createUniqueId";
 
 const $ = createComponentFactory<RadioGroupTypeMap>()({
   name: "MuiRadioGroup",
-  propDefaults: ({ set }) => set({}),
   selfPropNames: ["defaultValue", "name", "onChange", "value"],
 });
 
