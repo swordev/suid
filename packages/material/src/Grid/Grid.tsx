@@ -45,10 +45,10 @@ const $ = createComponentFactory<GridTypeMap>()({
     "xs",
     "zeroMinWidth",
   ],
-  propDefaults: ({ set, inProps }) =>
-    set({
+  propDefaults: ({ set, inProps }) => {
+    const columnsContext = useContext(GridContext);
+    return set({
       get columns() {
-        const columnsContext = useContext(GridContext);
         return inProps.columns || columnsContext || 12;
       },
       component: "div",
@@ -69,7 +69,8 @@ const $ = createComponentFactory<GridTypeMap>()({
       get columnSpacing() {
         return inProps.columnSpacing ?? inProps.spacing ?? 0;
       },
-    }),
+    });
+  },
   utilityClass: getGridUtilityClass,
   slotClasses: (o) => ({
     root: [
