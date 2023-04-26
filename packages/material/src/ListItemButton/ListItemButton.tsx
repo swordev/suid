@@ -9,7 +9,7 @@ import createComponentFactory from "@suid/base/createComponentFactory";
 import { alpha } from "@suid/system";
 import createElementRef from "@suid/system/createElementRef";
 import clsx from "clsx";
-import { createEffect, mergeProps } from "solid-js";
+import { createEffect, mergeProps, splitProps } from "solid-js";
 
 const $ = createComponentFactory<ListItemButtonTypeMap>()({
   name: "MuiListItemButton",
@@ -145,33 +145,46 @@ const ListItemButtonRoot = styled(ButtonBase, {
  * - inherits [ButtonBase API](https://mui.com/api/button-base/)
  */
 
-const ListItemButton = $.component(function ListItemButton({
-  allProps,
-  classes,
-  otherProps,
-  props,
-}) {
-  const context = useListContext();
+const ListItemButton = $.defineComponent(function ListItemButton(inProps) {
+  const element = createElementRef(inProps);
+  const props = $.useThemeProps({ props: inProps });
+  const [, other] = splitProps(props, [
+    "alignItems",
+    "autoFocus",
+    "component",
+    "children",
+    "dense",
+    "disableGutters",
+    "divider",
+    "focusVisibleClassName",
+    "selected",
+  ]);
 
+  const baseProps = mergeProps(
+    {
+      alignItems: "center",
+      autoFocus: false,
+      component: "div",
+      dense: false,
+      disableGutters: false,
+      divider: false,
+      selected: false,
+    },
+    props
+  );
+
+  const context = useListContext();
   const childContext = {
     get dense() {
-      return props.dense || context.dense || false;
+      return baseProps.dense || context.dense || false;
     },
     get alignItems() {
-      return props.alignItems;
+      return baseProps.alignItems;
     },
     get disableGutters() {
-      return props.disableGutters;
+      return baseProps.disableGutters;
     },
   };
-
-  const ownerState = mergeProps(allProps, {
-    get dense() {
-      return childContext.dense;
-    },
-  });
-
-  const element = createElementRef(otherProps);
 
   createEffect(() => {
     if (props.autoFocus) {
@@ -185,16 +198,37 @@ const ListItemButton = $.component(function ListItemButton({
     }
   });
 
+  const ownerState = mergeProps(props, {
+    get alignItems() {
+      return baseProps.alignItems;
+    },
+    get dense() {
+      return childContext.dense;
+    },
+    get disableGutters() {
+      return baseProps.disableGutters;
+    },
+    get divider() {
+      return baseProps.divider;
+    },
+    get selected() {
+      return baseProps.selected;
+    },
+  });
+
+  const classes = $.useClasses(ownerState);
+
   return (
     <ListContext.Provider value={childContext}>
       <ListItemButtonRoot
-        {...otherProps}
         ref={element}
+        component={baseProps.component}
         focusVisibleClassName={clsx(
           props.classes?.focusVisible,
-          otherProps.focusVisibleClassName
+          props.focusVisibleClassName
         )}
         ownerState={ownerState}
+        {...other}
         classes={classes}
       >
         {props.children}

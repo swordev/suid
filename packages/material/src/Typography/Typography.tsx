@@ -6,7 +6,7 @@ import { getTypographyUtilityClass } from "./typographyClasses";
 import createComponentFactory from "@suid/base/createComponentFactory";
 import extendSxProp from "@suid/system/styleFunctionSx/extendSxProp";
 import clsx from "clsx";
-import { mergeProps } from "solid-js";
+import { mergeProps, splitProps } from "solid-js";
 
 const $ = createComponentFactory<TypographyTypeMap>()({
   name: "MuiTypography",
@@ -20,15 +20,6 @@ const $ = createComponentFactory<TypographyTypeMap>()({
     "variant",
     "variantMapping",
   ],
-  propDefaults: ({ set }) =>
-    set({
-      align: "inherit",
-      gutterBottom: false,
-      noWrap: false,
-      paragraph: false,
-      variant: "body1",
-      variantMapping: {},
-    }),
   utilityClass: getTypographyUtilityClass,
   slotClasses: (ownerState) => ({
     root: [
@@ -93,7 +84,7 @@ const defaultVariantMapping: Record<Variant | "inherit", string> = {
 } as any;
 
 // TODO v6: deprecate these color values in v5.x and remove the transformation in v6
-const colorTransformations = {
+const colorTransformations: Record<string, string> = {
   primary: "primary.main",
   textPrimary: "text.primary",
   secondary: "secondary.main",
@@ -102,9 +93,10 @@ const colorTransformations = {
 };
 
 const transformDeprecatedColors = (
-  color: keyof typeof colorTransformations
-) => {
-  return colorTransformations[color] || color;
+  color: string | undefined
+): string | undefined => {
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  return colorTransformations[color!] || color;
 };
 
 /**
@@ -118,38 +110,88 @@ const transformDeprecatedColors = (
  *
  * - [Typography API](https://mui.com/api/typography/)
  */
-const Typography = $.component(function Typography({
-  allProps,
-  classes,
-  otherProps,
-  props,
-}) {
-  const Component = () =>
-    otherProps.component ||
-    (props.paragraph
-      ? "p"
-      : props.variantMapping[props.variant] ||
-        defaultVariantMapping[props.variant]) ||
-    "span";
+const Typography = $.defineComponent(function Typography(inProps) {
+  const themeProps = $.useThemeProps({ props: inProps });
 
-  const colorProps = mergeProps(() => {
-    const color = transformDeprecatedColors(allProps.color as any);
-    return color ? { color } : {};
+  const color = () => transformDeprecatedColors(themeProps.color);
+
+  const props = extendSxProp(
+    mergeProps(themeProps, {
+      get color() {
+        return color();
+      },
+    })
+  );
+  const [, other] = splitProps(props, [
+    "align",
+    "class",
+    "component",
+    "gutterBottom",
+    "noWrap",
+    "paragraph",
+    "variant",
+    "variantMapping",
+  ]);
+
+  const baseProps = mergeProps(
+    {
+      align: "inherit",
+      gutterBottom: false,
+      noWrap: false,
+      paragraph: false,
+      variant: "body1",
+      variantMapping: defaultVariantMapping,
+    },
+    props
+  );
+
+  const ownerState: typeof props = mergeProps(props, {
+    get align() {
+      return baseProps.align;
+    },
+    get color() {
+      return color();
+    },
+    get class() {
+      return props.class;
+    },
+    get component() {
+      return props.component;
+    },
+    get gutterBottom() {
+      return baseProps.gutterBottom;
+    },
+    get noWrap() {
+      return baseProps.noWrap;
+    },
+    get paragraph() {
+      return baseProps.paragraph;
+    },
+    get variant() {
+      return baseProps.variant;
+    },
+    get variantMapping() {
+      return baseProps.variantMapping;
+    },
   });
 
-  const ownerState = mergeProps(allProps, colorProps);
-  otherProps = extendSxProp(mergeProps(otherProps, colorProps));
+  const Component = () =>
+    props.component ||
+    (baseProps.paragraph
+      ? "p"
+      : baseProps.variantMapping[baseProps.variant] ||
+        defaultVariantMapping[baseProps.variant]) ||
+    "span";
+
+  const classes = $.useClasses(ownerState);
 
   return (
     <TypographyRoot
-      {...otherProps}
       as={Component()}
       ownerState={ownerState}
-      class={clsx(classes.root, otherProps.class)}
-    >
-      {props.children}
-    </TypographyRoot>
+      class={clsx(classes.root, props.class)}
+      {...other}
+    />
   );
 });
-
 export default Typography;

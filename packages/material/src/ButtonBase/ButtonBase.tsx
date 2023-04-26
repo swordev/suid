@@ -317,29 +317,29 @@ const ButtonBase = $.component(function ButtonBase({
     return result;
   });
 
-  const buttonProps = createMemo(() => {
-    const buttonProps: JSX.IntrinsicElements["button"] = {};
-    if (ComponentProp() === "button") {
-      buttonProps.type =
-        otherProps.type === undefined ? "button" : otherProps.type;
-      buttonProps.disabled = props.disabled;
-    } else {
-      if (!(otherProps as any).href && !(otherProps as any).to) {
-        buttonProps.role = "button";
-      }
-      if (props.disabled) {
-        buttonProps["aria-disabled"] = props.disabled;
-      }
-    }
-    return buttonProps;
-  });
+  const isButtonComponent = () => ComponentProp() === "button";
 
   const enableTouchRipple = () =>
     mountedState() && !props.disableRipple && !props.disabled;
 
   return (
     <ButtonBaseRoot
-      {...buttonProps()}
+      type={
+        isButtonComponent()
+          ? otherProps.type === undefined
+            ? "button"
+            : otherProps.type
+          : undefined
+      }
+      disabled={isButtonComponent() ? props.disabled : undefined}
+      role={
+        !isButtonComponent() &&
+        (otherProps as any).href &&
+        !(otherProps as any).to
+          ? "button"
+          : undefined
+      }
+      aria-disabled={!isButtonComponent() && props.disabled ? true : undefined}
       {...otherProps}
       class={clsx(classes.root, otherProps.class)}
       ownerState={ownerState}
@@ -358,7 +358,6 @@ const ButtonBase = $.component(function ButtonBase({
       onTouchStart={handleTouchStart}
       ref={button}
       tabIndex={props.disabled ? -1 : props.tabIndex}
-      type={otherProps.type}
       as={ComponentProp()}
     >
       {props.children}
@@ -378,7 +377,7 @@ const ButtonBase = $.component(function ButtonBase({
             }
           }}
           center={props.centerRipple}
-          {...(props.TouchRippleProps || {})}
+          {...props.TouchRippleProps}
         />
       </Show>
     </ButtonBaseRoot>
