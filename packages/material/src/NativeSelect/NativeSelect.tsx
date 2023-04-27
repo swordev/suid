@@ -1,4 +1,4 @@
-import { getNativeSelectUtilityClasses, NativeSelectTypeMap } from ".";
+import { getNativeSelectUtilityClasses, NativeSelectTypeMap } from "./nativeSelectClasses";
 import formControlState from "../FormControl/formControlState";
 import useFormControl from "../FormControl/useFormControl";
 import Input, { InputProps } from "../Input";
