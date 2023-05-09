@@ -1,9 +1,10 @@
-import { getNativeSelectUtilityClasses, NativeSelectTypeMap } from "./nativeSelectClasses";
 import formControlState from "../FormControl/formControlState";
 import useFormControl from "../FormControl/useFormControl";
 import Input, { InputProps } from "../Input";
 import ArrowDropDownIcon from "../internal/svg-icons/ArrowDropDown";
 import NativeSelectInput from "./NativeSelectInput";
+import type { NativeSelectTypeMap } from "./NativeSelectProps";
+import { getNativeSelectUtilityClasses } from "./nativeSelectClasses";
 import createComponentFactory from "@suid/base/createComponentFactory";
 import clsx from "clsx";
 import { mergeProps, splitProps } from "solid-js";
