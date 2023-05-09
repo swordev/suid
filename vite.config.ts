@@ -8,6 +8,10 @@ export default defineConfig({
     target: "esnext",
   },
   test: {
+    benchmark: {
+      include: ["./packages/*/{src,test}/**/*.bench.{ts,tsx}"],
+    },
+    include: ["./packages/*/{src,test}/**/*.test.{ts,tsx}"],
     environment: "jsdom",
     typecheck: {
       ignoreSourceErrors: true,
