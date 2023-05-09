@@ -9,7 +9,7 @@
   },
   "devDependencies": {
     "@tsconfig/node18": "^2.0.0",
-    "@types/node": "^18.16.0",
+    "@types/node": "^18.16.6",
     "@types/prettier": "^2.7.2",
     "json5": "^2.2.3",
     "node-html-parser": "^6.1.5",
