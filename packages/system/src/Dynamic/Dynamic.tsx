@@ -3,11 +3,10 @@
 /* eslint-disable no-case-declarations */
 import {
   $DEVCOMP,
-  Component,
   createMemo,
+  splitProps,
   JSX,
   sharedConfig,
-  splitProps,
   untrack,
 } from "solid-js";
 import { isServer, spread, ssrElement } from "solid-js/web";
@@ -40,31 +39,34 @@ function createServerDynamicComponent<T>(
   }
 }
 
+export function createStaticComponent(
+  component: Function | string,
+  props: any
+) {
+  switch (typeof component) {
+    case "function":
+      if ("_DX_DEV_") Object.assign(component, { [$DEVCOMP]: true });
+      return untrack(() => component(props));
+
+    case "string":
+      const isSvg = web.SVGElements.has(component);
+      const el = sharedConfig.context
+        ? web.getNextElement()
+        : createElement(component, isSvg);
+      spread(el, props, isSvg);
+      return el;
+  }
+}
+
 export function createDynamicComponent(
   component: () => Function | string,
   props: any
 ): JSX.Element {
   if (isServer) return createServerDynamicComponent(component, props);
   const cached = createMemo<Function | string>(component);
-  return createMemo(() => {
-    const component = cached();
-    switch (typeof component) {
-      case "function":
-        if ("_DX_DEV_") Object.assign(component, { [$DEVCOMP]: true });
-        return untrack(() => component(props));
-
-      case "string":
-        const isSvg = web.SVGElements.has(component);
-        const el = sharedConfig.context
-          ? web.getNextElement()
-          : createElement(component, isSvg);
-        spread(el, props, isSvg);
-        return el;
-
-      default:
-        break;
-    }
-  }) as unknown as JSX.Element;
+  return createMemo(() =>
+    createStaticComponent(cached(), props)
+  ) as unknown as JSX.Element;
 }
 
 // https://github.com/solidjs/solid/blob/12c0dbbbf9f9fdf798c6682e57aee8ea763cf1ba/packages/solid/web/src/index.ts#L114
