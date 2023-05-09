@@ -1,5 +1,5 @@
 module.exports = {
   workspaces: true,
   root: true,
-  dep: "dev,optional,prod,bundle",
+  dep: "dev,optional,prod,bundle,peer",
 };

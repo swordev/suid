@@ -14,7 +14,7 @@
     "@suid/types": "workspace:*"
   },
   "peerDependencies": {
-    "solid-js": "^1.7.3"
+    "solid-js": "^1.7.5"
   },
   "publishConfig": {
     "directory": "lib"
