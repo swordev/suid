@@ -1,7 +1,7 @@
 import StyledEngineContext, {
   StyledEngineContextValue,
 } from "./StyledEngineContext";
-import { JSXElement, mergeProps } from "solid-js";
+import { JSXElement } from "solid-js";
 
 export default function StyledEngineProvider(
   inProps: {
@@ -9,14 +9,14 @@ export default function StyledEngineProvider(
     value?: StyledEngineContextValue;
   } & StyledEngineContextValue
 ) {
-  const value = mergeProps({
+  const value = {
     get cache() {
       return inProps.value?.cache ?? inProps.cache;
     },
     get injectFirst() {
       return inProps.value?.injectFirst ?? inProps.injectFirst;
     },
-  });
+  };
   return (
     <StyledEngineContext.Provider value={value}>
       {inProps.children}
