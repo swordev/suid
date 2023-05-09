@@ -58,8 +58,11 @@ export function resolveStyledPropsValue(name: string, value: unknown) {
   }
 }
 
-function resolveStyledProps(v: StyledProps): StyledProps {
-  return resolve(v, resolveStyledPropsValue);
+function resolveStyledProps(
+  v: StyledProps,
+  cssTarget: Record<string, any> = {}
+): StyledProps {
+  return resolve(v, resolveStyledPropsValue, cssTarget);
 }
 
 export default resolveStyledProps;

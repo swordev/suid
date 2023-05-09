@@ -14,8 +14,8 @@ import {
 } from "@suid/types";
 import { randomString } from "@suid/utils";
 import clsx from "clsx";
-import { Component, createMemo, mergeProps } from "solid-js";
-import { ComponentProps as _ComponentProps, JSX, splitProps } from "solid-js";
+import { Component, createMemo, splitProps, mergeProps } from "solid-js";
+import { ComponentProps as _ComponentProps, JSX } from "solid-js";
 
 export interface ComponentProps<T, O> {
   ownerState: O;
@@ -86,11 +86,12 @@ function resolveStyles<T extends Theme<any>, P, O>(
         styledProps = style;
       }
       if (styledProps)
-        result.push({
-          ["name" as never]: className,
-          ["__resolved" as never]: true,
-          ...resolveStyledProps(styledProps),
-        });
+        result.push(
+          resolveStyledProps(styledProps, {
+            name: className,
+            __resolved: true,
+          })
+        );
       return result;
     }, [] as StyledProps[]);
   });
@@ -108,15 +109,17 @@ function createStyled<
     Component: C,
     options: StyledOptions<N> = {}
   ) {
+    let cssClassName: string;
     let className: string | undefined;
 
     if (options.name) {
       const slot = options.slot || "Root";
-      className = `${options.name}-${
+      className = cssClassName = `${options.name}-${
         slot.slice(0, 1).toLowerCase() + slot.slice(1)
       }`;
     } else {
       className = `styled-${randomString()}`;
+      cssClassName = "css";
     }
     const isComponentStyled = isStyledComponent(Component);
 
@@ -170,8 +173,7 @@ function createStyled<
 
         const inStyles = resolveStyles(
           $useTheme,
-          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-          options.name ? className! : "css",
+          cssClassName,
           styles,
           inProps
         );
@@ -191,19 +193,17 @@ function createStyled<
           ? () => true
           : createMemo(() => isStyledComponent($component()));
 
-        const sx = () => {
-          if (options.skipSx) {
-            return inStyles();
-          } else {
-            const theme = $useTheme();
-            return [
-              ...inStyles(),
-              ...inSx().map((sx) =>
-                (sx as any).__resolved ? sx : resolveSxProps(sx, theme)
-              ),
-            ];
-          }
-        };
+        const sx = options.skipSx
+          ? () => inStyles()
+          : () => {
+              const theme = $useTheme();
+              return [
+                ...inStyles(),
+                ...inSx().map((sx) =>
+                  (sx as any).__resolved ? sx : resolveSxProps(sx, theme)
+                ),
+              ];
+            };
 
         const styleClassName = createStyle(() =>
           is$ComponentStyled() ? undefined : sx()
