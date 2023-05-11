@@ -14,6 +14,7 @@ type RenderOptions = {
     [name: string]: (value: any) => any;
   };
   onPropertyValue?: (name: string, value: unknown) => any;
+  propertyNameCache?: Map<string, string>;
 };
 function renderSelector(
   propKey: string,
@@ -34,6 +35,14 @@ function renderSelector(
       ...options,
     }
   );
+}
+
+function snakeCaseWithCache(name: string, cache?: Map<string, string>) {
+  if (!cache) return snakeCase(name);
+  let result = cache.get(name);
+  if (result) return result;
+  cache.set(name, (result = snakeCase(name)));
+  return result;
 }
 
 function render(
@@ -84,10 +93,15 @@ function render(
           ? options.onPropertyValue(extraPropKey, inValue)
           : inValue;
         if (value !== undefined && value !== null)
-          props.push(`${snakeCase(extraPropKey)}: ${value};`);
+          props.push(
+            `${snakeCaseWithCache(
+              extraPropKey,
+              options.propertyNameCache
+            )}: ${value};`
+          );
       }
     } else {
-      propKey = snakeCase(propKey);
+      propKey = snakeCaseWithCache(propKey, options.propertyNameCache);
       const value = options.onPropertyValue
         ? options.onPropertyValue(propKey, propValue)
         : propValue;

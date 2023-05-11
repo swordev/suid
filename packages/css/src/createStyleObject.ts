@@ -12,6 +12,7 @@ export type StyleObject = {
 export class StyleCache {
   ids = new Map<string /* id */, number>();
   rules = new Map<string /* rule */, StyleObject>();
+  propertyNames = new Map<string /* property */, string>();
   create(name: string, rules: string, componentId: string) {
     let styleObject = this.rules.get(rules);
     if (styleObject) return styleObject;
@@ -62,12 +63,14 @@ function create(name: string, rules: string, id: string) {
 function createStyleObject(options: StyleObjectOptions) {
   const className = `${options.name}-$id`;
   const propsValues = toArray(resolveFunction(options.props));
+  const propertyNameCache = options.cache?.propertyNames;
   const rules = propsValues
     .map((v) =>
       typeof v === "string"
         ? `.${className} {\n${v}\n}`
         : render(v, [`.${className}`], {
             extraProperties: options.extraProperties,
+            propertyNameCache,
           }).join("\n")
     )
     .join("\n");
