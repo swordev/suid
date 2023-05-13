@@ -1,3 +1,4 @@
+import { useTheme } from "../styles";
 import styled from "../styles/styled";
 import { ButtonBaseTypeMap } from "./ButtonBaseProps";
 import TouchRipple from "./TouchRipple";
@@ -7,7 +8,7 @@ import buttonBaseClasses, {
 } from "./buttonBaseClasses";
 import createComponentFactory from "@suid/base/createComponentFactory";
 import createRef from "@suid/system/createRef";
-import { InPropsOf, EventParam } from "@suid/types";
+import { InPropsOf, EventParam, PropsOf } from "@suid/types";
 import useIsFocusVisible from "@suid/utils/useIsFocusVisible";
 import clsx from "clsx";
 import {
@@ -18,14 +19,14 @@ import {
   mergeProps,
   onMount,
   Show,
+  splitProps,
 } from "solid-js";
 
-const $ = createComponentFactory<
-  ButtonBaseTypeMap,
-  InPropsOf<ButtonBaseTypeMap> & {
-    focusVisible: boolean;
-  }
->()({
+type OwnerState = Pick<InPropsOf<ButtonBaseTypeMap>, "disabled"> & {
+  focusVisible: boolean;
+};
+
+const $ = createComponentFactory<ButtonBaseTypeMap, OwnerState>()({
   name: "MuiButtonBase",
   selfPropNames: [
     "LinkComponent",
@@ -44,17 +45,6 @@ const $ = createComponentFactory<
     "tabIndex",
     "touchRippleRef",
   ],
-  propDefaults: ({ set }) =>
-    set({
-      component: "button",
-      disabled: false,
-      disableRipple: false,
-      disableTouchRipple: false,
-      focusRipple: false,
-      LinkComponent: "a",
-      centerRipple: false,
-      tabIndex: 0,
-    }),
   autoCallUseClasses: false,
   utilityClass: getButtonBaseUtilityClass,
   slotClasses: (ownerState) => ({
@@ -70,7 +60,7 @@ export const ButtonBaseRoot = styled("button", {
   name: "MuiButtonBase",
   slot: "Root",
   overridesResolver: (props, styles) => styles.root,
-})({
+})<OwnerState>({
   display: "inline-flex",
   alignItems: "center",
   justifyContent: "center",
@@ -117,22 +107,48 @@ export const ButtonBaseRoot = styled("button", {
  *
  * - [ButtonBase API](https://mui.com/api/button-base/)
  */
-const ButtonBase = $.component(function ButtonBase({
-  allProps,
-  props,
-  otherProps,
-}) {
-  const button = createRef<HTMLButtonElement>(otherProps);
+const ButtonBase = $.defineComponent(function ButtonBase(inProps) {
+  const theme = useTheme();
+  const props = mergeProps(
+    {
+      component: "button",
+      LinkComponent: "a",
+      tabIndex: 0,
+    },
+    theme.components?.[$.name]?.defaultProps,
+    inProps
+  ) as PropsOf<ButtonBaseTypeMap>;
+  const button = createRef<HTMLButtonElement>(inProps);
   const ripple = createRef<TouchRippleActions>(() => props.touchRippleRef);
   const focus = useIsFocusVisible();
   let keydown = false;
   const [focusVisible, setFocusVisible] = createSignal(false);
   const [mountedState, setMountedState] = createSignal(false);
-  const ownerState = mergeProps(allProps, {
+  const [, otherProps] = splitProps(props, [
+    "LinkComponent",
+    "TouchRippleProps",
+    "action",
+    "centerRipple",
+    "children",
+    "classes",
+    "disableRipple",
+    "disableRipple",
+    "disableTouchRipple",
+    "disabled",
+    "focusRipple",
+    "focusVisibleClassName",
+    "onFocusVisible",
+    "tabIndex",
+    "touchRippleRef",
+  ]);
+  const ownerState = {
+    get disabled() {
+      return props.disabled || false;
+    },
     get focusVisible() {
       return focusVisible();
     },
-  });
+  };
   const classes = $.useClasses(ownerState);
 
   onMount(() => {
@@ -154,7 +170,7 @@ const ButtonBase = $.component(function ButtonBase({
   function useRippleHandler(
     rippleAction: "start" | "stop",
     eventCallback: JSX.EventHandlerUnion<HTMLButtonElement, any> | undefined,
-    skipRippleAction: boolean = props.disableTouchRipple
+    skipRippleAction: boolean | undefined = props.disableTouchRipple
   ) {
     return (event: Event) => {
       if (typeof eventCallback === "function") {
@@ -170,21 +186,21 @@ const ButtonBase = $.component(function ButtonBase({
     };
   }
 
-  const handleMouseDown = useRippleHandler("start", otherProps.onMouseDown);
-  const handleContextMenu = useRippleHandler("stop", otherProps.onContextMenu);
-  const handleDragLeave = useRippleHandler("stop", otherProps.onDragLeave);
-  const handleMouseUp = useRippleHandler("stop", otherProps.onMouseUp);
+  const handleMouseDown = useRippleHandler("start", props.onMouseDown);
+  const handleContextMenu = useRippleHandler("stop", props.onContextMenu);
+  const handleDragLeave = useRippleHandler("stop", props.onDragLeave);
+  const handleMouseUp = useRippleHandler("stop", props.onMouseUp);
   const handleMouseLeave = useRippleHandler("stop", (event) => {
     if (focusVisible()) {
       event.preventDefault();
     }
-    if (typeof otherProps.onMouseLeave === "function") {
-      otherProps.onMouseLeave(event);
+    if (typeof props.onMouseLeave === "function") {
+      props.onMouseLeave(event);
     }
   });
-  const handleTouchStart = useRippleHandler("start", otherProps.onTouchStart);
-  const handleTouchEnd = useRippleHandler("stop", otherProps.onTouchEnd);
-  const handleTouchMove = useRippleHandler("stop", otherProps.onTouchMove);
+  const handleTouchStart = useRippleHandler("start", props.onTouchStart);
+  const handleTouchEnd = useRippleHandler("stop", props.onTouchEnd);
+  const handleTouchMove = useRippleHandler("stop", props.onTouchMove);
 
   const handleBlur = useRippleHandler(
     "stop",
@@ -193,8 +209,8 @@ const ButtonBase = $.component(function ButtonBase({
       if (focus.isFocusVisibleRef.current === false) {
         setFocusVisible(false);
       }
-      if (typeof otherProps.onFocusOut === "function") {
-        otherProps.onFocusOut(event);
+      if (typeof props.onFocusOut === "function") {
+        props.onFocusOut(event);
       }
     },
     false
@@ -215,15 +231,15 @@ const ButtonBase = $.component(function ButtonBase({
       }
     }
 
-    if (typeof otherProps.onFocusIn === "function") {
-      otherProps.onFocusIn(event);
+    if (typeof props.onFocusIn === "function") {
+      props.onFocusIn(event);
     }
   };
 
   const isNonNativeButton = () => {
     return (
-      otherProps.component &&
-      otherProps.component !== "button" &&
+      props.component &&
+      props.component !== "button" &&
       !(button.ref.tagName === "A" && button.ref.hasAttribute("href"))
     );
   };
@@ -257,8 +273,8 @@ const ButtonBase = $.component(function ButtonBase({
       event.preventDefault();
     }
 
-    if (typeof otherProps.onKeyDown === "function") {
-      otherProps.onKeyDown(event);
+    if (typeof props.onKeyDown === "function") {
+      props.onKeyDown(event);
     }
 
     // Keyboard accessibility for non interactive elements
@@ -269,8 +285,8 @@ const ButtonBase = $.component(function ButtonBase({
       !props.disabled
     ) {
       event.preventDefault();
-      if (typeof otherProps.onClick === "function") {
-        otherProps.onClick(event as any);
+      if (typeof props.onClick === "function") {
+        props.onClick(event as any);
       }
     }
   };
@@ -290,28 +306,25 @@ const ButtonBase = $.component(function ButtonBase({
         ripple.ref.pulsate(event);
       });
     }
-    if (typeof otherProps.onKeyUp === "function") {
-      otherProps.onKeyUp(event);
+    if (typeof props.onKeyUp === "function") {
+      props.onKeyUp(event);
     }
 
     // Keyboard accessibility for non interactive elements
     if (
-      typeof otherProps.onClick === "function" &&
+      typeof props.onClick === "function" &&
       event.target === event.currentTarget &&
       isNonNativeButton() &&
       event.key === " " &&
       !event.defaultPrevented
     ) {
-      otherProps.onClick(event as any);
+      props.onClick(event as any);
     }
   };
 
   const ComponentProp = createMemo(() => {
-    let result = otherProps.component;
-    if (
-      result === "button" &&
-      ((otherProps as any).href || (otherProps as any).to)
-    ) {
+    let result = props.component;
+    if (result === "button" && ((props as any).href || (props as any).to)) {
       result = props.LinkComponent;
     }
     return result;
@@ -321,30 +334,30 @@ const ButtonBase = $.component(function ButtonBase({
 
   const enableTouchRipple = () =>
     mountedState() && !props.disableRipple && !props.disabled;
+  // [non-reactive root]
+  const touchRipple = props.TouchRippleProps;
 
   return (
     <ButtonBaseRoot
       type={
         isButtonComponent()
-          ? otherProps.type === undefined
+          ? props.type === undefined
             ? "button"
-            : otherProps.type
+            : props.type
           : undefined
       }
       disabled={isButtonComponent() ? props.disabled : undefined}
       role={
-        !isButtonComponent() &&
-        (otherProps as any).href &&
-        !(otherProps as any).to
+        !isButtonComponent() && (props as any).href && !(props as any).to
           ? "button"
           : undefined
       }
       aria-disabled={!isButtonComponent() && props.disabled ? true : undefined}
       {...otherProps}
-      class={clsx(classes.root, otherProps.class)}
+      class={clsx(classes.root, props.class)}
       ownerState={ownerState}
       onFocusOut={handleBlur}
-      onClick={otherProps.onClick}
+      onClick={props.onClick}
       onContextMenu={handleContextMenu}
       onFocusIn={handleFocus}
       onKeyDown={handleKeyDown}
@@ -377,7 +390,7 @@ const ButtonBase = $.component(function ButtonBase({
             }
           }}
           center={props.centerRipple}
-          {...props.TouchRippleProps}
+          {...touchRipple}
         />
       </Show>
     </ButtonBaseRoot>

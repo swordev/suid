@@ -89,6 +89,7 @@ export interface ButtonBaseTypeMap<P = {}, D extends ElementType = "button"> {
     tabIndex?: number | string;
     /**
      * Props applied to the `TouchRipple` element.
+     * (non-reactive root)
      */
     TouchRippleProps?: Partial<TouchRippleProps>;
     /**

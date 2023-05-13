@@ -2,23 +2,34 @@ import { ListItemTypeMap } from ".";
 import ListContext from "../List/ListContext";
 import { listItemButtonClasses } from "../ListItemButton";
 import ListItemSecondaryAction from "../ListItemSecondaryAction";
+import { useTheme } from "../styles";
 import styled from "../styles/styled";
 import { getListItemUtilityClass } from "./listItemClasses";
 import listItemClasses from "./listItemClasses";
 import createComponentFactory from "@suid/base/createComponentFactory";
 import isHostComponent from "@suid/base/utils/isHostComponent";
-import { Dynamic } from "@suid/system/Dynamic";
 import createElementRef from "@suid/system/createElementRef";
+import { InPropsOf } from "@suid/types";
 import clsx from "clsx";
 import {
   useContext,
-  splitProps,
   mergeProps,
+  splitProps,
   Show,
   createEffect,
 } from "solid-js";
 
-const $ = createComponentFactory<ListItemTypeMap>()({
+type OwnerState = Pick<
+  InPropsOf<ListItemTypeMap>,
+  | "dense"
+  | "disableGutters"
+  | "disablePadding"
+  | "divider"
+  | "alignItems"
+  | "secondaryAction"
+>;
+
+const $ = createComponentFactory<ListItemTypeMap, OwnerState>()({
   name: "MuiListItem",
   selfPropNames: [
     "alignItems",
@@ -33,18 +44,6 @@ const $ = createComponentFactory<ListItemTypeMap>()({
     "divider",
     "secondaryAction",
   ],
-  propDefaults: ({ set }) =>
-    set({
-      component: "li",
-      alignItems: "center",
-      autoFocus: false,
-      components: {},
-      componentsProps: {},
-      dense: false,
-      disableGutters: false,
-      disablePadding: false,
-      divider: false,
-    }),
   utilityClass: getListItemUtilityClass,
   slotClasses: (ownerState) => ({
     root: [
@@ -75,7 +74,7 @@ export const ListItemRoot = styled("div", {
       ownerState.button && styles.button,
     ];
   },
-})(({ theme, ownerState }) => ({
+})<OwnerState>(({ theme, ownerState }) => ({
   display: "flex",
   justifyContent: "flex-start",
   alignItems: "center",
@@ -134,35 +133,15 @@ export const ListItemRoot = styled("div", {
  * - [ListItem API](https://mui.com/api/list-item/)
  */
 const ListItem = $.defineComponent(function ListItem(inProps) {
-  const props = $.useThemeProps({ props: inProps });
-  const [, other] = splitProps(props, [
-    "alignItems",
-    "autoFocus",
-    "children",
-    "class",
-    "component",
-    "components",
-    "componentsProps",
-    "dense",
-    "disableGutters",
-    "disablePadding",
-    "divider",
-    "secondaryAction",
-  ]);
-
+  const theme = useTheme();
   const baseProps = mergeProps(
     {
-      alignItems: "center",
-      autoFocus: false,
-      components: {} as NonNullable<typeof props.components>,
-      componentsProps: {} as NonNullable<typeof props.componentsProps>,
-      dense: false,
-      disableGutters: false,
-      disablePadding: false,
-      divider: false,
-      selected: false,
+      alignItems: "center" as const,
+      components: {} as NonNullable<typeof inProps.components>,
+      componentsProps: {} as NonNullable<typeof inProps.componentsProps>,
     },
-    props
+    theme.components?.[$.name]?.defaultProps,
+    inProps
   );
 
   const context = useContext(ListContext);
@@ -179,10 +158,10 @@ const ListItem = $.defineComponent(function ListItem(inProps) {
     },
   };
 
-  const element = createElementRef(props);
+  const element = createElementRef(inProps);
 
   createEffect(() => {
-    if (props.autoFocus) {
+    if (inProps.autoFocus) {
       if (element.ref) {
         element.ref.focus();
       } else if (process.env.NODE_ENV !== "production") {
@@ -193,58 +172,67 @@ const ListItem = $.defineComponent(function ListItem(inProps) {
     }
   });
 
-  const Root = () => baseProps.components.Root || ListItemRoot;
-  const rootProps = () => baseProps.componentsProps.root || {};
-  const ownerState = mergeProps(
-    props,
+  // [non-reactive root]
+  const rootProps = baseProps.componentsProps.root;
+  // [non-reactive root]
+  const Root = baseProps.components.Root || ListItemRoot;
+  const ownerState: OwnerState = mergeProps(
     {
       get alignItems() {
         return baseProps.alignItems;
-      },
-      get autoFocus() {
-        return baseProps.autoFocus;
       },
       get dense() {
         return childContext.dense;
       },
       get disableGutters() {
-        return baseProps.disableGutters;
+        return baseProps.disableGutters || false;
       },
       get disablePadding() {
-        return baseProps.disablePadding;
+        return baseProps.disablePadding || false;
       },
       get divider() {
-        return baseProps.divider;
-      },
-      get selected() {
-        return baseProps.selected;
+        return baseProps.divider || false;
       },
     },
-    () => (isHostComponent(Root()) ? {} : (rootProps() as any).ownerState || {})
+    isHostComponent(Root) ? undefined : (rootProps as any)?.ownerState
   );
 
   const classes = $.useClasses(ownerState);
 
+  const [, other] = splitProps(inProps, [
+    "alignItems",
+    "autoFocus",
+    "children",
+    "class",
+    "component",
+    "components",
+    "componentsProps",
+    "dense",
+    "disableGutters",
+    "disablePadding",
+    "divider",
+    "secondaryAction",
+  ]);
+
   return (
     <ListContext.Provider value={childContext}>
-      <Dynamic
-        $component={Root()}
+      <ListItemRoot
+        as={baseProps.component || "li"}
         {...rootProps}
-        as={props.component || "li"}
         ref={element}
         ownerState={ownerState}
-        class={clsx(classes.root, rootProps().class, props.class)}
-        {...other}
+        class={clsx(classes.root, rootProps?.class, inProps.class)}
+        {...(other as any)}
       >
-        {props.children}
-        <Show when={props.secondaryAction}>
+        {inProps.children}
+        <Show when={inProps.secondaryAction}>
           {(secondaryAction) => (
             <ListItemSecondaryAction>
               {secondaryAction()}
             </ListItemSecondaryAction>
           )}
         </Show>
-      </Dynamic>
+      </ListItemRoot>
     </ListContext.Provider>
   );
 });

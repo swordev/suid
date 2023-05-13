@@ -73,15 +73,23 @@ export interface ListItemTypeMap<P = {}, D extends ElementType = "li"> {
      * The components used for each slot inside the InputBase.
      * Either a string to use a HTML element or a component.
      * @default {}
+     * (non-reactive root)
      */
     components?: {
+      /**
+       * (non-reactive root)
+       */
       Root?: ElementType;
     };
     /**
      * The props used for each slot inside the Input.
      * @default {}
+     * (non-reactive root)
      */
     componentsProps?: {
+      /**
+       * (non-reactive root)
+       */
       root?: ComponentProps<"div"> & ListItemComponentsPropsOverrides;
     };
   };

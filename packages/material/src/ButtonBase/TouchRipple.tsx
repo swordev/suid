@@ -11,17 +11,13 @@ import {
   For,
   mergeProps,
   onCleanup,
+  splitProps,
 } from "solid-js";
 import { createMutable } from "solid-js/store";
 
 const $ = createComponentFactory<TouchRipplePropsTypeMap>()({
   name: "MuiTouchRipple",
   selfPropNames: ["center", "classes", "ref"],
-  propDefaults: ({ set }) =>
-    set({
-      center: false,
-      classes: {},
-    }),
 });
 
 //const DURATION = 10_000; //550;
@@ -121,7 +117,14 @@ export const TouchRippleRipple = styled(Ripple, {
  * TODO v5: Make private
  */
 
-const TouchRipple = $.component(function TouchRipple({ props, otherProps }) {
+const TouchRipple = $.defineComponent(function TouchRipple(inProps) {
+  const props = mergeProps(
+    {
+      classes: {} as NonNullable<(typeof inProps)["classes"]>,
+    },
+    inProps
+  );
+  const [, otherProps] = splitProps(props, ["center", "classes", "ref"]);
   let counter = 0;
   const [ripples, setRipples] = createSignal<
     {
@@ -135,7 +138,7 @@ const TouchRipple = $.component(function TouchRipple({ props, otherProps }) {
       };
     }[]
   >([]);
-  const inProps = createMutable<Record<number, boolean>>({});
+  const inState = createMutable<Record<number, boolean>>({});
 
   let rippleCallback: (() => void) | undefined;
   // Used to filter out mouse emulated events on mobile.
@@ -145,7 +148,7 @@ const TouchRipple = $.component(function TouchRipple({ props, otherProps }) {
   let startTimer: any | undefined;
   // This is the hook called once the previous timeout is ready.
   let startTimerCommit: (() => void) | undefined;
-  const container = createElementRef(otherProps as any);
+  const container = createElementRef();
 
   const activeIds: number[] = [];
   onCleanup(() => {
@@ -169,7 +172,7 @@ const TouchRipple = $.component(function TouchRipple({ props, otherProps }) {
   }) => {
     const id = counter++;
     activeIds.push(id);
-    inProps[id] = true;
+    inState[id] = true;
     setRipples((oldRipples) => [
       ...oldRipples,
       {
@@ -307,7 +310,7 @@ const TouchRipple = $.component(function TouchRipple({ props, otherProps }) {
       return;
     }
 
-    for (const id in inProps) inProps[id] = false;
+    for (const id in inState) inState[id] = false;
 
     startTimerCommit = undefined;
 
@@ -337,12 +340,12 @@ const TouchRipple = $.component(function TouchRipple({ props, otherProps }) {
       <For each={ripples()}>
         {(data) => (
           <TouchRippleRipple
-            in={inProps[data.id]}
+            in={inState[data.id]}
             onExited={() => {
               setRipples((oldRipples) =>
                 oldRipples.filter((v) => v.id !== data.id)
               );
-              delete inProps[data.id];
+              delete inState[data.id];
             }}
             classes={{
               ripple: clsx(props.classes.ripple, touchRippleClasses.ripple),

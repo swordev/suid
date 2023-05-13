@@ -1,6 +1,7 @@
 import { ListItemTextTypeMap } from ".";
 import { useListContext } from "../List/ListContext";
 import Typography from "../Typography";
+import { useTheme } from "../styles";
 import styled from "../styles/styled";
 import listItemTextClasses, {
   getListItemTextUtilityClass,
@@ -8,10 +9,12 @@ import listItemTextClasses, {
 import createComponentFactory from "@suid/base/createComponentFactory";
 import { InPropsOf } from "@suid/types";
 import clsx from "clsx";
-import { Show, children, mergeProps } from "solid-js";
+import { Show, children, createMemo, mergeProps, splitProps } from "solid-js";
 
-type OwnerState = InPropsOf<ListItemTextTypeMap> & {
+type OwnerState = Pick<InPropsOf<ListItemTextTypeMap>, "inset"> & {
   dense: boolean;
+  primary: boolean;
+  secondary: boolean;
 };
 
 const $ = createComponentFactory<ListItemTextTypeMap, OwnerState>()({
@@ -26,11 +29,6 @@ const $ = createComponentFactory<ListItemTextTypeMap, OwnerState>()({
     "secondary",
     "secondaryTypographyProps",
   ],
-  propDefaults: ({ set }) =>
-    set({
-      disableTypography: false,
-      inset: false,
-    }),
   utilityClass: getListItemTextUtilityClass,
   slotClasses: (ownerState) => ({
     root: [
@@ -59,7 +57,7 @@ const ListItemTextRoot = styled("div", {
       ownerState.dense && styles.dense,
     ];
   },
-})(({ ownerState }) => ({
+})<OwnerState>(({ ownerState }) => ({
   flex: "1 1 auto",
   minWidth: 0,
   marginTop: 4,
@@ -85,52 +83,72 @@ const ListItemTextRoot = styled("div", {
  * - [ListItemText API](https://mui.com/api/list-item-text/)
  */
 
-const ListItemText = $.component(function ListItemText({
-  allProps,
-  classes,
-  otherProps,
-  props,
-}) {
+const ListItemText = $.defineComponent(function ListItemText(inProps) {
+  const theme = useTheme();
   const context = useListContext();
-
-  const ownerState = mergeProps(allProps, {
+  const props = mergeProps(theme.components?.[$.name]?.defaultProps, inProps);
+  const primary = createMemo(() => props.primary);
+  const secondary = createMemo(() => props.secondary);
+  const ownerState: OwnerState = {
+    get inset() {
+      return props.inset || false;
+    },
+    get primary() {
+      return !!primary();
+    },
+    get secondary() {
+      return !!secondary();
+    },
     get dense() {
       return context.dense;
     },
-  });
+  };
+  const classes = $.useClasses(ownerState);
+  const [, otherProps] = splitProps(props, [
+    "children",
+    "classes",
+    "disableTypography",
+    "inset",
+    "primary",
+    "primaryTypographyProps",
+    "secondary",
+    "secondaryTypographyProps",
+  ]);
 
   const isDefined = (v: unknown) => v !== undefined && v !== null;
   const isTypography = (v: unknown) =>
     v instanceof HTMLElement && v.classList.contains(Typography.toString());
 
   const Primary = () => {
-    const primary = children(() => props.primary ?? props.children);
+    const $primary = children(() => primary() ?? props.children);
+    // [non-reactive root]
+    const primaryTypographyProps = props.primaryTypographyProps;
 
     return (
       <Show
         when={
-          isDefined(primary()) &&
-          !isTypography(primary()) &&
+          isDefined($primary()) &&
+          !isTypography($primary()) &&
           !props.disableTypography
         }
-        fallback={primary()}
+        fallback={$primary()}
       >
         <Typography
           variant={context.dense ? "body2" : "body1"}
           class={classes.primary}
           component="span"
           display="block"
-          {...props.primaryTypographyProps}
+          {...primaryTypographyProps}
         >
-          {primary()}
+          {$primary()}
         </Typography>
       </Show>
     );
   };
 
   const Secondary = () => {
-    const secondary = children(() => props.secondary);
-
+    // [non-reactive root]
+    const secondaryTypographyProps = props.secondaryTypographyProps;
     return (
       <Show
         when={
@@ -144,8 +162,8 @@ const ListItemText = $.component(function ListItemText({
           variant="body2"
           class={classes.secondary}
           sx={{ display: "block", color: "text.secondary" }}
-          {...props.secondaryTypographyProps}
-          component={(props.secondaryTypographyProps?.component ?? "p") as "p"}
+          {...secondaryTypographyProps}
+          component={(secondaryTypographyProps?.component ?? "p") as "p"}
         >
           {secondary()}
         </Typography>

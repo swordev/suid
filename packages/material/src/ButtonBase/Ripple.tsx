@@ -2,7 +2,7 @@ import Box from "../Box";
 import { RipplePropsTypeMap } from "./RippleProps";
 import createComponentFactory from "@suid/base/createComponentFactory";
 import clsx from "clsx";
-import { createEffect, createMemo, createSignal, onCleanup } from "solid-js";
+import { createEffect, createSignal, onCleanup } from "solid-js";
 
 const $ = createComponentFactory<RipplePropsTypeMap>()({
   name: "MuiRipple",
@@ -17,11 +17,6 @@ const $ = createComponentFactory<RipplePropsTypeMap>()({
     "onExited",
     "timeout",
   ],
-  propDefaults: ({ set }) =>
-    set({
-      pulsate: false,
-      classes: {},
-    }),
 });
 
 /**

@@ -38,6 +38,7 @@ export interface ListItemTextTypeMap<P = {}, D extends ElementType = "div"> {
     /**
      * These props will be forwarded to the primary typography component
      * (as long as disableTypography is not `true`).
+     * (non-reactive root)
      */
     primaryTypographyProps?: TypographyProps<
       "span",
@@ -50,6 +51,7 @@ export interface ListItemTextTypeMap<P = {}, D extends ElementType = "div"> {
     /**
      * These props will be forwarded to the secondary typography component
      * (as long as disableTypography is not `true`).
+     * (non-reactive root)
      */
     secondaryTypographyProps?: TypographyProps<
       "p",

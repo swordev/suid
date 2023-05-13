@@ -1,5 +1,6 @@
 import ButtonBase from "../ButtonBase";
 import ListContext, { useListContext } from "../List/ListContext";
+import { useTheme } from "../styles";
 import styled, { skipRootProps } from "../styles/styled";
 import { ListItemButtonTypeMap } from "./ListItemButtonProps";
 import listItemButtonClasses, {
@@ -8,10 +9,21 @@ import listItemButtonClasses, {
 import createComponentFactory from "@suid/base/createComponentFactory";
 import { alpha } from "@suid/system";
 import createElementRef from "@suid/system/createElementRef";
+import { InPropsOf } from "@suid/types";
 import clsx from "clsx";
 import { createEffect, mergeProps, splitProps } from "solid-js";
 
-const $ = createComponentFactory<ListItemButtonTypeMap>()({
+type OwnerState = Pick<
+  InPropsOf<ListItemButtonTypeMap>,
+  | "dense"
+  | "disableGutters"
+  | "divider"
+  | "disabled"
+  | "alignItems"
+  | "selected"
+>;
+
+const $ = createComponentFactory<ListItemButtonTypeMap, OwnerState>()({
   name: "MuiListItemButton",
   selfPropNames: [
     "alignItems",
@@ -63,7 +75,7 @@ const ListItemButtonRoot = styled(ButtonBase, {
       !props.ownerState.disableGutters && styles.gutters,
     ];
   },
-})(({ theme, ownerState }) => ({
+})<OwnerState>(({ theme, ownerState }) => ({
   display: "flex",
   flexGrow: 1,
   justifyContent: "flex-start",
@@ -146,8 +158,15 @@ const ListItemButtonRoot = styled(ButtonBase, {
  */
 
 const ListItemButton = $.defineComponent(function ListItemButton(inProps) {
-  const element = createElementRef(inProps);
-  const props = $.useThemeProps({ props: inProps });
+  const theme = useTheme();
+  const props = mergeProps(
+    {
+      alignItems: "center" as const,
+      component: "div" as const,
+    },
+    theme.components?.[$.name]?.defaultProps,
+    inProps
+  );
   const [, other] = splitProps(props, [
     "alignItems",
     "autoFocus",
@@ -160,31 +179,20 @@ const ListItemButton = $.defineComponent(function ListItemButton(inProps) {
     "selected",
   ]);
 
-  const baseProps = mergeProps(
-    {
-      alignItems: "center",
-      autoFocus: false,
-      component: "div",
-      dense: false,
-      disableGutters: false,
-      divider: false,
-      selected: false,
-    },
-    props
-  );
-
   const context = useListContext();
   const childContext = {
     get dense() {
-      return baseProps.dense || context.dense || false;
+      return props.dense || context.dense || false;
     },
     get alignItems() {
-      return baseProps.alignItems;
+      return props.alignItems;
     },
     get disableGutters() {
-      return baseProps.disableGutters;
+      return props.disableGutters;
     },
   };
+
+  const element = createElementRef(inProps);
 
   createEffect(() => {
     if (props.autoFocus) {
@@ -198,23 +206,26 @@ const ListItemButton = $.defineComponent(function ListItemButton(inProps) {
     }
   });
 
-  const ownerState = mergeProps(props, {
+  const ownerState: OwnerState = {
+    get disabled() {
+      return props.disabled || false;
+    },
     get alignItems() {
-      return baseProps.alignItems;
+      return props.alignItems;
     },
     get dense() {
       return childContext.dense;
     },
     get disableGutters() {
-      return baseProps.disableGutters;
+      return props.disableGutters || false;
     },
     get divider() {
-      return baseProps.divider;
+      return props.divider || false;
     },
     get selected() {
-      return baseProps.selected;
+      return props.selected || false;
     },
-  });
+  };
 
   const classes = $.useClasses(ownerState);
 
@@ -222,7 +233,7 @@ const ListItemButton = $.defineComponent(function ListItemButton(inProps) {
     <ListContext.Provider value={childContext}>
       <ListItemButtonRoot
         ref={element}
-        component={baseProps.component}
+        component={props.component}
         focusVisibleClassName={clsx(
           props.classes?.focusVisible,
           props.focusVisibleClassName
@@ -231,7 +242,7 @@ const ListItemButton = $.defineComponent(function ListItemButton(inProps) {
         {...other}
         classes={classes}
       >
-        {props.children}
+        {inProps.children}
       </ListItemButtonRoot>
     </ListContext.Provider>
   );

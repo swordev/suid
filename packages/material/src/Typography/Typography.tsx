@@ -1,14 +1,21 @@
-import { TypographyTypeMap } from ".";
+import { useTheme } from "../styles";
 import { Variant } from "../styles/createTypography";
 import styled from "../styles/styled";
 import capitalize from "../utils/capitalize";
+import { TypographyTypeMap } from "./TypographyProps";
 import { getTypographyUtilityClass } from "./typographyClasses";
 import createComponentFactory from "@suid/base/createComponentFactory";
-import extendSxProp from "@suid/system/styleFunctionSx/extendSxProp";
+import { splitSxProps } from "@suid/system/styleFunctionSx/extendSxProp";
+import { ElementType, InPropsOf } from "@suid/types";
 import clsx from "clsx";
 import { mergeProps, splitProps } from "solid-js";
 
-const $ = createComponentFactory<TypographyTypeMap>()({
+type OwnerState = Pick<
+  InPropsOf<TypographyTypeMap>,
+  "color" | "variant" | "align" | "noWrap" | "gutterBottom" | "paragraph"
+>;
+
+const $ = createComponentFactory<TypographyTypeMap, OwnerState>()({
   name: "MuiTypography",
   selfPropNames: [
     "align",
@@ -49,7 +56,7 @@ export const TypographyRoot = styled("span", {
       ownerState.paragraph && styles.paragraph,
     ];
   },
-})(({ theme, ownerState }) => ({
+})<OwnerState>(({ theme, ownerState }) => ({
   margin: 0,
   color: ownerState.color,
   ...(ownerState.variant && theme.typography[ownerState.variant as Variant]),
@@ -111,16 +118,26 @@ const transformDeprecatedColors = (
  * - [Typography API](https://mui.com/api/typography/)
  */
 const Typography = $.defineComponent(function Typography(inProps) {
-  const themeProps = $.useThemeProps({ props: inProps });
-
-  const color = () => transformDeprecatedColors(themeProps.color);
-
-  const props = extendSxProp(
-    mergeProps(themeProps, {
-      get color() {
-        return color();
+  const theme = useTheme();
+  const themeProps = theme.components?.[$.name]?.defaultProps;
+  const color = () =>
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    transformDeprecatedColors(inProps.color ?? themeProps?.color)!;
+  const [sx, props] = splitSxProps(
+    mergeProps(
+      {
+        align: "inherit" as const,
+        variant: "body1" as const,
+        variantMapping: defaultVariantMapping,
       },
-    })
+      themeProps,
+      inProps,
+      {
+        get color() {
+          return color();
+        },
+      }
+    )
   );
   const [, other] = splitProps(props, [
     "align",
@@ -133,54 +150,33 @@ const Typography = $.defineComponent(function Typography(inProps) {
     "variantMapping",
   ]);
 
-  const baseProps = mergeProps(
-    {
-      align: "inherit",
-      gutterBottom: false,
-      noWrap: false,
-      paragraph: false,
-      variant: "body1",
-      variantMapping: defaultVariantMapping,
-    },
-    props
-  );
-
-  const ownerState: typeof props = mergeProps(props, {
+  const ownerState: OwnerState = {
     get align() {
-      return baseProps.align;
+      return props.align;
     },
     get color() {
       return color();
     },
-    get class() {
-      return props.class;
-    },
-    get component() {
-      return props.component;
-    },
     get gutterBottom() {
-      return baseProps.gutterBottom;
+      return props.gutterBottom || false;
     },
     get noWrap() {
-      return baseProps.noWrap;
+      return props.noWrap || false;
     },
     get paragraph() {
-      return baseProps.paragraph;
+      return props.paragraph || false;
     },
     get variant() {
-      return baseProps.variant;
+      return props.variant;
     },
-    get variantMapping() {
-      return baseProps.variantMapping;
-    },
-  });
+  };
 
-  const Component = () =>
+  const Component = (): ElementType =>
     props.component ||
-    (baseProps.paragraph
+    (props.paragraph
       ? "p"
-      : baseProps.variantMapping[baseProps.variant] ||
-        defaultVariantMapping[baseProps.variant]) ||
+      : (props.variantMapping[props.variant] as ElementType) ||
+        defaultVariantMapping[props.variant]) ||
     "span";
 
   const classes = $.useClasses(ownerState);
@@ -188,6 +184,7 @@ const Typography = $.defineComponent(function Typography(inProps) {
   return (
     <TypographyRoot
       as={Component()}
+      sx={sx()}
       ownerState={ownerState}
       class={clsx(classes.root, props.class)}
       {...other}
