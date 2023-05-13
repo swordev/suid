@@ -2,15 +2,20 @@ import SxProps from "../sxProps";
 import { systemPropNames, SystemProps } from "../systemProps";
 import { mergeProps, splitProps } from "solid-js";
 
+type SystemPropName = (typeof systemPropNames)[number];
+
 export function splitSxProps<
   T extends SystemProps & {
     sx?: SxProps;
   }
->(props: T): [() => SxProps, Omit<T, keyof SystemProps>] {
-  const [systemProps, otherProps] = splitProps(props, systemPropNames);
-
+>(props: T): [() => SxProps, Omit<T, SystemPropName>] {
+  const [systemProps, sxProps, otherProps] = (splitProps as any)(
+    props,
+    systemPropNames,
+    ["sx"]
+  );
   const sx = () => {
-    const sx = props.sx;
+    const sx = sxProps.sx;
     if (sx) {
       if (Array.isArray(sx)) {
         return [systemProps, ...sx];
@@ -29,11 +34,11 @@ export default function extendSxProp<
   T extends SystemProps & {
     sx?: SxProps;
   }
->(props: T) {
+>(props: T): Omit<T, SystemPropName> & { sx?: SxProps } {
   const [sx, otherProps] = splitSxProps(props);
   return mergeProps(otherProps, {
     get sx() {
       return sx();
     },
-  }) as T;
+  }) as any;
 }
