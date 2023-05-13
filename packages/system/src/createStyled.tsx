@@ -213,13 +213,11 @@ function createStyled<
           $component,
           mergeProps(otherProps, {
             get children() {
-              return (otherProps as any).children;
+              return (inProps as any).children;
             },
             // [review] This property must be omitted on each component individually.
             get component() {
-              return is$ComponentStyled()
-                ? (otherProps as any).component
-                : null;
+              return is$ComponentStyled() ? (inProps as any).component : null;
             },
             get as() {
               return isComponentStyled ? inProps.as : undefined;
