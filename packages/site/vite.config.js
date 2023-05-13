@@ -1,5 +1,5 @@
 import { readdirSync, readFileSync } from "fs";
-import { readFile, writeFile } from "fs/promises";
+import { writeFile } from "fs/promises";
 import { createRequire } from "module";
 import { dirname, join, resolve } from "path";
 import solidPlugin from "solid-start/vite";
