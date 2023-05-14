@@ -50,7 +50,7 @@ export default function deepmerge<T>(
           sourceValue,
           options
         );
-      } else {
+      } else if (sourceValue !== undefined) {
         (output as Record<keyof any, unknown>)[key] = sourceValue;
       }
     });

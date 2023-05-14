@@ -8,6 +8,19 @@ describe("merge", () => {
     expect(object).toMatchObject({ a: 1, b: 2 });
   });
 
+  it("ignores undefined values", () => {
+    const object = merge(
+      { a: 1, b: 2, c: { d: 3 }, e: { f: 4 } },
+      { a: undefined, b: undefined, c: undefined, e: { f: undefined, g: 5 } }
+    );
+    expect(object).toMatchObject({
+      a: 1,
+      b: 2,
+      c: { d: 3 },
+      e: { f: 4, g: 5 },
+    });
+  });
+
   it("shoulds not alter the others object", () => {
     const a = { a: 1 };
     const b = { b: 1 };

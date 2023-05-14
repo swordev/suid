@@ -47,6 +47,21 @@ describe("styled", () => {
     expect(styles.marginTop).toBe("1px");
     unmount();
   });
+  it("ignores undefined values", () => {
+    const Div = styled("div")(
+      {
+        color: "blue",
+      },
+      {
+        color: undefined,
+      }
+    );
+    const { unmount } = render(() => <Div data-testid="e" />);
+    const e = screen.getByTestId("e");
+    const styles = window.getComputedStyle(e);
+    expect(styles.color).toBe("blue");
+    unmount();
+  });
   it("creates styled function component", () => {
     function Component(props: any) {
       return <Box {...props} />;
