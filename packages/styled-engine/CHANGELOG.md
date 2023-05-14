@@ -1,5 +1,17 @@
 # @suid/styled-engine
 
+## 0.5.2
+
+### Patch Changes
+
+- [`8e10758f`](https://github.com/swordev/suid/commit/8e10758fe91662fd9e883ecd7f29b975fa0ee642) Thanks [@juanrgm](https://github.com/juanrgm)! - Slightly improve performance
+
+- [`822fdbaf`](https://github.com/swordev/suid/commit/822fdbafc18615aa1412eee246d1feab5b94e685) Thanks [@juanrgm](https://github.com/juanrgm)! - Update to SolidJS 1.7.5
+
+- Updated dependencies [[`bfd31f16`](https://github.com/swordev/suid/commit/bfd31f1653e6504f60829439d59d17718c98a01c), [`42722691`](https://github.com/swordev/suid/commit/4272269162fb690cd6a4a1385b10376f1c328745), [`822fdbaf`](https://github.com/swordev/suid/commit/822fdbafc18615aa1412eee246d1feab5b94e685)]:
+  - @suid/css@0.3.1
+  - @suid/utils@0.7.2
+
 ## 0.5.1
 
 ### Patch Changes

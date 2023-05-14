@@ -1,5 +1,11 @@
 # @suid/css
 
+## 0.3.1
+
+### Patch Changes
+
+- [`bfd31f16`](https://github.com/swordev/suid/commit/bfd31f1653e6504f60829439d59d17718c98a01c) Thanks [@juanrgm](https://github.com/juanrgm)! - Caching CSS property names
+
 ## 0.3.0
 
 ### Minor Changes
