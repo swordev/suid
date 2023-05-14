@@ -1,5 +1,16 @@
 # @suid/utils
 
+## 0.7.2
+
+### Patch Changes
+
+- [`42722691`](https://github.com/swordev/suid/commit/4272269162fb690cd6a4a1385b10376f1c328745) Thanks [@juanrgm](https://github.com/juanrgm)! - Ignore undefined values in `merge` function
+
+- [`822fdbaf`](https://github.com/swordev/suid/commit/822fdbafc18615aa1412eee246d1feab5b94e685) Thanks [@juanrgm](https://github.com/juanrgm)! - Update to SolidJS 1.7.5
+
+- Updated dependencies [[`822fdbaf`](https://github.com/swordev/suid/commit/822fdbafc18615aa1412eee246d1feab5b94e685)]:
+  - @suid/types@0.5.1
+
 ## 0.7.1
 
 ### Patch Changes
