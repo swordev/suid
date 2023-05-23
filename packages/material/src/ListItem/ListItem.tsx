@@ -178,6 +178,9 @@ const ListItem = $.defineComponent(function ListItem(inProps) {
   const Root = baseProps.components.Root || ListItemRoot;
   const ownerState: OwnerState = mergeProps(
     {
+      get classes() {
+        return baseProps.classes;
+      },
       get alignItems() {
         return baseProps.alignItems;
       },

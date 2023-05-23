@@ -11,7 +11,7 @@ import { InPropsOf } from "@suid/types";
 import clsx from "clsx";
 import { Show, children, createMemo, mergeProps, splitProps } from "solid-js";
 
-type OwnerState = Pick<InPropsOf<ListItemTextTypeMap>, "inset"> & {
+type OwnerState = Pick<InPropsOf<ListItemTextTypeMap>, "classes" | "inset"> & {
   dense: boolean;
   primary: boolean;
   secondary: boolean;
@@ -90,6 +90,9 @@ const ListItemText = $.defineComponent(function ListItemText(inProps) {
   const primary = createMemo(() => props.primary);
   const secondary = createMemo(() => props.secondary);
   const ownerState: OwnerState = {
+    get classes() {
+      return props.classes;
+    },
     get inset() {
       return props.inset || false;
     },

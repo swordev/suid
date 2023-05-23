@@ -142,6 +142,9 @@ const ButtonBase = $.defineComponent(function ButtonBase(inProps) {
     "touchRippleRef",
   ]);
   const ownerState = {
+    get classes() {
+      return props.classes;
+    },
     get disabled() {
       return props.disabled || false;
     },

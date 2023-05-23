@@ -12,7 +12,13 @@ import { mergeProps, splitProps } from "solid-js";
 
 type OwnerState = Pick<
   InPropsOf<TypographyTypeMap>,
-  "color" | "variant" | "align" | "noWrap" | "gutterBottom" | "paragraph"
+  | "classes"
+  | "color"
+  | "variant"
+  | "align"
+  | "noWrap"
+  | "gutterBottom"
+  | "paragraph"
 >;
 
 const $ = createComponentFactory<TypographyTypeMap, OwnerState>()({
@@ -151,6 +157,9 @@ const Typography = $.defineComponent(function Typography(inProps) {
   ]);
 
   const ownerState: OwnerState = {
+    get classes() {
+      return props.classes;
+    },
     get align() {
       return props.align;
     },

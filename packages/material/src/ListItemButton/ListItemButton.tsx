@@ -15,6 +15,7 @@ import { createEffect, mergeProps, splitProps } from "solid-js";
 
 type OwnerState = Pick<
   InPropsOf<ListItemButtonTypeMap>,
+  | "classes"
   | "dense"
   | "disableGutters"
   | "divider"
@@ -207,6 +208,9 @@ const ListItemButton = $.defineComponent(function ListItemButton(inProps) {
   });
 
   const ownerState: OwnerState = {
+    get classes() {
+      return props.classes;
+    },
     get disabled() {
       return props.disabled || false;
     },
