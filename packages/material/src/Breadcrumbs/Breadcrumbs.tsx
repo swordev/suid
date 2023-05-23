@@ -179,7 +179,9 @@ const Breadcrumbs = $.component(function Breadcrumbs({
   const allItems = createMemo(() => {
     const value = resolved();
     const array = Array.isArray(value) ? value : [value];
-    return array.map((item) => <li class={classes.li}>{item}</li>);
+    return array
+      .filter((item) => (item ?? false) !== false)
+      .map((item) => <li class={classes.li}>{item}</li>);
   });
 
   return (
