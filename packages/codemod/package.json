@@ -27,7 +27,7 @@
     "ts-morph": "^17.0.1"
   },
   "devDependencies": {
-    "typescript": "^5.0.4"
+    "typescript": "^5.1.5"
   },
   "publishConfig": {
     "directory": "lib"
