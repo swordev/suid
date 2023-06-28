@@ -24,7 +24,7 @@
     "prism-themes": "^1.9.0",
     "prismjs": "^1.29.0",
     "semver": "^7.5.0",
-    "solid-js": "^1.7.5",
+    "solid-js": "^1.7.7",
     "solid-start": "^0.2.26"
   },
   "devDependencies": {
