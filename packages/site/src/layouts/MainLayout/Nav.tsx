@@ -357,9 +357,11 @@ function NavLink(props: { text: string; href: string }) {
     >
       <ListItemText
         primaryTypographyProps={{
-          sx: {
-            fontWeight: theme.typography.fontWeightMedium,
-            color: theme.palette.grey[context.darkMode ? 500 : 700],
+          get sx() {
+            return {
+              fontWeight: theme.typography.fontWeightMedium,
+              color: theme.palette.grey[context.darkMode ? 500 : 700],
+            };
           },
         }}
       >
