@@ -1,0 +1,1 @@
+import{c as e,t}from"./index-eb556de6.js";const s=t('<svg><path d="M0 0h24v24H0z" fill="none"></svg>',!1,!0),a=t('<svg><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></svg>',!1,!0),c=e(()=>[s(),a()],"Check");export{c as C};
