@@ -1,5 +1,11 @@
 # @suid/material
 
+## 0.13.1
+
+### Patch Changes
+
+- [`d4b3c1d0`](https://github.com/swordev/suid/commit/d4b3c1d0f206b00fbe0432f0b50445ae7b7777ca) Thanks [@juanrgm](https://github.com/juanrgm)! - Revert [`422201`](https://github.com/swordev/suid/commit/422201) commit
+
 ## 0.13.0
 
 ### Minor Changes
