@@ -1,7 +1,11 @@
 import { Theme } from "../styles";
 import { CircularProgressClasses } from "./circularProgressClasses";
 import { SxProps } from "@suid/system";
-import { ElementType, OverridableStringUnion } from "@suid/types";
+import {
+  ElementType,
+  OverridableStringUnion,
+  OverrideProps,
+} from "@suid/types";
 
 export interface CircularProgressPropsColorOverrides {}
 
@@ -74,3 +78,10 @@ export interface CircularProgressTypeMap<
   props: P & CircularProgressTypeMap["selfProps"];
   defaultComponent: D;
 }
+
+export type CircularProgressProps<
+  D extends ElementType = CircularProgressTypeMap["defaultComponent"],
+  P = {}
+> = OverrideProps<CircularProgressTypeMap<P, D>, D>;
+
+export default CircularProgressProps;

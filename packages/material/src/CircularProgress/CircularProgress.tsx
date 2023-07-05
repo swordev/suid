@@ -58,6 +58,11 @@ const CircularProgressRoot = styled("span", {
   },
 })(
   ({ ownerState, theme }) => ({
+    width: ownerState.size,
+    height: ownerState.size,
+    ...(ownerState.variant === "determinate" && {
+      transform: "rotate(-90deg)",
+    }),
     display: "inline-block",
     ...(ownerState.variant === "determinate" && {
       transition: theme.transitions.create("transform"),
@@ -167,12 +172,7 @@ const CircularProgress = $.component(function CircularProgress({
       ).toFixed(3)}px`,
     } as SxProps;
   };
-  const rootStyle = () => {
-    if (props.variant !== "determinate") return {};
-    return {
-      transform: "rotate(-90deg)",
-    } as SxProps;
-  };
+
   const rootProps = () => {
     if (props.variant !== "determinate") return {};
     return {
@@ -183,11 +183,6 @@ const CircularProgress = $.component(function CircularProgress({
   return (
     <CircularProgressRoot
       class={clsx(classes.root, otherProps.class)}
-      sx={{
-        width: props.size,
-        height: props.size,
-        ...rootStyle(),
-      }}
       ownerState={allProps}
       role="progressbar"
       {...rootProps()}
