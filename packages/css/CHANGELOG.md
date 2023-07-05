@@ -1,5 +1,11 @@
 # @suid/css
 
+## 0.4.0
+
+### Minor Changes
+
+- [`ff25fc53`](https://github.com/swordev/suid/commit/ff25fc53e61bad674d9999816f4712001066a531) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `cleanupStyles` property to `StyledEnginedProvider` (defaults `true`)
+
 ## 0.3.1
 
 ### Patch Changes

@@ -1,5 +1,17 @@
 # @suid/base
 
+## 0.8.3
+
+### Patch Changes
+
+- [`9050ef6b`](https://github.com/swordev/suid/commit/9050ef6b5297117ec927a0a0b759c0b3f3613873) Thanks [@juanrgm](https://github.com/juanrgm)! - Update to SolidJS 1.7.7
+
+- Updated dependencies [[`9050ef6b`](https://github.com/swordev/suid/commit/9050ef6b5297117ec927a0a0b759c0b3f3613873), [`ff25fc53`](https://github.com/swordev/suid/commit/ff25fc53e61bad674d9999816f4712001066a531)]:
+  - @suid/system@0.10.3
+  - @suid/types@0.5.2
+  - @suid/utils@0.7.3
+  - @suid/css@0.4.0
+
 ## 0.8.2
 
 ### Patch Changes

@@ -1,5 +1,26 @@
 # @suid/material
 
+## 0.13.0
+
+### Minor Changes
+
+- [#212](https://github.com/swordev/suid/pull/212) [`d9ed0a6d`](https://github.com/swordev/suid/commit/d9ed0a6d697bbf814f8f9c32b8f0fa894436a61d) Thanks [@TheUnlocked](https://github.com/TheUnlocked)! - Implement `BottomNavigation`/`BottomNavigationAction`
+
+### Patch Changes
+
+- [`ae639e72`](https://github.com/swordev/suid/commit/ae639e72de3c1ad2cfe38aed8319b7e5e50010c0) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix `size` property in `CircularProgress`
+
+- [`9050ef6b`](https://github.com/swordev/suid/commit/9050ef6b5297117ec927a0a0b759c0b3f3613873) Thanks [@juanrgm](https://github.com/juanrgm)! - Update to SolidJS 1.7.7
+
+- [`422201cd`](https://github.com/swordev/suid/commit/422201cd2cd47ab5cf5f5639188d3c2f0bdae677) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix `component` property in `Paper`
+
+- Updated dependencies [[`9050ef6b`](https://github.com/swordev/suid/commit/9050ef6b5297117ec927a0a0b759c0b3f3613873), [`ff25fc53`](https://github.com/swordev/suid/commit/ff25fc53e61bad674d9999816f4712001066a531)]:
+  - @suid/system@0.10.3
+  - @suid/types@0.5.2
+  - @suid/utils@0.7.3
+  - @suid/base@0.8.3
+  - @suid/css@0.4.0
+
 ## 0.12.3
 
 ### Patch Changes

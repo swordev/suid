@@ -1,5 +1,11 @@
 # @suid/types
 
+## 0.5.2
+
+### Patch Changes
+
+- [`9050ef6b`](https://github.com/swordev/suid/commit/9050ef6b5297117ec927a0a0b759c0b3f3613873) Thanks [@juanrgm](https://github.com/juanrgm)! - Update to SolidJS 1.7.7
+
 ## 0.5.1
 
 ### Patch Changes
