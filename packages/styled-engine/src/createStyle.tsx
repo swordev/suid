@@ -55,6 +55,7 @@ function createStyle(value: () => StyleProps | undefined) {
   const [name, setName] = createSignal("");
   const componentId = createStyleId();
   let styleElement: HTMLStyleElement | undefined;
+  let isGlobalStyleObject = false;
 
   createRenderEffect<
     { className?: string; styleElement?: HTMLStyleElement } | undefined
@@ -63,9 +64,11 @@ function createStyle(value: () => StyleProps | undefined) {
     let styleObject: StyleObject | undefined;
 
     if (propsValue) {
+      const props = mergeStyleProps(normalizeStyleProps(propsValue));
+      isGlobalStyleObject = "@global" in props;
       styleObject = createStyleObject({
         name: "css",
-        props: mergeStyleProps(normalizeStyleProps(propsValue)),
+        props,
         cache: styleCache,
         componentId,
       });
@@ -119,7 +122,11 @@ function createStyle(value: () => StyleProps | undefined) {
   }, undefined);
 
   onCleanup(() => {
-    if (styleElement) unregisterStyleElementUsage(styleElement);
+    if (styleElement)
+      unregisterStyleElementUsage(
+        styleElement,
+        context.cleanupStyles ?? isGlobalStyleObject
+      );
   });
 
   return name;

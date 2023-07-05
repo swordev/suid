@@ -5,8 +5,18 @@ export type StyledEngineContextValue = {
     nonce?: string;
   };
   injectFirst?: boolean;
+  /**
+   * @default true
+   */
+  cleanupStyles?: boolean;
 };
 
-const StyledEngineContext = createContext<StyledEngineContextValue>({});
+export const defaultStyledEngineContextValue: StyledEngineContextValue = {
+  cleanupStyles: true,
+};
+
+const StyledEngineContext = createContext<StyledEngineContextValue>(
+  defaultStyledEngineContextValue
+);
 
 export default StyledEngineContext;
