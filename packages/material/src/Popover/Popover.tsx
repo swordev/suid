@@ -375,6 +375,7 @@ const Popover = $.defineComponent(function Popover(inProps) {
 
   let handleResize: ((() => void) & { clear: () => void }) | undefined;
   let handleResizeCleanup: (() => void) | undefined;
+  let resizeObserver: ResizeObserver | undefined;
 
   createEffect(
     on(
@@ -383,7 +384,9 @@ const Popover = $.defineComponent(function Popover(inProps) {
         handleResizeCleanup?.();
         if (!props.open) return undefined;
 
-        const containerWindow = ownerWindow(resolveAnchorEl(props.anchorEl));
+        const anchor = resolveAnchorEl(props.anchorEl);
+        const containerWindow = ownerWindow(anchor);
+        handleResize = debounce(() => setPositioningStyles());
 
         handleResizeCleanup = () => {
           if (handleResize) {
@@ -391,12 +394,17 @@ const Popover = $.defineComponent(function Popover(inProps) {
             containerWindow.removeEventListener("resize", handleResize);
             handleResize = undefined;
           }
+          if (resizeObserver) {
+            resizeObserver.disconnect();
+            resizeObserver = undefined;
+          }
         };
 
-        containerWindow.addEventListener(
-          "resize",
-          (handleResize = debounce(() => setPositioningStyles()))
-        );
+        if (anchor && globalThis.ResizeObserver) {
+          resizeObserver = new ResizeObserver(() => setPositioningStyles());
+          resizeObserver.observe(anchor);
+        }
+        containerWindow.addEventListener("resize", handleResize);
       }
     )
   );
