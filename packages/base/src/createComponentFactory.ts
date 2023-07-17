@@ -3,6 +3,7 @@ import useBaseThemeProps, {
   PropDefaultsCb,
   ThemePropOptions,
 } from "./useThemeProps";
+import { setSuidComponentType } from "@suid/system/createStyled";
 import { componentTrap } from "@suid/system/inspect";
 import {
   InPropsOf,
@@ -87,7 +88,7 @@ function createComponentFactory<
     ): C extends OverridableTypeMap ? OverridableComponent<C> : SuidElement<C> {
       cb = componentTrap(cb) as any;
       cb.toString = () => `.${options.name}-root`;
-      if (styled) (cb as any).__styled = true;
+      if (styled) setSuidComponentType(cb, "base");
       return cb as any;
     }
 

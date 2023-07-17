@@ -14,7 +14,7 @@ import {
 } from "@suid/types";
 import { randomString } from "@suid/utils";
 import clsx from "clsx";
-import { Component, createMemo, splitProps, mergeProps } from "solid-js";
+import { createMemo, splitProps, mergeProps } from "solid-js";
 import { ComponentProps as _ComponentProps, JSX } from "solid-js";
 
 export interface ComponentProps<T, O> {
@@ -97,8 +97,17 @@ function resolveStyles<T extends Theme<any>, P, O>(
   });
 }
 
-function isStyledComponent(input: unknown): input is Component {
-  return typeof input === "function" && "__styled" in input && !!input.__styled;
+type SuidComponentType = "system" | "base";
+
+export function setSuidComponentType(
+  cb: (...args: any[]) => any,
+  type: SuidComponentType
+) {
+  (cb as any)["__suid"] = type;
+}
+
+function getSuidComponentType(input: unknown): SuidComponentType | undefined {
+  if (typeof input === "function") return (input as any)["__suid"];
 }
 
 function createStyled<
@@ -121,7 +130,7 @@ function createStyled<
       className = `styled-${randomString()}`;
       cssClassName = "css";
     }
-    const isComponentStyled = isStyledComponent(Component);
+    const componentType = getSuidComponentType(Component);
 
     return function <
       O = N extends keyof CM
@@ -184,14 +193,14 @@ function createStyled<
         };
 
         const $component = () => {
-          if (isComponentStyled) return Component;
+          if (componentType) return Component;
           const as = inProps.as;
           return as ? as : Component;
         };
 
-        const is$ComponentStyled = isComponentStyled
-          ? () => true
-          : createMemo(() => isStyledComponent($component()));
+        const $componentType = componentType
+          ? () => componentType
+          : createMemo(() => getSuidComponentType($component()));
 
         const sx = options.skipSx
           ? () => inStyles()
@@ -206,7 +215,7 @@ function createStyled<
             };
 
         const styleClassName = createStyle(() =>
-          is$ComponentStyled() ? undefined : sx()
+          $componentType() ? undefined : sx()
         );
 
         return createDynamicComponent(
@@ -217,16 +226,18 @@ function createStyled<
             },
             // [review] This property must be omitted on each component individually.
             get component() {
-              return is$ComponentStyled() ? (inProps as any).component : null;
+              return $componentType() ? (inProps as any).component : null;
             },
             get as() {
-              return isComponentStyled ? inProps.as : undefined;
+              return componentType ? inProps.as : undefined;
             },
             get sx() {
-              return is$ComponentStyled() ? sx() : undefined;
+              return $componentType() ? sx() : undefined;
             },
             get ownerState() {
-              return is$ComponentStyled() ? inProps.ownerState : undefined;
+              return $componentType() === "system"
+                ? inProps.ownerState
+                : undefined;
             },
             get class() {
               return clsx([
@@ -236,8 +247,7 @@ function createStyled<
           })
         );
       }
-
-      (StyledComponent as any)["__styled"] = true;
+      setSuidComponentType(StyledComponent, "system");
       if (className) StyledComponent.toString = () => `.${className}`;
 
       return StyledComponent as any;

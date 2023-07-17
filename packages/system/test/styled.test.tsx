@@ -274,6 +274,73 @@ describe("styled", () => {
     expect(class1.join()).toBe(class2.join());
     unmount();
   });
+
+  it("shares the same owner state", () => {
+    type OwnerState = { color: string };
+    let ownerState1!: OwnerState;
+    let ownerState2!: OwnerState;
+    const Div1 = styled("div")<OwnerState>(({ ownerState }) => {
+      ownerState1 = ownerState;
+      return {};
+    });
+    const Div2 = styled(Div1)<OwnerState>(({ ownerState }) => {
+      ownerState2 = ownerState;
+      return {};
+    });
+    const { unmount } = render(() => (
+      <>
+        <Div2 data-testid="div2" ownerState={{ color: "red" }} />
+      </>
+    ));
+    expect((Div1 as any).__suid).toBe("system");
+    expect((Div2 as any).__suid).toBe("system");
+    expect(ownerState1.color).toBe("red");
+    expect(ownerState2.color).toBe("red");
+    unmount();
+  });
+  it("don't pass the ownerState to the component", () => {
+    type OwnerState = { color: string };
+    let ownerState1: undefined;
+    let ownerState2!: OwnerState;
+    const Div1 = (props: { ownerState: any }) => {
+      ownerState1 = props.ownerState;
+      return <div />;
+    };
+    const Div2 = styled(Div1)<OwnerState>(({ ownerState }) => {
+      ownerState2 = ownerState;
+      return {};
+    });
+    const { unmount } = render(() => (
+      <>
+        <Div2 data-testid="div2" ownerState={{ color: "red" }} />
+      </>
+    ));
+    expect(ownerState1).toBeUndefined();
+    expect(ownerState2.color).toBe("red");
+    unmount();
+  });
+  it("don't pass the ownerState to the suid base component", () => {
+    type OwnerState = { color: string };
+    let ownerState1: undefined;
+    let ownerState2!: OwnerState;
+    const Div1 = (props: { ownerState: any }) => {
+      ownerState1 = props.ownerState;
+      return <div />;
+    };
+    Div1.__suid = "base";
+    const Div2 = styled(Div1)<OwnerState>(({ ownerState }) => {
+      ownerState2 = ownerState;
+      return {};
+    });
+    const { unmount } = render(() => (
+      <>
+        <Div2 data-testid="div2" ownerState={{ color: "red" }} />
+      </>
+    ));
+    expect(ownerState1).toBeUndefined();
+    expect(ownerState2.color).toBe("red");
+    unmount();
+  });
 });
 
 export {};
