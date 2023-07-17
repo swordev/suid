@@ -11,7 +11,7 @@ import debounce from "@suid/utils/debounce";
 import ownerDocument from "@suid/utils/ownerDocument";
 import ownerWindow from "@suid/utils/ownerWindow";
 import clsx from "clsx";
-import { createEffect, on, splitProps, mergeProps } from "solid-js";
+import { createEffect, on, splitProps, mergeProps, onCleanup } from "solid-js";
 
 const $ = createComponentFactory<PopoverTypeMap>()({
   name: "MuiPopover",
@@ -373,27 +373,35 @@ const Popover = $.defineComponent(function Popover(inProps) {
     });
   }
 
+  let handleResize: ((() => void) & { clear: () => void }) | undefined;
+  let handleResizeCleanup: (() => void) | undefined;
+
   createEffect(
     on(
       () => [props.anchorEl, props.open, setPositioningStyles],
       () => {
-        if (!props.open) {
-          return undefined;
-        }
-
-        const handleResize = debounce(() => {
-          setPositioningStyles();
-        });
+        handleResizeCleanup?.();
+        if (!props.open) return undefined;
 
         const containerWindow = ownerWindow(resolveAnchorEl(props.anchorEl));
-        containerWindow.addEventListener("resize", handleResize);
-        return () => {
-          handleResize.clear();
-          containerWindow.removeEventListener("resize", handleResize);
+
+        handleResizeCleanup = () => {
+          if (handleResize) {
+            handleResize.clear();
+            containerWindow.removeEventListener("resize", handleResize);
+            handleResize = undefined;
+          }
         };
+
+        containerWindow.addEventListener(
+          "resize",
+          (handleResize = debounce(() => setPositioningStyles()))
+        );
       }
     )
   );
+
+  onCleanup(() => handleResizeCleanup?.());
 
   const transitionDuration = () => {
     let transitionDuration: undefined | typeof baseProps.transitionDuration =
