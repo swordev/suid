@@ -1,5 +1,16 @@
 # @suid/base
 
+## 0.8.4
+
+### Patch Changes
+
+- [`72e8ae5f`](https://github.com/swordev/suid/commit/72e8ae5fd510a9267cfef9b1f57b565873dfeb9c) Thanks [@juanrgm](https://github.com/juanrgm)! - Avoid override the owner state in non-styled components.
+
+  This fixes some `@suid/material` components like `DialogTitle` or `AlertTitle`.
+
+- Updated dependencies [[`72e8ae5f`](https://github.com/swordev/suid/commit/72e8ae5fd510a9267cfef9b1f57b565873dfeb9c)]:
+  - @suid/system@0.10.4
+
 ## 0.8.3
 
 ### Patch Changes

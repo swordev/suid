@@ -1,6 +1,6 @@
 {
   "name": "@suid/system",
-  "version": "0.10.3",
+  "version": "0.10.4",
   "description": "Styles system used by suid packages.",
   "keywords": [
     "solid",

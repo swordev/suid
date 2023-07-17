@@ -1,5 +1,17 @@
 # @suid/material
 
+## 0.13.2
+
+### Patch Changes
+
+- [`3b5a3529`](https://github.com/swordev/suid/commit/3b5a352950aee522fa719f5a871559fc534a7c9f) Thanks [@juanrgm](https://github.com/juanrgm)! - Update `Popover` position on anchor resize event (`Select` component affected)
+
+- [`9722b740`](https://github.com/swordev/suid/commit/9722b740663be1f711e19df183c8362bd4bd60ae) Thanks [@juanrgm](https://github.com/juanrgm)! - Clean up resize events
+
+- Updated dependencies [[`72e8ae5f`](https://github.com/swordev/suid/commit/72e8ae5fd510a9267cfef9b1f57b565873dfeb9c)]:
+  - @suid/system@0.10.4
+  - @suid/base@0.8.4
+
 ## 0.13.1
 
 ### Patch Changes
