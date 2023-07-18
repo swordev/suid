@@ -1,5 +1,19 @@
 # @suid/site
 
+## 0.14.0
+
+### Minor Changes
+
+- [`8fa57f77`](https://github.com/swordev/suid/commit/8fa57f776e84f752d65c28612cf78f0d588ef4fa) Thanks [@juanrgm](https://github.com/juanrgm)! - Add new examples to the `Alert` component page
+
+### Patch Changes
+
+- Updated dependencies [[`3b5a3529`](https://github.com/swordev/suid/commit/3b5a352950aee522fa719f5a871559fc534a7c9f), [`72e8ae5f`](https://github.com/swordev/suid/commit/72e8ae5fd510a9267cfef9b1f57b565873dfeb9c), [`9722b740`](https://github.com/swordev/suid/commit/9722b740663be1f711e19df183c8362bd4bd60ae)]:
+  - @suid/material@0.13.2
+  - @suid/system@0.10.4
+  - @suid/base@0.8.4
+  - @suid/icons-material@0.6.6
+
 ## 0.13.1
 
 ### Patch Changes
