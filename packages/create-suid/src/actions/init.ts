@@ -1,18 +1,17 @@
+import appFile from "../files/appFile.js";
+import entryFile from "../files/entryFile.js";
+import htmlFile from "../files/htmlFile.js";
+import pkgFile from "../files/pkgFile.js";
+import tsconfigFile from "../files/tsconfigFile.js";
+import viteConfigFile from "../files/viteConfigFile.js";
 import { randomArrayValue } from "../utils/array.js";
-import appFile from "./../files/appFile.js";
-import entryFile from "./../files/entryFile.js";
-import htmlFile from "./../files/htmlFile.js";
-import pkgFile from "./../files/pkgFile.js";
-import tsconfigFile from "./../files/tsconfigFile.js";
-import viteConfigFile from "./../files/viteConfigFile.js";
-import { createFiles, isEmptyDir } from "./../utils/fs.js";
+import { createFiles, isEmptyDir } from "../utils/fs.js";
 import chalk from "chalk";
-import inquirer from "inquirer";
-import { basename, join } from "path";
+import inquirer, { Answers } from "inquirer";
+import { basename, join as pathJoin } from "path";
 
-export default async function init(defaultOutputDir?: string) {
+export default async function init(outputDir?: string) {
   const cwd = process.cwd();
-  let workingDir: string | undefined;
   const excluded = [
     ".history",
     "node_modules",
@@ -21,19 +20,20 @@ export default async function init(defaultOutputDir?: string) {
     "README.md",
     "LICENSE",
   ];
-  if (!defaultOutputDir)
-    defaultOutputDir = (await isEmptyDir(cwd, excluded))
-      ? "./"
-      : "./suid-project";
+  outputDir ||= (await isEmptyDir(cwd, excluded)) ? "./" : "./suid-project";
 
-  while (typeof workingDir !== "string") {
-    const answer: { value: string } = await inquirer.prompt({
-      type: "input",
-      name: "value",
-      message: "Output dir",
-      default: defaultOutputDir,
-    });
-    const path = join(cwd, (defaultOutputDir = answer.value));
+  let workingDir: string | undefined;
+  while (!workingDir) {
+    outputDir = await inquirer
+      .prompt({
+        type: "input",
+        name: "outputDir",
+        message: "Output dir",
+        default: outputDir,
+      })
+      .then(({ outputDir }: Answers) => outputDir);
+
+    const path = pathJoin(cwd, outputDir ?? "");
     if (await isEmptyDir(path, excluded)) {
       workingDir = path;
     } else {
@@ -41,55 +41,54 @@ export default async function init(defaultOutputDir?: string) {
     }
   }
 
-  const projectName = await inquirer.prompt({
-    type: "input",
-    name: "value",
-    message: "Project name",
-    default: basename(workingDir),
-  });
-
-  const pkgManager = await inquirer.prompt({
-    type: "list",
-    name: "value",
-    message: "Select a package manager",
-    default: "pnpm",
-    choices: [
-      {
-        name: "npm",
-      },
-      {
-        name: "pnpm",
-      },
-    ],
-  });
-
-  const pkgs = await inquirer.prompt({
-    type: "checkbox",
-    name: "value",
-    message: "Select the packages",
-    choices: [
-      {
-        name: "@suid/material",
-        checked: true,
-      },
-      {
-        name: "@suid/icons-material",
-        checked: true,
-      },
-    ],
-  });
-
+  const { projectName, pkgManager, pkgs } = await inquirer.prompt([
+    {
+      type: "input",
+      name: "projectName",
+      message: "Project name",
+      default: basename(workingDir),
+    },
+    {
+      type: "list",
+      name: "pkgManager",
+      message: "Select a package manager",
+      default: "pnpm",
+      choices: [
+        {
+          name: "npm",
+        },
+        {
+          name: "pnpm",
+        },
+      ],
+    },
+    {
+      type: "checkbox",
+      name: "pkgs",
+      message: "Select the packages",
+      choices: [
+        {
+          name: "@suid/material",
+          checked: true,
+        },
+        {
+          name: "@suid/icons-material",
+          checked: true,
+        },
+      ],
+    },
+  ]);
   await createFiles(
     {
       "src/index.tsx": entryFile(),
       "src/App.tsx": appFile(),
       "index.html": htmlFile({
-        title: projectName.value,
+        title: projectName,
       }),
       "tsconfig.json": tsconfigFile(),
       "package.json": await pkgFile({
-        name: projectName.value,
-        deps: pkgs.value,
+        name: projectName,
+        deps: pkgs,
         devDeps: ["@suid/vite-plugin"],
       }),
       "vite.config.ts": viteConfigFile(),
@@ -102,11 +101,22 @@ export default async function init(defaultOutputDir?: string) {
   console.info();
   console.info("Run the next commands:");
   console.info();
-  console.info(chalk.cyan(`  cd ${defaultOutputDir}`));
-  console.info(chalk.cyan(`  ${pkgManager.value} install`));
-  console.info(chalk.cyan(`  ${pkgManager.value} start`));
+  console.info(chalk.cyan(`  cd ${outputDir}`));
+  console.info(chalk.cyan(`  ${pkgManager} install`));
+  console.info(chalk.cyan(`  ${pkgManager} start`));
   console.info();
   console.info(
-    `And have a ${randomArrayValue(["happy", "good", "nice", "great"])} day! 😃`
+    `And have a ${randomArrayValue([
+      "great",
+      "wonderful",
+      "fantastic",
+      "amazing",
+      "lovely",
+      "splendid",
+      "marvelous",
+      "fabulous",
+      "terrific",
+      "delightful",
+    ])} day! 😃`
   );
 }
