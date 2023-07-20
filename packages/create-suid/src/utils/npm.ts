@@ -1,4 +1,4 @@
-import { request } from "https";
+import { get } from "https";
 
 export async function fetchLatestManifest(name: string) {
   const url = `https://registry.npmjs.org/${name}/latest`;
@@ -8,13 +8,11 @@ export async function fetchLatestManifest(name: string) {
     dependencies?: Record<string, string>;
     devDependencies?: Record<string, string>;
   }>((resolve, reject) => {
-    let json = "";
-    const req = request(url, (res) => {
+    get(url, (res) => {
+      let json = "";
       res.on("data", (chunk) => (json += chunk));
-      res.on("close", () => resolve(JSON.parse(json)));
-    });
-    req.on("error", reject);
-    req.end();
+      res.on("end", () => resolve(JSON.parse(json)));
+    }).on("error", reject);
   });
 }
 
