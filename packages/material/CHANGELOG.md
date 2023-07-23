@@ -1,5 +1,19 @@
 # @suid/material
 
+## 0.14.0
+
+### Minor Changes
+
+- [`577ce092`](https://github.com/swordev/suid/commit/577ce0925ae90091df6edc7772fbfb860bce8016) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `InputAdornment` component
+
+### Patch Changes
+
+- [`0193e0cb`](https://github.com/swordev/suid/commit/0193e0cb9e10731bd5e66a40f8e7c05e4305ce9f) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix controlled `InputBase` component with date type
+
+- [`0c960cda`](https://github.com/swordev/suid/commit/0c960cdaba2db17a9bc635bbf51c779d6194cfd2) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `BottomNavigation` and `BottomNavigationAction` to theme types
+
+- [`a972607a`](https://github.com/swordev/suid/commit/a972607a69ce03b1e8cff603b3e28e2c1c69b845) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `Popper` to the export index
+
 ## 0.13.2
 
 ### Patch Changes
