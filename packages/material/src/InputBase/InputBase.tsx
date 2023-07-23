@@ -364,28 +364,33 @@ const InputBase = $.component(function InputBase({
   });
 
   createEffect<boolean>((loadDefaultValue) => {
+    const input = inputRef.ref as HTMLInputElement;
     if (isControlled || loadDefaultValue) {
       controlledValueUpdated = true;
       const v = value();
-      const isElement = inputRef.ref instanceof HTMLElement;
-      if (!isElement) {
-        if (v !== inputRef.ref.value) {
-          inputRef.ref.value = v as any;
-        }
+      const isInputObject = !((input as any) instanceof HTMLElement);
+      if (isInputObject) {
+        if (v !== input.value) input.value = v as any;
       } else if (typeof v === "string") {
-        const inputElement = inputRef.ref as HTMLInputElement;
-        const type = inputElement.type ?? "text";
-        const isSelectionType =
-          inputElement.nodeName === "TEXTAREA" || selectionTypes.has(type);
-        const selectionStart = lastSelectionStart ?? v.length;
-        if (v !== inputRef.ref.value) {
-          inputRef.ref.value = v;
+        if (input instanceof HTMLTextAreaElement) {
+          input.innerText = v;
+        } else {
+          input.setAttribute("value", v);
         }
-        if (!isSelectionType) inputElement.type = "text";
-        if (inputRef.ref.selectionStart !== selectionStart) {
-          inputRef.ref.setSelectionRange(selectionStart, selectionStart);
+        if (input.type === "date") {
+          if (v !== input.value) input.value = v;
+        } else {
+          const type = input.type ?? "text";
+          const isSelectionType =
+            input.nodeName === "TEXTAREA" || selectionTypes.has(type);
+          const selectionStart = lastSelectionStart ?? v.length;
+          if (v !== input.value) input.value = v;
+          if (!isSelectionType) input.type = "text";
+          if (input.selectionStart !== selectionStart) {
+            input.setSelectionRange(selectionStart, selectionStart);
+          }
+          if (!isSelectionType) input.type = type;
         }
-        if (!isSelectionType) inputElement.type = type;
       }
     }
     return false;
@@ -586,7 +591,6 @@ const InputBase = $.component(function InputBase({
             {...({
               rows: props.rows,
             } as any)}
-            value={value()}
             onKeyDown={props.onKeyDown as any}
             onKeyUp={props.onKeyUp as any}
             type={props.type}
