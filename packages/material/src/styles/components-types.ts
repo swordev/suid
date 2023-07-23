@@ -88,7 +88,6 @@ import type MuiSwitchBase from "../internal/SwitchBase";
 
 export type ComponentsTypes = {
   MuiAlert: typeof MuiAlert;
-  MuiInputAdornment: typeof MuiInputAdornment;
   MuiAlertTitle: typeof MuiAlertTitle;
   MuiAppBar: typeof MuiAppBar;
   MuiAvatar: typeof MuiAvatar;
@@ -133,6 +132,7 @@ export type ComponentsTypes = {
   MuiIcon: typeof MuiIcon;
   MuiIconButton: typeof MuiIconButton;
   MuiInput: typeof MuiInput;
+  MuiInputAdornment: typeof MuiInputAdornment;
   MuiInputBase: typeof MuiInputBase;
   MuiInputLabel: typeof MuiInputLabel;
   MuiLinearProgress: typeof MuiLinearProgress;
