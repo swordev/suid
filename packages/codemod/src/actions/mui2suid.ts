@@ -194,7 +194,7 @@ export default async function mui2suid(options: {
   for (const fileName in contents) {
     if (!checkFilter(fileName)) continue;
     files++;
-    const fileContents = format(contents[fileName], {
+    const fileContents = await format(contents[fileName], {
       parser: "typescript",
     });
     const relSourcePath = relative(cwd, sourcePaths[fileName]);

@@ -26,10 +26,13 @@ async function writeComponentTypingFiles(
   iconNames: string[],
   progressLog: ProgressLog
 ) {
-  const contents = format(`export { default } from "@suid/material/SvgIcon"`, {
-    ...(await readOptions()),
-    parser: "typescript",
-  });
+  const contents = await format(
+    `export { default } from "@suid/material/SvgIcon"`,
+    {
+      ...(await readOptions()),
+      parser: "typescript",
+    }
+  );
 
   const limit = pLimit(10);
   const paths = iconNames.map((v) => join(outPath, `${v}.d.ts`));

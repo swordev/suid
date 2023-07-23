@@ -143,7 +143,7 @@ async function genRoadmap(options: { version: string }) {
     ]
   );
 
-  const contents = format(
+  const contents = await format(
     [
       `# ROADMAP\n`,
       `\n## @suid/system`,

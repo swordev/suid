@@ -6,151 +6,144 @@ import format from "../format.js";
 import transform from "../transform.js";
 import { describe, expect, it } from "vitest";
 
-const t = (code: string, options?: ReplaceReactUseEffectOptions) =>
-  transform(code, [
-    (source) =>
-      findReactObjects(source, ["useEffect"]).map((v) =>
-        replaceReactUseEffect(v.node, options)
-      ),
-  ]);
+const e = async (
+  code: string,
+  expected: string,
+  options?: ReplaceReactUseEffectOptions
+) =>
+  expect(
+    await transform(code, [
+      (source) =>
+        findReactObjects(source, ["useEffect"]).map((v) =>
+          replaceReactUseEffect(v.node, options)
+        ),
+    ])
+  ).toBe(await format(expected));
 
 describe("replaceReactUseEffect", () => {
-  it("transforms by createEffect", () => {
-    expect(
-      t(`
+  it("transforms by createEffect", async () => {
+    await e(
+      `
         import * as React from "react";
         React.useEffect(() => {})
-      `)
-    ).toBe(
-      format(`
+      `,
+      `
         import * as React from "react";
         import { createEffect } from "solid-js";
         createEffect(() => {})
-      `)
+      `
     );
   });
-  it("transforms by createEffectWithCleaning", () => {
-    expect(
-      t(`
+  it("transforms by createEffectWithCleaning", async () => {
+    await e(
+      `
         import * as React from "react";
         React.useEffect(() => {
           console.log('effect');
           return function() { console.log('cleanup') }
         }, [a])
-      `)
-    ).toBe(
-      format(`
-        import * as React from "react";
-        import createEffectWithCleaning from "@suid/system/createEffectWithCleaning";
-        createEffectWithCleaning(
-          on(
-            () => [a],
-            () => {
-              console.log('effect');
-              return function() { console.log('cleanup') }
-            }
-          )
+      `,
+      `
+      import * as React from "react";
+      import createEffectWithCleaning from "@suid/system/createEffectWithCleaning";
+      createEffectWithCleaning(
+        on(
+          () => [a],
+          () => {
+            console.log('effect');
+            return function() { console.log('cleanup') }
+          }
         )
-      `)
+      )
+    `
     );
   });
-  it("transforms by onMount", () => {
-    expect(
-      t(`
+  it("transforms by onMount", async () => {
+    await e(
+      `
         import * as React from "react";
         React.useEffect(() => {}, [])
-      `)
-    ).toBe(
-      format(`
+      `,
+      `
         import * as React from "react";
         import { onMount } from "solid-js";
         onMount(() => {})
-      `)
+    `
     );
   });
-  it("transforms by onMountWithCleaning", () => {
-    expect(
-      t(`
+  it("transforms by onMountWithCleaning", async () => {
+    await e(
+      `
         import * as React from "react";
         React.useEffect(() => {
           console.log('effect');
           return () => console.log('cleanup')
         }, [])
-      `)
-    ).toBe(
-      format(`
+      `,
+      `
         import * as React from "react";
         import onMountWithCleaning from "@suid/system/onMountWithCleaning";
         onMountWithCleaning(() => {
           console.log('effect');
           return () => console.log('cleanup')
         })
-      `)
+      `
     );
   });
-  it("transforms by createEffect without dependencies", () => {
-    expect(
-      t(
-        `
+  it("transforms by createEffect without dependencies", async () => {
+    await e(
+      `
         import * as React from "react";
         React.useEffect(() => {
           console.log('effect');
         }, [a, b, c])
       `,
-        {
-          removeDependencies: true,
-        }
-      )
-    ).toBe(
-      format(`
+      `
         import * as React from "react";
         import { createEffect } from "solid-js";
         createEffect(() => {
           console.log('effect');
         })
-      `)
+      `,
+      {
+        removeDependencies: true,
+      }
     );
   });
-  it("transforms by onCleanup", () => {
-    expect(
-      t(
-        `
+  it("transforms by onCleanup", async () => {
+    await e(
+      `
         import * as React from "react";
         React.useEffect(() => {
           return () => console.log('cleanup');
         }, [])
+      `,
       `
-      )
-    ).toBe(
-      format(`
         import * as React from "react";
         import { onCleanup } from "solid-js";
         onCleanup(() => console.log('cleanup'))
-      `)
+      `
     );
   });
-  it("transforms by createRenderEffect", () => {
-    expect(
-      t(
-        `
+  it("transforms by createRenderEffect", async () => {
+    await e(
+      `
         import * as React from "react";
         React.useEffect(() => {
           console.log("effect")
         }, [a])
       `,
-        {
-          functionName: "createRenderEffect",
-          removeDependencies: true,
-        }
-      )
-    ).toBe(
-      format(`
+      `
         import * as React from "react";
         import { createRenderEffect } from "solid-js";
         createRenderEffect(() => {
           console.log('effect')
         })
-      `)
+      `,
+      {
+        functionName: "createRenderEffect",
+        removeDependencies: true,
+      }
     );
   });
 });

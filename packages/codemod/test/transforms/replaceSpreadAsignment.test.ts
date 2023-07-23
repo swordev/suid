@@ -1,33 +1,37 @@
 import findObjectLiteralExpressions from "../../src/navigations/findObjectLiteralExpressions.js";
 import replaceSpreadAsignment from "../../src/transforms/replaceSpreadAsignment.js";
-import f from "../format.js";
+import format from "../format.js";
 import transform from "../transform.js";
 import { describe, expect, it } from "vitest";
 
-const t = (code: string) =>
-  transform(code, [
-    (source) => {
-      findObjectLiteralExpressions(source).forEach((node) =>
-        replaceSpreadAsignment(node, {})
-      );
-    },
-  ]);
+const e = async (code: string, expected: string) =>
+  expect(
+    await transform(code, [
+      (source) => {
+        findObjectLiteralExpressions(source).forEach((node) =>
+          replaceSpreadAsignment(node, {})
+        );
+      },
+    ])
+  ).toBe(await format(expected));
 
 describe("replaceSpreadAsignment", () => {
-  it("transforms spread", () => {
-    expect(t("const a = { ...props };")).toBe(
-      f(`
+  it("transforms spread", async () => {
+    await e(
+      "const a = { ...props };",
+      `
         import { mergeProps } from "solid-js";
         const a = mergeProps(props);
-      `)
+      `
     );
   });
-  it("transforms spread within JSX", () => {
-    expect(t("const e = <div a={{...props }} />;")).toBe(
-      f(`
+  it("transforms spread within JSX", async () => {
+    e(
+      "const e = <div a={{...props }} />;",
+      `
         import { mergeProps } from "solid-js";
         const e = <div a={mergeProps(props)} />;
-      `)
+      `
     );
   });
 });

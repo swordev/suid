@@ -18,7 +18,7 @@ export async function writeIndexFile(iconNames: string[]) {
 }
 
 async function renderComponentContents(name: string, children: string[]) {
-  return format(
+  return await format(
     `
       import $ from "./utils/createSvgIcon";\n
       export default $(

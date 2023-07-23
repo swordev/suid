@@ -31,7 +31,7 @@ export async function parsePackageFile(path: string) {
 export async function writePackageFile(path: string, config: Package) {
   await writeFile(
     path,
-    format(JSON.stringify(config), {
+    await format(JSON.stringify(config), {
       ...(await readOptions()),
       filepath: "package.json",
       parser: "json-stringify",

@@ -25,7 +25,7 @@ export async function parseTsConfigFile(path: string) {
 export async function writeTsConfigFile(path: string, config: TsConfig) {
   await writeFile(
     path,
-    format(JSON.stringify(config), {
+    await format(JSON.stringify(config), {
       ...(await readOptions()),
       parser: "json",
     })
