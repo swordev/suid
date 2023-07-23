@@ -12,7 +12,7 @@ const systemFeatures: Record<string, boolean | "pending"> = {
   "System properties": true,
   "Theme context": true,
   "Slot classes": true,
-  "Breakpoints as an object/array": "pending",
+  "Breakpoints as an object/array": true,
   "`styleOverrides`": false,
 };
 

@@ -59,8 +59,8 @@
 | AvatarGroup             |       |               |
 | Backdrop                |  ✅   |               |
 | Badge                   |  ✅   |               |
-| BottomNavigation        |       |               |
-| BottomNavigationAction  |       |               |
+| BottomNavigation        |  ✅   |               |
+| BottomNavigationAction  |  ✅   |               |
 | Box                     |  ✅   |               |
 | Breadcrumbs             |  ✅   |               |
 | Button                  |  ✅   |               |
