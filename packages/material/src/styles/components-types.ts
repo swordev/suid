@@ -4,6 +4,8 @@ import type MuiAppBar from "../AppBar";
 import type MuiAvatar from "../Avatar";
 import type MuiBackdrop from "../Backdrop";
 import type MuiBadge from "../Badge";
+import type MuiBottomNavigation from "../BottomNavigation";
+import type MuiBottomNavigationAction from "../BottomNavigationAction";
 import type MuiBox from "../Box";
 import type MuiBreadcrumbs from "../Breadcrumbs";
 import type MuiButton from "../Button";
@@ -90,6 +92,8 @@ export type ComponentsTypes = {
   MuiAvatar: typeof MuiAvatar;
   MuiBackdrop: typeof MuiBackdrop;
   MuiBadge: typeof MuiBadge;
+  MuiBottomNavigation: typeof MuiBottomNavigation;
+  MuiBottomNavigationAction: typeof MuiBottomNavigationAction;
   MuiBox: typeof MuiBox;
   MuiBreadcrumbs: typeof MuiBreadcrumbs;
   MuiButton: typeof MuiButton;
