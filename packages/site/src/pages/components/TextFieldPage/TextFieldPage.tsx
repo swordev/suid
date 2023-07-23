@@ -2,6 +2,7 @@ import { TextField } from "@suid/material";
 import ComponentInfo from "~/components/ComponentInfo";
 import BasicTextFieldsExample from "./BasicTextFieldsExample";
 import FormPropsTextFieldsExample from "./FormPropsTextFieldsExample";
+import InputAdornments from "./InputAdornmentsExample";
 import MultilineTextFieldsExample from "./MultilineTextFieldsExample";
 import SizesTextFieldsExample from "./SizesTextFieldsExample";
 import StateTextFieldsExample from "./StateTextFieldsExample";
@@ -28,6 +29,10 @@ export default function TextFieldPage() {
         {
           title: "Multiline",
           component: MultilineTextFieldsExample,
+        },
+        {
+          title: "Adornments",
+          component: InputAdornments,
         },
       ]}
     />
