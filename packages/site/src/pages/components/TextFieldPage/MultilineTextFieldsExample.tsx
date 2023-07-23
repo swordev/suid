@@ -10,6 +10,7 @@ export default function MultilineTextFields() {
           m: 1,
           width: "25ch",
         },
+        textAlign: "center",
       }}
       noValidate
       autocomplete="off"
