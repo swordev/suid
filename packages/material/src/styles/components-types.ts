@@ -43,6 +43,7 @@ import type MuiGrow from "../Grow";
 import type MuiIcon from "../Icon";
 import type MuiIconButton from "../IconButton";
 import type MuiInput from "../Input";
+import type MuiInputAdornment from "../InputAdornment";
 import type MuiInputBase from "../InputBase";
 import type MuiInputLabel from "../InputLabel";
 import type MuiLinearProgress from "../LinearProgress";
@@ -87,6 +88,7 @@ import type MuiSwitchBase from "../internal/SwitchBase";
 
 export type ComponentsTypes = {
   MuiAlert: typeof MuiAlert;
+  MuiInputAdornment: typeof MuiInputAdornment;
   MuiAlertTitle: typeof MuiAlertTitle;
   MuiAppBar: typeof MuiAppBar;
   MuiAvatar: typeof MuiAvatar;

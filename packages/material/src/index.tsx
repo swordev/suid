@@ -12,6 +12,7 @@ export { default as Avatar } from "./Avatar";
 export { default as Backdrop } from "./Backdrop";
 export { default as Badge } from "./Badge";
 export { default as Box } from "./Box";
+export { default as InputAdornment } from "./InputAdornment";
 export { default as BottomNavigation } from "./BottomNavigation";
 export { default as BottomNavigationAction } from "./BottomNavigationAction";
 export { default as Breadcrumbs } from "./Breadcrumbs";

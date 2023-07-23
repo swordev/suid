@@ -104,7 +104,7 @@
 | ImageListItem           |       |               |
 | ImageListItemBar        |       |               |
 | Input                   |  ✅   |               |
-| InputAdornment          |       |               |
+| InputAdornment          |  ✅   |               |
 | InputBase               |  ✅   |               |
 | InputLabel              |  ✅   |               |
 | LinearProgress          |  ✅   |               |

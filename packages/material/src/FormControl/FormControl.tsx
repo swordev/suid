@@ -120,51 +120,8 @@ const FormControl = $.component(function FormControl({
   otherProps,
   props,
 }) {
-  /*const [adornedStart, setAdornedStart] = React.useState(() => {
-    // We need to iterate through the children and find the Input in order
-    // to fully support server-side rendering.
-    let initialAdornedStart = false;
-
-    if (children) {
-      React.Children.forEach(children, (child) => {
-        if (!isMuiElement(child, ["Input", "Select"])) {
-          return;
-        }
-
-        const input = isMuiElement(child, ["Select"])
-          ? child.props.input
-          : child;
-
-        if (input && isAdornedStart(input.props)) {
-          initialAdornedStart = true;
-        }
-      });
-    }
-    return initialAdornedStart;
-  });*/
-
+  const [adornedStart, setAdornedStart] = createSignal(false);
   const [filled, setFilled] = createSignal(false);
-  // [review]
-  /*() => {
-    // We need to iterate through the children and find the Input in order
-    // to fully support server-side rendering.
-    let initialFilled = false;
-
-    if (children) {
-      React.Children.forEach(children, (child) => {
-        if (!isMuiElement(child, ["Input", "Select"])) {
-          return;
-        }
-
-        if (isFilled(child.props, true)) {
-          initialFilled = true;
-        }
-      });
-    }
-
-    return initialFilled;
-  }*/
-
   const [focusedState, setFocused] = createSignal(false);
 
   createEffect(() => {
@@ -196,11 +153,9 @@ const FormControl = $.component(function FormControl({
     <FormControlContext.Provider
       value={{
         get adornedStart() {
-          return false;
+          return adornedStart();
         },
-        setAdornedStart: () => {
-          return undefined;
-        },
+        setAdornedStart,
         get margin() {
           return props.margin;
         },
