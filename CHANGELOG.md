@@ -1,5 +1,19 @@
 # @suid/site
 
+## 0.15.0
+
+### Minor Changes
+
+- [`7aa18eda`](https://github.com/swordev/suid/commit/7aa18edad63b10dbabaeeea5950bc0301fe5ed4d) Thanks [@juanrgm](https://github.com/juanrgm)! - Add controlled date example to the `TextField` component page
+
+- [`34a64c79`](https://github.com/swordev/suid/commit/34a64c79cfcd307b7528381d651d7c5beca35e96) Thanks [@juanrgm](https://github.com/juanrgm)! - Add adornments examples to the `TextField` component page
+
+### Patch Changes
+
+- Updated dependencies [[`0193e0cb`](https://github.com/swordev/suid/commit/0193e0cb9e10731bd5e66a40f8e7c05e4305ce9f), [`577ce092`](https://github.com/swordev/suid/commit/577ce0925ae90091df6edc7772fbfb860bce8016), [`0c960cda`](https://github.com/swordev/suid/commit/0c960cdaba2db17a9bc635bbf51c779d6194cfd2), [`a972607a`](https://github.com/swordev/suid/commit/a972607a69ce03b1e8cff603b3e28e2c1c69b845)]:
+  - @suid/material@0.14.0
+  - @suid/icons-material@0.6.7
+
 ## 0.14.0
 
 ### Minor Changes
