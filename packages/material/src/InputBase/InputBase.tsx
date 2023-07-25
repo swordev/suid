@@ -363,13 +363,6 @@ const InputBase = $.component(function InputBase({
     });
   });
 
-  const valueProp = () =>
-    inputRef.ref instanceof HTMLInputElement
-      ? inputRef.ref.type === "date"
-        ? undefined
-        : value()
-      : value();
-
   createEffect<boolean>((loadDefaultValue) => {
     const input = inputRef.ref as HTMLInputElement;
     if (isControlled || loadDefaultValue) {
@@ -595,7 +588,11 @@ const InputBase = $.component(function InputBase({
             placeholder={props.placeholder}
             readOnly={props.readOnly}
             required={fcs.required}
-            value={valueProp()}
+            {...(props.type !== "date" && {
+              get value() {
+                return value();
+              },
+            })}
             {...({
               rows: props.rows,
             } as any)}
