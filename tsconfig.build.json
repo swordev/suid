@@ -5,6 +5,7 @@
     { "path": "packages/codemod/tsconfig.build.json" },
     { "path": "packages/create-suid/tsconfig.build.json" },
     { "path": "packages/css/tsconfig.build.json" },
+    { "path": "packages/lab/tsconfig.build.json" },
     { "path": "packages/material/tsconfig.build.json" },
     { "path": "packages/styled-engine/tsconfig.build.json" },
     { "path": "packages/system/tsconfig.build.json" },
