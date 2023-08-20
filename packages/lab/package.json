@@ -1,5 +1,5 @@
 {
-  "name": "@suid/material-lab",
+  "name": "@suid/lab",
   "version": "0.0.1",
   "description": "A port of Material-UI (MUI) built with SolidJS.",
   "keywords": [
@@ -10,7 +10,6 @@
     "material",
     "material-ui",
     "material design",
-    "material-lab",
     "ui"
   ],
   "main": "index.jsx",
@@ -22,6 +21,7 @@
   "dependencies": {
     "@suid/base": "workspace:*",
     "@suid/css": "workspace:*",
+    "@suid/material": "workspace:*",
     "@suid/system": "workspace:*",
     "@suid/types": "workspace:*",
     "@suid/utils": "workspace:*",

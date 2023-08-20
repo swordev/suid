@@ -186,6 +186,34 @@ importers:
         version: 1.7.7
     publishDirectory: lib
 
+  packages/lab:
+    dependencies:
+      '@suid/base':
+        specifier: workspace:*
+        version: link:../base/lib
+      '@suid/css':
+        specifier: workspace:*
+        version: link:../css/lib
+      '@suid/material':
+        specifier: workspace:*
+        version: link:../material/lib
+      '@suid/system':
+        specifier: workspace:*
+        version: link:../system/lib
+      '@suid/types':
+        specifier: workspace:*
+        version: link:../types/lib
+      '@suid/utils':
+        specifier: workspace:*
+        version: link:../utils/lib
+      clsx:
+        specifier: ^1.2.1
+        version: 1.2.1
+      solid-js:
+        specifier: ^1.7.7
+        version: 1.7.7
+    publishDirectory: lib
+
   packages/material:
     dependencies:
       '@suid/base':
