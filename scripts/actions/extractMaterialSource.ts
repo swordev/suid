@@ -1,5 +1,5 @@
-import { safeStat } from "./../util/fs";
-import { muiSourcePath } from "./../util/material-ui";
+import { safeStat } from "../util/fs";
+import { muiSourcePath } from "../util/material-ui";
 import { spawn } from "child_process";
 import { dirname } from "path";
 
@@ -11,7 +11,7 @@ async function extractMaterialSource(options: { version: string }) {
     console.log(`[${name}] Source code is already extracted`);
   } else {
     console.log(`[name] Extracting into ${targetPath}`);
-    const p = spawn("7z", ["x", "-y", zipPath, `-o${dirname(targetPath)}`], {
+    const p = spawn("tar", ["-xf", zipPath, "-C", dirname(targetPath)], {
       stdio: "inherit",
     });
     await new Promise<void>((resolve, reject) => {
