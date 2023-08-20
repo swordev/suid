@@ -12,7 +12,9 @@
       "@suid/types": ["./../types/src"],
       "@suid/types/*": ["./../types/src/*"],
       "@suid/utils": ["./../utils/src"],
-      "@suid/utils/*": ["./../utils/src/*"]
+      "@suid/utils/*": ["./../utils/src/*"],
+      "@suid/material": ["./../material/src"],
+      "@suid/material/*": ["./../material/src/*"]
     }
   },
   "exclude": ["src/**/*.test.*"],
@@ -23,6 +25,7 @@
     { "path": "./../css/tsconfig.build.json" },
     { "path": "./../system/tsconfig.build.json" },
     { "path": "./../types/tsconfig.build.json" },
-    { "path": "./../utils/tsconfig.build.json" }
+    { "path": "./../utils/tsconfig.build.json" },
+    { "path": "./../material/tsconfig.build.json" }
   ]
 }
