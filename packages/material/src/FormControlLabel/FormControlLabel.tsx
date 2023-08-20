@@ -11,20 +11,7 @@ import formControlLabelClasses, {
 import createComponentFactory from "@suid/base/createComponentFactory";
 import { InPropsOf } from "@suid/types";
 import clsx from "clsx";
-import {
-  Show,
-  children,
-  createSignal,
-  mergeProps,
-  splitProps,
-  ChildrenReturn,
-  JSX,
-} from "solid-js";
-import {
-  ResolvedChildren,
-  ResolvedJSXElement,
-} from "solid-js/types/reactive/signal";
-import { isServer } from "solid-js/web";
+import { createSignal, mergeProps, splitProps } from "solid-js";
 
 type OwnerState = InPropsOf<FormControlLabelTypeMap> & {
   error?: boolean;
