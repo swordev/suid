@@ -1,0 +1,36 @@
+{
+  "name": "@suid/material-lab",
+  "version": "0.0.1",
+  "description": "A port of Material-UI (MUI) built with SolidJS.",
+  "keywords": [
+    "solid",
+    "solidjs",
+    "components",
+    "mui",
+    "material",
+    "material-ui",
+    "material design",
+    "material-lab",
+    "ui"
+  ],
+  "main": "index.jsx",
+  "scripts": {
+    "build": "tsc --build tsconfig.build.json",
+    "clean": "tsc --build --clean tsconfig.build.json",
+    "watch": "tsc --build -w tsconfig.build.json"
+  },
+  "dependencies": {
+    "@suid/base": "workspace:*",
+    "@suid/css": "workspace:*",
+    "@suid/system": "workspace:*",
+    "@suid/types": "workspace:*",
+    "@suid/utils": "workspace:*",
+    "clsx": "^1.2.1"
+  },
+  "peerDependencies": {
+    "solid-js": "^1.7.7"
+  },
+  "publishConfig": {
+    "directory": "lib"
+  }
+}
