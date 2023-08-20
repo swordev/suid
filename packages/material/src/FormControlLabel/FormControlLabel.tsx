@@ -11,7 +11,20 @@ import formControlLabelClasses, {
 import createComponentFactory from "@suid/base/createComponentFactory";
 import { InPropsOf } from "@suid/types";
 import clsx from "clsx";
-import { Show, children, createSignal, mergeProps, splitProps } from "solid-js";
+import {
+  Show,
+  children,
+  createSignal,
+  mergeProps,
+  splitProps,
+  ChildrenReturn,
+  JSX,
+} from "solid-js";
+import {
+  ResolvedChildren,
+  ResolvedJSXElement,
+} from "solid-js/types/reactive/signal";
+import { isServer } from "solid-js/web";
 
 type OwnerState = InPropsOf<FormControlLabelTypeMap> & {
   error?: boolean;
@@ -146,29 +159,6 @@ const FormControlLabel = $.component(function FormControlLabel({
 
   const classes = $.useClasses(ownerState);
 
-  const isTypography = (v: unknown) =>
-    v instanceof HTMLElement && v.classList.contains(Typography.toString());
-
-  const Label = () => {
-    const label = children(() => props.label);
-    return (
-      <Show
-        when={isTypography(label()) || props.disableTypography}
-        fallback={
-          <Typography
-            component="span"
-            class={classes.label}
-            {...props.componentsProps.typography}
-          >
-            {label()}
-          </Typography>
-        }
-      >
-        {label()}
-      </Show>
-    );
-  };
-
   return (
     <FormControlLabelContext.Provider value={contextProps}>
       <FormControlLabelRoot
@@ -177,7 +167,19 @@ const FormControlLabel = $.component(function FormControlLabel({
         ownerState={ownerState}
       >
         {props.control}
-        <Label />
+        {props.disableTypography ? (
+          props.label
+        ) : (
+          <Typography
+            component="span"
+            class={classes.label}
+            {...(props.componentsProps.typography
+              ? props.componentsProps.typography
+              : {})}
+          >
+            {props.label}
+          </Typography>
+        )}
       </FormControlLabelRoot>
     </FormControlLabelContext.Provider>
   );
