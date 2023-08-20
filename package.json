@@ -2,7 +2,7 @@
   "name": "suid",
   "version": "1.0.0",
   "private": true,
-  "description": "A port of Materia-UI (MUI) built with SolidJS.",
+  "description": "A port of Material-UI (MUI) built with SolidJS.",
   "keywords": [
     "best_ecosystem",
     "components",
