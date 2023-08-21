@@ -16,6 +16,7 @@
     "@suid/base": "workspace:*",
     "@suid/codemod": "workspace:*",
     "@suid/icons-material": "workspace:*",
+    "@suid/lab": "workspace:*",
     "@suid/material": "workspace:*",
     "@suid/system": "workspace:*",
     "@suid/types": "workspace:*",
@@ -37,7 +38,7 @@
     "sass": "^1.62.1",
     "solid-start-node": "^0.2.26",
     "undici": "^5.22.0",
-    "vite": "^4.3.5",
+    "vite": "^4.3.9",
     "vite-plugin-solid": "^2.7.0"
   },
   "publishConfig": {

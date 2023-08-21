@@ -8,12 +8,19 @@ import { styled } from "@suid/material/styles";
 import { InPropsOf } from "@suid/types";
 import { capitalize } from "@suid/utils";
 import clsx from "clsx";
+import { JSXElement } from "solid-js";
 
 type OwnerState = InPropsOf<LoadingButtonTypeMap>;
 
 const $ = createComponentFactory<LoadingButtonTypeMap>()({
   name: "MuiLoadingButton",
-  selfPropNames: ["classes", "loading", "loadingIndicator", "loadingPosition"],
+  selfPropNames: [
+    "classes",
+    "loading",
+    "disabled",
+    "loadingIndicator",
+    "loadingPosition",
+  ],
   utilityClass: getLoadingButtonUtilityClass,
   propDefaults: ({ set }) => {
     return set({
@@ -23,9 +30,7 @@ const $ = createComponentFactory<LoadingButtonTypeMap>()({
       get loading() {
         return false;
       },
-      get loadingIndicator() {
-        return <CircularProgress color="inherit" size={16} /> ?? null;
-      },
+      loadingIndicator: () => <CircularProgress color="inherit" size={16} />,
       loadingPosition: "center",
       variant: "text",
     });
@@ -194,7 +199,7 @@ const LoadingButton = $.component(function LoadingButton({
               class={classes.loadingIndicator}
               ownerState={allProps}
             >
-              {props.loadingIndicator}
+              {props.loadingIndicator as JSXElement}
             </LoadingButtonLoadingIndicator>
           )}
         </>
@@ -205,7 +210,7 @@ const LoadingButton = $.component(function LoadingButton({
               class={classes.loadingIndicator}
               ownerState={allProps}
             >
-              {props.loadingIndicator}
+              {props.loadingIndicator as JSXElement}
             </LoadingButtonLoadingIndicator>
           )}
           {getChildren()}

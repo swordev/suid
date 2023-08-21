@@ -9,7 +9,11 @@ export type LoadingButtonTypeMap<
   D extends ST.ElementType = "button"
 > = {
   name: "MuiLoadingButton";
-  defaultPropNames: "loading" | "loadingIndicator" | "loadingPosition";
+  defaultPropNames:
+    | "loading"
+    | "loadingIndicator"
+    | "loadingPosition"
+    | "disabled";
   selfProps: {
     /**
      * Override or extend the styles applied to the component.
@@ -34,6 +38,12 @@ export type LoadingButtonTypeMap<
     };
 
     /**
+     * If `true` or if `loading`, the component is disabled.
+     * @default false
+     */
+    disabled?: boolean;
+
+    /**
      * If `true`, the loading indicator is shown.
      * @default false
      */
@@ -45,7 +55,7 @@ export type LoadingButtonTypeMap<
      * By default, we render a `CircularProgress` that is labelled by the button itself.
      * @default <CircularProgress color="inherit" size={16} />
      */
-    loadingIndicator?: JSXElement;
+    loadingIndicator?: JSXElement | (() => JSXElement);
 
     /**
      * The loading indicator can be positioned on the start, end, or the center of the button.

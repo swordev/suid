@@ -26,6 +26,9 @@
     "@suid/utils": "workspace:*",
     "clsx": "^1.2.1"
   },
+  "devDependencies": {
+    "solid-testing-library": "^0.5.1"
+  },
   "peerDependencies": {
     "solid-js": "^1.7.7"
   },

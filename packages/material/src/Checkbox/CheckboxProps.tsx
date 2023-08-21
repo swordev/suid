@@ -112,6 +112,7 @@ export interface CheckboxTypeMap<P = {}, D extends ElementType = "div"> {
     /**
      * The value of the component. The DOM API casts this to a string.
      * The browser uses "on" as the default value.
+     * @deprecated Use the `checked` prop instead.
      */
     value?: SwitchBaseProps["value"];
   };
