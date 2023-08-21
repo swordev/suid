@@ -14,6 +14,11 @@ export {
 } from "@suid/system";
 export type { Breakpoint } from "@suid/system";
 export type { BreakpointOverrides } from "@suid/system/createTheme/createBreakpoints";
+export {
+  type Palette,
+  type PaletteOptions,
+  createPalette,
+} from "./createPalette";
 export type { TypographyOptions as TypographyVariantsOptions } from "./createTypography";
 export type { default as StyledProps } from "@suid/system/styledProps";
 export { default as useTheme } from "./useTheme";

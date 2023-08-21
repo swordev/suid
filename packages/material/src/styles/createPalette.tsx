@@ -33,9 +33,11 @@ export type PaletteColorName =
   | "info"
   | "success";
 
-export type Palette = Omit<PaletteOptions, PaletteColorName> & {
+type PaletteBase = Omit<PaletteOptions, PaletteColorName> & {
   [color in PaletteColorName]: PaletteColor;
-} & {
+};
+
+export interface Palette extends PaletteBase {
   getColorObject(name: PaletteColorName): PaletteColor;
   getColor(name: PaletteColorName): string;
   isColorName(name: string): name is PaletteColorName;
@@ -46,9 +48,9 @@ export type Palette = Omit<PaletteOptions, PaletteColorName> & {
     darkShade?: number | string;
   }): PaletteColor;
   getContrastText(color: string): string;
-};
+}
 
-export type PaletteOptions = {
+export interface PaletteOptions {
   mode: "light" | "dark";
   primary: PaletteColorOptions;
   secondary: PaletteColorOptions;
@@ -88,7 +90,7 @@ export type PaletteOptions = {
     activatedOpacity: number;
   };
   grey: typeof grey;
-};
+}
 
 export const useLightOptions: () => Partial<PaletteOptions> = () => ({
   text: {
