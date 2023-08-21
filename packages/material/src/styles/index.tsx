@@ -18,7 +18,6 @@ export type { TypographyOptions as TypographyVariantsOptions } from "./createTyp
 export type { default as StyledProps } from "@suid/system/styledProps";
 export { default as useTheme } from "./useTheme";
 export { default as useThemeProps } from "./useThemeProps";
-export type { ThemeOptions } from "./createTheme";
 export { default as ThemeProvider } from "./ThemeProvider";
 export { default as styled } from "./styled";
 export { createTheme } from "./createTheme";
