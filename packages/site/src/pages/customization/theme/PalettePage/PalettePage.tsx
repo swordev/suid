@@ -1,4 +1,5 @@
 import ComponentInfo from "~/components/ComponentInfo";
+import CustomColorExample from "./CustomColorExample";
 import Example from "./Example";
 
 export default function StyledPage() {
@@ -8,7 +9,7 @@ export default function StyledPage() {
       importInfo={false}
       moreExamples={false}
       docsApiName="customization/palette"
-      examples={[Example]}
+      examples={[Example, CustomColorExample]}
     />
   );
 }
