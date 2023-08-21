@@ -16,6 +16,7 @@
     "@suid/base": "workspace:*",
     "@suid/codemod": "workspace:*",
     "@suid/icons-material": "workspace:*",
+    "@suid/lab": "workspace:*",
     "@suid/material": "workspace:*",
     "@suid/system": "workspace:*",
     "@suid/types": "workspace:*",

@@ -1,4 +1,5 @@
 import { useLocation, Link as RouterLink } from "@solidjs/router";
+import { Science } from "@suid/icons-material";
 import CodeIcon from "@suid/icons-material/Code";
 import EditRoundedIcon from "@suid/icons-material/EditRounded";
 import HandymanIcon from "@suid/icons-material/Handyman";
@@ -280,6 +281,20 @@ export const navConfig: Config[] = [
             createLinkConfig(text, `/components/${toFolder(text)}`)
           )
           .filter((item) => checkComponentPage("components", item.text)),
+      },
+    ],
+  },
+  {
+    type: "section",
+    text: "Laboratory Components",
+    icon: Science,
+    items: [
+      {
+        type: "section",
+        text: "Input",
+        items: ["Loading Button"].map((text) =>
+          createLinkConfig(text, `/lab-components/${toFolder(text)}`)
+        ),
       },
     ],
   },
