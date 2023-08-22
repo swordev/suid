@@ -15,9 +15,10 @@ import createComponentFactory from "@suid/base/createComponentFactory";
 import isHostComponent from "@suid/base/utils/isHostComponent";
 import Dynamic from "@suid/system/Dynamic";
 import createRef from "@suid/system/createRef";
-import { InPropsOf, FocusEventHandler, InputEventHandler } from "@suid/types";
+import { FocusEventHandler, InPropsOf, InputEventHandler } from "@suid/types";
 import clsx from "clsx";
 import {
+  children,
   createEffect,
   createMemo,
   createRenderEffect,
@@ -491,8 +492,9 @@ const InputBase = $.component(function InputBase({
     return mergeProps(inputProps, () => props.componentsProps.input || {});
   });
 
+  const startAdornment = children(() => props.startAdornment);
   createEffect(() => {
-    muiFormControl?.setAdornedStart(Boolean(props.startAdornment));
+    muiFormControl?.setAdornedStart(Boolean(startAdornment()));
   });
 
   const ownerState = mergeProps(allProps, {
@@ -535,11 +537,15 @@ const InputBase = $.component(function InputBase({
 
   const renderSuffixProps = mergeProps(fcs, {
     get startAdornment() {
-      return props.startAdornment;
+      return startAdornment();
     },
   });
 
-  const suffix = createMemo(() => props.renderSuffix?.(renderSuffixProps));
+  const suffix = children(() => {
+    const renderSuffix = props.renderSuffix;
+    if (!renderSuffix) return null;
+    return renderSuffix(renderSuffixProps);
+  });
 
   return (
     <>
@@ -562,7 +568,7 @@ const InputBase = $.component(function InputBase({
         }}
         class={clsx(classes.root, rootProps().class, otherProps.class)}
       >
-        {props.startAdornment}
+        {startAdornment()}
 
         <FormControlContext.Provider value={undefined}>
           <Dynamic

@@ -5,19 +5,20 @@ import ListContext from "../List/ListContext";
 import { listItemIconClasses } from "../ListItemIcon";
 import { listItemTextClasses } from "../ListItemText";
 import styled, { skipRootProps } from "../styles/styled";
-import { getMenuItemUtilityClass } from "./menuItemClasses";
-import menuItemClasses from "./menuItemClasses";
+import menuItemClasses, { getMenuItemUtilityClass } from "./menuItemClasses";
 import createComponentFactory from "@suid/base/createComponentFactory";
 import { alpha } from "@suid/system";
 import createRef from "@suid/system/createRef";
-import { InPropsOf } from "@suid/types";
+import { InPropsOf, PropsOf } from "@suid/types";
 import clsx from "clsx";
 import {
-  useContext,
-  splitProps,
-  mergeProps,
+  createContext,
   createEffect,
+  mergeProps,
+  onCleanup,
+  splitProps,
   untrack,
+  useContext,
 } from "solid-js";
 
 const $ = createComponentFactory<MenuItemTypeMap>()({
@@ -156,6 +157,12 @@ const MenuItemRoot = styled(ButtonBase, {
   }),
 }));
 
+type MenuItemProps = PropsOf<MenuItemTypeMap>;
+
+export const MenuItemParentContext = createContext<{
+  mount: (props: MenuItemProps) => PropsOf<MenuItemTypeMap> | null;
+  cleanup?: (props: MenuItemProps) => void;
+}>();
 /**
  *
  * Demos:
@@ -168,8 +175,20 @@ const MenuItemRoot = styled(ButtonBase, {
  * - inherits [ButtonBase API](https://mui.com/api/button-base/)
  */
 const MenuItem = $.defineComponent(function MenuItem(inProps) {
-  const menuItemRef = createRef<HTMLElement>(inProps);
-  const props = $.useThemeProps({ props: inProps });
+  let processedProps = inProps;
+  // Handle SelectInputContext
+  const selectInputContext = useContext(MenuItemParentContext);
+  if (selectInputContext) {
+    const mountedProps = selectInputContext.mount(inProps);
+    if (!mountedProps) return null;
+    processedProps = mountedProps;
+    onCleanup(
+      () => selectInputContext.cleanup && selectInputContext.cleanup(inProps)
+    );
+  }
+
+  const menuItemRef = createRef<HTMLElement>(processedProps);
+  const props = $.useThemeProps({ props: processedProps });
   const [, other] = splitProps(props, [
     "autoFocus",
     "component",

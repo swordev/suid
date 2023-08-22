@@ -1,36 +1,34 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { isFilled } from "../InputBase/utils";
 import Menu from "../Menu/Menu";
-import MenuItem, { MenuItemTypeMap } from "../MenuItem";
 import {
-  nativeSelectSelectStyles,
+  MenuItemParentContext,
+  MenuItemProps,
+  MenuItemTypeMap,
+} from "../MenuItem";
+import {
   nativeSelectIconStyles,
+  nativeSelectSelectStyles,
 } from "../NativeSelect/NativeSelectInput";
-import { skipRootProps } from "../styles/styled";
-import styled from "../styles/styled";
+import styled, { skipRootProps } from "../styles/styled";
 import useControlled from "../utils/useControlled";
 import { SelectInputTypeMap } from "./SelectInputProps";
 import selectClasses, { getSelectUtilityClasses } from "./selectClasses";
 import createComponentFactory from "@suid/base/createComponentFactory";
 import createRef from "@suid/system/createRef";
-import { inspectChildren, isComponentObject } from "@suid/system/inspect";
 import { EventParam, PropsOf } from "@suid/types";
 import capitalize from "@suid/utils/capitalize";
 import ownerDocument from "@suid/utils/ownerDocument";
 import clsx from "clsx";
 import {
-  createSignal,
+  children,
   createEffect,
+  createMemo,
+  createSignal,
+  JSXElement,
+  mergeProps,
   on,
   splitProps,
-  mergeProps,
-  JSXElement,
-  mapArray,
-  createComponent,
-  onCleanup,
-  createMemo,
 } from "solid-js";
-import { createStore } from "solid-js/store";
 
 type OwnerState = PropsOf<SelectInputTypeMap> & {
   variant: Exclude<SelectInputTypeMap["props"]["variant"], undefined>;
@@ -138,10 +136,6 @@ function areEqualValues(a: unknown, b: unknown): boolean {
 
   // The value could be a number, the DOM will stringify it anyway.
   return String(a) === String(b);
-}
-
-function isEmpty(display: unknown): boolean {
-  return display == null || (typeof display === "string" && !display.trim());
 }
 
 /**
@@ -319,9 +313,7 @@ const SelectInput = $.defineComponent(function SelectInput(props) {
     update(false, event);
   };
 
-  const childrenArray = inspectChildren(() => props.children);
-
-  const selected = (child: { props: PropsOf<MenuItemTypeMap> }) => {
+  const selected = (itemProps: MenuItemProps) => {
     const v = value();
 
     if (props.multiple) {
@@ -331,70 +323,60 @@ const SelectInput = $.defineComponent(function SelectInput(props) {
             "when using the `Select` component with `multiple`."
         );
       }
-      return v.some((v) => areEqualValues(v, child.props.value));
+      return v.some((v) => areEqualValues(v, itemProps.value));
     } else {
-      return areEqualValues(v, child.props.value);
+      return areEqualValues(v, itemProps.value);
     }
   };
 
-  const items = mapArray(childrenArray, (child) => {
-    if (isComponentObject(child, MenuItem)) {
-      setMenuItemProps((prev) => [...prev, child.props]);
-      onCleanup(() =>
-        setMenuItemProps((prev) => prev.filter((v) => v !== child.props))
-      );
-      const isSelected = createMemo(() => selected(child));
+  function mountMenuItem(itemProps: MenuItemProps) {
+    const isSelected = createMemo(() => selected(itemProps));
 
-      const childProps: typeof child.props = mergeProps(child.props, {
-        get "aria-selected"() {
-          return isSelected();
-        },
-        onClick: (event) => handleItemClick(event, childProps, child.props),
-        onKeyUp: (event: EventParam<HTMLLIElement, KeyboardEvent>) => {
-          if (event.key === " ") {
-            // otherwise our MenuItems dispatches a click event
-            // it's not behavior of the native <option> and causes
-            // the select to close immediately since we open on space keydown
-            event.preventDefault();
-          }
+    const childProps: MenuItemProps = mergeProps(itemProps, {
+      get "aria-selected"() {
+        return isSelected();
+      },
+      onClick: (event) => handleItemClick(event, childProps, itemProps),
+      onKeyUp: (event: EventParam<HTMLLIElement, KeyboardEvent>) => {
+        if (event.key === " ") {
+          // otherwise our MenuItems dispatches a click event
+          // it's not behavior of the native <option> and causes
+          // the select to close immediately since we open on space keydown
+          event.preventDefault();
+        }
 
-          if (typeof child.props.onKeyUp === "function") {
-            child.props.onKeyUp(event);
-          }
-        },
-        role: "option",
-        get selected() {
-          return isSelected();
-        },
-        value: undefined, // The value is most likely not a valid HTML attribute.
-        "data-value": child.props.value, // Instead, we provide it as a data attribute.
-      } as PropsOf<MenuItemTypeMap>);
-
-      return createComponent(child.Component, childProps);
-    } else {
-      return isComponentObject(child)
-        ? createComponent(child.Component, child.props)
-        : child;
-    }
-  });
+        if (typeof itemProps.onKeyUp === "function") {
+          itemProps.onKeyUp(event);
+        }
+      },
+      autoFocus: isSelected(),
+      role: "option",
+      get selected() {
+        return isSelected();
+      },
+      value: undefined, // The value is most likely not a valid HTML attribute.
+      "data-value": itemProps.value, // Instead, we provide it as a data attribute.
+    } as MenuItemProps);
+    return childProps;
+  }
 
   // [pending] Support autofill.
   /*const handleChange = (event: SelectChangeEvent<any>) => {
-    const items = childrenArray();
-    const index = items
-      .map((child) => child.props.value)
-      .indexOf(event.target.value);
+      const items = childrenArray();
+      const index = items
+        .map((child) => child.props.value)
+        .indexOf(event.target.value);
 
-    if (index === -1) {
-      return;
-    }
+      if (index === -1) {
+        return;
+      }
 
-    const child = items[index];
-    setValueState(child.props.value);
-    if (props.onChange) {
-      props.onChange(event, event.target);
-    }
-  };*/
+      const child = items[index];
+      setValueState(child.props.value);
+      if (props.onChange) {
+        props.onChange(event, event.target);
+      }
+    };*/
 
   const handleItemClick = (
     event: EventParam<HTMLLIElement, MouseEvent>,
@@ -406,7 +388,7 @@ const SelectInput = $.defineComponent(function SelectInput(props) {
 
     const multiple = props.multiple;
     // We use the tabindex attribute to signal the available options.
-    if (!event.currentTarget!.hasAttribute("tabindex")) {
+    if (!event?.currentTarget?.hasAttribute("tabindex")) {
       return;
     }
 
@@ -486,72 +468,32 @@ const SelectInput = $.defineComponent(function SelectInput(props) {
     }
   };
 
-  const [menuItemProps, setMenuItemProps] = createStore<
-    { value?: any; children?: JSXElement }[]
-  >([]);
-
-  const display = (): JSXElement => {
-    const v = value();
-    if (isFilled({ value: v }) || props.displayEmpty) {
-      if (props.renderValue) {
-        return props.renderValue(v);
-      } else if (props.multiple) {
-        const result: JSXElement[] = [];
-
-        for (const itemProps of menuItemProps) {
-          if (!Array.isArray(v)) {
-            throw new Error(
-              "MUI: The `value` prop must be an array " +
-                "when using the `Select` component with `multiple`."
-            );
-          }
-          if (v.some((v) => areEqualValues(v, itemProps.value)))
-            result.push(itemProps.children);
-        }
-
-        return result.reduce((output, child, index) => {
-          output.push(child);
-          if (index < result.length - 1) {
-            output.push(", ");
-          }
-          return output;
-        }, [] as any[]);
-      } else {
-        for (const itemProps of menuItemProps) {
-          if (areEqualValues(v, itemProps.value)) {
-            return itemProps.children;
-          }
-        }
-      }
-    }
-  };
-
   /*if (process.env.NODE_ENV !== "production") {
-    createEffect(
-      on(
-        () => [foundMatch, items(), props.multiple, props.name, value()],
-        () => {
-          if (!foundMatch && !props.multiple && value() !== "") {
-            const values = items().filter((child => isComponentObject(child, MenuItem)).map((child) => child.props.value);
-            console.warn(
-              [
-                `MUI: You have provided an out-of-range value \`${value}\` for the select ${
-                  props.name ? `(name="${props.name}") ` : ""
-                }component.`,
-                "Consider providing a value that matches one of the available options or ''.",
-                `The available values are ${
-                  values
-                    .filter((x) => x != null)
-                    .map((x) => `\`${x}\``)
-                    .join(", ") || '""'
-                }.`,
-              ].join("\n")
-            );
+      createEffect(
+        on(
+          () => [foundMatch, items(), props.multiple, props.name, value()],
+          () => {
+            if (!foundMatch && !props.multiple && value() !== "") {
+              const values = items().filter((child => isComponentObject(child, MenuItem)).map((child) => child.props.value);
+              console.warn(
+                [
+                  `MUI: You have provided an out-of-range value \`${value}\` for the select ${
+                    props.name ? `(name="${props.name}") ` : ""
+                  }component.`,
+                  "Consider providing a value that matches one of the available options or ''.",
+                  `The available values are ${
+                    values
+                      .filter((x) => x != null)
+                      .map((x) => `\`${x}\``)
+                      .join(", ") || '""'
+                  }.`,
+                ].join("\n")
+              );
+            }
           }
-        }
-      )
-    );
-  }*/
+        )
+      );
+    }*/
 
   // Avoid performing a layout computation in the render method.
   const menuMinWidth = () => {
@@ -621,14 +563,43 @@ const SelectInput = $.defineComponent(function SelectInput(props) {
   };
 
   const displayValue = () => {
-    const v = display();
+    const currentValue = value();
+    let result: JSXElement = null;
+    if (isFilled({ value: currentValue }) || props.displayEmpty) {
+      if (props.renderValue) return props.renderValue(currentValue);
+      else {
+        // hacky but ssr compatible way to get the children of the menu items
+        result = [];
+        children(() => (
+          <MenuItemParentContext.Provider
+            value={{
+              mount: (itemProps) => {
+                if (
+                  props.multiple
+                    ? currentValue.some((v: any) =>
+                        areEqualValues(v, itemProps.value)
+                      )
+                    : areEqualValues(currentValue, itemProps.value)
+                )
+                  (result as JSXElement[]).push(itemProps.children);
+                return null;
+              },
+            }}
+          >
+            {props.children}
+          </MenuItemParentContext.Provider>
+        ));
+      }
+    }
+
+    if (result) {
+      if (Array.isArray(result)) {
+        if (result.length > 0) return result.join(", ");
+      } else return result;
+    }
+
     /* So the vertical align positioning algorithm kicks in.*/
-    return isEmpty(v) ? (
-      // notranslate needed while Google Translate will not fix zero-width space issue
-      <span class="notranslate">&#8203;</span>
-    ) : (
-      v
-    );
+    return <span class="notranslate">&#8203;</span>;
   };
 
   return (
@@ -686,27 +657,29 @@ const SelectInput = $.defineComponent(function SelectInput(props) {
         class={classes.icon}
         ownerState={ownerState}
       />
-      <Menu
-        id={`menu-${props.name || ""}`}
-        anchorEl={displayNode()}
-        open={open()}
-        onClose={handleClose}
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "center",
-        }}
-        transformOrigin={{
-          vertical: "top",
-          horizontal: "center",
-        }}
-        {...baseProps.MenuProps}
-        MenuListProps={MenuListProps}
-        PaperProps={PaperProps}
-      >
-        {items() as any}
-      </Menu>
+      <MenuItemParentContext.Provider value={{ mount: mountMenuItem }}>
+        <Menu
+          id={`menu-${props.name || ""}`}
+          anchorEl={displayNode()}
+          open={open()}
+          onClose={handleClose}
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "center",
+          }}
+          transformOrigin={{
+            vertical: "top",
+            horizontal: "center",
+          }}
+          autoFocus={false}
+          {...baseProps.MenuProps}
+          MenuListProps={MenuListProps}
+          PaperProps={PaperProps}
+        >
+          {props.children}
+        </Menu>
+      </MenuItemParentContext.Provider>
     </>
   );
 });
-
 export default SelectInput;

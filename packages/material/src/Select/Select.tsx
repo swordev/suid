@@ -6,8 +6,7 @@ import Input from "../Input";
 import NativeSelectInput from "../NativeSelect/NativeSelectInput";
 import OutlinedInput from "../OutlinedInput";
 import ArrowDropDownIcon from "../internal/svg-icons/ArrowDropDown";
-import { skipRootProps } from "../styles/styled";
-import styled from "../styles/styled";
+import styled, { skipRootProps } from "../styles/styled";
 import SelectInput from "./SelectInput";
 import createComponentFactory from "@suid/base/createComponentFactory";
 import Dynamic from "@suid/system/Dynamic";
@@ -15,7 +14,7 @@ import { StyledOptions } from "@suid/system/createStyled";
 import { inspectChildren, isComponentObject } from "@suid/system/inspect";
 import { DefaultComponentProps } from "@suid/types";
 import { deepmerge } from "@suid/utils";
-import { splitProps, mergeProps, JSX } from "solid-js";
+import { JSX, mergeProps, splitProps } from "solid-js";
 
 const $ = createComponentFactory<SelectTypeMap>()({
   name: "MuiSelect",
@@ -182,7 +181,7 @@ const Select = $.defineComponent(function Select(inProps) {
               ...props.SelectDisplayProps,
             },
           },
-    () => props.inputProps,
+    () => props.inputProps || {},
     {
       get classes() {
         return props.inputProps
@@ -190,13 +189,13 @@ const Select = $.defineComponent(function Select(inProps) {
           : classes;
       },
     },
-    () => inputElement()?.props?.inputProps
+    () => inputElement()?.props?.inputProps || {}
   );
 
   return (
     <Dynamic
       $component={InputComponent()}
-      {...inputElement()?.props}
+      {...(inputElement()?.props || {})}
       inputComponent={inputComponent()}
       inputProps={inputProps}
       notched={

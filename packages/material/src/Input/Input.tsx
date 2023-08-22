@@ -1,10 +1,10 @@
 import InputBase from "../InputBase";
 import {
-  rootOverridesResolver as inputBaseRootOverridesResolver,
-  inputOverridesResolver as inputBaseInputOverridesResolver,
-  InputBaseRoot,
   InputBaseComponent as InputBaseInput,
+  InputBaseRoot,
+  inputOverridesResolver as inputBaseInputOverridesResolver,
   OwnerState as InputBaseOwnerState,
+  rootOverridesResolver as inputBaseRootOverridesResolver,
 } from "../InputBase/InputBase";
 import styled, { skipRootProps } from "../styles/styled";
 import { InputTypeMap } from "./InputProps";
@@ -123,6 +123,7 @@ const Input = $.component(function Input({ classes, otherProps, props }) {
       ? deepmerge(otherProps.componentsProps, inputComponentsProps)
       : inputComponentsProps;
   });
+
   const allClasses = mergeProps(classes, () => props.classes || {});
   return (
     <InputBase
