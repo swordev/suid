@@ -8,7 +8,7 @@ import createComponentFactory from "@suid/base/createComponentFactory";
 import { alpha } from "@suid/system";
 import createElementRef from "@suid/system/createElementRef";
 import { redefine } from "@suid/system/createStyled";
-import { EventParam } from "@suid/types";
+import { EventParam, InPropsOf } from "@suid/types";
 import { addElementClass, isElement } from "@suid/utils";
 import clsx from "clsx";
 import {
@@ -20,7 +20,15 @@ import {
   onMount,
 } from "solid-js";
 
-const $ = createComponentFactory<ChipTypeMap>()({
+type OwnerState = Pick<
+  InPropsOf<ChipTypeMap>,
+  "variant" | "disabled" | "size" | "color"
+> & {
+  onDelete: boolean;
+  clickable: boolean;
+};
+
+const $ = createComponentFactory<ChipTypeMap, OwnerState>()({
   name: "MuiChip",
   propDefaults: ({ set }) =>
     set({
@@ -121,7 +129,7 @@ const ChipRoot = styled("div", {
       variant === "outlined" && styles[`outlined${capitalize(color)}`],
     ];
   },
-})(
+})<OwnerState>(
   ({ theme, ownerState }) => {
     const deleteIconColor = alpha(theme.palette.text.primary, 0.26);
 
@@ -193,6 +201,7 @@ const ChipRoot = styled("div", {
           color: "inherit",
         }),
       },
+      "--xxxxx": `& .${chipClasses.deleteIcon}`,
       [`& .${chipClasses.deleteIcon}`]: {
         WebkitTapHighlightColor: "transparent",
         color: deleteIconColor,
@@ -402,7 +411,7 @@ const Chip = $.component(function Chip({
   };
 
   const clickable = () =>
-    props.clickable !== false && otherProps.onClick ? true : props.clickable;
+    props.clickable !== false && otherProps.onClick ? true : !!props.clickable;
 
   const component = () =>
     clickable() || props.onDelete ? ButtonBase : otherProps.component || "div";
@@ -481,6 +490,27 @@ const Chip = $.component(function Chip({
 
   const $ChipRoot = redefine(ChipRoot, "input", "div");
 
+  const ownerState: OwnerState = {
+    get color() {
+      return props.color;
+    },
+    get disabled() {
+      return props.disabled;
+    },
+    get size() {
+      return props.size;
+    },
+    get variant() {
+      return props.variant;
+    },
+    get onDelete() {
+      return !!props.onDelete;
+    },
+    get clickable() {
+      return clickable();
+    },
+  };
+
   return (
     <$ChipRoot
       as={component()}
@@ -490,7 +520,7 @@ const Chip = $.component(function Chip({
       onKeyDown={handleKeyDown}
       onKeyUp={handleKeyUp}
       ref={element}
-      ownerState={allProps}
+      ownerState={ownerState}
       {...moreProps()}
       {...otherProps}
     >
