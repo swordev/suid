@@ -216,7 +216,7 @@ const Select = $.defineComponent(function Select(inProps) {
   <V = any>(
     props: DefaultComponentProps<SelectTypeMap<{}, "div", V>>
   ): JSX.Element;
-  _suid: true;
+  __suid: string;
 };
 
 export default Select;
