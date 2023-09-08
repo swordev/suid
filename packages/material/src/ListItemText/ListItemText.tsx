@@ -8,6 +8,7 @@ import listItemTextClasses, {
 } from "./listItemTextClasses";
 import createComponentFactory from "@suid/base/createComponentFactory";
 import { InPropsOf } from "@suid/types";
+import { isSuidElement } from "@suid/utils";
 import clsx from "clsx";
 import { Show, children, createMemo, mergeProps, splitProps } from "solid-js";
 
@@ -119,9 +120,6 @@ const ListItemText = $.defineComponent(function ListItemText(inProps) {
   ]);
 
   const isDefined = (v: unknown) => v !== undefined && v !== null;
-  const isTypography = (v: unknown) =>
-    v instanceof HTMLElement && v.classList.contains(Typography.toString());
-
   const Primary = () => {
     const $primary = children(() => primary() ?? props.children);
     // [non-reactive root]
@@ -131,7 +129,7 @@ const ListItemText = $.defineComponent(function ListItemText(inProps) {
       <Show
         when={
           isDefined($primary()) &&
-          !isTypography($primary()) &&
+          !isSuidElement($primary(), Typography) &&
           !props.disableTypography
         }
         fallback={$primary()}
@@ -156,7 +154,7 @@ const ListItemText = $.defineComponent(function ListItemText(inProps) {
       <Show
         when={
           isDefined(secondary()) &&
-          !isTypography(secondary()) &&
+          !isSuidElement(secondary(), Typography) &&
           !props.disableTypography
         }
         fallback={secondary()}

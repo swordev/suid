@@ -5,6 +5,7 @@ import cardHeaderClasses, {
   getCardHeaderUtilityClass,
 } from "./cardHeaderClasses";
 import createComponentFactory from "@suid/base/createComponentFactory";
+import { isSuidElement } from "@suid/utils";
 import clsx from "clsx";
 import { children, Show } from "solid-js";
 
@@ -96,9 +97,6 @@ const CardHeader = $.component(function CardHeader({
   otherProps,
   props,
 }) {
-  const isTypography = (v: unknown) =>
-    v instanceof HTMLElement && v.classList.contains(Typography.toString());
-
   const avatar = children(() => props.avatar);
 
   const Avatar = () => {
@@ -117,7 +115,7 @@ const CardHeader = $.component(function CardHeader({
       <Show
         when={
           title() !== undefined &&
-          !isTypography(title()) &&
+          !isSuidElement(title(), Typography) &&
           !props.disableTypography
         }
         fallback={title()}
@@ -141,7 +139,7 @@ const CardHeader = $.component(function CardHeader({
       <Show
         when={
           subheader() !== undefined &&
-          !isTypography(subheader()) &&
+          !isSuidElement(subheader(), Typography) &&
           !props.disableTypography
         }
         fallback={subheader()}

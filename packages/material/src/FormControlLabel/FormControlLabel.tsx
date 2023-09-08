@@ -10,6 +10,7 @@ import formControlLabelClasses, {
 } from "./formControlLabelClasses";
 import createComponentFactory from "@suid/base/createComponentFactory";
 import { InPropsOf } from "@suid/types";
+import { isSuidElement } from "@suid/utils";
 import clsx from "clsx";
 import { Show, children, createSignal, mergeProps, splitProps } from "solid-js";
 
@@ -146,14 +147,11 @@ const FormControlLabel = $.component(function FormControlLabel({
 
   const classes = $.useClasses(ownerState);
 
-  const isTypography = (v: unknown) =>
-    v instanceof HTMLElement && v.classList.contains(Typography.toString());
-
   const Label = () => {
     const label = children(() => props.label);
     return (
       <Show
-        when={isTypography(label()) || props.disableTypography}
+        when={isSuidElement(label(), Typography) || props.disableTypography}
         fallback={
           <Typography
             component="span"

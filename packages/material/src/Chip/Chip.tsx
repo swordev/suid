@@ -9,8 +9,16 @@ import { alpha } from "@suid/system";
 import createElementRef from "@suid/system/createElementRef";
 import { redefine } from "@suid/system/createStyled";
 import { EventParam } from "@suid/types";
+import { addElementClass, isElement } from "@suid/utils";
 import clsx from "clsx";
-import { children, createMemo } from "solid-js";
+import {
+  Show,
+  children,
+  createEffect,
+  createMemo,
+  createRenderEffect,
+  onMount,
+} from "solid-js";
 
 const $ = createComponentFactory<ChipTypeMap>()({
   name: "MuiChip",
@@ -409,56 +417,67 @@ const Chip = $.component(function Chip({
       : {}
   );
 
-  const deleteIcon = createMemo(() => {
-    if (!props.onDelete) return undefined;
-    const node = children(() => props.deleteIcon)();
-    if (node && node instanceof Element) {
-      node.setAttribute(
-        "class",
-        clsx(node.getAttribute("class"), classes.deleteIcon)
-      );
-      if (node instanceof SVGElement || node instanceof HTMLElement)
-        node.onclick = handleDeleteIconClick;
-    } else {
-      return (
-        <CancelIcon
-          class={classes.deleteIcon}
-          onClick={handleDeleteIconClick}
-        />
-      );
+  const deleteIcon = children(() => props.deleteIcon);
+  const avatar = children(() => props.avatar);
+  const icon = children(() => props.icon);
+
+  const DeleteIcon = () => {
+    createRenderEffect(() => {
+      const element = deleteIcon();
+      if (isElement(element)) {
+        addElementClass(element, classes.deleteIcon);
+      }
+    });
+
+    onMount(() => {
+      const element = deleteIcon();
+      if (element instanceof SVGElement || element instanceof HTMLElement)
+        element.onclick = handleDeleteIconClick;
+    });
+
+    return (
+      <Show when={props.onDelete}>
+        <Show
+          when={isElement(deleteIcon())}
+          fallback={
+            <CancelIcon
+              class={classes.deleteIcon}
+              onClick={handleDeleteIconClick}
+            />
+          }
+        >
+          {deleteIcon()}
+        </Show>
+      </Show>
+    );
+  };
+
+  const Avatar = () => {
+    createRenderEffect(() => {
+      const element = avatar();
+      if (isElement(element)) addElementClass(element, classes.avatar);
+    });
+    return <>{avatar()}</>;
+  };
+
+  const Icon = () => {
+    createRenderEffect(() => {
+      const element = icon();
+      if (isElement(element)) addElementClass(element, classes.icon);
+    });
+    return <>{icon()}</>;
+  };
+
+  createEffect(() => {
+    if (process.env.NODE_ENV !== "production") {
+      if (avatar() && Icon()) {
+        console.error(
+          "MUI: The Chip component can not handle the avatar " +
+            "and the icon prop at the same time. Pick one."
+        );
+      }
     }
   });
-
-  const avatar = createMemo(() => {
-    const node = children(() => props.avatar)();
-    if (node && node instanceof Element) {
-      node.setAttribute(
-        "class",
-        clsx(node.getAttribute("class"), classes.avatar)
-      );
-    }
-    return node;
-  });
-
-  const icon = createMemo(() => {
-    const node = children(() => props.icon)();
-    if (node && node instanceof Element) {
-      node.setAttribute(
-        "class",
-        clsx(node.getAttribute("class"), classes.icon)
-      );
-    }
-    return node;
-  });
-
-  if (process.env.NODE_ENV !== "production") {
-    if (avatar() && icon()) {
-      console.error(
-        "MUI: The Chip component can not handle the avatar " +
-          "and the icon prop at the same time. Pick one."
-      );
-    }
-  }
 
   const $ChipRoot = redefine(ChipRoot, "input", "div");
 
@@ -475,11 +494,13 @@ const Chip = $.component(function Chip({
       {...moreProps()}
       {...otherProps}
     >
-      {avatar() || icon()}
+      <Show when={avatar()} fallback={<Icon />}>
+        <Avatar />
+      </Show>
       <ChipLabel class={clsx(classes.label)} ownerState={allProps}>
         {props.label}
       </ChipLabel>
-      {deleteIcon()}
+      <DeleteIcon />
     </$ChipRoot>
   );
 });
