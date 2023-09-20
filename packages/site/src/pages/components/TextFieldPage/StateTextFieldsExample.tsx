@@ -11,6 +11,7 @@ function capitalizeWords(value: string) {
 export default function StateTextFields() {
   const [name, setName] = createSignal(capitalizeWords("Cat in the Hat"));
   const [date, setDate] = createSignal("");
+  const [number, setNumber] = createSignal("0");
   return (
     <Box
       component="form"
@@ -51,6 +52,16 @@ export default function StateTextFields() {
           InputLabelProps={{ shrink: true }}
           defaultValue="2000-01-01"
         />
+      </div>
+      <div>
+        <TextField
+          label="Controlled number"
+          type="number"
+          value={number()}
+          onChange={(event, value) => setNumber(value)}
+          helperText={number()}
+        />
+        <TextField label="Uncontrolled number" type="number" defaultValue="0" />
       </div>
     </Box>
   );
