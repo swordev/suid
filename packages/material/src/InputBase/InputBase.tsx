@@ -309,12 +309,16 @@ const InputBase = $.component(function InputBase({
       | undefined;
 
   const isControlled = (inputValue() ?? null) !== null;
+  const attrValueOnBlur = () =>
+    inputRef.ref.type === "date" || inputRef.ref.type === "number";
 
   const [value, setValue] = useControlled({
     controlled: () => inputValue(),
     default: () => props.defaultValue as any as string,
     name: "InputBase",
   });
+
+  const initialValue = value();
 
   const inputRef = createRef<HTMLInputElement | HTMLTextAreaElement>({
     ref: (instance: HTMLInputElement | HTMLTextAreaElement) => {
@@ -338,6 +342,13 @@ const InputBase = $.component(function InputBase({
 
   onMount(() => {
     const isElement = inputRef.ref instanceof HTMLElement;
+    if (isControlled)
+      inputRef.ref.addEventListener("blur", () => {
+        if (attrValueOnBlur()) {
+          inputRef.ref.setAttribute("value", value() ?? "");
+        }
+      });
+
     inputRef.ref.addEventListener("input", (event) => {
       const nodeValue = inputRef.ref.value;
       if (isElement) {
@@ -371,13 +382,13 @@ const InputBase = $.component(function InputBase({
       const isInputObject = !((input as any) instanceof HTMLElement);
       if (isInputObject) {
         if (v !== input.value) input.value = v as any;
-      } else if (typeof v === "string") {
+      } else if (typeof v === "string" || typeof v === "number") {
         if (input instanceof HTMLTextAreaElement) {
           input.innerText = v;
-        } else {
+        } else if (!attrValueOnBlur()) {
           input.setAttribute("value", v);
         }
-        if (input.type === "date") {
+        if (attrValueOnBlur()) {
           if (v !== input.value) input.value = v;
         } else {
           const type = input.type ?? "text";
@@ -588,11 +599,7 @@ const InputBase = $.component(function InputBase({
             placeholder={props.placeholder}
             readOnly={props.readOnly}
             required={fcs.required}
-            {...(props.type !== "date" && {
-              get value() {
-                return value();
-              },
-            })}
+            value={initialValue}
             {...({
               rows: props.rows,
             } as any)}
