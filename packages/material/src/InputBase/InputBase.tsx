@@ -320,6 +320,9 @@ const InputBase = $.component(function InputBase({
 
   const initialValue = value();
 
+  const attrValue = () =>
+    typeof InputComponent() === "string" ? initialValue : value();
+
   const inputRef = createRef<HTMLInputElement | HTMLTextAreaElement>({
     ref: (instance: HTMLInputElement | HTMLTextAreaElement) => {
       if (process.env.NODE_ENV !== "production") {
@@ -599,7 +602,7 @@ const InputBase = $.component(function InputBase({
             placeholder={props.placeholder}
             readOnly={props.readOnly}
             required={fcs.required}
-            value={initialValue}
+            value={attrValue()}
             {...({
               rows: props.rows,
             } as any)}
