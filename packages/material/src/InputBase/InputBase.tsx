@@ -345,7 +345,7 @@ const InputBase = $.component(function InputBase({
 
   onMount(() => {
     const isElement = inputRef.ref instanceof HTMLElement;
-    if (isControlled)
+    if (isControlled && isElement)
       inputRef.ref.addEventListener("blur", () => {
         if (attrValueOnBlur()) {
           inputRef.ref.setAttribute("value", value() ?? "");
