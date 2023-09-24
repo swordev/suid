@@ -8,12 +8,12 @@
     "p-limit": "^4.0.0"
   },
   "devDependencies": {
-    "@tsconfig/node18": "^2.0.0",
-    "@types/node": "^18.16.6",
+    "@tsconfig/node18": "^18.2.2",
+    "@types/node": "^18.17.19",
     "@types/prettier": "^2.7.2",
     "json5": "^2.2.3",
-    "node-html-parser": "^6.1.5",
+    "node-html-parser": "^6.1.10",
     "prettier": "^2.8.8",
-    "typescript": "^5.1.5"
+    "typescript": "^5.2.2"
   }
 }

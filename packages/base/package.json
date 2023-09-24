@@ -17,12 +17,12 @@
     "watch": "tsc --build -w tsconfig.build.json"
   },
   "dependencies": {
-    "@popperjs/core": "^2.11.7",
+    "@popperjs/core": "^2.11.8",
     "@suid/css": "workspace:*",
     "@suid/system": "workspace:*",
     "@suid/types": "workspace:*",
     "@suid/utils": "workspace:*",
-    "clsx": "^1.2.1"
+    "clsx": "^2.0.0"
   },
   "peerDependencies": {
     "solid-js": "^1.7.7"

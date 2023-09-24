@@ -14,8 +14,8 @@
     "watch": "tsc --build -w tsconfig.build.json"
   },
   "dependencies": {
-    "chalk": "^5.2.0",
-    "inquirer": "^9.2.2"
+    "chalk": "^5.3.0",
+    "inquirer": "^9.2.11"
   },
   "devDependencies": {
     "@types/inquirer": "^9.0.3"

@@ -20,7 +20,7 @@
     "@suid/styled-engine": "workspace:*",
     "@suid/types": "workspace:*",
     "@suid/utils": "workspace:*",
-    "clsx": "^1.2.1",
+    "clsx": "^2.0.0",
     "csstype": "^3.1.2"
   },
   "peerDependencies": {
