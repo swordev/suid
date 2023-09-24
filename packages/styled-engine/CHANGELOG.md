@@ -1,5 +1,14 @@
 # @suid/styled-engine
 
+## 0.6.1
+
+### Patch Changes
+
+- [`9b043f40`](https://github.com/swordev/suid/commit/9b043f40c2623a9758289b88b2f76874daea135f) Thanks [@juanrgm](https://github.com/juanrgm)! - Update to SolidJS v1.7.12
+
+- Updated dependencies [[`9b043f40`](https://github.com/swordev/suid/commit/9b043f40c2623a9758289b88b2f76874daea135f), [`3c40913a`](https://github.com/swordev/suid/commit/3c40913aa6106c3c96ebfef7ab2e552e86e93f60)]:
+  - @suid/utils@0.8.0
+
 ## 0.6.0
 
 ### Minor Changes

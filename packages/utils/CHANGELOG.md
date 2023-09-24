@@ -1,5 +1,18 @@
 # @suid/utils
 
+## 0.8.0
+
+### Minor Changes
+
+- [`3c40913a`](https://github.com/swordev/suid/commit/3c40913aa6106c3c96ebfef7ab2e552e86e93f60) Thanks [@juanrgm](https://github.com/juanrgm)! - Add HTML utilities to support SSR mode
+
+### Patch Changes
+
+- [`9b043f40`](https://github.com/swordev/suid/commit/9b043f40c2623a9758289b88b2f76874daea135f) Thanks [@juanrgm](https://github.com/juanrgm)! - Update to SolidJS v1.7.12
+
+- Updated dependencies [[`9b043f40`](https://github.com/swordev/suid/commit/9b043f40c2623a9758289b88b2f76874daea135f), [`3d44a9c5`](https://github.com/swordev/suid/commit/3d44a9c5d8d36d6bba5648ff2bdee6afa0e44297)]:
+  - @suid/types@0.5.3
+
 ## 0.7.3
 
 ### Patch Changes

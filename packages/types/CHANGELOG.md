@@ -1,5 +1,13 @@
 # @suid/types
 
+## 0.5.3
+
+### Patch Changes
+
+- [`9b043f40`](https://github.com/swordev/suid/commit/9b043f40c2623a9758289b88b2f76874daea135f) Thanks [@juanrgm](https://github.com/juanrgm)! - Update to SolidJS v1.7.12
+
+- [`3d44a9c5`](https://github.com/swordev/suid/commit/3d44a9c5d8d36d6bba5648ff2bdee6afa0e44297) Thanks [@juanrgm](https://github.com/juanrgm)! - Change internal type
+
 ## 0.5.2
 
 ### Patch Changes
