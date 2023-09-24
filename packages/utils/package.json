@@ -1,6 +1,6 @@
 {
   "name": "@suid/utils",
-  "version": "0.7.3",
+  "version": "0.8.0",
   "description": "Utils used by suid packages.",
   "keywords": [
     "utils"

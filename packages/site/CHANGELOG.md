@@ -1,5 +1,30 @@
 # @suid/site
 
+## 0.16.0
+
+### Minor Changes
+
+- [`65da252f`](https://github.com/swordev/suid/commit/65da252fadfec2213e72a8814ef40fa6ed00e31d) Thanks [@juanrgm](https://github.com/juanrgm)! - Add custom color example to palette page
+
+- [`3bab1536`](https://github.com/swordev/suid/commit/3bab1536e75159a5d690bf61b57e2f95752e1f84) Thanks [@juanrgm](https://github.com/juanrgm)! - Add custom icon example to `Chip` page
+
+- [`ba2f597c`](https://github.com/swordev/suid/commit/ba2f597c324f0448901a2d637cb2cb933435219a) Thanks [@juanrgm](https://github.com/juanrgm)! - Add numeric input example to the TextField component page
+
+### Patch Changes
+
+- [`572bcd33`](https://github.com/swordev/suid/commit/572bcd337ee810a091aa8972753739082ec93ee0) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
+- [`9b043f40`](https://github.com/swordev/suid/commit/9b043f40c2623a9758289b88b2f76874daea135f) Thanks [@juanrgm](https://github.com/juanrgm)! - Update to SolidJS v1.7.12
+
+- Updated dependencies [[`50efc47b`](https://github.com/swordev/suid/commit/50efc47b6ecc3103074619eca8a08e8bf2a3d5be), [`572bcd33`](https://github.com/swordev/suid/commit/572bcd337ee810a091aa8972753739082ec93ee0), [`836f56dd`](https://github.com/swordev/suid/commit/836f56ddf9fc7925cec89c700371b7c9f2596895), [`323b2506`](https://github.com/swordev/suid/commit/323b25065a2fd290a1fe331857cef6aef285d990), [`bf385d2d`](https://github.com/swordev/suid/commit/bf385d2df99dc9014ca1011aad3e217d12868472), [`9b043f40`](https://github.com/swordev/suid/commit/9b043f40c2623a9758289b88b2f76874daea135f), [`3d44a9c5`](https://github.com/swordev/suid/commit/3d44a9c5d8d36d6bba5648ff2bdee6afa0e44297), [`3c40913a`](https://github.com/swordev/suid/commit/3c40913aa6106c3c96ebfef7ab2e552e86e93f60)]:
+  - @suid/material@0.15.0
+  - @suid/codemod@0.9.6
+  - @suid/system@0.10.5
+  - @suid/base@0.8.5
+  - @suid/icons-material@0.6.10
+  - @suid/types@0.5.3
+  - @suid/utils@0.8.0
+
 ## 0.15.2
 
 ### Patch Changes

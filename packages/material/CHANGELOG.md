@@ -1,5 +1,31 @@
 # @suid/material
 
+## 0.15.0
+
+### Minor Changes
+
+- [`836f56dd`](https://github.com/swordev/suid/commit/836f56ddf9fc7925cec89c700371b7c9f2596895) Thanks [@juanrgm](https://github.com/juanrgm)! - Add SSR support to `Chip`, `CardHeader`, `FormControlLabel` and `ListItemText`
+
+- [`323b2506`](https://github.com/swordev/suid/commit/323b25065a2fd290a1fe331857cef6aef285d990) Thanks [@juanrgm](https://github.com/juanrgm)! - Allow palette override
+
+### Patch Changes
+
+- [`50efc47b`](https://github.com/swordev/suid/commit/50efc47b6ecc3103074619eca8a08e8bf2a3d5be) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix `InputBase` component with number type (decimal values)
+
+- [`572bcd33`](https://github.com/swordev/suid/commit/572bcd337ee810a091aa8972753739082ec93ee0) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
+- [`bf385d2d`](https://github.com/swordev/suid/commit/bf385d2df99dc9014ca1011aad3e217d12868472) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix clickable style in `Chip`
+
+- [`9b043f40`](https://github.com/swordev/suid/commit/9b043f40c2623a9758289b88b2f76874daea135f) Thanks [@juanrgm](https://github.com/juanrgm)! - Update to SolidJS v1.7.12
+
+- [`3d44a9c5`](https://github.com/swordev/suid/commit/3d44a9c5d8d36d6bba5648ff2bdee6afa0e44297) Thanks [@juanrgm](https://github.com/juanrgm)! - Change internal type
+
+- Updated dependencies [[`572bcd33`](https://github.com/swordev/suid/commit/572bcd337ee810a091aa8972753739082ec93ee0), [`9b043f40`](https://github.com/swordev/suid/commit/9b043f40c2623a9758289b88b2f76874daea135f), [`3d44a9c5`](https://github.com/swordev/suid/commit/3d44a9c5d8d36d6bba5648ff2bdee6afa0e44297), [`3c40913a`](https://github.com/swordev/suid/commit/3c40913aa6106c3c96ebfef7ab2e552e86e93f60)]:
+  - @suid/system@0.10.5
+  - @suid/base@0.8.5
+  - @suid/types@0.5.3
+  - @suid/utils@0.8.0
+
 ## 0.14.2
 
 ### Patch Changes
