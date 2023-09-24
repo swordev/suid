@@ -13,7 +13,7 @@
     "@types/prettier": "^2.7.2",
     "json5": "^2.2.3",
     "node-html-parser": "^6.1.10",
-    "prettier": "^2.8.8",
+    "prettier": "^3.0.3",
     "typescript": "^5.2.2"
   }
 }

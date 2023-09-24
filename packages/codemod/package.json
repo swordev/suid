@@ -23,7 +23,7 @@
     "commander": "^9.5.0",
     "fast-glob": "^3.3.1",
     "micromatch": "^4.0.5",
-    "prettier": "^2.8.8",
+    "prettier": "^3.0.3",
     "ts-morph": "^17.0.1"
   },
   "devDependencies": {

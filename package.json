@@ -62,7 +62,7 @@
     "test": "vitest run",
     "test:types": "vitest typecheck --run",
     "update:deps": "ncu",
-    "update:prettier-deps": "ncu @trivago/prettier-plugin-sort-imports,prettier-plugin-packagejson,prettier-plugin-sort-json",
+    "update:prettier-deps": "ncu prettier,@trivago/prettier-plugin-sort-imports,prettier-plugin-packagejson,prettier-plugin-sort-json",
     "update:solid-deps": "ncu @solidjs/meta,@solidjs/router,babel-preset-solid,solid-js,solid-start,solid-start-node,solid-testing-library",
     "update:vite-deps": "ncu vite,vitest",
     "watch": "tsc --build tsconfig.build.json -w"
@@ -72,7 +72,7 @@
     "@babel/preset-env": "^7.22.20",
     "@changesets/changelog-github": "^0.4.8",
     "@changesets/cli": "^2.26.2",
-    "@trivago/prettier-plugin-sort-imports": "^4.1.1",
+    "@trivago/prettier-plugin-sort-imports": "^4.2.0",
     "@types/node": "^18.17.19",
     "@typescript-eslint/eslint-plugin": "^6.7.2",
     "@typescript-eslint/parser": "^6.7.2",
@@ -90,9 +90,9 @@
     "husky": "^8.0.3",
     "jsdom": "^22.0.0",
     "npm-check-updates": "^16.14.4",
-    "prettier": "^2.8.8",
-    "prettier-plugin-packagejson": "^2.4.3",
-    "prettier-plugin-sort-json": "^1.0.0",
+    "prettier": "^3.0.3",
+    "prettier-plugin-packagejson": "^2.4.5",
+    "prettier-plugin-sort-json": "^3.1.0",
     "solid-js": "^1.7.12",
     "solid-testing-library": "^0.5.0",
     "ts-node": "^10.9.1",
@@ -102,11 +102,6 @@
     "vitest": "^0.33.0"
   },
   "info": "SUID is all a set of utils and components ported from MUI Core and much more.",
-  "pnpm": {
-    "overrides": {
-      "@trivago/prettier-plugin-sort-imports>@babel/parser": "7.17.9"
-    }
-  },
   "x-wspa": {
     "extends": "@wspa/config/auto",
     "pkgManifest": {
