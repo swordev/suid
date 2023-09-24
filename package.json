@@ -62,7 +62,7 @@
     "test": "vitest run",
     "test:types": "vitest typecheck --run",
     "update:deps": "ncu",
-    "update:prettier-deps": "ncu prettier,@trivago/prettier-plugin-sort-imports,prettier-plugin-packagejson,prettier-plugin-sort-json",
+    "update:prettier-deps": "ncu prettier,@types/prettier,@trivago/prettier-plugin-sort-imports,prettier-plugin-packagejson,prettier-plugin-sort-json",
     "update:solid-deps": "ncu @solidjs/meta,@solidjs/router,babel-preset-solid,solid-js,solid-start,solid-start-node,solid-testing-library",
     "update:vite-deps": "ncu vite,vitest",
     "watch": "tsc --build tsconfig.build.json -w"
