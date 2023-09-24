@@ -10,8 +10,8 @@
     "start": "solid-start dev"
   },
   "dependencies": {
-    "@solidjs/meta": "^0.28.4",
-    "@solidjs/router": "^0.8.2",
+    "@solidjs/meta": "^0.28.6",
+    "@solidjs/router": "^0.8.3",
     "@stackblitz/sdk": "^1.9.0",
     "@suid/base": "workspace:*",
     "@suid/codemod": "workspace:*",
@@ -24,8 +24,8 @@
     "prism-themes": "^1.9.0",
     "prismjs": "^1.29.0",
     "semver": "^7.5.4",
-    "solid-js": "^1.7.7",
-    "solid-start": "^0.2.26"
+    "solid-js": "^1.7.12",
+    "solid-start": "^0.3.6"
   },
   "devDependencies": {
     "@suid/vite-plugin": "workspace:*",
@@ -35,7 +35,7 @@
     "fast-glob": "^3.3.1",
     "rimraf": "^5.0.1",
     "sass": "^1.68.0",
-    "solid-start-node": "^0.2.26",
+    "solid-start-node": "^0.3.6",
     "undici": "^5.25.2",
     "vite": "^4.4.9",
     "vite-plugin-solid": "^2.7.0"
