@@ -99,7 +99,7 @@
     "typescript": "^5.2.2",
     "vite": "^4.3.5",
     "vite-plugin-solid": "^2.7.0",
-    "vitest": "^0.31.0"
+    "vitest": "^0.33.0"
   },
   "info": "SUID is all a set of utils and components ported from MUI Core and much more.",
   "pnpm": {
