@@ -15,8 +15,8 @@ import {
   splitProps,
   useContext,
   createMemo,
+  ResolvedJSXElement,
 } from "solid-js";
-import { ResolvedJSXElement } from "solid-js/types/reactive/signal";
 
 interface ExtraProps {
   selected?: boolean;

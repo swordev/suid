@@ -1,6 +1,5 @@
 import { ChangeEventHandler } from "@suid/types";
-import { Accessor, createContext } from "solid-js";
-import { ResolvedJSXElement } from "solid-js/types/reactive/signal";
+import { Accessor, createContext, ResolvedJSXElement } from "solid-js";
 
 export interface IBottomNavigationContext {
   onChange: Accessor<ChangeEventHandler<HTMLDivElement, any> | undefined>;
