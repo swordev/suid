@@ -191,7 +191,7 @@ export type SelectTypeMap<P = {}, D extends ST.ElementType = "div", V = any> = {
 
 export type SelectProps<
   D extends ST.ElementType = SelectTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = ST.OverrideProps<SelectTypeMap<P, D>, D>;
 
 export default SelectProps;

@@ -53,7 +53,7 @@ export type TableTypeMap<P = {}, D extends ST.ElementType = "table"> = {
 
 export type TableProps<
   D extends ST.ElementType = TableTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<TableTypeMap<P, D>, D>;
 
 export default TableProps;

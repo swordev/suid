@@ -28,7 +28,7 @@ export type DialogTitleTypeMap<P = {}, D extends ST.ElementType = "div"> = {
 
 export type DialogTitleProps<
   D extends ST.ElementType = DialogTitleTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = ST.OverrideProps<DialogTitleTypeMap<P, D>, D>;
 
 export default DialogTitleProps;

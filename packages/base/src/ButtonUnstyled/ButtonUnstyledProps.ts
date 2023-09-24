@@ -23,7 +23,7 @@ export interface ButtonUnstyledOwnProps extends Omit<UseButtonProps, "ref"> {
 
 type ButtonUnstyledProps<
   D extends ElementType = ButtonUnstyledTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<ButtonUnstyledTypeMap<P, D>, D> & {
   /**
    * The component used for the Root slot.
@@ -35,7 +35,7 @@ type ButtonUnstyledProps<
 
 export interface ButtonUnstyledTypeMap<
   P = {},
-  D extends ElementType = "button"
+  D extends ElementType = "button",
 > {
   props: P & ButtonUnstyledOwnProps;
   defaultComponent: D;

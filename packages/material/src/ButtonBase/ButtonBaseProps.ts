@@ -118,7 +118,7 @@ export type ExtendButtonBase<M extends OverridableTypeMap> = ((
 
 export type ButtonBaseProps<
   D extends ElementType = ButtonBaseTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<ButtonBaseTypeMap<P, D>, D>;
 
 export interface ButtonBaseActions {

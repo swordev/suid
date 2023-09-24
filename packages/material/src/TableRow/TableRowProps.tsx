@@ -42,7 +42,7 @@ export type TableRowTypeMap<P = {}, D extends ST.ElementType = "tr"> = {
 
 export type TableRowProps<
   D extends ST.ElementType = TableRowTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<TableRowTypeMap<P, D>, D>;
 
 export default TableRowProps;

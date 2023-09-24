@@ -82,7 +82,7 @@ export interface IconButtonTypeMap<P = {}, D extends ElementType = "button"> {
 
 export type IconButtonProps<
   D extends ElementType = IconButtonTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<IconButtonTypeMap<P, D>, D>;
 
 export default IconButtonProps;

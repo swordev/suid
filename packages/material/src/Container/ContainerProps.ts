@@ -46,7 +46,7 @@ export interface ContainerTypeMap<P = {}, D extends ElementType = "div"> {
 
 export type ContainerProps<
   D extends ElementType = ContainerTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<ContainerTypeMap<P, D>, D>;
 
 export default ContainerProps;

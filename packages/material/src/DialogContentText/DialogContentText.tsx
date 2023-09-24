@@ -36,25 +36,25 @@ const DialogContentTextRoot = styled(Typography, {
  * - [DialogContentText API](https://mui.com/api/dialog-content-text/)
  * - inherits [Typography API](https://mui.com/api/typography/)
  */
-const DialogContentText = $.defineComponent(function DialogContentText(
-  inProps
-) {
-  const ref = createRef(inProps);
-  const props = $.useThemeProps({ props: inProps });
-  const [, ownerState] = splitProps(props, ["children"]);
-  const classes = $.useClasses(ownerState);
+const DialogContentText = $.defineComponent(
+  function DialogContentText(inProps) {
+    const ref = createRef(inProps);
+    const props = $.useThemeProps({ props: inProps });
+    const [, ownerState] = splitProps(props, ["children"]);
+    const classes = $.useClasses(ownerState);
 
-  return (
-    <DialogContentTextRoot
-      variant="body1"
-      color="text.secondary"
-      ref={ref}
-      ownerState={ownerState}
-      {...props}
-      component={props.component ?? "p"}
-      classes={classes}
-    />
-  );
-});
+    return (
+      <DialogContentTextRoot
+        variant="body1"
+        color="text.secondary"
+        ref={ref}
+        ownerState={ownerState}
+        {...props}
+        component={props.component ?? "p"}
+        classes={classes}
+      />
+    );
+  }
+);
 
 export default DialogContentText;

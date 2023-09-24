@@ -28,12 +28,15 @@ export function tryPreload(input: string | EventParam) {
   if (href) PageComponents[href]?.preload();
 }
 
-export const PageComponents = Object.keys(Pages).reduce((result, localPath) => {
-  const path = toPath(localPath);
-  const Component = lazy(Pages[localPath] as any);
-  result[path] = Component;
-  return result;
-}, {} as Record<string, ReturnType<typeof lazy>>);
+export const PageComponents = Object.keys(Pages).reduce(
+  (result, localPath) => {
+    const path = toPath(localPath);
+    const Component = lazy(Pages[localPath] as any);
+    result[path] = Component;
+    return result;
+  },
+  {} as Record<string, ReturnType<typeof lazy>>
+);
 
 export function toPath(localPath: string) {
   const parts = localPath.slice(2).split("/").slice(1);
@@ -65,7 +68,7 @@ export function RoutingElementContainer(props: {
         flexGrow: 1,
         p: 3,
         ...(props.sx || {}),
-      } as SxPropsObject)
+      }) as SxPropsObject
   );
   const children = createMemo(() => (
     <>

@@ -161,5 +161,5 @@ export type ExtendModalUnstyled<M extends OverridableTypeMap> =
 
 export type ModalUnstyledProps<
   D extends ElementType = ModalUnstyledTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<ModalUnstyledTypeMap<P, D>, D>;

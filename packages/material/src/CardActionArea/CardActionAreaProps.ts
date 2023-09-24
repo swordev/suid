@@ -26,7 +26,7 @@ export type CardActionAreaTypeMap<P = {}, D extends ElementType = "button"> = {
 
 export type CardActionAreaProps<
   D extends ElementType = ButtonBaseTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<CardActionAreaTypeMap<P, D>, D>;
 
 export default CardActionAreaProps;

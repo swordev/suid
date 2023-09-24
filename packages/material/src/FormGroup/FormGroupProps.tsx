@@ -32,7 +32,7 @@ export interface FormGroupTypeMap<P = {}, D extends ElementType = "div"> {
 
 export type FormGroupProps<
   D extends ElementType = FormGroupTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<FormGroupTypeMap<P, D>, D>;
 
 export default FormGroupProps;

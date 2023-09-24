@@ -23,7 +23,7 @@ export const html = (theme: Theme, enableColorScheme: boolean) =>
     // Fix font resize problem in iOS
     WebkitTextSizeAdjust: "100%",
     ...(enableColorScheme && { colorScheme: theme.palette.mode }),
-  } as SxPropsObject);
+  }) as SxPropsObject;
 
 export const body = (theme: Theme) =>
   ({
@@ -34,7 +34,7 @@ export const body = (theme: Theme) =>
       // Save printer ink.
       backgroundColor: theme.palette.common.white,
     },
-  } as SxPropsObject);
+  }) as SxPropsObject;
 
 export const styles = (theme: Theme, enableColorScheme = false) => {
   const defaultStyles = {

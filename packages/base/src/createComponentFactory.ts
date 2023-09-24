@@ -18,12 +18,12 @@ import { createMutable } from "solid-js/store";
 
 function createComponentFactory<
   C extends SuidComponentType,
-  O = InPropsOf<C>
+  O = InPropsOf<C>,
 >() {
   type Props = PropsOf<C>;
   type InProps = InPropsOf<C>;
   return function <
-    S extends Record<string, (string | false | undefined)[]>
+    S extends Record<string, (string | false | undefined)[]>,
   >(options: {
     name: NonNullable<C["name"]>;
     selfPropNames: Exclude<keyof C["selfProps"], "sx">[];

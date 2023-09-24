@@ -71,7 +71,7 @@ export type AvatarTypeMap<P = {}, D extends ST.ElementType = "div"> = {
 
 export type AvatarProps<
   D extends ST.ElementType = AvatarTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = ST.OverrideProps<AvatarTypeMap<P, D>, D>;
 
 export default AvatarProps;

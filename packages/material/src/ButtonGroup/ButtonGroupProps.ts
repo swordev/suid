@@ -102,7 +102,7 @@ export interface ButtonGroupTypeMap<P = {}, D extends ElementType = "div"> {
 
 export type ButtonGroupProps<
   D extends ElementType = ButtonGroupTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<ButtonGroupTypeMap<P, D>, D>;
 
 export default ButtonGroupProps;

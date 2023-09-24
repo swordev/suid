@@ -43,7 +43,7 @@ export type BackdropClasses = Record<BackdropClassKey, string>;
 
 export type BackdropProps<
   D extends ElementType = BackdropTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<BackdropTypeMap<D, P>, D>;
 
 export default BackdropProps;

@@ -3,12 +3,15 @@ import { createMutable } from "solid-js/store";
 
 export default function usePreviousProps<
   T extends Record<string, any>,
-  K extends keyof T
+  K extends keyof T,
 >(props: T, propNames: K[]) {
-  const initialValue = propNames.reduce((result, name) => {
-    result[name] = props[name];
-    return result;
-  }, {} as Pick<T, K>);
+  const initialValue = propNames.reduce(
+    (result, name) => {
+      result[name] = props[name];
+      return result;
+    },
+    {} as Pick<T, K>
+  );
 
   const prevProps = createMutable(initialValue);
 

@@ -97,7 +97,7 @@ export interface FormControlTypeMap<P = {}, D extends ElementType = "div"> {
 
 export type FormControlProps<
   D extends ElementType = FormControlTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<FormControlTypeMap<P, D>, D>;
 
 export default FormControlProps;

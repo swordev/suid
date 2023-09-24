@@ -58,7 +58,7 @@ export interface LinearProgressTypeMap<P = {}, D extends ElementType = "span"> {
 
 export type LinearProgressProps<
   D extends ElementType = LinearProgressTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<LinearProgressTypeMap<P, D>, D>;
 
 export default LinearProgressProps;

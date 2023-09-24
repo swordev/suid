@@ -12,7 +12,10 @@ export type Breakpoint = OverridableStringUnion<
 
 export type MediaQueryType<T> = {
   (value: T | number, props?: never): string;
-  (value: T | number, props?: SxPropsObject): {
+  (
+    value: T | number,
+    props?: SxPropsObject
+  ): {
     [K in string as `@media${string}`]: SxPropsObject;
   };
 };

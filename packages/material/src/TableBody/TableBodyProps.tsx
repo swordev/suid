@@ -29,7 +29,7 @@ export type TableBodyTypeMap<P = {}, D extends ST.ElementType = "tbody"> = {
 
 export type TableBodyProps<
   D extends ST.ElementType = TableBodyTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<TableBodyTypeMap<P, D>, D>;
 
 export default TableBodyProps;

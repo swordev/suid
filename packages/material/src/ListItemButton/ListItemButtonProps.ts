@@ -76,7 +76,7 @@ export type ListItemButtonTypeMap<P = {}, D extends ElementType = "div"> = {
 
 export type ListItemButtonProps<
   D extends ElementType = ListItemButtonTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<ListItemButtonTypeMap<P, D>, D>;
 
 export default ListItemButtonProps;

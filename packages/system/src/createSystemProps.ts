@@ -42,15 +42,21 @@ function mProp<V>(name: string, suffix: string[], onValue?: OnValue) {
   const names = suffix.map((v) => `${name}${v}`);
   return onValue
     ? (value: V, theme: Theme) =>
-        names.reduce((result, name) => {
-          result[name] = onValue(name, value, theme);
-          return result;
-        }, {} as Record<string, any>)
+        names.reduce(
+          (result, name) => {
+            result[name] = onValue(name, value, theme);
+            return result;
+          },
+          {} as Record<string, any>
+        )
     : (value: V) =>
-        names.reduce((result, name) => {
-          result[name] = value;
-          return result;
-        }, {} as Record<string, any>);
+        names.reduce(
+          (result, name) => {
+            result[name] = value;
+            return result;
+          },
+          {} as Record<string, any>
+        );
 }
 
 function createSystemProps() {

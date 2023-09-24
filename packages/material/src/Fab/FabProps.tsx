@@ -94,7 +94,7 @@ export type FabTypeMap<P = {}, D extends ST.ElementType = "button"> = {
 
 export type FabProps<
   D extends ST.ElementType = FabTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = ST.OverrideProps<FabTypeMap<P, D>, D>;
 
 export default FabProps;

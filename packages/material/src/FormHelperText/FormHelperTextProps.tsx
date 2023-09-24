@@ -58,7 +58,7 @@ export interface FormHelperTextTypeMap<P = {}, D extends ElementType = "p"> {
 
 export type FormHelperTextProps<
   D extends ElementType = FormHelperTextTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<FormHelperTextTypeMap<P, D>, D>;
 
 export default FormHelperTextProps;

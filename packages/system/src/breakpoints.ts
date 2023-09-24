@@ -130,18 +130,23 @@ export function resolveBreakpointValues<K extends string>(data: {
 
   let previous: number | K | undefined;
 
-  return keys.reduce((acc, breakpoint, i) => {
-    if (Array.isArray(values)) {
-      acc[breakpoint] =
-        values[i] != null ? values[i] : values[previous as number];
-      previous = i;
-    } else if (typeof values === "number") {
-      acc[breakpoint] = values;
-    } else {
-      acc[breakpoint] =
-        values[breakpoint] != null ? values[breakpoint] : values[previous as K];
-      previous = breakpoint;
-    }
-    return acc;
-  }, {} as { [k in K]: number });
+  return keys.reduce(
+    (acc, breakpoint, i) => {
+      if (Array.isArray(values)) {
+        acc[breakpoint] =
+          values[i] != null ? values[i] : values[previous as number];
+        previous = i;
+      } else if (typeof values === "number") {
+        acc[breakpoint] = values;
+      } else {
+        acc[breakpoint] =
+          values[breakpoint] != null
+            ? values[breakpoint]
+            : values[previous as K];
+        previous = breakpoint;
+      }
+      return acc;
+    },
+    {} as { [k in K]: number }
+  );
 }

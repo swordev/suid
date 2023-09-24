@@ -31,7 +31,7 @@ export interface OutlinedInputTypeMap<P = {}, D extends ElementType = "div"> {
 
 export type OutlinedInputProps<
   D extends ElementType = OutlinedInputTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<OutlinedInputTypeMap<P, D>, D>;
 
 export default OutlinedInputProps;

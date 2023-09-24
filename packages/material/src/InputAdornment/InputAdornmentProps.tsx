@@ -54,7 +54,7 @@ export type InputAdornmentTypeMap<P = {}, D extends ST.ElementType = "div"> = {
 
 export type InputAdornmentProps<
   D extends ST.ElementType = InputAdornmentTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = ST.OverrideProps<InputAdornmentTypeMap<P, D>, D>;
 
 export default InputAdornmentProps;

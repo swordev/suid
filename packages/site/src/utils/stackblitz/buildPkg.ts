@@ -30,11 +30,14 @@ export default function buildPkg(
 
   pkg.dependencies = {
     ...(pkg.dependencies || {}),
-    ...SUID_PKG_NAMES.reduce((result, name) => {
-      if (options.appCode?.includes(name))
-        result[name] = SUID_VERSIONS[name] || "*";
-      return result;
-    }, {} as Record<string, string>),
+    ...SUID_PKG_NAMES.reduce(
+      (result, name) => {
+        if (options.appCode?.includes(name))
+          result[name] = SUID_VERSIONS[name] || "*";
+        return result;
+      },
+      {} as Record<string, string>
+    ),
   };
   return pkg;
 }

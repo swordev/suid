@@ -112,7 +112,7 @@ function getSuidComponentType(input: unknown): SuidComponentType | undefined {
 
 function createStyled<
   T extends Theme<any>,
-  CM extends Record<string, any> = {}
+  CM extends Record<string, any> = {},
 >(config?: { onUseTheme?: () => T }) {
   return function styled<C extends ElementType, N extends string = string>(
     Component: C,
@@ -139,7 +139,7 @@ function createStyled<
           : unknown
         : C extends OverridableComponent<infer M>
         ? OverridableInProps<M>
-        : unknown
+        : unknown,
     >(
       ...styles: Style<
         T,

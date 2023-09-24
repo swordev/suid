@@ -11,7 +11,7 @@ export interface CircularProgressPropsColorOverrides {}
 
 export interface CircularProgressTypeMap<
   P = {},
-  D extends ElementType = "span"
+  D extends ElementType = "span",
 > {
   name: "MuiCircularProgress";
   defaultPropNames:
@@ -81,7 +81,7 @@ export interface CircularProgressTypeMap<
 
 export type CircularProgressProps<
   D extends ElementType = CircularProgressTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<CircularProgressTypeMap<P, D>, D>;
 
 export default CircularProgressProps;

@@ -87,7 +87,7 @@ export interface AlertTypeMap<P = {}, D extends ElementType = "div"> {
 }
 export type AlertProps<
   D extends ElementType = AlertTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<AlertTypeMap<P, D>, D>;
 
 export default AlertProps;

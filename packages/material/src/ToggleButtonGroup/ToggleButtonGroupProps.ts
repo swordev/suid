@@ -16,7 +16,7 @@ export interface ToggleButtonGroupPropsColorOverrides {}
 export type ToggleButtonGroupTypeMap<
   P = {},
   D extends ElementType = "div",
-  V = any
+  V = any,
 > = {
   name: "MuiToggleButtonGroup";
   defaultPropNames:
@@ -105,5 +105,5 @@ export type ToggleButtonGroupTypeMap<
 export type ToggleButtonGroupProps<
   D extends ElementType = ToggleButtonGroupTypeMap["defaultComponent"],
   P = {},
-  V = unknown
+  V = unknown,
 > = OverrideProps<ToggleButtonGroupTypeMap<P, D, V>, D>;

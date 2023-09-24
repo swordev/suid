@@ -53,12 +53,15 @@ async function patchTsConfigs() {
 
     if (!tsconfig.references.length) delete tsconfig.references;
 
-    tsconfig.compilerOptions.paths = wsDependencies.reduce((result, name) => {
-      const path = `./../` + (customPath[name] || `${name}/src`);
-      result[`@${scope}/${name}`] = [path];
-      result[`@${scope}/${name}/*`] = [`${path}/*`];
-      return result;
-    }, {} as Record<string, string[]>);
+    tsconfig.compilerOptions.paths = wsDependencies.reduce(
+      (result, name) => {
+        const path = `./../` + (customPath[name] || `${name}/src`);
+        result[`@${scope}/${name}`] = [path];
+        result[`@${scope}/${name}/*`] = [`${path}/*`];
+        return result;
+      },
+      {} as Record<string, string[]>
+    );
 
     if (extraPaths[packageName])
       Object.assign(tsconfig.compilerOptions.paths, extraPaths[packageName]);

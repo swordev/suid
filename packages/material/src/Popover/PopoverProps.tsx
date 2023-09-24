@@ -166,7 +166,7 @@ export type PopoverTypeMap<P = {}, D extends ST.ElementType = "div"> = {
 
 export type PopoverProps<
   D extends ST.ElementType = PopoverTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = ST.OverrideProps<PopoverTypeMap<P, D>, D>;
 
 export default PopoverProps;

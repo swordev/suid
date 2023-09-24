@@ -70,7 +70,7 @@ export interface DividerTypeMap<P = {}, D extends ElementType = "hr"> {
 
 export type DividerProps<
   D extends ElementType = DividerTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<DividerTypeMap<P, D>, D>;
 
 export default DividerProps;

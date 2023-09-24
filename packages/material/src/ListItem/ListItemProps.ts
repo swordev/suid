@@ -99,7 +99,7 @@ export interface ListItemTypeMap<P = {}, D extends ElementType = "li"> {
 
 export type ListItemProps<
   D extends ElementType = ListItemTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<ListItemTypeMap<P, D>, D>;
 
 export default ListItemProps;

@@ -11,7 +11,7 @@ export interface BackdropUnstyledComponentsPropsOverrides {}
 
 export interface BackdropUnstyledTypeMap<
   P = {},
-  D extends ElementType = "div"
+  D extends ElementType = "div",
 > {
   name: "BackdropUnstyled";
   defaultPropNames: "components" | "componentsProps" | "invisible";
@@ -64,7 +64,7 @@ export type ExtendBackdropUnstyled<M extends OverridableTypeMap> =
 
 export type BackdropUnstyledProps<
   D extends ElementType = BackdropUnstyledTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<BackdropUnstyledTypeMap<P, D>, D>;
 
 export default BackdropUnstyledProps;

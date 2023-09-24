@@ -28,7 +28,7 @@ export type TableFooterTypeMap<P = {}, D extends ST.ElementType = "tfoot"> = {
 
 export type TableFooterProps<
   D extends ST.ElementType = TableFooterTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = ST.OverrideProps<TableFooterTypeMap<P, D>, D>;
 
 export default TableFooterProps;

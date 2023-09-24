@@ -6,7 +6,7 @@ import { JSXElement } from "solid-js";
 
 export type BottomNavigationTypeMap<
   P = {},
-  D extends ST.ElementType = "div"
+  D extends ST.ElementType = "div",
 > = {
   name: "MuiBottomNavigation";
   defaultPropNames: "showLabels";
@@ -52,7 +52,7 @@ export type BottomNavigationTypeMap<
 
 export type BottomNavigationProps<
   D extends ST.ElementType = BottomNavigationTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = ST.OverrideProps<BottomNavigationTypeMap<P, D>, D>;
 
 export default BottomNavigationProps;

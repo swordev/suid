@@ -8,7 +8,7 @@ import { JSXElement } from "solid-js";
 
 export interface FormControlLabelTypeMap<
   P = {},
-  D extends ElementType = "label"
+  D extends ElementType = "label",
 > {
   name: "MuiFormControlLabel";
   defaultPropNames: "componentsProps" | "labelPlacement";
@@ -81,7 +81,7 @@ export interface FormControlLabelTypeMap<
 
 export type FormControlLabelProps<
   D extends ElementType = FormControlLabelTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<FormControlLabelTypeMap<P, D>, D>;
 
 export default FormControlLabelProps;

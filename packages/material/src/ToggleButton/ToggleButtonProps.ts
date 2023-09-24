@@ -101,5 +101,5 @@ export type ToggleButtonTypeMap<P = {}, D extends ElementType = "button"> = {
 
 export type ToggleButtonProps<
   D extends ElementType = ToggleButtonTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<ToggleButtonTypeMap<P, D>, D>;

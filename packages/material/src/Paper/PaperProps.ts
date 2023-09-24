@@ -49,7 +49,7 @@ export interface PaperTypeMap<P = {}, D extends ElementType = "div"> {
 
 export type PaperProps<
   D extends ElementType = PaperTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<PaperTypeMap<P, D>, D>;
 
 export default PaperProps;

@@ -62,7 +62,7 @@ export interface IconTypeMap<P = {}, D extends ElementType = "span"> {
 
 export type IconProps<
   D extends ElementType = IconTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<IconTypeMap<P, D>, D>;
 
 export default IconProps;

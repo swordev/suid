@@ -75,7 +75,7 @@ export type TableCellTypeMap<P = {}, D extends ST.ElementType = "th" | "td"> = {
 
 export type TableCellProps<
   D extends ST.ElementType = TableCellTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = ST.OverrideProps<TableCellTypeMap<P, D>, D>;
 
 export default TableCellProps;

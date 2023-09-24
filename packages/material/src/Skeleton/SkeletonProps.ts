@@ -54,7 +54,7 @@ export interface SkeletonTypeMap<P = {}, D extends ElementType = "span"> {
 
 export type SkeletonProps<
   D extends ElementType = SkeletonTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<SkeletonTypeMap<P, D>, D>;
 
 export default SkeletonProps;

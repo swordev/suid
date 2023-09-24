@@ -86,7 +86,7 @@ export interface BadgeUnstyledTypeMap<P = {}, D extends ElementType = "span"> {
 
 type BadgeUnstyledProps<
   D extends ElementType = BadgeUnstyledTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<BadgeUnstyledTypeMap<P, D>, D>;
 
 export default BadgeUnstyledProps;

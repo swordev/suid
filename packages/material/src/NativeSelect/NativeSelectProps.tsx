@@ -70,7 +70,7 @@ export type NativeSelectTypeMap<P = {}, D extends ST.ElementType = "div"> = {
 
 export type NativeSelectProps<
   D extends ST.ElementType = NativeSelectTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = ST.OverrideProps<NativeSelectTypeMap<P, D>, D>;
 
 export default NativeSelectProps;

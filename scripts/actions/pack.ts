@@ -85,10 +85,13 @@ async function pack(options: { patch?: string }) {
 
   const newPkg = {
     pnpm: {
-      overrides: Object.entries(data).reduce((result, [, item]) => {
-        result[item.pkg.manifest.name] = item.tarball;
-        return result;
-      }, {} as Record<string, string>),
+      overrides: Object.entries(data).reduce(
+        (result, [, item]) => {
+          result[item.pkg.manifest.name] = item.tarball;
+          return result;
+        },
+        {} as Record<string, string>
+      ),
     },
   };
 

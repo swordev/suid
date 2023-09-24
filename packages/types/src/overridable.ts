@@ -25,7 +25,7 @@ export type DistributiveOmit<T, K extends keyof any> = T extends any
  */
 export type OverridableStringUnion<
   T extends string | number,
-  U = {}
+  U = {},
 > = GenerateStringUnion<Overwrite<Record<T, true>, U>>;
 
 /**
@@ -66,7 +66,7 @@ export interface OverridableComponent<M extends OverridableTypeMap> {
  */
 export type OverrideProps<
   M extends OverridableTypeMap,
-  C extends ElementType
+  C extends ElementType,
 > = BaseProps<M> &
   DistributiveOmit<ComponentPropsWithRef<C>, keyof BaseProps<M>>;
 

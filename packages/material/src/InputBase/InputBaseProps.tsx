@@ -218,7 +218,7 @@ export interface InputBaseTypeMap<P = {}, D extends ElementType = "div"> {
 
 export type InputBaseProps<
   D extends ElementType = InputBaseTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<InputBaseTypeMap<P, D>, D>;
 
 export default InputBaseProps;

@@ -131,7 +131,7 @@ export type ExtendButton<M extends OverridableTypeMap> = ((
 
 export type ButtonProps<
   D extends ElementType = ButtonTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<ButtonTypeMap<P, D>, D>;
 
 export default ButtonProps;

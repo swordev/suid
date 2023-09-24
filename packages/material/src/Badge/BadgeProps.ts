@@ -93,7 +93,7 @@ export type BadgeClassKey = keyof NonNullable<BadgeTypeMap["props"]["classes"]>;
 
 export type BadgeProps<
   D extends ElementType = BadgeTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<BadgeTypeMap<D, P>, D>;
 
 export default BadgeProps;

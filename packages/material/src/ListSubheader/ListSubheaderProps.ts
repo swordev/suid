@@ -48,7 +48,7 @@ export interface ListSubheaderTypeMap<P = {}, D extends ElementType = "li"> {
 
 export type ListSubheaderProps<
   D extends ElementType = ListSubheaderTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<ListSubheaderTypeMap<P, D>, D>;
 
 export default ListSubheaderProps;

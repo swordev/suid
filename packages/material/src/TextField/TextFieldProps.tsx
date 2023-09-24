@@ -249,7 +249,7 @@ export interface TextFieldTypeMap<P = {}, D extends ElementType = "div"> {
 
 export type TextFieldProps<
   D extends ElementType = TextFieldTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<TextFieldTypeMap<P, D>, D>;
 
 export default TextFieldProps;

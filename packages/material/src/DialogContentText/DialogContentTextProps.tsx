@@ -6,7 +6,7 @@ import * as ST from "@suid/types";
 
 export type DialogContentTextTypeMap<
   P = {},
-  D extends ST.ElementType = TypographyTypeMap["defaultComponent"]
+  D extends ST.ElementType = TypographyTypeMap["defaultComponent"],
 > = {
   name: "MuiDialogContentText";
   selfProps: {
@@ -26,7 +26,7 @@ export type DialogContentTextTypeMap<
 
 export type DialogContentTextProps<
   D extends ST.ElementType = DialogContentTextTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = ST.OverrideProps<DialogContentTextTypeMap<P, D>, D>;
 
 export default DialogContentTextProps;

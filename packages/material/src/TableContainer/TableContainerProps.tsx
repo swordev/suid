@@ -29,7 +29,7 @@ export type TableContainerTypeMap<P = {}, D extends ST.ElementType = "div"> = {
 
 export type TableContainerProps<
   D extends ST.ElementType = TableContainerTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<TableContainerTypeMap<P, D>, D>;
 
 export default TableContainerProps;

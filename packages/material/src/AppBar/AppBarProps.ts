@@ -53,7 +53,7 @@ export interface AppBarTypeMap<P = {}, D extends ElementType = "header"> {
 
 export type AppBarProps<
   D extends ElementType = AppBarTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<AppBarTypeMap<P, D>, D>;
 
 export default AppBarProps;

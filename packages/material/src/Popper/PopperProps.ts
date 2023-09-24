@@ -3,7 +3,7 @@ import { ElementType, OverrideProps } from "@suid/types";
 
 export interface PopperTypeMap<
   P = {},
-  D extends ElementType = PopperUnstyledTypeMap["defaultComponent"]
+  D extends ElementType = PopperUnstyledTypeMap["defaultComponent"],
 > {
   name: "MuiPopper";
   selfProps: {};
@@ -15,7 +15,7 @@ export interface PopperTypeMap<
 
 export type PopperProps<
   D extends ElementType = PopperTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<PopperTypeMap<P, D>, D>;
 
 export default PopperProps;

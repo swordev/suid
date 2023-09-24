@@ -42,7 +42,7 @@ export type ModalTypeMap<P = {}, D extends ST.ElementType = "div"> = {
 
 export type ModalProps<
   D extends ST.ElementType = ModalTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = ST.OverrideProps<ModalTypeMap<P, D>, D>;
 
 export default ModalProps;

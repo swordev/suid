@@ -39,7 +39,7 @@ export interface CardMediaTypeMap<P = {}, D extends ElementType = "div"> {
 
 export type CardMediaProps<
   D extends ElementType = "div",
-  P = {}
+  P = {},
 > = OverrideProps<CardMediaTypeMap<P, D>, D>;
 
 export default CardMediaProps;

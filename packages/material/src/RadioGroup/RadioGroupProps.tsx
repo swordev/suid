@@ -36,7 +36,7 @@ export type RadioGroupTypeMap<P = {}, D extends ST.ElementType = "div"> = {
 
 export type RadioGroupProps<
   D extends ST.ElementType = RadioGroupTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = ST.OverrideProps<RadioGroupTypeMap<P, D>, D>;
 
 export default RadioGroupProps;

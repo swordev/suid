@@ -10,12 +10,13 @@ import { JSXElement } from "solid-js";
  * The type of event depends on what caused the change.
  * For example, when the browser auto-fills the `Select` you'll receive a `React.ChangeEvent`.
  */
-export type SelectChangeEvent<T = string> =
-  | Event & { target: { value: T; name: string } };
+export type SelectChangeEvent<T = string> = Event & {
+  target: { value: T; name: string };
+};
 export type SelectInputTypeMap<
   P = {},
   D extends ST.ElementType = "div",
-  T = any
+  T = any,
 > = {
   name: "MuiSelectInput";
   selfProps: {
@@ -85,7 +86,7 @@ export type SelectInputTypeMap<
 export type SelectInputProps<
   D extends ST.ElementType = SelectInputTypeMap["defaultComponent"],
   P = {},
-  T = any
+  T = any,
 > = ST.OverrideProps<SelectInputTypeMap<P, D, T>, D>;
 
 export default SelectInputProps;

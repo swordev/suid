@@ -40,7 +40,7 @@ export interface StackTypeMap<P = {}, D extends ElementType = "div"> {
 
 export type StackProps<
   D extends ElementType = StackTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<StackTypeMap<P, D>, D>;
 
 export default StackProps;

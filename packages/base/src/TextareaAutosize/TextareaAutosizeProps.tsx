@@ -2,7 +2,7 @@ import * as ST from "@suid/types";
 
 export type TextareaAutosizeTypeMap<
   P = {},
-  D extends ST.ElementType = "div"
+  D extends ST.ElementType = "div",
 > = {
   name: "MuiTextareaAutosize";
   defaultPropNames: "minRows";
@@ -28,7 +28,7 @@ export type TextareaAutosizeTypeMap<
 
 export type TextareaAutosizeProps<
   D extends ST.ElementType = TextareaAutosizeTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = ST.OverrideProps<TextareaAutosizeTypeMap<P, D>, D>;
 
 export default TextareaAutosizeProps;

@@ -97,7 +97,7 @@ export interface ChipTypeMap<P = {}, D extends ElementType = "div"> {
 
 export type ChipProps<
   D extends ElementType = ChipTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<ChipTypeMap<P, D>, D>;
 
 export default ChipProps;

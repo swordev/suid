@@ -69,7 +69,7 @@ export type MenuItemTypeMap<P = {}, D extends ST.ElementType = "li"> = {
 
 export type MenuItemProps<
   D extends ST.ElementType = MenuItemTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = ST.OverrideProps<MenuItemTypeMap<P, D>, D>;
 
 export default MenuItemProps;

@@ -27,7 +27,7 @@ export interface CardContentTypeMap<P = {}, D extends ElementType = "div"> {
 
 export type CardContentProps<
   D extends ElementType = CardContentTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<CardContentTypeMap<P, D>, D>;
 
 export default CardContentProps;

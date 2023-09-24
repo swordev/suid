@@ -44,7 +44,7 @@ export interface ToolbarTypeMap<P = {}, D extends ElementType = "div"> {
 
 export type ToolbarProps<
   D extends ElementType = ToolbarTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<ToolbarTypeMap<P, D>, D>;
 
 export default ToolbarProps;

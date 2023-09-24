@@ -27,7 +27,7 @@ export interface ListItemIconTypeMap<P = {}, D extends ElementType = "div"> {
 
 export type ListItemIconProps<
   D extends ElementType = ListItemIconTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<ListItemIconTypeMap<P, D>, D>;
 
 export default ListItemIconProps;

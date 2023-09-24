@@ -68,7 +68,7 @@ export interface ListItemTextTypeMap<P = {}, D extends ElementType = "div"> {
 
 export type ListItemTextProps<
   D extends ElementType = ListItemTextTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<ListItemTextTypeMap<P, D>, D>;
 
 export default ListItemTextProps;

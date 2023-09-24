@@ -32,7 +32,7 @@ export interface CardActionsTypeMap<P = {}, D extends ElementType = "div"> {
 
 export type CardActionsProps<
   D extends ElementType = CardActionsTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<CardActionsTypeMap<P, D>, D>;
 
 export default CardActionsProps;

@@ -109,7 +109,7 @@ export interface PopperUnstyledTypeMap<P = {}, D extends ElementType = "div"> {
 
 export type PopperUnstyledProps<
   D extends ElementType = PopperUnstyledTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<PopperUnstyledTypeMap<P, D>, D>;
 
 export default PopperUnstyledProps;

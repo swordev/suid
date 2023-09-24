@@ -108,7 +108,7 @@ export type MenuTypeMap<P = {}, D extends ST.ElementType = "div"> = {
 
 export type MenuProps<
   D extends ST.ElementType = MenuTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = ST.OverrideProps<MenuTypeMap<P, D>, D>;
 
 export default MenuProps;

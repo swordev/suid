@@ -89,7 +89,7 @@ export interface SvgIconTypeMap<P = {}, D extends ElementType = "svg"> {
 
 export type SvgIconProps<
   D extends ElementType = SvgIconTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<SvgIconTypeMap<P, D>, D>;
 
 export default SvgIconProps;

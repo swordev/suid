@@ -70,7 +70,7 @@ export type RadioTypeMap<P = {}, D extends ST.ElementType = "div"> = {
 
 export type RadioProps<
   D extends ST.ElementType = RadioTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<RadioTypeMap<P, D>, D>;
 
 export default RadioProps;

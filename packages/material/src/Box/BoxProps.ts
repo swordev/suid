@@ -10,7 +10,7 @@ export interface BoxTypeMap<P = {}, D extends ElementType = "div"> {
 
 export type BoxProps<
   D extends ElementType = BoxTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<BoxTypeMap<P, D>, D>;
 
 export default BoxProps;

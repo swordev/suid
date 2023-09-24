@@ -6,7 +6,7 @@ import { JSXElement } from "solid-js";
 
 export interface ListItemSecondaryActionTypeMap<
   P = {},
-  D extends ElementType = "div"
+  D extends ElementType = "div",
 > {
   name: "MuiListItemSecondaryAction";
   selfProps: {
@@ -30,7 +30,7 @@ export interface ListItemSecondaryActionTypeMap<
 
 export type ListItemSecondaryActionProps<
   D extends ElementType = ListItemSecondaryActionTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<ListItemSecondaryActionTypeMap<P, D>, D>;
 
 export default ListItemSecondaryActionProps;

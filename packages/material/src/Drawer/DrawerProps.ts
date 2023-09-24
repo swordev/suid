@@ -88,5 +88,5 @@ export interface DrawerTypeMap<P = {}, D extends ElementType = "hr"> {
 
 export type DrawerProps<
   D extends ElementType = DrawerTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<DrawerTypeMap<P, D>, D>;

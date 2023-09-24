@@ -29,7 +29,7 @@ export type TableHeadTypeMap<P = {}, D extends ST.ElementType = "thead"> = {
 
 export type TableHeadProps<
   D extends ST.ElementType = TableHeadTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<TableHeadTypeMap<P, D>, D>;
 
 export default TableHeadProps;

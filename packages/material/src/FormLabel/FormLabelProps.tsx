@@ -58,7 +58,7 @@ export type FormLabelBaseProps = PropsOf<"label">;
 
 export type FormLabelProps<
   D extends ElementType = FormLabelTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<FormLabelTypeMap<P, D>, D>;
 
 export default FormLabelProps;

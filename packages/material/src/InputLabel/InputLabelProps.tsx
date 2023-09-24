@@ -63,7 +63,7 @@ export interface InputLabelTypeMap<P = {}, D extends ElementType = "button"> {
 
 export type InputLabelProps<
   D extends ElementType = InputLabelTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<InputLabelTypeMap<P, D>, D>;
 
 export default InputLabelProps;

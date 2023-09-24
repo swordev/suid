@@ -27,7 +27,7 @@ export interface ListItemAvatarTypeMap<P = {}, D extends ElementType = "div"> {
 
 export type ListItemAvatarProps<
   D extends ElementType = ListItemAvatarTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<ListItemAvatarTypeMap<P, D>, D>;
 
 export default ListItemAvatarProps;

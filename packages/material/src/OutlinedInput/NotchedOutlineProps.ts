@@ -4,7 +4,7 @@ import { JSXElement } from "solid-js";
 
 export interface NotchedOutlineTypeMap<
   P = {},
-  D extends ElementType = "fieldset"
+  D extends ElementType = "fieldset",
 > {
   name: "MuiNotchedOutline";
   selfProps: {
@@ -24,7 +24,7 @@ export type NotchedOutlineClassKey = keyof NonNullable<
 
 export type NotchedOutlineProps<
   D extends ElementType = NotchedOutlineTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<NotchedOutlineTypeMap<P, D>, D>;
 
 export default NotchedOutlineProps;

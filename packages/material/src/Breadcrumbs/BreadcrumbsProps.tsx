@@ -62,7 +62,7 @@ export interface BreadcrumbsTypeMap<P = {}, D extends ElementType = "nav"> {
 
 export type BreadcrumbsProps<
   D extends ElementType = BreadcrumbsTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<BreadcrumbsTypeMap<P, D>, D>;
 
 export default BreadcrumbsProps;

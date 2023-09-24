@@ -84,7 +84,7 @@ export interface SwitchBaseTypeMap<P = {}, D extends ElementType = "div"> {
 
 export type SwitchBaseProps<
   D extends ElementType = SwitchBaseTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<SwitchBaseTypeMap<P, D>, D>;
 
 export default SwitchBaseProps;

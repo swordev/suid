@@ -96,7 +96,7 @@ export interface TypographyTypeMap<P = {}, D extends ElementType = "span"> {
 
 export type TypographyProps<
   D extends ElementType = TypographyTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<TypographyTypeMap<P, D>, D>;
 
 export default TypographyProps;

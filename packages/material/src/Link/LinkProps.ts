@@ -48,7 +48,7 @@ export interface LinkTypeMap<P = {}, D extends ElementType = "a"> {
 
 export type LinkProps<
   D extends ElementType = LinkTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<LinkTypeMap<P, D>, D>;
 
 export default LinkProps;

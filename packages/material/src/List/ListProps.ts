@@ -56,7 +56,7 @@ export type ExtendList<M extends OverridableTypeMap> = OverridableComponent<
 
 export type ListProps<
   D extends ElementType = ListTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<ListTypeMap<P, D>, D>;
 
 export default ListProps;

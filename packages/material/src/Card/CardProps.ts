@@ -31,7 +31,7 @@ export interface CardTypeMap<P = {}, D extends ElementType = "div"> {
 
 export type CardProps<
   D extends ElementType = CardTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<CardTypeMap<P, D>, D>;
 
 export default CardProps;

@@ -115,7 +115,7 @@ export interface GridTypeMap<P = {}, D extends ElementType = "div"> {
 
 export type GridProps<
   D extends ElementType = GridTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = OverrideProps<GridTypeMap<P, D>, D>;
 
 export default GridProps;

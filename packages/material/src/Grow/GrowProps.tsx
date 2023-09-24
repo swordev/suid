@@ -46,7 +46,7 @@ export type GrowTypeMap<P = {}, D extends ST.ElementType = "div"> = {
 
 export type GrowProps<
   D extends ST.ElementType = GrowTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = ST.OverrideProps<GrowTypeMap<P, D>, D>;
 
 export default GrowProps;

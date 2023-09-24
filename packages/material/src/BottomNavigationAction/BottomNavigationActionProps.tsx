@@ -7,7 +7,7 @@ import { JSXElement } from "solid-js";
 
 export type BottomNavigationActionTypeMap<
   P = {},
-  D extends ST.ElementType = "div"
+  D extends ST.ElementType = "div",
 > = {
   name: "MuiBottomNavigationAction";
   selfProps: {
@@ -58,7 +58,7 @@ export type BottomNavigationActionTypeMap<
 
 export type BottomNavigationActionProps<
   D extends ST.ElementType = BottomNavigationActionTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = ST.OverrideProps<BottomNavigationActionTypeMap<P, D>, D>;
 
 export default BottomNavigationActionProps;

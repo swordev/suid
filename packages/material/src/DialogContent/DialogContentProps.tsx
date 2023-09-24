@@ -35,7 +35,7 @@ export type DialogContentTypeMap<P = {}, D extends ST.ElementType = "div"> = {
 
 export type DialogContentProps<
   D extends ST.ElementType = DialogContentTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = ST.OverrideProps<DialogContentTypeMap<P, D>, D>;
 
 export default DialogContentProps;

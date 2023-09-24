@@ -10,7 +10,7 @@ export interface CardHeaderTypeMap<
   Props = {},
   DefaultComponent extends ElementType = "div",
   TitleTypographyComponent extends ElementType = "span",
-  SubheaderTypographyComponent extends ElementType = "span"
+  SubheaderTypographyComponent extends ElementType = "span",
 > {
   name: "MuiCardHeader";
   defaultPropNames: "disableTypography";
@@ -71,10 +71,11 @@ export interface CardHeaderTypeMap<
 export interface OverridableCardHeader
   extends OverridableComponent<CardHeaderTypeMap> {
   <
-    DefaultComponent extends ElementType = CardHeaderTypeMap["defaultComponent"],
+    DefaultComponent extends
+      ElementType = CardHeaderTypeMap["defaultComponent"],
     Props = {},
     TitleTypographyComponent extends ElementType = "span",
-    SubheaderTypographyComponent extends ElementType = "span"
+    SubheaderTypographyComponent extends ElementType = "span",
   >(
     props: CardHeaderPropsWithComponent<
       DefaultComponent,
@@ -89,7 +90,7 @@ export type CardHeaderProps<
   DefaultComponent extends ElementType = CardHeaderTypeMap["defaultComponent"],
   Props = {},
   TitleTypographyComponent extends ElementType = "span",
-  SubheaderTypographyComponent extends ElementType = "span"
+  SubheaderTypographyComponent extends ElementType = "span",
 > = OverrideProps<
   CardHeaderTypeMap<
     Props,
@@ -104,7 +105,7 @@ export type CardHeaderPropsWithComponent<
   DefaultComponent extends ElementType = CardHeaderTypeMap["defaultComponent"],
   Props = {},
   TitleTypographyComponent extends ElementType = "span",
-  SubheaderTypographyComponent extends ElementType = "span"
+  SubheaderTypographyComponent extends ElementType = "span",
 > = {
   /**
    * The component used for the root node.
