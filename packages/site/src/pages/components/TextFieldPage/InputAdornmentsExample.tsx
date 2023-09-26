@@ -19,13 +19,7 @@ export default function InputAdornments() {
   const handleMouseDownPassword = (event: Event) => event.preventDefault();
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexWrap: "wrap",
-        textAlign: "center",
-      }}
-    >
+    <Box sx={{ textAlign: "center" }}>
       <div>
         <TextField
           label="With normal TextField"
