@@ -11,7 +11,8 @@ function capitalizeWords(value: string) {
 export default function StateTextFields() {
   const [name, setName] = createSignal(capitalizeWords("Cat in the Hat"));
   const [date, setDate] = createSignal("");
-  const [number, setNumber] = createSignal("0");
+  const [number, setNumber] = createSignal("");
+  const [email, setEmail] = createSignal("");
   return (
     <Box
       component="form"
@@ -62,6 +63,20 @@ export default function StateTextFields() {
           helperText={number()}
         />
         <TextField label="Uncontrolled number" type="number" defaultValue="0" />
+      </div>
+      <div>
+        <TextField
+          label="Controlled email"
+          type="email"
+          value={email()}
+          onChange={(event, value) => setEmail(value)}
+          helperText={email()}
+        />
+        <TextField
+          label="Uncontrolled email"
+          type="email"
+          defaultValue="info@localhost"
+        />
       </div>
     </Box>
   );
