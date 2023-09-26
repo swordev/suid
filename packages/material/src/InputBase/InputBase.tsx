@@ -312,6 +312,11 @@ const InputBase = $.component(function InputBase({
   const attrValueOnBlur = () =>
     inputRef.ref.type === "date" || inputRef.ref.type === "number";
 
+  const hasSelectionRange = () =>
+    inputRef.ref.nodeName === "TEXTAREA" ||
+    !inputRef.ref.type ||
+    selectionTypes.has(inputRef.ref.type);
+
   const [value, setValue] = useControlled({
     controlled: () => inputValue(),
     default: () => props.defaultValue as any as string,
@@ -391,19 +396,11 @@ const InputBase = $.component(function InputBase({
         } else if (!attrValueOnBlur()) {
           input.setAttribute("value", v);
         }
-        if (attrValueOnBlur()) {
-          if (v !== input.value) input.value = v;
-        } else {
-          const type = input.type ?? "text";
-          const isSelectionType =
-            input.nodeName === "TEXTAREA" || selectionTypes.has(type);
+        if (v !== input.value) input.value = v;
+        if (hasSelectionRange()) {
           const selectionStart = lastSelectionStart ?? v.length;
-          if (v !== input.value) input.value = v;
-          if (!isSelectionType) input.type = "text";
-          if (input.selectionStart !== selectionStart) {
+          if (input.selectionStart !== selectionStart)
             input.setSelectionRange(selectionStart, selectionStart);
-          }
-          if (!isSelectionType) input.type = type;
         }
       }
     }
