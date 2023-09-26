@@ -1,5 +1,13 @@
 # @suid/material
 
+## 0.15.1
+
+### Patch Changes
+
+- [`48253e62`](https://github.com/swordev/suid/commit/48253e62ea85581eead54f8027e70391c397d3b7) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix controlled number input
+
+- [`aef9ae8c`](https://github.com/swordev/suid/commit/aef9ae8c3651a477ba0491ed3d4bcbd2a8885870) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix controlled email input
+
 ## 0.15.0
 
 ### Minor Changes
