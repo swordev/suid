@@ -1,5 +1,17 @@
 # @suid/site
 
+## 0.17.0
+
+### Minor Changes
+
+- [`d48ed2c3`](https://github.com/swordev/suid/commit/d48ed2c39cdb12a281ff8eea514476f6ba846763) Thanks [@juanrgm](https://github.com/juanrgm)! - Add email input example to the `TextField` component page
+
+### Patch Changes
+
+- Updated dependencies [[`48253e62`](https://github.com/swordev/suid/commit/48253e62ea85581eead54f8027e70391c397d3b7), [`aef9ae8c`](https://github.com/swordev/suid/commit/aef9ae8c3651a477ba0491ed3d4bcbd2a8885870)]:
+  - @suid/material@0.15.1
+  - @suid/icons-material@0.6.11
+
 ## 0.16.0
 
 ### Minor Changes
