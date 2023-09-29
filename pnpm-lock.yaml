@@ -234,6 +234,10 @@ importers:
       solid-js:
         specifier: ^1.7.12
         version: 1.7.12
+    devDependencies:
+      solid-testing-library:
+        specifier: ^0.5.1
+        version: 0.5.1(solid-js@1.7.12)
     publishDirectory: lib
 
   packages/site:
@@ -461,13 +465,6 @@ packages:
     resolution: {integrity: sha512-xguP2WR2Dv0gQ7Ykbdb7BNCnPnIPB94uTi0Z2NvkRBEnhbwjOQ7QyQKJXrVQg4qDpiD9hA5l5cCwy/z2OXgc3w==}
     dependencies:
       grapheme-splitter: 1.0.4
-    dev: true
-
-  /@babel/code-frame@7.21.4:
-    resolution: {integrity: sha512-LYvhNKfwWSPpocw8GI7gpK2nq3HSDuEPC/uSYaALSJu9xjsalaaYFOq0Pwt5KmVqwEbZlDu81aLXwBOmD/Fv9g==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      '@babel/highlight': 7.18.6
     dev: true
 
   /@babel/code-frame@7.22.13:
@@ -785,15 +782,6 @@ packages:
       '@babel/types': 7.22.19
     transitivePeerDependencies:
       - supports-color
-
-  /@babel/highlight@7.18.6:
-    resolution: {integrity: sha512-u7stbOuYjaPezCuLj29hNW1v64M2Md2qupEKP1fHc7WdOA3DgLh37suiSrZYY7haUB7iBeQZ9P1uiRF359do3g==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      '@babel/helper-validator-identifier': 7.22.20
-      chalk: 2.4.2
-      js-tokens: 4.0.0
-    dev: true
 
   /@babel/highlight@7.22.20:
     resolution: {integrity: sha512-dkdMCN3py0+ksCgYmGG8jKeGA/8Tk+gJwSYYlFGxG5lmhfKNoAy004YpLxpS1W2J8m/EK2Ew+yOs9pVRwO89mg==}
@@ -3930,7 +3918,7 @@ packages:
     resolution: {integrity: sha512-6YWYPPpxG3e/xOo6HIWwB/58HukkwIVTOaZ0VwdMVjhRUX/01E4FtQbck9GazOOj7MXHc5RBzMrU86iBJHbI+A==}
     engines: {node: '>=12'}
     dependencies:
-      '@babel/code-frame': 7.21.4
+      '@babel/code-frame': 7.22.13
       '@babel/runtime': 7.20.7
       '@types/aria-query': 4.2.2
       aria-query: 5.1.3
@@ -5490,6 +5478,11 @@ packages:
   /clone@1.0.4:
     resolution: {integrity: sha512-JQHZ2QMW6l3aH/j6xCqQThY/9OH4D/9ls34cgkUBiEeocRTU04tHfKPBsUK1PqZCUQM7GiA0IIXJSuXHI64Kbg==}
     engines: {node: '>=0.8'}
+
+  /clsx@1.2.1:
+    resolution: {integrity: sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==}
+    engines: {node: '>=6'}
+    dev: false
 
   /clsx@2.0.0:
     resolution: {integrity: sha512-rQ1+kcj+ttHG0MKVGBUXwayCCF1oh39BF5COIpRzuCEv8Mwjv0XucrI2ExNTOn9IlLifGClWQcU9BrZORvtw6Q==}
@@ -10338,23 +10331,13 @@ packages:
     dependencies:
       csstype: 3.1.2
       seroval: 0.5.1
+    dev: false
 
   /solid-js@1.7.12:
     resolution: {integrity: sha512-QoyoOUKu14iLoGxjxWFIU8+/1kLT4edQ7mZESFPonsEXZ//VJtPKD8Ud1aTKzotj+MNWmSs9YzK6TdY+fO9Eww==}
     dependencies:
       csstype: 3.1.2
       seroval: 0.5.1
-
-  /solid-refresh@0.5.2(solid-js@1.7.11):
-    resolution: {integrity: sha512-I69HmFj0LsGRJ3n8CEMVjyQFgVtuM2bSjznu2hCnsY+i5oOxh8ioWj00nnHBv0UYD3WpE/Sq4Q3TNw2IKmKN7A==}
-    peerDependencies:
-      solid-js: ^1.3
-    dependencies:
-      '@babel/generator': 7.21.5
-      '@babel/helper-module-imports': 7.18.6
-      '@babel/types': 7.21.5
-      solid-js: 1.7.11
-    dev: true
 
   /solid-refresh@0.5.2(solid-js@1.7.12):
     resolution: {integrity: sha512-I69HmFj0LsGRJ3n8CEMVjyQFgVtuM2bSjznu2hCnsY+i5oOxh8ioWj00nnHBv0UYD3WpE/Sq4Q3TNw2IKmKN7A==}
@@ -10463,6 +10446,17 @@ packages:
 
   /solid-testing-library@0.5.0(solid-js@1.7.12):
     resolution: {integrity: sha512-vr4Ke9Dq3bUFLaXOcN8/IVn2e9Q37w4vdmoIOmFBIPs7iCJX9IxuC0IdQqK8nzBZMQqceijkfyCE3Qc407KmaA==}
+    engines: {node: '>= 14'}
+    deprecated: This package is now available at @solidjs/testing-library
+    peerDependencies:
+      solid-js: '>=1.0.0'
+    dependencies:
+      '@testing-library/dom': 8.19.0
+      solid-js: 1.7.12
+    dev: true
+
+  /solid-testing-library@0.5.1(solid-js@1.7.12):
+    resolution: {integrity: sha512-CfcCWsI5zIJz2zcyZQz2weq+6cCS5QrcmWeEmUEy03fElJ/BV5Ly4MMTsmwdOK803zY3wJP5pPf026C40VrE1Q==}
     engines: {node: '>= 14'}
     deprecated: This package is now available at @solidjs/testing-library
     peerDependencies:
@@ -11479,39 +11473,6 @@ packages:
       less:
         optional: true
       lightningcss:
-        optional: true
-      sass:
-        optional: true
-      stylus:
-        optional: true
-      sugarss:
-        optional: true
-      terser:
-        optional: true
-    dependencies:
-      '@types/node': 18.16.6
-      esbuild: 0.17.18
-      postcss: 8.4.23
-      rollup: 3.21.5
-    optionalDependencies:
-      fsevents: 2.3.2
-    dev: true
-
-  /vite@4.3.9(@types/node@18.16.6)(sass@1.62.1):
-    resolution: {integrity: sha512-qsTNZjO9NoJNW7KnOrgYwczm0WctJ8m/yqYAMAK9Lxt4SoySUfS5S8ia9K7JHpa3KEeMfyF8LoJ3c5NeBJy6pg==}
-    engines: {node: ^14.18.0 || >=16.0.0}
-    hasBin: true
-    peerDependencies:
-      '@types/node': '>= 14'
-      less: '*'
-      sass: '*'
-      stylus: '*'
-      sugarss: '*'
-      terser: ^5.4.0
-    peerDependenciesMeta:
-      '@types/node':
-        optional: true
-      less:
         optional: true
       sass:
         optional: true

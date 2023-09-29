@@ -1,4 +1,4 @@
-import { ExtendButtonTypeMap, ButtonClasses } from "@suid/material/Button";
+import { ButtonClasses, ExtendButtonTypeMap } from "@suid/material/Button";
 import { Theme } from "@suid/material/styles";
 import { SxProps } from "@suid/system";
 import * as ST from "@suid/types";
@@ -6,7 +6,7 @@ import { JSXElement } from "solid-js";
 
 export type LoadingButtonTypeMap<
   P = {},
-  D extends ST.ElementType = "button"
+  D extends ST.ElementType = "button",
 > = {
   name: "MuiLoadingButton";
   defaultPropNames:
@@ -75,7 +75,7 @@ export type LoadingButtonTypeMap<
 
 export type LoadingButtonProps<
   D extends ST.ElementType = LoadingButtonTypeMap["defaultComponent"],
-  P = {}
+  P = {},
 > = ST.OverrideProps<LoadingButtonTypeMap<P, D>, D>;
 
 export default LoadingButtonProps;
