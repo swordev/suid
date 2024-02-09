@@ -8,7 +8,7 @@ import createComponentFactory from "@suid/base/createComponentFactory";
 import { alpha } from "@suid/system";
 import { InPropsOf } from "@suid/types";
 import clsx from "clsx";
-import { Show, useContext } from "solid-js";
+import { children, Show, useContext } from "solid-js";
 
 type OwnerState = InPropsOf<ButtonTypeMap>;
 
@@ -339,6 +339,8 @@ const Button = $.component(function Button({
   classes,
 }) {
   const contextProps = useContext(ButtonGroupContext);
+  const startIcon = children(() => props.startIcon);
+  const endIcon = children(() => props.endIcon);
   return (
     <ButtonRoot
       ownerState={allProps}
@@ -354,18 +356,18 @@ const Button = $.component(function Button({
       {...otherProps}
       classes={props.classes}
     >
-      <Show when={props.startIcon}>
+      <Show when={startIcon()}>
         {(startIcon) => (
           <ButtonStartIcon class={classes.startIcon} ownerState={allProps}>
-            {startIcon()()}
+            {startIcon()}
           </ButtonStartIcon>
         )}
       </Show>
       {props.children}
-      <Show when={props.endIcon}>
+      <Show when={endIcon()}>
         {(endIcon) => (
           <ButtonEndIcon class={classes.endIcon} ownerState={allProps}>
-            {endIcon()()}
+            {endIcon()}
           </ButtonEndIcon>
         )}
       </Show>
