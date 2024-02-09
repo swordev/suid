@@ -10,3 +10,4 @@ lib
 node_modules
 temp
 vite.config.js.timestamp*
+.idea

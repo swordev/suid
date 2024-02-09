@@ -1,13 +1,14 @@
 import { ButtonBaseTypeMap, ExtendButtonBaseTypeMap } from "../ButtonBase";
-import { OverrideProps, OverridableComponent } from "../OverridableComponent";
 import { Theme } from "../styles";
 import { ButtonClasses } from "./buttonClasses";
 import SxProps from "@suid/system/sxProps";
 import {
   DistributiveOmit,
   ElementType,
+  OverridableComponent,
   OverridableStringUnion,
   OverridableTypeMap,
+  OverrideProps,
 } from "@suid/types";
 import { JSX, JSXElement } from "solid-js";
 
@@ -61,14 +62,14 @@ export type ButtonTypeMap<P = {}, D extends ElementType = "button"> = {
      */
     disableElevation?: boolean;
     /**
-     * If `true`, the  keyboard focus ripple is disabled.
+     * If `true`, the keyboard focus ripple is disabled.
      * @default false
      */
     disableFocusRipple?: boolean;
     /**
      * Element placed after the children.
      */
-    endIcon?: JSXElement;
+    endIcon?: () => JSXElement;
     /**
      * If `true`, the button will take up the full width of its container.
      * @default false
@@ -91,7 +92,7 @@ export type ButtonTypeMap<P = {}, D extends ElementType = "button"> = {
     /**
      * Element placed before the children.
      */
-    startIcon?: JSXElement;
+    startIcon?: () => JSXElement;
     /**
      * The system prop that allows defining system overrides as well as additional CSS styles.
      */

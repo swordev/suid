@@ -357,7 +357,7 @@ const Button = $.component(function Button({
       <Show when={props.startIcon}>
         {(startIcon) => (
           <ButtonStartIcon class={classes.startIcon} ownerState={allProps}>
-            {startIcon()}
+            {startIcon()()}
           </ButtonStartIcon>
         )}
       </Show>
@@ -365,7 +365,7 @@ const Button = $.component(function Button({
       <Show when={props.endIcon}>
         {(endIcon) => (
           <ButtonEndIcon class={classes.endIcon} ownerState={allProps}>
-            {endIcon()}
+            {endIcon()()}
           </ButtonEndIcon>
         )}
       </Show>
