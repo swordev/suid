@@ -69,7 +69,7 @@ export type ButtonTypeMap<P = {}, D extends ElementType = "button"> = {
     /**
      * Element placed after the children.
      */
-    endIcon?: () => JSXElement;
+    endIcon?: JSXElement;
     /**
      * If `true`, the button will take up the full width of its container.
      * @default false
@@ -92,7 +92,7 @@ export type ButtonTypeMap<P = {}, D extends ElementType = "button"> = {
     /**
      * Element placed before the children.
      */
-    startIcon?: () => JSXElement;
+    startIcon?: JSXElement;
     /**
      * The system prop that allows defining system overrides as well as additional CSS styles.
      */
