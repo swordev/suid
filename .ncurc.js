@@ -4,6 +4,8 @@ const targets = {
   patch: [
     // https://github.com/jsdom/jsdom/issues/3562
     "jsdom",
+    // NodeJS v18 - https://github.com/vitejs/vite/issues/15714#issuecomment-1949236530
+    "@types/node",
   ],
   minor: [
     // pending (breaking changes)
@@ -13,8 +15,6 @@ const targets = {
     "ts-morph",
     // CJS dropped
     "commander",
-    // NodeJS v18
-    "@types/node",
   ],
 };
 
