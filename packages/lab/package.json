@@ -1,6 +1,6 @@
 {
-  "name": "@suid/material",
-  "version": "0.15.1",
+  "name": "@suid/lab",
+  "version": "0.0.1",
   "description": "A port of Material-UI (MUI) built with SolidJS.",
   "keywords": [
     "solid",
@@ -21,16 +21,14 @@
   "dependencies": {
     "@suid/base": "workspace:*",
     "@suid/css": "workspace:*",
+    "@suid/material": "workspace:*",
     "@suid/system": "workspace:*",
     "@suid/types": "workspace:*",
     "@suid/utils": "workspace:*",
-    "clsx": "^2.0.0"
-  },
-  "devDependencies": {
-    "solid-testing-library": "^0.5.1"
+    "clsx": "^1.2.1"
   },
   "peerDependencies": {
-    "solid-js": "^1.7.12"
+    "solid-js": "^1.7.11"
   },
   "publishConfig": {
     "directory": "lib"

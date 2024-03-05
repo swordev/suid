@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "@suid/types": ["./../types/src"],
+      "@suid/types/*": ["./../types/src/*"],
+      "@suid/utils": ["./../utils/src"],
+      "@suid/utils/*": ["./../utils/src/*"],
+      "@suid/material": ["./../material/src"],
+      "@suid/material/*": ["./../material/src/*"]
+    }
+  },
+  "extends": "./../../tsconfig.json",
+  "include": ["src", "test"],
+  "references": [
+    { "path": "./../types/tsconfig.build.json" },
+    { "path": "./../utils/tsconfig.build.json" },
+    { "path": "./../material/tsconfig.build.json" }
+  ]
+}
