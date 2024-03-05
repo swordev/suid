@@ -109,7 +109,7 @@ function createComponentFactory<
 
         return cb({
           allProps,
-          otherProps,
+          otherProps: otherProps as any,
           props,
           classes,
         });
