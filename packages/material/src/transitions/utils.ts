@@ -35,8 +35,8 @@ export function getTransitionProps(
       (typeof timeout === "number"
         ? timeout
         : typeof timeout === "string"
-        ? 0
-        : timeout[options.mode] || 0),
+          ? 0
+          : timeout[options.mode] || 0),
     easing:
       style.transitionTimingFunction ??
       (typeof easing === "object" ? easing[options.mode] : easing),

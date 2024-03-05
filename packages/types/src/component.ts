@@ -20,34 +20,34 @@ export interface SuidElement<M extends SuidComponentType> {
 export type InferPropsType<T> = T extends (props: infer PropsType) => any
   ? PropsType
   : T extends keyof JSX.IntrinsicElements
-  ? JSX.IntrinsicElements[T]
-  : never;
+    ? JSX.IntrinsicElements[T]
+    : never;
 
 export type PropsOf<T> = T extends OverridableTypeMap
   ? DefaultComponentProps<T> & { component?: ElementType }
   : T extends SuidComponentType
-  ? DefaultComponentProps<T>
-  : T extends OverridableComponent<infer C2>
-  ? DefaultComponentProps<C2> & { component?: ElementType }
-  : T extends ElementType
-  ? _ComponentProps<T>
-  : unknown;
+    ? DefaultComponentProps<T>
+    : T extends OverridableComponent<infer C2>
+      ? DefaultComponentProps<C2> & { component?: ElementType }
+      : T extends ElementType
+        ? _ComponentProps<T>
+        : unknown;
 
 export type InPropsOf<T> = T extends OverridableTypeMap | SuidComponentType
   ? OverridableInProps<T>
   : T extends OverridableComponent<infer C1>
-  ? OverridableInProps<C1>
-  : T extends ElementType
-  ? _ComponentProps<T>
-  : unknown;
+    ? OverridableInProps<C1>
+    : T extends ElementType
+      ? _ComponentProps<T>
+      : unknown;
 
 export type DefaultPropsOf<T> = T extends OverridableTypeMap | SuidComponentType
   ? OverridableDefaultProps<T>
   : T extends OverridableComponent<infer C1>
-  ? OverridableDefaultProps<C1>
-  : T extends ElementType
-  ? _ComponentProps<T>
-  : unknown;
+    ? OverridableDefaultProps<C1>
+    : T extends ElementType
+      ? _ComponentProps<T>
+      : unknown;
 
 export type OverridableDefaultProps<T> = DoRequired<
   Partial<

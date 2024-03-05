@@ -138,8 +138,8 @@ function createStyled<
           ? OverridableInProps<M2>
           : unknown
         : C extends OverridableComponent<infer M>
-        ? OverridableInProps<M>
-        : unknown,
+          ? OverridableInProps<M>
+          : unknown,
     >(
       ...styles: Style<
         T,

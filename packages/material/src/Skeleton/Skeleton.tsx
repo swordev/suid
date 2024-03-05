@@ -170,8 +170,8 @@ const Skeleton = $.component(function Skeleton({
     typeof props.children === "undefined"
       ? false
       : Array.isArray(props.children)
-      ? !!props.children.length
-      : true;
+        ? !!props.children.length
+        : true;
 
   const ownerState = mergeProps(allProps, {
     get hasChildren() {

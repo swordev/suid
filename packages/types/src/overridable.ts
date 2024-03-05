@@ -80,8 +80,8 @@ export type DefaultComponentProps<M> = M extends OverridableTypeMap
         keyof BaseProps<M>
       >
   : M extends SuidComponentType
-  ? BaseProps<M>
-  : never;
+    ? BaseProps<M>
+    : never;
 
 /**
  * Props defined on the component.

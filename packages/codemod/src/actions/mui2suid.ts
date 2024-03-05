@@ -79,8 +79,8 @@ export default async function mui2suid(options: {
     options.out === true
       ? defaultsOutPath
       : typeof options.out === "string"
-      ? join(outBasePath, options.out)
-      : undefined;
+        ? join(outBasePath, options.out)
+        : undefined;
 
   if (outPath && (await safeStat(outPath))) {
     if (outPath.endsWith("Test")) {
