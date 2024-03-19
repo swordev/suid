@@ -20,8 +20,8 @@ export default defineConfig({
         "./packages/system/src/Box/Box.test.tsx",
       ],
     },
-    transformMode: {
-      web: [/\.[jt]sx?$/],
+    testTransformMode: {
+      web: ["*.js", "*.jsx", "*.ts", "*.tsx"],
     },
   },
   resolve: {

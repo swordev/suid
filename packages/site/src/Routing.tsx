@@ -1,4 +1,4 @@
-import { Route, Routes } from "@solidjs/router";
+import { Route } from "@solidjs/router";
 import { Box, Container, useMediaQuery } from "@suid/material";
 import { useTheme } from "@suid/material/styles";
 import { SxPropsObject } from "@suid/system/sxProps";
@@ -101,7 +101,7 @@ export function Routing() {
     return (
       <Route
         path={path === "/home" ? "/" : path}
-        element={
+        component={() => (
           <Switch fallback={<RoutingElementContainer Component={Component} />}>
             <Match when={path === "/tools/playground"}>
               <></>
@@ -113,22 +113,22 @@ export function Routing() {
               <Component />
             </Match>
           </Switch>
-        }
+        )}
       />
     );
   });
   return (
-    <Routes>
+    <>
       {Children.concat(
         <Route
           path="/*"
-          element={
+          component={() => (
             <RoutingElementContainer fullWidth>
               <ErrorPage title="Page not found." code="404" />
             </RoutingElementContainer>
-          }
+          )}
         />
       )}
-    </Routes>
+    </>
   );
 }

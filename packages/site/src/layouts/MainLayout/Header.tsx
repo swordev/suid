@@ -1,4 +1,4 @@
-import { useLocation, Link as RouterLink } from "@solidjs/router";
+import { useLocation, A } from "@solidjs/router";
 import DarkModeOutlinedIcon from "@suid/icons-material/DarkModeOutlined";
 import LightModeOutlinedIcon from "@suid/icons-material/LightModeOutlined";
 import MenuIcon from "@suid/icons-material/Menu";
@@ -82,7 +82,7 @@ export default function Header() {
           </IconButton>
         </Box>
         <Typography
-          component={RouterLink}
+          component={A}
           variant="h6"
           noWrap
           sx={{ mr: 3, textDecoration: "none", color: "inherit" }}
@@ -100,7 +100,7 @@ export default function Header() {
         >
           <Show when={!hideButtons()}>
             <Button
-              component={RouterLink}
+              component={A}
               color="inherit"
               href="/getting-started/installation"
               onMouseEnter={tryPreload}
@@ -108,7 +108,7 @@ export default function Header() {
               Docs
             </Button>
             <Button
-              component={RouterLink}
+              component={A}
               color="inherit"
               href="/tools/playground"
               onMouseEnter={tryPreload}
@@ -116,7 +116,7 @@ export default function Header() {
               Playground
             </Button>
             <Button
-              component={RouterLink}
+              component={A}
               color="inherit"
               href="/tools/react-to-solid"
               onMouseEnter={tryPreload}

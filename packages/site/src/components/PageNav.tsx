@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { useLocation, Link as RouterLink } from "@solidjs/router";
+import { useLocation, A } from "@solidjs/router";
 import NavigateBeforeIcon from "@suid/icons-material/NavigateBefore";
 import NavigateNextIcon from "@suid/icons-material/NavigateNext";
 import { useTheme } from "@suid/material";
@@ -28,22 +28,14 @@ function NavButton(props: {
   if (props.preload && isTouchDevice()) tryPreload(props.href);
   return (
     <Button
-      component={RouterLink}
+      component={A}
       size="large"
       fullWidth={xs()}
       onMouseEnter={tryPreload}
       variant="outlined"
       href={props.href}
-      {...(props.dir === "prev"
-        ? {
-            startIcon: () => <NavigateBeforeIcon />,
-          }
-        : {})}
-      {...(props.dir === "next"
-        ? {
-            endIcon: () => <NavigateNextIcon />,
-          }
-        : {})}
+      startIcon={props.dir === "prev" ? <NavigateBeforeIcon /> : undefined}
+      endIcon={props.dir === "next" ? <NavigateNextIcon /> : undefined}
       sx={{
         p: 2,
         minWidth: 200,
@@ -82,6 +74,8 @@ export default function PageNav(inProps: {
       return nextProp() === "auto" ? navConfigs()?.next : undefined;
     },
   });
+  const prev = () => props.prev as { href: string; text: string };
+  const next = () => props.next as { href: string; text: string };
 
   return (
     <Box sx={props.sx}>
@@ -93,8 +87,8 @@ export default function PageNav(inProps: {
               <NavButton
                 dir="prev"
                 preload={props.preload ?? true}
-                href={props.prev!.href}
-                text={props.prev!.text}
+                href={prev().href}
+                text={prev().text}
               />
             </Show>
           </Grid>
@@ -103,8 +97,8 @@ export default function PageNav(inProps: {
               <NavButton
                 dir="next"
                 preload={props.preload ?? true}
-                href={props.next!.href}
-                text={props.next!.text}
+                href={next().href}
+                text={next().text}
               />
             </Show>
           </Grid>

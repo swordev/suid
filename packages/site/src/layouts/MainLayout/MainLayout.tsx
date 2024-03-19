@@ -14,9 +14,10 @@ import {
   createMemo,
   createSignal,
   ErrorBoundary,
+  JSXElement,
   Show,
 } from "solid-js";
-import { Routing, RoutingElementContainer } from "~/Routing";
+import { RoutingElementContainer } from "~/Routing";
 import Footer from "~/layouts/MainLayout/Footer";
 import ErrorPage from "~/pages/ErrorPage";
 import PlaygroundPage from "~/pages/tools/PlaygroundPage";
@@ -43,7 +44,7 @@ function ErrorFallback(error: Error) {
   }
 }
 
-export default function MainLayout() {
+export default function MainLayout(props: { children?: JSXElement }) {
   const context = createLayoutMutable({
     drawer: {
       width: drawerWidth,
@@ -138,7 +139,7 @@ export default function MainLayout() {
               </RoutingElementContainer>
             </Show>
             <ErrorBoundary fallback={ErrorFallback}>
-              <Routing />
+              {props.children}
             </ErrorBoundary>
           </Box>
         </Box>

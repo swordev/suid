@@ -1,4 +1,4 @@
-import { useLocation, Link as RouterLink } from "@solidjs/router";
+import { useLocation, A } from "@solidjs/router";
 import CodeIcon from "@suid/icons-material/Code";
 import EditRoundedIcon from "@suid/icons-material/EditRounded";
 import HandymanIcon from "@suid/icons-material/Handyman";
@@ -346,7 +346,7 @@ function NavLink(props: { text: string; href: string }) {
 
   return (
     <ListItemButton
-      component={RouterLink}
+      component={A}
       selected={selected()}
       sx={{ pl: "45px" }}
       href={props.href}
