@@ -7,7 +7,7 @@ import {
   TableHead,
   TableRow,
 } from "@suid/material";
-import { mapArray } from "solid-js";
+import { For } from "solid-js";
 
 function createData(
   name: string,
@@ -41,9 +41,8 @@ export default function BasicTable() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {mapArray(
-            () => rows,
-            (row) => (
+          <For each={rows}>
+            {(row) => (
               <TableRow
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
               >
@@ -55,8 +54,8 @@ export default function BasicTable() {
                 <TableCell align="right">{row.carbs}</TableCell>
                 <TableCell align="right">{row.protein}</TableCell>
               </TableRow>
-            )
-          )}
+            )}
+          </For>
         </TableBody>
       </Table>
     </TableContainer>

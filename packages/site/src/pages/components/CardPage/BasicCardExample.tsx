@@ -7,14 +7,16 @@ import {
   Typography,
 } from "@suid/material";
 
-const bull = () => (
-  <Box
-    component="span"
-    sx={{ display: "inline-block", mx: "2px", transform: "scale(0.8)" }}
-  >
-    •
-  </Box>
-);
+function Bull() {
+  return (
+    <Box
+      component="span"
+      sx={{ display: "inline-block", mx: "2px", transform: "scale(0.8)" }}
+    >
+      •
+    </Box>
+  );
+}
 
 export default function BasicCard() {
   return (
@@ -24,7 +26,7 @@ export default function BasicCard() {
           Word of the Day
         </Typography>
         <Typography variant="h5" component="div">
-          be{bull}nev{bull}o{bull}lent
+          be{<Bull />}nev{<Bull />}o{<Bull />}lent
         </Typography>
         <Typography sx={{ mb: 1.5 }} color="text.secondary">
           adjective

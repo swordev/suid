@@ -1,12 +1,14 @@
 import { Box, Button, ButtonGroup } from "@suid/material";
 
-const buttons = () => (
-  <>
-    <Button>One</Button>
-    <Button>Two</Button>
-    <Button>Three</Button>
-  </>
-);
+function Buttons() {
+  return (
+    <>
+      <Button>One</Button>
+      <Button>Two</Button>
+      <Button>Three</Button>
+    </>
+  );
+}
 
 export default function GroupSizesColors() {
   return (
@@ -21,13 +23,13 @@ export default function GroupSizesColors() {
       }}
     >
       <ButtonGroup size="small" aria-label="small button group">
-        {buttons}
+        <Buttons />
       </ButtonGroup>
       <ButtonGroup color="warning" aria-label="medium secondary button group">
-        {buttons}
+        <Buttons />
       </ButtonGroup>
       <ButtonGroup size="large" aria-label="large button group">
-        {buttons}
+        <Buttons />
       </ButtonGroup>
     </Box>
   );
