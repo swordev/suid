@@ -378,9 +378,6 @@ importers:
       '@types/node':
         specifier: ^20.11.30
         version: 20.11.30
-      '@types/prettier':
-        specifier: ^3.0.0
-        version: 3.0.0
       json5:
         specifier: ^2.2.3
         version: 2.2.3
@@ -3943,13 +3940,6 @@ packages:
 
   /@types/normalize-package-data@2.4.1:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
-    dev: true
-
-  /@types/prettier@3.0.0:
-    resolution: {integrity: sha512-mFMBfMOz8QxhYVbuINtswBp9VL2b4Y0QqYHwqLz3YbgtfAcat2Dl6Y1o4e22S/OVE6Ebl9m7wWiMT2lSbAs1wA==}
-    deprecated: This is a stub types definition. prettier provides its own type definitions, so you do not need this installed.
-    dependencies:
-      prettier: 3.2.5
     dev: true
 
   /@types/prismjs@1.26.3:
