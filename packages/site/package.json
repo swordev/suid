@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "vite build",
+    "build:ts": "tsc --build tsconfig.build.json --verbose",
     "clean": "rimraf ./dist",
     "dev": "vite dev",
     "start": "vite preview"
