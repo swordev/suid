@@ -103,6 +103,11 @@
     "vitest": "^0.33.0"
   },
   "info": "SUID is all a set of utils and components ported from MUI Core and much more.",
+  "pnpm": {
+    "overrides": {
+      "babel-preset-solid": "1.6.3"
+    }
+  },
   "x-wspa": {
     "extends": "@wspa/config/auto",
     "pkgManifest": {
