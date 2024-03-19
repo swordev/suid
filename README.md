@@ -63,7 +63,7 @@ For details about the project status go [here](https://github.com/swordev/suid/b
 
 ### Requirements
 
-- [Node.js v18](https://nodejs.org)
+- [Node.js v20](https://nodejs.org)
 - [pnpm v8](https://pnpm.io)
 
 ### Startup
