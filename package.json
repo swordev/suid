@@ -64,7 +64,7 @@
     "update:deps": "ncu",
     "update:prettier-deps": "ncu prettier,@types/prettier,@trivago/prettier-plugin-sort-imports,prettier-plugin-packagejson,prettier-plugin-sort-json",
     "update:solid-core-deps": "ncu babel-preset-solid,solid-js,solid-testing-library",
-    "update:solid-misc-deps": "ncu @solidjs/meta,@solidjs/router,solid-start,solid-start-node",
+    "update:solid-misc-deps": "ncu @solidjs/meta,@solidjs/router",
     "update:vite-deps": "ncu vite,vitest",
     "watch": "tsc --build tsconfig.build.json -w"
   },
@@ -103,11 +103,6 @@
     "vitest": "^0.33.0"
   },
   "info": "SUID is all a set of utils and components ported from MUI Core and much more.",
-  "pnpm": {
-    "overrides": {
-      "babel-preset-solid": "1.6.3"
-    }
-  },
   "x-wspa": {
     "extends": "@wspa/config/auto",
     "pkgManifest": {

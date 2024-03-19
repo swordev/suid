@@ -4,10 +4,10 @@
   "description": "SUID website.",
   "type": "module",
   "scripts": {
-    "build": "solid-start build",
+    "build": "vite build",
     "clean": "rimraf ./dist",
-    "preview": "solid-start start",
-    "start": "solid-start dev"
+    "preview": "vite start",
+    "start": "vite dev"
   },
   "dependencies": {
     "@solidjs/meta": "^0.28.6",
@@ -24,19 +24,15 @@
     "prism-themes": "^1.9.0",
     "prismjs": "^1.29.0",
     "semver": "^7.6.0",
-    "solid-js": "^1.8.15",
-    "solid-start": "^0.3.6"
+    "solid-js": "^1.8.15"
   },
   "devDependencies": {
     "@suid/vite-plugin": "workspace:*",
     "@types/prismjs": "^1.26.3",
     "@types/semver": "^7.5.8",
-    "esbuild": "^0.20.1",
     "fast-glob": "^3.3.2",
     "rimraf": "^5.0.5",
     "sass": "^1.71.1",
-    "solid-start-node": "^0.3.6",
-    "undici": "^6.7.0",
     "vite": "^4.4.9",
     "vite-plugin-solid": "^2.7.0"
   },

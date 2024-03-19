@@ -2,12 +2,11 @@ import { readdirSync, readFileSync } from "fs";
 import { writeFile } from "fs/promises";
 import { createRequire } from "module";
 import { dirname, join, resolve } from "path";
-import solidPlugin from "solid-start/vite";
 import { fileURLToPath } from "url";
 import { defineConfig } from "vite";
+import solidPlugin from "vite-plugin-solid";
 import suidPlugin from "./../vite-plugin/src";
 import readTypings from "./vite/readTypings";
-import startAdapter from "./vite/startAdapter";
 
 const require = createRequire(import.meta.url);
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -68,7 +67,6 @@ export default defineConfig({
     suidPlugin(),
     solidPlugin({
       ssr: process.env.SSR === "1" || process.env.SSR === "true",
-      adapter: startAdapter(),
     }),
     {
       name: "prepare-deploy",
