@@ -1,3 +1,4 @@
+import { writeIfDifferent } from "../util/fs";
 import { createProgressLog, ProgressLog } from "./../util/cli";
 import { readOptions } from "./../util/prettier";
 import { packagesPath } from "./../util/workspace";
@@ -40,7 +41,7 @@ async function writeComponentTypingFiles(
   return paths.map((path) =>
     limit(() => {
       progressLog?.add();
-      return writeFile(path, contents);
+      return writeIfDifferent(path, contents);
     })
   );
 }

@@ -1,4 +1,4 @@
-import { readFile, readlink, stat } from "fs/promises";
+import { readFile, readlink, stat, writeFile } from "fs/promises";
 import * as json5 from "json5";
 import { fileURLToPath } from "url";
 
@@ -21,6 +21,19 @@ export async function safeReadLink(path: string) {
   } catch (error) {
     if ((error as NodeJS.ErrnoException).code !== "ENOENT") throw error;
   }
+}
+
+export async function tryRead(path: string): Promise<Buffer | undefined> {
+  try {
+    return await readFile(path);
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code !== "ENOENT") throw error;
+  }
+}
+
+export async function writeIfDifferent(path: string, content: string) {
+  const current = await tryRead(path);
+  if (current?.toString() !== content) await writeFile(path, content);
 }
 
 export function getDirname(url: string) {
