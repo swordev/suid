@@ -1,5 +1,5 @@
 import sdk from "@stackblitz/sdk";
-import { OpenOptions } from "@stackblitz/sdk/typings/interfaces";
+import { OpenOptions } from "@stackblitz/sdk";
 import buildProjectOptions from "~/utils/stackblitz/buildProjectOptions";
 
 export default function openProject(

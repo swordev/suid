@@ -1,4 +1,4 @@
-import type { Project } from "@stackblitz/sdk/typings/interfaces";
+import type { Project } from "@stackblitz/sdk";
 import buildPkg from "~/utils/stackblitz/buildPkg";
 import htmlFile from "./template/index.html?raw";
 import appFile from "./template/src/App.tsx?raw";

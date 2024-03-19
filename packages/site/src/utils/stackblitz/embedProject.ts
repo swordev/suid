@@ -1,5 +1,5 @@
 import sdk from "@stackblitz/sdk";
-import { EmbedOptions } from "@stackblitz/sdk/typings/interfaces";
+import { EmbedOptions } from "@stackblitz/sdk";
 import buildProjectOptions from "~/utils/stackblitz/buildProjectOptions";
 
 export default function embedProject(
