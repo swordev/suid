@@ -43,7 +43,7 @@
     "bench": "vitest bench --run",
     "build": "pnpm scripts prebuild && pnpm build:ts && pnpm build:vite-plugin && pnpm build:site",
     "build:site": "pnpm --filter @suid/site build && wspa compose -p @suid/site",
-    "build:ts": "tsc --build tsconfig.build.json",
+    "build:ts": "tsc --build tsconfig.build.json --verbose",
     "build:vite-plugin": "pnpm --filter @suid/vite-plugin build && wspa compose -p @suid/vite-plugin",
     "changeset": "changeset",
     "check": "pnpm check:format && pnpm check:lint",
