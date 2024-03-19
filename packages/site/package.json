@@ -6,8 +6,8 @@
   "scripts": {
     "build": "vite build",
     "clean": "rimraf ./dist",
-    "preview": "vite start",
-    "start": "vite dev"
+    "dev": "vite dev",
+    "start": "vite preview"
   },
   "dependencies": {
     "@solidjs/meta": "^0.28.6",

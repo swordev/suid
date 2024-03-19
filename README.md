@@ -72,7 +72,7 @@ For details about the project status go [here](https://github.com/swordev/suid/b
 git clone https://github.com/swordev/suid
 cd suid
 pnpm install
-pnpm start
+pnpm dev
 ```
 
 ### Contributing
