@@ -82,7 +82,7 @@ export default function transformReactSource(source: SourceFile) {
     replaceSpreadAsignment(node)
   );
   findAttributes(source).forEach((node) => {
-    const name = node.getName();
+    const name = node.getStructure().name.toString();
     attrTransforms[name]?.(node);
   });
   groupImports(source);

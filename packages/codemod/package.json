@@ -24,10 +24,10 @@
     "fast-glob": "^3.3.2",
     "micromatch": "^4.0.5",
     "prettier": "^3.2.5",
-    "ts-morph": "^17.0.1"
+    "ts-morph": "^22.0.0"
   },
   "devDependencies": {
-    "typescript": "^5.3.3"
+    "typescript": "^5.4.2"
   },
   "publishConfig": {
     "directory": "lib"
