@@ -4,15 +4,9 @@ const targets = {
   patch: [
     // https://github.com/jsdom/jsdom/issues/3562
     "jsdom",
-    // NodeJS v18 - https://github.com/vitejs/vite/issues/15714#issuecomment-1949236530
-    "@types/node",
+    "p-limit",
   ],
   minor: [
-    // pending (breaking changes)
-    // https://github.com/vitest-dev/vitest/releases/tag/v0.34.0
-    "vitest",
-    // pending
-    "ts-morph",
     // CJS dropped
     "commander",
   ],
