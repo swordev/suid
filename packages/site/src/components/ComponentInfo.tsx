@@ -11,12 +11,13 @@ import {
   Match,
   Show,
   Switch,
+  mergeProps,
 } from "solid-js";
 import ComponentCode from "~/components/ComponentCode";
 import PageNav from "~/components/PageNav";
 import PaperCode from "~/components/PaperCode";
 
-export default function ComponentInfo(props: {
+export default function ComponentInfo(inProps: {
   name: string;
   scope?: string;
   body?: JSXElement;
@@ -34,6 +35,11 @@ export default function ComponentInfo(props: {
   prevPage?: { text: string; href: string };
   nextPage?: { text: string; href: string };
 }) {
+  const props = mergeProps(inProps, {
+    get name() {
+      return inProps.name.replace(/\d+$/, "");
+    },
+  });
   const name = createMemo(() => snakeCase(uncapitalize(props.name)));
   const theme = useTheme();
   const docsName = () => props.docsName ?? name();
