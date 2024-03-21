@@ -1,5 +1,11 @@
 # @suid/site
 
+## 0.18.1
+
+### Patch Changes
+
+- [`dbb74ae`](https://github.com/swordev/suid/commit/dbb74ae147dbdb9b80bdc8fcd7f5f8be8c2f0eb4) Thanks [@juanrgm](https://github.com/juanrgm)! - Keep component names
+
 ## 0.18.0
 
 ### Minor Changes
