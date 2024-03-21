@@ -1,5 +1,32 @@
 # @suid/site
 
+## 0.18.0
+
+### Minor Changes
+
+- [`35cf5ae`](https://github.com/swordev/suid/commit/35cf5ae018570efc39c1582abca11f0af0bd469b) Thanks [@juanrgm](https://github.com/juanrgm)! - Update to SolidJS v1.8.15
+
+- [`5955579`](https://github.com/swordev/suid/commit/59555792c6b9d42ee7c91c8ebd90f8f6b5133eb5) Thanks [@juanrgm](https://github.com/juanrgm)! - Update to Vite v5.1.6
+
+- [`5b254cd`](https://github.com/swordev/suid/commit/5b254cd72f3b19a6d60127d8bf7eeabb52c6c280) Thanks [@juanrgm](https://github.com/juanrgm)! - Drop `solid-start`
+
+### Patch Changes
+
+- [`60b2fcc`](https://github.com/swordev/suid/commit/60b2fcc79a0ae234306305473294d956c7fef54b) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
+- [`3177419`](https://github.com/swordev/suid/commit/31774198693b2e1b1e0f298bab6ec4b53c3186d0) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
+- [`1f3ecec`](https://github.com/swordev/suid/commit/1f3ececcfaca8cb0fdd751b647ac209e0cb25319) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
+- Updated dependencies [[`60b2fcc`](https://github.com/swordev/suid/commit/60b2fcc79a0ae234306305473294d956c7fef54b), [`35cf5ae`](https://github.com/swordev/suid/commit/35cf5ae018570efc39c1582abca11f0af0bd469b), [`6c77575`](https://github.com/swordev/suid/commit/6c77575f27727735650ecc81a1ed0697e6ae7201), [`70274dd`](https://github.com/swordev/suid/commit/70274dd1654434be1e7db08891c9f552b918b2d4), [`1f3ecec`](https://github.com/swordev/suid/commit/1f3ececcfaca8cb0fdd751b647ac209e0cb25319)]:
+  - @suid/material@0.16.0
+  - @suid/codemod@0.10.0
+  - @suid/system@0.11.0
+  - @suid/base@0.9.0
+  - @suid/icons-material@0.7.0
+  - @suid/types@0.6.0
+  - @suid/utils@0.9.0
+
 ## 0.17.0
 
 ### Minor Changes
