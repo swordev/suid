@@ -12,6 +12,6 @@
     "json5": "^2.2.3",
     "node-html-parser": "^6.1.12",
     "prettier": "^3.2.5",
-    "typescript": "^5.4.2"
+    "typescript": "^5.4.3"
   }
 }
