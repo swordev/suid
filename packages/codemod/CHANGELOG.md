@@ -1,5 +1,17 @@
 # @suid/codemod
 
+## 0.10.0
+
+### Minor Changes
+
+- [`70274dd`](https://github.com/swordev/suid/commit/70274dd1654434be1e7db08891c9f552b918b2d4) Thanks [@juanrgm](https://github.com/juanrgm)! - Update to TypeScript v5.4.2
+
+### Patch Changes
+
+- [`60b2fcc`](https://github.com/swordev/suid/commit/60b2fcc79a0ae234306305473294d956c7fef54b) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
+- [`1f3ecec`](https://github.com/swordev/suid/commit/1f3ececcfaca8cb0fdd751b647ac209e0cb25319) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
 ## 0.9.6
 
 ### Patch Changes

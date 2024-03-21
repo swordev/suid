@@ -1,5 +1,18 @@
 # @suid/icons-material
 
+## 0.7.0
+
+### Minor Changes
+
+- [`35cf5ae`](https://github.com/swordev/suid/commit/35cf5ae018570efc39c1582abca11f0af0bd469b) Thanks [@juanrgm](https://github.com/juanrgm)! - Update to SolidJS v1.8.15
+
+### Patch Changes
+
+- [`1f3ecec`](https://github.com/swordev/suid/commit/1f3ececcfaca8cb0fdd751b647ac209e0cb25319) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
+- Updated dependencies [[`60b2fcc`](https://github.com/swordev/suid/commit/60b2fcc79a0ae234306305473294d956c7fef54b), [`35cf5ae`](https://github.com/swordev/suid/commit/35cf5ae018570efc39c1582abca11f0af0bd469b), [`6c77575`](https://github.com/swordev/suid/commit/6c77575f27727735650ecc81a1ed0697e6ae7201), [`1f3ecec`](https://github.com/swordev/suid/commit/1f3ececcfaca8cb0fdd751b647ac209e0cb25319)]:
+  - @suid/material@0.16.0
+
 ## 0.6.11
 
 ### Patch Changes
