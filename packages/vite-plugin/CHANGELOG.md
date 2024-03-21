@@ -1,5 +1,17 @@
 # @suid/vite-plugin
 
+## 0.2.0
+
+### Minor Changes
+
+- [`5955579`](https://github.com/swordev/suid/commit/59555792c6b9d42ee7c91c8ebd90f8f6b5133eb5) Thanks [@juanrgm](https://github.com/juanrgm)! - Update to Vite v5.1.6
+
+### Patch Changes
+
+- [`60b2fcc`](https://github.com/swordev/suid/commit/60b2fcc79a0ae234306305473294d956c7fef54b) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
+- [`3177419`](https://github.com/swordev/suid/commit/31774198693b2e1b1e0f298bab6ec4b53c3186d0) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
 ## 0.1.5
 
 ### Patch Changes

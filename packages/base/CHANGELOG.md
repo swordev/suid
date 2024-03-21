@@ -1,5 +1,22 @@
 # @suid/base
 
+## 0.9.0
+
+### Minor Changes
+
+- [`35cf5ae`](https://github.com/swordev/suid/commit/35cf5ae018570efc39c1582abca11f0af0bd469b) Thanks [@juanrgm](https://github.com/juanrgm)! - Update to SolidJS v1.8.15
+
+### Patch Changes
+
+- [`60b2fcc`](https://github.com/swordev/suid/commit/60b2fcc79a0ae234306305473294d956c7fef54b) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
+- [`1f3ecec`](https://github.com/swordev/suid/commit/1f3ececcfaca8cb0fdd751b647ac209e0cb25319) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
+- Updated dependencies [[`60b2fcc`](https://github.com/swordev/suid/commit/60b2fcc79a0ae234306305473294d956c7fef54b), [`35cf5ae`](https://github.com/swordev/suid/commit/35cf5ae018570efc39c1582abca11f0af0bd469b), [`1f3ecec`](https://github.com/swordev/suid/commit/1f3ececcfaca8cb0fdd751b647ac209e0cb25319)]:
+  - @suid/system@0.11.0
+  - @suid/types@0.6.0
+  - @suid/utils@0.9.0
+
 ## 0.8.5
 
 ### Patch Changes

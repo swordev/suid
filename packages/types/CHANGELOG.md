@@ -1,5 +1,15 @@
 # @suid/types
 
+## 0.6.0
+
+### Minor Changes
+
+- [`35cf5ae`](https://github.com/swordev/suid/commit/35cf5ae018570efc39c1582abca11f0af0bd469b) Thanks [@juanrgm](https://github.com/juanrgm)! - Update to SolidJS v1.8.15
+
+### Patch Changes
+
+- [`1f3ecec`](https://github.com/swordev/suid/commit/1f3ececcfaca8cb0fdd751b647ac209e0cb25319) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
 ## 0.5.3
 
 ### Patch Changes
