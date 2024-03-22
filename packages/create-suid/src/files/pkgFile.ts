@@ -6,12 +6,11 @@ export default async function pkgFile(options: {
   devDeps?: string[];
 }) {
   const siteManifest = await fetchLatestManifest("@suid/site");
+  const dependencies = siteManifest.dependencies ?? {};
+  const devDependencies = siteManifest.devDependencies ?? {};
 
   const dep = (name: string, caret?: boolean) => {
-    const ver =
-      siteManifest.dependencies?.[name] ??
-      siteManifest.devDependencies?.[name] ??
-      "*";
+    const ver = dependencies[name] ?? devDependencies[name] ?? "*";
     return {
       [name]: caret && /^\d/.test(ver) ? `^${ver}` : ver,
     };
@@ -26,22 +25,18 @@ export default async function pkgFile(options: {
         build: "vite build",
         start: "vite",
       },
-      dependencies: {
-        ...options.deps?.reduce(
-          (deps, name) => ({ ...deps, ...dep(name, true) }),
-          {} as Record<string, string>
-        ),
-        ...dep("solid-js"),
-      },
-      devDependencies: {
-        ...options.devDeps?.reduce(
-          (deps, name) => ({ ...deps, ...dep(name, true) }),
-          {} as Record<string, string>
-        ),
-        typescript: "^4.8.2",
-        ...dep("vite"),
-        ...dep("vite-plugin-solid"),
-      },
+      dependencies: Object.assign(
+        {},
+        ...(options.deps ?? []).map((name) => dep(name, true)),
+        dep("solid-js")
+      ),
+      devDependencies: Object.assign(
+        {},
+        ...(options.devDeps ?? []).map((name) => dep(name, true)),
+        { typescript: "^4.8.2" },
+        dep("vite"),
+        dep("vite-plugin-solid")
+      ),
     },
     null,
     2
