@@ -11,6 +11,7 @@
     "material design",
     "icons"
   ],
+  "type": "module",
   "main": "index.jsx",
   "scripts": {
     "build": "tsc --build",

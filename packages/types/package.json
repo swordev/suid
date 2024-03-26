@@ -9,6 +9,7 @@
     "mui",
     "types"
   ],
+  "type": "module",
   "scripts": {
     "build": "tsc --build tsconfig.build.json",
     "clean": "tsc --build --clean tsconfig.build.json",
