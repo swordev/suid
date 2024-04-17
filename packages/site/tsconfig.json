@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "types": ["vite/client"],
+    "types": ["vite/client", "vite-plugin-pwa", "vite-plugin-pwa/client"],
     "baseUrl": ".",
     "jsxImportSource": "solid-js",
     "paths": {
