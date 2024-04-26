@@ -10,6 +10,7 @@ import menuItemClasses from "./menuItemClasses";
 import createComponentFactory from "@suid/base/createComponentFactory";
 import { alpha } from "@suid/system";
 import createRef from "@suid/system/createRef";
+import { createInspector } from "@suid/system/inspect";
 import { InPropsOf } from "@suid/types";
 import clsx from "clsx";
 import {
@@ -167,7 +168,7 @@ const MenuItemRoot = styled(ButtonBase, {
  * - [MenuItem API](https://mui.com/api/menu-item/)
  * - inherits [ButtonBase API](https://mui.com/api/button-base/)
  */
-const MenuItem = $.defineComponent(function MenuItem(inProps) {
+const MenuItemComponent = $.defineComponent(function MenuItem(inProps) {
   const menuItemRef = createRef<HTMLElement>(inProps);
   const props = $.useThemeProps({ props: inProps });
   const [, other] = splitProps(props, [
@@ -234,10 +235,17 @@ const MenuItem = $.defineComponent(function MenuItem(inProps) {
     }
   };
 
+  const inspector = createInspector<any>(MenuItemComponent, inProps);
+
+  const handleRef = (el: HTMLElement) => {
+    menuItemRef(el);
+    inspector(el);
+  };
+
   return (
     <ListContext.Provider value={childContext}>
       <MenuItemRoot
-        ref={menuItemRef}
+        ref={handleRef}
         role={baseProps.role}
         tabIndex={tabIndex()}
         component={baseProps.component}
@@ -252,5 +260,4 @@ const MenuItem = $.defineComponent(function MenuItem(inProps) {
     </ListContext.Provider>
   );
 });
-
-export default MenuItem;
+export default MenuItemComponent;
