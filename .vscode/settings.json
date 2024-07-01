@@ -9,12 +9,10 @@
   "editor.formatOnSave": true,
   "explorer.sortOrderLexicographicOptions": "unicode",
   "files.exclude": {
-    "**/.history": true,
     "**/temp": true,
     "**/node_modules": true
   },
   "search.exclude": {
-    ".history": true,
     "packages/icons-material/lib": true
   },
   "typescript.tsdk": "node_modules\\typescript\\lib"

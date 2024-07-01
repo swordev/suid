@@ -2,7 +2,6 @@
   "recommendations": [
     "dbaeumer.vscode-eslint",
     "eamodio.gitlens",
-    "esbenp.prettier-vscode",
-    "xyz.local-history"
+    "esbenp.prettier-vscode"
   ]
 }
