@@ -1,5 +1,3 @@
-/** @type {import("npm-check-updates").RunOptions} */
-
 const targets = {
   patch: [
     // https://github.com/jsdom/jsdom/issues/3562
@@ -12,6 +10,7 @@ const targets = {
   ],
 };
 
+/** @type {import("npm-check-updates").RunOptions} */
 module.exports = {
   workspaces: true,
   root: true,
