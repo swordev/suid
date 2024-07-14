@@ -12,7 +12,13 @@ import { redefine } from "@suid/system/createStyled";
 import { InPropsOf } from "@suid/types";
 import randomString from "@suid/utils/randomString";
 import clsx from "clsx";
-import { createEffect, createSignal, JSX, Show } from "solid-js";
+import {
+  createEffect,
+  createRenderEffect,
+  createSignal,
+  JSX,
+  Show,
+} from "solid-js";
 
 const $ = createComponentFactory<LinearProgressTypeMap>()({
   name: "MuiLinearProgress",
@@ -302,16 +308,23 @@ const LinearProgress = $.component(function LinearProgress({
         element.ref.ariaValueNow = Math.round(props.value).toString();
         element.ref.ariaValueMin = "0";
         element.ref.ariaValueMax = "100";
-        let transform = props.value - 100;
-        if (theme.direction === "rtl") {
-          transform = -transform;
-        }
-        setBar1Style({ transform: `translateX(${transform}%)` });
       } else if (process.env.NODE_ENV !== "production") {
         console.error(
           "MUI: You need to provide a value prop " +
             "when using the determinate or buffer variant of LinearProgress ."
         );
+      }
+    }
+  });
+
+  createRenderEffect(() => {
+    if (props.variant === "determinate" || props.variant === "buffer") {
+      if (props.value !== undefined) {
+        let transform = props.value - 100;
+        if (theme.direction === "rtl") {
+          transform = -transform;
+        }
+        setBar1Style({ transform: `translateX(${transform}%)` });
       }
     }
   });
