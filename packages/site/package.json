@@ -6,7 +6,7 @@
   "scripts": {
     "build": "vite build",
     "build:ts": "tsc --build tsconfig.build.json --verbose",
-    "clean": "rimraf ./dist",
+    "clean": "node ./vite/clean.js",
     "dev": "vite dev",
     "start": "vite preview"
   },
