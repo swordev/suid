@@ -103,7 +103,7 @@ function createComponentFactory<
       const Component = defineComponent(function Component(inProps) {
         const { allProps, otherProps, props } = useProps(inProps);
         const classes =
-          options.autoCallUseClasses ?? true
+          (options.autoCallUseClasses ?? true)
             ? useClasses(allProps as O)
             : ({} as any);
 

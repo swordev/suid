@@ -20,7 +20,7 @@ function isSysThemeDark() {
 }
 
 export const defaultOptions: Options = {
-  darkMode: isServer ? false : getSavedDarkMode() ?? isSysThemeDark(),
+  darkMode: isServer ? false : (getSavedDarkMode() ?? isSysThemeDark()),
   drawer: {
     visible: true,
     openState: false,

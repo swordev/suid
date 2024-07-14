@@ -376,7 +376,7 @@ const InputBase = $.component(function InputBase({
       }
 
       if (isControlled && !controlledValueUpdated) {
-        const newValue = isElement ? value()! : value() ?? "";
+        const newValue = isElement ? value()! : (value() ?? "");
         if (inputRef.ref.value !== newValue) inputRef.ref.value = newValue;
       }
     });
