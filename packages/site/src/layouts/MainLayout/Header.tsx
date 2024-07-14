@@ -54,7 +54,6 @@ export default function Header() {
 
   existsNextVersion()
     .then((result) => setNextVersion(result))
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
     .catch(() => {});
 
   return (

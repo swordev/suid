@@ -170,7 +170,6 @@ const PopperTooltip = function PopperTooltip(
       popperModifiers = popperModifiers.concat(props.popperOptions.modifiers);
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const popper = createPopper(resolveAnchorEl(props.anchorEl)!, tooltip.ref, {
       placement: rtlPlacement,
       ...props.popperOptions,

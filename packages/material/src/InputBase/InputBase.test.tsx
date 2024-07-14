@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import InputBase from "./InputBase";
 import { createSignal } from "solid-js";
 import { render } from "solid-testing-library";

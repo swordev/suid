@@ -108,6 +108,7 @@ function isFocusVisible(event: EventParam<HTMLElement, FocusEvent>): boolean {
   const { target } = event;
   try {
     return target.matches(":focus-visible");
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch (error) {
     // Browsers not implementing :focus-visible will throw a SyntaxError.
     // We use our own heuristic for those browsers.

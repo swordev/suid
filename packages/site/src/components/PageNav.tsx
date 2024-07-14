@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { useLocation, A } from "@solidjs/router";
 import NavigateBeforeIcon from "@suid/icons-material/NavigateBefore";
 import NavigateNextIcon from "@suid/icons-material/NavigateNext";

@@ -270,9 +270,7 @@ const Popover = $.defineComponent(function Popover(inProps) {
     const anchorOffset = getAnchorOffset();
 
     // Calculate element positioning
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     let top = anchorOffset!.top - elemTransformOrigin.vertical;
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     let left = anchorOffset!.left - elemTransformOrigin.horizontal;
     const bottom = top + elemRect.height;
     const right = left + elemRect.width;

@@ -18,7 +18,6 @@ export default tseslint.config(
       includeIgnoreFile(gitignorePath),
     ],
     rules: {
-      "@typescript-eslint/no-non-null-assertion": "warn",
       "@typescript-eslint/no-unused-vars": "warn",
       "@typescript-eslint/no-unused-expressions": "off",
       "@typescript-eslint/no-unsafe-function-type": "off",

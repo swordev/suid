@@ -155,7 +155,6 @@ function generateSentences(name: string, objects: ObjectBindingJson[]) {
       const optional = object.defaults?.getText().trim().startsWith("{");
       const result = generateSentences(
         `${name}.${object.name}${optional ? "?" : ""}`,
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         object.destruct!
       );
       solidNamedImports.push(

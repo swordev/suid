@@ -95,7 +95,6 @@ export function decomposeColor(color: string | ColorType): ColorType {
     }
     if (
       ["srgb", "display-p3", "a98-rgb", "prophoto-rgb", "rec-2020"].indexOf(
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         colorSpace!
       ) === -1
     ) {

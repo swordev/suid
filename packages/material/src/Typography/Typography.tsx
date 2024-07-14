@@ -108,7 +108,6 @@ const colorTransformations: Record<string, string> = {
 const transformDeprecatedColors = (
   color: string | undefined
 ): string | undefined => {
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   return colorTransformations[color!] || color;
 };
 
@@ -127,7 +126,6 @@ const Typography = $.defineComponent(function Typography(inProps) {
   const theme = useTheme();
   const themeProps = theme.components?.[$.name]?.defaultProps;
   const color = () =>
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     transformDeprecatedColors(inProps.color ?? themeProps?.color)!;
   const [sx, props] = splitSxProps(
     mergeProps(

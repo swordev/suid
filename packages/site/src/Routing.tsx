@@ -44,7 +44,6 @@ export function toPath(localPath: string) {
   if (/^index\.tsx?$/.test(basename)) {
     parts.pop();
   }
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   basename = parts.pop()!.replace(/(\.tsx?)?$/, "");
   const parentBaseName = parts[parts.length - 1];
   if (basename === parentBaseName) {

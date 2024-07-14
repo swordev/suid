@@ -93,8 +93,10 @@ export default async function fixEsmImports(
         newModuleText = `${moduleTextWithoutExt}${ext}`;
         resolvedPath = resolve(newModuleText);
         break;
-        // eslint-disable-next-line no-empty
-      } catch (error) {}
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      } catch (error) {
+        continue;
+      }
     }
 
     if (!resolvedPath) continue;

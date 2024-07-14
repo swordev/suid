@@ -73,8 +73,7 @@ export default function suidPlugin(inOptions: SuidPluginOptions = {}): Plugin {
           ...config.ssr,
           noExternal: [
             ...(Array.isArray(config.ssr?.noExternal)
-              ? // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-                config.ssr!.noExternal
+              ? config.ssr!.noExternal
               : []),
             ...solidDeps,
           ],
@@ -142,7 +141,6 @@ export function transform(code: string, options: SuidPluginOptions) {
 
       const optimize =
         types.isImportDeclaration(node) &&
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         options.optimizeImports!.paths!.some((v) => v === node.source.value);
 
       if (!optimize) return;

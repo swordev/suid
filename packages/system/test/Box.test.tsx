@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import Box from "../src/Box";
 import findStyleElement from "@suid/css/dom/findStyleElement";
 import { render } from "solid-testing-library";

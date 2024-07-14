@@ -80,9 +80,7 @@ function createStyle(value: () => StyleProps | undefined) {
         }
         useAssets(() => (
           <style
-            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
             id={styleObject!.id}
-            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
             innerHTML={styleObject!.rules}
             nonce={context.cache?.nonce}
           />

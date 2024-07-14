@@ -77,7 +77,6 @@ export default function createTransitions(inputTransitions: {
     if (process.env.NODE_ENV !== "production") {
       const isString = (value: unknown) => typeof value === "string";
       // IE11 support, replace with Number.isNaN
-      // eslint-disable-next-line no-restricted-globals
       const isNumber = (value: unknown) => !isNaN(parseFloat(value as any));
       if (!isString(props) && !Array.isArray(props)) {
         console.error('MUI: Argument "props" must be a string or Array.');

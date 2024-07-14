@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { isFilled } from "../InputBase/utils";
 import Menu from "../Menu/Menu";
 import MenuItem, { MenuItemTypeMap } from "../MenuItem";

@@ -7,8 +7,10 @@ import { join } from "path";
 async function tryRm(path: string) {
   try {
     await rm(path);
-    // eslint-disable-next-line no-empty
-  } catch (error) {}
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  } catch (error) {
+    return;
+  }
 }
 
 async function pack(options: { patch?: string }) {

@@ -4,8 +4,10 @@ import { dirname, join } from "path";
 export async function safeStat(path: string) {
   try {
     return await stat(path);
-    // eslint-disable-next-line no-empty
-  } catch (error) {}
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  } catch (error) {
+    return;
+  }
 }
 
 export async function isEmptyDir(path: string, exclude?: string[]) {
