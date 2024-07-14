@@ -16,6 +16,7 @@ import {
 import { batch, createComputed, JSXElement, splitProps } from "solid-js";
 import { createMutable } from "solid-js/store";
 
+/*@__NO_SIDE_EFFECTS__*/
 function createComponentFactory<
   C extends SuidComponentType,
   O = InPropsOf<C>,

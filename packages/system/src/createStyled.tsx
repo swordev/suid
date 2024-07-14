@@ -110,6 +110,7 @@ function getSuidComponentType(input: unknown): SuidComponentType | undefined {
   if (typeof input === "function") return (input as any)["__suid"];
 }
 
+/*@__NO_SIDE_EFFECTS__*/
 function createStyled<
   T extends Theme<any>,
   CM extends Record<string, any> = {},
