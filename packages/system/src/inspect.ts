@@ -8,7 +8,7 @@ export type ComponentObject<T = any> = {
 };
 
 type PrivateComponentObject<T = any> = ComponentObject<T> & {
-  $INSPECT: Symbol;
+  $INSPECT: symbol;
 };
 
 export type InspectResult = JSX.Element | ComponentObject;
