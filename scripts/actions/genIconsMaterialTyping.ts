@@ -3,7 +3,7 @@ import { createProgressLog, ProgressLog } from "./../util/cli";
 import { readOptions } from "./../util/prettier";
 import { packagesPath } from "./../util/workspace";
 import { writeIndexFile } from "./genIconsMaterialSource";
-import { readdir, writeFile } from "fs/promises";
+import { readdir } from "fs/promises";
 import pLimit from "p-limit";
 import { join } from "path";
 import { format } from "prettier";
@@ -20,7 +20,7 @@ async function writeIndexTypingFile(
     ...iconNames.map((v) => `export const ${v}: C;`),
   ].join("\n");
   progressLog.add();
-  await writeFile(join(outPath, "index.d.ts"), contents);
+  await writeIfDifferent(join(outPath, "index.d.ts"), contents);
 }
 
 async function writeComponentTypingFiles(
