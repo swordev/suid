@@ -24,10 +24,10 @@
     "@suid/system": "workspace:*",
     "@suid/types": "workspace:*",
     "@suid/utils": "workspace:*",
-    "clsx": "^2.1.0"
+    "clsx": "^2.1.1"
   },
   "peerDependencies": {
-    "solid-js": "^1.8.16"
+    "solid-js": "^1.8.18"
   },
   "publishConfig": {
     "directory": "lib"

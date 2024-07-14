@@ -11,9 +11,9 @@
     "start": "vite preview"
   },
   "dependencies": {
-    "@solidjs/meta": "^0.29.3",
-    "@solidjs/router": "^0.13.1",
-    "@stackblitz/sdk": "^1.9.0",
+    "@solidjs/meta": "^0.29.4",
+    "@solidjs/router": "^0.14.1",
+    "@stackblitz/sdk": "^1.11.0",
     "@suid/base": "workspace:*",
     "@suid/codemod": "workspace:*",
     "@suid/icons-material": "workspace:*",
@@ -21,20 +21,19 @@
     "@suid/system": "workspace:*",
     "@suid/types": "workspace:*",
     "@suid/utils": "workspace:*",
-    "monaco-editor": "^0.47.0",
+    "monaco-editor": "^0.50.0",
     "prism-themes": "^1.9.0",
     "prismjs": "^1.29.0",
-    "semver": "^7.6.0",
-    "solid-js": "^1.8.16"
+    "semver": "^7.6.2",
+    "solid-js": "^1.8.18"
   },
   "devDependencies": {
     "@suid/vite-plugin": "workspace:*",
-    "@types/prismjs": "^1.26.3",
+    "@types/prismjs": "^1.26.4",
     "@types/semver": "^7.5.8",
     "fast-glob": "^3.3.2",
-    "rimraf": "^5.0.5",
-    "sass": "^1.72.0",
-    "vite": "^5.2.2",
+    "sass": "^1.77.8",
+    "vite": "^5.3.3",
     "vite-plugin-solid": "^2.10.2"
   },
   "publishConfig": {

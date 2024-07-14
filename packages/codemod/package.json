@@ -19,15 +19,15 @@
     "watch": "tsc --build -w tsconfig.build.json"
   },
   "dependencies": {
-    "@types/micromatch": "^4.0.6",
+    "@types/micromatch": "^4.0.9",
     "commander": "^9.5.0",
     "fast-glob": "^3.3.2",
-    "micromatch": "^4.0.5",
-    "prettier": "^3.2.5",
-    "ts-morph": "^22.0.0"
+    "micromatch": "^4.0.7",
+    "prettier": "^3.3.3",
+    "ts-morph": "^23.0.0"
   },
   "devDependencies": {
-    "typescript": "^5.4.3"
+    "typescript": "^5.5.3"
   },
   "publishConfig": {
     "directory": "lib"

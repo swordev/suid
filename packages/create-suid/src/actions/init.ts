@@ -55,10 +55,10 @@ export default async function init(defaultOutputDir?: string) {
     default: "pnpm",
     choices: [
       {
-        name: "npm",
+        value: "npm",
       },
       {
-        name: "pnpm",
+        value: "pnpm",
       },
     ],
   });
@@ -69,11 +69,11 @@ export default async function init(defaultOutputDir?: string) {
     message: "Select the packages",
     choices: [
       {
-        name: "@suid/material",
+        value: "@suid/material",
         checked: true,
       },
       {
-        name: "@suid/icons-material",
+        value: "@suid/icons-material",
         checked: true,
       },
     ],

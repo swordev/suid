@@ -15,7 +15,7 @@
     "watch": "tsc --build -w tsconfig.build.json"
   },
   "peerDependencies": {
-    "solid-js": "^1.8.16"
+    "solid-js": "^1.8.18"
   },
   "publishConfig": {
     "directory": "lib"
