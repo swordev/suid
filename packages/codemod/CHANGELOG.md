@@ -1,5 +1,11 @@
 # @suid/codemod
 
+## 0.11.0
+
+### Minor Changes
+
+- [`bee2e07`](https://github.com/swordev/suid/commit/bee2e07ac95a9042e2971cb54c5ddcf45018c959) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
 ## 0.10.0
 
 ### Minor Changes
