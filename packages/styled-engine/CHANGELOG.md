@@ -1,5 +1,16 @@
 # @suid/styled-engine
 
+## 0.8.0
+
+### Minor Changes
+
+- [`bee2e07`](https://github.com/swordev/suid/commit/bee2e07ac95a9042e2971cb54c5ddcf45018c959) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
+### Patch Changes
+
+- Updated dependencies [[`bee2e07`](https://github.com/swordev/suid/commit/bee2e07ac95a9042e2971cb54c5ddcf45018c959)]:
+  - @suid/utils@0.10.0
+
 ## 0.7.0
 
 ### Minor Changes
