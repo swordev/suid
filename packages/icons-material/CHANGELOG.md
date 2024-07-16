@@ -1,5 +1,16 @@
 # @suid/icons-material
 
+## 0.8.0
+
+### Minor Changes
+
+- [`bee2e07`](https://github.com/swordev/suid/commit/bee2e07ac95a9042e2971cb54c5ddcf45018c959) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
+### Patch Changes
+
+- Updated dependencies [[`bee2e07`](https://github.com/swordev/suid/commit/bee2e07ac95a9042e2971cb54c5ddcf45018c959), [`8ea405f`](https://github.com/swordev/suid/commit/8ea405f9754ac02eee855d6c1e06721f4df012c8)]:
+  - @suid/material@0.17.0
+
 ## 0.7.0
 
 ### Minor Changes
