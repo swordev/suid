@@ -74,6 +74,7 @@ export { default as Popper } from "./Popper";
 export { default as Portal } from "./Portal";
 export { default as Radio } from "./Radio";
 export { default as RadioGroup } from "./RadioGroup";
+export { default as Rating } from "./Rating";
 export { default as Select } from "./Select";
 export { default as Skeleton } from "./Skeleton";
 export { default as Slide } from "./Slide";
