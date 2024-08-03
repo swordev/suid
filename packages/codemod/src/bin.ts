@@ -44,7 +44,7 @@ program
   .command("mui2suid")
   .description("Transform a MUI React component into SUID SolidJS component.")
   .option("--package-name [name]", "Package name", "material")
-  .requiredOption("-n,--name [path]", "Input directory path")
+  .requiredOption("-n,--name [name]", "Component name")
   .option("-o,--out [path]", "Output directory path")
   .option("-v,--version [value]", "MUI version", muiVersion)
   .option(
