@@ -1,6 +1,6 @@
 import { createDynamicComponent } from "./Dynamic";
 import createStyle from "./createStyle";
-import type { Theme } from "./createTheme/createTheme";
+import type { Theme } from "./createTheme";
 import resolveStyledProps from "./resolveStyledProps";
 import resolveSxProps from "./resolveSxProps";
 import { StyledProps } from "./styledProps";
