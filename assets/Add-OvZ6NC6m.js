@@ -1,0 +1,1 @@
+import{c as v,t}from"./index-ridAuENd.js";var a=t('<svg><path d="M0 0h24v24H0z"fill=none></svg>',!1,!0),e=t('<svg><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></svg>',!1,!0);const h=v(()=>[a(),e()],"Add");export{h as A};
