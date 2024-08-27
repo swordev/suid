@@ -1,4 +1,4 @@
-import { Component, createMemo, JSX } from "solid-js";
+import { Component, createMemo, onCleanup, JSX } from "solid-js";
 
 export const $INSPECT = Symbol("solid-inspect");
 
@@ -13,13 +13,32 @@ type PrivateComponentObject<T = any> = ComponentObject<T> & {
 
 export type InspectResult = JSX.Element | ComponentObject;
 
+const nodeToComponent = new WeakMap();
+
 let inspectionEnabled = false;
+
+export function createInspector<T>(fn: Component<T>, props: T) {
+  let elementRef: HTMLElement | null;
+  const cleanup = () => {
+    if (elementRef) {
+      nodeToComponent.delete(elementRef);
+      elementRef = null;
+    }
+  };
+  onCleanup(cleanup);
+  return (newElementRef: HTMLElement) => {
+    cleanup();
+    elementRef = newElementRef;
+    nodeToComponent.set(elementRef, { Component: fn, props, $INSPECT });
+  };
+}
 
 export function inspect(fn: () => JSX.Element): InspectResult[] {
   try {
     inspectionEnabled = true;
-    const result = fn();
-    return Array.isArray(result) ? result : [result];
+    const ret = fn();
+    const result = Array.isArray(ret) ? ret : [ret];
+    return result.map((v: any) => nodeToComponent.get(v) || v);
   } finally {
     inspectionEnabled = false;
   }
