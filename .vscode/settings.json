@@ -9,8 +9,7 @@
   "editor.formatOnSave": true,
   "explorer.sortOrderLexicographicOptions": "unicode",
   "files.exclude": {
-    "**/temp": true,
-    "**/node_modules": true
+    "**/temp": true
   },
   "search.exclude": {
     "packages/icons-material/lib": true
