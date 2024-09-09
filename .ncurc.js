@@ -7,6 +7,7 @@ const targets = {
   minor: [
     // CJS dropped
     "commander",
+    "@types/node",
   ],
 };
 

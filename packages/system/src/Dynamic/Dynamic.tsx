@@ -1,5 +1,3 @@
-/* eslint-disable no-constant-condition */
-
 /* eslint-disable no-case-declarations */
 import {
   $DEVCOMP,
@@ -43,9 +41,10 @@ export function createStaticComponent(
   component: Function | string,
   props: any
 ) {
+  const isDev: any = "_DX_DEV_";
   switch (typeof component) {
     case "function":
-      if ("_DX_DEV_") Object.assign(component, { [$DEVCOMP]: true });
+      if (isDev) Object.assign(component, { [$DEVCOMP]: true });
       return untrack(() => component(props));
 
     case "string":
