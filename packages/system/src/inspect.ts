@@ -1,4 +1,11 @@
-import { Component, createMemo, JSX } from "solid-js";
+import {
+  Component,
+  createComponent,
+  createContext,
+  createMemo,
+  JSX,
+  useContext,
+} from "solid-js";
 
 export const $INSPECT = Symbol("solid-inspect");
 
@@ -13,21 +20,22 @@ type PrivateComponentObject<T = any> = ComponentObject<T> & {
 
 export type InspectResult = JSX.Element | ComponentObject;
 
-let inspectionEnabled = false;
+export const InspectContext = createContext<{ enabled: boolean }>();
 
 export function inspect(fn: () => JSX.Element): InspectResult[] {
-  try {
-    inspectionEnabled = true;
-    const result = fn();
-    return Array.isArray(result) ? result : [result];
-  } finally {
-    inspectionEnabled = false;
-  }
+  const cb = createComponent(InspectContext.Provider, {
+    value: { enabled: true },
+    get children() {
+      return fn();
+    },
+  }) as any as () => any;
+  const result = cb();
+  return Array.isArray(result) ? result : [result];
 }
 
 export function componentTrap<T>(fn: Component<T>): Component<T> {
   function Component(props: T) {
-    if (inspectionEnabled)
+    if (useContext(InspectContext)?.enabled)
       return {
         Component,
         props,
@@ -74,9 +82,7 @@ export function resolveChildren(children: any): unknown {
 
 export function inspectChildren(fn: () => any) {
   const children = createMemo(() => inspect(fn));
-  const memo = createMemo(() =>
-    inspect(() => resolveChildren(children()) as any)
-  );
+  const memo = createMemo(() => resolveChildren(children()) as any);
   (memo as any).toArray = () => {
     const c = memo();
     return Array.isArray(c) ? c : c != null ? [c] : [];
