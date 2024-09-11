@@ -125,8 +125,8 @@
 | NativeSelect            |  ✅   |               |
 | NoSsr                   |       |               |
 | OutlinedInput           |  ✅   |               |
-| Pagination              |       |               |
-| PaginationItem          |       |               |
+| Pagination              |  ✅   |               |
+| PaginationItem          |  ✅   |               |
 | Paper                   |  ✅   |               |
 | Popover                 |  ✅   |               |
 | Popper                  |  ✅   |               |
@@ -177,7 +177,7 @@
 | Unstable_TrapFocus      |       |               |
 | useAutocomplete         |       |               |
 | useMediaQuery           |  ✅   |               |
-| usePagination           |       |               |
+| usePagination           |  ✅   |               |
 | useScrollTrigger        |       |               |
 | useTouchRipple          |       |               |
 | Zoom                    |       |               |
