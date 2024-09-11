@@ -8,7 +8,9 @@
     "p-limit": "^4.0.0"
   },
   "devDependencies": {
+    "@types/adm-zip": "^0.5.5",
     "@types/node": "^20.16.5",
+    "adm-zip": "^0.5.2",
     "json5": "^2.2.3",
     "node-html-parser": "^6.1.13",
     "prettier": "^3.3.3",
