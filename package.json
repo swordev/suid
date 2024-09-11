@@ -55,7 +55,7 @@
     "dev": "pnpm --filter @suid/site dev",
     "format": "prettier --cache -w .",
     "postinstall": "wspa compose && pnpm scripts prebuild",
-    "prepare": "husky install",
+    "prepare": "husky",
     "release": "changeset publish",
     "scripts": "tsx scripts/index.ts",
     "start": "pnpm --filter @suid/site start",
