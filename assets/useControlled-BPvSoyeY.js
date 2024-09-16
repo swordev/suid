@@ -1,0 +1,1 @@
+var r=Object.defineProperty;var o=(e,t)=>r(e,"name",{value:t,configurable:!0});import{a as s,b as u,d}from"./index-DqiMznku.js";function v(e){const t=e.controlled()!==void 0,[n,l]=s(e.default()),a=u(()=>t?e.controlled():n());return t&&d(()=>{l(()=>a())}),[a,o(c=>{t||l(c)},"setValueIfUncontrolled")]}o(v,"useControlled");export{v as u};
