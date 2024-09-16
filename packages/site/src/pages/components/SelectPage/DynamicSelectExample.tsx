@@ -21,7 +21,10 @@ export default function DynamicSelectExample() {
         label="Length"
         type="number"
         value={length()}
-        onChange={(event: any) => setLength(Number(event.target.value))}
+        onChange={(event: any) => {
+          const targetValue = Number(event.target.value);
+          if (targetValue <= 999) setLength(targetValue);
+        }}
       />
       <FormControl fullWidth>
         <InputLabel>Value</InputLabel>
