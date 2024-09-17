@@ -4,11 +4,11 @@
   "private": true,
   "type": "module",
   "dependencies": {
-    "adm-zip": "^0.5.2",
-    "commander": "^9.5.0",
+    "adm-zip": "^0.5.16",
+    "commander": "^12.1.0",
     "json5": "^2.2.3",
     "node-html-parser": "^6.1.13",
-    "p-limit": "^4.0.0",
+    "p-limit": "^6.1.0",
     "prettier": "^3.3.3"
   },
   "devDependencies": {
