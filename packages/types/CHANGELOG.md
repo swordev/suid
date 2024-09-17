@@ -1,5 +1,11 @@
 # @suid/types
 
+## 0.7.1
+
+### Patch Changes
+
+- [`b58930c`](https://github.com/swordev/suid/commit/b58930ca80080062f5a9f2a9bcf42fff9a623e53) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
 ## 0.7.0
 
 ### Minor Changes

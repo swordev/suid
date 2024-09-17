@@ -1,5 +1,14 @@
 # @suid/styled-engine
 
+## 0.8.1
+
+### Patch Changes
+
+- [`b58930c`](https://github.com/swordev/suid/commit/b58930ca80080062f5a9f2a9bcf42fff9a623e53) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
+- Updated dependencies [[`b58930c`](https://github.com/swordev/suid/commit/b58930ca80080062f5a9f2a9bcf42fff9a623e53)]:
+  - @suid/utils@0.10.1
+
 ## 0.8.0
 
 ### Minor Changes
