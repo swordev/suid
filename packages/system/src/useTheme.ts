@@ -9,11 +9,14 @@ function useTheme(
   Context: typeof ThemeContext = ThemeContext
 ) {
   const theme = useContext(Context);
-  if (isEmptyObject(theme) && defaultTheme) {
+  if (typeof theme === "function") {
+    return new Proxy({}, { get: (_, p) => theme()[p] });
+  } else if (isEmptyObject(theme) && defaultTheme) {
     if (typeof defaultTheme === "function") return defaultTheme();
     return defaultTheme;
+  } else if (!theme) {
+    throw new Error("Theme is not defined");
   }
-  if (!theme) throw new Error("Theme is not defined");
   return theme as Theme;
 }
 

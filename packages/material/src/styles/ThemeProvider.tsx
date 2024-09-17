@@ -1,9 +1,9 @@
 import { Theme } from ".";
 import ThemeContext from "@suid/system/ThemeContext";
-import { JSXElement } from "solid-js";
+import { Accessor, JSXElement } from "solid-js";
 
 function ThemeProvider<T extends string>(props: {
-  theme: Theme<T>;
+  theme: Theme<T> | Accessor<Theme<T>>;
   children: JSXElement;
 }) {
   return (
