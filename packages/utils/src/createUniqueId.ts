@@ -7,5 +7,5 @@ import {
 export default function createUniqueId(
   idOverride?: Accessor<string | undefined>
 ) {
-  return createMemo(() => idOverride?.() ?? `mui-${_createUniqueId()}`);
+  return createMemo(() => idOverride?.() ?? `suid-${_createUniqueId()}`);
 }

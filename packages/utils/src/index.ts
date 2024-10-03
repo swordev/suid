@@ -17,6 +17,7 @@ export { default as toArray } from "./toArray";
 export { default as uncapitalize } from "./uncapitalize";
 export { default as useIsFocusVisible } from "./useIsFocusVisible";
 export { default as usePreviousProps } from "./usePreviousProps";
+export { default as visuallyHidden } from "./visuallyHidden";
 export {
   isSuidElement,
   isElement,

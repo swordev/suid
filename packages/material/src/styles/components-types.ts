@@ -68,6 +68,7 @@ import type MuiPaper from "../Paper";
 import type MuiPopover from "../Popover";
 import type MuiRadio from "../Radio";
 import type MuiRadioGroup from "../RadioGroup";
+import type MuiRating from "../Rating";
 import type MuiSelect from "../Select";
 import type MuiSkeleton from "../Skeleton";
 import type MuiSlide from "../Slide";
@@ -159,6 +160,7 @@ export type ComponentsTypes = {
   MuiPopover: typeof MuiPopover;
   MuiRadio: typeof MuiRadio;
   MuiRadioGroup: typeof MuiRadioGroup;
+  MuiRating: typeof MuiRating;
   MuiSelect: typeof MuiSelect;
   MuiSkeleton: typeof MuiSkeleton;
   MuiSlide: typeof MuiSlide;
