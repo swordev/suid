@@ -59,16 +59,22 @@ export const skipProps: (keyof ComponentProps<any, any>)[] = [
   "as",
 ];
 
-function resolveStyles<T extends Theme<any>, P, O>(
+function getStyleOverrides<N>(name: N, theme: Theme<any>): any | undefined {
+  return theme.components?.[name]?.styleOverrides;
+}
+
+function resolveStyles<T extends Theme<any>, P, O, N extends string = string>(
   useTheme: () => T,
   className: string,
   styles: Style<T, P, O>[],
-  inProps: ComponentProps<T, O>
+  inProps: ComponentProps<T, O>,
+  options: StyledOptions<N> = {}
 ) {
   return createMemo(() => {
     const theme = useTheme();
+    const styleOverrides = getStyleOverrides(options.name, theme);
     const ownerState = inProps.ownerState;
-    return styles.reduce((result, style) => {
+    const baseStyles = styles.reduce((result, style) => {
       let styledProps: StyledProps | false | undefined;
       if (typeof style === "function") {
         styledProps = style({
@@ -94,6 +100,20 @@ function resolveStyles<T extends Theme<any>, P, O>(
         );
       return result;
     }, [] as StyledProps[]);
+    let resolvedStyleOverrides: any[] = [];
+    if (
+      options.overridesResolver &&
+      typeof options.overridesResolver === "function" &&
+      styleOverrides
+    ) {
+      resolvedStyleOverrides = options
+        .overridesResolver(inProps, styleOverrides)
+        .map((styleProp) =>
+          styleProp ? resolveStyledProps(styleProp as StyledProps, {}) : null
+        )
+        .filter(Boolean);
+    }
+    return baseStyles.concat(resolvedStyleOverrides);
   });
 }
 
@@ -185,7 +205,8 @@ function createStyled<
           $useTheme,
           cssClassName,
           styles,
-          inProps
+          inProps,
+          options
         );
 
         const inSx = () => {
