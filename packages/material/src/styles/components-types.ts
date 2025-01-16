@@ -62,6 +62,8 @@ import type MuiMenuList from "../MenuList";
 import type MuiModal from "../Modal";
 import type MuiNativeSelect from "../NativeSelect";
 import type MuiOutlinedInput from "../OutlinedInput";
+import type MuiPagination from "../Pagination";
+import type MuiPaginationItem from "../PaginationItem";
 import type MuiPaper from "../Paper";
 import type MuiPopover from "../Popover";
 import type MuiRadio from "../Radio";
@@ -152,6 +154,8 @@ export type ComponentsTypes = {
   MuiModal: typeof MuiModal;
   MuiNativeSelect: typeof MuiNativeSelect;
   MuiOutlinedInput: typeof MuiOutlinedInput;
+  MuiPagination: typeof MuiPagination;
+  MuiPaginationItem: typeof MuiPaginationItem;
   MuiPaper: typeof MuiPaper;
   MuiPopover: typeof MuiPopover;
   MuiRadio: typeof MuiRadio;

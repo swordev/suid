@@ -401,7 +401,7 @@ const SelectInput = $.defineComponent(function SelectInput(props) {
     prevProps: PropsOf<MenuItemTypeMap>
   ) => {
     let newValue: any;
-    const child = { props: itemProps };
+    const childValue = itemProps.value;
 
     const multiple = props.multiple;
     // We use the tabindex attribute to signal the available options.
@@ -411,14 +411,14 @@ const SelectInput = $.defineComponent(function SelectInput(props) {
 
     if (multiple) {
       newValue = Array.isArray(value()) ? value().slice() : [];
-      const itemIndex = value().indexOf(child.props.value);
+      const itemIndex = value().indexOf(childValue);
       if (itemIndex === -1) {
-        newValue.push(child.props.value);
+        newValue.push(childValue);
       } else {
         newValue.splice(itemIndex, 1);
       }
     } else {
-      newValue = child.props.value;
+      newValue = childValue;
     }
 
     if (typeof prevProps.onClick === "function") {

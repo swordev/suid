@@ -1,25 +1,20 @@
 import { safeStat } from "./../util/fs";
 import { muiSourcePath } from "./../util/material-ui";
-import { spawn } from "child_process";
-import { dirname } from "path";
+import Zip from "adm-zip";
+import { readdir, rename, rmdir } from "fs/promises";
+import { basename } from "path";
 
 async function extractMaterialSource(options: { version: string }) {
   const { name } = extractMaterialSource;
   const targetPath = muiSourcePath(options.version);
   const zipPath = targetPath + ".zip";
-  if (await safeStat(targetPath)) {
+  if ((await safeStat(targetPath)) && (await readdir(targetPath)).length) {
     console.log(`[${name}] Source code is already extracted`);
   } else {
     console.log(`[name] Extracting into ${targetPath}`);
-    const p = spawn("7z", ["x", "-y", zipPath, `-o${dirname(targetPath)}`], {
-      stdio: "inherit",
-    });
-    await new Promise<void>((resolve, reject) => {
-      p.on("error", reject);
-      p.on("close", (exitCode) =>
-        exitCode ? new Error(`Exit code: ${exitCode}`) : resolve()
-      );
-    });
+    new Zip(zipPath).extractAllTo(targetPath + ".tmp", true);
+    await rename(targetPath + ".tmp/" + basename(targetPath), targetPath);
+    await rmdir(targetPath + ".tmp");
   }
 }
 

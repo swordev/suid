@@ -1,6 +1,6 @@
 {
   "name": "@suid/types",
-  "version": "0.6.0",
+  "version": "0.7.1",
   "description": "Types used by suid packages.",
   "keywords": [
     "solid",
@@ -15,7 +15,7 @@
     "watch": "tsc --build -w tsconfig.build.json"
   },
   "peerDependencies": {
-    "solid-js": "^1.8.18"
+    "solid-js": "^1.8.22"
   },
   "publishConfig": {
     "directory": "lib"

@@ -1,6 +1,6 @@
 {
   "name": "@suid/base",
-  "version": "0.9.0",
+  "version": "0.10.1",
   "description": "Base components unstyled used by @suid/material.",
   "keywords": [
     "solid",
@@ -25,7 +25,7 @@
     "clsx": "^2.1.1"
   },
   "peerDependencies": {
-    "solid-js": "^1.8.18"
+    "solid-js": "^1.8.22"
   },
   "publishConfig": {
     "directory": "lib"

@@ -311,7 +311,7 @@ const MenuList = $.defineComponent(function MenuList(props) {
     return result;
   });
 
-  const items = mapArray(children, (child, index) => {
+  const items = mapArray<any, any>(children, (child, index) => {
     if (isComponentObject(child)) {
       return createComponent(
         child.Component,

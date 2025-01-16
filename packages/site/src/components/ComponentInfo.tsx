@@ -116,7 +116,9 @@ export default function ComponentInfo(inProps: {
                     {capitalize(
                       snakeCase(
                         uncapitalize(
-                          example.component.name.replace(/Example$/, " ")
+                          example.component.name
+                            .replace(/Example$/, " ")
+                            .replace("[solid-refresh]", "")
                         )
                       )
                     ).replaceAll("-", " ")}

@@ -1,6 +1,6 @@
 {
   "name": "@suid/icons-material",
-  "version": "0.7.0",
+  "version": "0.8.1",
   "description": "Material Design icons as SVG SolidJS components.",
   "keywords": [
     "solid",
@@ -21,7 +21,7 @@
     "@suid/material": "workspace:*"
   },
   "peerDependencies": {
-    "solid-js": "^1.8.18"
+    "solid-js": "^1.8.22"
   },
   "publishConfig": {
     "directory": "lib"

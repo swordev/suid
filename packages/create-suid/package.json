@@ -1,6 +1,6 @@
 {
   "name": "create-suid",
-  "version": "0.1.9",
+  "version": "0.2.1",
   "description": "CLI tool for creating a SUID project easily.",
   "keywords": [
     "cli",
@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "chalk": "^5.3.0",
-    "inquirer": "^10.0.1"
+    "inquirer": "^11.0.1"
   },
   "devDependencies": {
     "@types/inquirer": "^9.0.7"

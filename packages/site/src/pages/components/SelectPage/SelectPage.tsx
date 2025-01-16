@@ -1,6 +1,7 @@
 import { Select } from "@suid/material";
 import ComponentInfo from "~/components/ComponentInfo";
 import BasicSelectExample from "./BasicSelectExample";
+import DynamicSelectExample from "./DynamicSelectExample";
 import MultipleSelectCheckmarksExample from "./MultipleSelectCheckmarksExample";
 import MultipleSelectChipExample from "./MultipleSelectChipExample";
 import SelectAutoWidthExample from "./SelectAutoWidthExample";
@@ -18,6 +19,7 @@ export default function SelectPage() {
         SelectOtherPropsExample,
         MultipleSelectCheckmarksExample,
         MultipleSelectChipExample,
+        DynamicSelectExample,
       ]}
     />
   );

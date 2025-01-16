@@ -2,12 +2,8 @@ const targets = {
   patch: [
     // https://github.com/jsdom/jsdom/issues/3562
     "jsdom",
-    "p-limit",
   ],
-  minor: [
-    // CJS dropped
-    "commander",
-  ],
+  minor: ["@types/node"],
 };
 
 /** @type {import("npm-check-updates").RunOptions} */

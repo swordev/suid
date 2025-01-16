@@ -69,11 +69,6 @@ export default defineConfig({
       ssr: process.env.SSR === "1" || process.env.SSR === "true",
     }),
     {
-      name: "polyfill-error",
-      load: (id) =>
-        id === "#polyfill-error" ? "throw new Error()" : undefined,
-    },
-    {
       name: "prepare-deploy",
       async closeBundle() {
         const distPath = join(__dirname, "dist");
@@ -84,13 +79,13 @@ export default defineConfig({
   ],
   build: {
     target: "esnext",
+    external: ["perf_hooks"],
   },
   esbuild: {
     keepNames: true,
   },
   resolve: {
     alias: {
-      perf_hooks: "#polyfill-error",
       "~": resolve(__dirname, "src"),
       "@suid/types": resolve(__dirname, "../types/src"),
       "@suid/codemod": resolve(__dirname, "../codemod/src"),

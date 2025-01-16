@@ -1,5 +1,47 @@
 # @suid/site
 
+## 0.20.0
+
+### Minor Changes
+
+- [`fd91895`](https://github.com/swordev/suid/commit/fd918957ee2bceed043e683e10b1a5e61c36cf02) Thanks [@juanrgm](https://github.com/juanrgm)! - Add `PaginationPage`
+
+- [`9940922`](https://github.com/swordev/suid/commit/99409225308d1ec4fafd4ec995c3f2424e394b5f) Thanks [@juanrgm](https://github.com/juanrgm)! - Add dynamic select example
+
+### Patch Changes
+
+- [`0272aa9`](https://github.com/swordev/suid/commit/0272aa9a26e9bf7767cd904b3ec24665a1dcf9bf) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
+- [`b58930c`](https://github.com/swordev/suid/commit/b58930ca80080062f5a9f2a9bcf42fff9a623e53) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
+- [`29c68d3`](https://github.com/swordev/suid/commit/29c68d3d24a5475a2963494c5e964627ab0cd81b) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix React2Solid page
+
+- Updated dependencies [[`0272aa9`](https://github.com/swordev/suid/commit/0272aa9a26e9bf7767cd904b3ec24665a1dcf9bf), [`6406d78`](https://github.com/swordev/suid/commit/6406d78845ef694b044c36a7739edf823c6f286a), [`b196443`](https://github.com/swordev/suid/commit/b196443f4f0ba0b962ad0438bb1db059b5755d19), [`b58930c`](https://github.com/swordev/suid/commit/b58930ca80080062f5a9f2a9bcf42fff9a623e53), [`7f086b2`](https://github.com/swordev/suid/commit/7f086b2d3de454426147ea182a69b26c24ce09d2)]:
+  - @suid/codemod@0.11.1
+  - @suid/material@0.18.0
+  - @suid/system@0.13.0
+  - @suid/icons-material@0.8.1
+  - @suid/types@0.7.1
+  - @suid/utils@0.10.1
+  - @suid/base@0.10.1
+
+## 0.19.0
+
+### Minor Changes
+
+- [`bee2e07`](https://github.com/swordev/suid/commit/bee2e07ac95a9042e2971cb54c5ddcf45018c959) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
+### Patch Changes
+
+- Updated dependencies [[`bee2e07`](https://github.com/swordev/suid/commit/bee2e07ac95a9042e2971cb54c5ddcf45018c959), [`55b070c`](https://github.com/swordev/suid/commit/55b070ceb72a90d8fb9de85d8c8deca287a2ca80), [`8ea405f`](https://github.com/swordev/suid/commit/8ea405f9754ac02eee855d6c1e06721f4df012c8)]:
+  - @suid/icons-material@0.8.0
+  - @suid/material@0.17.0
+  - @suid/codemod@0.11.0
+  - @suid/system@0.12.0
+  - @suid/types@0.7.0
+  - @suid/utils@0.10.0
+  - @suid/base@0.10.0
+
 ## 0.18.1
 
 ### Patch Changes

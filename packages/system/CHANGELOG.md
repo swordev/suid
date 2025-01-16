@@ -1,5 +1,37 @@
 # @suid/system
 
+## 0.13.0
+
+### Minor Changes
+
+- [`6406d78`](https://github.com/swordev/suid/commit/6406d78845ef694b044c36a7739edf823c6f286a) Thanks [@juanrgm](https://github.com/juanrgm)! - Resolve the theme context on access
+
+### Patch Changes
+
+- [`b196443`](https://github.com/swordev/suid/commit/b196443f4f0ba0b962ad0438bb1db059b5755d19) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix `inspectChildren` function
+
+- [`b58930c`](https://github.com/swordev/suid/commit/b58930ca80080062f5a9f2a9bcf42fff9a623e53) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
+- Updated dependencies [[`b58930c`](https://github.com/swordev/suid/commit/b58930ca80080062f5a9f2a9bcf42fff9a623e53)]:
+  - @suid/styled-engine@0.8.1
+  - @suid/types@0.7.1
+  - @suid/utils@0.10.1
+
+## 0.12.0
+
+### Minor Changes
+
+- [`bee2e07`](https://github.com/swordev/suid/commit/bee2e07ac95a9042e2971cb54c5ddcf45018c959) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
+### Patch Changes
+
+- [`55b070c`](https://github.com/swordev/suid/commit/55b070ceb72a90d8fb9de85d8c8deca287a2ca80) Thanks [@juanrgm](https://github.com/juanrgm)! - Mark as pure functions
+
+- Updated dependencies [[`bee2e07`](https://github.com/swordev/suid/commit/bee2e07ac95a9042e2971cb54c5ddcf45018c959)]:
+  - @suid/styled-engine@0.8.0
+  - @suid/types@0.7.0
+  - @suid/utils@0.10.0
+
 ## 0.11.0
 
 ### Minor Changes
