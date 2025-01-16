@@ -5,8 +5,7 @@ import styled from "../styles/styled";
 import useTheme from "../styles/useTheme";
 import capitalize from "../utils/capitalize";
 import useControlled from "../utils/useControlled";
-import { getRatingUtilityClass } from "./ratingClasses";
-import ratingClasses from "./ratingClasses";
+import ratingClasses, { getRatingUtilityClass } from "./ratingClasses";
 import createComponentFactory from "@suid/base/createComponentFactory";
 import createRef from "@suid/system/createRef";
 import {
@@ -22,13 +21,15 @@ import useId from "@suid/utils/createUniqueId";
 import useIsFocusVisible from "@suid/utils/useIsFocusVisible";
 import clsx from "clsx";
 import {
-  type JSX,
   type Accessor,
-  createSignal,
-  splitProps,
-  mergeProps,
-  createEffect,
   Component,
+  createEffect,
+  createMemo,
+  createSignal,
+  type JSX,
+  mergeProps,
+  Show,
+  splitProps,
 } from "solid-js";
 
 type OwnerState = InPropsOf<RatingTypeMap> & {
@@ -250,12 +251,17 @@ function IconContainer(props: IconContainerProps) {
 }
 
 function RatingItem(props: RatingItemProps) {
-  const isFilled = props.highlightSelectedOnly
-    ? props.itemValue === props.ratingValue
-    : props.itemValue <= props.ratingValue;
-  const isHovered = props.itemValue <= props.hover;
-  const isFocused = props.itemValue <= props.focus;
-  const isChecked = props.itemValue === props.ratingValueRounded;
+  const isFilled = createMemo(() =>
+    props.highlightSelectedOnly
+      ? props.itemValue === props.ratingValue
+      : props.itemValue <= props.ratingValue
+  );
+
+  const isHovered = createMemo(() => props.itemValue <= props.hover);
+  const isFocused = createMemo(() => props.itemValue <= props.focus);
+  const isChecked = createMemo(
+    () => props.itemValue === props.ratingValueRounded
+  );
 
   const id = useId();
   const container = (
@@ -264,37 +270,36 @@ function RatingItem(props: RatingItemProps) {
       value={props.itemValue}
       class={clsx(props.classes.icon, {
         get [props.classes.iconEmpty]() {
-          return !isFilled;
+          return !isFilled();
         },
-        [props.classes.iconFilled]: isFilled,
-        [props.classes.iconHover]: isHovered,
-        [props.classes.iconFocus]: isFocused,
+        [props.classes.iconFilled]: isFilled(),
+        [props.classes.iconHover]: isHovered(),
+        [props.classes.iconFocus]: isFocused(),
         get [props.classes.iconActive]() {
           return props.isActive;
         },
       })}
       ownerState={mergeProps(() => props.ownerState, {
         get iconEmpty() {
-          return !isFilled;
+          return !isFilled();
         },
-        iconFilled: isFilled,
-        iconHover: isHovered,
-        iconFocus: isFocused,
+        iconFilled: isFilled(),
+        iconHover: isHovered(),
+        iconFocus: isFocused(),
         get iconActive() {
           return props.isActive;
         },
       })}
     >
-      {props.emptyIcon && !isFilled ? props.emptyIcon : props.icon}
+      {props.emptyIcon && !isFilled() ? props.emptyIcon : props.icon}
     </RatingIcon>
   );
 
-  if (props.readOnly) {
-    return <span {...props.labelProps}>{container}</span>;
-  }
-
   return (
-    <>
+    <Show
+      when={!props.readOnly}
+      fallback={<span {...props.labelProps}>{container}</span>}
+    >
       <RatingLabel
         ownerState={mergeProps(() => props.ownerState, {
           emptyValueFocused: undefined,
@@ -318,9 +323,9 @@ function RatingItem(props: RatingItemProps) {
         id={id()}
         type="radio"
         name={props.name()}
-        checked={isChecked}
+        checked={isChecked()}
       />
-    </>
+    </Show>
   );
 }
 
@@ -382,9 +387,8 @@ const Rating = $.defineComponent(function Rating(inProps) {
     name: "Rating",
   });
 
-  const valueRounded = roundValueToPrecision(
-    valueDerived() as number,
-    baseProps.precision
+  const valueRounded = createMemo(() =>
+    roundValueToPrecision(valueDerived() as number, baseProps.precision)
   );
   const theme = useTheme();
   const [valueState, setState] = createSignal({
@@ -396,7 +400,7 @@ const Rating = $.defineComponent(function Rating(inProps) {
     },
   });
 
-  const [value, setValue] = createSignal(valueRounded);
+  const [value, setValue] = createSignal(valueRounded());
 
   createEffect(() => {
     if (valueState().hover !== -1) {
@@ -511,7 +515,7 @@ const Rating = $.defineComponent(function Rating(inProps) {
 
     if (
       props.onChange &&
-      parseFloat((event.target as HTMLInputElement).value) === valueRounded
+      parseFloat((event.target as HTMLInputElement).value) === valueRounded()
     ) {
       props.onChange(event, null);
     }
@@ -641,23 +645,28 @@ const Rating = $.defineComponent(function Rating(inProps) {
           onClick: handleClear,
           onFocus: handleFocus,
           ratingValue: value(),
-          ratingValueRounded: valueRounded,
+          ratingValueRounded: valueRounded(),
           get readOnly() {
             return baseProps.readOnly;
           },
           ownerState: ownerState as OwnerState,
         };
 
-        const isActive =
-          itemValue === Math.ceil(value()) &&
-          (valueState().hover !== -1 || valueState().focus !== -1);
+        const isActive = createMemo(
+          () =>
+            itemValue === Math.ceil(value()) &&
+            (valueState().hover !== -1 || valueState().focus !== -1)
+        );
+
         if (baseProps.precision < 1) {
           const items = Array.from(new Array(1 / baseProps.precision));
           return (
             <RatingDecimal
-              class={clsx(classes.decimal, { [classes.iconActive]: isActive })}
+              class={clsx(classes.decimal, {
+                [classes.iconActive]: isActive(),
+              })}
               ownerState={ownerState as OwnerState}
-              iconActive={isActive}
+              iconActive={isActive()}
             >
               {items.map((_, indexDecimal) => {
                 const itemDecimalValue = roundValueToPrecision(
@@ -696,7 +705,7 @@ const Rating = $.defineComponent(function Rating(inProps) {
         return (
           <RatingItem
             {...ratingItemProps}
-            isActive={isActive}
+            isActive={isActive()}
             itemValue={itemValue}
           />
         );
