@@ -106,6 +106,7 @@ export function createTypography(
   };
 
   return merge(
+    typographyDefaults as ThemeTypographyType,
     base as ThemeTypographyType,
     {
       h1: makeVariant(base, fontWeight.light, 96, 1.167, -1.5),
@@ -122,7 +123,6 @@ export function createTypography(
       caption: makeVariant(base, fontWeight.regular, 12, 1.66, 0.4),
       overline: makeVariant(base, fontWeight.regular, 12, 2.66, 1, true),
     },
-    typographyDefaults,
     options
   );
 }
