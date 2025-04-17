@@ -10,6 +10,7 @@
     "unstyled",
     "ui"
   ],
+  "type": "module",
   "main": "index.jsx",
   "scripts": {
     "build": "tsc --build tsconfig.build.json",

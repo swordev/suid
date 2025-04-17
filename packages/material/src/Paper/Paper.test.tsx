@@ -8,9 +8,7 @@ describe("Paper", () => {
       <Paper data-testid="e" component="form" />
     ));
     const e = screen.getByTestId("e");
-    // [fix] https://github.com/swordev/suid/issues/234
-    // expect(e.nodeName).toBe("form");
-    expect(e.nodeName).toBe("DIV");
+    expect(e.nodeName).toBe("FORM");
     unmount();
   });
 });
