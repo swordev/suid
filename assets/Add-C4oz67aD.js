@@ -1,0 +1,1 @@
+import{c as a,t}from"./index-NCmNIr1K.js";var e=t('<svg><path d="M0 0h24v24H0z"fill=none></svg>',!1,!0,!1),s=t('<svg><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></svg>',!1,!0,!1);const l=a(()=>[e(),s()],"Add");export{l as A};
