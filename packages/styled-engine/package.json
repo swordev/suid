@@ -1,6 +1,6 @@
 {
   "name": "@suid/styled-engine",
-  "version": "0.8.1",
+  "version": "0.9.0",
   "description": "Styled engine used by @suid/system.",
   "keywords": [
     "solid",
