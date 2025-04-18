@@ -1,5 +1,22 @@
 # @suid/system
 
+## 0.14.0
+
+### Minor Changes
+
+- [`1e2ca76`](https://github.com/swordev/suid/commit/1e2ca76b803d04d5d8b1a0bcd22d79de6e03b5a1) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies.
+
+- [#299](https://github.com/swordev/suid/pull/299) [`25b6c72`](https://github.com/swordev/suid/commit/25b6c72054ad7cd8a0d16b2588c9abfaaac16be7) Thanks [@Phinome](https://github.com/Phinome)! - feat: add Rating Component
+
+### Patch Changes
+
+- [#304](https://github.com/swordev/suid/pull/304) [`b7e48fb`](https://github.com/swordev/suid/commit/b7e48fb9eae55a0b6fbc70d11790630576fff2c7) Thanks [@kuakman](https://github.com/kuakman)! - Add support for component style overrides via themes
+
+- Updated dependencies [[`1e2ca76`](https://github.com/swordev/suid/commit/1e2ca76b803d04d5d8b1a0bcd22d79de6e03b5a1), [`25b6c72`](https://github.com/swordev/suid/commit/25b6c72054ad7cd8a0d16b2588c9abfaaac16be7)]:
+  - @suid/styled-engine@0.9.0
+  - @suid/types@0.8.0
+  - @suid/utils@0.11.0
+
 ## 0.13.0
 
 ### Minor Changes

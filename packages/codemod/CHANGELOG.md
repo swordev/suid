@@ -1,5 +1,13 @@
 # @suid/codemod
 
+## 0.12.0
+
+### Minor Changes
+
+- [`1e2ca76`](https://github.com/swordev/suid/commit/1e2ca76b803d04d5d8b1a0bcd22d79de6e03b5a1) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies.
+
+- [#299](https://github.com/swordev/suid/pull/299) [`25b6c72`](https://github.com/swordev/suid/commit/25b6c72054ad7cd8a0d16b2588c9abfaaac16be7) Thanks [@Phinome](https://github.com/Phinome)! - feat: add Rating Component
+
 ## 0.11.1
 
 ### Patch Changes
