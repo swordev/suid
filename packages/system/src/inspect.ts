@@ -9,14 +9,15 @@ import {
 
 export const $INSPECT = Symbol("solid-inspect");
 
-export type ComponentObject<T = any> = {
+export type ComponentObject<T extends Record<string, any> = any> = {
   Component: Component<T>;
   props: T;
 };
 
-type PrivateComponentObject<T = any> = ComponentObject<T> & {
-  $INSPECT: symbol;
-};
+type PrivateComponentObject<T extends Record<string, any> = any> =
+  ComponentObject<T> & {
+    $INSPECT: symbol;
+  };
 
 export type InspectResult = JSX.Element | ComponentObject;
 
@@ -33,7 +34,9 @@ export function inspectChildren(fn: () => JSX.Element): () => InspectResult[] {
   return result.toArray;
 }
 
-export function componentTrap<T>(fn: Component<T>): Component<T> {
+export function componentTrap<T extends Record<string, any>>(
+  fn: Component<T>
+): Component<T> {
   function Component(props: T) {
     if (useContext(InspectContext)?.enabled)
       return {
@@ -51,7 +54,7 @@ export function componentTrap<T>(fn: Component<T>): Component<T> {
 }
 
 export function isComponentObject(input: unknown): input is ComponentObject;
-export function isComponentObject<T>(
+export function isComponentObject<T extends Record<string, any>>(
   input: unknown,
   component: Component<T>
 ): input is ComponentObject<T>;

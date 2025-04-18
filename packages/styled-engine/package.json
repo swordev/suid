@@ -22,7 +22,7 @@
     "@suid/utils": "workspace:*"
   },
   "peerDependencies": {
-    "solid-js": "^1.8.22"
+    "solid-js": "^1.9.5"
   },
   "publishConfig": {
     "directory": "lib"

@@ -3,7 +3,6 @@ const targets = {
     // https://github.com/jsdom/jsdom/issues/3562
     "jsdom",
   ],
-  minor: ["@types/node"],
 };
 
 /** @type {import("npm-check-updates").RunOptions} */

@@ -5,15 +5,15 @@
   "type": "module",
   "dependencies": {
     "adm-zip": "^0.5.16",
-    "commander": "^12.1.0",
+    "commander": "^13.1.0",
     "json5": "^2.2.3",
-    "node-html-parser": "^6.1.13",
-    "p-limit": "^6.1.0",
-    "prettier": "^3.3.3"
+    "node-html-parser": "^7.0.1",
+    "p-limit": "^6.2.0",
+    "prettier": "^3.5.3"
   },
   "devDependencies": {
-    "@types/adm-zip": "^0.5.5",
-    "@types/node": "^20.16.5",
-    "typescript": "^5.6.2"
+    "@types/adm-zip": "^0.5.7",
+    "@types/node": "^22.14.1",
+    "typescript": "^5.8.3"
   }
 }

@@ -16,7 +16,10 @@ export default function removeUnusedImports(source: SourceFile) {
 
     for (const nameImport of namedImports) {
       const node = nameImport.getAliasNode() || nameImport.getNameNode();
-      if (node.findReferencesAsNodes().length === 1) {
+      if (
+        "findReferencesAsNodes" in node &&
+        node.findReferencesAsNodes().length === 1
+      ) {
         nameImport.remove();
         removed++;
       }

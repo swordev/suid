@@ -1,3 +1,7 @@
 packages:
   - scripts
   - packages/*
+
+onlyBuiltDependencies:
+  - "@parcel/watcher"
+  - esbuild

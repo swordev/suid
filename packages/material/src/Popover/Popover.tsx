@@ -84,7 +84,9 @@ function getTransformOriginValue(transformOrigin: PopoverOrigin) {
 function resolveAnchorEl(
   anchorEl: PopoverProps["anchorEl"]
 ): undefined | Element {
-  return typeof anchorEl === "function" ? (anchorEl as any)() : anchorEl;
+  return typeof anchorEl === "function"
+    ? (anchorEl as any)()
+    : (anchorEl ?? undefined);
 }
 
 const PopoverRoot = styled(Modal, {

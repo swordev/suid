@@ -1,6 +1,5 @@
 // @ts-check
 import { includeIgnoreFile } from "@eslint/compat";
-import eslint from "@eslint/js";
 import globals from "globals";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -13,7 +12,6 @@ const gitignorePath = path.resolve(__dirname, ".gitignore");
 export default tseslint.config(
   {
     extends: [
-      eslint.configs.recommended,
       ...tseslint.configs.recommended,
       includeIgnoreFile(gitignorePath),
     ],

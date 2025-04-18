@@ -5,8 +5,8 @@ on:
       - main
       - develop
 env:
-  NODE_VERSION: 20
-  PNPM_VERSION: 9
+  NODE_VERSION: 22
+  PNPM_VERSION: 10
 jobs:
   release:
     runs-on: ubuntu-latest
