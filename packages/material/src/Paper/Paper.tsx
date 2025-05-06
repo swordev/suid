@@ -97,6 +97,7 @@ const Paper = $.component(function Paper({
   return (
     <PaperRoot
       {...otherProps}
+      as={otherProps.component}
       ownerState={allProps}
       class={clsx(classes.root, allProps.class)}
     >
