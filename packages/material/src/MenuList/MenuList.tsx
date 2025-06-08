@@ -1,4 +1,4 @@
-import { MenuListTypeMap } from ".";
+import type { MenuListTypeMap } from ".";
 import List from "../List";
 import createComponentFactory from "@suid/base/createComponentFactory";
 import createRef from "@suid/system/createRef";
@@ -338,11 +338,11 @@ const MenuList = $.defineComponent(function MenuList(props) {
   return (
     <List
       role="menu"
-      ref={listRef}
       class={props.class}
       onKeyDown={handleKeyDown}
       tabIndex={baseProps.autoFocus ? 0 : -1}
       {...other}
+      ref={listRef}
     >
       {items()}
     </List>
