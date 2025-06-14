@@ -1,5 +1,11 @@
 # @suid/css
 
+## 0.4.1
+
+### Patch Changes
+
+- [`ea2fb42`](https://github.com/swordev/suid/commit/ea2fb424daa224a0a7d8a0dfbcf47d06e4a41f98) Thanks [@juanrgm](https://github.com/juanrgm)! - Replace domain.
+
 ## 0.4.0
 
 ### Minor Changes

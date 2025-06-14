@@ -1,5 +1,15 @@
 # create-suid
 
+## 0.3.0
+
+### Minor Changes
+
+- [`1e2ca76`](https://github.com/swordev/suid/commit/1e2ca76b803d04d5d8b1a0bcd22d79de6e03b5a1) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies.
+
+### Patch Changes
+
+- [`4a435b5`](https://github.com/swordev/suid/commit/4a435b5d5cd68f2572ee405b9a7759ce0eba8b5f) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
 ## 0.2.1
 
 ### Patch Changes
