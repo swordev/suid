@@ -5,7 +5,7 @@
   "type": "module",
   "dependencies": {
     "adm-zip": "^0.5.16",
-    "commander": "^13.1.0",
+    "commander": "^14.0.0",
     "json5": "^2.2.3",
     "node-html-parser": "^7.0.1",
     "p-limit": "^6.2.0",
@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "@types/adm-zip": "^0.5.7",
-    "@types/node": "^22.14.1",
+    "@types/node": "^24.0.1",
     "typescript": "^5.8.3"
   }
 }

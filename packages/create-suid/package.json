@@ -15,10 +15,10 @@
   },
   "dependencies": {
     "chalk": "^5.4.1",
-    "inquirer": "^12.5.2"
+    "inquirer": "^12.6.3"
   },
   "devDependencies": {
-    "@types/inquirer": "^9.0.7"
+    "@types/inquirer": "^9.0.8"
   },
   "publishConfig": {
     "directory": "lib"

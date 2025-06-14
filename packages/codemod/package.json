@@ -20,11 +20,11 @@
   },
   "dependencies": {
     "@types/micromatch": "^4.0.9",
-    "commander": "^13.1.0",
+    "commander": "^14.0.0",
     "fast-glob": "^3.3.3",
     "micromatch": "^4.0.8",
     "prettier": "^3.5.3",
-    "ts-morph": "^25.0.1"
+    "ts-morph": "^26.0.0"
   },
   "devDependencies": {
     "typescript": "^5.8.3"
