@@ -1,5 +1,34 @@
 # @suid/site
 
+## 0.21.1
+
+### Patch Changes
+
+- [`3fbb507`](https://github.com/swordev/suid/commit/3fbb5074a22937ce499d1840f1a8c833a0aab3b2) Thanks [@juanrgm](https://github.com/juanrgm)! - Redeploy site.
+
+## 0.21.0
+
+### Minor Changes
+
+- [`1e2ca76`](https://github.com/swordev/suid/commit/1e2ca76b803d04d5d8b1a0bcd22d79de6e03b5a1) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies.
+
+- [#299](https://github.com/swordev/suid/pull/299) [`25b6c72`](https://github.com/swordev/suid/commit/25b6c72054ad7cd8a0d16b2588c9abfaaac16be7) Thanks [@Phinome](https://github.com/Phinome)! - feat: add Rating Component
+
+### Patch Changes
+
+- [`ea2fb42`](https://github.com/swordev/suid/commit/ea2fb424daa224a0a7d8a0dfbcf47d06e4a41f98) Thanks [@juanrgm](https://github.com/juanrgm)! - Replace domain.
+
+- [`4a435b5`](https://github.com/swordev/suid/commit/4a435b5d5cd68f2572ee405b9a7759ce0eba8b5f) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
+- Updated dependencies [[`1e2ca76`](https://github.com/swordev/suid/commit/1e2ca76b803d04d5d8b1a0bcd22d79de6e03b5a1), [`b7e48fb`](https://github.com/swordev/suid/commit/b7e48fb9eae55a0b6fbc70d11790630576fff2c7), [`ea2fb42`](https://github.com/swordev/suid/commit/ea2fb424daa224a0a7d8a0dfbcf47d06e4a41f98), [`4a435b5`](https://github.com/swordev/suid/commit/4a435b5d5cd68f2572ee405b9a7759ce0eba8b5f), [`62b6289`](https://github.com/swordev/suid/commit/62b62890a285da6ed6b2151b1a6f447a7b59589b), [`bcd4936`](https://github.com/swordev/suid/commit/bcd4936047bab6ade08105f4f425650d6e5fd4bd), [`25b6c72`](https://github.com/swordev/suid/commit/25b6c72054ad7cd8a0d16b2588c9abfaaac16be7)]:
+  - @suid/icons-material@0.9.0
+  - @suid/material@0.19.0
+  - @suid/codemod@0.12.0
+  - @suid/system@0.14.0
+  - @suid/types@0.8.0
+  - @suid/utils@0.11.0
+  - @suid/base@0.11.0
+
 ## 0.20.0
 
 ### Minor Changes
