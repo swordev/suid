@@ -1,5 +1,21 @@
 # @suid/styled-engine
 
+## 0.9.0
+
+### Minor Changes
+
+- [`1e2ca76`](https://github.com/swordev/suid/commit/1e2ca76b803d04d5d8b1a0bcd22d79de6e03b5a1) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies.
+
+### Patch Changes
+
+- [`ea2fb42`](https://github.com/swordev/suid/commit/ea2fb424daa224a0a7d8a0dfbcf47d06e4a41f98) Thanks [@juanrgm](https://github.com/juanrgm)! - Replace domain.
+
+- [`4a435b5`](https://github.com/swordev/suid/commit/4a435b5d5cd68f2572ee405b9a7759ce0eba8b5f) Thanks [@juanrgm](https://github.com/juanrgm)! - Update dependencies
+
+- Updated dependencies [[`1e2ca76`](https://github.com/swordev/suid/commit/1e2ca76b803d04d5d8b1a0bcd22d79de6e03b5a1), [`ea2fb42`](https://github.com/swordev/suid/commit/ea2fb424daa224a0a7d8a0dfbcf47d06e4a41f98), [`4a435b5`](https://github.com/swordev/suid/commit/4a435b5d5cd68f2572ee405b9a7759ce0eba8b5f), [`25b6c72`](https://github.com/swordev/suid/commit/25b6c72054ad7cd8a0d16b2588c9abfaaac16be7)]:
+  - @suid/utils@0.11.0
+  - @suid/css@0.4.1
+
 ## 0.8.1
 
 ### Patch Changes
