@@ -13,7 +13,7 @@ npm install @suid/site
 
 ## Documentation
 
-https://suid.io
+https://suid.dev
 
 ## License
 

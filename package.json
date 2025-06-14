@@ -17,7 +17,7 @@
     "assets/**/*",
     "index.html"
   ],
-  "homepage": "https://suid.io",
+  "homepage": "https://suid.dev",
   "license": "MIT",
   "repository": {
     "type": "git",
