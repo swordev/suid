@@ -7,13 +7,7 @@
 
 > A port of Material-UI ([MUI](https://mui.com/core)) built with [SolidJS](https://solidjs.com)
 
-SUID is all a set of utils and components ported from MUI Core and much more.
-
-MUI has one of the largest development communities on the scene, a long history, is used by large corporations, its level of customization is very detailed and has a future ahead. Why reinvent the wheel? The MUI problem is React and this is where SUID comes in.
-
-The main idea behind the project is to create a bridge between the MUI and SUID repository for syncing the incoming changes. This is possible thanks to tools integrated in SUID like codemod (a React to Solid transformer).
-
-With this smart target in mind, the project avoids becoming another library that could fall into oblivion, avoiding all its complexities, developing under the shadow of MUI.
+SUID is all a set of utils and components ported from MUI Core 5.5.0.
 
 ## Packages
 
