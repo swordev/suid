@@ -51,9 +51,9 @@ npm init suid
 
 ## Resources
 
-- [Documentation](https://suid.io)
-- [Playground](https://suid.io/tools/playground)
-- [React to SolidJS](https://suid.io/tools/react-to-solid)
+- [Documentation](https://suid.dev)
+- [Playground](https://suid.dev/tools/playground)
+- [React to SolidJS](https://suid.dev/tools/react-to-solid)
 
 ## Roadmap
 

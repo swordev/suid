@@ -13,7 +13,7 @@ npm install @suid/material
 
 ## Documentation
 
-https://suid.io
+https://suid.dev
 
 ## License
 

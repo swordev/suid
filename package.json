@@ -19,7 +19,7 @@
     "ui",
     "ux"
   ],
-  "homepage": "https://suid.io",
+  "homepage": "https://suid.dev",
   "bugs": {
     "url": "https://github.com/swordev/suid.git/issues"
   },
@@ -119,7 +119,7 @@
         "**/*.jsx",
         "**/*.d.ts"
       ],
-      "homepage": "https://suid.io",
+      "homepage": "https://suid.dev",
       "license": "MIT",
       "repository": {
         "type": "git",

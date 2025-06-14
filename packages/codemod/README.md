@@ -19,7 +19,7 @@ npx @suid/codemod --help
 
 ### Resources
 
-[React to SolidJS](https://suid.io/tools/react-to-solid)
+[React to SolidJS](https://suid.dev/tools/react-to-solid)
 
 ## License
 

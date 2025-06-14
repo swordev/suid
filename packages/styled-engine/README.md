@@ -13,7 +13,7 @@ npm install @suid/styled-engine
 
 ## Documentation
 
-https://suid.io
+https://suid.dev
 
 ## License
 

@@ -46,13 +46,13 @@ jobs:
       - name: Prepare deploy
         run: |-
           rm packages/site/dist/node_modules
-      - name: Deploy suid.io site
+      - name: Deploy suid.dev site
         if: steps.metadata.outputs['@suid/site:published'] == 'true'
         uses: JamesIves/github-pages-deploy-action@v4.5.0
         with:
           branch: gh-pages
           folder: packages/site/dist
-      - name: Deploy next.suid.io site
+      - name: Deploy next.suid.dev site
         uses: JamesIves/github-pages-deploy-action@v4.5.0
         with:
           branch: gh-pages-next

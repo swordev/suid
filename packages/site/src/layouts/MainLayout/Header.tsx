@@ -129,7 +129,7 @@ export default function Header() {
           <Button
             color="inherit"
             size="small"
-            href="https://next.suid.io"
+            href="https://next.suid.dev"
             sx={{ mr: 1 }}
           >
             next version

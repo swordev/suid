@@ -13,7 +13,7 @@ npm install @suid/utils
 
 ## Documentation
 
-https://suid.io
+https://suid.dev
 
 ## License
 
