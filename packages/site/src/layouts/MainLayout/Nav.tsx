@@ -169,7 +169,7 @@ export const navConfig: Config[] = [
           "Checkbox",
           "Floating Action Button",
           "Radio Button",
-          "Rating",
+          //"Rating", non-functional
           "Select",
           "Slider",
           "Switch",
