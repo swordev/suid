@@ -6,7 +6,6 @@ import capitalize from "../utils/capitalize";
 import tableCellClasses, { getTableCellUtilityClass } from "./tableCellClasses";
 import createComponentFactory from "@suid/base/createComponentFactory";
 import { darken, alpha, lighten } from "@suid/system";
-import { redefine } from "@suid/system/createStyled";
 import { InPropsOf } from "@suid/types";
 import clsx from "clsx";
 import { mergeProps, useContext } from "solid-js";
@@ -174,10 +173,8 @@ const TableCell = $.component(function TableCell({
   });
   const classes = $.useClasses(ownerState);
 
-  const $TableCellRoot = redefine(TableCellRoot, "th");
-
   return (
-    <$TableCellRoot
+    <TableCellRoot
       as={props.component}
       scope={scope()}
       aria-sort={ariaSort()}
@@ -186,7 +183,7 @@ const TableCell = $.component(function TableCell({
       ownerState={ownerState}
     >
       {props.children}
-    </$TableCellRoot>
+    </TableCellRoot>
   );
 });
 
