@@ -1,5 +1,11 @@
 # @suid/site
 
+## 0.21.1
+
+### Patch Changes
+
+- [`3fbb507`](https://github.com/swordev/suid/commit/3fbb5074a22937ce499d1840f1a8c833a0aab3b2) Thanks [@juanrgm](https://github.com/juanrgm)! - Redeploy site.
+
 ## 0.21.0
 
 ### Minor Changes
