@@ -73,7 +73,14 @@ export default defineConfig({
       async closeBundle() {
         const distPath = join(__dirname, "dist");
         const redirectsPath = join(distPath, "_redirects");
-        await writeFile(redirectsPath, "/* /index.html 200");
+        await writeFile(
+          redirectsPath,
+          [
+            "/* /index.html 200",
+            "https://suid.io/* https://suid.dev/:splat 301!",
+            "https://next.suid.io/* https://next.suid.dev/:splat 301!",
+          ].join("\n")
+        );
       },
     },
   ],
