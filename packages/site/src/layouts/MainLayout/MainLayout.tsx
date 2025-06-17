@@ -126,7 +126,7 @@ export default function MainLayout(props: { children?: JSXElement }) {
               </Box>
             </Drawer>
           </Show>
-          <Box component="main" sx={{ width: 1 }}>
+          <Box component="main" sx={{ width: 1, minWidth: 0 }}>
             <Toolbar />
             <Show when={playgroundLoaded()}>
               <RoutingElementContainer
