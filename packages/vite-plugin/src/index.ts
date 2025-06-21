@@ -24,6 +24,10 @@ type SuidPluginOptions = {
     paths?: string[];
   };
   parserOptions?: ParserOptions;
+  /**
+   * @default false
+   */
+  sourceMaps?: boolean;
 };
 
 const defaultOptions: SuidPluginOptions = {
@@ -46,6 +50,7 @@ const defaultOptions: SuidPluginOptions = {
     sourceType: "module",
     plugins: ["jsx", "typescript"],
   },
+  sourceMaps: false,
 };
 
 export default function suidPlugin(inOptions: SuidPluginOptions = {}): Plugin {
@@ -80,13 +85,13 @@ export default function suidPlugin(inOptions: SuidPluginOptions = {}): Plugin {
         },
       };
     },
-    transform(code) {
+    transform(code, id) {
       const transformIconImportsOptions = options.optimizeImports || {};
       if (
         transformIconImportsOptions.enabled &&
         transformIconImportsOptions.paths?.some((p) => code.includes(p))
       ) {
-        return transform(code, options);
+        return transform(code, options, id);
       }
     },
   };
@@ -132,7 +137,11 @@ function getOptimizedImportPath(
   };
 }
 
-export function transform(code: string, options: SuidPluginOptions) {
+export function transform(
+  code: string,
+  options: SuidPluginOptions,
+  id: string
+) {
   const ast = parse(code, options.parserOptions);
 
   traverse(ast, {
@@ -181,5 +190,8 @@ export function transform(code: string, options: SuidPluginOptions) {
     },
   });
 
-  return generate(ast);
+  return generate(ast, {
+    sourceMaps: options.sourceMaps,
+    sourceFileName: id,
+  });
 }
