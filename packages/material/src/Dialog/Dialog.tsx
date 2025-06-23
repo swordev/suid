@@ -304,6 +304,7 @@ const Dialog = $.defineComponent(function Dialog(inProps) {
       onClick={handleBackdropClick}
       ownerState={ownerState}
       {...other}
+      transition
     >
       <baseProps.TransitionComponent
         appear

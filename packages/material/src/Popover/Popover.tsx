@@ -443,6 +443,7 @@ const Popover = $.defineComponent(function Popover(inProps) {
       open={props.open}
       ownerState={ownerState}
       {...other}
+      transition
     >
       <baseProps.TransitionComponent
         appear
