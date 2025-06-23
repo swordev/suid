@@ -90,7 +90,7 @@ program
     ["packages/*/{src,test}/**/*.{ts,tsx}"] as string[]
   )
   .option(
-    "-if, --import-filters [patterns]",
+    "--if, --import-filters [patterns]",
     "Filters by import patterns",
     (value, previous) => {
       if (fixEsmFlags.firstTime.importFilters) {
