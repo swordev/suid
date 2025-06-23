@@ -139,13 +139,25 @@ export function Transition(inProps: TransitionProps) {
 
   createEffect((firstTime) => {
     if (props.in) {
-      untrack(() => props.onEnter?.());
-      setStatus("entering");
+      untrack(() => {
+        if (status() !== "entering" && status() !== "entered") {
+          props.onEnter?.();
+          setStatus("entering");
+        }
+      });
     } else {
-      if (!firstTime) {
-        untrack(() => props.onExit?.());
-        setStatus("exiting");
-      }
+      untrack(() => {
+        if (!firstTime) {
+          if (
+            status() !== "exiting" &&
+            status() !== "exited" &&
+            status() !== "unmounted"
+          ) {
+            props.onExit?.();
+            setStatus("exiting");
+          }
+        }
+      });
     }
     return false;
   }, true);

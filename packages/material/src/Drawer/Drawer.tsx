@@ -10,7 +10,14 @@ import { getDrawerUtilityClass } from "./drawerClasses";
 import createComponentFactory from "@suid/base/createComponentFactory";
 import createElementRef from "@suid/system/createElementRef";
 import clsx from "clsx";
-import { children, createSignal, Match, onMount, Switch } from "solid-js";
+import {
+  children,
+  createMemo,
+  createSignal,
+  Match,
+  onMount,
+  Switch,
+} from "solid-js";
 
 const $ = createComponentFactory<DrawerTypeMap>()({
   name: "MuiDrawer",
@@ -190,11 +197,9 @@ const Drawer = $.component(function Drawer({
   // We use this state is order to skip the appear transition during the
   // initial mount of the component.
 
-  const [mounted, setMounted] = createSignal(false);
   const element = createElementRef(otherProps);
   const theme = useTheme();
   const resolved = children(() => props.children);
-  onMount(() => setMounted(true));
 
   function InternalDrawer() {
     return (
@@ -211,6 +216,8 @@ const Drawer = $.component(function Drawer({
   }
 
   function SlidingDrawer() {
+    const [mounted, setMounted] = createSignal(false);
+    onMount(() => setMounted(true));
     const anchorInvariant = getAnchor(theme, props.anchor) as Anchor;
 
     return (
@@ -225,6 +232,12 @@ const Drawer = $.component(function Drawer({
       </Slide>
     );
   }
+  const slidingDrawerVisible = createMemo(
+    () => props.variant === "persistent" || props.variant === "temporary"
+  );
+  const resolvedSlidingDrawer = children(
+    () => slidingDrawerVisible() && <SlidingDrawer />
+  );
 
   return (
     <Switch>
@@ -245,7 +258,7 @@ const Drawer = $.component(function Drawer({
           ownerState={allProps}
           ref={element}
         >
-          <SlidingDrawer />
+          {resolvedSlidingDrawer()}
         </DrawerDockedRoot>
       </Match>
       {
@@ -266,7 +279,7 @@ const Drawer = $.component(function Drawer({
             {...(props.ModalProps ?? {})}
             transition
           >
-            <SlidingDrawer />
+            {resolvedSlidingDrawer()}
           </DrawerRoot>
         </Match>
       }
