@@ -27,4 +27,22 @@ describe("replaceMuiUseForkRef", () => {
       `console.log(ref, ref, ref)`
     );
   });
+
+  it("use 'ref' identifier as first", async () => {
+    await e(
+      `
+        const Tooltip = React.forwardRef(function(inProps, ref) {
+          const handleUseRef = useForkRef(setChildNode, ref);
+          const handleFocusRef = useForkRef(focusVisibleRef, handleUseRef);
+          const handleRef = useForkRef(children.ref, handleFocusRef);
+          console.log(handleUseRef, handleFocusRef, handleRef);
+        })
+      `,
+      `
+        const Tooltip = React.forwardRef(function(inProps, ref) {
+          console.log(ref, ref, ref)
+        })
+      `
+    );
+  });
 });
