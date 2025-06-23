@@ -11,7 +11,10 @@ export default function replaceMuiUseForkRef(node: Identifier) {
   const expr = node.getFirstAncestorByKindOrThrow(ts.SyntaxKind.CallExpression);
 
   const varStm = expr.getFirstAncestorByKind(ts.SyntaxKind.VariableStatement);
-  const [a, b] = expr.getArguments();
+  let [a, b] = expr.getArguments();
+  if (b.getText() === "ref") {
+    [a, b] = [b, a];
+  }
   const aName = a.getText();
 
   if (Node.isIdentifier(b)) {
