@@ -1,5 +1,13 @@
 # @suid/codemod
 
+## 0.12.1
+
+### Patch Changes
+
+- [#325](https://github.com/swordev/suid/pull/325) [`5d7f1cf`](https://github.com/swordev/suid/commit/5d7f1cf076c152f4fb07616fb0b6c163d005e02a) Thanks [@Jesse205](https://github.com/Jesse205)! - fix(codemod): use 'ref' identifier as first
+
+- [#324](https://github.com/swordev/suid/pull/324) [`d06c18f`](https://github.com/swordev/suid/commit/d06c18f721f526df15bce0c4e910daa239853c47) Thanks [@Jesse205](https://github.com/Jesse205)! - fix(codemod): rename -if option to --if
+
 ## 0.12.0
 
 ### Minor Changes

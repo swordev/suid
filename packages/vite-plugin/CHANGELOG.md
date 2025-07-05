@@ -1,5 +1,11 @@
 # @suid/vite-plugin
 
+## 0.4.1
+
+### Patch Changes
+
+- [#323](https://github.com/swordev/suid/pull/323) [`e97f055`](https://github.com/swordev/suid/commit/e97f0554f88b745296078f83dcdbb0193e890cbf) Thanks [@aldobarr](https://github.com/aldobarr)! - Add sourceMaps config option to pass through to babel
+
 ## 0.4.0
 
 ### Minor Changes

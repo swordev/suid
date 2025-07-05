@@ -1,5 +1,16 @@
 # @suid/site
 
+## 0.21.2
+
+### Patch Changes
+
+- [`2b478f1`](https://github.com/swordev/suid/commit/2b478f10c31936aab9b628087c9f85883e34c5be) Thanks [@juanrgm](https://github.com/juanrgm)! - Fix redirects.
+
+- [#319](https://github.com/swordev/suid/pull/319) [`00087d1`](https://github.com/swordev/suid/commit/00087d1e445de36fc661391b9a446c9cff49ff2f) Thanks [@Jesse205](https://github.com/Jesse205)! - fix(site):fix main width between 900 and 1074
+
+- Updated dependencies [[`5d7f1cf`](https://github.com/swordev/suid/commit/5d7f1cf076c152f4fb07616fb0b6c163d005e02a), [`d06c18f`](https://github.com/swordev/suid/commit/d06c18f721f526df15bce0c4e910daa239853c47)]:
+  - @suid/codemod@0.12.1
+
 ## 0.21.1
 
 ### Patch Changes
