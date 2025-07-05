@@ -76,9 +76,9 @@ export default defineConfig({
         await writeFile(
           redirectsPath,
           [
-            "/* /index.html 200",
             "https://suid.io/* https://suid.dev/:splat 301!",
             "https://next.suid.io/* https://next.suid.dev/:splat 301!",
+            "/* /index.html 200",
           ].join("\n")
         );
       },
