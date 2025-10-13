@@ -2,15 +2,14 @@ import { MenuTypeMap } from ".";
 import MenuList from "../MenuList";
 import Paper from "../Paper";
 import Popover from "../Popover";
-import { skipRootProps } from "../styles/styled";
-import styled from "../styles/styled";
+import styled, { skipRootProps } from "../styles/styled";
 import useTheme from "../styles/useTheme";
 import { getMenuUtilityClass } from "./menuClasses";
 import createComponentFactory from "@suid/base/createComponentFactory";
 import createRef from "@suid/system/createRef";
 import { inspectChildren, isComponentObject } from "@suid/system/inspect";
 import clsx from "clsx";
-import { splitProps, mergeProps } from "solid-js";
+import { mergeProps, splitProps } from "solid-js";
 
 const $ = createComponentFactory<MenuTypeMap>()({
   name: "MuiMenu",
@@ -107,7 +106,7 @@ const Menu = $.defineComponent(function Menu(inProps) {
 
   const [, TransitionProps] = splitProps(
     mergeProps(() => props.TransitionProps || {}),
-    ["onEntering"]
+    ["onEntering", "onExited"]
   );
 
   const theme = useTheme();
@@ -133,6 +132,12 @@ const Menu = $.defineComponent(function Menu(inProps) {
 
     if (props.TransitionProps?.onEntering) {
       props.TransitionProps?.onEntering();
+    }
+  };
+
+  const handleExited = () => {
+    if (props.TransitionProps?.onExited) {
+      props.TransitionProps?.onExited();
     }
   };
 
@@ -191,7 +196,7 @@ const Menu = $.defineComponent(function Menu(inProps) {
   );
 
   const transitionProps = mergeProps(
-    { onEntering: handleEntering },
+    { onEntering: handleEntering, onExited: handleExited },
     TransitionProps
   );
 
