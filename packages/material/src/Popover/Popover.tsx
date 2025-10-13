@@ -11,7 +11,14 @@ import debounce from "@suid/utils/debounce";
 import ownerDocument from "@suid/utils/ownerDocument";
 import ownerWindow from "@suid/utils/ownerWindow";
 import clsx from "clsx";
-import { createEffect, on, splitProps, mergeProps, onCleanup } from "solid-js";
+import {
+  createEffect,
+  createSignal,
+  mergeProps,
+  on,
+  onCleanup,
+  splitProps,
+} from "solid-js";
 
 const $ = createComponentFactory<PopoverTypeMap>()({
   name: "MuiPopover",
@@ -156,7 +163,7 @@ const Popover = $.defineComponent(function Popover(inProps) {
 
   const [, TransitionProps] = splitProps(
     mergeProps(() => props.TransitionProps || {}),
-    ["onEntering"]
+    ["onEntering", "onExited"]
   );
   const paperRef = createRef(() => baseProps.PaperProps.ref);
   const ownerState = mergeProps(props, {
@@ -359,8 +366,18 @@ const Popover = $.defineComponent(function Popover(inProps) {
     setPositioningStyles();
   };
 
+  const [rootOpen, setRootOpen] = createSignal(props.open);
+
+  const handleExited = () => {
+    if (props.TransitionProps?.onExited) {
+      props.TransitionProps?.onExited();
+    }
+    setRootOpen(false);
+  };
+
   createEffect(() => {
     if (props.open) {
+      setRootOpen(true);
       setPositioningStyles();
     }
   });
@@ -440,7 +457,7 @@ const Popover = $.defineComponent(function Popover(inProps) {
       BackdropProps={{ invisible: true }}
       class={clsx(classes.root, props.class)}
       container={container()}
-      open={props.open}
+      open={rootOpen()}
       ownerState={ownerState}
       {...other}
     >
@@ -448,6 +465,7 @@ const Popover = $.defineComponent(function Popover(inProps) {
         appear
         in={props.open}
         onEntering={handleEntering}
+        onExited={handleExited}
         timeout={transitionDuration()}
         {...TransitionProps}
       >

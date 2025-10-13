@@ -6,8 +6,7 @@ import Paper from "../Paper";
 import styled from "../styles/styled";
 import useTheme from "../styles/useTheme";
 import DialogContext from "./DialogContext";
-import { getDialogUtilityClass } from "./dialogClasses";
-import dialogClasses from "./dialogClasses";
+import dialogClasses, { getDialogUtilityClass } from "./dialogClasses";
 import createComponentFactory from "@suid/base/createComponentFactory";
 import { Breakpoint } from "@suid/system";
 import createRef from "@suid/system/createRef";
@@ -15,7 +14,7 @@ import { EventParam, PropsOf } from "@suid/types";
 import { createUniqueId } from "@suid/utils";
 import capitalize from "@suid/utils/capitalize";
 import clsx from "clsx";
-import { splitProps, mergeProps } from "solid-js";
+import { createEffect, createSignal, mergeProps, splitProps } from "solid-js";
 
 type OwnerState = PropsOf<DialogTypeMap>;
 
@@ -281,6 +280,19 @@ const Dialog = $.defineComponent(function Dialog(inProps) {
     },
   };
 
+  const [rootOpen, setRootOpen] = createSignal(props.open);
+
+  const handleExited = () => {
+    if (props.TransitionProps?.onExited) {
+      props.TransitionProps?.onExited();
+    }
+    setRootOpen(false);
+  };
+
+  createEffect(() => {
+    if (props.open) setRootOpen(true);
+  });
+
   return (
     <DialogRoot
       class={clsx(classes.root, props.class)}
@@ -299,7 +311,7 @@ const Dialog = $.defineComponent(function Dialog(inProps) {
       BackdropComponent={DialogBackdrop}
       disableEscapeKeyDown={baseProps.disableEscapeKeyDown}
       onClose={props.onClose}
-      open={props.open}
+      open={rootOpen()}
       ref={ref}
       onClick={handleBackdropClick}
       ownerState={ownerState}
@@ -309,6 +321,7 @@ const Dialog = $.defineComponent(function Dialog(inProps) {
         appear
         in={props.open}
         timeout={baseProps.transitionDuration}
+        onExited={handleExited}
         // [pending]
         //role="presentation"
         {...props.TransitionProps}
