@@ -21,6 +21,7 @@ const AccordionSummaryRoot = styled(ButtonBase, {
   slot: "Root",
 })(({ theme }) => ({
   display: "flex",
+  width: "100%",
   minHeight: 48,
   padding: "0px 16px",
   transition: theme.transitions.create(["min-height", "background-color"], {
@@ -40,11 +41,12 @@ const AccordionSummaryRoot = styled(ButtonBase, {
   },
 }));
 
-const AccordionSummaryContent = styled("div", {
+const AccordionSummaryContent = styled("span", {
   name: "MuiAccordionSummary",
   slot: "Content",
 })(() => ({
   display: "flex",
+  textAlign: "start",
   flexGrow: 1,
   margin: "12px 0",
   [`&.${accordionSummaryClasses.expanded}`]: {
@@ -52,7 +54,7 @@ const AccordionSummaryContent = styled("div", {
   },
 }));
 
-const AccordionSummaryExpandIconWrapper = styled("div", {
+const AccordionSummaryExpandIconWrapper = styled("span", {
   name: "MuiAccordionSummary",
   slot: "ExpandIconWrapper",
 })(({ theme }) => ({
