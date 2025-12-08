@@ -5,6 +5,7 @@ import AccordionContext from "./AccordionContext";
 import { AccordionTypeMap } from "./AccordionProps";
 import accordionClasses, { getAccordionUtilityClass } from "./accordionClasses";
 import createComponentFactory from "@suid/base/createComponentFactory";
+import { ChangeEvent } from "@suid/types";
 import clsx from "clsx";
 import { children, createSignal } from "solid-js";
 
@@ -141,7 +142,7 @@ const Accordion = $.component(function Accordion({
   const handleChange = (event: Event) => {
     const newExpanded = !expanded();
     setExpandedState(newExpanded);
-    props.onChange?.(event, newExpanded);
+    props.onChange?.(event as ChangeEvent<HTMLDivElement>, newExpanded);
   };
 
   // Create owner state object that includes the expanded state
