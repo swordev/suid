@@ -128,11 +128,7 @@ const Accordion = $.component(function Accordion({
     props.expanded !== undefined ? props.expanded : expandedState();
 
   const handleChange = (event: Event) => {
-    console.log("Accordion handleChange called", {
-      currentExpanded: expanded(),
-    });
     const newExpanded = !expanded();
-    console.log("Accordion setting expanded to:", newExpanded);
     setExpandedState(newExpanded);
     props.onChange?.(event, newExpanded);
   };

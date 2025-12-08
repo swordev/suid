@@ -101,12 +101,7 @@ const AccordionSummary = $.component(function AccordionSummary({
         allProps.class
       )}
       onClick={(e: any) => {
-        console.log("AccordionSummary clicked", {
-          context,
-          hasToggle: !!context?.toggle,
-        });
         if (context?.toggle) {
-          console.log("Calling context.toggle");
           context.toggle(e);
         }
         if (typeof otherProps.onClick === "function") {
