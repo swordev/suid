@@ -91,6 +91,17 @@ const AccordionRoot = styled(Paper, {
     [`&.${accordionClasses.disabled}`]: {
       backgroundColor: theme.palette.action.disabledBackground,
     },
+    [`&.${accordionClasses.gutters}`]: {
+      [`&.${accordionClasses.expanded}`]: {
+        margin: "16px 0",
+        "&:first-of-type": {
+          marginTop: 0,
+        },
+        "&:last-of-type": {
+          marginBottom: 0,
+        },
+      },
+    },
   };
 });
 
@@ -133,13 +144,19 @@ const Accordion = $.component(function Accordion({
     props.onChange?.(event, newExpanded);
   };
 
+  // Create owner state object that includes the expanded state
+  const ownerState = () => ({
+    ...allProps,
+    expanded: expanded(),
+  });
+
   return (
     <AccordionRoot
       {...otherProps}
-      class={clsx(classes.root, allProps.class)}
+      class={clsx($.useClasses(ownerState()).root, allProps.class)}
       square={props.square}
     >
-      <AccordionHeading class={classes.heading}>
+      <AccordionHeading class={$.useClasses(ownerState()).heading}>
         <AccordionContext.Provider
           value={{
             get expanded() {
@@ -160,7 +177,7 @@ const Accordion = $.component(function Accordion({
       </AccordionHeading>
       <Collapse in={expanded()} timeout="auto">
         <AccordionRegion
-          class={classes.region}
+          class={$.useClasses(ownerState()).region}
           role="region"
           aria-labelledby={otherProps.id}
         >
