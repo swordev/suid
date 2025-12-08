@@ -43,7 +43,7 @@ const AccordionSummaryRoot = styled(ButtonBase, {
 const AccordionSummaryContent = styled("div", {
   name: "MuiAccordionSummary",
   slot: "Content",
-})(({ theme }) => ({
+})(() => ({
   display: "flex",
   flexGrow: 1,
   margin: "12px 0",

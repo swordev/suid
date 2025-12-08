@@ -2,7 +2,7 @@ import styled from "../styles/styled";
 import useTheme from "../styles/useTheme";
 import { reflow, getTransitionProps } from "../transitions/utils";
 import { CollapseTypeMap } from "./CollapseProps";
-import collapseClasses, { getCollapseUtilityClass } from "./collapseClasses";
+import { getCollapseUtilityClass } from "./collapseClasses";
 import createComponentFactory from "@suid/base/createComponentFactory";
 import createElementRef from "@suid/system/createElementRef";
 import clsx from "clsx";
@@ -96,6 +96,7 @@ const Collapse = $.component(function Collapse({
   const isHorizontal = props.orientation === "horizontal";
   const size = isHorizontal ? "width" : "height";
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [state, setState] = createSignal<
     "entering" | "entered" | "exiting" | "exited"
   >(props.in ? "entered" : "exited");

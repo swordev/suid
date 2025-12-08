@@ -1,12 +1,12 @@
 import Collapse from "../Collapse";
 import Paper from "../Paper";
 import styled from "../styles/styled";
-import AccordionContext, { AccordionContextValue } from "./AccordionContext";
+import AccordionContext from "./AccordionContext";
 import { AccordionTypeMap } from "./AccordionProps";
 import accordionClasses, { getAccordionUtilityClass } from "./accordionClasses";
 import createComponentFactory from "@suid/base/createComponentFactory";
 import clsx from "clsx";
-import { children, createSignal, JSXElement } from "solid-js";
+import { children, createSignal } from "solid-js";
 
 const $ = createComponentFactory<AccordionTypeMap>()({
   name: "MuiAccordion",
