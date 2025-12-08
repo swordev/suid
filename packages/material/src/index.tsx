@@ -4,6 +4,10 @@ export namespace PropTypes {
   // keeping the type structure for backwards compat
   export type Color = "inherit" | "primary" | "secondary" | "default";
 }
+export { default as Accordion } from "./Accordion";
+export { default as AccordionActions } from "./AccordionActions";
+export { default as AccordionDetails } from "./AccordionDetails";
+export { default as AccordionSummary } from "./AccordionSummary";
 export { default as Alert } from "./Alert";
 export { default as AlertTitle } from "./AlertTitle";
 export { default as AppBar } from "./AppBar";
@@ -26,6 +30,7 @@ export { default as CardMedia } from "./CardMedia";
 export { default as Checkbox } from "./Checkbox";
 export { default as Chip } from "./Chip";
 export { default as CircularProgress } from "./CircularProgress";
+export { default as Collapse } from "./Collapse";
 export { default as Container } from "./Container";
 export { default as CssBaseline } from "./CssBaseline";
 export { default as Dialog } from "./Dialog";
