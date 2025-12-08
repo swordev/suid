@@ -1,6 +1,6 @@
 import { PaperProps } from "../Paper/PaperProps";
 import { AccordionClasses } from "./accordionClasses";
-import { OverrideProps, ElementType } from "@suid/types";
+import { OverrideProps, ElementType, ChangeEventHandler } from "@suid/types";
 import { JSXElement } from "solid-js";
 
 export interface AccordionOwnProps {
@@ -38,7 +38,7 @@ export interface AccordionOwnProps {
    * @param {React.SyntheticEvent} event The event source of the callback. **Warning**: This is a generic event not a change event.
    * @param {boolean} expanded The `expanded` state of the accordion.
    */
-  onChange?: (event: Event, expanded: boolean) => void;
+  onChange?: ChangeEventHandler<HTMLDivElement, boolean>;
   /**
    * If `true`, rounded corners are disabled.
    * @default false
@@ -54,7 +54,7 @@ export interface AccordionTypeMap<P = {}, D extends ElementType = "div"> {
     | "disableGutters"
     | "square";
   selfProps: AccordionOwnProps;
-  props: P & AccordionOwnProps & Omit<PaperProps, "component">;
+  props: P & AccordionOwnProps & Omit<PaperProps, "component" | "onChange">;
   defaultComponent: D;
 }
 
