@@ -46,7 +46,6 @@ const CollapseRoot = styled("div", {
 })(({ theme }) => ({
   height: 0,
   overflow: "hidden",
-  transition: theme.transitions.create("height"),
 }));
 
 const CollapseWrapper = styled("div", {
@@ -117,7 +116,11 @@ const Collapse = $.component(function Collapse({
           setState("entering");
           props.onEnter?.();
 
+          // Set initial collapsed state
           el.style[size] = collapsedSize;
+          el.style.overflow = "hidden";
+
+          // Force reflow to ensure initial state is applied
           reflow(el);
 
           const wrapperSize = getWrapperSize();
@@ -130,38 +133,54 @@ const Collapse = $.component(function Collapse({
             { mode: "enter" }
           );
 
-          el.style.transition = theme.transitions.create(size, transitionProps);
+          // Calculate duration
+          let duration: number;
+          if (props.timeout === "auto") {
+            duration = theme.transitions.getAutoHeightDuration(wrapperSize);
+            el.style.transitionDuration = `${duration}ms`;
+          } else {
+            duration =
+              typeof props.timeout === "number"
+                ? props.timeout
+                : (props.timeout as any)?.enter ||
+                  theme.transitions.duration.standard;
+            el.style.transitionDuration =
+              typeof transitionProps.duration === "string"
+                ? transitionProps.duration
+                : `${transitionProps.duration}ms`;
+          }
+
+          el.style.transitionTimingFunction = transitionProps.easing || "";
+
+          // Start transition to expanded size
           el.style[size] = `${wrapperSize}px`;
 
           props.onEntering?.();
 
           const done = () => {
             el.style[size] = "auto";
+            el.style.overflow = "visible";
             setState("entered");
             props.onEntered?.();
           };
 
-          if (props.timeout === "auto") {
-            const transitionDuration =
-              theme.transitions.getAutoHeightDuration(wrapperSize);
-            el.addEventListener("transitionend", done, { once: true });
-            setTimeout(done, transitionDuration);
-          } else {
-            const duration =
-              typeof props.timeout === "number"
-                ? props.timeout
-                : (props.timeout as any)?.enter ||
-                  theme.transitions.duration.standard;
-            el.addEventListener("transitionend", done, { once: true });
-            setTimeout(done, duration);
-          }
+          el.addEventListener("transitionend", done, { once: true });
+          setTimeout(done, duration);
         } else {
           // Exiting
           setState("exiting");
           props.onExit?.();
 
           const wrapperSize = getWrapperSize();
-          el.style[size] = `${wrapperSize}px`;
+
+          // If height is 'auto', we need to set it to a specific value first
+          if (el.style[size] === "auto" || el.style[size] === "") {
+            el.style[size] = `${wrapperSize}px`;
+          }
+
+          el.style.overflow = "hidden";
+
+          // Force reflow to ensure the size is set before transition
           reflow(el);
 
           const transitionProps = getTransitionProps(
@@ -173,7 +192,26 @@ const Collapse = $.component(function Collapse({
             { mode: "exit" }
           );
 
-          el.style.transition = theme.transitions.create(size, transitionProps);
+          // Calculate duration
+          let duration: number;
+          if (props.timeout === "auto") {
+            duration = theme.transitions.getAutoHeightDuration(wrapperSize);
+            el.style.transitionDuration = `${duration}ms`;
+          } else {
+            duration =
+              typeof props.timeout === "number"
+                ? props.timeout
+                : (props.timeout as any)?.exit ||
+                  theme.transitions.duration.standard;
+            el.style.transitionDuration =
+              typeof transitionProps.duration === "string"
+                ? transitionProps.duration
+                : `${transitionProps.duration}ms`;
+          }
+
+          el.style.transitionTimingFunction = transitionProps.easing || "";
+
+          // Start transition to collapsed size
           el.style[size] = collapsedSize;
 
           props.onExiting?.();
@@ -183,20 +221,8 @@ const Collapse = $.component(function Collapse({
             props.onExited?.();
           };
 
-          if (props.timeout === "auto") {
-            const transitionDuration =
-              theme.transitions.getAutoHeightDuration(wrapperSize);
-            el.addEventListener("transitionend", done, { once: true });
-            setTimeout(done, transitionDuration);
-          } else {
-            const duration =
-              typeof props.timeout === "number"
-                ? props.timeout
-                : (props.timeout as any)?.exit ||
-                  theme.transitions.duration.standard;
-            el.addEventListener("transitionend", done, { once: true });
-            setTimeout(done, duration);
-          }
+          el.addEventListener("transitionend", done, { once: true });
+          setTimeout(done, duration);
         }
       },
       { defer: true }
@@ -205,8 +231,29 @@ const Collapse = $.component(function Collapse({
 
   onMount(() => {
     const el = element.ref;
-    if (el && props.in) {
+    if (!el) return;
+
+    if (props.in) {
       el.style[size] = "auto";
+      el.style.overflow = "visible";
+    } else {
+      el.style[size] = collapsedSize;
+      el.style.overflow = "hidden";
+    }
+  });
+
+  // Keep the element in sync with the state after transitions complete
+  createEffect(() => {
+    const el = element.ref;
+    const currentState = state();
+    if (!el) return;
+
+    if (currentState === "entered") {
+      el.style[size] = "auto";
+      el.style.overflow = "visible";
+    } else if (currentState === "exited") {
+      el.style[size] = collapsedSize;
+      el.style.overflow = "hidden";
     }
   });
 
