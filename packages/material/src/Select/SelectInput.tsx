@@ -400,6 +400,8 @@ const SelectInput = $.defineComponent(function SelectInput(props) {
     itemProps: PropsOf<MenuItemTypeMap>,
     prevProps: PropsOf<MenuItemTypeMap>
   ) => {
+    if (props.disabled) return;
+
     let newValue: any;
     const childValue = itemProps.value;
 
